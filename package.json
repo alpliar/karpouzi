@@ -10,6 +10,7 @@
     "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc"
   },
   "dependencies": {
+    "gray-matter": "^4.0.2",
     "next": "^10.0.0",
     "next-pwa": "^5.0.4",
     "postcss-flexbugs-fixes": "^5.0.2",
