@@ -1,8 +1,8 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import Layout, { siteTitle } from '../components/layout'
+import SectionsCta from '../components/SectionsCta'
 import utilStyles from '../styles/utils.module.scss'
-
 
 export default function Home() {
   return (
@@ -30,6 +30,9 @@ export default function Home() {
             (This is a sample website - you’ll be building a site like this on{' '}
             <a href="https://nextjs.org/learn">our Next.js tutorial</a>.)
           </p>
+        </section>
+        <section>
+          <SectionsCta />
         </section>
       </main>
     </Layout>
