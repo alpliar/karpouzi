@@ -5,6 +5,10 @@ module.exports =
       withPWA({
         pwa: {
           dest: 'public',
-          runtimeCaching
+          register: true,
+          runtimeCaching,
+          publicExcludes: [
+            '!robots.txt',
+          ]
         }
       })

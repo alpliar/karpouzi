@@ -4,6 +4,7 @@
     "lang": "fr-FR",
     "start_url": "/",
     "display": "standalone",
+    "orientation": "portrait",
     "theme_color": "#0275d8",
     "background_color": "#dedede",
     "icons": [
