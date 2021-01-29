@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import Link from 'next/link';
 import Layout, { siteTitle } from '../components/layout';
 // import SectionsCta from '../components/SectionsCta';
 import { getSortedPostsData } from '../lib/posts';
@@ -52,13 +53,20 @@ export default function Home({ allPostsData }) {
                         Blog
                     </h2>
                     <ul>
+                        {console.log(allPostsData)}
                         {allPostsData.map(({ id, date, title }) => (
                             <li key={id}>
-                                <span className="text-xl tracking-tight font-bold">{title}</span>
-                                <br />
-                                {id}
-                                <br />
-                                {date}
+                                <Link href={`/posts/${id}`}>
+                                    <a>
+                                        <span className="text-xl tracking-tight font-bold">
+                                            {title}
+                                        </span>
+                                        <br />
+                                        {id}
+                                        <br />
+                                        {date}
+                                    </a>
+                                </Link>
                             </li>
                         ))}
                     </ul>

@@ -7,7 +7,7 @@ import Footer from './Footer';
 const name = 'Alex 👨‍💻🎮🎲🌱⛰️🥾';
 export const siteTitle = `${name} blog`;
 
-export default function Layout({ children, home }) {
+export default function Layout({ children, home = false }) {
     return (
         <div>
             <Head>
@@ -30,9 +30,11 @@ export default function Layout({ children, home }) {
             </header>
             <main>{children}</main>
             {!home && (
-                <div>
+                <div className="text-center	">
                     <Link href="/">
-                        <a>← Back to home</a>
+                        <a className="m-2 font-medium text-indigo-500 hover:text-indigo-900">
+                            ← Back to home
+                        </a>
                     </Link>
                 </div>
             )}
@@ -42,6 +44,6 @@ export default function Layout({ children, home }) {
 }
 
 Layout.propTypes = {
-    children: PropTypes.node,
+    children: PropTypes.node.isRequired,
     home: PropTypes.bool
 };
