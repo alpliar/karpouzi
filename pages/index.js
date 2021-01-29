@@ -38,7 +38,7 @@ export default function Home({ allPostsData }) {
                 <meta name="theme-color" content="#317EFB" />
             </Head>
 
-            <main className="container mx-auto px-4">
+            <main className="container mx-auto px-4 max-w-xl py-8">
                 {/* <section>
                     <SectionHero />
                 </section> */}

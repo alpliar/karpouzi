@@ -1,4 +1,6 @@
+import Head from 'next/head';
 import Layout from '../../components/layout';
+import Date from '../../components/date';
 import { getAllPostIds, getPostData } from '../../lib/posts';
 import PropTypes from 'prop-types';
 
@@ -22,16 +24,22 @@ export async function getStaticPaths() {
 export default function Post({ postData }) {
     return (
         <Layout>
-            <div className="container mx-auto px-4">
+            <Head>
+                <title>{postData.title}</title>
+            </Head>
+            <div className="md:container md:mx-auto px-4 text-center">
                 <h2 className="text-xl tracking-tight font-extrabold text-indigo-600 sm:text-2xl md:text-3xl">
                     {postData.title}
                 </h2>
                 <br />
                 {postData.id}
                 <br />
-                {postData.date}
+                <Date dateString={postData.date} />
                 <br />
-                <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
+                <div
+                    className="max-w-screen-md mx-auto text-left py-4"
+                    dangerouslySetInnerHTML={{ __html: postData.contentHtml }}
+                />
             </div>
         </Layout>
     );
