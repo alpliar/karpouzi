@@ -26,12 +26,12 @@ export default function Post({ postData }) {
                 <h2 className="text-xl tracking-tight font-extrabold text-indigo-600 sm:text-2xl md:text-3xl">
                     {postData.title}
                 </h2>
-                <span className="text-xl tracking-tight font-bold">
-                    <br />
-                    {postData.id}
-                    <br />
-                    {postData.date}
-                </span>
+                <br />
+                {postData.id}
+                <br />
+                {postData.date}
+                <br />
+                <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
             </div>
         </Layout>
     );
@@ -41,6 +41,7 @@ Post.propTypes = {
     postData: PropTypes.shape({
         title: PropTypes.string.isRequired,
         id: PropTypes.string.isRequired,
-        date: PropTypes.string.isRequired
+        date: PropTypes.string.isRequired,
+        contentHtml: PropTypes.string.isRequired
     }).isRequired
 };

@@ -79,7 +79,7 @@ export default function Home({ allPostsData }) {
 Home.propTypes = {
     allPostsData: PropTypes.arrayOf(
         PropTypes.shape({
-            id: PropTypes.number,
+            id: PropTypes.string,
             date: PropTypes.string,
             title: PropTypes.string
         })
