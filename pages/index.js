@@ -1,10 +1,10 @@
 import Head from 'next/head';
-import Link from 'next/link';
 import Layout, { siteTitle } from '../components/layout';
-import SectionsCta from '../components/SectionsCta';
-import utilStyles from '../styles/utils.module.scss';
+// import SectionsCta from '../components/SectionsCta';
 import { getSortedPostsData } from '../lib/posts';
 import { PropTypes } from 'prop-types';
+// import QuoteCard from '../components/QuoteCard';
+// import SectionHero from '../components/SectionHero';
 
 export async function getStaticProps() {
     const allPostsData = getSortedPostsData();
@@ -37,23 +37,24 @@ export default function Home({ allPostsData }) {
                 <meta name="theme-color" content="#317EFB" />
             </Head>
 
-            <main>
-                <section className={utilStyles.headingMd}>
-                    <p>Hi, i&apos;m me, nice to meet you !</p>
-                    <p>
-                        (This is a sample website - you’ll be building a site like this on{' '}
-                        <Link href="/posts/first-post">our Next.js tutorial</Link>.)
-                    </p>
+            <main className="container mx-auto px-4">
+                {/* <section>
+                    <SectionHero />
+                </section> */}
+                {/* <section>
+                    <QuoteCard />
                 </section>
                 <section>
                     <SectionsCta />
-                </section>
-                <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
-                    <h2 className={utilStyles.headingLg}>Blog</h2>
-                    <ul className={utilStyles.list}>
+                </section> */}
+                <section>
+                    <h2 className="text-xl tracking-tight font-extrabold text-indigo-600 sm:text-2xl md:text-3xl">
+                        Blog
+                    </h2>
+                    <ul>
                         {allPostsData.map(({ id, date, title }) => (
-                            <li className={utilStyles.listItem} key={id}>
-                                {title}
+                            <li key={id}>
+                                <span className="text-xl tracking-tight font-bold">{title}</span>
                                 <br />
                                 {id}
                                 <br />
