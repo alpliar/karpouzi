@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Header from './Header';
 import Footer from './Footer';
 
-const name = 'Alex 👨‍💻🎮🎲🌱⛰️🥾';
+const name = 'My';
 export const siteTitle = `${name} blog`;
 
 export default function Layout({ children, home = false }) {
