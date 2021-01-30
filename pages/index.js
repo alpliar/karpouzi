@@ -1,11 +1,8 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import Layout, { siteTitle } from '../components/layout';
-// import SectionsCta from '../components/SectionsCta';
 import { getSortedPostsData } from '../lib/posts';
 import { PropTypes } from 'prop-types';
-// import QuoteCard from '../components/QuoteCard';
-// import SectionHero from '../components/SectionHero';
 
 export async function getStaticProps() {
     const allPostsData = getSortedPostsData();
@@ -38,22 +35,12 @@ export default function Home({ allPostsData }) {
                 <meta name="theme-color" content="#317EFB" />
             </Head>
 
-            <main className="container mx-auto px-4 max-w-xl py-8">
-                {/* <section>
-                    <SectionHero />
-                </section> */}
-                {/* <section>
-                    <QuoteCard />
-                </section>
-                <section>
-                    <SectionsCta />
-                </section> */}
-                <section>
+            <main className="container">
+                <section className=" mx-auto px-4 max-w-xl py-8">
                     <h2 className="text-xl tracking-tight font-extrabold text-indigo-600 sm:text-2xl md:text-3xl">
                         Blog
                     </h2>
                     <ul>
-                        {console.log(allPostsData)}
                         {allPostsData.map(({ id, date, title }) => (
                             <li key={id}>
                                 <Link href={`/posts/${id}`}>
