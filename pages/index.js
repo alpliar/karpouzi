@@ -42,7 +42,7 @@ export default function Home({ allPostsData }) {
                     </h2>
                     <ul>
                         {allPostsData.map(({ id, date, title }) => (
-                            <li key={id}>
+                            <li className="py-4" key={id}>
                                 <Link href={`/posts/${id}`}>
                                     <a>
                                         <span className="text-xl tracking-tight font-bold">
