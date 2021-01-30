@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
+import Link from 'next/link';
 import { PropTypes } from 'prop-types';
-const Header = ({ home }) => {
+const Header = ({ home, siteTitle }) => {
     return (
         <div className="relative bg-white overflow-hidden">
             <div className="max-w-7xl mx-auto">
@@ -20,14 +21,16 @@ const Header = ({ home }) => {
                             aria-label="Global">
                             <div className="flex items-center flex-grow flex-shrink-0 lg:flex-grow-0">
                                 <div className="flex items-center justify-between w-full md:w-auto">
-                                    <a href="#">
-                                        <span className="sr-only">Workflow</span>
-                                        <img
+                                    <Link href="/">
+                                        <a className="text-xl tracking-tight font-extrabold text-indigo-600 sm:text-2xl md:text-3xl">
+                                            {siteTitle}
+                                        </a>
+                                        {/* <img
                                             alt="fzafzafzaf"
                                             className="h-8 w-auto sm:h-10"
                                             src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
-                                        />
-                                    </a>
+                                        /> */}
+                                    </Link>
                                 </div>
                             </div>
                             <div className="flex flex-wrap items-center md:content-end md:flex-nowrap ml-5 md:ml-10 pr-0 md:pr-4">

@@ -26,7 +26,7 @@ export default function Layout({ children, home = false }) {
                 <meta name="twitter:card" content="summary_large_image" />
             </Head>
             <header>
-                <Header home={home} />
+                <Header home={home} siteTitle={siteTitle} />
             </header>
             <main>{children}</main>
             {!home && (
