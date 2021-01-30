@@ -9,7 +9,7 @@ export const siteTitle = `${name} blog`;
 
 export default function Layout({ children, home = false }) {
     return (
-        <div>
+        <div className="min-h-screen dark:text-white dark:bg-gray-800">
             <Head>
                 <link rel="icon" href="/favicon.ico" />
                 <meta
@@ -26,7 +26,7 @@ export default function Layout({ children, home = false }) {
                 <meta name="twitter:card" content="summary_large_image" />
             </Head>
             <header>
-                <Header home={home} siteTitle={siteTitle} />
+                <Header siteTitle={siteTitle} />
             </header>
             <main>{children}</main>
             {!home && (

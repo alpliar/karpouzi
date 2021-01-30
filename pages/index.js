@@ -1,6 +1,6 @@
 import Head from 'next/head';
-import Link from 'next/link';
 import Layout, { siteTitle } from '../components/layout';
+import LatestsPosts from '../components/LatestsPosts';
 import { getSortedPostsData } from '../lib/posts';
 import { PropTypes } from 'prop-types';
 
@@ -15,7 +15,7 @@ export async function getStaticProps() {
 
 export default function Home({ allPostsData }) {
     return (
-        <Layout home>
+        <Layout home={true}>
             <Head>
                 <link rel="icon" href="/favicon.ico" />
                 <meta charSet="utf-8" />
@@ -37,26 +37,7 @@ export default function Home({ allPostsData }) {
 
             <main className="container">
                 <section className=" mx-auto px-4 max-w-xl py-8">
-                    <h2 className="text-xl tracking-tight font-extrabold text-indigo-600 sm:text-2xl md:text-3xl">
-                        Blog
-                    </h2>
-                    <ul>
-                        {allPostsData.map(({ id, date, title }) => (
-                            <li className="py-4" key={id}>
-                                <Link href={`/posts/${id}`}>
-                                    <a>
-                                        <span className="text-xl tracking-tight font-bold">
-                                            {title}
-                                        </span>
-                                        <br />
-                                        {id}
-                                        <br />
-                                        {date}
-                                    </a>
-                                </Link>
-                            </li>
-                        ))}
-                    </ul>
+                    <LatestsPosts posts={allPostsData} />
                 </section>
             </main>
         </Layout>

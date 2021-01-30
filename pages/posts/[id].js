@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import Layout from '../../components/layout';
 import Date from '../../components/Date';
+import Title from '../../components/UiTitle';
 import { getAllPostIds, getPostData } from '../../lib/posts';
 import PropTypes from 'prop-types';
 
@@ -28,9 +29,9 @@ export default function Post({ postData }) {
                 <title>{postData.title}</title>
             </Head>
             <div className="md:container md:mx-auto px-4 text-center">
-                <h2 className="text-xl tracking-tight font-extrabold text-indigo-600 sm:text-2xl md:text-3xl">
+                <Title rank={1}>
                     {postData.title}
-                </h2>
+                </Title>
                 <br />
                 {postData.id}
                 <br />
