@@ -5,7 +5,10 @@ const Header = ({ home, siteTitle }) => {
     return (
         <div className="relative bg-white overflow-hidden">
             <div className="max-w-7xl mx-auto">
-                <div className="relative z-10 pb-8 bg-white sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32">
+                <div
+                    className={`relative z-10 pb-8 bg-white sm:pb-16 md:pb-20 ${
+                        home ? 'lg:max-w-2xl' : ''
+                    } lg:w-full lg:pb-28 xl:pb-32`}>
                     <svg
                         className="hidden lg:block absolute right-0 inset-y-0 h-full w-48 text-white transform translate-x-1/2"
                         fill="white"
@@ -19,7 +22,7 @@ const Header = ({ home, siteTitle }) => {
                         <nav
                             className="relative flex items-center justify-between sm:h-10 lg:justify-start"
                             aria-label="Global">
-                            <div className="flex items-center flex-grow flex-shrink-0 lg:flex-grow-0">
+                            <div className="flex items-center flex-grow flex-shrink-0">
                                 <div className="flex items-center justify-between w-full md:w-auto">
                                     <Link href="/">
                                         <a className="text-xl tracking-tight font-extrabold text-indigo-600 sm:text-2xl md:text-3xl">
