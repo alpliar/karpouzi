@@ -2,10 +2,11 @@
 import Link from 'next/link';
 import { PropTypes } from 'prop-types';
 import UiHomeLogo from './UiHomeLogo';
+import { Container } from 'theme-ui';
 
 const Header = ({ siteTitle }) => {
     return (
-        <div className="relative overflow-hidden">
+        <Container as="footer" p={4} bg="secondary">
             <div className="max-w-7xl mx-auto">
                 <div className="pb-8">
                     <div className=" pt-6 px-4 sm:px-6 lg:px-8">
@@ -46,7 +47,7 @@ const Header = ({ siteTitle }) => {
                     </div>
                 </div>
             </div>
-        </div>
+        </Container>
     );
 };
 
