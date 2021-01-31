@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import Link from 'next/link';
 import { PropTypes } from 'prop-types';
+import UiHomeLogo from './UiHomeLogo';
 
 const Header = ({ siteTitle }) => {
     return (
@@ -13,11 +14,7 @@ const Header = ({ siteTitle }) => {
                             aria-label="Global">
                             <div className="flex items-center flex-grow flex-shrink-0">
                                 <div className="flex items-center justify-between w-full md:w-auto">
-                                    <Link href="/">
-                                        <a className="text-xl tracking-tight font-extrabold text-indigo-600 sm:text-2xl md:text-3xl">
-                                            {siteTitle}
-                                        </a>
-                                    </Link>
+                                    <UiHomeLogo siteTitle={siteTitle} />
                                 </div>
                             </div>
                             <div className="flex flex-wrap items-center md:content-end md:flex-nowrap ml-5 md:ml-10 pr-0 md:pr-4">
