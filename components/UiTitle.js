@@ -14,6 +14,6 @@ export default UiTitle;
 
 UiTitle.propTypes = {
     children: PropTypes.node.isRequired,
-    rank: PropTypes.oneOf(1, 2, 3, 4, 5, 6),
+    rank: PropTypes.oneOf([1, 2, 3, 4, 5, 6]),
     className: PropTypes.string
 };
