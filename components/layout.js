@@ -4,12 +4,11 @@ import Link from 'next/link';
 import Header from './Header';
 import Footer from './Footer';
 
-const name = 'My';
-export const siteTitle = `${name} blog`;
+export const siteTitle = `Logo`;
 
 export default function Layout({ children, home = false }) {
     return (
-        <div className="min-h-screen dark:text-white dark:bg-gray-800">
+        <div className="min-h-screen bg-gray-200 text-black dark:text-white dark:bg-gray-800">
             <Head>
                 <link rel="icon" href="/favicon.ico" />
                 <meta
