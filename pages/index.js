@@ -3,6 +3,8 @@ import Layout, { siteTitle } from '../components/layout';
 import LatestsPosts from '../components/LatestsPosts';
 import { getSortedPostsData } from '../lib/posts';
 import { PropTypes } from 'prop-types';
+import Modal from '../components/Modal';
+import { useState } from 'react';
 
 export async function getStaticProps() {
     const allPostsData = getSortedPostsData();
@@ -14,6 +16,8 @@ export async function getStaticProps() {
 }
 
 export default function Home({ allPostsData }) {
+    const [showModal, setShowModal] = useState(false);
+
     return (
         <Layout home={true}>
             <Head>
@@ -36,6 +40,16 @@ export default function Home({ allPostsData }) {
             </Head>
 
             <main className="container">
+                {/* <section>
+                    <button
+                        className="m-2 font-medium inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700"
+                        onClick={() => {
+                            setShowModal(!showModal);
+                        }}>
+                        Show modal
+                    </button>
+                    {showModal && <Modal />}
+                </section> */}
                 <section className=" mx-auto px-4 max-w-xl py-8">
                     <LatestsPosts posts={allPostsData} />
                 </section>
