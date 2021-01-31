@@ -1,11 +1,11 @@
 import Link from 'next/link';
 import PropTypes from 'prop-types';
-import Title from './UiTitle';
+import { Heading } from 'theme-ui';
 
 const LatestsPosts = ({ posts }) => {
     return (
         <>
-            <Title rank={1}>Blog</Title>
+            <Heading as="h1">Blog</Heading>
             <ul>
                 {posts.map(({ id, date, title }) => (
                     <li className="py-4" key={id}>

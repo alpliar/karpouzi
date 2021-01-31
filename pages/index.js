@@ -1,10 +1,12 @@
 import Head from 'next/head';
 import Layout, { siteTitle } from '../components/layout';
 import LatestsPosts from '../components/LatestsPosts';
+import { Container } from 'theme-ui';
 import { getSortedPostsData } from '../lib/posts';
 import { PropTypes } from 'prop-types';
-import Modal from '../components/Modal';
-import { useState } from 'react';
+// import Modal from '../components/Modal';
+// import { useState } from 'react';
+import { useThemeUI } from 'theme-ui';
 
 export async function getStaticProps() {
     const allPostsData = getSortedPostsData();
@@ -16,7 +18,8 @@ export async function getStaticProps() {
 }
 
 export default function Home({ allPostsData }) {
-    const [showModal, setShowModal] = useState(false);
+    // const [showModal, setShowModal] = useState(false);
+    const { theme } = useThemeUI();
 
     return (
         <Layout home={true}>
@@ -36,7 +39,7 @@ export default function Home({ allPostsData }) {
                 <link href="/icon-32x32.png" rel="icon" type="image/png" sizes="32x32" />
                 <link rel="apple-touch-icon" href="/icon-512x512.png"></link>
 
-                <meta name="theme-color" content="#317EFB" />
+                <meta name="theme-color" content={theme.colors.primary} />
             </Head>
 
             <main className="container">
@@ -50,9 +53,12 @@ export default function Home({ allPostsData }) {
                     </button>
                     {showModal && <Modal />}
                 </section> */}
-                <section className=" mx-auto px-4 max-w-xl py-8">
+                <Container p={4} bg="secondary">
+                    Beep
+                </Container>
+                <Container p={4} bg="muted">
                     <LatestsPosts posts={allPostsData} />
-                </section>
+                </Container>
             </main>
         </Layout>
     );

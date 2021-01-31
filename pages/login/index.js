@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import Layout from '../../components/layout';
-import Title from '../../components/UiTitle';
+import { Heading } from 'theme-ui';
 
 const LoginPage = () => {
     return (
@@ -8,9 +8,9 @@ const LoginPage = () => {
             <div className="flex items-center justify-center px-4 sm:px-6 lg:px-8">
                 <div className="max-w-md w-full space-y-8">
                     <div>
-                        <Title rank={2} className="text-center">
+                        <Heading as="h2" className="text-center">
                             <span>Sign in to your account</span>
-                        </Title>
+                        </Heading>
                         <p className="mt-2 text-center text-sm">
                             Or{' '}
                             <a href="#" className="font-medium">

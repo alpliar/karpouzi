@@ -1,8 +1,8 @@
 import Head from 'next/head';
 import Layout from '../../components/layout';
 import Date from '../../components/Date';
-import Title from '../../components/UiTitle';
 import { getAllPostIds, getPostData } from '../../lib/posts';
+import { Heading } from 'theme-ui';
 import PropTypes from 'prop-types';
 
 export async function getStaticProps({ params }) {
@@ -30,7 +30,7 @@ export default function Post({ postData }) {
             </Head>
             <div className="md:container md:mx-auto px-4 text-center">
                 <div className="max-w-screen-md mx-auto text-left py-4">
-                    <Title rank={1}>{postData.title}</Title>
+                    <Heading as="h1">{postData.title}</Heading>
                     <span>
                         {postData.id},{' '}
                         <strong>
