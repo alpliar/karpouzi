@@ -36,12 +36,11 @@ const Header = ({ siteTitle }) => {
                                     Company
                                 </a>
 
-                                <a
-                                    href="#"
-                                    className="m-2 font-medium
-                                    inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700">
-                                    Log in
-                                </a>
+                                <Link href="/login">
+                                    <a className="m-2 font-medium inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700">
+                                        Log in
+                                    </a>
+                                </Link>
                             </div>
                         </nav>
                     </div>
