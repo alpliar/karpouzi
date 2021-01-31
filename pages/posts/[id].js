@@ -29,18 +29,19 @@ export default function Post({ postData }) {
                 <title>{postData.title}</title>
             </Head>
             <div className="md:container md:mx-auto px-4 text-center">
-                <Title rank={1}>
-                    {postData.title}
-                </Title>
-                <br />
-                {postData.id}
-                <br />
-                <Date dateString={postData.date} />
-                <br />
-                <div
-                    className="max-w-screen-md mx-auto text-left py-4"
-                    dangerouslySetInnerHTML={{ __html: postData.contentHtml }}
-                />
+                <div className="max-w-screen-md mx-auto text-left py-4">
+                    <Title rank={1}>{postData.title}</Title>
+                    <span>
+                        {postData.id},{' '}
+                        <strong>
+                            <Date dateString={postData.date} />
+                        </strong>
+                    </span>
+                    <div
+                        className="py-4"
+                        dangerouslySetInnerHTML={{ __html: postData.contentHtml }}
+                    />
+                </div>
             </div>
         </Layout>
     );
