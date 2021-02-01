@@ -14,23 +14,24 @@ const Header = ({ siteTitle }) => {
                 <Flex
                     sx={{
                         flex: '1 1 auto',
+                        alignItems: 'center',
                         justifyContent: 'flex-end',
                         flexWrap: 'wrap'
                     }}>
-                    <UiLink href="#" sx={{ marginRight: '1em' }} color="onPrimary">
+                    <UiLink href="/" p="2" mr="2" color="onPrimary">
                         Product
                     </UiLink>
 
-                    <UiLink href="#" sx={{ marginRight: '1em' }} color="onPrimary">
+                    <UiLink href="/" p="2" mr="2" color="onPrimary">
                         Features
                     </UiLink>
 
-                    <UiLink href="#" sx={{ marginRight: '1em' }} color="onPrimary">
+                    <UiLink href="/" p="2" mr="2" color="onPrimary">
                         Company
                     </UiLink>
 
                     <Link href="/login">
-                        <UiLink href="/login" sx={{ marginRight: '1em' }} color="onPrimary">
+                        <UiLink href="/login" p="2" mr="2" color="onPrimary">
                             Log in
                         </UiLink>
                     </Link>

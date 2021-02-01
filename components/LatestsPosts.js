@@ -10,8 +10,9 @@ const LatestsPosts = ({ posts }) => {
                 {posts.map(({ id, date, title }) => (
                     <Link href={`/posts/${id}`} key={id}>
                         <Card as="li">
-                            <UiLink href></UiLink>
-                            <Heading>{title}</Heading>
+                            <UiLink href={`/posts/${id}`}>
+                                <Heading>{title}</Heading>
+                            </UiLink>
                             <Text>{id}</Text>
                             <Text>{date}</Text>
                         </Card>
