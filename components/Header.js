@@ -30,7 +30,7 @@ const Header = ({ siteTitle }) => {
                     </UiLink>
 
                     <Link href="/login">
-                        <UiLink sx={{ marginRight: '1em' }} color="onPrimary">
+                        <UiLink href="/login" sx={{ marginRight: '1em' }} color="onPrimary">
                             Log in
                         </UiLink>
                     </Link>

@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import PropTypes from 'prop-types';
-import { Heading } from 'theme-ui';
+import { Card, Heading, Link as UiLink, Text } from 'theme-ui';
 
 const LatestsPosts = ({ posts }) => {
     return (
@@ -8,17 +8,14 @@ const LatestsPosts = ({ posts }) => {
             <Heading as="h1">Blog</Heading>
             <ul>
                 {posts.map(({ id, date, title }) => (
-                    <li className="py-4" key={id}>
-                        <Link href={`/posts/${id}`}>
-                            <a>
-                                <span className="text-xl tracking-tight font-bold">{title}</span>
-                                <br />
-                                {id}
-                                <br />
-                                {date}
-                            </a>
-                        </Link>
-                    </li>
+                    <Link href={`/posts/${id}`} key={id}>
+                        <Card as="li">
+                            <UiLink href></UiLink>
+                            <Heading>{title}</Heading>
+                            <Text>{id}</Text>
+                            <Text>{date}</Text>
+                        </Card>
+                    </Link>
                 ))}
             </ul>
         </>
