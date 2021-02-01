@@ -53,10 +53,8 @@ export default function Home({ allPostsData }) {
                     </button>
                     {showModal && <Modal />}
                 </section> */}
-                <Container p={4} bg="secondary">
-                    Beep
-                </Container>
-                <Container p={4} bg="muted">
+
+                <Container p={4} bg="surface">
                     <LatestsPosts posts={allPostsData} />
                 </Container>
             </main>

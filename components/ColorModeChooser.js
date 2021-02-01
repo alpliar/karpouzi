@@ -9,7 +9,7 @@ const ColorModeChooser = () => {
 
     return (
         <header>
-            <Button onClick={handleClick}>
+            <Button onClick={handleClick} bg="primary" color="onPrimary">
                 Toggle {colorMode === 'default' ? 'Dark' : 'Light'}
             </Button>
         </header>

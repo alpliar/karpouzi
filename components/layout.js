@@ -8,7 +8,7 @@ export const siteTitle = `Logo`;
 
 export default function Layout({ children, home = false }) {
     return (
-        <div className="min-h-screen bg-gray-200 text-black dark:text-white dark:bg-gray-800">
+        <>
             <Head>
                 <link rel="icon" href="/favicon.ico" />
                 <meta
@@ -24,9 +24,9 @@ export default function Layout({ children, home = false }) {
                 <meta name="og:title" content={siteTitle} />
                 <meta name="twitter:card" content="summary_large_image" />
             </Head>
-            <header>
-                <Header siteTitle={siteTitle} />
-            </header>
+
+            <Header siteTitle={siteTitle} />
+
             <main>{children}</main>
             {!home && (
                 <div className="text-center	">
@@ -38,7 +38,7 @@ export default function Layout({ children, home = false }) {
                 </div>
             )}
             <Footer />
-        </div>
+        </>
     );
 }
 
