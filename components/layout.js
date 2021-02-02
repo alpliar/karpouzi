@@ -3,6 +3,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import Header from './Header';
 import Footer from './Footer';
+import { Link as UiLink} from 'theme-ui';
 
 export const siteTitle = `Logo`;
 
@@ -29,11 +30,12 @@ export default function Layout({ children, home = false }) {
 
             <main>{children}</main>
             {!home && (
-                <div className="text-center	">
+                <div
+                    style={{
+                        textAlign: 'center'
+                    }}>
                     <Link href="/">
-                        <a className="m-2 font-medium text-indigo-500 hover:text-indigo-900">
-                            ← Back to home
-                        </a>
+                        <UiLink href="/">← Back to home</UiLink>
                     </Link>
                 </div>
             )}

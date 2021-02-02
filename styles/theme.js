@@ -1,4 +1,5 @@
 const theme = {
+    useColorSchemeMediaQuery: true,
     space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
     fonts: {
         body:
@@ -126,6 +127,24 @@ const theme = {
         },
         img: {
             maxWidth: '100%'
+        }
+    },
+    cards: {
+        primary: {
+            bg: 'surface',
+            border: '1px solid',
+            borderColor: 'surface',
+            padding: 3,
+            margin: 3,
+            borderRadius: 4,
+            boxShadow: '0 0 8px rgba(0, 0, 0, 0.125)'
+        },
+        compact: {
+            bg: 'surface',
+            padding: 1,
+            borderRadius: 2,
+            border: '1px solid',
+            borderColor: 'surface'
         }
     }
 };

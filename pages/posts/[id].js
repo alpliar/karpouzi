@@ -2,7 +2,7 @@ import Head from 'next/head';
 import Layout from '../../components/layout';
 import Date from '../../components/Date';
 import { getAllPostIds, getPostData } from '../../lib/posts';
-import { Container, Heading } from 'theme-ui';
+import { Card, Container, Heading } from 'theme-ui';
 import PropTypes from 'prop-types';
 
 export async function getStaticProps({ params }) {
@@ -29,6 +29,7 @@ export default function Post({ postData }) {
                 <title>{postData.title}</title>
             </Head>
             <Container p={4} bg="muted">
+                <Card>
                 <div className="max-w-screen-md mx-auto text-left py-4">
                     <Heading as="h1">{postData.title}</Heading>
                     <span>
@@ -42,6 +43,7 @@ export default function Post({ postData }) {
                         dangerouslySetInnerHTML={{ __html: postData.contentHtml }}
                     />
                 </div>
+                </Card>
             </Container>
         </Layout>
     );

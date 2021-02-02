@@ -6,7 +6,11 @@ const LatestsPosts = ({ posts }) => {
     return (
         <>
             <Heading as="h1">Blog</Heading>
-            <ul>
+            <ul
+                style={{
+                    listStyleType: 'none',
+                    padding: 0
+                }}>
                 {posts.map(({ id, date, title }) => (
                     <Link href={`/posts/${id}`} key={id}>
                         <Card as="li">
