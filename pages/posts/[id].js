@@ -28,21 +28,26 @@ export default function Post({ postData }) {
             <Head>
                 <title>{postData.title}</title>
             </Head>
-            <Container p={4} bg="muted">
+            <Container
+                p={4}
+                bg="muted"
+                sx={{
+                    maxWidth: '1024px'
+                }}>
                 <Card>
-                <div className="max-w-screen-md mx-auto text-left py-4">
-                    <Heading as="h1">{postData.title}</Heading>
-                    <span>
-                        {postData.id},{' '}
-                        <strong>
-                            <Date dateString={postData.date} />
-                        </strong>
-                    </span>
                     <div
-                        className="py-4"
-                        dangerouslySetInnerHTML={{ __html: postData.contentHtml }}
-                    />
-                </div>
+                        style={{
+                            textAlign: 'center'
+                        }}>
+                        <Heading as="h1">{postData.title}</Heading>
+                        <span>
+                            {postData.id},{' '}
+                            <strong>
+                                <Date dateString={postData.date} />
+                            </strong>
+                        </span>
+                    </div>
+                    <Container dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
                 </Card>
             </Container>
         </Layout>

@@ -1,12 +1,11 @@
 import Head from 'next/head';
 import Layout, { siteTitle } from '../components/layout';
 import LatestsPosts from '../components/LatestsPosts';
-import { Container } from 'theme-ui';
+import { Container, Divider, Heading, useThemeUI } from 'theme-ui';
 import { getSortedPostsData } from '../lib/posts';
 import { PropTypes } from 'prop-types';
 // import Modal from '../components/Modal';
 // import { useState } from 'react';
-import { useThemeUI } from 'theme-ui';
 
 export async function getStaticProps() {
     const allPostsData = getSortedPostsData();
@@ -42,7 +41,7 @@ export default function Home({ allPostsData }) {
                 <meta name="theme-color" content={theme.colors.primary} />
             </Head>
 
-            <main className="container">
+            <Container p={4}>
                 {/* <section>
                     <button
                         className="m-2 font-medium inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700"
@@ -54,10 +53,15 @@ export default function Home({ allPostsData }) {
                     {showModal && <Modal />}
                 </section> */}
 
-                <Container p={4} bg="surface">
+                <Container p={4}>
+                    <Heading>Hi, welcome !</Heading>
+                    <Divider />
+                </Container>
+
+                <Container p={4}>
                     <LatestsPosts posts={allPostsData} />
                 </Container>
-            </main>
+            </Container>
         </Layout>
     );
 }

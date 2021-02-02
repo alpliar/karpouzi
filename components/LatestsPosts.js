@@ -1,11 +1,16 @@
 import Link from 'next/link';
 import PropTypes from 'prop-types';
-import { Card, Heading, Link as UiLink, Text } from 'theme-ui';
+import { Card, Link as UiLink, Text } from 'theme-ui';
 
 const LatestsPosts = ({ posts }) => {
     return (
         <>
-            <Heading as="h1">Blog</Heading>
+            <Text
+                sx={{
+                    fontWeight: 'bold'
+                }}>
+                Blog
+            </Text>
             <ul
                 style={{
                     listStyleType: 'none',
@@ -15,7 +20,7 @@ const LatestsPosts = ({ posts }) => {
                     <Link href={`/posts/${id}`} key={id}>
                         <Card as="li">
                             <UiLink href={`/posts/${id}`}>
-                                <Heading>{title}</Heading>
+                                <Text>{title}</Text>
                             </UiLink>
                             <Text>{id}</Text>
                             <Text>{date}</Text>

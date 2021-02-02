@@ -3,7 +3,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import Header from './Header';
 import Footer from './Footer';
-import { Link as UiLink} from 'theme-ui';
+import { Container, Link as UiLink} from 'theme-ui';
 
 export const siteTitle = `Logo`;
 
@@ -28,7 +28,8 @@ export default function Layout({ children, home = false }) {
 
             <Header siteTitle={siteTitle} />
 
-            <main>{children}</main>
+            <Container as="main">{children}</Container>
+
             {!home && (
                 <div
                     style={{
