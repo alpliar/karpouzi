@@ -3,7 +3,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import Header from './Header';
 import Footer from './Footer';
-import { Container, Link as UiLink } from 'theme-ui';
+import { Box, Container } from '@chakra-ui/react';
 
 export const siteTitle = `MyWebsite`;
 
@@ -28,17 +28,16 @@ export default function Layout({ children, home = false }) {
 
             <Header siteTitle={siteTitle} />
 
-            <Container as="main">{children}</Container>
+            <Container p={0} as="main">
+                {children}
+            </Container>
 
             {!home && (
-                <div
-                    style={{
-                        textAlign: 'center'
-                    }}>
+                <Box p={4} textAlign="center">
                     <Link href="/">
-                        <UiLink href="/">← Back to home</UiLink>
+                        <a alt="go back to home">← Back to home</a>
                     </Link>
-                </div>
+                </Box>
             )}
             <Footer />
         </>

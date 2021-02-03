@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
+import Link from 'next/link';
 import { Box, Heading, Flex, Text, Button } from '@chakra-ui/react';
 
 const MenuItems = ({ children }) => (
@@ -24,7 +25,9 @@ const Header = ({ siteTitle }) => {
             color="white">
             <Flex align="center" mr={5}>
                 <Heading as="h1" size="lg" letterSpacing={'-.1rem'}>
-                    {siteTitle}
+                    <Link href="/">
+                        <a alt="go to home">{siteTitle}</a>
+                    </Link>
                 </Heading>
             </Flex>
 
@@ -50,7 +53,6 @@ const Header = ({ siteTitle }) => {
             </Box>
 
             <Box display={{ sm: show ? 'block' : 'none', md: 'block' }} mt={{ base: 4, md: 0 }}>
-                
                 <Button bg="transparent" border="1px">
                     Create account
                 </Button>

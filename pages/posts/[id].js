@@ -2,7 +2,7 @@ import Head from 'next/head';
 import Layout from '../../components/layout';
 import Date from '../../components/Date';
 import { getAllPostIds, getPostData } from '../../lib/posts';
-import { Card, Container, Heading } from 'theme-ui';
+import { Box, Container, Divider, Heading } from '@chakra-ui/react';
 import PropTypes from 'prop-types';
 
 export async function getStaticProps({ params }) {
@@ -28,27 +28,18 @@ export default function Post({ postData }) {
             <Head>
                 <title>{postData.title}</title>
             </Head>
-            <Container
-                p={4}
-                bg="muted"
-                sx={{
-                    maxWidth: '1024px'
-                }}>
-                <Card>
-                    <div
-                        style={{
-                            textAlign: 'center'
-                        }}>
-                        <Heading as="h1">{postData.title}</Heading>
-                        <span>
-                            {postData.id},{' '}
-                            <strong>
-                                <Date dateString={postData.date} />
-                            </strong>
-                        </span>
-                    </div>
-                    <Container dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
-                </Card>
+            <Container p={4} maxW="4xl">
+                <Heading size="xl" mb={4}>
+                    {postData.title}
+                </Heading>
+                <Heading size="xs" mb={4}>
+                    {postData.id},{' '}
+                    <strong>
+                        <Date dateString={postData.date} />
+                    </strong>
+                </Heading>
+                <Divider />
+                <Box p={4} dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
             </Container>
         </Layout>
     );

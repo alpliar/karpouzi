@@ -1,11 +1,10 @@
 import Head from 'next/head';
 import Layout, { siteTitle } from '../components/layout';
 import LatestsPosts from '../components/LatestsPosts';
-import { Container, Divider, Heading, useThemeUI } from 'theme-ui';
 import { getSortedPostsData } from '../lib/posts';
 import { PropTypes } from 'prop-types';
 
-import { Button, useToast } from '@chakra-ui/react';
+import { Box, Button, Container, Divider, Heading, useToast } from '@chakra-ui/react';
 
 export async function getStaticProps() {
     const allPostsData = getSortedPostsData();
@@ -36,7 +35,6 @@ function ToastExample() {
 
 export default function Home({ allPostsData }) {
     // const [showModal, setShowModal] = useState(false);
-    const { theme } = useThemeUI();
 
     return (
         <Layout home={true}>
@@ -56,20 +54,22 @@ export default function Home({ allPostsData }) {
                 <link href="/icon-32x32.png" rel="icon" type="image/png" sizes="32x32" />
                 <link rel="apple-touch-icon" href="/icon-512x512.png"></link>
 
-                <meta name="theme-color" content={theme.colors.primary} />
+                <meta name="theme-color" content="#000" />
             </Head>
 
-            <Container p={4}>
-                <ToastExample />
+            <Container p={0}>
+                <Box p={4}>
+                    <ToastExample />
+                </Box>
 
-                <Container p={4}>
+                <Box p={4}>
                     <Heading>Hi, welcome !</Heading>
                     <Divider />
-                </Container>
+                </Box>
 
-                <Container p={4}>
+                <Box p={4}>
                     <LatestsPosts posts={allPostsData} />
-                </Container>
+                </Box>
             </Container>
         </Layout>
     );
