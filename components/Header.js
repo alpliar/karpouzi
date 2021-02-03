@@ -1,47 +1,69 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
-import Link from 'next/link';
-import { PropTypes } from 'prop-types';
-import UiHomeLogo from './UiHomeLogo';
-import { Box, Container, Flex, Link as UiLink } from 'theme-ui';
+import PropTypes from 'prop-types';
+import { useState } from 'react';
+import { Box, Heading, Flex, Text, Button } from '@chakra-ui/react';
 
+const MenuItems = ({ children }) => (
+    <Text mt={{ base: 4, md: 0 }} mr={6} display="block">
+        {children}
+    </Text>
+);
+
+// Note: This code could be better, so I'd recommend you to understand how I solved and you could write yours better :)
 const Header = ({ siteTitle }) => {
+    const [show, setShow] = useState(false);
+    const handleToggle = () => setShow(!show);
+
     return (
-        <Container as="header" p={4} bg="primary" color="onPrimary">
-            <Flex as="nav" aria-label="Global">
-                <Box>
-                    <UiHomeLogo siteTitle={siteTitle} />
-                </Box>
-                <Flex
-                    sx={{
-                        flex: '1 1 auto',
-                        alignItems: 'center',
-                        justifyContent: 'flex-end',
-                        flexWrap: 'wrap'
-                    }}>
-                    <UiLink href="/" p="2" mr="2" color="onPrimary">
-                        Product
-                    </UiLink>
-
-                    <UiLink href="/" p="2" mr="2" color="onPrimary">
-                        Features
-                    </UiLink>
-
-                    <UiLink href="/" p="2" mr="2" color="onPrimary">
-                        Company
-                    </UiLink>
-
-                    <Link href="/login">
-                        <UiLink href="/login" p="2" mr="2" color="onPrimary">
-                            Log in
-                        </UiLink>
-                    </Link>
-                </Flex>
+        <Flex
+            as="nav"
+            align="center"
+            justify="space-between"
+            wrap="wrap"
+            padding="1.5rem"
+            bg="teal.500"
+            color="white">
+            <Flex align="center" mr={5}>
+                <Heading as="h1" size="lg" letterSpacing={'-.1rem'}>
+                    {siteTitle}
+                </Heading>
             </Flex>
-        </Container>
+
+            <Box display={{ base: 'block', md: 'none' }} onClick={handleToggle}>
+                <svg
+                    fill="white"
+                    width="12px"
+                    viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <title>Menu</title>
+                    <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
+                </svg>
+            </Box>
+
+            <Box
+                display={{ sm: show ? 'block' : 'none', md: 'flex' }}
+                width={{ sm: 'full', md: 'auto' }}
+                alignItems="center"
+                flexGrow={1}>
+                <MenuItems>Docs</MenuItems>
+                <MenuItems>Examples</MenuItems>
+                <MenuItems>Blog</MenuItems>
+            </Box>
+
+            <Box display={{ sm: show ? 'block' : 'none', md: 'block' }} mt={{ base: 4, md: 0 }}>
+                
+                <Button bg="transparent" border="1px">
+                    Create account
+                </Button>
+            </Box>
+        </Flex>
     );
 };
 
 export default Header;
+
+MenuItems.propTypes = {
+    children: PropTypes.node
+};
 
 Header.propTypes = {
     siteTitle: PropTypes.string

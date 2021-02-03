@@ -5,7 +5,7 @@ import Header from './Header';
 import Footer from './Footer';
 import { Container, Link as UiLink } from 'theme-ui';
 
-export const siteTitle = `Logo`;
+export const siteTitle = `MyWebsite`;
 
 export default function Layout({ children, home = false }) {
     return (

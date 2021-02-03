@@ -4,8 +4,8 @@ import LatestsPosts from '../components/LatestsPosts';
 import { Container, Divider, Heading, useThemeUI } from 'theme-ui';
 import { getSortedPostsData } from '../lib/posts';
 import { PropTypes } from 'prop-types';
-// import Modal from '../components/Modal';
-// import { useState } from 'react';
+
+import { Button, useToast } from '@chakra-ui/react';
 
 export async function getStaticProps() {
     const allPostsData = getSortedPostsData();
@@ -14,6 +14,24 @@ export async function getStaticProps() {
             allPostsData
         }
     };
+}
+
+function ToastExample() {
+    const toast = useToast();
+    return (
+        <Button
+            onClick={() =>
+                toast({
+                    title: 'Account created.',
+                    description: "We've created your account for you.",
+                    status: 'success',
+                    duration: 9000,
+                    isClosable: true
+                })
+            }>
+            Show Toast
+        </Button>
+    );
 }
 
 export default function Home({ allPostsData }) {
@@ -42,16 +60,7 @@ export default function Home({ allPostsData }) {
             </Head>
 
             <Container p={4}>
-                {/* <section>
-                    <button
-                        className="m-2 font-medium inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700"
-                        onClick={() => {
-                            setShowModal(!showModal);
-                        }}>
-                        Show modal
-                    </button>
-                    {showModal && <Modal />}
-                </section> */}
+                <ToastExample />
 
                 <Container p={4}>
                     <Heading>Hi, welcome !</Heading>
