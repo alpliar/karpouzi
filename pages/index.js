@@ -1,11 +1,9 @@
 import Head from 'next/head';
 import Layout, { siteTitle } from '../components/layout';
 import LatestsPosts from '../components/LatestsPosts';
-import { Container, Divider, Heading, useThemeUI } from 'theme-ui';
+import { Container, Divider, Heading } from 'theme-ui';
 import { getSortedPostsData } from '../lib/posts';
 import { PropTypes } from 'prop-types';
-// import Modal from '../components/Modal';
-// import { useState } from 'react';
 
 export async function getStaticProps() {
     const allPostsData = getSortedPostsData();
@@ -17,8 +15,6 @@ export async function getStaticProps() {
 }
 
 export default function Home({ allPostsData }) {
-    // const [showModal, setShowModal] = useState(false);
-    const { theme } = useThemeUI();
 
     return (
         <Layout home={true}>
@@ -38,20 +34,11 @@ export default function Home({ allPostsData }) {
                 <link href="/icon-32x32.png" rel="icon" type="image/png" sizes="32x32" />
                 <link rel="apple-touch-icon" href="/icon-512x512.png"></link>
 
-                <meta name="theme-color" content={theme.colors.primary} />
+                {/* <meta name="theme-color" content={theme.colors.primary} /> */}
+                <meta name="theme-color" content="#000" />
             </Head>
 
             <Container p={4}>
-                {/* <section>
-                    <button
-                        className="m-2 font-medium inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700"
-                        onClick={() => {
-                            setShowModal(!showModal);
-                        }}>
-                        Show modal
-                    </button>
-                    {showModal && <Modal />}
-                </section> */}
 
                 <Container p={4}>
                     <Heading>Hi, welcome !</Heading>

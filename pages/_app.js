@@ -1,15 +1,8 @@
 import PropTypes from 'prop-types';
-import '../styles/global.scss';
-import { ThemeProvider } from 'theme-ui';
-import theme from '../styles/theme';
-//import { tailwind as theme } from '@theme-ui/presets';
+import '../styles/globals.css';
 
 export default function App({ Component, pageProps }) {
-    return (
-        <ThemeProvider theme={theme}>
-            <Component {...pageProps} />
-        </ThemeProvider>
-    );
+    return <Component {...pageProps} />;
 }
 
 App.propTypes = {

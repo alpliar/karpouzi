@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import PropTypes from 'prop-types';
-import { Card, Link as UiLink, Text } from 'theme-ui';
+import { Text } from 'theme-ui';
+import { Card, Col, Row } from 'antd';
 
 const LatestsPosts = ({ posts }) => {
     return (
@@ -11,23 +12,20 @@ const LatestsPosts = ({ posts }) => {
                 }}>
                 Blog
             </Text>
-            <ul
-                style={{
-                    listStyleType: 'none',
-                    padding: 0
-                }}>
+            <Row gutter={16}>
                 {posts.map(({ id, date, title }) => (
-                    <Link href={`/posts/${id}`} key={id}>
-                        <Card as="li">
-                            <UiLink href={`/posts/${id}`}>
-                                <Text>{title}</Text>
-                            </UiLink>
-                            <Text>{id}</Text>
-                            <Text>{date}</Text>
-                        </Card>
-                    </Link>
+                    <Col span={8} key={id}>
+                        <Link href={`/posts/${id}`}>
+                            <a href={`/posts/${id}`}>
+                                <Card title={title}>
+                                    <Text>{id}</Text>
+                                    <Text>{date}</Text>
+                                </Card>
+                            </a>
+                        </Link>
+                    </Col>
                 ))}
-            </ul>
+            </Row>
         </>
     );
 };

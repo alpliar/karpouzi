@@ -1,5 +1,5 @@
 import { Container } from 'theme-ui';
-import ColorModeChooser from './ColorModeChooser';
+// import ColorModeChooser from './ColorModeChooser';
 
 const Footer = () => {
     return (
@@ -10,7 +10,7 @@ const Footer = () => {
                 textAlign: 'center'
             }}>
             - This is the footer
-            <ColorModeChooser />
+            {/* <ColorModeChooser /> */}
         </Container>
     );
 };
