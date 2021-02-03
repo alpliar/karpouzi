@@ -1,8 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import Layout from '../../components/layout';
 import Link from 'next/link';
-import { Heading } from 'theme-ui';
-import { Button, Card, Field, Container } from 'theme-ui';
+import { Box, Button, Container, Heading, Input } from '@chakra-ui/react';
 
 const LoginPage = () => {
     return (
@@ -13,7 +12,7 @@ const LoginPage = () => {
                     textAlign: 'center',
                     maxWidth: '640px'
                 }}>
-                <Card>
+                <Box>
                     <Heading as="h2" className="text-center">
                         <span>Sign in to your account</span>
                     </Heading>
@@ -28,20 +27,22 @@ const LoginPage = () => {
                         <input type="hidden" name="remember" value="true" />
                         <div className="rounded-md shadow-sm -space-y-px">
                             <div>
-                                <Field
+                                <Input placeholder="Email address" />
+                                {/* <Field
                                     label="Email address"
                                     name="email"
                                     defaultValue=""
                                     type="email"
-                                />
+                                /> */}
                             </div>
                             <div>
-                                <Field
+                                <Input placeholder="Password" />
+                                {/* <Field
                                     label="Password"
                                     name="password"
                                     defaultValue=""
                                     type="password"
-                                />
+                                /> */}
                             </div>
                         </div>
 
@@ -69,7 +70,7 @@ const LoginPage = () => {
                             <Button type="submit">Sign in</Button>
                         </div>
                     </form>
-                </Card>
+                </Box>
             </Container>
         </Layout>
     );

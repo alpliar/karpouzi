@@ -54,7 +54,7 @@ export default function Home({ allPostsData }) {
                 <link href="/icon-32x32.png" rel="icon" type="image/png" sizes="32x32" />
                 <link rel="apple-touch-icon" href="/icon-512x512.png"></link>
 
-                <meta name="theme-color" content="#000" />
+                <meta name="theme-color" content="#000000" />
             </Head>
 
             <Container p={0}>
