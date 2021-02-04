@@ -75,7 +75,11 @@ const Header = ({ siteTitle }) => {
                     flexGrow={1}>
                     <MenuItems>Docs</MenuItems>
                     <MenuItems>Examples</MenuItems>
-                    <MenuItems>Blog</MenuItems>
+                    <MenuItems>
+                        <Link href="/blog">
+                            <a alt="go to blog page">Blog</a>
+                        </Link>
+                    </MenuItems>
                 </Box>
 
                 <Box
