@@ -54,7 +54,9 @@ const Header = ({ siteTitle }) => {
 
             <Box display={{ sm: show ? 'block' : 'none', md: 'block' }} mt={{ base: 4, md: 0 }}>
                 <Button bg="transparent" border="1px">
-                    Create account
+                    <Link href="/login">
+                        <a alt="go to login page">Create account</a>
+                    </Link>
                 </Button>
             </Box>
         </Flex>
