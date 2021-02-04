@@ -29,7 +29,12 @@ const Header = ({ siteTitle }) => {
             <Flex align="center" mr={5}>
                 <Heading as="h1" size="lg" letterSpacing={'-.1rem'}>
                     <Link href="/">
-                        <a alt="go to home">{siteTitle}</a>
+                        <a alt="go to home">
+                            <span role="img" aria-label="Watermelon">
+                                🍉
+                            </span>
+                            {siteTitle}
+                        </a>
                     </Link>
                 </Heading>
             </Flex>
