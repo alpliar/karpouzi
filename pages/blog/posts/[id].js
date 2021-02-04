@@ -2,8 +2,11 @@ import Head from 'next/head';
 import Layout from '../../../components/layout';
 import Date from '../../../components/Date';
 import { getAllPostIds, getPostData } from '../../../lib/posts';
-import { Box, Container, Divider, Heading } from '@chakra-ui/react';
+import { Box, Container, Divider, Heading, Text } from '@chakra-ui/react';
+import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbSeparator } from '@chakra-ui/react';
+
 import PropTypes from 'prop-types';
+import { ChevronRightIcon } from '@chakra-ui/icons';
 
 export async function getStaticProps({ params }) {
     const postData = await getPostData(params.id);
@@ -28,7 +31,19 @@ export default function Post({ postData }) {
             <Head>
                 <title>{postData.title}</title>
             </Head>
-            <Container p={4} maxW="4xl">
+            <Container pt={2} maxW="4xl">
+                <Breadcrumb fontSize="sm" separator={<ChevronRightIcon color="gray.500" />}>
+                    <BreadcrumbItem>
+                        <BreadcrumbLink href="/blog">Blog</BreadcrumbLink>
+                    </BreadcrumbItem>
+
+                    <BreadcrumbItem isCurrentPage>
+                        <BreadcrumbLink href={postData.id}>{postData.id}</BreadcrumbLink>
+                    </BreadcrumbItem>
+                </Breadcrumb>
+            </Container>
+
+            <Container px={4} py={4} maxW="4xl">
                 <Heading size="xl" mb={4} pr="20%">
                     {postData.title}
                 </Heading>
@@ -36,7 +51,9 @@ export default function Post({ postData }) {
                     <Date dateString={postData.date} />
                 </Heading>
             </Container>
+
             <Divider w="100%" />
+
             <Container p={4} maxW="4xl">
                 <Box dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
             </Container>
