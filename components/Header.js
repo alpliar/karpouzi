@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { Box, Button, Flex, Heading, Text } from '@chakra-ui/react';
 
 const MenuItems = ({ children }) => (
-    <Text mt={{ base: 4, md: 0 }} mr={6} display={{ base: 'block', sm: 'inline' }}>
+    <Text mt={{ base: 0, md: 0 }} mr={6} display={{ base: 'inline', sm: 'inline' }}>
         {children}
     </Text>
 );
@@ -57,14 +57,17 @@ const Header = ({ siteTitle }) => {
                 mt={{ base: show ? 4 : 0, md: 0 }}
                 textAlign={{ base: 'center', md: 'inherit' }}
                 alignItems="center"
-                justifyContent="middle"
+                justifyContent="center"
                 flexGrow={1}
                 transition="all 0.2s ease-in">
                 <Box
-                    display={{ base: show ? 'block' : 'none', md: 'flex' }}
-                    minW={{ base: 'full', sm: '50%', md: 'auto' }}
-                    alignItems="center"
-                    transition="all 0.2s ease-in">
+                    display={{ base: show ? 'flex' : 'none', md: 'block' }}
+                    minW={{ base: 'full', sm: 'auto', md: 'auto' }}
+                    alignItems={{ base: 'center', md: 'left' }}
+                    justifyContent={{ base: 'center', md: 'flex-start' }}
+                    transition="all 0.2s ease-in"
+                    flexWrap="wrap"
+                    flexGrow={1}>
                     <MenuItems>Docs</MenuItems>
                     <MenuItems>Examples</MenuItems>
                     <MenuItems>Blog</MenuItems>
@@ -72,7 +75,7 @@ const Header = ({ siteTitle }) => {
 
                 <Box
                     display={{ base: show ? 'block' : 'none', md: 'block' }}
-                    width={{ base: 'full', sm: '50%', md: 'auto' }}
+                    width={{ base: 'full', sm: 'auto', md: 'auto' }}
                     mt={{ base: 4, sm: 0 }}
                     transition="all 0.2s ease-in">
                     <Button bg="transparent" border="1px">
