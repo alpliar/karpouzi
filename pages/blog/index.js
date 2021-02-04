@@ -24,14 +24,14 @@ export default function Home({ allPostsData }) {
                 <title>Blog - {siteTitle}</title>
             </Head>
 
-            <Container p={0}>
-                <Box p={4}>
-                    <Heading>Blog</Heading>
-                </Box>
-                <Divider />
-                <Box p={4}>
-                    <LatestsPosts posts={allPostsData} />
-                </Box>
+            <Container p={4} maxW="4xl">
+                <Heading>Blog</Heading>
+            </Container>
+
+            <Divider maxW="100%" />
+
+            <Container p={4} maxW="4xl">
+                <LatestsPosts posts={allPostsData} />
             </Container>
         </Layout>
     );
