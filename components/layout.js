@@ -43,7 +43,7 @@ export default function Layout({ children, home = false }) {
 
             <Header siteTitle={siteTitle} />
 
-            <Container p={0} as="main">
+            <Container p={0} as="main" maxW="100%">
                 {children}
             </Container>
 

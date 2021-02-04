@@ -1,7 +1,7 @@
 import Head from 'next/head';
-import Layout from '../../components/layout';
-import Date from '../../components/Date';
-import { getAllPostIds, getPostData } from '../../lib/posts';
+import Layout from '../../../components/layout';
+import Date from '../../../components/Date';
+import { getAllPostIds, getPostData } from '../../../lib/posts';
 import { Box, Container, Divider, Heading } from '@chakra-ui/react';
 import PropTypes from 'prop-types';
 
@@ -29,17 +29,16 @@ export default function Post({ postData }) {
                 <title>{postData.title}</title>
             </Head>
             <Container p={4} maxW="4xl">
-                <Heading size="xl" mb={4}>
+                <Heading size="xl" mb={4} pr="20%">
                     {postData.title}
                 </Heading>
-                <Heading size="xs" mb={4}>
-                    {postData.id},{' '}
-                    <strong>
-                        <Date dateString={postData.date} />
-                    </strong>
+                <Heading size="xs">
+                    <Date dateString={postData.date} />
                 </Heading>
-                <Divider />
-                <Box p={4} dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
+            </Container>
+            <Divider w="100%" />
+            <Container p={4} maxW="4xl">
+                <Box dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
             </Container>
         </Layout>
     );
