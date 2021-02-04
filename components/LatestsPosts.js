@@ -13,7 +13,7 @@ const LatestsPosts = ({ posts }) => {
                         {date}
                     </Text>
                     <ListIcon as={ChevronRightIcon} color="green.500" />
-                    <Link href={`/posts/${id}`}>
+                    <Link href={`/blog/posts/${id}`}>
                         <a alt="read post">
                             <Text isTruncated>{title}</Text>
                         </a>
