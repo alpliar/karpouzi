@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 import Link from 'next/link';
-import { Box, Heading, Flex, Text, Button } from '@chakra-ui/react';
+import { Box, Button, Flex, Heading, Text } from '@chakra-ui/react';
 
 const MenuItems = ({ children }) => (
-    <Text mt={{ base: 4, md: 0 }} mr={6} display="block">
+    <Text mt={{ base: 4, md: 0 }} mr={6} display={{ base: 'block', sm: 'inline' }}>
         {children}
     </Text>
 );
@@ -12,7 +12,10 @@ const MenuItems = ({ children }) => (
 // Note: This code could be better, so I'd recommend you to understand how I solved and you could write yours better :)
 const Header = ({ siteTitle }) => {
     const [show, setShow] = useState(false);
-    const handleToggle = () => setShow(!show);
+    const handleToggle = () => {
+        console.log(show);
+        setShow(!show);
+    };
 
     return (
         <Flex
@@ -31,9 +34,15 @@ const Header = ({ siteTitle }) => {
                 </Heading>
             </Flex>
 
-            <Box display={{ base: 'block', md: 'none' }} onClick={handleToggle}>
+            <Box
+                bg="white"
+                _hover={{ opacity: '0.9' }}
+                borderRadius="full"
+                p={3}
+                display={{ base: 'block', md: 'none' }}
+                onClick={handleToggle}>
                 <svg
-                    fill="white"
+                    fill="teal.600"
                     width="12px"
                     viewBox="0 0 20 20"
                     xmlns="http://www.w3.org/2000/svg">
@@ -43,21 +52,35 @@ const Header = ({ siteTitle }) => {
             </Box>
 
             <Box
-                display={{ sm: show ? 'block' : 'none', md: 'flex' }}
-                width={{ sm: 'full', md: 'auto' }}
+                display={{ base: show ? 'block' : 'inline', sm: 'flex' }}
+                w={{ base: 'full', md: 'auto' }}
+                mt={{ base: show ? 4 : 0, md: 0 }}
+                textAlign={{ base: 'center', md: 'inherit' }}
                 alignItems="center"
-                flexGrow={1}>
-                <MenuItems>Docs</MenuItems>
-                <MenuItems>Examples</MenuItems>
-                <MenuItems>Blog</MenuItems>
-            </Box>
+                justifyContent="middle"
+                flexGrow={1}
+                transition="all 0.2s ease-in">
+                <Box
+                    display={{ base: show ? 'block' : 'none', md: 'flex' }}
+                    minW={{ base: 'full', sm: '50%', md: 'auto' }}
+                    alignItems="center"
+                    transition="all 0.2s ease-in">
+                    <MenuItems>Docs</MenuItems>
+                    <MenuItems>Examples</MenuItems>
+                    <MenuItems>Blog</MenuItems>
+                </Box>
 
-            <Box display={{ sm: show ? 'block' : 'none', md: 'block' }} mt={{ base: 4, md: 0 }}>
-                <Button bg="transparent" border="1px">
-                    <Link href="/login">
-                        <a alt="go to login page">Create account</a>
-                    </Link>
-                </Button>
+                <Box
+                    display={{ base: show ? 'block' : 'none', md: 'block' }}
+                    width={{ base: 'full', sm: '50%', md: 'auto' }}
+                    mt={{ base: 4, sm: 0 }}
+                    transition="all 0.2s ease-in">
+                    <Button bg="transparent" border="1px">
+                        <Link href="/login">
+                            <a alt="go to login page">Create account</a>
+                        </Link>
+                    </Button>
+                </Box>
             </Box>
         </Flex>
     );
