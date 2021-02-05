@@ -1,9 +1,21 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import Layout from '../../components/layout';
 import Link from '../../components/link';
-import { Button, Box, Heading, Input, Container } from '@chakra-ui/react';
+import { Button, Box, Heading, Input, Container, useToast } from '@chakra-ui/react';
 
 const LoginPage = () => {
+    const toast = useToast();
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        toast({
+            title: 'Account created.',
+            description: "We've created your account for you.",
+            status: 'success',
+            duration: 9000,
+            isClosable: true
+        });
+    };
+
     return (
         <Layout>
             <Container
@@ -65,7 +77,9 @@ const LoginPage = () => {
                         </div>
 
                         <div>
-                            <Button type="submit">Sign in</Button>
+                            <Button type="submit" onClick={handleSubmit}>
+                                Sign in
+                            </Button>
                         </div>
                     </form>
                 </Box>

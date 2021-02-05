@@ -83,10 +83,13 @@ const Header = ({ siteTitle }) => {
                         display={{ base: show ? 'block' : 'none', md: 'block' }}
                         width={{ base: 'full', sm: 'auto', md: 'auto' }}
                         mt={{ base: 4, sm: 0 }}
-                        transition="all 0.2s ease-in">
+                        transition="all 0.3s ease-out">
                         <Button bg="transparent" border="1px">
+                            <span role="img" aria-label="user icon">
+                                👤
+                            </span>
                             <Link href="/login" alt="go to login page">
-                                Create account
+                                Log-in
                             </Link>
                         </Button>
                     </Box>
