@@ -71,7 +71,11 @@ const Header = ({ siteTitle }) => {
                                 Blog
                             </Link>
                         </MenuItems>
-                        <MenuItems>Shop</MenuItems>
+                        <MenuItems>
+                            <Link href="/shop" alt="go to shop page">
+                                Shop
+                            </Link>
+                        </MenuItems>
                         <MenuItems>Examples</MenuItems>
                     </Box>
 
