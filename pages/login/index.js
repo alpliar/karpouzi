@@ -1,7 +1,19 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import Layout from '../../components/layout';
 import Link from '../../components/link';
-import { Button, Box, Heading, Input, Container, useToast } from '@chakra-ui/react';
+import {
+    Button,
+    Box,
+    FormControl,
+    FormHelperText,
+    FormLabel,
+    Heading,
+    Input,
+    Container,
+    Stack,
+    useToast,
+    Text
+} from '@chakra-ui/react';
 
 const LoginPage = () => {
     const toast = useToast();
@@ -28,33 +40,27 @@ const LoginPage = () => {
                     <Heading as="h2" className="text-center">
                         <span>Sign in to your account</span>
                     </Heading>
-                    <p className="mt-2 text-center text-sm">
-                        Or{' '}
+                    <Text mt={4} className="mt-2 text-center text-sm">
+                        or{' '}
                         <a href="#" className="font-medium">
                             start your 14-day free trial
                         </a>
-                    </p>
+                    </Text>
 
-                    <form className="mt-8 space-y-6" action="#" method="POST">
+                    <form action="#" method="POST">
                         <input type="hidden" name="remember" value="true" />
-                        <div className="rounded-md shadow-sm -space-y-px">
-                            <div>
-                                <Input
-                                    label="Email address"
-                                    name="email"
-                                    defaultValue=""
-                                    type="email"
-                                />
-                            </div>
-                            <div>
-                                <Input
-                                    label="Password"
-                                    name="password"
-                                    defaultValue=""
-                                    type="password"
-                                />
-                            </div>
-                        </div>
+                        <Stack spacing={2} my={8}>
+                            <FormControl id="email">
+                                <FormLabel>Email address</FormLabel>
+                                <Input type="email" />
+                                <FormHelperText>We'll never share your email.</FormHelperText>
+                            </FormControl>
+                            <FormControl id="email">
+                                <FormLabel>Password</FormLabel>
+                                <Input type="password" />
+                                <FormHelperText>Choose wisely !</FormHelperText>
+                            </FormControl>
+                        </Stack>
 
                         <div className="flex items-center justify-between">
                             <div className="flex items-center">
