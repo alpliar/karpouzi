@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import Layout from '../../components/layout';
-import Link from 'next/link';
+import Link from '../../components/link';
 import { Button, Box, Heading, Input, Container } from '@chakra-ui/react';
 
 const LoginPage = () => {
@@ -58,8 +58,8 @@ const LoginPage = () => {
                             </div>
 
                             <Container p={4} bg="muted">
-                                <Link href="/lost-password">
-                                    <a className="font-medium">Forgot your password?</a>
+                                <Link href="/lost-password" alt="go to lost password page">
+                                    Forgot your password?
                                 </Link>
                             </Container>
                         </div>

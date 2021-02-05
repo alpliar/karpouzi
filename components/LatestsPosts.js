@@ -1,6 +1,6 @@
 import { List, ListIcon, ListItem, Text } from '@chakra-ui/react';
 import { ChevronRightIcon } from '@chakra-ui/icons';
-import Link from 'next/link';
+import Link from './link';
 
 import PropTypes from 'prop-types';
 
@@ -13,10 +13,8 @@ const LatestsPosts = ({ posts }) => {
                         {date}
                     </Text>
                     <ListIcon as={ChevronRightIcon} color="green.500" />
-                    <Link href={`/blog/posts/${id}`}>
-                        <a alt="read post">
-                            <Text isTruncated>{title}</Text>
-                        </a>
+                    <Link href={`/blog/posts/${id}`} alt="read post">
+                        <Text isTruncated>{title}</Text>
                     </Link>
                 </ListItem>
             ))}

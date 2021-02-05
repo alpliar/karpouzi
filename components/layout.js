@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import Head from 'next/head';
-import Link from 'next/link';
+import Link from '../components/link';
 import Header from './Header';
 import Footer from './Footer';
 import { Box, Container } from '@chakra-ui/react';
@@ -49,8 +49,8 @@ export default function Layout({ children, home = false }) {
 
             {!home && (
                 <Box p={4} textAlign="center">
-                    <Link href="/">
-                        <a alt="go back to home">← Back to home</a>
+                    <Link href="/" alt="go back to home">
+                        ← Back to home
                     </Link>
                 </Box>
             )}
