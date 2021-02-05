@@ -1,4 +1,4 @@
-import { Box, Image, Badge } from '@chakra-ui/react';
+import { Box, Img, Badge } from '@chakra-ui/react';
 import { StarIcon } from '@chakra-ui/icons';
 
 const Card = () => {
@@ -14,8 +14,16 @@ const Card = () => {
     };
 
     return (
-        <Box maxW="sm" borderWidth="1px" borderRadius="lg" overflow="hidden">
-            <Image src={property.imageUrl} alt={property.imageAlt} />
+        <Box maxW="md" borderWidth="1px" borderRadius="lg" overflow="hidden">
+            <Img
+                objectFit="cover"
+                htmlHeight="200px"
+                htmlWidth="300px"
+                w="100%"
+                fallback="https://picsum.photos/300/200"
+                src={property.imageUrl}
+                alt={property.imageAlt}
+            />
 
             <Box p="6">
                 <Box d="flex" alignItems="baseline">
