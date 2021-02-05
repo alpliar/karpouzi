@@ -31,7 +31,7 @@ const Card = () => {
                         New
                     </Badge>
                     <Box
-                        color="gray.500"
+                        color="gray.800"
                         fontWeight="semibold"
                         letterSpacing="wide"
                         fontSize="xs"
@@ -41,7 +41,7 @@ const Card = () => {
                     </Box>
                 </Box>
 
-                <Box mt="1" fontWeight="semibold" as="h4" lineHeight="tight" isTruncated>
+                <Box mt="1" fontWeight="semibold" lineHeight="tight" isTruncated>
                     {property.title}
                 </Box>
 
