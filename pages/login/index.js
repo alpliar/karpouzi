@@ -53,7 +53,7 @@ const LoginPage = () => {
                             <FormControl id="email">
                                 <FormLabel>Email address</FormLabel>
                                 <Input type="email" />
-                                <FormHelperText>We'll never share your email.</FormHelperText>
+                                <FormHelperText>We&apos;ll never share your email.</FormHelperText>
                             </FormControl>
                             <FormControl id="email">
                                 <FormLabel>Password</FormLabel>
