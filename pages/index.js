@@ -24,7 +24,7 @@ import {
 } from '@chakra-ui/react';
 
 const Stats = (
-    <StatGroup>
+    <StatGroup textAlign="center">
         <Stat>
             <StatLabel>Sent</StatLabel>
             <StatNumber>345,670</StatNumber>
