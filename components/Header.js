@@ -66,13 +66,17 @@ const Header = ({ siteTitle }) => {
                         transition="all 0.2s ease-in"
                         flexWrap="wrap"
                         flexGrow={1}>
-                        <MenuItems>Docs</MenuItems>
-                        <MenuItems>Examples</MenuItems>
                         <MenuItems>
                             <Link href="/blog" alt="go to blog page">
                                 Blog
                             </Link>
                         </MenuItems>
+                        <MenuItems>
+                            <Link href="/shop" alt="go to shop page">
+                                Shop
+                            </Link>
+                        </MenuItems>
+                        <MenuItems>Examples</MenuItems>
                     </Box>
 
                     <Box
