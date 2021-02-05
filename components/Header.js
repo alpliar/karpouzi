@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
-import NextLink from 'next/link';
-import { Box, Button, Flex, Heading, Link, Text } from '@chakra-ui/react';
+import Link from './link';
+import { Box, Button, Flex, Text } from '@chakra-ui/react';
+import HeaderLogo from './header-logo';
 
 const MenuItems = ({ children }) => (
     <Text mt={{ base: 0, md: 0 }} mr={6} display={{ base: 'inline', sm: 'inline' }}>
@@ -28,16 +29,7 @@ const Header = ({ siteTitle }) => {
                 p={4}
                 m={{ base: 0, md: 'auto' }}>
                 <Flex align="center" mr={5}>
-                    <Heading as="h1" size="lg" letterSpacing={'-.1rem'}>
-                        <NextLink href="/">
-                            <Link _hover={{ textDecor: 'none' }} alt="go to home">
-                                <span role="img" aria-label="Watermelon">
-                                    🍉
-                                </span>
-                                {siteTitle}
-                            </Link>
-                        </NextLink>
-                    </Heading>
+                    <HeaderLogo siteTitle={siteTitle} />
                 </Flex>
 
                 <Box
@@ -75,9 +67,9 @@ const Header = ({ siteTitle }) => {
                         flexWrap="wrap"
                         flexGrow={1}>
                         <MenuItems>
-                            <NextLink href="/blog">
-                                <Link alt="go to blog page">Blog</Link>
-                            </NextLink>
+                            <Link href="/blog" alt="go to blog page">
+                                Blog
+                            </Link>
                         </MenuItems>
                         <MenuItems>Shop</MenuItems>
                         <MenuItems>Examples</MenuItems>
@@ -89,9 +81,9 @@ const Header = ({ siteTitle }) => {
                         mt={{ base: 4, sm: 0 }}
                         transition="all 0.2s ease-in">
                         <Button bg="transparent" border="1px">
-                            <NextLink href="/login">
-                                <Link alt="go to login page">Create account</Link>
-                            </NextLink>
+                            <Link href="/login" alt="go to login page">
+                                Create account
+                            </Link>
                         </Button>
                     </Box>
                 </Box>
