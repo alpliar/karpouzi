@@ -42,18 +42,20 @@ export default function Home({ allPostsData }) {
                 <title>{siteTitle}</title>
             </Head>
 
-            <Container p={0}>
-                <Box p={4}>
-                    <ToastExample />
-                </Box>
-
-                <Box p={4}>
+            <Container p={4} maxW="4xl">
+                <Box>
                     <Heading>Hi, welcome !</Heading>
-                    <Divider />
                 </Box>
+            </Container>
 
-                <Box p={4}>
+            <Divider />
+
+            <Container p={4} maxW="4xl">
+                <Box>
                     <LatestsPosts posts={allPostsData} />
+                </Box>
+                <Box>
+                    <ToastExample />
                 </Box>
             </Container>
         </Layout>
