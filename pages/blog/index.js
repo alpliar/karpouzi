@@ -4,7 +4,7 @@ import LatestsPosts from '../../components/LatestsPosts';
 import { getSortedPostsData } from '../../lib/posts';
 import { PropTypes } from 'prop-types';
 
-import { Box, Container, Divider, Heading } from '@chakra-ui/react';
+import { Container, Divider, Heading } from '@chakra-ui/react';
 
 export async function getStaticProps() {
     const allPostsData = getSortedPostsData();

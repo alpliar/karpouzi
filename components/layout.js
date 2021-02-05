@@ -5,7 +5,7 @@ import Header from './Header';
 import Footer from './Footer';
 import { Box, Container } from '@chakra-ui/react';
 
-export const siteTitle = `MyWebsite`;
+export const siteTitle = `Karpouzi`;
 
 export default function Layout({ children, home = false }) {
     return (

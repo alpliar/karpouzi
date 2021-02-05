@@ -2,11 +2,11 @@ import Head from 'next/head';
 import Layout from '../../../components/layout';
 import Date from '../../../components/Date';
 import { getAllPostIds, getPostData } from '../../../lib/posts';
-import { Box, Container, Divider, Heading, Text } from '@chakra-ui/react';
-import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbSeparator } from '@chakra-ui/react';
+import { Box, Container, Divider, Heading } from '@chakra-ui/react';
+import { Breadcrumb, BreadcrumbItem, BreadcrumbLink } from '@chakra-ui/react';
+import { ChevronRightIcon } from '@chakra-ui/icons';
 
 import PropTypes from 'prop-types';
-import { ChevronRightIcon } from '@chakra-ui/icons';
 
 export async function getStaticProps({ params }) {
     const postData = await getPostData(params.id);
