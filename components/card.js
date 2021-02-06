@@ -3,7 +3,7 @@ import { StarIcon } from '@chakra-ui/icons';
 
 const Card = () => {
     const property = {
-        imageUrl: 'https://picsum.photos/300/200',
+        imageUrl: `https://picsum.photos/seed/${Date.now()}/300/200/`,
         imageAlt: 'Rear view of modern home with pool',
         beds: 3,
         baths: 2,
