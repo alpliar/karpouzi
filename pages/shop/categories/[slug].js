@@ -3,9 +3,8 @@ import Layout from '../../../components/layout';
 // import Date from '../../../components/Date';
 // import { getAllPostIds, getPostData } from '../../../lib/posts';
 import { Container, Divider, Heading, SimpleGrid } from '@chakra-ui/react';
-import { Breadcrumb, BreadcrumbItem } from '@chakra-ui/react';
-import { ChevronRightIcon } from '@chakra-ui/icons';
-import Link from '../../../components/link';
+import Breadcrumb from '../../../components/breadcrumb';
+//import Link from '../../../components/link';
 import PropTypes from 'prop-types';
 import Card from '../../../components/card';
 
@@ -37,19 +36,20 @@ export default function CategoryPage({ category }) {
             </Head>
 
             <Container px={4} py={4} maxW="4xl">
+                <Breadcrumb
+                    entries={[
+                        {
+                            text: 'Shop',
+                            link: '/shop',
+                            alt: 'go to shop home',
+                            isCurrentPage: false
+                        },
+                        { text: category.slug, link: '', alt: '', isCurrentPage: true }
+                    ]}
+                />
                 <Heading size="xl" mb={4} pr="20%">
                     {category.slug}
                 </Heading>
-                <Breadcrumb fontSize="sm" separator={<ChevronRightIcon color="gray.500" />}>
-                    <BreadcrumbItem>
-                        <Link href="/shop" alt="go to shop home">
-                            Shop
-                        </Link>
-                    </BreadcrumbItem>
-                    <BreadcrumbItem isCurrentPage>
-                        <span>{category.slug}</span>
-                    </BreadcrumbItem>
-                </Breadcrumb>
             </Container>
 
             <Divider w="100%" />

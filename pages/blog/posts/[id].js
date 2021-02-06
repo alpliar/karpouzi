@@ -1,13 +1,11 @@
 import Head from 'next/head';
 import Layout from '../../../components/layout';
 import Date from '../../../components/Date';
-import Link from '../../../components/link';
 import { getAllPostIds, getPostData } from '../../../lib/posts';
 import { Box, Container, Divider, Heading } from '@chakra-ui/react';
-import { Breadcrumb, BreadcrumbItem } from '@chakra-ui/react';
-import { ChevronRightIcon } from '@chakra-ui/icons';
 
 import PropTypes from 'prop-types';
+import Breadcrumb from '../../../components/breadcrumb';
 
 export async function getStaticProps({ params }) {
     const postData = await getPostData(params.id);
@@ -33,17 +31,17 @@ export default function Post({ postData }) {
                 <title>{postData.title}</title>
             </Head>
             <Container pt={2} maxW="4xl">
-                <Breadcrumb fontSize="sm" separator={<ChevronRightIcon color="gray.500" />}>
-                    <BreadcrumbItem>
-                        <Link href="/blog" alt="go back to blog home">
-                            Blog
-                        </Link>
-                    </BreadcrumbItem>
-
-                    <BreadcrumbItem isCurrentPage>
-                        <span>{postData.id}</span>
-                    </BreadcrumbItem>
-                </Breadcrumb>
+                <Breadcrumb
+                    entries={[
+                        {
+                            text: 'Blog',
+                            link: '/blog',
+                            alt: 'go back to blog home',
+                            isCurrentPage: false
+                        },
+                        { text: postData.id, link: '', alt: '', isCurrentPage: true }
+                    ]}
+                />
             </Container>
 
             <Container px={4} py={4} maxW="4xl">
