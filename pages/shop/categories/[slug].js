@@ -3,9 +3,9 @@ import Layout from '../../../components/layout';
 // import Date from '../../../components/Date';
 // import { getAllPostIds, getPostData } from '../../../lib/posts';
 import { Container, Divider, Heading, SimpleGrid } from '@chakra-ui/react';
-import { Breadcrumb, BreadcrumbItem, BreadcrumbLink } from '@chakra-ui/react';
+import { Breadcrumb, BreadcrumbItem } from '@chakra-ui/react';
 import { ChevronRightIcon } from '@chakra-ui/icons';
-
+import Link from '../../../components/link';
 import PropTypes from 'prop-types';
 import Card from '../../../components/card';
 
@@ -35,26 +35,21 @@ export default function CategoryPage({ category }) {
             <Head>
                 <title>Shop</title>
             </Head>
-            <Container pt={2} maxW="4xl">
-                <Breadcrumb fontSize="sm" separator={<ChevronRightIcon color="gray.500" />}>
-                    <BreadcrumbItem>
-                        <BreadcrumbLink href="/shop/">Shop</BreadcrumbLink>
-                    </BreadcrumbItem>
-                    <BreadcrumbItem isCurrentPage>
-                        <BreadcrumbLink href={`/shop/${category.slug}`}>
-                            {category.slug}
-                        </BreadcrumbLink>
-                    </BreadcrumbItem>
-                </Breadcrumb>
-            </Container>
 
             <Container px={4} py={4} maxW="4xl">
                 <Heading size="xl" mb={4} pr="20%">
                     {category.slug}
                 </Heading>
-                {/* <Heading size="xs">
-                    <Date dateString={postData.date} />
-                </Heading> */}
+                <Breadcrumb fontSize="sm" separator={<ChevronRightIcon color="gray.500" />}>
+                    <BreadcrumbItem>
+                        <Link href="/shop" alt="go to shop home">
+                            Shop
+                        </Link>
+                    </BreadcrumbItem>
+                    <BreadcrumbItem isCurrentPage>
+                        <span>{category.slug}</span>
+                    </BreadcrumbItem>
+                </Breadcrumb>
             </Container>
 
             <Divider w="100%" />

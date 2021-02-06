@@ -1,9 +1,10 @@
 import Head from 'next/head';
 import Layout from '../../../components/layout';
 import Date from '../../../components/Date';
+import Link from '../../../components/link';
 import { getAllPostIds, getPostData } from '../../../lib/posts';
 import { Box, Container, Divider, Heading } from '@chakra-ui/react';
-import { Breadcrumb, BreadcrumbItem, BreadcrumbLink } from '@chakra-ui/react';
+import { Breadcrumb, BreadcrumbItem } from '@chakra-ui/react';
 import { ChevronRightIcon } from '@chakra-ui/icons';
 
 import PropTypes from 'prop-types';
@@ -34,11 +35,13 @@ export default function Post({ postData }) {
             <Container pt={2} maxW="4xl">
                 <Breadcrumb fontSize="sm" separator={<ChevronRightIcon color="gray.500" />}>
                     <BreadcrumbItem>
-                        <BreadcrumbLink href="/blog">Blog</BreadcrumbLink>
+                        <Link href="/blog" alt="go back to blog home">
+                            Blog
+                        </Link>
                     </BreadcrumbItem>
 
                     <BreadcrumbItem isCurrentPage>
-                        <BreadcrumbLink href={postData.id}>{postData.id}</BreadcrumbLink>
+                        <span>{postData.id}</span>
                     </BreadcrumbItem>
                 </Breadcrumb>
             </Container>
