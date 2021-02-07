@@ -17,7 +17,7 @@ const Breadcrumb = ({ entries }) => {
                             </Link>
                         )}
                     </BreadcrumbItem>
-                )
+                );
             })}
         </UiBreadcrumb>
     );
