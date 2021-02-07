@@ -1,7 +1,8 @@
+import PropTypes from 'prop-types';
 import { Box, Img, Badge } from '@chakra-ui/react';
 import { StarIcon } from '@chakra-ui/icons';
 
-const Card = () => {
+const Card = ({ imageUrl, imageAlt, title, formattedPrice, isNew, reviewCount, rating }) => {
     const property = {
         imageUrl: `https://picsum.photos/seed/${Date.now()}/300/200/`,
         imageAlt: 'Rear view of modern home with pool',
@@ -21,15 +22,17 @@ const Card = () => {
                 htmlWidth="300px"
                 w="100%"
                 fallback="https://picsum.photos/300/200"
-                src={property.imageUrl}
-                alt={property.imageAlt}
+                src={imageUrl}
+                alt={imageAlt}
             />
 
             <Box p="6">
                 <Box d="flex" alignItems="baseline">
-                    <Badge borderRadius="full" px="2" colorScheme="teal">
-                        New
-                    </Badge>
+                    {isNew && (
+                        <Badge borderRadius="full" px="2" colorScheme="teal">
+                            New
+                        </Badge>
+                    )}
                     <Box
                         color="gray.800"
                         fontWeight="semibold"
@@ -42,13 +45,13 @@ const Card = () => {
                 </Box>
 
                 <Box mt="1" fontWeight="semibold" lineHeight="tight" isTruncated>
-                    {property.title}
+                    {title}
                 </Box>
 
                 <Box>
-                    {property.formattedPrice}
+                    {formattedPrice}
                     <Box as="span" color="gray.600" fontSize="sm">
-                        / wk
+                        / piece
                     </Box>
                 </Box>
 
@@ -56,13 +59,10 @@ const Card = () => {
                     {Array(5)
                         .fill('')
                         .map((_, i) => (
-                            <StarIcon
-                                key={i}
-                                color={i < property.rating ? 'teal.500' : 'gray.300'}
-                            />
+                            <StarIcon key={i} color={i < rating ? 'teal.500' : 'gray.300'} />
                         ))}
                     <Box as="span" ml="2" color="gray.600" fontSize="sm">
-                        {property.reviewCount} reviews
+                        {reviewCount} reviews
                     </Box>
                 </Box>
             </Box>
@@ -71,3 +71,13 @@ const Card = () => {
 };
 
 export default Card;
+
+Card.propTypes = {
+    imageUrl: PropTypes.string.isRequired,
+    imageAlt: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    formattedPrice: PropTypes.string.isRequired,
+    isNew: PropTypes.bool.isRequired,
+    reviewCount: PropTypes.number.isRequired,
+    rating: PropTypes.number.isRequired
+};

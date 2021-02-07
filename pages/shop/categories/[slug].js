@@ -7,16 +7,21 @@ import Breadcrumb from '../../../components/breadcrumb';
 //import Link from '../../../components/link';
 import PropTypes from 'prop-types';
 import Card from '../../../components/card';
+import { API_BASE_URL } from '../../../utils/constants/api';
 
 export async function getStaticProps() {
-    // const res = await fetch('http://localhost:3000/api/shop/categories');
-    // const categories = await res.json();
+    const res = await fetch(`${API_BASE_URL}/products`);
+    const data = await res.json();
 
-    const category = { slug: 'fruits', productsCount: 10, products: [] };
+    console.log(await data.products);
 
     return {
         props: {
-            category
+            category: {
+                slug: 'fruits',
+                products: await data.products,
+                productsCount: await data.totalCount
+            }
         }
     };
 }
@@ -56,15 +61,21 @@ export default function CategoryPage({ category }) {
 
             <Container p={4} maxW="4xl">
                 <SimpleGrid minChildWidth="220px" spacing={10}>
-                    <Card />
-                    <Card />
-                    <Card />
-                    <Card />
-                    <Card />
-                    <Card />
-                    <Card />
-                    <Card />
-                    <Card />
+                    {category &&
+                        category.products &&
+                        category.products.length &&
+                        category.products.map((product) => (
+                            <Card
+                                key={product.slug}
+                                title={product.title}
+                                imageUrl={`https://picsum.photos/seed/${Date.now()}/300/200/`}
+                                imageAlt={`picture of ${product.title}`}
+                                formattedPrice={`${product.price} €`}
+                                isNew={product.isNew}
+                                reviewCount={product.reviewCount}
+                                rating={product.rating}
+                            />
+                        ))}
                 </SimpleGrid>
             </Container>
         </Layout>

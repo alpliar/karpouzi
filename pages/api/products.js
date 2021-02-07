@@ -38,7 +38,7 @@ const getRandomProduct = () => {
         title: name,
         price: getRandomInteger(1, 10),
         rating: getRandomInteger(1, 5),
-        ratingCount: getRandomInteger(1, 49),
+        reviewCount: getRandomInteger(1, 49),
         isNew: getRandomBoolean()
     };
 };
