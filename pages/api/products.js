@@ -26,7 +26,7 @@ const products = [
     'Lychee',
     'Manguo',
     'Peach',
-    ''
+    'Melon'
 ];
 const getRandomProductName = () => {
     return products[Math.floor(Math.random() * products.length)];

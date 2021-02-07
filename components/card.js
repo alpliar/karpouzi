@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { Box, Img, Badge } from '@chakra-ui/react';
-import { StarIcon } from '@chakra-ui/icons';
+import { StarIcon, BellIcon } from '@chakra-ui/icons';
 
 const Card = ({ imageUrl, imageAlt, title, formattedPrice, isNew, reviewCount, rating }) => {
     const property = {
@@ -16,23 +16,33 @@ const Card = ({ imageUrl, imageAlt, title, formattedPrice, isNew, reviewCount, r
 
     return (
         <Box maxW="md" borderWidth="1px" borderRadius="lg" overflow="hidden">
-            <Img
-                objectFit="cover"
-                htmlHeight="200px"
-                htmlWidth="300px"
-                w="100%"
-                fallback="https://picsum.photos/300/200"
-                src={imageUrl}
-                alt={imageAlt}
-            />
+            <Box position="relative">
+                <Img
+                    objectFit="cover"
+                    htmlHeight="200px"
+                    htmlWidth="300px"
+                    w="100%"
+                    fallback="https://picsum.photos/300/200"
+                    src={imageUrl}
+                    alt={imageAlt}
+                />
+                {isNew && (
+                    <Badge
+                        borderTopRightRadius="lg"
+                        px="2"
+                        py="1"
+                        position="absolute"
+                        top="0em"
+                        right="0em"
+                        bg="teal.600"
+                        color="white">
+                        <BellIcon /> New
+                    </Badge>
+                )}
+            </Box>
 
             <Box p="6">
-                <Box d="flex" alignItems="baseline">
-                    {isNew && (
-                        <Badge borderRadius="full" px="2" colorScheme="teal">
-                            New
-                        </Badge>
-                    )}
+                {/* <Box d="flex" alignItems="baseline">
                     <Box
                         color="gray.800"
                         fontWeight="semibold"
@@ -42,7 +52,7 @@ const Card = ({ imageUrl, imageAlt, title, formattedPrice, isNew, reviewCount, r
                         ml="2">
                         {property.beds} beds &bull; {property.baths} baths
                     </Box>
-                </Box>
+                </Box> */}
 
                 <Box mt="1" fontWeight="semibold" lineHeight="tight" isTruncated>
                     {title}
@@ -50,7 +60,7 @@ const Card = ({ imageUrl, imageAlt, title, formattedPrice, isNew, reviewCount, r
 
                 <Box>
                     {formattedPrice}
-                    <Box as="span" color="gray.600" fontSize="sm">
+                    <Box as="span" /*color="gray.600"*/ fontSize="sm">
                         / piece
                     </Box>
                 </Box>
@@ -61,7 +71,7 @@ const Card = ({ imageUrl, imageAlt, title, formattedPrice, isNew, reviewCount, r
                         .map((_, i) => (
                             <StarIcon key={i} color={i < rating ? 'teal.500' : 'gray.300'} />
                         ))}
-                    <Box as="span" ml="2" color="gray.600" fontSize="sm">
+                    <Box as="span" ml="2" /*color="gray.600"*/ fontSize="sm">
                         {reviewCount} reviews
                     </Box>
                 </Box>
