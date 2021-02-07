@@ -14,7 +14,6 @@ const MenuItems = ({ children }) => (
 const Header = ({ siteTitle }) => {
     const [show, setShow] = useState(false);
     const handleToggle = () => {
-        console.log(show);
         setShow(!show);
     };
 

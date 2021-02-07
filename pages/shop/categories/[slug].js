@@ -13,8 +13,6 @@ export async function getStaticProps() {
     const res = await fetch(`${API_BASE_URL}/products`);
     const data = await res.json();
 
-    console.log(await data.products);
-
     return {
         props: {
             category: {
