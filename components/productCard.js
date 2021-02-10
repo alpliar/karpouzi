@@ -1,18 +1,19 @@
 import PropTypes from 'prop-types';
-import { Box, Img, Badge } from '@chakra-ui/react';
-import { StarIcon, BellIcon } from '@chakra-ui/icons';
+import { Box, Img } from '@chakra-ui/react';
+import { StarIcon, BellIcon, TriangleDownIcon } from '@chakra-ui/icons';
+import ProductCardBadge from './productCardBadge';
 
-const Card = ({ imageUrl, imageAlt, title, formattedPrice, isNew, reviewCount, rating }) => {
-    const property = {
-        imageUrl: `https://picsum.photos/seed/${Date.now()}/300/200/`,
-        imageAlt: 'Rear view of modern home with pool',
-        beds: 3,
-        baths: 2,
-        title: 'Modern home in city center in the heart of historic Los Angeles',
-        formattedPrice: '$1,900.00',
-        reviewCount: 34,
-        rating: 4
-    };
+const ProductCard = ({ imageUrl, imageAlt, title, formattedPrice, isNew, reviewCount, rating }) => {
+    // const property = {
+    //     imageUrl: `https://picsum.photos/seed/${Date.now()}/300/200/`,
+    //     imageAlt: 'Rear view of modern home with pool',
+    //     beds: 3,
+    //     baths: 2,
+    //     title: 'Modern home in city center in the heart of historic Los Angeles',
+    //     formattedPrice: '$1,900.00',
+    //     reviewCount: 34,
+    //     rating: 4
+    // };
 
     return (
         <Box maxW="md" borderWidth="1px" borderRadius="lg" overflow="hidden">
@@ -27,17 +28,21 @@ const Card = ({ imageUrl, imageAlt, title, formattedPrice, isNew, reviewCount, r
                     alt={imageAlt}
                 />
                 {isNew && (
-                    <Badge
-                        borderTopRightRadius="lg"
-                        px="2"
-                        py="1"
-                        position="absolute"
-                        top="0em"
-                        right="0em"
-                        bg="teal.600"
-                        color="white">
-                        <BellIcon /> New
-                    </Badge>
+                    <ProductCardBadge
+                        icon={isNew ? BellIcon : TriangleDownIcon}
+                        text={isNew ? 'NEW' : '-20%'}
+                        positionX="right"
+                        positionY="top"
+                    />
+                )}
+
+                {!isNew && (
+                    <ProductCardBadge
+                        icon={isNew ? BellIcon : TriangleDownIcon}
+                        text={isNew ? 'NEW' : '-20%'}
+                        positionX="right"
+                        positionY="bottom"
+                    />
                 )}
             </Box>
 
@@ -80,9 +85,9 @@ const Card = ({ imageUrl, imageAlt, title, formattedPrice, isNew, reviewCount, r
     );
 };
 
-export default Card;
+export default ProductCard;
 
-Card.propTypes = {
+ProductCard.propTypes = {
     imageUrl: PropTypes.string.isRequired,
     imageAlt: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,

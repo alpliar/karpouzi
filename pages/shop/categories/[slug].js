@@ -6,7 +6,7 @@ import { Container, Divider, Heading, SimpleGrid } from '@chakra-ui/react';
 import Breadcrumb from '../../../components/breadcrumb';
 //import Link from '../../../components/link';
 import PropTypes from 'prop-types';
-import Card from '../../../components/card';
+import ProductCard from '../../../components/productCard';
 import { API_BASE_URL } from '../../../utils/constants/api';
 
 export async function getStaticProps() {
@@ -62,12 +62,12 @@ export default function CategoryPage({ category }) {
                     {category &&
                         category.products &&
                         category.products.length &&
-                        category.products.map((product) => (
-                            <Card
-                                key={product.slug}
+                        category.products.map((product, index) => (
+                            <ProductCard
+                                key={`${product.slug}-${index}`}
                                 title={product.title}
-                                imageUrl={`https://picsum.photos/seed/${Date.now()}/300/200/`}
-                                imageAlt={`picture of ${product.title}`}
+                                imageUrl={product.imageUrl}
+                                imageAlt={product.imageAlt}
                                 formattedPrice={`${product.price} €`}
                                 isNew={product.isNew}
                                 reviewCount={product.reviewCount}

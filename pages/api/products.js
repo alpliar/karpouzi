@@ -39,7 +39,9 @@ const getRandomProduct = () => {
         price: getRandomInteger(1, 10),
         rating: getRandomInteger(1, 5),
         reviewCount: getRandomInteger(1, 49),
-        isNew: getRandomBoolean()
+        isNew: getRandomBoolean(),
+        imageUrl: `https://picsum.photos/seed/${Date.now()}/300/200/`,
+        imageAlt: `picture of ${name}`
     };
 };
 

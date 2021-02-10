@@ -6,9 +6,11 @@ import Link from './link';
 const Breadcrumb = ({ entries }) => {
     return (
         <UiBreadcrumb fontSize="sm" separator={<ChevronRightIcon color="gray.500" />}>
-            {entries.map((entry) => {
+            {entries.map((entry, index) => {
                 return (
-                    <BreadcrumbItem key={entry.slug} isCurrentPage={entry.isCurrentPage}>
+                    <BreadcrumbItem
+                        key={`${entry.slug}-${index}`}
+                        isCurrentPage={entry.isCurrentPage}>
                         {entry.isCurrentPage ? (
                             <span>{entry.text}</span>
                         ) : (
