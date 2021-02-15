@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import { Box, Img } from '@chakra-ui/react';
 import { StarIcon, BellIcon, TriangleDownIcon } from '@chakra-ui/icons';
 import ProductCardBadge from './productCardBadge';
+import Link from '../components/link';
 
 const ProductCard = ({ imageUrl, imageAlt, title, formattedPrice, isNew, reviewCount, rating }) => {
     // const property = {
@@ -16,38 +17,39 @@ const ProductCard = ({ imageUrl, imageAlt, title, formattedPrice, isNew, reviewC
     // };
 
     return (
-        <Box maxW="md" borderWidth="1px" borderRadius="lg" overflow="hidden">
-            <Box position="relative">
-                <Img
-                    objectFit="cover"
-                    htmlHeight="200px"
-                    htmlWidth="300px"
-                    w="100%"
-                    fallback="https://picsum.photos/300/200"
-                    src={imageUrl}
-                    alt={imageAlt}
-                />
-                {isNew && (
-                    <ProductCardBadge
-                        icon={isNew ? BellIcon : TriangleDownIcon}
-                        text={isNew ? 'NEW' : '-20%'}
-                        positionX="right"
-                        positionY="top"
+        <Link href="/shop/product/apple" alt="goto product page">
+            <Box maxW="md" borderWidth="1px" borderRadius="lg" overflow="hidden">
+                <Box position="relative">
+                    <Img
+                        objectFit="cover"
+                        htmlHeight="200px"
+                        htmlWidth="300px"
+                        w="100%"
+                        fallback="https://picsum.photos/300/200"
+                        src={imageUrl}
+                        alt={imageAlt}
                     />
-                )}
+                    {isNew && (
+                        <ProductCardBadge
+                            icon={isNew ? BellIcon : TriangleDownIcon}
+                            text={isNew ? 'NEW' : '-20%'}
+                            positionX="right"
+                            positionY="top"
+                        />
+                    )}
 
-                {!isNew && (
-                    <ProductCardBadge
-                        icon={isNew ? BellIcon : TriangleDownIcon}
-                        text={isNew ? 'NEW' : '-20%'}
-                        positionX="right"
-                        positionY="bottom"
-                    />
-                )}
-            </Box>
+                    {!isNew && (
+                        <ProductCardBadge
+                            icon={isNew ? BellIcon : TriangleDownIcon}
+                            text={isNew ? 'NEW' : '-20%'}
+                            positionX="right"
+                            positionY="bottom"
+                        />
+                    )}
+                </Box>
 
-            <Box p="6">
-                {/* <Box d="flex" alignItems="baseline">
+                <Box p="6">
+                    {/* <Box d="flex" alignItems="baseline">
                     <Box
                         color="gray.800"
                         fontWeight="semibold"
@@ -59,29 +61,30 @@ const ProductCard = ({ imageUrl, imageAlt, title, formattedPrice, isNew, reviewC
                     </Box>
                 </Box> */}
 
-                <Box mt="1" fontWeight="semibold" lineHeight="tight" isTruncated>
-                    {title}
-                </Box>
-
-                <Box>
-                    {formattedPrice}
-                    <Box as="span" /*color="gray.600"*/ fontSize="sm">
-                        / piece
+                    <Box mt="1" fontWeight="semibold" lineHeight="tight" isTruncated>
+                        {title}
                     </Box>
-                </Box>
 
-                <Box d="flex" mt="2" alignItems="center">
-                    {Array(5)
-                        .fill('')
-                        .map((_, i) => (
-                            <StarIcon key={i} color={i < rating ? 'teal.500' : 'gray.300'} />
-                        ))}
-                    <Box isTruncated as="span" ml="2" /*color="gray.600"*/ fontSize="sm">
-                        {reviewCount} reviews
+                    <Box>
+                        {formattedPrice}
+                        <Box as="span" /*color="gray.600"*/ fontSize="sm">
+                            / piece
+                        </Box>
+                    </Box>
+
+                    <Box d="flex" mt="2" alignItems="center">
+                        {Array(5)
+                            .fill('')
+                            .map((_, i) => (
+                                <StarIcon key={i} color={i < rating ? 'teal.500' : 'gray.300'} />
+                            ))}
+                        <Box isTruncated as="span" ml="2" /*color="gray.600"*/ fontSize="sm">
+                            {reviewCount} reviews
+                        </Box>
                     </Box>
                 </Box>
             </Box>
-        </Box>
+        </Link>
     );
 };
 

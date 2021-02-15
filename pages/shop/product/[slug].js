@@ -45,7 +45,7 @@ export default function ProductPage({ product }) {
                         },
                         {
                             text: 'category',
-                            link: '/shop/fruits',
+                            link: '/shop/categories/fruits',
                             alt: 'go to fruits category',
                             isCurrentPage: false
                         },
