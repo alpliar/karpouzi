@@ -76,7 +76,7 @@ const ProductCard = ({ imageUrl, imageAlt, title, formattedPrice, isNew, reviewC
                         .map((_, i) => (
                             <StarIcon key={i} color={i < rating ? 'teal.500' : 'gray.300'} />
                         ))}
-                    <Box as="span" ml="2" /*color="gray.600"*/ fontSize="sm">
+                    <Box isTruncated as="span" ml="2" /*color="gray.600"*/ fontSize="sm">
                         {reviewCount} reviews
                     </Box>
                 </Box>

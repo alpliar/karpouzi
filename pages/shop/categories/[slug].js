@@ -68,7 +68,7 @@ export default function CategoryPage({ category }) {
                                 title={product.title}
                                 imageUrl={product.imageUrl}
                                 imageAlt={product.imageAlt}
-                                formattedPrice={`${product.price} €`}
+                                formattedPrice={product.price}
                                 isNew={product.isNew}
                                 reviewCount={product.reviewCount}
                                 rating={product.rating}
