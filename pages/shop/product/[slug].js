@@ -37,7 +37,6 @@ export default function ProductPage({
     reviewCount,
     isNew,
     imageUrl,
-    imageAlt,
     contentHtml
 }) {
     return (
@@ -74,7 +73,7 @@ export default function ProductPage({
             <Container p={4} maxW="4xl">
                 <SimpleGrid columns={{ base: 1, md: 2 }} spacing="1em">
                     <Box bg="tomato" width="full">
-                        <Img src={imageUrl} alt={imageAlt} width="full" />
+                        <Img src={imageUrl} alt={`picture of ${title}`} width="full" />
                     </Box>
                     <Box bg="tomato" p={4}>
                         <Heading>
@@ -109,6 +108,5 @@ ProductPage.propTypes = {
     reviewCount: PropTypes.number.isRequired,
     isNew: PropTypes.bool.isRequired,
     imageUrl: PropTypes.string.isRequired,
-    imageAlt: PropTypes.string.isRequired,
     contentHtml: PropTypes.string.isRequired
 };
