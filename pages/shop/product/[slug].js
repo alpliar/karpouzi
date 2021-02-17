@@ -72,7 +72,7 @@ export default function ProductPage({
 
             <Container p={4} maxW="4xl">
                 <SimpleGrid columns={{ base: 1, md: 2 }} spacing="1em">
-                    <Box bg="tomato" width="full">
+                    <Box bg="#eae0d0" width="full">
                         <Img src={imageUrl} alt={`picture of ${title}`} width="full" />
                     </Box>
                     <Box bg="tomato" p={4}>
