@@ -1,23 +1,23 @@
 import PropTypes from 'prop-types';
-import { Box, Img } from '@chakra-ui/react';
-import { StarIcon, BellIcon, TriangleDownIcon } from '@chakra-ui/icons';
+import { Box, Img, LinkBox, LinkOverlay } from '@chakra-ui/react';
+import { BellIcon, TriangleDownIcon } from '@chakra-ui/icons';
 import ProductCardBadge from './productCardBadge';
-import Link from '../components/link';
+//import Link from '../components/link';
+import Link from 'next/link';
+import Rating from './rating';
 
-const ProductCard = ({ imageUrl, imageAlt, title, formattedPrice, isNew, reviewCount, rating }) => {
-    // const property = {
-    //     imageUrl: `https://picsum.photos/seed/${Date.now()}/300/200/`,
-    //     imageAlt: 'Rear view of modern home with pool',
-    //     beds: 3,
-    //     baths: 2,
-    //     title: 'Modern home in city center in the heart of historic Los Angeles',
-    //     formattedPrice: '$1,900.00',
-    //     reviewCount: 34,
-    //     rating: 4
-    // };
-
+const ProductCard = ({
+    slug,
+    imageUrl,
+    imageAlt,
+    title,
+    formattedPrice,
+    isNew,
+    reviewCount,
+    rating
+}) => {
     return (
-        <Link href="/shop/product/apple" alt="goto product page">
+        <LinkBox>
             <Box maxW="md" borderWidth="1px" borderRadius="lg" overflow="hidden">
                 <Box position="relative">
                     <Img
@@ -62,7 +62,14 @@ const ProductCard = ({ imageUrl, imageAlt, title, formattedPrice, isNew, reviewC
                 </Box> */}
 
                     <Box mt="1" fontWeight="semibold" lineHeight="tight" isTruncated>
-                        {title}
+                        <Link
+                            href={{
+                                pathname: '/shop/product/[slug]',
+                                query: { slug }
+                            }}
+                            passHref>
+                            <LinkOverlay>{title}</LinkOverlay>
+                        </Link>
                     </Box>
 
                     <Box>
@@ -72,25 +79,17 @@ const ProductCard = ({ imageUrl, imageAlt, title, formattedPrice, isNew, reviewC
                         </Box>
                     </Box>
 
-                    <Box d="flex" mt="2" alignItems="center">
-                        {Array(5)
-                            .fill('')
-                            .map((_, i) => (
-                                <StarIcon key={i} color={i < rating ? 'teal.500' : 'gray.300'} />
-                            ))}
-                        <Box isTruncated as="span" ml="2" /*color="gray.600"*/ fontSize="sm">
-                            {reviewCount} reviews
-                        </Box>
-                    </Box>
+                    <Rating rate={rating} count={reviewCount} />
                 </Box>
             </Box>
-        </Link>
+        </LinkBox>
     );
 };
 
 export default ProductCard;
 
 ProductCard.propTypes = {
+    slug: PropTypes.string.isRequired,
     imageUrl: PropTypes.string.isRequired,
     imageAlt: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,

@@ -3,35 +3,53 @@ import Head from 'next/head';
 
 import Layout from '../../../components/layout';
 
-import { Container, Divider, Heading, Img, SimpleGrid, Text, Box } from '@chakra-ui/react';
+import { Badge, Container, Divider, Heading, Img, SimpleGrid, Text, Box } from '@chakra-ui/react';
 import Breadcrumb from '../../../components/breadcrumb';
 
 import { API_BASE_URL } from '../../../utils/constants/api';
-import { StarIcon } from '@chakra-ui/icons';
+import { products } from '../../api/products';
 
-export async function getStaticProps() {
-    const res = await fetch(`${API_BASE_URL}/product`);
+import { BellIcon } from '@chakra-ui/icons';
+import Rating from '../../../components/rating';
+
+export async function getStaticProps({ params }) {
+    const { slug } = params;
+    const api = `${API_BASE_URL}/product/${slug}`;
+
+    const res = await fetch(api);
     const data = await res.json();
 
     return {
         props: {
-            product: data.product
+            ...data.product
         }
     };
 }
 
 export async function getStaticPaths() {
+    const pathsToPreload = products.map((product) => ({ params: { slug: product.toLowerCase() } }));
+
     return {
-        paths: [{ params: { slug: 'apple' } }, { params: { slug: 'banana' } }],
+        paths: pathsToPreload,
         fallback: false
     };
 }
 
-export default function ProductPage({ product }) {
+export default function ProductPage({
+    slug,
+    title,
+    price,
+    rating,
+    reviewCount,
+    isNew,
+    imageUrl,
+    imageAlt,
+    description
+}) {
     return (
         <Layout>
             <Head>
-                <title>Shop</title>
+                <title>Shop - {title}</title>
             </Head>
 
             <Container px={4} py={4} maxW="4xl">
@@ -49,11 +67,11 @@ export default function ProductPage({ product }) {
                             alt: 'go to fruits category',
                             isCurrentPage: false
                         },
-                        { text: product.slug, link: '', alt: '', isCurrentPage: true }
+                        { text: slug, link: '', alt: '', isCurrentPage: true }
                     ]}
                 />
                 <Heading size="xl" mb={4} pr="20%">
-                    {product.title}
+                    {title}
                 </Heading>
             </Container>
 
@@ -62,40 +80,41 @@ export default function ProductPage({ product }) {
             <Container p={4} maxW="4xl">
                 <SimpleGrid columns={{ base: 1, md: 2 }} spacing="1em">
                     <Box bg="tomato" width="full">
-                        <Img src={product.imageUrl} alt={product.imageAlt} width="full" />
+                        <Img src={imageUrl} alt={imageAlt} width="full" />
                     </Box>
                     <Box bg="tomato" p={4}>
-                        <Heading>{product.title}</Heading>
-                        <Text>
-                            {Array(5)
-                                .fill('')
-                                .map((_, i) => (
-                                    <StarIcon
-                                        key={i}
-                                        color={i < product.rating ? 'teal.500' : 'gray.300'}
-                                    />
-                                ))}
-                            <Box isTruncated as="span" ml="2" /*color="gray.600"*/ fontSize="sm">
-                                {product.reviewCount} reviews
-                            </Box>
+                        <Heading>
+                            {title}{' '}
+                            {isNew && (
+                                <Badge>
+                                    <BellIcon /> NEW!
+                                </Badge>
+                            )}
+                        </Heading>
+
+                        <Rating rate={rating} count={reviewCount} />
+
+                        <Text fontSize="4xl" fontWeight="bolder">
+                            {price}
                         </Text>
-                        <Text fontSize="4xl" fontWeight="bolder">{product.price}</Text>
                     </Box>
                 </SimpleGrid>
+                <Box width="full" padding="1em">
+                    <Text>{description}</Text>
+                </Box>
             </Container>
         </Layout>
     );
 }
 
 ProductPage.propTypes = {
-    product: PropTypes.shape({
-        slug: PropTypes.string.isRequired,
-        title: PropTypes.string.isRequired,
-        price: PropTypes.string.isRequired,
-        rating: PropTypes.number.isRequired,
-        reviewCount: PropTypes.number.isRequired,
-        isNew: PropTypes.bool.isRequired,
-        imageUrl: PropTypes.string.isRequired,
-        imageAlt: PropTypes.string.isRequired
-    }).isRequired
+    slug: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    price: PropTypes.string.isRequired,
+    rating: PropTypes.number.isRequired,
+    reviewCount: PropTypes.number.isRequired,
+    isNew: PropTypes.bool.isRequired,
+    imageUrl: PropTypes.string.isRequired,
+    imageAlt: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired
 };

@@ -65,6 +65,7 @@ export default function CategoryPage({ category }) {
                         category.products.map((product, index) => (
                             <ProductCard
                                 key={`${product.slug}-${index}`}
+                                slug={product.slug}
                                 title={product.title}
                                 imageUrl={product.imageUrl}
                                 imageAlt={product.imageAlt}

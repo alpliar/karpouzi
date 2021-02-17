@@ -6,7 +6,7 @@ const getRandomBoolean = () => {
     return Math.random() < 0.5;
 };
 
-const products = [
+export const products = [
     'Apple',
     'Lemon',
     'Watermelon',
@@ -31,8 +31,9 @@ const products = [
 const getRandomProductName = () => {
     return products[Math.floor(Math.random() * products.length)];
 };
-export const getRandomProduct = () => {
-    const name = getRandomProductName();
+export const getRandomProduct = (slug = null) => {
+    const name = slug || getRandomProductName();
+
     // imageUrl: `https://picsum.photos/seed/${name}${Date.now()}/300/200/`,
     return {
         slug: name.toLowerCase(),
@@ -42,7 +43,8 @@ export const getRandomProduct = () => {
         reviewCount: getRandomInteger(1, 49),
         isNew: getRandomBoolean(),
         imageUrl: `https://fakeimg.pl/300x200/282828/eae0d0/?retina=1&text=${name}%20picture`,
-        imageAlt: `picture of ${name}`
+        imageAlt: `picture of ${name}`,
+        description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem doloremque voluptates officia corrupti iste officiis magni ratione? Iste inventore fugit nemo quisquam reprehenderit nisi voluptas incidunt eum, esse praesentium laborum?`
     };
 };
 
