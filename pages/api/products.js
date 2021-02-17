@@ -28,9 +28,11 @@ export const products = [
     'Peach',
     'Melon'
 ];
+
 const getRandomProductName = () => {
     return products[Math.floor(Math.random() * products.length)];
 };
+
 export const getRandomProduct = (slug = null) => {
     const name = slug || getRandomProductName();
 

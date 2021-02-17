@@ -2,35 +2,29 @@ import PropTypes from 'prop-types';
 import Head from 'next/head';
 
 import Layout from '../../../components/layout';
+import { getAllProductIds, getProductData } from '../../../lib/products';
 
 import { Badge, Container, Divider, Heading, Img, SimpleGrid, Text, Box } from '@chakra-ui/react';
 import Breadcrumb from '../../../components/breadcrumb';
-
-import { API_BASE_URL } from '../../../utils/constants/api';
-import { products } from '../../api/products';
 
 import { BellIcon } from '@chakra-ui/icons';
 import Rating from '../../../components/rating';
 
 export async function getStaticProps({ params }) {
-    const { slug } = params;
-    const api = `${API_BASE_URL}/product/${slug}`;
-
-    const res = await fetch(api);
-    const data = await res.json();
+    const productData = await getProductData(params.slug);
 
     return {
         props: {
-            ...data.product
+            ...productData
         }
     };
 }
 
 export async function getStaticPaths() {
-    const pathsToPreload = products.map((product) => ({ params: { slug: product.toLowerCase() } }));
+    const paths = getAllProductIds();
 
     return {
-        paths: pathsToPreload,
+        paths,
         fallback: false
     };
 }
@@ -44,7 +38,7 @@ export default function ProductPage({
     isNew,
     imageUrl,
     imageAlt,
-    description
+    contentHtml
 }) {
     return (
         <Layout>
@@ -100,7 +94,7 @@ export default function ProductPage({
                     </Box>
                 </SimpleGrid>
                 <Box width="full" padding="1em">
-                    <Text>{description}</Text>
+                    <Box dangerouslySetInnerHTML={{ __html: contentHtml }} />
                 </Box>
             </Container>
         </Layout>
@@ -116,5 +110,5 @@ ProductPage.propTypes = {
     isNew: PropTypes.bool.isRequired,
     imageUrl: PropTypes.string.isRequired,
     imageAlt: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired
+    contentHtml: PropTypes.string.isRequired
 };
