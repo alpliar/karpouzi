@@ -7,18 +7,21 @@ import Breadcrumb from '../../../components/breadcrumb';
 //import Link from '../../../components/link';
 import PropTypes from 'prop-types';
 import ProductCard from '../../../components/productCard';
-import { API_BASE_URL } from '../../../utils/constants/api';
+// import { API_BASE_URL } from '../../../utils/constants/api';
+import { getSortedProductData } from '../../../lib/products';
 
 export async function getStaticProps() {
-    const res = await fetch(`${API_BASE_URL}/products`);
-    const data = await res.json();
+    // const res = await fetch(`${API_BASE_URL}/products`);
+    // const data = await res.json();
+    const products = getSortedProductData();
+    const productsCount = products.length;
 
     return {
         props: {
             category: {
                 slug: 'fruits',
-                products: await data.products,
-                productsCount: await data.totalCount
+                products,
+                productsCount
             }
         }
     };
@@ -68,7 +71,7 @@ export default function CategoryPage({ category }) {
                                 slug={product.slug}
                                 title={product.title}
                                 imageUrl={product.imageUrl}
-                                imageAlt={product.imageAlt}
+                                imageAlt={`${product.title} picture`}
                                 formattedPrice={product.price}
                                 isNew={product.isNew}
                                 reviewCount={product.reviewCount}

@@ -6,12 +6,9 @@ import { Box, Container, Divider, Heading, Text } from '@chakra-ui/react';
 import Link from '../../components/link';
 
 export async function getStaticProps() {
-    // const res = await fetch('http://localhost:3000/api/shop/categories');
-    // const data = await res.json();
-
     const categories = [
-        { slug: 'fruits', productsCount: 10, products: [] },
-        { slug: 'veggies', productsCount: 3, products: [] }
+        { slug: 'fruits', title: 'Fruits', productsCount: 10, products: [] },
+        { slug: 'veggies', title: 'Veggies', productsCount: 3, products: [] }
     ];
 
     return {
@@ -22,7 +19,6 @@ export async function getStaticProps() {
 }
 
 export default function ShopPage({ categories }) {
-    // console.log(categories);
     return (
         <Layout>
             <Head>
@@ -48,7 +44,12 @@ export default function ShopPage({ categories }) {
                                     </Link>
                                 </Heading>
                                 <Text size="sm"> ({category.productsCount} products)</Text>
-                                <Text>fazfzfzafaz fza fzazf azf</Text>
+                                <Text>
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                    Aspernatur consectetur quod at amet cumque quaerat possimus
+                                    harum ducimus tenetur delectus. Ex dolorem non soluta sit
+                                    reprehenderit! Natus vitae doloribus amet?
+                                </Text>
                             </Box>
                         );
                     })}

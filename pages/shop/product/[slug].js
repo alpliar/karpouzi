@@ -64,7 +64,12 @@ export default function ProductPage({
                     ]}
                 />
                 <Heading size="xl" mb={4} pr="20%">
-                    {title}
+                    {title}{' '}
+                    {isNew && (
+                        <Badge>
+                            <BellIcon /> NEW!
+                        </Badge>
+                    )}
                 </Heading>
             </Container>
 
@@ -72,18 +77,11 @@ export default function ProductPage({
 
             <Container p={4} maxW="4xl">
                 <SimpleGrid columns={{ base: 1, md: 2 }} spacing="1em">
-                    <Box bg="#eae0d0" width="full">
+                    <Box bg="#282828" width="full">
                         <Img src={imageUrl} alt={`picture of ${title}`} width="full" />
                     </Box>
-                    <Box bg="tomato" p={4}>
-                        <Heading>
-                            {title}{' '}
-                            {isNew && (
-                                <Badge>
-                                    <BellIcon /> NEW!
-                                </Badge>
-                            )}
-                        </Heading>
+                    <Box bg="" p={4}>
+                        {/* <Heading>{title}</Heading> */}
 
                         <Rating rate={rating} count={reviewCount} />
 

@@ -19,7 +19,7 @@ const ProductCard = ({
     return (
         <LinkBox>
             <Box maxW="md" borderWidth="1px" borderRadius="lg" overflow="hidden">
-                <Box position="relative">
+                <Box bg="#282828" position="relative">
                     <Img
                         objectFit="cover"
                         htmlHeight="200px"
