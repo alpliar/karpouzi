@@ -61,7 +61,10 @@ export default function CategoryPage({ category }) {
             <Divider w="100%" />
 
             <Container p={4} maxW="4xl">
-                <SimpleGrid minChildWidth="220px" spacing={10}>
+                <SimpleGrid
+                    minChildWidth={{ base: 'full', sm: '230px' }}
+                    spacingX="0.5em"
+                    spacingY="1em">
                     {category &&
                         category.products &&
                         category.products.length &&
