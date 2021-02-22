@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { Box, Img, LinkBox, LinkOverlay, Text } from '@chakra-ui/react';
+import { Box, Img, LinkBox, LinkOverlay } from '@chakra-ui/react';
 import { BellIcon, TriangleDownIcon } from '@chakra-ui/icons';
 import ProductCardBadge from './productCardBadge';
 //import Link from '../components/link';
@@ -79,9 +79,9 @@ const ProductCard = ({
                         </Box>
                     </Box>
 
-                    <Text isTruncated>
+                    <Box isTruncated>
                         <Rating rate={rating} count={reviewCount} />
-                    </Text>
+                    </Box>
                 </Box>
             </Box>
         </LinkBox>

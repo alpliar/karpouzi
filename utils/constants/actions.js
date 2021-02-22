@@ -1,0 +1,2 @@
+export const SET_PRODUCTS_DATA = 'SET_PRODUCTS_DATA';
+export const SET_POSTS_DATA = 'SET_POSTS_DATA';

@@ -2,21 +2,20 @@ import Head from 'next/head';
 import Layout, { siteTitle } from '../../components/layout';
 import LatestsPosts from '../../components/LatestsPosts';
 import { getSortedPostsData } from '../../lib/posts';
-import { PropTypes } from 'prop-types';
 
 import { Container, Divider, Heading } from '@chakra-ui/react';
 
-export async function getStaticProps() {
-    const allPostsData = getSortedPostsData();
-    return {
-        props: {
-            allPostsData
-        }
-    };
-}
+import { SET_POSTS_DATA } from '../../utils/constants/actions';
+import { wrapper } from '../../reducer';
+import { useSelector } from 'react-redux';
 
-export default function Home({ allPostsData }) {
-    // const [showModal, setShowModal] = useState(false);
+export const getStaticProps = wrapper.getStaticProps(({ store }) => {
+    const postsData = getSortedPostsData();
+    store.dispatch({ type: SET_POSTS_DATA, payload: postsData });
+});
+
+export default function Home() {
+    const { postsData } = useSelector((state) => state.blog);
 
     return (
         <Layout>
@@ -31,18 +30,8 @@ export default function Home({ allPostsData }) {
             <Divider maxW="100%" />
 
             <Container p={4} maxW="4xl">
-                <LatestsPosts posts={allPostsData} />
+                <LatestsPosts posts={postsData} />
             </Container>
         </Layout>
     );
 }
-
-Home.propTypes = {
-    allPostsData: PropTypes.arrayOf(
-        PropTypes.shape({
-            id: PropTypes.string,
-            date: PropTypes.string,
-            title: PropTypes.string
-        })
-    )
-};
