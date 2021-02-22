@@ -12,10 +12,11 @@ import { getSortedProductData } from '../../../lib/products';
 
 import { wrapper } from '../../../utils/store';
 import { useSelector } from 'react-redux';
+import { SET_PRODUCTS_DATA } from '../../../utils/constants/actions';
 
 export const getStaticProps = wrapper.getStaticProps(({ store }) => {
     const productsData = getSortedProductData();
-    store.dispatch({ type: 'SET_PRODUCTS_DATA', payload: productsData });
+    store.dispatch({ type: SET_PRODUCTS_DATA, payload: productsData });
 });
 
 // export async function getStaticProps() {

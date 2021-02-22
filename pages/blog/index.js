@@ -5,12 +5,13 @@ import { getSortedPostsData } from '../../lib/posts';
 
 import { Container, Divider, Heading } from '@chakra-ui/react';
 
+import { SET_POSTS_DATA } from '../../utils/constants/actions';
 import { wrapper } from '../../utils/store';
 import { useSelector } from 'react-redux';
 
 export const getStaticProps = wrapper.getStaticProps(({ store }) => {
     const postsData = getSortedPostsData();
-    store.dispatch({ type: 'SET_POSTS_DATA', payload: postsData });
+    store.dispatch({ type: SET_POSTS_DATA, payload: postsData });
 });
 
 export default function Home() {
