@@ -6,7 +6,7 @@ import { getSortedPostsData } from '../../lib/posts';
 import { Container, Divider, Heading } from '@chakra-ui/react';
 
 import { SET_POSTS_DATA } from '../../utils/constants/actions';
-import { wrapper } from '../../utils/store';
+import { wrapper } from '../../reducer';
 import { useSelector } from 'react-redux';
 
 export const getStaticProps = wrapper.getStaticProps(({ store }) => {
@@ -15,7 +15,7 @@ export const getStaticProps = wrapper.getStaticProps(({ store }) => {
 });
 
 export default function Home() {
-    const { postsData } = useSelector((state) => state);
+    const { postsData } = useSelector((state) => state.blog);
 
     return (
         <Layout>

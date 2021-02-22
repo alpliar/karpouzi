@@ -10,7 +10,7 @@ import ProductCard from '../../../components/productCard';
 // import { API_BASE_URL } from '../../../utils/constants/api';
 import { getSortedProductData } from '../../../lib/products';
 
-import { wrapper } from '../../../utils/store';
+import { wrapper } from '../../../reducer';
 import { useSelector } from 'react-redux';
 import { SET_PRODUCTS_DATA } from '../../../utils/constants/actions';
 
@@ -44,7 +44,7 @@ export async function getStaticPaths() {
 }
 
 export default function CategoryPage() {
-    const { productsData } = useSelector((state) => state);
+    const { productsData } = useSelector((state) => state.shop);
 
     return (
         <Layout>
