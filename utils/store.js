@@ -25,7 +25,13 @@ const reducer = (state = initialState, action) => {
 };
 
 // create a makeStore function
-const makeStore = (context) => createStore(reducer);
+const makeStore = (context) =>
+    createStore(
+        reducer,
+        typeof window !== 'undefined' &&
+            window.__REDUX_DEVTOOLS_EXTENSION__ &&
+            window.__REDUX_DEVTOOLS_EXTENSION__()
+    );
 
 // export an assembled wrapper
 export const wrapper = createWrapper(makeStore, { debug: true });
