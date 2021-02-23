@@ -1,4 +1,4 @@
-import { SET_PRODUCTS_DATA } from '../utils/constants/actions';
+import { SET_PRODUCTS_DATA } from '../actions/shop';
 import { HYDRATE } from 'next-redux-wrapper';
 
 const initialState = {

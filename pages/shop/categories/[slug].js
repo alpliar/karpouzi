@@ -12,7 +12,7 @@ import { getSortedProductData } from '../../../lib/products';
 
 import { wrapper } from '../../../reducer';
 import { useSelector } from 'react-redux';
-import { SET_PRODUCTS_DATA } from '../../../utils/constants/actions';
+import { SET_PRODUCTS_DATA } from '../../../actions/shop';
 
 export const getStaticProps = wrapper.getStaticProps(({ store }) => {
     const productsData = getSortedProductData();
