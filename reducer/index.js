@@ -11,10 +11,7 @@ const reducer = combineReducers({
 const initialState = { shop, blog };
 
 const composeEnhancers =
-    (typeof window !== 'undefined' &&
-        window.__REDUX_DEVTOOLS_EXTENSION &&
-        window.__REDUX_DEVTOOLS_EXTENSION({ trace: true, traceLimit: 25 })) ||
-    compose;
+    (typeof window !== 'undefined' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose;
 
 const makeStore = (state = initialState) => {
     return createStore(reducer, state, composeEnhancers());
