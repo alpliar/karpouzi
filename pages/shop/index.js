@@ -32,6 +32,12 @@ export default function ShopPage({ categories }) {
             <Divider maxW="100%" />
 
             <Container p={4} maxW="4xl">
+                <Link href={`/shop/cart/`} alt="go to cart">
+                    Cart
+                </Link>
+            </Container>
+
+            <Container p={4} maxW="4xl">
                 {categories &&
                     categories.map((category) => {
                         return (
