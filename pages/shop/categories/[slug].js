@@ -19,23 +19,6 @@ export const getStaticProps = wrapper.getStaticProps(({ store }) => {
     store.dispatch({ type: SET_PRODUCTS_DATA, payload: productsData });
 });
 
-// export async function getStaticProps() {
-//     // const res = await fetch(`${API_BASE_URL}/products`);
-//     // const data = await res.json();
-//     const products = getSortedProductData();
-//     const productsCount = products.length;
-
-//     return {
-//         props: {
-//             category: {
-//                 slug: 'fruits',
-//                 products,
-//                 productsCount
-//             }
-//         }
-//     };
-// }
-
 export async function getStaticPaths() {
     return {
         paths: [{ params: { slug: 'fruits' } }, { params: { slug: 'veggies' } }],
