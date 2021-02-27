@@ -3,6 +3,7 @@ import { useState } from 'react';
 import Link from './link';
 import { Box, Button, Flex, Text } from '@chakra-ui/react';
 import HeaderLogo from './header-logo';
+import NavCart from '../container/navCart';
 
 const MenuItems = ({ children }) => (
     <Text mt={{ base: 0, md: 0 }} mr={6} display={{ base: 'inline', sm: 'inline' }}>
@@ -79,7 +80,7 @@ const Header = ({ siteTitle }) => {
                     </Box>
 
                     <Box
-                        display={{ base: show ? 'block' : 'none', md: 'block' }}
+                        display={{ base: show ? 'flex' : 'none', md: 'flex' }}
                         width={{ base: 'full', sm: 'auto', md: 'auto' }}
                         mt={{ base: 4, sm: 0 }}
                         transition="all 0.3s ease-out">
@@ -91,6 +92,7 @@ const Header = ({ siteTitle }) => {
                                 Log-in
                             </Link>
                         </Button>
+                        <NavCart />
                     </Box>
                 </Box>
             </Flex>

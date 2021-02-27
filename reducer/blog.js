@@ -1,4 +1,4 @@
-import { SET_POSTS_DATA } from '../utils/constants/actions';
+import { SET_POSTS_DATA } from '../actions/blog';
 import { HYDRATE } from 'next-redux-wrapper';
 
 const initialState = {

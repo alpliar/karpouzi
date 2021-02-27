@@ -12,29 +12,12 @@ import { getSortedProductData } from '../../../lib/products';
 
 import { wrapper } from '../../../reducer';
 import { useSelector } from 'react-redux';
-import { SET_PRODUCTS_DATA } from '../../../utils/constants/actions';
+import { SET_PRODUCTS_DATA } from '../../../actions/shop';
 
 export const getStaticProps = wrapper.getStaticProps(({ store }) => {
     const productsData = getSortedProductData();
     store.dispatch({ type: SET_PRODUCTS_DATA, payload: productsData });
 });
-
-// export async function getStaticProps() {
-//     // const res = await fetch(`${API_BASE_URL}/products`);
-//     // const data = await res.json();
-//     const products = getSortedProductData();
-//     const productsCount = products.length;
-
-//     return {
-//         props: {
-//             category: {
-//                 slug: 'fruits',
-//                 products,
-//                 productsCount
-//             }
-//         }
-//     };
-// }
 
 export async function getStaticPaths() {
     return {

@@ -5,7 +5,7 @@ import { getSortedPostsData } from '../../lib/posts';
 
 import { Container, Divider, Heading } from '@chakra-ui/react';
 
-import { SET_POSTS_DATA } from '../../utils/constants/actions';
+import { SET_POSTS_DATA } from '../../actions/blog';
 import { wrapper } from '../../reducer';
 import { useSelector } from 'react-redux';
 
