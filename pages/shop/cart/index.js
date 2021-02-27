@@ -57,10 +57,7 @@ export default function CartPage() {
                     {cart &&
                         cart.length &&
                         cart.map((slug, index) => (
-                            <CartItem
-                                key={`${slug}-${index}`}
-                                title={slug}
-                            />
+                            <CartItem key={`${slug}-${index}`} title={slug} />
                         ))}
                 </SimpleGrid>
             </Container>
