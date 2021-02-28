@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { wrapper } from '../reducer';
+import { wrapper } from '../store';
 
 import '../styles/global.scss';
 import { ChakraProvider } from '@chakra-ui/react';

@@ -33,7 +33,7 @@ const NavCart = ({ cartCount }) => {
                 width="1.5em"
                 textAlign="center"
                 variant="solid">
-                {cartCount && <span>{cartCount}</span>}
+                {cartCount && <span>{cartCount > 0 ? cartCount : '-'}</span>}
             </Badge>
         </Box>
     );

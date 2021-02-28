@@ -3,11 +3,12 @@ import { IconButton, useColorMode, useColorModeValue } from '@chakra-ui/react';
 
 export default function ThemeToggle() {
     const { toggleColorMode: toggleMode } = useColorMode();
-    const ToggleIcon = useColorModeValue(SunIcon, MoonIcon);
+    const ToggleIcon = useColorModeValue(MoonIcon, SunIcon);
     return (
         <IconButton
             icon={<ToggleIcon />}
-            variant="ghost"
+            colorScheme="whiteAlpha"
+            variant="solid"
             aria-label="Toggle Theme"
             onClick={toggleMode}
         />

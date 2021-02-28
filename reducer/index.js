@@ -3,19 +3,23 @@ import { createWrapper } from 'next-redux-wrapper';
 import shop from './shop';
 import blog from './blog';
 
-const reducer = combineReducers({
+// const isClient = typeof window !== 'undefined';
+
+const rootReducer = combineReducers({
     shop,
     blog
 });
 
-const initialState = { shop, blog };
+export default rootReducer;
 
-const composeEnhancers =
-    (typeof window !== 'undefined' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose;
+// const initialState = { shop, blog };
 
-const makeStore = (state = initialState) => {
-    return createStore(reducer, state, composeEnhancers());
-};
+// const composeEnhancers =
+//     (typeof window !== 'undefined' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose;
+
+// const makeStore = (state = initialState) => {
+//     return createStore(reducer, state, composeEnhancers());
+// };
 
 // export an assembled wrapper
-export const wrapper = createWrapper(makeStore, { debug: false });
+// export const wrapper = createWrapper(makeStore, { debug: false });

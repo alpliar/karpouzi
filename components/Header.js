@@ -1,9 +1,11 @@
+import { Box, Flex, HStack, Spacer, Text } from '@chakra-ui/react';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
-import Link from './link';
-import { Box, Button, Flex, Text } from '@chakra-ui/react';
-import HeaderLogo from './header-logo';
+import ThemeToggle from '../components/ThemeToggle';
 import NavCart from '../container/navCart';
+import NavLogin from '../container/navLogin';
+import HeaderLogo from './header-logo';
+import Link from './link';
 
 const MenuItems = ({ children }) => (
     <Text mt={{ base: 0, md: 0 }} mr={6} display={{ base: 'inline', sm: 'inline' }}>
@@ -17,6 +19,7 @@ const Header = ({ siteTitle }) => {
     const handleToggle = () => {
         setShow(!show);
     };
+
 
     return (
         <Flex as="nav" bg="teal.600" color="white">
@@ -84,15 +87,13 @@ const Header = ({ siteTitle }) => {
                         width={{ base: 'full', sm: 'auto', md: 'auto' }}
                         mt={{ base: 4, sm: 0 }}
                         transition="all 0.3s ease-out">
-                        <Button bg="transparent" border="1px">
-                            <span role="img" aria-label="user icon">
-                                👤
-                            </span>
-                            <Link href="/login" alt="go to login page">
-                                Log-in
-                            </Link>
-                        </Button>
-                        <NavCart />
+                        <HStack spacing="1">
+                            <ThemeToggle />
+                            <Spacer />
+                            <NavLogin />
+                            <Spacer />
+                            <NavCart />
+                        </HStack>
                     </Box>
                 </Box>
             </Flex>

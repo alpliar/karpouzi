@@ -10,7 +10,7 @@ import ProductCard from '../../../components/productCard';
 // import { API_BASE_URL } from '../../../utils/constants/api';
 import { getSortedProductData } from '../../../lib/products';
 
-import { wrapper } from '../../../reducer';
+import { wrapper } from '../../../store';
 import { useSelector } from 'react-redux';
 import { SET_PRODUCTS_DATA } from '../../../actions/shop';
 

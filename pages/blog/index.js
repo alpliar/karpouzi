@@ -1,13 +1,11 @@
-import Head from 'next/head';
-import Layout, { siteTitle } from '../../components/layout';
-import LatestsPosts from '../../components/LatestsPosts';
-import { getSortedPostsData } from '../../lib/posts';
-
 import { Container, Divider, Heading } from '@chakra-ui/react';
-
-import { SET_POSTS_DATA } from '../../actions/blog';
-import { wrapper } from '../../reducer';
+import Head from 'next/head';
 import { useSelector } from 'react-redux';
+import { SET_POSTS_DATA } from '../../actions/blog';
+import LatestsPosts from '../../components/LatestsPosts';
+import Layout, { siteTitle } from '../../components/layout';
+import { getSortedPostsData } from '../../lib/posts';
+import { wrapper } from '../../store';
 
 export const getStaticProps = wrapper.getStaticProps(({ store }) => {
     const postsData = getSortedPostsData();
