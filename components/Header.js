@@ -1,7 +1,7 @@
 import { Box, Flex, HStack, Spacer, Text } from '@chakra-ui/react';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
-import NavThemeToggle from '../components/NavThemeToggle';
+import NavThemeToggle from '../components/navThemeToggle';
 import NavCart from '../container/navCart';
 import NavLogin from '../container/navLogin';
 import NavLogo from './navLogo';
