@@ -1,10 +1,10 @@
 import { Box, Flex, HStack, Spacer, Text } from '@chakra-ui/react';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
-import ThemeToggle from '../components/ThemeToggle';
+import NavThemeToggle from '../components/NavThemeToggle';
 import NavCart from '../container/navCart';
 import NavLogin from '../container/navLogin';
-import HeaderLogo from './header-logo';
+import NavLogo from './navLogo';
 import Link from './link';
 
 const MenuItems = ({ children }) => (
@@ -32,7 +32,7 @@ const Header = ({ siteTitle }) => {
                 p={4}
                 m={{ base: 0, md: 'auto' }}>
                 <Flex align="center" mr={5}>
-                    <HeaderLogo siteTitle={siteTitle} />
+                    <NavLogo siteTitle={siteTitle} />
                 </Flex>
 
                 <Box
@@ -88,7 +88,7 @@ const Header = ({ siteTitle }) => {
                         mt={{ base: 4, sm: 0 }}
                         transition="all 0.3s ease-out">
                         <HStack spacing="1">
-                            <ThemeToggle />
+                            <NavThemeToggle />
                             <Spacer />
                             <NavLogin />
                             <Spacer />

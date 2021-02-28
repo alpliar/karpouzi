@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types';
-import { Badge, Box, Icon, IconButton } from '@chakra-ui/react';
+import { Badge, Box, Icon } from '@chakra-ui/react';
 //import { EmailIcon } from '@chakra-ui/icons';
 import { FaShoppingCart } from 'react-icons/fa';
 import { useRouter } from 'next/dist/client/router';
+import NavButton from './navButton';
 
 const NavCart = ({ cartCount }) => {
     const router = useRouter();
@@ -15,12 +16,10 @@ const NavCart = ({ cartCount }) => {
 
     return (
         <Box position="relative">
-            <IconButton
-                aria-label="Go to cart"
-                colorScheme="whiteAlpha"
-                variant="solid"
+            <NavButton
+                ariaLabel="Go to cart"
                 icon={<Icon as={FaShoppingCart} />}
-                onClick={handleClick}
+                handleClick={handleClick}
             />
             <Badge
                 borderRadius="full"
