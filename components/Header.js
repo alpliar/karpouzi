@@ -1,12 +1,13 @@
-import { Box, Button, Flex, HStack, Text, useDisclosure, VStack } from '@chakra-ui/react';
+import { Box, Flex, HStack, Text, useDisclosure } from '@chakra-ui/react';
+import Link from 'next/link';
 import PropTypes from 'prop-types';
+import NavDrawer from '../components/navDrawer';
 import NavThemeToggle from '../components/navThemeToggle';
 import NavCart from '../container/navCart';
 import NavLogin from '../container/navLogin';
 import NavLogo from '../container/navLogo';
-import Link from './link';
 import NavBurgerMenu from './navBurgerMenu';
-import NavDrawer from '../components/navDrawer';
+import NavDrawerBody from './navDrawerBody';
 
 const MenuItems = ({ children }) => (
     <Text mt={{ base: 0, md: 0 }} mr={6} display={{ base: 'inline', sm: 'inline' }}>
@@ -66,16 +67,7 @@ const Header = ({ siteTitle }) => {
                         <NavDrawer
                             isOpen={isOpen}
                             onClose={onClose}
-                            body={
-                                <VStack>
-                                    <Link as={Button} href="/blog" alt="go to blog page">
-                                        Blog
-                                    </Link>
-                                    <Link href="/shop" alt="go to shop page">
-                                        Shop
-                                    </Link>
-                                </VStack>
-                            }
+                            body={<NavDrawerBody />}
                             footer={<NavThemeToggle compact={false} />}></NavDrawer>
                     </Box>
                 </HStack>

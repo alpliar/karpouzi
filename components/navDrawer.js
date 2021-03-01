@@ -13,7 +13,7 @@ const NavDrawer = ({ isOpen, onClose, body, footer }) => {
     return (
         <Drawer isOpen={isOpen} onClose={onClose} placement="right">
             <DrawerOverlay>
-                <DrawerContent>
+                <DrawerContent color="white" bg="teal.600">
                     <DrawerCloseButton />
                     <DrawerHeader>Menu</DrawerHeader>
 
