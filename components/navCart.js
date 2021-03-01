@@ -21,19 +21,21 @@ const NavCart = ({ cartCount }) => {
                 icon={<Icon as={FaShoppingCart} />}
                 handleClick={handleClick}
             />
-            <Badge
-                borderRadius="full"
-                fontWeight="bold"
-                colorScheme="red"
-                position="absolute"
-                top="-1"
-                right="-1"
-                height="1.5em"
-                width="1.5em"
-                textAlign="center"
-                variant="solid">
-                {cartCount && <span>{cartCount > 0 ? cartCount : '-'}</span>}
-            </Badge>
+            {cartCount > 0 && (
+                <Badge
+                    borderRadius="full"
+                    fontWeight="bold"
+                    colorScheme="red"
+                    position="absolute"
+                    top="-1"
+                    right="-1"
+                    height="1.5em"
+                    width="1.5em"
+                    textAlign="center"
+                    variant="solid">
+                    {cartCount}
+                </Badge>
+            )}
         </Box>
     );
 };

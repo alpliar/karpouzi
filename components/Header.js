@@ -4,7 +4,7 @@ import { useState } from 'react';
 import NavThemeToggle from '../components/navThemeToggle';
 import NavCart from '../container/navCart';
 import NavLogin from '../container/navLogin';
-import NavLogo from './navLogo';
+import NavLogo from '../container/navLogo';
 import Link from './link';
 
 const MenuItems = ({ children }) => (
