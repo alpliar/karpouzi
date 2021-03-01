@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import Layout from '../../../components/layout';
-import { Container, Divider, Heading, SimpleGrid } from '@chakra-ui/react';
+import { Alert, AlertIcon, Container, Divider, Heading, SimpleGrid } from '@chakra-ui/react';
 import Breadcrumb from '../../../components/breadcrumb';
 // import { getSortedProductData } from '../../../lib/products';
 
@@ -50,16 +50,23 @@ export default function CartPage() {
             <Divider w="100%" />
 
             <Container p={4} maxW="4xl">
-                <SimpleGrid
-                    minChildWidth={{ base: 'full', sm: '230px' }}
-                    spacingX="0.5em"
-                    spacingY="1em">
-                    {cart &&
-                        cart.length &&
-                        cart.map((slug, index) => (
+                {cart.length > 0 && (
+                    <SimpleGrid
+                        minChildWidth={{ base: 'full', sm: '230px' }}
+                        spacingX="0.5em"
+                        spacingY="1em">
+                        {cart.map((slug, index) => (
                             <CartItem key={`${slug}-${index}`} title={slug} />
                         ))}
-                </SimpleGrid>
+                    </SimpleGrid>
+                )}
+
+                {cart.length === 0 && (
+                    <Alert status="info">
+                        <AlertIcon />
+                        You don&rsquo;t have any product in your cart !
+                    </Alert>
+                )}
             </Container>
         </Layout>
     );
