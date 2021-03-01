@@ -17,7 +17,7 @@ const NavCart = ({ cartCount }) => {
     return (
         <Box position="relative">
             <NavButton
-                ariaLabel="Go to cart"
+                label="Go to cart"
                 icon={<Icon as={FaShoppingCart} />}
                 handleClick={handleClick}
             />

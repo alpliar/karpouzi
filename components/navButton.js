@@ -1,31 +1,41 @@
 import PropTypes from 'prop-types';
-import { Button, IconButton, useColorModeValue } from '@chakra-ui/react';
+import { Button, IconButton, useColorModeValue, useBreakpointValue } from '@chakra-ui/react';
 
-const NavButton = ({ icon, ariaLabel, handleClick }) => {
-    // const colorScheme = 'blackAlpha';
-    const colorScheme = useColorModeValue('teal', 'blackAlpha');
+const NavButton = ({ icon, label, handleClick, isPrimary, compact }) => {
+    const lightColorScheme = isPrimary ? 'whiteAlpha' : 'teal';
+    const darkColorScheme = isPrimary ? 'teal' : 'whiteAlpha';
 
-    const variant = 'solid';
+    const colorScheme = useColorModeValue(lightColorScheme, darkColorScheme);
+    const variant = isPrimary ? 'outline' : 'solid';
+    const lightColor = 'white';
+    const darkColor = 'white';
+    const color = useColorModeValue(lightColor, darkColor);
+    const size = useBreakpointValue({ base: 'sm', md: 'md' });
 
-    if (icon) {
+    if (compact === true) {
         return (
             <IconButton
-                aria-label={ariaLabel}
-                color="white"
+                aria-label={label}
+                color={color}
                 icon={icon}
                 onClick={handleClick}
                 colorScheme={colorScheme}
                 variant={variant}
+                size={size}
             />
         );
     } else {
         return (
             <Button
-                aria-label={ariaLabel}
+                aria-label={label}
+                color={color}
+                leftIcon={icon}
                 onClick={handleClick}
                 colorScheme={colorScheme}
                 variant={variant}
-            />
+                size={size}>
+                {label}
+            </Button>
         );
     }
 };
@@ -34,6 +44,12 @@ export default NavButton;
 
 NavButton.propTypes = {
     icon: PropTypes.node,
-    ariaLabel: PropTypes.string.isRequired,
-    handleClick: PropTypes.func.isRequired
+    label: PropTypes.string.isRequired,
+    handleClick: PropTypes.func.isRequired,
+    isPrimary: PropTypes.bool,
+    compact: PropTypes.bool
+};
+
+NavButton.defaultProps = {
+    compact: true
 };

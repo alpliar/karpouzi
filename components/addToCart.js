@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types';
-import { Button, useToast } from '@chakra-ui/react';
+import { Button, Icon, useToast } from '@chakra-ui/react';
 import { useDispatch } from 'react-redux';
 import { ADD_TO_CART } from '../actions/shop';
+import { FaShoppingCart } from 'react-icons/fa';
 
 const AddToCart = ({ slug, quantity = 1 }) => {
     const dispatch = useDispatch();
@@ -19,7 +20,11 @@ const AddToCart = ({ slug, quantity = 1 }) => {
         });
     };
 
-    return <Button onClick={handleClick}>Add to cart</Button>;
+    return (
+        <Button leftIcon={<Icon as={FaShoppingCart} />} onClick={handleClick}>
+            Add to cart
+        </Button>
+    );
 };
 
 export default AddToCart;

@@ -1,11 +1,12 @@
-import { Box, Flex, HStack, Spacer, Text } from '@chakra-ui/react';
+import { Box, Button, Flex, HStack, Text, useDisclosure, VStack } from '@chakra-ui/react';
 import PropTypes from 'prop-types';
-import { useState } from 'react';
 import NavThemeToggle from '../components/navThemeToggle';
 import NavCart from '../container/navCart';
 import NavLogin from '../container/navLogin';
 import NavLogo from '../container/navLogo';
 import Link from './link';
+import NavBurgerMenu from './navBurgerMenu';
+import NavDrawer from '../components/navDrawer';
 
 const MenuItems = ({ children }) => (
     <Text mt={{ base: 0, md: 0 }} mr={6} display={{ base: 'inline', sm: 'inline' }}>
@@ -13,13 +14,8 @@ const MenuItems = ({ children }) => (
     </Text>
 );
 
-// Note: This code could be better, so I'd recommend you to understand how I solved and you could write yours better :)
 const Header = ({ siteTitle }) => {
-    const [show, setShow] = useState(false);
-    const handleToggle = () => {
-        setShow(!show);
-    };
-
+    const { isOpen, onOpen, onClose } = useDisclosure();
 
     return (
         <Flex as="nav" bg="teal.600" color="white">
@@ -29,44 +25,22 @@ const Header = ({ siteTitle }) => {
                 wrap="wrap"
                 maxW={{ md: '4xl' }}
                 w="100%"
-                p={4}
+                p={2}
                 m={{ base: 0, md: 'auto' }}>
-                <Flex align="center" mr={5}>
+                <Flex align="center" mr={{ base: 2, sm: 5 }}>
                     <NavLogo siteTitle={siteTitle} />
                 </Flex>
-
-                <Box
-                    bg="white"
-                    _hover={{ opacity: '0.9' }}
-                    borderRadius="full"
-                    p={3}
-                    display={{ base: 'block', md: 'none' }}
-                    onClick={handleToggle}>
-                    <svg
-                        fill="teal.600"
-                        width="12px"
-                        viewBox="0 0 20 20"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <title>Menu</title>
-                        <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
-                    </svg>
-                </Box>
-
-                <Box
-                    display={{ base: show ? 'block' : 'inline', sm: 'flex' }}
-                    w={{ base: 'full', md: 'auto' }}
-                    mt={{ base: show ? 4 : 0, md: 0 }}
+                <Flex
                     textAlign={{ base: 'center', md: 'inherit' }}
                     alignItems="center"
                     justifyContent="center"
                     flexGrow={1}
                     transition="all 0.2s ease-in">
                     <Box
-                        display={{ base: show ? 'flex' : 'none', md: 'block' }}
-                        minW={{ base: 'full', sm: 'auto', md: 'auto' }}
-                        alignItems={{ base: 'center', md: 'left' }}
-                        justifyContent={{ base: 'center', md: 'flex-start' }}
-                        transition="all 0.2s ease-in"
+                        display={{ base: 'none', md: 'block' }}
+                        minW="auto"
+                        alignItems="left"
+                        justifyContent="flex-start"
                         flexWrap="wrap"
                         flexGrow={1}>
                         <MenuItems>
@@ -79,23 +53,32 @@ const Header = ({ siteTitle }) => {
                                 Shop
                             </Link>
                         </MenuItems>
-                        <MenuItems>Examples</MenuItems>
                     </Box>
-
-                    <Box
-                        display={{ base: show ? 'flex' : 'none', md: 'flex' }}
-                        width={{ base: 'full', sm: 'auto', md: 'auto' }}
-                        mt={{ base: 4, sm: 0 }}
-                        transition="all 0.3s ease-out">
-                        <HStack spacing="1">
-                            <NavThemeToggle />
-                            <Spacer />
-                            <NavLogin />
-                            <Spacer />
-                            <NavCart />
-                        </HStack>
+                </Flex>
+                <HStack spacing="1">
+                    <Box display={{ base: 'none', sm: 'block' }}>
+                        <NavThemeToggle />
                     </Box>
-                </Box>
+                    <NavLogin />
+                    <NavCart />
+                    <Box display={{ base: 'block', md: 'none' }}>
+                        <NavBurgerMenu handleClick={onOpen} />
+                        <NavDrawer
+                            isOpen={isOpen}
+                            onClose={onClose}
+                            body={
+                                <VStack>
+                                    <Link as={Button} href="/blog" alt="go to blog page">
+                                        Blog
+                                    </Link>
+                                    <Link href="/shop" alt="go to shop page">
+                                        Shop
+                                    </Link>
+                                </VStack>
+                            }
+                            footer={<NavThemeToggle compact={false} />}></NavDrawer>
+                    </Box>
+                </HStack>
             </Flex>
         </Flex>
     );
