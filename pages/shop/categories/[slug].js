@@ -47,7 +47,7 @@ export default function CategoryPage() {
                         { text: 'category.slug', link: '', alt: '', isCurrentPage: true }
                     ]}
                 />
-                <Heading size="xl" mb={4} pr="20%">
+                <Heading size="xl" pr="20%">
                     category.slug
                 </Heading>
             </Container>

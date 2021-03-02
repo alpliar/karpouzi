@@ -42,7 +42,7 @@ export default function CartPage() {
                         { text: 'Cart', link: '', alt: '', isCurrentPage: true }
                     ]}
                 />
-                <Heading size="xl" mb={4} pr="20%">
+                <Heading size="xl" pr="20%">
                     My cart
                 </Heading>
             </Container>
