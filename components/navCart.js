@@ -30,7 +30,7 @@ const NavCart = ({ cartCount }) => {
                     top="-1"
                     right="-1"
                     height="1.5em"
-                    width="1.5em"
+                    width={cartCount > 10 ? '2em' : '1.5em'}
                     textAlign="center"
                     variant="solid">
                     {cartCount}
