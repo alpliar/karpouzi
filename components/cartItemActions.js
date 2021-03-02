@@ -4,9 +4,12 @@ import { HStack, Icon, IconButton } from '@chakra-ui/react';
 import QuantitySelector from './quantitySelector';
 import { useDispatch } from 'react-redux';
 import { REMOVE_FROM_CART, UPDATE_QUANTITY_CART } from '../actions/shop';
+import PopoverConfirm from './popoverConfirm';
+import { useState } from 'react';
 
 const CartItemActions = ({ slug, quantity }) => {
     const dispatch = useDispatch();
+    const [isOpenConfirmRemove, setisOpenConfirmRemove] = useState(false);
 
     const handleQuantityUpdate = (newQuantity) => {
         newQuantity > 0
@@ -18,6 +21,10 @@ const CartItemActions = ({ slug, quantity }) => {
         dispatch({ type: REMOVE_FROM_CART, slug });
     };
 
+    const handleCancel = () => {
+        setisOpenConfirmRemove(false);
+    };
+
     return (
         <HStack spacing={2}>
             <QuantitySelector
@@ -25,12 +32,21 @@ const CartItemActions = ({ slug, quantity }) => {
                 minQuantity={0}
                 handleChange={handleQuantityUpdate}
             />
-            <IconButton
-                aria-label="Remove from cart"
-                size="xs"
-                icon={<Icon as={DeleteIcon} />}
-                colorScheme="teal"
-                onClick={handleRemove}
+            <PopoverConfirm
+                isOpen={isOpenConfirmRemove}
+                onConfirm={handleRemove}
+                onClose={handleCancel}
+                trigger={
+                    <IconButton
+                        aria-label="Remove from cart"
+                        size="xs"
+                        icon={<Icon as={DeleteIcon} />}
+                        colorScheme="teal"
+                        onClick={() => {
+                            setisOpenConfirmRemove(!isOpenConfirmRemove);
+                        }}
+                    />
+                }
             />
         </HStack>
     );
