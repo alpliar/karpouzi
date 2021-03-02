@@ -1,4 +1,4 @@
-import { Avatar, Badge, Box, Flex, LinkBox, LinkOverlay, Text } from '@chakra-ui/react';
+import { Avatar, Badge, Box, Flex, LinkBox, LinkOverlay, Stack, Text } from '@chakra-ui/react';
 import Link from 'next/link';
 import PropTypes from 'prop-types';
 import CartItemActions from './cartItemActions';
@@ -10,32 +10,30 @@ const CartItem = ({
 }) => {
     const slug = title;
     return (
-        <Flex>
-            <LinkBox as={Flex}>
-                <Avatar src={picture} name={title} />
-                <Box flexGrow={1} ml="3">
-                    <Text fontWeight="bold">
-                        <Link
-                            href={{
-                                pathname: '/shop/product/[slug]',
-                                query: { slug }
-                            }}
-                            passHref>
-                            <LinkOverlay>{title}</LinkOverlay>
-                        </Link>
-                    </Text>
-                    <Text fontSize="sm">
-                        <Badge ml="1" colorScheme="green">
-                            New
-                        </Badge>
-                        product
-                    </Text>
-                </Box>
-            </LinkBox>
-            <Box ml="3">
-                <CartItemActions quantity={quantity} />
-            </Box>
-        </Flex>
+        <LinkBox as={Flex} px={2}>
+            <Flex h="full" alignItems="center" alignContent="center">
+                <Avatar src={picture} name={title} size="lg" />
+            </Flex>
+            <Stack ml="3" spacing="1" w={{ base: 'full' }}>
+                <Text fontWeight="bold">
+                    <Link
+                        href={{
+                            pathname: '/shop/product/[slug]',
+                            query: { slug }
+                        }}
+                        passHref>
+                        <LinkOverlay>{title}</LinkOverlay>
+                    </Link>
+                </Text>
+                <Text fontSize="sm">
+                    <Badge colorScheme="teal">New</Badge>
+                    product
+                </Text>
+                <Flex justify="flex-end">
+                    <CartItemActions slug={slug} quantity={quantity} />
+                </Flex>
+            </Stack>
+        </LinkBox>
     );
 };
 

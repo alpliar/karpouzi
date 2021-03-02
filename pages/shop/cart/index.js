@@ -49,7 +49,7 @@ export default function CartPage() {
 
             <Divider w="100%" />
 
-            <Container p={4} maxW="4xl">
+            <Container py={4} px={{ base: 0, md: 4 }} maxW="4xl">
                 {cart.length > 0 && (
                     <SimpleGrid
                         minChildWidth={{ base: 'full', sm: '230px' }}
