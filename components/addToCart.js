@@ -9,7 +9,7 @@ const AddToCart = ({ slug, quantity = 1 }) => {
     const toast = useToast();
 
     const handleClick = () => {
-        dispatch({ type: ADD_TO_CART, payload: slug });
+        dispatch({ type: ADD_TO_CART, payload: { slug, quantity } });
         toast({
             title: `Item added to cart`,
             description: `${slug}`,

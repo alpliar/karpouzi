@@ -55,8 +55,12 @@ export default function CartPage() {
                         minChildWidth={{ base: 'full', sm: '230px' }}
                         spacingX="0.5em"
                         spacingY="1em">
-                        {cart.map((slug, index) => (
-                            <CartItem key={`${slug}-${index}`} title={slug} />
+                        {cart.map((item, index) => (
+                            <CartItem
+                                key={`${item.slug}-${index}`}
+                                title={item.slug}
+                                quantity={item.quantity}
+                            />
                         ))}
                     </SimpleGrid>
                 )}

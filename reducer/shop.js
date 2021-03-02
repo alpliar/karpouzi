@@ -13,7 +13,7 @@ const reducer = (state = initialState, action) => {
         case SET_PRODUCTS_DATA:
             return { ...state, productsData: action.payload };
         case ADD_TO_CART:
-            return { ...state, cart: [action.payload, ...state.cart] };
+            return { ...state, cart: [{ ...action.payload }, ...state.cart] };
         default:
             return state;
     }

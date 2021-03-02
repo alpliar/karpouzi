@@ -5,7 +5,8 @@ import CartItemActions from './cartItemActions';
 
 const CartItem = ({
     title,
-    picture = `https://fakeimg.pl/150x150/282828/eae0d0/?retina=1&text=${title}`
+    picture = `https://fakeimg.pl/150x150/282828/eae0d0/?retina=1&text=${title}`,
+    quantity
 }) => {
     const slug = title;
     return (
@@ -32,7 +33,7 @@ const CartItem = ({
                 </Box>
             </LinkBox>
             <Box ml="3">
-                <CartItemActions />
+                <CartItemActions quantity={quantity} />
             </Box>
         </Flex>
     );
@@ -42,5 +43,6 @@ export default CartItem;
 
 CartItem.propTypes = {
     title: PropTypes.string.isRequired,
-    picture: PropTypes.string
+    picture: PropTypes.string,
+    quantity: PropTypes.number.isRequired
 };
