@@ -1,6 +1,7 @@
 import { Avatar, Badge, Box, Flex, LinkBox, LinkOverlay, Text } from '@chakra-ui/react';
 import Link from 'next/link';
 import PropTypes from 'prop-types';
+import CartItemActions from './cartItemActions';
 
 const CartItem = ({
     title,
@@ -8,26 +9,32 @@ const CartItem = ({
 }) => {
     const slug = title;
     return (
-        <LinkBox as={Flex}>
-            <Avatar src={picture} name={title} />
+        <Flex>
+            <LinkBox as={Flex}>
+                <Avatar src={picture} name={title} />
+                <Box flexGrow={1} ml="3">
+                    <Text fontWeight="bold">
+                        <Link
+                            href={{
+                                pathname: '/shop/product/[slug]',
+                                query: { slug }
+                            }}
+                            passHref>
+                            <LinkOverlay>{title}</LinkOverlay>
+                        </Link>
+                    </Text>
+                    <Text fontSize="sm">
+                        <Badge ml="1" colorScheme="green">
+                            New
+                        </Badge>
+                        product
+                    </Text>
+                </Box>
+            </LinkBox>
             <Box ml="3">
-                <Text fontWeight="bold">
-                    <Link
-                        href={{
-                            pathname: '/shop/product/[slug]',
-                            query: { slug }
-                        }}
-                        passHref>
-                        <LinkOverlay>{title}</LinkOverlay>
-                    </Link>
-
-                    <Badge ml="1" colorScheme="green">
-                        New
-                    </Badge>
-                </Text>
-                <Text fontSize="sm">product</Text>
+                <CartItemActions />
             </Box>
-        </LinkBox>
+        </Flex>
     );
 };
 
