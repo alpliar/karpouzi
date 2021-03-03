@@ -1,4 +1,6 @@
-export const createToast = (
+import { createStandaloneToast } from '@chakra-ui/react';
+
+export const sendToast = (
     title,
     description,
     status = 'info',
@@ -6,12 +8,13 @@ export const createToast = (
     position = 'bottom-right',
     isClosable = true
 ) => {
-    return {
+    const toast = createStandaloneToast();
+    toast({
         title: title,
         description: description,
         status: status,
         position: position,
         duration: duration,
         isClosable: isClosable
-    };
+    });
 };

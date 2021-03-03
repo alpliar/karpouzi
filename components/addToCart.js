@@ -1,14 +1,12 @@
 import PropTypes from 'prop-types';
-import { Button, Icon, useToast } from '@chakra-ui/react';
+import { Button, Icon } from '@chakra-ui/react';
 import { FaShoppingCart } from 'react-icons/fa';
-import { createToast } from '../utils/uiToast';
+import { sendToast } from '../utils/uiToast';
 
 const AddToCart = ({ slug, quantity, cart, addToCart }) => {
-    const toast = useToast();
-
     const handleClick = () => {
         addToCart(slug, quantity, cart);
-        toast(createToast('Item added to cart', slug, 'success'));
+        sendToast('Item added to cart', slug, 'success');
     };
 
     return (
