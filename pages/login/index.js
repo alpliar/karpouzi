@@ -22,13 +22,7 @@ const LoginPage = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
         toast(
-            createToast(
-                'Account created.',
-                "We've created your account for you.",
-                'success',
-                undefined,
-                5000
-            )
+            createToast('Account created.', "We've created your account for you.", 'success', 5000)
         );
     };
 

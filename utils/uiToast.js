@@ -2,8 +2,8 @@ export const createToast = (
     title,
     description,
     status = 'info',
-    position = 'bottom-right',
     duration = 1500,
+    position = 'bottom-right',
     isClosable = true
 ) => {
     return {
