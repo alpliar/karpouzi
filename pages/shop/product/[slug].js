@@ -9,7 +9,7 @@ import Breadcrumb from '../../../components/breadcrumb';
 
 import { BellIcon } from '@chakra-ui/icons';
 import Rating from '../../../components/rating';
-import AddToCart from '../../../components/addToCart';
+import AddToCart from '../../../container/addToCart';
 
 export async function getStaticProps({ params }) {
     const productData = await getProductData(params.slug);
@@ -90,7 +90,7 @@ export default function ProductPage({
                             {price}
                         </Text>
 
-                        <AddToCart slug={slug} />
+                        <AddToCart slug={slug} quantity={1} />
                     </Box>
                 </SimpleGrid>
                 <Box width="full" padding="1em">

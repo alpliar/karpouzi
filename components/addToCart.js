@@ -1,21 +1,21 @@
 import PropTypes from 'prop-types';
 import { Button, Icon, useToast } from '@chakra-ui/react';
-import { useDispatch } from 'react-redux';
-import { ADD_TO_CART } from '../actions/shop';
+// import { useDispatch } from 'react-redux';
+// import { ADD_TO_CART } from '../actions/shop';
 import { FaShoppingCart } from 'react-icons/fa';
 
-const AddToCart = ({ slug, quantity = 1 }) => {
-    const dispatch = useDispatch();
+const AddToCart = ({ slug, quantity, cart, addToCart }) => {
+    // const dispatch = useDispatch();
     const toast = useToast();
 
     const handleClick = () => {
-        dispatch({ type: ADD_TO_CART, slug, quantity });
+        addToCart(slug, quantity, cart);
         toast({
             title: `Item added to cart`,
             description: `${slug}`,
             status: 'success',
             position: 'bottom-right',
-            duration: 2000,
+            duration: 1500,
             isClosable: true
         });
     };
@@ -31,5 +31,7 @@ export default AddToCart;
 
 AddToCart.propTypes = {
     slug: PropTypes.string.isRequired,
-    quantity: PropTypes.number
+    quantity: PropTypes.number,
+    addToCart: PropTypes.func.isRequired,
+    cart: PropTypes.array.isRequired
 };

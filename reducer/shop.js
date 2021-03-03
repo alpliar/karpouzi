@@ -5,6 +5,9 @@ import {
     UPDATE_QUANTITY_CART
 } from '../actions/shop';
 import { HYDRATE } from 'next-redux-wrapper';
+// import { useDispatch } from 'react-redux';
+
+// const dispatch = useDispatch();
 
 const initialState = {
     cart: [],
@@ -17,8 +20,12 @@ const reducer = (state = initialState, action) => {
             return { ...state, ...action.payload.shop };
         case SET_PRODUCTS_DATA:
             return { ...state, productsData: action.payload };
-        case ADD_TO_CART:
-            return { ...state, cart: [{ slug: action.slug, quantity: action.quantity }, ...state.cart] };
+        case ADD_TO_CART: {
+            return {
+                ...state,
+                cart: [{ slug: action.slug, quantity: action.quantity }, ...state.cart]
+            };
+        }
         case REMOVE_FROM_CART:
             return { ...state, cart: [...state.cart.filter((item) => item.slug !== action.slug)] };
         case UPDATE_QUANTITY_CART:
