@@ -46,7 +46,7 @@ export default PopoverConfirm;
 PopoverConfirm.defaultProps = {
     title: 'Confirmation',
     body: 'Are you sure you want to continue with your action?',
-    placement: 'left'
+    placement: 'top'
 };
 
 PopoverConfirm.propTypes = {

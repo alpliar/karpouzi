@@ -9,7 +9,7 @@ import { useState } from 'react';
 
 const CartItemActions = ({ slug, quantity }) => {
     const dispatch = useDispatch();
-    const [isOpenConfirmRemove, setisOpenConfirmRemove] = useState(false);
+    const [isOpenConfirmRemove, setIsOpenConfirmRemove] = useState(false);
 
     const handleQuantityUpdate = (newQuantity) => {
         console.log(newQuantity);
@@ -23,15 +23,12 @@ const CartItemActions = ({ slug, quantity }) => {
     };
 
     const handleCancel = () => {
-        setisOpenConfirmRemove(false);
+        setIsOpenConfirmRemove(false);
     };
 
     return (
         <HStack spacing={2}>
-            <QuantitySelector
-                quantity={quantity}
-                handleChange={handleQuantityUpdate}
-            />
+            <QuantitySelector quantity={quantity} handleChange={handleQuantityUpdate} />
             <PopoverConfirm
                 isOpen={isOpenConfirmRemove}
                 onConfirm={handleRemove}
@@ -43,7 +40,7 @@ const CartItemActions = ({ slug, quantity }) => {
                         icon={<Icon as={DeleteIcon} />}
                         colorScheme="teal"
                         onClick={() => {
-                            setisOpenConfirmRemove(!isOpenConfirmRemove);
+                            setIsOpenConfirmRemove(!isOpenConfirmRemove);
                         }}
                     />
                 }
