@@ -64,7 +64,7 @@ export default function ProductPage({
                         { text: slug, link: '', alt: '', isCurrentPage: true }
                     ]}
                 />
-                <Heading size="xl" mb={4} pr="20%">
+                <Heading size="xl" mb={4} pr={{ base: 0, md: '20%' }}>
                     {title}{' '}
                     {isNew && (
                         <Badge>
