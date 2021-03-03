@@ -76,7 +76,7 @@ export default function ProductPage({
 
             <Divider w="100%" />
 
-            <Container p={4} maxW="4xl">
+            <Container p={{ base: 0, md: 4 }} maxW="4xl">
                 <SimpleGrid columns={{ base: 1, md: 2 }} spacing="1em">
                     <Box bg="#282828" width="full">
                         <Img src={imageUrl} alt={`picture of ${title}`} width="full" />
@@ -93,7 +93,7 @@ export default function ProductPage({
                         <AddToCart slug={slug} quantity={1} />
                     </Box>
                 </SimpleGrid>
-                <Box width="full" padding="1em">
+                <Box p={4} width="full" padding="1em">
                     <Box dangerouslySetInnerHTML={{ __html: contentHtml }} />
                 </Box>
             </Container>
