@@ -10,7 +10,11 @@ const AddToCart = ({ slug, quantity, inCart, cart, addToCart }) => {
     };
 
     return (
-        <Tooltip hasArrow label={`Already ${inCart} in cart !`} placement="right" isOpen>
+        <Tooltip
+            hasArrow
+            label={`Already ${inCart} in cart !`}
+            placement="right"
+            isOpen={inCart > 0}>
             <Button leftIcon={<Icon as={FaShoppingCart} />} onClick={handleClick}>
                 Add to cart
             </Button>
