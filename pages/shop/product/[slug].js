@@ -76,8 +76,8 @@ export default function ProductPage({
 
             <Divider w="100%" />
 
-            <Container p={{ base: 0, md: 4 }} maxW="4xl">
-                <SimpleGrid columns={{ base: 1, md: 2 }} spacing="1em">
+            <Container p={{ base: 0, sm: 4 }} maxW="4xl">
+                <SimpleGrid columns={{ base: 1, sm: 2 }} spacing="1em">
                     <Box bg="#282828" width="full">
                         <Img src={imageUrl} alt={`picture of ${title}`} width="full" />
                     </Box>
