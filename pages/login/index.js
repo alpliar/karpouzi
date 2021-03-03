@@ -1,29 +1,24 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import Layout from '../../components/layout';
-import Link from '../../components/link';
 import {
-    Button,
     Box,
+    Button,
+    Container,
     FormControl,
     FormHelperText,
     FormLabel,
     Heading,
     Input,
-    Container,
     Stack,
-    useToast,
     Text
 } from '@chakra-ui/react';
-import { createToast } from '../../utils/uiToast';
+import Layout from '../../components/layout';
+import Link from '../../components/link';
+import { sendToast } from '../../utils/uiToast';
 
 const LoginPage = () => {
-    const toast = useToast();
-
     const handleSubmit = (event) => {
         event.preventDefault();
-        toast(
-            createToast('Account created.', "We've created your account for you.", 'success', 5000)
-        );
+        sendToast('Account created.', "We've created your account for you.", 'success', 5000);
     };
 
     return (
