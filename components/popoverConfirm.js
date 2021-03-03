@@ -31,7 +31,7 @@ const PopoverConfirm = ({ isOpen, trigger, title, body, placement, onClose, onCo
                         <Button variant="outline" onClick={onClose}>
                             Cancel
                         </Button>
-                        <Button variantColor="red" onClick={onConfirm}>
+                        <Button colorScheme="red" onClick={onConfirm}>
                             Apply
                         </Button>
                     </ButtonGroup>

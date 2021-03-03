@@ -18,7 +18,7 @@ const reducer = (state = initialState, action) => {
         case SET_PRODUCTS_DATA:
             return { ...state, productsData: action.payload };
         case ADD_TO_CART:
-            return { ...state, cart: [{ ...action.payload }, ...state.cart] };
+            return { ...state, cart: [{ slug: action.slug, quantity: action.quantity }, ...state.cart] };
         case REMOVE_FROM_CART:
             return { ...state, cart: [...state.cart.filter((item) => item.slug !== action.slug)] };
         case UPDATE_QUANTITY_CART:

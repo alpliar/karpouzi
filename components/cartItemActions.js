@@ -12,8 +12,9 @@ const CartItemActions = ({ slug, quantity }) => {
     const [isOpenConfirmRemove, setisOpenConfirmRemove] = useState(false);
 
     const handleQuantityUpdate = (newQuantity) => {
+        console.log(newQuantity);
         newQuantity > 0
-            ? dispatch({ type: UPDATE_QUANTITY_CART, slug, quantity: newQuantity })
+            ? dispatch({ type: UPDATE_QUANTITY_CART, slug: slug, newQuantity: newQuantity })
             : handleRemove();
     };
 
@@ -29,7 +30,6 @@ const CartItemActions = ({ slug, quantity }) => {
         <HStack spacing={2}>
             <QuantitySelector
                 quantity={quantity}
-                minQuantity={0}
                 handleChange={handleQuantityUpdate}
             />
             <PopoverConfirm
@@ -47,6 +47,7 @@ const CartItemActions = ({ slug, quantity }) => {
                         }}
                     />
                 }
+                body={`Remove ${slug} from cart ?`}
             />
         </HStack>
     );

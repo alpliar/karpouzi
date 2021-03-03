@@ -1,28 +1,30 @@
 import { AddIcon, MinusIcon } from '@chakra-ui/icons';
 import { HStack, Icon, IconButton, Input } from '@chakra-ui/react';
 import PropTypes from 'prop-types';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const QuantitySelector = ({ quantity, minQuantity, maxQuantity, handleChange }) => {
-    const [currentQuantity, setCurrentQuantity] = useState(quantity);
-
-    const disableReduceQuantity = currentQuantity === minQuantity;
-    const disableIncreaseQuantity = currentQuantity === maxQuantity;
+    
+    const disableReduceQuantity = quantity == minQuantity;
+    const disableIncreaseQuantity = quantity == maxQuantity;
 
     const buttonsSize = 'xs';
 
     const handleReduceQuantity = () => {
-        if (currentQuantity > minQuantity) {
-            setCurrentQuantity(currentQuantity - 1);
-            quantity -= 1;
-            handleChange(quantity);
-        }
+        const newQuantity = quantity - 1;
+        handleChange(newQuantity);
     };
     const handleIncreaseQuantity = () => {
-        if (currentQuantity < maxQuantity) {
-            setCurrentQuantity(currentQuantity + 1);
-            quantity += 1;
-            handleChange(quantity);
+        const newQuantity = quantity + 1;
+        handleChange(newQuantity);
+    };
+
+    const handleInputChange = (event) => {
+        const newQuantity = parseInt(event.target.value);
+        if (newQuantity && !(newQuantity > maxQuantity || newQuantity < minQuantity)) {
+            handleChange(newQuantity);
+        } else {
+            event.preventDefault();
         }
     };
 
@@ -44,6 +46,7 @@ const QuantitySelector = ({ quantity, minQuantity, maxQuantity, handleChange }) 
                 w="auto"
                 maxW="3em"
                 textAlign="center"
+                onChange={handleInputChange}
             />
             <IconButton
                 aria-label="Increase quantity"
@@ -60,7 +63,6 @@ const QuantitySelector = ({ quantity, minQuantity, maxQuantity, handleChange }) 
 export default QuantitySelector;
 
 QuantitySelector.defaultProps = {
-    quantity: 1,
     minQuantity: 1,
     maxQuantity: 99
 };
