@@ -14,18 +14,22 @@ import {
     useToast,
     Text
 } from '@chakra-ui/react';
+import { createToast } from '../../utils/uiToast';
 
 const LoginPage = () => {
     const toast = useToast();
+
     const handleSubmit = (event) => {
         event.preventDefault();
-        toast({
-            title: 'Account created.',
-            description: "We've created your account for you.",
-            status: 'success',
-            duration: 9000,
-            isClosable: true
-        });
+        toast(
+            createToast(
+                'Account created.',
+                "We've created your account for you.",
+                'success',
+                undefined,
+                5000
+            )
+        );
     };
 
     return (
