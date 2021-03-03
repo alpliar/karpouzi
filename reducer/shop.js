@@ -5,9 +5,6 @@ import {
     UPDATE_QUANTITY_CART
 } from '../actions/shop';
 import { HYDRATE } from 'next-redux-wrapper';
-// import { useDispatch } from 'react-redux';
-
-// const dispatch = useDispatch();
 
 const initialState = {
     cart: [],
