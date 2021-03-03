@@ -12,7 +12,6 @@ const CartItemActions = ({ slug, quantity }) => {
     const [isOpenConfirmRemove, setIsOpenConfirmRemove] = useState(false);
 
     const handleQuantityUpdate = (newQuantity) => {
-        console.log(newQuantity);
         newQuantity > 0
             ? dispatch({ type: UPDATE_QUANTITY_CART, slug: slug, newQuantity: newQuantity })
             : handleRemove();
