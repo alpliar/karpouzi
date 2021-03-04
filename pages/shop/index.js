@@ -38,7 +38,7 @@ export default function ShopPage({ categories }) {
                             <Box key={category.slug}>
                                 <Heading as="h2" size="lg">
                                     <Link
-                                        href={`/shop/categories/${category.slug}`}
+                                        href={`/shop/category/${category.slug}`}
                                         alt={`go to ${category.slug} category`}>
                                         {category.slug}
                                     </Link>

@@ -4,7 +4,7 @@ import Head from 'next/head';
 import Layout from '../../../components/layout';
 import { getAllProductIds, getProductData } from '../../../lib/products';
 
-import { Badge, Container, Divider, Heading, Img, SimpleGrid, Text, Box } from '@chakra-ui/react';
+import { Badge, Container, Divider, Heading, Img, SimpleGrid, Text, Box, Stack, Image, useColorModeValue, Center } from '@chakra-ui/react';
 import Breadcrumb from '../../../components/breadcrumb';
 
 import { BellIcon } from '@chakra-ui/icons';
@@ -57,7 +57,7 @@ export default function ProductPage({
                         },
                         {
                             text: 'category',
-                            link: '/shop/categories/fruits',
+                            link: '/shop/category/fruits',
                             alt: 'go to fruits category',
                             isCurrentPage: false
                         },
