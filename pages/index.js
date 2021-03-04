@@ -25,6 +25,7 @@ import {
 } from '@chakra-ui/react';
 import CallToActionWithAnnotation from '../components/callToActionWithAnnotation';
 import { useRouter } from 'next/dist/client/router';
+import CallToActionNewsletter from '../components/callToActionNewsletter';
 
 export default function Home() {
     // const [showModal, setShowModal] = useState(false);
@@ -82,6 +83,10 @@ export default function Home() {
             </Container>
 
             <Divider />
+
+            <Container p={4}>
+                <CallToActionNewsletter />
+            </Container>
         </Layout>
     );
 }
