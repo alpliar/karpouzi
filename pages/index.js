@@ -20,91 +20,68 @@ import {
     Tr,
     Td,
     Th,
-    Thead
+    Thead,
+    Text
 } from '@chakra-ui/react';
+import CallToActionWithAnnotation from '../components/callToActionWithAnnotation';
+import { useRouter } from 'next/dist/client/router';
 
-const Stats = (
-    <StatGroup textAlign="center">
-        <Stat>
-            <StatLabel>Sent</StatLabel>
-            <StatNumber>345,670</StatNumber>
-            <StatHelpText>
-                <StatArrow type="increase" />
-                23.36%
-            </StatHelpText>
-        </Stat>
-
-        <Stat>
-            <StatLabel>Clicked</StatLabel>
-            <StatNumber>45</StatNumber>
-            <StatHelpText>
-                <StatArrow type="decrease" />
-                9.05%
-            </StatHelpText>
-        </Stat>
-    </StatGroup>
-);
-const TableStat = (
-    <Table variant="striped">
-        <TableCaption>Imperial to metric conversion factors</TableCaption>
-        <Thead>
-            <Tr>
-                <Th>To convert</Th>
-                <Th>into</Th>
-                <Th isNumeric>multiply by</Th>
-            </Tr>
-        </Thead>
-        <Tbody>
-            <Tr>
-                <Td>inches</Td>
-                <Td>millimetres (mm)</Td>
-                <Td isNumeric>25.4</Td>
-            </Tr>
-            <Tr>
-                <Td>feet</Td>
-                <Td>centimetres (cm)</Td>
-                <Td isNumeric>30.48</Td>
-            </Tr>
-            <Tr>
-                <Td>yards</Td>
-                <Td>metres (m)</Td>
-                <Td isNumeric>0.91444</Td>
-            </Tr>
-        </Tbody>
-        <Tfoot>
-            <Tr>
-                <Th>To convert</Th>
-                <Th>into</Th>
-                <Th isNumeric>multiply by</Th>
-            </Tr>
-        </Tfoot>
-    </Table>
-);
 export default function Home() {
     // const [showModal, setShowModal] = useState(false);
+    const router = useRouter();
+
+    const handleVisitShop = () => {
+        router.push('/shop');
+    };
+
+    const handleKnowMore = () => {
+        router.push('/');
+    };
 
     return (
         <Layout home={true}>
             <Head>
                 <title>{siteTitle}</title>
             </Head>
-            <Container p={4} maxW="4xl">
+            {/* <Container p={4} maxW="4xl">
                 <Box>
                     <Heading>Hi, welcome !</Heading>
                 </Box>
             </Container>
 
-            <Divider />
+            <Divider /> */}
 
             <Container p={4} maxW="4xl">
-                {Stats}
+                <CallToActionWithAnnotation
+                    title={
+                        <>
+                            Welcome to <br />
+                            <Text as={'span'} color={'green.400'}>
+                                Karpouzi
+                            </Text>
+                        </>
+                    }
+                    description={
+                        <>
+                            <br />
+                            🍇🍈🍉🍊🍋🍌🍍🥭
+                            <br />
+                            🍎🍏🍐🍑🍒🍓
+                            <Box p={2}>Fresh fruits and vegetables for your mind and body...</Box>
+                            🥝🍅🥥🥑🍆🥔🥕🌽
+                            <br />
+                            🌶️🥒🥬🥦🧄🧅🍄🥜🌰
+                        </>
+                    }
+                    primaryActionLabel="Discover our shop"
+                    secondaryActionLabel="Learn more"
+                    handlePrimaryAction={handleVisitShop}
+                    handleSecondaryAction={handleKnowMore}
+                    primaryActionAnnotation="Pretty good deals !"
+                />
             </Container>
 
             <Divider />
-
-            <Container p={4} maxW="4xl">
-                {TableStat}
-            </Container>
         </Layout>
     );
 }
