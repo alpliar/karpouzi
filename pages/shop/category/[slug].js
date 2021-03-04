@@ -54,7 +54,7 @@ export default function CategoryPage() {
 
             <Divider w="100%" />
 
-            <Container p={4} maxW="4xl">
+            <Container py={4} px={{ base: 0, sm: 4 }} maxW="4xl">
                 <SimpleGrid
                     minChildWidth={{ base: 'full', sm: '230px' }}
                     spacingX="0.5em"
