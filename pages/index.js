@@ -68,7 +68,9 @@ export default function Home() {
                             🍇🍈🍉🍊🍋🍌🍍🥭
                             <br />
                             🍎🍏🍐🍑🍒🍓
-                            <Box p={2}>Fresh fruits and vegetables for your mind and body...</Box>
+                            <Box as="span" p={2}>
+                                Fresh fruits and vegetables for your mind and body...
+                            </Box>
                             🥝🍅🥥🥑🍆🥔🥕🌽
                             <br />
                             🌶️🥒🥬🥦🧄🧅🍄🥜🌰
