@@ -4,9 +4,9 @@ import BlogPostCard from './blogPostCard';
 
 const LatestsPosts = ({ posts }) => {
     return (
-        <SimpleGrid columns={{ base: 1, md: 2, xl: 3 }} spacing={5}>
+        <SimpleGrid columns={{ base: 1, md: 2, xl: 3 }} spacing={3}>
             {posts.map(({ id, date, title }) => (
-                <Box key={id}>
+                <Box p={0} key={id}>
                     {/* <Text as="time" fontSize="xs" dateTime={date}>
                         {date}
                     </Text>

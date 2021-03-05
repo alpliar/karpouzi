@@ -27,7 +27,7 @@ export default function Home() {
 
             <Divider maxW="100%" />
 
-            <Container p={4} maxW="4xl">
+            <Container p={{ base: 0, sm: 4 }} maxW="4xl">
                 <LatestsPosts posts={postsData} />
             </Container>
         </Layout>
