@@ -14,7 +14,7 @@ import Link from 'next/link';
 import PropTypes from 'prop-types';
 import karpouziAvatar from '../public/icon-48x48.png';
 
-const BlogPostCard = ({ title, date, slug }) => {
+const BlogPostCard = ({ title, date, slug, author, authorAvatar }) => {
     return (
         <LinkBox>
             <Center py={6}>
@@ -61,9 +61,9 @@ const BlogPostCard = ({ title, date, slug }) => {
                         </Text>
                     </Stack>
                     <Stack mt={6} direction={'row'} spacing={4} align={'center'}>
-                        <Avatar src={karpouziAvatar} alt={'Author'} />
+                        <Avatar src={authorAvatar} alt={'Author'} bg="blackAlpha.400" />
                         <Stack direction={'column'} spacing={0} fontSize={'sm'}>
-                            <Text fontWeight={600}>Karpouzi</Text>
+                            <Text fontWeight={600}>{author}</Text>
                             <Text color={'gray.500'}>{date} · 6min read</Text>
                         </Stack>
                     </Stack>
@@ -75,8 +75,15 @@ const BlogPostCard = ({ title, date, slug }) => {
 
 export default BlogPostCard;
 
+BlogPostCard.defaultProps = {
+    author: 'Karpouzi',
+    authorAvatar: karpouziAvatar
+};
+
 BlogPostCard.propTypes = {
     title: PropTypes.string.isRequired,
     date: PropTypes.string.isRequired,
-    slug: PropTypes.string.isRequired
+    slug: PropTypes.string.isRequired,
+    author: PropTypes.string,
+    authorAvatar: PropTypes.string
 };
