@@ -1,24 +1,23 @@
-import { List, ListIcon, ListItem, Text } from '@chakra-ui/react';
-import { ChevronRightIcon } from '@chakra-ui/icons';
-import Link from './link';
-
+import { Box, SimpleGrid } from '@chakra-ui/react';
 import PropTypes from 'prop-types';
+import BlogPostCard from './blogPostCard';
 
 const LatestsPosts = ({ posts }) => {
     return (
-        <List spacing={3}>
+        <SimpleGrid columns={{ base: 1, md: 2, xl: 3 }} spacing={5}>
             {posts.map(({ id, date, title }) => (
-                <ListItem key={id}>
-                    <Text as="time" fontSize="xs" dateTime={date}>
+                <Box key={id}>
+                    {/* <Text as="time" fontSize="xs" dateTime={date}>
                         {date}
                     </Text>
                     <ListIcon as={ChevronRightIcon} color="green.500" />
                     <Link href={`/blog/posts/${id}`} alt="read post">
                         <Text isTruncated>{title}</Text>
-                    </Link>
-                </ListItem>
+                    </Link> */}
+                    <BlogPostCard date={date} title={title} slug={id} />
+                </Box>
             ))}
-        </List>
+        </SimpleGrid>
     );
 };
 
