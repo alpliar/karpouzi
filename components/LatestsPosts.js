@@ -4,16 +4,9 @@ import BlogPostCard from './blogPostCard';
 
 const LatestsPosts = ({ posts }) => {
     return (
-        <SimpleGrid columns={{ base: 1, md: 2, xl: 3 }} spacing={3}>
+        <SimpleGrid minChildWidth={{ base: 'full', sm: '250px' }} spacingX="0.5em" spacingY="1em">
             {posts.map(({ id, date, title }) => (
                 <Box p={0} key={id}>
-                    {/* <Text as="time" fontSize="xs" dateTime={date}>
-                        {date}
-                    </Text>
-                    <ListIcon as={ChevronRightIcon} color="green.500" />
-                    <Link href={`/blog/posts/${id}`} alt="read post">
-                        <Text isTruncated>{title}</Text>
-                    </Link> */}
                     <BlogPostCard date={date} title={title} slug={id} />
                 </Box>
             ))}

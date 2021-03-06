@@ -2,9 +2,9 @@ import PropTypes from 'prop-types';
 import { Box, Img, LinkBox, LinkOverlay } from '@chakra-ui/react';
 import { BellIcon, TriangleDownIcon } from '@chakra-ui/icons';
 import ProductCardBadge from './productCardBadge';
-//import Link from '../components/link';
 import Link from 'next/link';
 import Rating from './rating';
+import Card from './card';
 
 const ProductCard = ({
     slug,
@@ -18,13 +18,18 @@ const ProductCard = ({
 }) => {
     return (
         <LinkBox>
-            <Box maxW="md" borderWidth="1px" borderRadius="lg" overflow="hidden">
-                <Box bg="#282828" position="relative">
+            <Card>
+                <Box
+                    bg="#282828"
+                    position="relative"
+                    maxh={'210px'}
+                    mt={-6}
+                    mx={-6}
+                    mb={6}
+                    pos={'relative'}
+                    overflow="hidden">
                     <Img
                         objectFit="cover"
-                        htmlHeight="200px"
-                        htmlWidth="300px"
-                        w="100%"
                         fallback="https://picsum.photos/300/200"
                         src={imageUrl}
                         alt={imageAlt}
@@ -48,7 +53,7 @@ const ProductCard = ({
                     )}
                 </Box>
 
-                <Box p="6">
+                <Box>
                     {/* <Box d="flex" alignItems="baseline">
                     <Box
                         color="gray.800"
@@ -83,7 +88,7 @@ const ProductCard = ({
                         <Rating rate={rating} count={reviewCount} />
                     </Box>
                 </Box>
-            </Box>
+            </Card>
         </LinkBox>
     );
 };
