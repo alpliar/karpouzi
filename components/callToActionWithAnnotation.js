@@ -71,18 +71,28 @@ const CallToActionWithAnnotation = ({
                             <Icon
                                 as={Arrow}
                                 color={useColorModeValue('gray.800', 'gray.300')}
-                                w={71}
+                                stroke={{
+                                    base: useColorModeValue('gray.800', 'gray.300'),
+                                    sm: 'inherit'
+                                }}
+                                w={{ base: 50, sm: 71 }}
                                 position={'absolute'}
-                                right={-71}
+                                transition={'all ease-out .2s'}
+                                right={{ base: -50, sm: -71 }}
                                 top={'10px'}
+                                transform={{
+                                    base: 'scale(.5) rotate(-38deg) translate(-20px, -14px)',
+                                    sm: 'scale(1)'
+                                }}
                             />
                             <Text
                                 fontSize={'lg'}
                                 fontFamily={'Caveat'}
                                 position={'absolute'}
-                                right={'-125px'}
-                                top={'-15px'}
-                                transform={'rotate(10deg)'}>
+                                right={{ base: '-30px', sm: '-125px' }}
+                                top={{ base: '-25px', sm: '-15px' }}
+                                transition={'all ease-out .2s'}
+                                transform={{ base: 'rotate(5deg)', sm: 'rotate(10deg)' }}>
                                 {primaryActionAnnotation}
                             </Text>
                         </Box>
