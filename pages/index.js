@@ -36,7 +36,7 @@ export default function Home() {
     };
 
     const handleKnowMore = () => {
-        router.push('/');
+        router.push('/blog');
     };
 
     return (
@@ -64,16 +64,9 @@ export default function Home() {
                     }
                     description={
                         <>
-                            <br />
-                            🍇🍈🍉🍊🍋🍌🍍🥭
-                            <br />
-                            🍎🍏🍐🍑🍒🍓
-                            <Box as="span" p={2}>
+                            <Text as="span" p={2}>
                                 Fresh fruits and vegetables for your mind and body...
-                            </Box>
-                            🥝🍅🥥🥑🍆🥔🥕🌽
-                            <br />
-                            🌶️🥒🥬🥦🧄🧅🍄🥜🌰
+                            </Text>
                         </>
                     }
                     primaryActionLabel="Discover our shop"
