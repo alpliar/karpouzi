@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import Layout from '../../../components/layout';
+import Layout from '../../../components/pageLayout';
 import { Alert, AlertIcon, Container, Divider, Heading, SimpleGrid } from '@chakra-ui/react';
 import Breadcrumb from '../../../components/breadcrumb';
 // import { getSortedProductData } from '../../../lib/products';

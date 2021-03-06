@@ -1,13 +1,12 @@
-import PropTypes from 'prop-types';
+import { Container } from '@chakra-ui/react';
 import Head from 'next/head';
-import Link from '../components/link';
+import PropTypes from 'prop-types';
 import Header from './Header';
-import Footer from './Footer';
-import { Box, Container } from '@chakra-ui/react';
+import Footer from './pageFooter';
 
 export const siteTitle = `Karpouzi`;
 
-export default function Layout({ children, home = false }) {
+const PageLayout = ({ children }) => {
     return (
         <>
             <Head>
@@ -47,19 +46,14 @@ export default function Layout({ children, home = false }) {
                 {children}
             </Container>
 
-            {!home && (
-                <Box p={4} textAlign="center">
-                    <Link href="/" alt="go back to home">
-                        ← Back to home
-                    </Link>
-                </Box>
-            )}
             <Footer />
         </>
     );
-}
+};
 
-Layout.propTypes = {
+export default PageLayout;
+
+PageLayout.propTypes = {
     children: PropTypes.node.isRequired,
     home: PropTypes.bool
 };

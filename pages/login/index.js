@@ -11,7 +11,7 @@ import {
     Stack,
     Text
 } from '@chakra-ui/react';
-import Layout from '../../components/layout';
+import Layout from '../../components/pageLayout';
 import Link from '../../components/link';
 import { sendToast } from '../../utils/uiToast';
 

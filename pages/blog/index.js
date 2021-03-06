@@ -3,7 +3,7 @@ import Head from 'next/head';
 import { useSelector } from 'react-redux';
 import { SET_POSTS_DATA } from '../../actions/blog';
 import LatestsPosts from '../../components/LatestsPosts';
-import Layout, { siteTitle } from '../../components/layout';
+import Layout, { siteTitle } from '../../components/pageLayout';
 import { getSortedPostsData } from '../../lib/posts';
 import { wrapper } from '../../store';
 

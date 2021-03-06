@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import Layout, { siteTitle } from '../components/layout';
+import PageLayout, { siteTitle } from '../components/pageLayout';
 import { PropTypes } from 'prop-types';
 
 import {
@@ -40,7 +40,7 @@ export default function Home() {
     };
 
     return (
-        <Layout home={true}>
+        <PageLayout home={true}>
             <Head>
                 <title>{siteTitle}</title>
             </Head>
@@ -82,7 +82,7 @@ export default function Home() {
             <Container p={4}>
                 <CallToActionNewsletter />
             </Container>
-        </Layout>
+        </PageLayout>
     );
 }
 

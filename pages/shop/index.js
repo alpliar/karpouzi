@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import Head from 'next/head';
-import Layout, { siteTitle } from '../../components/layout';
+import Layout, { siteTitle } from '../../components/pageLayout';
 
 import { Box, Container, Divider, Heading, Text } from '@chakra-ui/react';
 import Link from '../../components/link';
