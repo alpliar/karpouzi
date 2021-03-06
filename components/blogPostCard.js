@@ -44,7 +44,7 @@ const BlogPostCard = ({ title, date, slug, author, authorAvatar }) => {
                     </Text>
                     <Heading
                         color={useColorModeValue('gray.700', 'white')}
-                        fontSize={'2xl'}
+                        fontSize={'xl'}
                         fontFamily={'body'}>
                         <Link
                             href={{
