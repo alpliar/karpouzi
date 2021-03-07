@@ -11,8 +11,8 @@ export async function getStaticProps() {
             slug: 'fruits',
             title: 'Fruits',
             description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
-            productsCount: 1,
-            products: [getRandomProduct()]
+            productsCount: 7,
+            products: [getRandomProduct(), getRandomProduct(), getRandomProduct(), getRandomProduct(), getRandomProduct(), getRandomProduct(), getRandomProduct()]
         },
         {
             slug: 'veggies',
