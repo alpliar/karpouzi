@@ -1,8 +1,7 @@
-import { Box, Heading, LinkBox, LinkOverlay, Stack, Text } from '@chakra-ui/react';
+import { Avatar, AvatarGroup, Heading, LinkBox, LinkOverlay, Stack, Text } from '@chakra-ui/react';
 import Link from 'next/link';
 import PropTypes from 'prop-types';
 import Card from './card';
-import ProductCardSmall from './productCardSmall';
 
 const CategoryCard = ({ slug, title, shortDescription, products, productsCount }) => {
     return (
@@ -21,23 +20,23 @@ const CategoryCard = ({ slug, title, shortDescription, products, productsCount }
                             ({productsCount} products)
                         </Text>
                     </Heading>
-                    {/* {productsCount > 0 && (
-                        <Box>
+                    {productsCount > 0 && (
+                        <AvatarGroup size="lg" max={3}>
                             {products.map((product, index) => (
-                                <ProductCardSmall
-                                    key={`${product.slug}-${index}`}
-                                    slug={product.slug}
-                                    title={product.title}
-                                    imageUrl={product.imageUrl}
-                                    imageAlt={`${product.title} picture`}
-                                    formattedPrice={product.price}
-                                    isNew={product.isNew}
-                                    reviewCount={product.reviewCount}
-                                    rating={product.rating}
-                                />
+                                <LinkBox cursor="pointer" key={`${index}-${product.slug}`}>
+                                    <Avatar src={product.image} name={product.title} />
+                                    <Link
+                                        href={{
+                                            pathname: '/shop/product/[slug]',
+                                            query: { slug: product.slug }
+                                        }}
+                                        passHref>
+                                        <LinkOverlay display="none">{product.title}</LinkOverlay>
+                                    </Link>
+                                </LinkBox>
                             ))}
-                        </Box>
-                    )} */}
+                        </AvatarGroup>
+                    )}
 
                     <Text noOfLines={2}>{shortDescription}</Text>
                 </Stack>
