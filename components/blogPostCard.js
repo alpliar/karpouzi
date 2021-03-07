@@ -1,9 +1,7 @@
 import {
     Avatar,
     Box,
-    Center,
     Heading,
-    Image,
     Img,
     LinkBox,
     LinkOverlay,
