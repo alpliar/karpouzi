@@ -42,7 +42,7 @@ const CallToActionWithAnnotation = ({
                         lineHeight={'110%'}>
                         {title}
                     </Heading>
-                    <Text color={'gray.500'}>{description}</Text>
+                    <Text color={useColorModeValue('gray.800', 'gray.300')}>{description}</Text>
                     <Stack
                         direction={'column'}
                         spacing={3}
