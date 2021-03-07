@@ -1,4 +1,13 @@
-import { Avatar, AvatarGroup, Heading, LinkBox, LinkOverlay, Stack, Text } from '@chakra-ui/react';
+import {
+    Avatar,
+    AvatarGroup,
+    Heading,
+    LinkBox,
+    LinkOverlay,
+    Stack,
+    Text,
+    useBreakpointValue
+} from '@chakra-ui/react';
 import Link from 'next/link';
 import PropTypes from 'prop-types';
 import Card from './card';
@@ -21,19 +30,17 @@ const CategoryCard = ({ slug, title, shortDescription, products, productsCount }
                         </Text>
                     </Heading>
                     {productsCount > 0 && (
-                        <AvatarGroup size="lg" max={3}>
+                        <AvatarGroup size="md" max={useBreakpointValue({ base: 3, md: 6, lg: 9 })}>
                             {products.map((product, index) => (
-                                <LinkBox cursor="pointer" key={`${index}-${product.slug}`}>
-                                    <Avatar src={product.image} name={product.title} />
-                                    <Link
-                                        href={{
-                                            pathname: '/shop/product/[slug]',
-                                            query: { slug: product.slug }
-                                        }}
-                                        passHref>
-                                        <LinkOverlay display="none">{product.title}</LinkOverlay>
-                                    </Link>
-                                </LinkBox>
+                                <Avatar
+                                    src={
+                                        index % 2 === 1
+                                            ? `https://images.unsplash.com/photo-1552914953-938eef0ce926?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=300&q=80`
+                                            : `https://images.unsplash.com/photo-1579523360587-1e2613000ee3?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80`
+                                    }
+                                    name={product.title}
+                                    key={`${index}-${product.slug}`}
+                                />
                             ))}
                         </AvatarGroup>
                     )}
