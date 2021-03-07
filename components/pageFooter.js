@@ -1,6 +1,6 @@
 import { Box, Container, LinkBox, LinkOverlay } from '@chakra-ui/react';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
-import Link from './link';
 
 const Footer = () => {
     const router = useRouter();
@@ -11,16 +11,12 @@ const Footer = () => {
             <hr />
             <Container as="footer" p={4} textAlign="center">
                 {!isHome && (
-                    <Box p={2} textAlign="center">
-                        <LinkBox cursor="pointer">
-                            Feeling lost ?{' '}
-                            <LinkOverlay>
-                                <Link href="/" alt="go back to home">
-                                    Go back to home
-                                </Link>
-                            </LinkOverlay>
-                        </LinkBox>
-                    </Box>
+                    <LinkBox cursor="pointer" as="span">
+                        Feeling lost ?{' '}
+                        <Link href="/" alt="go back to home">
+                            <LinkOverlay>Go back to home</LinkOverlay>
+                        </Link>
+                    </LinkBox>
                 )}
             </Container>
         </Box>
