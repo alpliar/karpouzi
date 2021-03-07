@@ -7,7 +7,7 @@ const Footer = () => {
     const isHome = router.pathname === '/';
 
     return (
-        <Box bgColor="blackAlpha.100">
+        <Box bgColor="blackAlpha.100" mt={8}>
             <hr />
             <Container as="footer" p={4} textAlign="center">
                 {!isHome && <BackToHome />}
