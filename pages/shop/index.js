@@ -1,14 +1,26 @@
-import PropTypes from 'prop-types';
+import { Container, Divider, Heading, SimpleGrid } from '@chakra-ui/react';
 import Head from 'next/head';
+import PropTypes from 'prop-types';
+import CategoryCard from '../../components/categoryCard';
 import Layout, { siteTitle } from '../../components/pageLayout';
-
-import { Box, Container, Divider, Heading, Text } from '@chakra-ui/react';
-import Link from '../../components/link';
+import { getRandomProduct } from '../api/products';
 
 export async function getStaticProps() {
     const categories = [
-        { slug: 'fruits', title: 'Fruits', productsCount: 10, products: [] },
-        { slug: 'veggies', title: 'Veggies', productsCount: 3, products: [] }
+        {
+            slug: 'fruits',
+            title: 'Fruits',
+            description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+            productsCount: 1,
+            products: [getRandomProduct()]
+        },
+        {
+            slug: 'veggies',
+            title: 'Veggies',
+            description: 'Ex dolorem non soluta sit reprehenderit! Natus vitae doloribus amet?',
+            productsCount: 3,
+            products: [getRandomProduct(), getRandomProduct(), getRandomProduct()]
+        }
     ];
 
     return {
@@ -32,27 +44,24 @@ export default function ShopPage({ categories }) {
             <Divider maxW="100%" />
 
             <Container p={4} maxW="4xl">
-                {categories &&
-                    categories.map((category) => {
-                        return (
-                            <Box key={category.slug}>
-                                <Heading as="h2" size="lg">
-                                    <Link
-                                        href={`/shop/category/${category.slug}`}
-                                        alt={`go to ${category.slug} category`}>
-                                        {category.slug}
-                                    </Link>
-                                </Heading>
-                                <Text size="sm"> ({category.productsCount} products)</Text>
-                                <Text>
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                    Aspernatur consectetur quod at amet cumque quaerat possimus
-                                    harum ducimus tenetur delectus. Ex dolorem non soluta sit
-                                    reprehenderit! Natus vitae doloribus amet?
-                                </Text>
-                            </Box>
-                        );
-                    })}
+                <SimpleGrid
+                    minChildWidth={{ base: 'full', sm: '250px' }}
+                    spacingX="0.5em"
+                    spacingY="1em">
+                    {categories &&
+                        categories.map((category) => {
+                            return (
+                                <CategoryCard
+                                    key={category.slug}
+                                    slug={category.slug}
+                                    title={category.title}
+                                    shortDescription={category.description}
+                                    products={category.products}
+                                    productsCount={category.productsCount}
+                                />
+                            );
+                        })}
+                </SimpleGrid>
             </Container>
         </Layout>
     );
