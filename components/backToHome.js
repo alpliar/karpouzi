@@ -3,11 +3,11 @@ import Link from 'next/link';
 
 const BackToHome = () => {
     return (
-        <LinkBox cursor="pointer" as="aside">
+        <LinkBox as="aside">
             <Text as="span" fontStyle="italic">
                 Feeling lost ?{' '}
             </Text>
-            <Link href="/" alt="go back to home">
+            <Link href="/" alt="go back to home" passHref>
                 <LinkOverlay>Go back to home</LinkOverlay>
             </Link>
         </LinkBox>
