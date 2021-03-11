@@ -26,10 +26,15 @@ import {
 import CallToActionWithAnnotation from '../components/callToActionWithAnnotation';
 import { useRouter } from 'next/dist/client/router';
 import CallToActionNewsletter from '../components/callToActionNewsletter';
+import { useIntl } from 'react-intl';
 
 export default function Home() {
     // const [showModal, setShowModal] = useState(false);
     const router = useRouter();
+    const { formatMessage } = useIntl();
+    const f = (id) => formatMessage({ id });
+
+    const { locale, locales, defaultLocale } = router;
 
     const handleVisitShop = () => {
         router.push('/shop');
@@ -56,9 +61,9 @@ export default function Home() {
                 <CallToActionWithAnnotation
                     title={
                         <>
-                            Welcome to <br />
+                            {f('welcomeMessage')} <br />
                             <Text as={'span'} color={'green.400'}>
-                                Karpouzi
+                                {f('welcomeMessagePart2')}
                             </Text>
                         </>
                     }

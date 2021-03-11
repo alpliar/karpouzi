@@ -12,6 +12,10 @@ module.exports = withImages(
         },
         images: {
             domains: ['fakeimg.pl', 'images.unsplash.com']
+        },
+        i18n: {
+            locales: ['en', 'fr', 'es'],
+            defaultLocale: 'en'
         }
     })
 );
