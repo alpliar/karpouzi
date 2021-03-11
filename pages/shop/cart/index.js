@@ -2,27 +2,11 @@ import Head from 'next/head';
 import Layout from '../../../components/pageLayout';
 import { Alert, AlertIcon, Container, Divider, Heading, SimpleGrid } from '@chakra-ui/react';
 import Breadcrumb from '../../../components/breadcrumb';
-// import { getSortedProductData } from '../../../lib/products';
-
-// import { wrapper } from '../../../reducer';
 import { useSelector } from 'react-redux';
 import CartItem from '../../../components/cartItem';
-// import { SET_PRODUCTS_DATA } from '../../../actions/shop';
-
-// export const getStaticProps = wrapper.getStaticProps(({ store }) => {
-//     const productsData = getSortedProductData();
-//     store.dispatch({ type: SET_PRODUCTS_DATA, payload: productsData });
-// });
-
-// export async function getStaticPaths() {
-//     return {
-//         paths: [{ params: { slug: 'fruits' } }, { params: { slug: 'veggies' } }],
-//         fallback: false
-//     };
-// }
 
 export default function CartPage() {
-    const { cart } = useSelector((state) => state.shop);
+    const { cart } = useSelector((state) => state.client);
 
     return (
         <Layout>

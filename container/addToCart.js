@@ -4,8 +4,8 @@ import AddToCart from '../components/addToCart';
 import { getQuantityInCartBySlug } from '../utils/shop';
 
 const mapStateToProps = (state, ownProps) => ({
-    cart: state.shop.cart,
-    inCart: getQuantityInCartBySlug(ownProps.slug, state.shop.cart),
+    cart: state.client.cart,
+    inCart: getQuantityInCartBySlug(ownProps.slug, state.client.cart),
     slug: ownProps.slug,
     quantity: ownProps.quantity
 });

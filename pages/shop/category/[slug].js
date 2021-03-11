@@ -15,8 +15,8 @@ import { useSelector } from 'react-redux';
 import { SET_PRODUCTS_DATA } from '../../../actions/shop';
 
 export const getStaticProps = wrapper.getStaticProps(({ store }) => {
-    const productsData = getSortedProductData();
-    store.dispatch({ type: SET_PRODUCTS_DATA, payload: productsData });
+    const products = getSortedProductData();
+    store.dispatch({ type: SET_PRODUCTS_DATA, products: products });
 });
 
 export async function getStaticPaths() {
@@ -27,7 +27,7 @@ export async function getStaticPaths() {
 }
 
 export default function CategoryPage() {
-    const { productsData } = useSelector((state) => state.shop);
+    const { products } = useSelector((state) => state.server);
 
     return (
         <Layout>
@@ -59,9 +59,9 @@ export default function CategoryPage() {
                     minChildWidth={{ base: 'full', sm: '230px' }}
                     spacingX="0.5em"
                     spacingY="1em">
-                    {productsData &&
-                        productsData.length &&
-                        productsData.map((product, index) => (
+                    {products &&
+                        products.length &&
+                        products.map((product, index) => (
                             <ProductCard
                                 key={`${product.slug}-${index}`}
                                 slug={product.slug}

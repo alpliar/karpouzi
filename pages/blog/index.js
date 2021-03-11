@@ -8,12 +8,12 @@ import { getSortedPostsData } from '../../lib/posts';
 import { wrapper } from '../../store';
 
 export const getStaticProps = wrapper.getStaticProps(({ store }) => {
-    const postsData = getSortedPostsData();
-    store.dispatch({ type: SET_POSTS_DATA, payload: postsData });
+    // const postsData = getSortedPostsData();
+    store.dispatch({ type: SET_POSTS_DATA, posts: getSortedPostsData() });
 });
 
 export default function Home() {
-    const { postsData } = useSelector((state) => state.blog);
+    const { posts } = useSelector((state) => state.server);
 
     return (
         <Layout>
@@ -28,7 +28,7 @@ export default function Home() {
             <Divider maxW="100%" />
 
             <Container p={{ base: 0, sm: 4 }} maxW="4xl">
-                <LatestsPosts posts={postsData} />
+                {posts && <LatestsPosts posts={posts} />}
             </Container>
         </Layout>
     );
