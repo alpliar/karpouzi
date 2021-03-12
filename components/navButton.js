@@ -11,7 +11,7 @@ const NavButton = ({ icon, label, handleClick, isPrimary, compact }) => {
     const darkColor = 'white';
     const color = useColorModeValue(lightColor, darkColor);
     // useBreakPoint value is not available instantly, need a 'sm' fallback in order to prevent buttons resize on load
-    const size = useBreakpointValue({ base: 'md', md: 'sm' }) || 'md';
+    const size = useBreakpointValue({ base: 'md', md: 'sm' }) || 'sm';
 
     if (compact === true) {
         return (
