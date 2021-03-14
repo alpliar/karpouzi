@@ -3,6 +3,7 @@ import Link from 'next/link';
 import PropTypes from 'prop-types';
 import NavDrawer from '../components/navDrawer';
 import NavThemeToggle from '../components/navThemeToggle';
+import NavLocaleSelector from '../container/navLocaleSelector';
 import NavCart from '../container/navCart';
 import NavLogin from '../container/navLogin';
 import NavLogo from '../container/navLogo';
@@ -58,7 +59,10 @@ const Header = ({ siteTitle }) => {
                 </Flex>
                 <HStack spacing="1">
                     <Box display={{ base: 'none', sm: 'block' }}>
-                        <NavThemeToggle />
+                        <HStack spacing="1">
+                            <NavThemeToggle />
+                            <NavLocaleSelector />
+                        </HStack>
                     </Box>
                     <NavLogin />
                     <NavCart />
@@ -68,7 +72,12 @@ const Header = ({ siteTitle }) => {
                             isOpen={isOpen}
                             onClose={onClose}
                             body={<NavDrawerBody />}
-                            footer={<NavThemeToggle compact={false} />}></NavDrawer>
+                            footer={
+                                <HStack spacing="1">
+                                    <NavThemeToggle compact={false} />
+                                    <NavLocaleSelector compact={false} />
+                                </HStack>
+                            }></NavDrawer>
                     </Box>
                 </HStack>
             </Flex>

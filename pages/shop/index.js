@@ -9,13 +9,23 @@ export async function getStaticProps() {
     const categories = [
         {
             slug: 'fruits',
+            lang: 'fr',
             title: 'Fruits',
             description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
             productsCount: 7,
-            products: [getRandomProduct(), getRandomProduct(), getRandomProduct(), getRandomProduct(), getRandomProduct(), getRandomProduct(), getRandomProduct()]
+            products: [
+                getRandomProduct(),
+                getRandomProduct(),
+                getRandomProduct(),
+                getRandomProduct(),
+                getRandomProduct(),
+                getRandomProduct(),
+                getRandomProduct()
+            ]
         },
         {
             slug: 'veggies',
+            lang: 'fr',
             title: 'Veggies',
             description: 'Ex dolorem non soluta sit reprehenderit! Natus vitae doloribus amet?',
             productsCount: 3,
@@ -29,6 +39,13 @@ export async function getStaticProps() {
         }
     };
 }
+
+// export const getStaticPaths = ({ defaultLocale }) => {
+//     return {
+//         paths: [{ params: '', locale: defaultLocale }],
+//         fallback: true
+//     };
+// };
 
 export default function ShopPage({ categories }) {
     return (

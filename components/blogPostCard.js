@@ -46,7 +46,7 @@ const BlogPostCard = ({ title, date, slug, author, authorAvatar }) => {
                         fontFamily={'body'}>
                         <Link
                             href={{
-                                pathname: '/blog/posts/[slug]',
+                                pathname: '/blog/post/[slug]',
                                 query: { slug }
                             }}
                             passHref>

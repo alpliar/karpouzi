@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import Breadcrumb from '../../../components/breadcrumb';
 
 export async function getStaticProps({ params }) {
-    const postData = await getPostData(params.id);
+    const postData = await getPostData(params.slug);
     return {
         props: {
             postData
@@ -17,14 +17,17 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
-    const paths = getAllPostIds();
+    const paths = await getAllPostIds();
     return {
         paths,
-        fallback: false
+        fallback: true
     };
 }
 
 export default function Post({ postData }) {
+    if (!postData) {
+        return false;
+    }
     return (
         <Layout>
             <Head>

@@ -21,8 +21,11 @@ export const getStaticProps = wrapper.getStaticProps(({ store }) => {
 
 export async function getStaticPaths() {
     return {
-        paths: [{ params: { slug: 'fruits' } }, { params: { slug: 'veggies' } }],
-        fallback: false
+        paths: [
+            { params: { slug: 'fruits' }, locale: 'en' },
+            { params: { slug: 'veggies' }, locale: 'en' }
+        ],
+        fallback: true
     };
 }
 
