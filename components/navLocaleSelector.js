@@ -1,41 +1,54 @@
 import { Button, IconButton } from '@chakra-ui/button';
-import { ChevronDownIcon } from '@chakra-ui/icons';
+import { Image } from '@chakra-ui/image';
 import { Menu, MenuButton, MenuItem, MenuList } from '@chakra-ui/menu';
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
 import { FaFlag } from 'react-icons/fa';
 
 const NavLocaleSelector = ({ compact }) => {
     const router = useRouter();
-    const handleClick = () => {};
+    const handleSelection = (newLocale) => {
+        router.push(router.pathname, router.asPath, { locale: newLocale });
+    };
+
+    const localesInfos = {
+        en: 'English',
+        fr: 'Français',
+        es: 'Español'
+    };
 
     return (
-        <>
-            {/* <NavButton
-                icon={<FaFlag />}
-                label={'Language'}
-                compact={compact}
-                handleClick={handleClick}
-            /> */}
-
-            <Menu>
-                <MenuButton
-                    as={compact === true ? IconButton : Button}
-                    icon={compact === true && <FaFlag />}>
-                    {compact === false && 'Language'}
-                </MenuButton>
-                <MenuList>
-                    {router.locales.map((locale) => (
-                        <MenuItem key={locale}>
-                            <Link href={`/${locale}`} locale={false} alt={`Switch locale to ${locale}`}>
-                                {locale}
-                            </Link>
+        <Menu>
+            <MenuButton
+                as={compact === true ? IconButton : Button}
+                icon={compact === true && <FaFlag />}>
+                {compact === false && 'Language'}
+            </MenuButton>
+            <MenuList>
+                {router.locales.map((locale) => {
+                    const localeName = localesInfos[locale];
+                    return (
+                        <MenuItem
+                            cursor="pointer"
+                            onClick={() => {
+                                handleSelection(locale);
+                            }}
+                            key={locale}>
+                            <Image
+                                boxSize="2rem"
+                                borderRadius="full"
+                                src={`https://www.countryflags.io/${
+                                    locale == 'en' ? 'gb' : locale
+                                }/flat/64.png`}
+                                alt={locale}
+                                mr="12px"
+                            />
+                            {localeName}
                         </MenuItem>
-                    ))}
-                </MenuList>
-            </Menu>
-        </>
+                    );
+                })}
+            </MenuList>
+        </Menu>
     );
 };
 
