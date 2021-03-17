@@ -14,7 +14,7 @@ module.exports = withImages(
             domains: ['fakeimg.pl', 'images.unsplash.com']
         },
         i18n: {
-            locales: ['en', 'fr', 'es'],
+            locales: ['en', 'fr', 'es', 'gr'],
             defaultLocale: 'en'
         }
     })

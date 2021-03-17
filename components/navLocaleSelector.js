@@ -14,7 +14,8 @@ const NavLocaleSelector = ({ compact }) => {
     const localesInfos = {
         en: 'English',
         fr: 'Français',
-        es: 'Español'
+        es: 'Español',
+        gr: 'Ελληνικά'
     };
 
     return (

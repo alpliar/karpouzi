@@ -70,15 +70,15 @@ export default function Home() {
                     description={
                         <>
                             <Text as="span" p={2}>
-                                Fresh fruits and vegetables for your mind and body...
+                                {f('welcomeDescription')}
                             </Text>
                         </>
                     }
-                    primaryActionLabel="Discover our shop"
-                    secondaryActionLabel="Learn more"
+                    primaryActionLabel={f('welcomeDiscoverShop')}
+                    secondaryActionLabel={f('welcomeLearnMore')}
                     handlePrimaryAction={handleVisitShop}
                     handleSecondaryAction={handleKnowMore}
-                    primaryActionAnnotation="Pretty good deals !"
+                    primaryActionAnnotation={f('welcomeDeals')}
                 />
             </Container>
 

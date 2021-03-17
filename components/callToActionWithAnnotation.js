@@ -89,8 +89,8 @@ const CallToActionWithAnnotation = ({
                                 fontSize={'lg'}
                                 fontFamily={'Caveat'}
                                 position={'absolute'}
-                                right={{ base: '-30px', sm: '-125px' }}
-                                top={{ base: '-25px', sm: '-15px' }}
+                                right={{ base: '-30px', sm: '-90px', md: '-100px', lg: '-115px' }}
+                                top={{ base: '-22px', sm: '-20px' }}
                                 transition={'all ease-out .2s'}
                                 transform={{ base: 'rotate(5deg)', sm: 'rotate(10deg)' }}>
                                 {primaryActionAnnotation}
