@@ -10,8 +10,8 @@ const App = ({ Component, pageProps }) => {
     const router = useRouter();
     const { locale, defaultLocale, pathname } = router;
     const localeCopy = locales[locale || defaultLocale];
-    // console.log('locale: ', locale);
     const messages = localeCopy[pathname];
+    console.log(messages);
 
 
     return (

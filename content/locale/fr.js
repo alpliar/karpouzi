@@ -9,5 +9,21 @@ export const fr = {
     },
     '/blog': {
         title: 'Blog'
+    },
+    '/shop': {
+        title: 'Boutique'
+    },
+    '/login': {
+        title: 'Identification',
+        signInLong: 'Connectez-vous à votre compte',
+        signIn: "S'identifier",
+        or: 'ou',
+        startFreeTrial: 'commencez votre essai gratuit de 14 jours',
+        emailAddress: 'Adresse e-mail',
+        emailReassurance: 'Nous ne partagerons jamais votre adresse e-mail.',
+        password: 'Mot de passe',
+        passwordReassurance: 'Choisissez un mot de passe sécurisé !',
+        rememberMe: 'Rester connecté',
+        lostPassword: 'Mot de passe perdu ?'
     }
 };

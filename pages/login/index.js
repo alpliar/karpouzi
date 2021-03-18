@@ -14,8 +14,13 @@ import {
 import Layout from '../../components/pageLayout';
 import Link from '../../components/link';
 import { sendToast } from '../../utils/uiToast';
+import { useIntl } from 'react-intl';
 
 const LoginPage = () => {
+
+    const { formatMessage } = useIntl();
+    const f = (id) => formatMessage({ id });
+
     const handleSubmit = (event) => {
         event.preventDefault();
         sendToast('Account created.', "We've created your account for you.", 'success', 5000);
@@ -31,12 +36,12 @@ const LoginPage = () => {
                 }}>
                 <Box>
                     <Heading as="h2" className="text-center">
-                        <span>Sign in to your account</span>
+                        <span>{f('signInLong')}</span>
                     </Heading>
                     <Text mt={4} className="mt-2 text-center text-sm">
-                        or{' '}
+                    {f('or')}{' '}
                         <a href="#" className="font-medium">
-                            start your 14-day free trial
+                        {f('startFreeTrial')}
                         </a>
                     </Text>
 
@@ -44,14 +49,14 @@ const LoginPage = () => {
                         <input type="hidden" name="remember" value="true" />
                         <Stack spacing={2} my={8}>
                             <FormControl id="email">
-                                <FormLabel>Email address</FormLabel>
+                                <FormLabel>{f('emailAddress')}</FormLabel>
                                 <Input type="email" />
-                                <FormHelperText>We&apos;ll never share your email.</FormHelperText>
+                                <FormHelperText>{f('emailReassurance')}</FormHelperText>
                             </FormControl>
                             <FormControl id="email">
-                                <FormLabel>Password</FormLabel>
+                                <FormLabel>{f('password')}</FormLabel>
                                 <Input type="password" />
-                                <FormHelperText>Choose wisely !</FormHelperText>
+                                <FormHelperText>{f('passwordReassurance')}</FormHelperText>
                             </FormControl>
                         </Stack>
 
@@ -64,20 +69,20 @@ const LoginPage = () => {
                                     className="h-4 w-4 focus:ring-indigo-500 border-gray-300 rounded"
                                 />
                                 <label htmlFor="remember_me" className="ml-2 block text-sm">
-                                    Remember me
+                                    {f('rememberMe')}
                                 </label>
                             </div>
 
                             <Container p={4} bg="muted">
                                 <Link href="/lost-password" alt="go to lost password page">
-                                    Forgot your password?
+                                {f('lostPassword')}
                                 </Link>
                             </Container>
                         </div>
 
                         <div>
                             <Button type="submit" onClick={handleSubmit}>
-                                Sign in
+                                {f('signIn')}
                             </Button>
                         </div>
                     </form>
