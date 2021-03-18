@@ -1,10 +1,9 @@
 export const gr = {
-    '*': {
-        siteName: 'Karpouzi'
+    common: {
+        commonSiteName: 'καρπούζι'
     },
     '/': {
         welcomeMessage: 'καλώς ήλθατε στο',
-        welcomeMessagePart2: 'Karpouzi',
         welcomeDescription: 'Φρέσκα φρούτα και λαχανικά για το μυαλό και το σώμα σας ...',
         welcomeDeals: 'προσφορές!',
         welcomeDiscoverShop: 'το κατάστημα',

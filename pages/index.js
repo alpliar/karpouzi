@@ -42,7 +42,7 @@ export default function Home() {
                         <>
                             {f('welcomeMessage')} <br />
                             <Text as={'span'} color={'green.400'}>
-                                {f('welcomeMessagePart2')}
+                                {f('commonSiteName')}
                             </Text>
                         </>
                     }

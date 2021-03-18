@@ -1,8 +1,11 @@
 import PropTypes from 'prop-types';
 import { Box, Flex, LinkBox, LinkOverlay } from '@chakra-ui/react';
 import Link from 'next/link';
+import { useIntl } from 'react-intl';
 
 const NavLogo = ({ siteName, siteEmoji, siteEmojiLabel }) => {
+    const { formatMessage } = useIntl();
+    const f = (id) => formatMessage({ id });
     return (
         <LinkBox as={Flex}>
             <Box fontSize="xl" fontWeight="bold">
@@ -10,7 +13,7 @@ const NavLogo = ({ siteName, siteEmoji, siteEmojiLabel }) => {
                     {siteEmoji}
                 </span>
                 <Link href="/" alt="Go to homepage" passHref>
-                    <LinkOverlay>{siteName}</LinkOverlay>
+                    <LinkOverlay>{f('commonSiteName')}</LinkOverlay>
                 </Link>
             </Box>
         </LinkBox>

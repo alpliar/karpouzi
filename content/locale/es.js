@@ -1,7 +1,9 @@
 export const es = {
+    common: {
+        commonSiteName: 'Karpouzi'
+    },
     '/': {
         welcomeMessage: 'Bienvenido a',
-        welcomeMessagePart2: 'Karpouzi',
         welcomeDescription: 'Frutas y verduras frescas para tu cuerpo y mente...',
         welcomeDeals: 'buenas ofertas!',
         welcomeDiscoverShop: 'Descubra nuestra tienda',
