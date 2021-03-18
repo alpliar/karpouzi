@@ -1,32 +1,11 @@
-import Head from 'next/head';
-import PageLayout, { siteTitle } from '../components/pageLayout';
-import { PropTypes } from 'prop-types';
-
-import {
-    Box,
-    Container,
-    Divider,
-    Heading,
-    Stat,
-    StatGroup,
-    StatHelpText,
-    StatArrow,
-    StatLabel,
-    StatNumber,
-    Table,
-    TableCaption,
-    Tbody,
-    Tfoot,
-    Tr,
-    Td,
-    Th,
-    Thead,
-    Text
-} from '@chakra-ui/react';
-import CallToActionWithAnnotation from '../components/callToActionWithAnnotation';
+import { Container, Divider, Text } from '@chakra-ui/react';
 import { useRouter } from 'next/dist/client/router';
-import CallToActionNewsletter from '../components/callToActionNewsletter';
+import Head from 'next/head';
+import { PropTypes } from 'prop-types';
 import { useIntl } from 'react-intl';
+import CallToActionNewsletter from '../components/callToActionNewsletter';
+import CallToActionWithAnnotation from '../components/callToActionWithAnnotation';
+import PageLayout, { siteTitle } from '../components/pageLayout';
 
 export default function Home() {
     // const [showModal, setShowModal] = useState(false);
