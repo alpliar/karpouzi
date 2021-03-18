@@ -52,5 +52,6 @@ NavButton.propTypes = {
 };
 
 NavButton.defaultProps = {
+    isPrimary: false,
     compact: true
 };

@@ -1,4 +1,5 @@
 import { Button, IconButton } from '@chakra-ui/button';
+import { useColorModeValue } from '@chakra-ui/color-mode';
 import { Image } from '@chakra-ui/image';
 import { Menu, MenuButton, MenuItem, MenuList } from '@chakra-ui/menu';
 import { useRouter } from 'next/router';
@@ -20,16 +21,17 @@ const NavLocaleSelector = ({ compact }) => {
 
     return (
         <Menu>
-            <MenuButton
+            <MenuButton 
+                colorScheme="teal"
                 as={compact === true ? IconButton : Button}
                 icon={compact === true && <FaFlag />}>
                 {compact === false && 'Language'}
             </MenuButton>
-            <MenuList>
+            <MenuList color={useColorModeValue('black', 'white')}>
                 {router.locales.map((locale) => {
                     const localeName = localesInfos[locale];
                     return (
-                        <MenuItem
+                        <MenuItem 
                             cursor="pointer"
                             onClick={() => {
                                 handleSelection(locale);

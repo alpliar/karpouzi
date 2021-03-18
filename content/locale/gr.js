@@ -4,7 +4,7 @@ export const gr = {
         welcomeMessagePart2: 'Karpouzi',
         welcomeDescription: 'Φρέσκα φρούτα και λαχανικά για το μυαλό και το σώμα σας ...',
         welcomeDeals: 'προσφορές!',
-        welcomeDiscoverShop: 'Ανακαλύψτε το κατάστημά μας',
+        welcomeDiscoverShop: 'το μαγαζί',
         welcomeLearnMore: 'Μάθε περισσότερα'
     },
     '/blog': {
