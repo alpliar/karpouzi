@@ -6,6 +6,7 @@ import { Box, Container, Divider, Heading } from '@chakra-ui/react';
 
 import PropTypes from 'prop-types';
 import Breadcrumb from '../../../components/breadcrumb';
+import { sanitizeText } from '../../../utils/sanitize';
 
 export async function getStaticProps({ params }) {
     const postData = await getPostData(params.slug);
@@ -59,7 +60,7 @@ export default function Post({ postData }) {
             <Divider w="100%" />
 
             <Container p={4} maxW="4xl">
-                <Box dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
+                <Box dangerouslySetInnerHTML={{ __html: sanitizeText(postData.contentHtml) }} />
             </Container>
         </Layout>
     );

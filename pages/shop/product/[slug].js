@@ -1,15 +1,13 @@
-import PropTypes from 'prop-types';
-import Head from 'next/head';
-
-import Layout from '../../../components/pageLayout';
-import { getAllProductIds, getProductData } from '../../../lib/products';
-
-import { Badge, Container, Divider, Heading, Img, SimpleGrid, Text, Box, Stack, Image, useColorModeValue, Center } from '@chakra-ui/react';
-import Breadcrumb from '../../../components/breadcrumb';
-
 import { BellIcon } from '@chakra-ui/icons';
+import { Badge, Box, Container, Divider, Heading, Img, SimpleGrid, Text } from '@chakra-ui/react';
+import Head from 'next/head';
+import PropTypes from 'prop-types';
+import Breadcrumb from '../../../components/breadcrumb';
+import Layout from '../../../components/pageLayout';
 import Rating from '../../../components/rating';
 import AddToCart from '../../../container/addToCart';
+import { getAllProductIds, getProductData } from '../../../lib/products';
+import { sanitizeText } from '../../../utils/sanitize';
 
 export async function getStaticProps({ params }) {
     const productData = await getProductData(params.slug);
@@ -94,7 +92,7 @@ export default function ProductPage({
                     </Box>
                 </SimpleGrid>
                 <Box p={4} width="full" padding="1em">
-                    <Box dangerouslySetInnerHTML={{ __html: contentHtml }} />
+                    <Box dangerouslySetInnerHTML={{ __html: sanitizeText(contentHtml) }} />
                 </Box>
             </Container>
         </Layout>
