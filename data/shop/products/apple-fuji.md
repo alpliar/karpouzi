@@ -5,7 +5,7 @@ price: '4.5 €'
 rating: 4
 reviewCount: 46
 isNew: false
-imageUrl: 'https://fakeimg.pl/300x200/282828/eae0d0/?retina=1&text=fuji%20apple'
+imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/Fuji_apples.jpg/587px-Fuji_apples.jpg'
 ---
 
 The **Fuji apple** is an apple cultivar developed by growers at Tohoku Research Station (農林省園芸試験場東北支場) in Fujisaki, Aomori, Japan, in the late 1930s, and brought to market in 1962. It originated as a cross between two American apple varieties—the Red Delicious and old Virginia Ralls Genet (sometimes cited as "Rawls Jennet") apples.

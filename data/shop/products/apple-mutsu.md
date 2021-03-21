@@ -5,7 +5,7 @@ price: '3.5 €'
 rating: 5
 reviewCount: 30
 isNew: false
-imageUrl: 'https://fakeimg.pl/300x200/282828/eae0d0/?retina=1&text=mutsu%20apple'
+imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Mutsu_apple.jpg/480px-Mutsu_apple.jpg'
 ---
 
 The **Mutsu** (陸奥, ムツ) apple (also known as Crispin) was introduced in 1949 and is a cross between the 'Golden Delicious' and the 'Indo' apple cultivars first grown in Aomori Prefecture, Japan. The apple's name is the former name of a large section of the Tōhoku region, Mutsu Province, which Aomori was created from during the Meiji Restoration.

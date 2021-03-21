@@ -22,7 +22,7 @@ const ProductCard = ({
                 <Box
                     bg="#282828"
                     position="relative"
-                    maxh={'210px'}
+                    maxH={'210px'}
                     mt={-6}
                     mx={-6}
                     mb={6}
