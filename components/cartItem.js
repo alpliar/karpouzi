@@ -1,6 +1,7 @@
-import { Avatar, Badge, Box, Flex, LinkBox, LinkOverlay, Stack, Text } from '@chakra-ui/react';
+import { Avatar, Badge, Box, Flex, HStack, Img, LinkBox, LinkOverlay, Stack, Text } from '@chakra-ui/react';
 import Link from 'next/link';
 import PropTypes from 'prop-types';
+import Card from './card';
 import CartItemActions from './cartItemActions';
 
 const CartItem = ({
@@ -9,30 +10,50 @@ const CartItem = ({
     quantity
 }) => {
     const slug = title;
+    const cardPadding = 4;
+    const imageDimensions = `${cardPadding * 1.7}rem`;
     return (
-        <LinkBox as={Flex} px={2}>
-            <Flex h="full" alignItems="center" alignContent="center">
-                <Avatar src={picture} name={title} size="lg" />
-            </Flex>
-            <Stack ml="3" spacing="1" w={{ base: 'full' }}>
-                <Text fontWeight="bold">
-                    <Link
-                        href={{
-                            pathname: '/shop/product/[slug]',
-                            query: { slug }
-                        }}
-                        passHref>
-                        <LinkOverlay>{title}</LinkOverlay>
-                    </Link>
-                </Text>
-                <Text fontSize="sm">
-                    <Badge colorScheme="teal">New</Badge>
-                    product
-                </Text>
-                <Flex justify="flex-end">
-                    <CartItemActions slug={slug} quantity={quantity} />
-                </Flex>
-            </Stack>
+        <LinkBox>
+            <Card padding={cardPadding}>
+                <HStack spacing={{ base: 0, sm: 4 }}>
+                    <Flex
+                        mt={-cardPadding}
+                        ml={-cardPadding}
+                        mb={-cardPadding}
+                        pos="relative"
+                        maxH={imageDimensions}
+                        maxW={imageDimensions}
+                        alignItems="center"
+                        alignContent="center"
+                        display={{ base: 'none', sm: 'inline-block' }}>
+                        {/* <Avatar src={picture} name={title} size="lg" /> */}
+                        <Img
+                            fallback="https://picsum.photos/300/200"
+                            src={picture}
+                            alt={`picture of ${title}`}
+                        />
+                    </Flex>
+                    <Stack ml="3" spacing="1" w={{ base: 'full' }}>
+                        <Text fontWeight="bold">
+                            <Link
+                                href={{
+                                    pathname: '/shop/product/[slug]',
+                                    query: { slug }
+                                }}
+                                passHref>
+                                <HStack>
+                                    <LinkOverlay>{title}</LinkOverlay>
+                                    <Badge colorScheme="teal">New</Badge>
+                                </HStack>
+                            </Link>
+                        </Text>
+                        <Text fontSize="sm">product</Text>
+                        <Flex justify="flex-end">
+                            <CartItemActions slug={slug} quantity={quantity} />
+                        </Flex>
+                    </Stack>
+                </HStack>
+            </Card>
         </LinkBox>
     );
 };

@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { Box, Img, LinkBox, LinkOverlay } from '@chakra-ui/react';
+import { Box, Img, LinkBox, LinkOverlay, useBreakpointValue } from '@chakra-ui/react';
 import { BellIcon, TriangleDownIcon } from '@chakra-ui/icons';
 import ProductCardBadge from './productCardBadge';
 import Link from 'next/link';
@@ -16,13 +16,15 @@ const ProductCard = ({
     reviewCount,
     rating
 }) => {
+    const imageHeight = useBreakpointValue({ base: '280px', sm: '210px' });
+
     return (
         <LinkBox>
             <Card>
                 <Box
                     bg="#282828"
                     position="relative"
-                    maxH={'210px'}
+                    h={imageHeight}
                     mt={-6}
                     mx={-6}
                     mb={6}
@@ -31,6 +33,7 @@ const ProductCard = ({
                     <Img
                         objectFit="cover"
                         fallback="https://picsum.photos/300/200"
+                        minH={imageHeight}
                         src={imageUrl}
                         alt={imageAlt}
                     />

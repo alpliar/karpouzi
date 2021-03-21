@@ -1,14 +1,14 @@
 import PropTypes from 'prop-types';
 import { Box, useColorModeValue } from '@chakra-ui/react';
 
-const Card = ({ children }) => {
+const Card = ({ children, padding }) => {
     return (
         <Box
             w={'full'}
             bg={useColorModeValue('white', 'gray.900')}
-            boxShadow={'2xl'}
+            boxShadow={'xl'}
             rounded={{ base: 'none', sm: 'md' }}
-            p={6}
+            p={padding}
             overflow={'hidden'}>
             {children}
         </Box>
@@ -17,6 +17,11 @@ const Card = ({ children }) => {
 
 export default Card;
 
+Card.defaultProps = {
+    padding: 6
+};
+
 Card.propTypes = {
-    children: PropTypes.node
+    children: PropTypes.node.isRequired,
+    padding: PropTypes.number
 };

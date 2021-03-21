@@ -5,7 +5,10 @@ price: '2.98 €'
 rating: 4
 reviewCount: 12
 isNew: true
-imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/MalusDSC1439.jpg/640px-MalusDSC1439.jpg'
+imageUrl: '/images/apple-red-delicious.jpg'
 ---
 
-The '**Red Delicious**' is a clone of apple cultigen, now comprising more than 50 cultivars, first recognized in Madison County, Iowa, in 1880. It is one of the fifteen most popular apple cultivars in the United States. From 1968 to 2018, it was the most produced cultivar in the U.S.
+The '**Red Delicious**' is a clone of apple cultigen, now comprising more than 50 cultivars, first recognized in Madison County, Iowa, in 1880. 
+
+
+It is one of the fifteen most popular apple cultivars in the United States. From 1968 to 2018, it was the most produced cultivar in the U.S.

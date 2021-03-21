@@ -76,7 +76,7 @@ export default function ProductPage({
 
             <Container p={{ base: 0, sm: 4 }} maxW="4xl">
                 <SimpleGrid columns={{ base: 1, sm: 2 }} spacing={{ md: '1em' }}>
-                    <Box bg="#282828" width="full">
+                    <Box bg="#282828" width="full" maxH="15em" overflow="hidden">
                         <Img src={imageUrl} alt={`picture of ${title}`} width="full" />
                     </Box>
                     <Box bg="" p={4} textAlign={{ base: 'center', md: 'left' }}>
@@ -94,7 +94,10 @@ export default function ProductPage({
 
                 <Box p={4} width="full" padding="1em">
                     <Divider my={4} w="100%" />
-                    <Box dangerouslySetInnerHTML={{ __html: sanitizeText(contentHtml) }} />
+                    <Box
+                        class="externalHtml"
+                        dangerouslySetInnerHTML={{ __html: sanitizeText(contentHtml) }}
+                    />
                 </Box>
             </Container>
         </Layout>

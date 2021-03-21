@@ -33,10 +33,10 @@ export default function CartPage() {
 
             <Divider w="100%" />
 
-            <Container py={4} px={{ base: 0, md: 4 }} maxW="4xl">
+            <Container py={4} px={{ base: 0, sm: 4 }} maxW="4xl">
                 {cart.length > 0 && (
                     <SimpleGrid
-                        minChildWidth={{ base: 'full', sm: '230px' }}
+                        minChildWidth={{ base: 'full', md: '450px' }}
                         spacingX="0.5em"
                         spacingY="1em">
                         {cart.map((item, index) => (
