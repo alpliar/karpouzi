@@ -91,7 +91,9 @@ export default function ProductPage({
                         <AddToCart slug={slug} quantity={1} />
                     </Box>
                 </SimpleGrid>
+
                 <Box p={4} width="full" padding="1em">
+                    <Divider m={4} w="100%" />
                     <Box dangerouslySetInnerHTML={{ __html: sanitizeText(contentHtml) }} />
                 </Box>
             </Container>
