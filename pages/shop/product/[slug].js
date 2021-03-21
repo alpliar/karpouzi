@@ -75,11 +75,11 @@ export default function ProductPage({
             <Divider w="100%" />
 
             <Container p={{ base: 0, sm: 4 }} maxW="4xl">
-                <SimpleGrid columns={{ base: 1, sm: 2 }} spacing="1em">
+                <SimpleGrid columns={{ base: 1, sm: 2 }} spacing={{ md: '1em' }}>
                     <Box bg="#282828" width="full">
                         <Img src={imageUrl} alt={`picture of ${title}`} width="full" />
                     </Box>
-                    <Box bg="" p={4}>
+                    <Box bg="" p={4} textAlign={{ base: 'center', md: 'left' }}>
                         {/* <Heading>{title}</Heading> */}
 
                         <Rating rate={rating} count={reviewCount} />
@@ -93,7 +93,7 @@ export default function ProductPage({
                 </SimpleGrid>
 
                 <Box p={4} width="full" padding="1em">
-                    <Divider m={4} w="100%" />
+                    <Divider my={4} w="100%" />
                     <Box dangerouslySetInnerHTML={{ __html: sanitizeText(contentHtml) }} />
                 </Box>
             </Container>
