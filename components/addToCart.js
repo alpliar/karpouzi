@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { Button, Icon, Tooltip } from '@chakra-ui/react';
+import { Button, Icon, Tooltip, useBreakpointValue } from '@chakra-ui/react';
 import { FaShoppingCart } from 'react-icons/fa';
 import { sendToast } from '../utils/uiToast';
 
@@ -13,7 +13,7 @@ const AddToCart = ({ slug, quantity, inCart, cart, addToCart }) => {
         <Tooltip
             hasArrow
             label={`Already ${inCart} in cart !`}
-            placement="right"
+            placement={useBreakpointValue({ base: 'bottom', md: 'right' })}
             isOpen={inCart > 0}>
             <Button leftIcon={<Icon as={FaShoppingCart} />} onClick={handleClick}>
                 Add to cart
