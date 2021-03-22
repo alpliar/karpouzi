@@ -19,10 +19,13 @@ const NavLocaleSelector = ({ compact }) => {
         gr: 'Ελληνικά'
     };
 
+    const colorScheme = useColorModeValue('teal', 'whiteAlpha');
+
     return (
         <Menu>
-            <MenuButton 
-                colorScheme="teal"
+            <MenuButton
+                color="white"
+                colorScheme={colorScheme}
                 as={compact === true ? IconButton : Button}
                 icon={compact === true && <FaFlag />}>
                 {compact === false && 'Language'}
@@ -31,7 +34,7 @@ const NavLocaleSelector = ({ compact }) => {
                 {router.locales.map((locale) => {
                     const localeName = localesInfos[locale];
                     return (
-                        <MenuItem 
+                        <MenuItem
                             cursor="pointer"
                             onClick={() => {
                                 handleSelection(locale);
