@@ -5,7 +5,7 @@ price: '2.5 €'
 rating: 5
 reviewCount: 121
 isNew: false
-imageUrl: '/images/apple-granny-smith.jpg'
+imageUrl: '/images/apple-granny-smith.webp'
 ---
 
 The **Granny Smith** is a tip-bearing apple cultivar which originated in Australia in 1868. It is named after Maria Ann Smith, who propagated the cultivar from a chance seedling. The tree is thought to be a hybrid of Malus sylvestris, the European wild apple, with the domesticated apple Malus pumila as the polleniser.

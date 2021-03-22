@@ -5,7 +5,7 @@ price: '2.98 €'
 rating: 4
 reviewCount: 12
 isNew: true
-imageUrl: '/images/apple-red-delicious.jpg'
+imageUrl: '/images/apple-red-delicious.webp'
 ---
 
 The '**Red Delicious**' is a clone of apple cultigen, now comprising more than 50 cultivars, first recognized in Madison County, Iowa, in 1880. 

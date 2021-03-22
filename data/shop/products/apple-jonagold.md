@@ -5,7 +5,7 @@ price: '3 €'
 rating: 4
 reviewCount: 32
 isNew: true
-imageUrl: '/images/apple-jonagold.jpg'
+imageUrl: '/images/apple-jonagold.webp'
 ---
 
 **Jonagold** /ˈdʒɒnəˌɡoʊld/ is a cultivar of apple which was developed in 1953 in New York State Agricultural Experiment Station of Cornell University's College of Agriculture and Life Sciences, a cross between the crisp Golden Delicious and the blush-crimson Jonathan. They form a large sweet fruit with a thin skin. 
