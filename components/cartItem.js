@@ -1,14 +1,21 @@
-import { Avatar, Badge, Box, Flex, HStack, Img, LinkBox, LinkOverlay, Stack, Text } from '@chakra-ui/react';
+import {
+    Avatar,
+    Badge,
+    Box,
+    Flex,
+    HStack,
+    Img,
+    LinkBox,
+    LinkOverlay,
+    Stack,
+    Text
+} from '@chakra-ui/react';
 import Link from 'next/link';
 import PropTypes from 'prop-types';
 import Card from './card';
 import CartItemActions from './cartItemActions';
 
-const CartItem = ({
-    title,
-    picture = `https://fakeimg.pl/150x150/282828/eae0d0/?retina=1&text=${title}`,
-    quantity
-}) => {
+const CartItem = ({ title, picture = `/images/${title}.webp`, quantity }) => {
     const slug = title;
     const cardPadding = 4;
     const imageDimensions = `${cardPadding * 1.7}rem`;
@@ -29,23 +36,24 @@ const CartItem = ({
                         {/* <Avatar src={picture} name={title} size="lg" /> */}
                         <Img
                             fallback="https://picsum.photos/300/200"
+                            width="full"
                             src={picture}
                             alt={`picture of ${title}`}
                         />
                     </Flex>
                     <Stack ml="3" spacing="1" w={{ base: 'full' }}>
                         <Text fontWeight="bold">
-                            <Link
-                                href={{
-                                    pathname: '/shop/product/[slug]',
-                                    query: { slug }
-                                }}
-                                passHref>
-                                <HStack>
+                            <HStack>
+                                <Link
+                                    href={{
+                                        pathname: '/shop/product/[slug]',
+                                        query: { slug }
+                                    }}
+                                    passHref>
                                     <LinkOverlay>{title}</LinkOverlay>
-                                    <Badge colorScheme="teal">New</Badge>
-                                </HStack>
-                            </Link>
+                                </Link>
+                                <Badge colorScheme="teal">New</Badge>
+                            </HStack>
                         </Text>
                         <Text fontSize="sm">product</Text>
                         <Flex justify="flex-end">
