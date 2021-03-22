@@ -1,6 +1,7 @@
 import { Button, IconButton } from '@chakra-ui/button';
 import { useColorModeValue } from '@chakra-ui/color-mode';
 import { Image } from '@chakra-ui/image';
+import { useBreakpointValue } from '@chakra-ui/media-query';
 import { Menu, MenuButton, MenuItem, MenuList } from '@chakra-ui/menu';
 import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
@@ -20,10 +21,12 @@ const NavLocaleSelector = ({ compact }) => {
     };
 
     const colorScheme = useColorModeValue('teal', 'whiteAlpha');
+    const size = useBreakpointValue({ base: 'md', md: 'sm' }) || 'sm';
 
     return (
         <Menu>
             <MenuButton
+                size={size}
                 color="white"
                 colorScheme={colorScheme}
                 as={compact === true ? IconButton : Button}
