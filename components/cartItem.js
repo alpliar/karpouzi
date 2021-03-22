@@ -1,15 +1,4 @@
-import {
-    Avatar,
-    Badge,
-    Box,
-    Flex,
-    HStack,
-    Img,
-    LinkBox,
-    LinkOverlay,
-    Stack,
-    Text
-} from '@chakra-ui/react';
+import { Badge, Flex, HStack, Img, LinkBox, LinkOverlay, Stack, Text } from '@chakra-ui/react';
 import Link from 'next/link';
 import PropTypes from 'prop-types';
 import Card from './card';
