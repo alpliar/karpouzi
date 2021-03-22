@@ -38,6 +38,9 @@ export default function ProductPage({
     imageUrl,
     contentHtml
 }) {
+    if (!slug) {
+        return false;
+    }
     return (
         <Layout>
             <Head>
