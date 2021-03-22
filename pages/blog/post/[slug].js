@@ -60,7 +60,10 @@ export default function Post({ postData }) {
             <Divider w="100%" />
 
             <Container p={4} maxW="4xl">
-                <Box dangerouslySetInnerHTML={{ __html: sanitizeText(postData.contentHtml) }} />
+                <Box
+                    className="externalHtml"
+                    dangerouslySetInnerHTML={{ __html: sanitizeText(postData.contentHtml) }}
+                />
             </Container>
         </Layout>
     );

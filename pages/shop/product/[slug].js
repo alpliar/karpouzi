@@ -20,7 +20,7 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
-    const paths = getAllProductIds();
+    const paths = await getAllProductIds();
 
     return {
         paths,
@@ -95,7 +95,7 @@ export default function ProductPage({
                 <Box p={4} width="full" padding="1em">
                     <Divider my={4} w="100%" />
                     <Box
-                        class="externalHtml"
+                        className="externalHtml"
                         dangerouslySetInnerHTML={{ __html: sanitizeText(contentHtml) }}
                     />
                 </Box>
