@@ -98,7 +98,7 @@ const ProductPage = ({
                     <Box bg="" p={4} textAlign={{ base: 'center', md: 'left' }}>
                         {/* <Heading>{title}</Heading> */}
 
-                        <Rating rate={rating} count={reviewCount} />
+                        <Rating rate={parseInt(rating)} count={parseInt(reviewCount)} />
 
                         <Text fontSize="4xl" fontWeight="bolder">
                             {price}
