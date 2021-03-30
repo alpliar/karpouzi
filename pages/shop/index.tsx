@@ -47,7 +47,23 @@ export async function getStaticProps() {
 //     };
 // };
 
-export default function ShopPage({ categories }) {
+type Product = any;
+
+type Category = {
+    slug: string,
+    title: string,
+    description: string,
+    products: Product[],
+    productsCount: number
+}
+
+type ShopPageProps = {
+    categories: Category[]
+}
+
+
+
+export default function ShopPage({ categories } : ShopPageProps) {
     return (
         <Layout>
             <Head>

@@ -1,19 +1,15 @@
 import { Container, Divider, Text } from '@chakra-ui/react';
 import { useRouter } from 'next/dist/client/router';
 import Head from 'next/head';
-import { PropTypes } from 'prop-types';
 import { useIntl } from 'react-intl';
 import CallToActionNewsletter from '../components/callToActionNewsletter';
 import CallToActionWithAnnotation from '../components/callToActionWithAnnotation';
 import PageLayout, { siteTitle } from '../components/pageLayout';
 
 export default function Home() {
-    // const [showModal, setShowModal] = useState(false);
     const router = useRouter();
     const { formatMessage } = useIntl();
-    const f = (id) => formatMessage({ id });
-
-    const { locale, locales, defaultLocale } = router;
+    const f = (id : string) => formatMessage({ id });
 
     const handleVisitShop = () => {
         router.push('/shop');
@@ -28,13 +24,6 @@ export default function Home() {
             <Head>
                 <title>{siteTitle}</title>
             </Head>
-            {/* <Container p={4} maxW="4xl">
-                <Box>
-                    <Heading>Hi, welcome !</Heading>
-                </Box>
-            </Container>
-
-            <Divider /> */}
 
             <Container p={4} maxW="4xl">
                 <CallToActionWithAnnotation
@@ -69,13 +58,3 @@ export default function Home() {
         </PageLayout>
     );
 }
-
-Home.propTypes = {
-    allPostsData: PropTypes.arrayOf(
-        PropTypes.shape({
-            id: PropTypes.string,
-            date: PropTypes.string,
-            title: PropTypes.string
-        })
-    )
-};

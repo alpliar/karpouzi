@@ -11,17 +11,19 @@ import {
     Stack,
     Text
 } from '@chakra-ui/react';
-import Layout from '../../components/pageLayout';
-import Link from '../../components/link';
-import { sendToast } from '../../utils/uiToast';
+import { NextPage } from 'next';
+import React from 'react';
 import { useIntl } from 'react-intl';
+import Link from '../../components/link';
+import Layout from '../../components/pageLayout';
+import { sendToast } from '../../utils/uiToast';
 
-const LoginPage = () => {
+const LoginPage: NextPage = () => {
 
     const { formatMessage } = useIntl();
-    const f = (id) => formatMessage({ id });
+    const f = (id : string) => formatMessage({ id });
 
-    const handleSubmit = (event) => {
+    const handleSubmit = (event : React.MouseEvent<HTMLElement>) => {
         event.preventDefault();
         sendToast('Account created.', "We've created your account for you.", 'success', 5000);
     };

@@ -1,7 +1,9 @@
 import { BellIcon } from '@chakra-ui/icons';
 import { Badge, Box, Container, Divider, Heading, Img, SimpleGrid, Text } from '@chakra-ui/react';
+import { GetStaticPaths, GetStaticPathsContext, GetStaticPathsResult, NextPage } from 'next';
 import Head from 'next/head';
 import PropTypes from 'prop-types';
+import { FC, WeakValidationMap } from 'react';
 import Breadcrumb from '../../../components/breadcrumb';
 import Layout from '../../../components/pageLayout';
 import Rating from '../../../components/rating';
@@ -19,7 +21,7 @@ export async function getStaticProps({ params }) {
     };
 }
 
-export async function getStaticPaths() {
+export const getStaticPaths: GetStaticPaths = async () => {
     const paths = await getAllProductIds();
 
     return {
@@ -28,7 +30,18 @@ export async function getStaticPaths() {
     };
 }
 
-export default function ProductPage({
+type ProductPageProps = {
+    slug: string;
+    title: string;
+    price: string;
+    rating: string;
+    reviewCount: string;
+    isNew: boolean;
+    imageUrl: string;
+    contentHtml: any
+};
+
+const ProductPage = ({
     slug,
     title,
     price,
@@ -37,7 +50,7 @@ export default function ProductPage({
     isNew,
     imageUrl,
     contentHtml
-}) {
+}: ProductPageProps) => {
     if (!slug) {
         return false;
     }
@@ -85,7 +98,7 @@ export default function ProductPage({
                     <Box bg="" p={4} textAlign={{ base: 'center', md: 'left' }}>
                         {/* <Heading>{title}</Heading> */}
 
-                        <Rating rate={rating} count={reviewCount} />
+                        <Rating rate={parseInt(rating)} count={parseInt(reviewCount)} />
 
                         <Text fontSize="4xl" fontWeight="bolder">
                             {price}
@@ -106,6 +119,8 @@ export default function ProductPage({
         </Layout>
     );
 }
+
+export default ProductPage;
 
 ProductPage.propTypes = {
     slug: PropTypes.string.isRequired,
