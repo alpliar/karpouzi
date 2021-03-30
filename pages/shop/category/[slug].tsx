@@ -1,25 +1,20 @@
-import Head from 'next/head';
-import Layout from '../../../components/pageLayout';
-// import Date from '../../../components/Date';
-// import { getAllPostIds, getPostData } from '../../../lib/posts';
 import { Container, Divider, Heading, SimpleGrid } from '@chakra-ui/react';
-import Breadcrumb from '../../../components/breadcrumb';
-//import Link from '../../../components/link';
-// import PropTypes from 'prop-types';
-import ProductCard from '../../../components/productCard';
-// import { API_BASE_URL } from '../../../utils/constants/api';
-import { getSortedProductData } from '../../../lib/products';
-
-import { wrapper } from '../../../store';
+import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
+import Head from 'next/head';
 import { useSelector } from 'react-redux';
 import { SET_PRODUCTS_DATA } from '../../../actions/shop';
+import Breadcrumb from '../../../components/breadcrumb';
+import Layout from '../../../components/pageLayout';
+import ProductCard from '../../../components/productCard';
+import { getSortedProductData } from '../../../lib/products';
+import { wrapper } from '../../../store';
 
-export const getStaticProps = wrapper.getStaticProps(({ store }) => {
+export const getStaticProps: GetStaticProps = wrapper.getStaticProps(({ store }) => {
     const products = getSortedProductData();
     store.dispatch({ type: SET_PRODUCTS_DATA, products: products });
 });
 
-export async function getStaticPaths() {
+export const getStaticPaths: GetStaticPaths = async () => {
     return {
         paths: [
             { params: { slug: 'fruits' }, locale: 'en' },
@@ -29,7 +24,7 @@ export async function getStaticPaths() {
     };
 }
 
-export default function CategoryPage() {
+const CategoryPage: NextPage = () => {
     const { products } = useSelector((state) => state.server);
 
     return (
@@ -83,10 +78,4 @@ export default function CategoryPage() {
     );
 }
 
-// CategoryPage.propTypes = {
-//     category: PropTypes.shape({
-//         slug: PropTypes.string.isRequired,
-//         productsCount: PropTypes.number.isRequired,
-//         products: PropTypes.array.isRequired
-//     }).isRequired
-// };
+export default CategoryPage;

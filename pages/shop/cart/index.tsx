@@ -1,12 +1,12 @@
-import Head from 'next/head';
-import Layout from '../../../components/pageLayout';
 import { Alert, AlertIcon, Container, Divider, Heading, SimpleGrid } from '@chakra-ui/react';
-import Breadcrumb from '../../../components/breadcrumb';
+import Head from 'next/head';
 import { useSelector } from 'react-redux';
+import Breadcrumb from '../../../components/breadcrumb';
 import CartItem from '../../../components/cartItem';
+import Layout from '../../../components/pageLayout';
 
 export default function CartPage() {
-    const { cart } = useSelector((state) => state.client);
+    const { cart } = useSelector((state : any) => state.client);
 
     return (
         <Layout>
