@@ -1,20 +1,23 @@
-import { createStore, compose, applyMiddleware } from 'redux';
+import { createStore, compose, Store } from 'redux';
 import { createWrapper } from 'next-redux-wrapper';
-
-// import createSagaMiddleware from 'redux-saga';
 import { persistStore } from 'redux-persist';
-
-//import rootSaga from './saga';
 import rootReducer from '../reducer/index';
+import { Persistor } from 'redux-persist/es/types';
+
+declare global {
+    interface Window {
+        __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose;
+    }
+}
 
 const makeStore = (initialState) => {
-    let store;
+    let store: Store | any;
 
-    // const sagaMiddleware = createSagaMiddleware();
+    
     const composeEnhancers =
         (typeof window !== 'undefined' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose;
 
-    const isClient = typeof window !== 'undefined';
+    const isClient: boolean = typeof window !== 'undefined';
 
     if (isClient) {
         const { persistReducer } = require('redux-persist');
@@ -29,15 +32,12 @@ const makeStore = (initialState) => {
             persistReducer(persistConfig, rootReducer),
             initialState,
             composeEnhancers()
-            //applyMiddleware(sagaMiddleware)
         );
 
         store.__PERSISTOR = persistStore(store);
     } else {
-        store = createStore(rootReducer, initialState /*, applyMiddleware(sagaMiddleware) */);
+        store = createStore(rootReducer, initialState);
     }
-
-    //   store.sagaTask = sagaMiddleware.run(rootSaga);
 
     return store;
 };

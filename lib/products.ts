@@ -4,21 +4,33 @@ import matter from 'gray-matter';
 import remark from 'remark';
 import html from 'remark-html';
 
-const productsDirectory = path.join(process.cwd(), 'data', 'shop', 'products');
+const productsDirectory: string = path.join(process.cwd(), 'data', 'shop', 'products');
 
-export function getSortedProductData() {
+interface Product {
+    slug: string
+    title: string
+    date: string,
+    price: string,
+    rating: number,
+    reviewCount: number,
+    isNew: boolean,
+    imageUrl: string,
+    contentHtml: string
+};
+
+export const getSortedProductData = () => {
     // Get file names under /products
-    const fileNames = fs.readdirSync(productsDirectory);
-    const allProductsData = fileNames.map((fileName) => {
+    const fileNames: string[] = fs.readdirSync(productsDirectory);
+    const allProductsData: any = fileNames.map((fileName) => {
         // Remove ".md" from file name to get slug
-        const slug = fileName.replace(/\.md$/, '');
+        const slug: string = fileName.replace(/\.md$/, '');
 
         // Read markdown file as string
-        const fullPath = path.join(productsDirectory, fileName);
-        const fileContents = fs.readFileSync(fullPath, 'utf8');
+        const fullPath: string = path.join(productsDirectory, fileName);
+        const fileContents: string = fs.readFileSync(fullPath, 'utf8');
 
         // Use gray-matter to parse the product metadata section
-        const matterResult = matter(fileContents);
+        const matterResult: matter.GrayMatterFile<string> = matter(fileContents);
 
         // Combine the data with the slug
         return {
@@ -27,7 +39,7 @@ export function getSortedProductData() {
         };
     });
     // Sort products by date
-    return allProductsData.sort((a, b) => {
+    return allProductsData.sort((a: Product, b: Product) => {
         if (a.date < b.date) {
             return 1;
         } else {
@@ -36,22 +48,9 @@ export function getSortedProductData() {
     });
 }
 
-export function getAllProductIds() {
-    const fileNames = fs.readdirSync(productsDirectory);
+export const getAllProductIds = () => {
+    const fileNames: string[] = fs.readdirSync(productsDirectory);
 
-    // Returns an array that looks like this:
-    // [
-    //   {
-    //     params: {
-    //       slug: 'apple'
-    //     }
-    //   },
-    //   {
-    //     params: {
-    //       slug: 'banana'
-    //     }
-    //   }
-    // ]
     return fileNames.map((fileName) => {
         return {
             params: {
@@ -62,7 +61,7 @@ export function getAllProductIds() {
     });
 }
 
-export async function getProductData(slug) {
+export const getProductData = async (slug: string) : Promise<Product> => {
     const fullPath = path.join(productsDirectory, `${slug}.md`);
     const fileContents = fs.readFileSync(fullPath, 'utf8');
 
@@ -76,9 +75,17 @@ export async function getProductData(slug) {
     const contentHtml = processedContent.toString();
 
     // Combine the data with the slug and contentHtml
+    const { title, date, price, rating, reviewCount, isNew, imageUrl } = matterResult.data
+
     return {
         slug,
         contentHtml,
-        ...matterResult.data
+        title,
+        date,
+        price,
+        rating,
+        reviewCount,
+        isNew,
+        imageUrl
     };
 }
