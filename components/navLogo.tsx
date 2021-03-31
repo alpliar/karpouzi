@@ -23,7 +23,7 @@ const NavLogo = ({ siteName, siteEmoji, siteEmojiLabel }) => {
 export default NavLogo;
 
 NavLogo.propTypes = {
-    siteName: PropTypes.string.isRequired,
+    siteName: PropTypes.string,
     siteEmoji: PropTypes.string.isRequired,
     siteEmojiLabel: PropTypes.string.isRequired
 };

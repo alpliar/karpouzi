@@ -3,7 +3,12 @@ import { StarIcon } from '@chakra-ui/icons';
 
 import PropTypes from 'prop-types';
 
-const Rating = ({ rate, count }) => {
+interface IOwnProps {
+    rate: number,
+    count: number
+};
+
+const Rating = ({ rate, count } : IOwnProps) => {
     return (
         <Text>
             {Array(5)
@@ -12,7 +17,7 @@ const Rating = ({ rate, count }) => {
                     <StarIcon key={i} color={i < rate ? 'teal.500' : 'gray.300'} />
                 ))}
             <Text isTruncated as="span" ml="2" /*color="gray.600"*/ fontSize="sm">
-                {count} reviews
+                {count.toString()} reviews
             </Text>
         </Text>
     );
