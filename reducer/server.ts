@@ -20,7 +20,7 @@ interface Product {
     imageUrl: string
 };
 
-interface ServerState {
+export interface ServerState {
     posts: Post[],
     products: Product[]
 }

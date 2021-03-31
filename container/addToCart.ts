@@ -1,9 +1,21 @@
+import { Dispatch } from 'react';
 import { connect } from 'react-redux';
 import { addToCart, updateQuantityCart } from '../actions/shop';
 import AddToCart from '../components/addToCart';
+import { rootState } from '../reducer';
 import { getQuantityInCartBySlug } from '../utils/shop';
 
-const mapStateToProps = (state, ownProps) => ({
+interface IOwnProps {
+    slug: string,
+    quantity: number
+}
+
+export interface ICartItem {
+    slug: string,
+    quantity: number
+};
+
+const mapStateToProps = (state: rootState, ownProps: IOwnProps) => ({
     cart: state.client.cart,
     inCart: getQuantityInCartBySlug(ownProps.slug, state.client.cart),
     slug: ownProps.slug,
@@ -11,12 +23,12 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 // eslint-disable-next-line no-unused-vars
-const mapDispatchToProps = (dispatch, ownProps) => ({
-    addToCart: (slug, quantity, cart) => {
-        const existingItem = cart.find((item) => item.slug === slug);
+const mapDispatchToProps = (dispatch: Dispatch<any>) => ({
+    addToCart: (slug: string, quantity: number, cart: any) => {
+        const existingItem: ICartItem = cart.find((item: ICartItem): boolean => item.slug === slug);
 
         if (existingItem) {
-            const newQuantity = existingItem.quantity + quantity;
+            const newQuantity: number = existingItem.quantity + quantity;
             dispatch(updateQuantityCart(slug, newQuantity));
         } else {
             dispatch(addToCart(slug, quantity));
