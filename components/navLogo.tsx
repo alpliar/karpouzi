@@ -12,8 +12,8 @@ const NavLogo = ({ siteName, siteEmoji, siteEmojiLabel }) => {
                 <span role="img" aria-label={siteEmojiLabel}>
                     {siteEmoji}
                 </span>
-                <Link href="/" alt="Go to homepage" passHref>
-                    <LinkOverlay>{f('commonSiteName')}</LinkOverlay>
+                <Link href="/" passHref>
+                    <LinkOverlay alt="Go to homepage" >{f('commonSiteName')}</LinkOverlay>
                 </Link>
             </Box>
         </LinkBox>
