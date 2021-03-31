@@ -4,7 +4,7 @@ import matter from 'gray-matter';
 import remark from 'remark';
 import html from 'remark-html';
 
-const productsDirectory = path.join(process.cwd(), 'data', 'shop', 'products');
+const productsDirectory: string = path.join(process.cwd(), 'data', 'shop', 'products');
 
 export function getSortedProductData() {
     // Get file names under /products

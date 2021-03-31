@@ -6,11 +6,10 @@ import rootReducer from '../reducer/index';
 const makeStore = (initialState) => {
     let store;
 
-    // const sagaMiddleware = createSagaMiddleware();
     const composeEnhancers =
         (typeof window !== 'undefined' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose;
 
-    const isClient = typeof window !== 'undefined';
+    const isClient: boolean = typeof window !== 'undefined';
 
     if (isClient) {
         const { persistReducer } = require('redux-persist');
