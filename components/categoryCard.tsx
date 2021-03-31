@@ -23,13 +23,13 @@ const CategoryCard = ({ slug, title, shortDescription, products, productsCount }
                             passHref>
                             <LinkOverlay title={`go to ${slug} category`}>{title}</LinkOverlay>
                         </Link>
-                        <Text as="span" fontSize="sm" fontStyle="italic">
+                        <Text as="span" fontSize="sm" fontStyle="italic" display={{ base: 'block', sm: 'inline' }}>
                             {' '}
                             ({productsCount} products)
                         </Text>
                     </Heading>
                     {productsCount > 0 && (
-                        <AvatarGroup size="md" max={useBreakpointValue({ base: 3, md: 6, lg: 9 })}>
+                        <AvatarGroup size="md" max={useBreakpointValue({ base: 3, md: 5})}>
                             {products.map((product, index) => (
                                 <Avatar
                                     src={
