@@ -75,5 +75,5 @@ Post.propTypes = {
         id: PropTypes.string.isRequired,
         date: PropTypes.string.isRequired,
         contentHtml: PropTypes.string.isRequired
-    }).isRequired
+    })
 };
