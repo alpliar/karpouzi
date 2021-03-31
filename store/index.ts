@@ -1,11 +1,19 @@
-import { createStore, compose } from 'redux';
+import { createStore, compose, Store } from 'redux';
 import { createWrapper } from 'next-redux-wrapper';
 import { persistStore } from 'redux-persist';
 import rootReducer from '../reducer/index';
+import { Persistor } from 'redux-persist/es/types';
+
+declare global {
+    interface Window {
+        __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose;
+    }
+}
 
 const makeStore = (initialState) => {
-    let store;
+    let store: Store | any;
 
+    
     const composeEnhancers =
         (typeof window !== 'undefined' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose;
 

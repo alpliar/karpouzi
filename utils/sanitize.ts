@@ -1,9 +1,9 @@
-import xss from 'xss';
+import xss, { whiteList, IFilterXSSOptions } from 'xss';
 
 export function sanitizeText(string: string) {
     // only include whitelisted tags, remove the others
-    const options = {
-        whiteList: xss.whiteList,
+    const options: IFilterXSSOptions = {
+        whiteList: whiteList,
         stripIgnoreTag: true
     };
 
