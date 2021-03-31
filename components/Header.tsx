@@ -46,13 +46,17 @@ const Header = ({ siteTitle }) => {
                         flexWrap="wrap"
                         flexGrow={1}>
                         <MenuItems>
-                            <Link href="/blog" alt="go to blog page">
-                                Blog
+                            <Link href="/blog">
+                                <a title="go to blog page">
+                                    Blog
+                                </a>
                             </Link>
                         </MenuItems>
                         <MenuItems>
-                            <Link href="/shop" alt="go to shop page">
-                                Shop
+                            <Link href="/shop">
+                                <a title="go to shop page">
+                                    Shop
+                                </a>
                             </Link>
                         </MenuItems>
                     </Box>

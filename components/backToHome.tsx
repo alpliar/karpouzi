@@ -8,7 +8,7 @@ const BackToHome = () => {
                 Feeling lost ?{' '}
             </Text>
             <Link href="/" passHref>
-                <LinkOverlay alt="go back to home">Go back to home</LinkOverlay>
+                <LinkOverlay title="go back to home">Go back to home</LinkOverlay>
             </Link>
         </LinkBox>
     );
