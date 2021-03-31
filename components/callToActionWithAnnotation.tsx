@@ -37,7 +37,7 @@ const CallToActionWithAnnotation = ({
                     spacing={{ base: 8, md: 14 }}
                     py={{ base: 4, md: 15 }}>
                     <Heading
-                        fontWeight={600}
+                        fontWeight="600"
                         fontSize={{ base: '2xl', sm: '4xl', md: '6xl' }}
                         lineHeight={'110%'}>
                         {title}

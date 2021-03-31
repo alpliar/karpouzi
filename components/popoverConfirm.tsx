@@ -11,8 +11,19 @@ import {
     PopoverHeader,
     PopoverTrigger
 } from '@chakra-ui/react';
+import { ReactNode } from 'react';
 
-const PopoverConfirm = ({ isOpen, trigger, title, body, placement, onClose, onConfirm }) => {
+interface IProps {
+    isOpen: boolean,
+    trigger: ReactNode,
+    title: ReactNode,
+    body: ReactNode,
+    placement?: 'right' | 'left' | 'top' | 'bottom',
+    onClose: any,
+    onConfirm: any
+}
+
+const PopoverConfirm = ({ isOpen, trigger, title, body, placement, onClose, onConfirm } : IProps) => {
     return (
         <Popover
             returnFocusOnClose={false}
@@ -55,6 +66,6 @@ PopoverConfirm.propTypes = {
     onClose: PropTypes.func.isRequired,
     onConfirm: PropTypes.func.isRequired,
     title: PropTypes.string,
-    body: PropTypes.oneOf([PropTypes.node, PropTypes.string]),
+    body: PropTypes.oneOf([PropTypes.node, PropTypes.string]).isRequired,
     placement: PropTypes.oneOf(['right', 'left', 'top', 'bottom'])
 };

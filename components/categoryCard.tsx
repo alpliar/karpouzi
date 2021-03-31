@@ -20,9 +20,8 @@ const CategoryCard = ({ slug, title, shortDescription, products, productsCount }
                     <Heading as="h2" size="lg">
                         <Link
                             href={`/shop/category/${slug}`}
-                            alt={`go to ${slug} category`}
                             passHref>
-                            <LinkOverlay>{title}</LinkOverlay>
+                            <LinkOverlay title={`go to ${slug} category`}>{title}</LinkOverlay>
                         </Link>
                         <Text as="span" fontSize="sm" fontStyle="italic">
                             {' '}

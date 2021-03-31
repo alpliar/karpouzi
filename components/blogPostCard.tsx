@@ -11,8 +11,9 @@ import {
 } from '@chakra-ui/react';
 import Link from 'next/link';
 import PropTypes from 'prop-types';
-import karpouziAvatar from '../public/icon-48x48.png';
 import Card from './card';
+
+const karpouziAvatar = require('../public/icon-48x48.png');
 
 const BlogPostCard = ({ title, date, slug, author, authorAvatar }) => {
     return (
@@ -35,9 +36,9 @@ const BlogPostCard = ({ title, date, slug, author, authorAvatar }) => {
                     <Text
                         color={'green.500'}
                         textTransform={'uppercase'}
-                        fontWeight={800}
-                        fontSize={'sm'}
-                        letterSpacing={1.1}>
+                        fontWeight="800"
+                        fontSize='sm'
+                        letterSpacing="1.1">
                         Blog
                     </Text>
                     <Heading
@@ -55,7 +56,7 @@ const BlogPostCard = ({ title, date, slug, author, authorAvatar }) => {
                             </LinkOverlay>
                         </Link>
                     </Heading>
-                    <Text color={'gray.500'} noOfLines="3">
+                    <Text color={'gray.500'} noOfLines={3}>
                         Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
                         eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
                         voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
@@ -64,7 +65,7 @@ const BlogPostCard = ({ title, date, slug, author, authorAvatar }) => {
                 <Stack mt={6} direction={'row'} spacing={4} align={'center'}>
                     <Avatar src={authorAvatar} alt={'Author'} bg="blackAlpha.400" />
                     <Stack direction={'column'} spacing={0} fontSize={'sm'}>
-                        <Text fontWeight={600}>{author}</Text>
+                        <Text fontWeight="600">{author}</Text>
                         <Text color={'gray.500'}>{date} · 6min read</Text>
                     </Stack>
                 </Stack>

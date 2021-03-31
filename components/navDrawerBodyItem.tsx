@@ -17,8 +17,8 @@ const NavDrawerBodyItem = ({ href, alt, text }) => {
             bg="whiteAlpha.300"
             color="white"
             textAlign="center">
-            <Link href={href} alt={alt}>
-                <LinkOverlay>{text}</LinkOverlay>
+            <Link href={href}>
+                <LinkOverlay title={alt}>{text}</LinkOverlay>
             </Link>
         </LinkBox>
     );
