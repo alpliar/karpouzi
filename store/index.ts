@@ -1,10 +1,6 @@
-import { createStore, compose, applyMiddleware } from 'redux';
+import { createStore, compose } from 'redux';
 import { createWrapper } from 'next-redux-wrapper';
-
-// import createSagaMiddleware from 'redux-saga';
 import { persistStore } from 'redux-persist';
-
-//import rootSaga from './saga';
 import rootReducer from '../reducer/index';
 
 const makeStore = (initialState) => {
@@ -29,15 +25,12 @@ const makeStore = (initialState) => {
             persistReducer(persistConfig, rootReducer),
             initialState,
             composeEnhancers()
-            //applyMiddleware(sagaMiddleware)
         );
 
         store.__PERSISTOR = persistStore(store);
     } else {
-        store = createStore(rootReducer, initialState /*, applyMiddleware(sagaMiddleware) */);
+        store = createStore(rootReducer, initialState);
     }
-
-    //   store.sagaTask = sagaMiddleware.run(rootSaga);
 
     return store;
 };
