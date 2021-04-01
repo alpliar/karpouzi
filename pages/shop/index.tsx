@@ -30,6 +30,22 @@ export async function getStaticProps() {
             description: 'Ex dolorem non soluta sit reprehenderit! Natus vitae doloribus amet?',
             productsCount: 3,
             products: [getRandomProduct(), getRandomProduct(), getRandomProduct()]
+        },
+        {
+            slug: 'spices',
+            lang: 'fr',
+            title: 'Spices',
+            description: 'Reprehenderit, tempora excepturi tempore porro natus assumenda recusandae ipsam aliquid non velit officiis nihil, eum veritatis quaerat, corporis a totam quia rerum!',
+            productsCount: 7,
+            products: [getRandomProduct(), getRandomProduct(), getRandomProduct(), getRandomProduct(), getRandomProduct(), getRandomProduct(), getRandomProduct()]
+        },
+        {
+            slug: 'oils',
+            lang: 'fr',
+            title: 'Oils',
+            description: 'Magni veritatis officia dolore fuga cum, aliquid animi illum odit enim eius culpa tenetur deleniti quos, tempore velit, sequi possimus commodi aut?',
+            productsCount: 5,
+            products: [getRandomProduct(), getRandomProduct(), getRandomProduct(), getRandomProduct(), getRandomProduct()]
         }
     ];
 
@@ -78,7 +94,7 @@ export default function ShopPage({ categories } : ShopPageProps) {
 
             <Container p={4} maxW="4xl">
                 <SimpleGrid
-                    minChildWidth={{ base: 'full', sm: '250px' }}
+                    minChildWidth={{ base: 'full', sm: '250px', md: '300px' }}
                     spacingX="0.5em"
                     spacingY="1em">
                     {categories &&
