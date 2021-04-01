@@ -43,7 +43,7 @@ const CartItemActions = ({ slug, quantity }) => {
                         }}
                     />
                 }
-                body={`Remove ${slug} from cart ?`}
+                body={<span>Remove {slug} from cart ?</span>}
             />
         </HStack>
     );

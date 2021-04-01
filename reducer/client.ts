@@ -1,12 +1,12 @@
 import { AnyAction } from 'redux';
 import { ADD_TO_CART, REMOVE_FROM_CART, UPDATE_QUANTITY_CART } from '../actions/shop';
 
-interface CartRow {
+export interface CartRow {
     slug: string,
     quantity: number
 };
 
-interface ClientState {
+export interface ClientState {
     cart: CartRow[]
 };
 

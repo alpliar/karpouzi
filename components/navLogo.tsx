@@ -12,8 +12,8 @@ const NavLogo = ({ siteName, siteEmoji, siteEmojiLabel }) => {
                 <span role="img" aria-label={siteEmojiLabel}>
                     {siteEmoji}
                 </span>
-                <Link href="/" alt="Go to homepage" passHref>
-                    <LinkOverlay>{f('commonSiteName')}</LinkOverlay>
+                <Link href="/" passHref>
+                    <LinkOverlay title="Go to homepage" >{f('commonSiteName')}</LinkOverlay>
                 </Link>
             </Box>
         </LinkBox>
@@ -23,7 +23,7 @@ const NavLogo = ({ siteName, siteEmoji, siteEmojiLabel }) => {
 export default NavLogo;
 
 NavLogo.propTypes = {
-    siteName: PropTypes.string.isRequired,
+    siteName: PropTypes.string,
     siteEmoji: PropTypes.string.isRequired,
     siteEmojiLabel: PropTypes.string.isRequired
 };
