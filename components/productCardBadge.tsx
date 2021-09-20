@@ -2,16 +2,15 @@ import PropTypes from 'prop-types';
 import { Badge } from '@chakra-ui/react';
 
 interface IBadgePositionAttributes {
-    top?: string,
-    left?: string,
-    right?: string,
-    center?: string,
-    bottom?: string
+    top?: string;
+    left?: string;
+    right?: string;
+    center?: string;
+    bottom?: string;
 }
 
 const getPositionAttributes = (positionX: string, positionY: string) => {
-    const attributes: IBadgePositionAttributes = {
-    };
+    const attributes: IBadgePositionAttributes = {};
 
     if (positionX === 'left') {
         attributes.left = '0em';

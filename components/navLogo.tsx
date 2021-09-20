@@ -13,7 +13,7 @@ const NavLogo = ({ siteName, siteEmoji, siteEmojiLabel }) => {
                     {siteEmoji}
                 </span>
                 <Link href="/" passHref>
-                    <LinkOverlay title="Go to homepage" >{f('commonSiteName')}</LinkOverlay>
+                    <LinkOverlay title="Go to homepage">{f('commonSiteName')}</LinkOverlay>
                 </Link>
             </Box>
         </LinkBox>

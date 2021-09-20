@@ -12,5 +12,4 @@ The **Mutsu** (陸奥, ムツ) apple (also known as Crispin) was introduced in 1
 
 Mutsu is a triploid cultivar. It is highly susceptible to the disease Blister Spot.
 
-
 Mutsu is a medium to large green apple with flesh varying in color from white to greenish yellow. It can be round, conical, or oblong, and have unequal sides. It is generally not uniform in shape or size. The russeting on a Mutsu apple covers little to none of the skin and when it is present is light gray to brown.

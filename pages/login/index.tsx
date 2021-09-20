@@ -19,11 +19,10 @@ import Layout from '../../components/pageLayout';
 import { sendToast } from '../../utils/uiToast';
 
 const LoginPage: NextPage = () => {
-
     const { formatMessage } = useIntl();
-    const f = (id : string) => formatMessage({ id });
+    const f = (id: string) => formatMessage({ id });
 
-    const handleSubmit = (event : React.MouseEvent<HTMLElement>) => {
+    const handleSubmit = (event: React.MouseEvent<HTMLElement>) => {
         event.preventDefault();
         sendToast('Account created.', "We've created your account for you.", 'success', 5000);
     };
@@ -41,9 +40,9 @@ const LoginPage: NextPage = () => {
                         <span>{f('signInLong')}</span>
                     </Heading>
                     <Text mt={4} className="mt-2 text-center text-sm">
-                    {f('or')}{' '}
+                        {f('or')}{' '}
                         <a href="#" className="font-medium">
-                        {f('startFreeTrial')}
+                            {f('startFreeTrial')}
                         </a>
                     </Text>
 
@@ -77,7 +76,7 @@ const LoginPage: NextPage = () => {
 
                             <Container p={4} bg="muted">
                                 <Link href="/lost-password" alt="go to lost password page">
-                                {f('lostPassword')}
+                                    {f('lostPassword')}
                                 </Link>
                             </Container>
                         </div>

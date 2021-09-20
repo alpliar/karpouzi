@@ -6,7 +6,7 @@ import CartItem from '../../../components/cartItem';
 import Layout from '../../../components/pageLayout';
 
 export default function CartPage() {
-    const { cart } = useSelector((state : any) => state.client);
+    const { cart } = useSelector((state: any) => state.client);
 
     return (
         <Layout>

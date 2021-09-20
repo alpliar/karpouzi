@@ -47,16 +47,12 @@ const Header = ({ siteTitle }) => {
                         flexGrow={1}>
                         <MenuItems>
                             <Link href="/blog">
-                                <a title="go to blog page">
-                                    Blog
-                                </a>
+                                <a title="go to blog page">Blog</a>
                             </Link>
                         </MenuItems>
                         <MenuItems>
                             <Link href="/shop">
-                                <a title="go to shop page">
-                                    Shop
-                                </a>
+                                <a title="go to shop page">Shop</a>
                             </Link>
                         </MenuItems>
                     </Box>

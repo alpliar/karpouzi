@@ -4,8 +4,8 @@ import NavLogo from '../components/navLogo';
 import { rootState } from '../reducer';
 
 interface IProps {
-    siteEmoji: string,
-    siteEmojiLabel: string
+    siteEmoji: string;
+    siteEmojiLabel: string;
 }
 
 const mapStateToProps = (state: rootState): IProps => ({

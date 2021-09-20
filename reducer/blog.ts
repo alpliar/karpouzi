@@ -3,14 +3,14 @@ import { HYDRATE } from 'next-redux-wrapper';
 import { AnyAction } from 'redux';
 
 interface Post {
-    id: string
-    title: string
-    date: string
-};
+    id: string;
+    title: string;
+    date: string;
+}
 
 interface BlogState {
-    postsData: Post[]
-};
+    postsData: Post[];
+}
 
 const initialState: BlogState = {
     postsData: []

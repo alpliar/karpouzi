@@ -6,14 +6,14 @@ import { rootState } from '../reducer';
 import { getQuantityInCartBySlug } from '../utils/shop';
 
 interface IOwnProps {
-    slug: string,
-    quantity: number
+    slug: string;
+    quantity: number;
 }
 
 export interface ICartItem {
-    slug: string,
-    quantity: number
-};
+    slug: string;
+    quantity: number;
+}
 
 const mapStateToProps = (state: rootState, ownProps: IOwnProps) => ({
     cart: state.client.cart,

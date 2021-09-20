@@ -4,25 +4,25 @@ import { SET_PRODUCTS_DATA } from '../actions/shop';
 import { AnyAction } from 'redux';
 
 interface Post {
-    id: string
-    title: string
-    date: string
-};
+    id: string;
+    title: string;
+    date: string;
+}
 
 interface Product {
-    slug: string
-    title: string
-    date: string,
-    price: string,
-    rating: number,
-    reviewCount: number,
-    isNew: boolean,
-    imageUrl: string
-};
+    slug: string;
+    title: string;
+    date: string;
+    price: string;
+    rating: number;
+    reviewCount: number;
+    isNew: boolean;
+    imageUrl: string;
+}
 
 export interface ServerState {
-    posts: Post[],
-    products: Product[]
+    posts: Post[];
+    products: Product[];
 }
 
 const initialState: ServerState = {

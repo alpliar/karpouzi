@@ -4,7 +4,7 @@ import NavLogin from '../components/navLogin';
 import { rootState } from '../reducer';
 
 interface IProps {
-    name: string
+    name: string;
 }
 
 const mapStateToProps = (state: rootState): IProps => ({

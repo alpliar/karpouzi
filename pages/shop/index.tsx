@@ -35,17 +35,33 @@ export async function getStaticProps() {
             slug: 'spices',
             lang: 'fr',
             title: 'Spices',
-            description: 'Reprehenderit, tempora excepturi tempore porro natus assumenda recusandae ipsam aliquid non velit officiis nihil, eum veritatis quaerat, corporis a totam quia rerum!',
+            description:
+                'Reprehenderit, tempora excepturi tempore porro natus assumenda recusandae ipsam aliquid non velit officiis nihil, eum veritatis quaerat, corporis a totam quia rerum!',
             productsCount: 7,
-            products: [getRandomProduct(), getRandomProduct(), getRandomProduct(), getRandomProduct(), getRandomProduct(), getRandomProduct(), getRandomProduct()]
+            products: [
+                getRandomProduct(),
+                getRandomProduct(),
+                getRandomProduct(),
+                getRandomProduct(),
+                getRandomProduct(),
+                getRandomProduct(),
+                getRandomProduct()
+            ]
         },
         {
             slug: 'oils',
             lang: 'fr',
             title: 'Oils',
-            description: 'Magni veritatis officia dolore fuga cum, aliquid animi illum odit enim eius culpa tenetur deleniti quos, tempore velit, sequi possimus commodi aut?',
+            description:
+                'Magni veritatis officia dolore fuga cum, aliquid animi illum odit enim eius culpa tenetur deleniti quos, tempore velit, sequi possimus commodi aut?',
             productsCount: 5,
-            products: [getRandomProduct(), getRandomProduct(), getRandomProduct(), getRandomProduct(), getRandomProduct()]
+            products: [
+                getRandomProduct(),
+                getRandomProduct(),
+                getRandomProduct(),
+                getRandomProduct(),
+                getRandomProduct()
+            ]
         }
     ];
 
@@ -66,20 +82,18 @@ export async function getStaticProps() {
 type Product = any;
 
 type Category = {
-    slug: string,
-    title: string,
-    description: string,
-    products: Product[],
-    productsCount: number
-}
+    slug: string;
+    title: string;
+    description: string;
+    products: Product[];
+    productsCount: number;
+};
 
 type ShopPageProps = {
-    categories: Category[]
-}
+    categories: Category[];
+};
 
-
-
-export default function ShopPage({ categories } : ShopPageProps) {
+export default function ShopPage({ categories }: ShopPageProps) {
     return (
         <Layout>
             <Head>

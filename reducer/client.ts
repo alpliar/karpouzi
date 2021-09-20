@@ -2,19 +2,19 @@ import { AnyAction } from 'redux';
 import { ADD_TO_CART, REMOVE_FROM_CART, UPDATE_QUANTITY_CART } from '../actions/shop';
 
 export interface CartRow {
-    slug: string,
-    quantity: number
-};
+    slug: string;
+    quantity: number;
+}
 
 export interface ClientState {
-    cart: CartRow[]
-};
+    cart: CartRow[];
+}
 
 const initialState = {
     cart: []
 };
 
-const reducer = (state = initialState, action : AnyAction) => {
+const reducer = (state = initialState, action: AnyAction) => {
     switch (action.type) {
         case ADD_TO_CART: {
             return {

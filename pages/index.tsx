@@ -9,7 +9,7 @@ import PageLayout, { siteTitle } from '../components/pageLayout';
 export default function Home() {
     const router = useRouter();
     const { formatMessage } = useIntl();
-    const f = (id : string) => formatMessage({ id });
+    const f = (id: string) => formatMessage({ id });
 
     const handleVisitShop = () => {
         router.push('/shop');

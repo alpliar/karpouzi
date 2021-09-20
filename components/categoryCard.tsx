@@ -18,18 +18,20 @@ const CategoryCard = ({ slug, title, shortDescription, products, productsCount }
             <Card key={slug}>
                 <Stack>
                     <Heading as="h2" size="lg">
-                        <Link
-                            href={`/shop/category/${slug}`}
-                            passHref>
+                        <Link href={`/shop/category/${slug}`} passHref>
                             <LinkOverlay title={`go to ${slug} category`}>{title}</LinkOverlay>
                         </Link>
-                        <Text as="span" fontSize="sm" fontStyle="italic" display={{ base: 'block', sm: 'inline' }}>
+                        <Text
+                            as="span"
+                            fontSize="sm"
+                            fontStyle="italic"
+                            display={{ base: 'block', sm: 'inline' }}>
                             {' '}
                             ({productsCount} products)
                         </Text>
                     </Heading>
                     {productsCount > 0 && (
-                        <AvatarGroup size="md" max={useBreakpointValue({ base: 3, md: 5})}>
+                        <AvatarGroup size="md" max={useBreakpointValue({ base: 3, md: 5 })}>
                             {products.map((product, index) => (
                                 <Avatar
                                     src={

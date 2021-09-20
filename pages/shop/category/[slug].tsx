@@ -22,7 +22,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
         ],
         fallback: true
     };
-}
+};
 
 const CategoryPage: NextPage = () => {
     const { products } = useSelector((state) => state.server);
@@ -76,6 +76,6 @@ const CategoryPage: NextPage = () => {
             </Container>
         </Layout>
     );
-}
+};
 
 export default CategoryPage;

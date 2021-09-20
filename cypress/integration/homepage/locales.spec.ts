@@ -17,4 +17,4 @@ describe('Locale', () => {
     });
 });
 
-export {}
+export {};

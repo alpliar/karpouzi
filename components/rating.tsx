@@ -4,11 +4,11 @@ import { StarIcon } from '@chakra-ui/icons';
 import PropTypes from 'prop-types';
 
 interface IOwnProps {
-    rate: number,
-    count: number
-};
+    rate: number;
+    count: number;
+}
 
-const Rating = ({ rate, count } : IOwnProps) => {
+const Rating = ({ rate, count }: IOwnProps) => {
     return (
         <Text>
             {Array(5)

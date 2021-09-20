@@ -28,7 +28,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
         paths,
         fallback: true
     };
-}
+};
 
 type ProductPageProps = {
     slug: string;
@@ -38,7 +38,7 @@ type ProductPageProps = {
     reviewCount: string;
     isNew: boolean;
     imageUrl: string;
-    contentHtml: any
+    contentHtml: any;
 };
 
 const ProductPage = ({
@@ -118,7 +118,7 @@ const ProductPage = ({
             </Container>
         </Layout>
     );
-}
+};
 
 export default ProductPage;
 

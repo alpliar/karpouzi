@@ -7,16 +7,16 @@ import html from 'remark-html';
 const productsDirectory: string = path.join(process.cwd(), 'data', 'shop', 'products');
 
 interface Product {
-    slug: string
-    title: string
-    date: string,
-    price: string,
-    rating: number,
-    reviewCount: number,
-    isNew: boolean,
-    imageUrl: string,
-    contentHtml: string
-};
+    slug: string;
+    title: string;
+    date: string;
+    price: string;
+    rating: number;
+    reviewCount: number;
+    isNew: boolean;
+    imageUrl: string;
+    contentHtml: string;
+}
 
 export const getSortedProductData = () => {
     // Get file names under /products
@@ -46,7 +46,7 @@ export const getSortedProductData = () => {
             return -1;
         }
     });
-}
+};
 
 export const getAllProductIds = () => {
     const fileNames: string[] = fs.readdirSync(productsDirectory);
@@ -59,9 +59,9 @@ export const getAllProductIds = () => {
             }
         };
     });
-}
+};
 
-export const getProductData = async (slug: string) : Promise<Product> => {
+export const getProductData = async (slug: string): Promise<Product> => {
     const fullPath = path.join(productsDirectory, `${slug}.md`);
     const fileContents = fs.readFileSync(fullPath, 'utf8');
 
@@ -75,7 +75,7 @@ export const getProductData = async (slug: string) : Promise<Product> => {
     const contentHtml = processedContent.toString();
 
     // Combine the data with the slug and contentHtml
-    const { title, date, price, rating, reviewCount, isNew, imageUrl } = matterResult.data
+    const { title, date, price, rating, reviewCount, isNew, imageUrl } = matterResult.data;
 
     return {
         slug,
@@ -88,4 +88,4 @@ export const getProductData = async (slug: string) : Promise<Product> => {
         isNew,
         imageUrl
     };
-}
+};

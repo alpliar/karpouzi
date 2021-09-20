@@ -7,10 +7,10 @@ import html from 'remark-html';
 const postsDirectory: string = path.join(process.cwd(), 'posts');
 
 interface Post {
-    id: string
-    title: string
-    date: string
-};
+    id: string;
+    title: string;
+    date: string;
+}
 
 export const getSortedPostsData = () => {
     // Get file names under /posts
@@ -40,7 +40,7 @@ export const getSortedPostsData = () => {
             return -1;
         }
     });
-}
+};
 
 export const getAllPostIds = () => {
     const fileNames: string[] = fs.readdirSync(postsDirectory);
@@ -53,9 +53,9 @@ export const getAllPostIds = () => {
             }
         };
     });
-}
+};
 
-export async function getPostData(id : string) {
+export async function getPostData(id: string) {
     const fullPath: string = path.join(postsDirectory, `${id}.md`);
     const fileContents: string = fs.readFileSync(fullPath, 'utf8');
 

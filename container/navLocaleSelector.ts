@@ -4,14 +4,14 @@ import NavLocaleSelector from '../components/navLocaleSelector';
 import { rootState } from '../reducer';
 
 interface IProps {
-    compact?: boolean
+    compact?: boolean;
 }
 
 interface IOwnProps {
-    compact?: boolean
+    compact?: boolean;
 }
 
-const mapStateToProps = (state: rootState, ownProps: IOwnProps) : IProps => {
+const mapStateToProps = (state: rootState, ownProps: IOwnProps): IProps => {
     return {
         compact: ownProps.compact
     };

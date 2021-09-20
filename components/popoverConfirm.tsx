@@ -14,16 +14,24 @@ import {
 import { ReactNode } from 'react';
 
 interface IProps {
-    isOpen: boolean,
-    trigger: ReactNode,
-    title: ReactNode,
-    body: ReactNode,
-    placement?: 'right' | 'left' | 'top' | 'bottom',
-    onClose: any,
-    onConfirm: any
+    isOpen: boolean;
+    trigger: ReactNode;
+    title: ReactNode;
+    body: ReactNode;
+    placement?: 'right' | 'left' | 'top' | 'bottom';
+    onClose: any;
+    onConfirm: any;
 }
 
-const PopoverConfirm = ({ isOpen, trigger, title, body, placement, onClose, onConfirm } : IProps) => {
+const PopoverConfirm = ({
+    isOpen,
+    trigger,
+    title,
+    body,
+    placement,
+    onClose,
+    onConfirm
+}: IProps) => {
     return (
         <Popover
             returnFocusOnClose={false}

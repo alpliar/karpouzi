@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 
 const QuantitySelector = ({ quantity, minQuantity, maxQuantity, handleChange }) => {
-    
     const disableReduceQuantity = quantity == minQuantity;
     const disableIncreaseQuantity = quantity == maxQuantity;
 

@@ -37,7 +37,7 @@ const BlogPostCard = ({ title, date, slug, author, authorAvatar }) => {
                         color={'green.500'}
                         textTransform={'uppercase'}
                         fontWeight="800"
-                        fontSize='sm'
+                        fontSize="sm"
                         letterSpacing="1.1">
                         Blog
                     </Text>
