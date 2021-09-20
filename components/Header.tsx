@@ -30,7 +30,7 @@ const Header = ({ siteTitle }) => {
                 p={2}
                 m={{ base: 0, md: 'auto' }}>
                 <Flex align="center" mr={{ base: 2, sm: 5 }}>
-                    <NavLogo siteTitle={siteTitle} />
+                    <NavLogo /* siteTitle={siteTitle} */ />
                 </Flex>
                 <Flex
                     textAlign={{ base: 'center', md: 'inherit' }}
