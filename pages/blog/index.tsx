@@ -13,7 +13,7 @@ export const getStaticProps = wrapper.getStaticProps(({ store }) => {
 });
 
 export default function Home() {
-    const { posts } = useSelector((state) => state.server);
+    const { posts } = useSelector((state: any) => state.server);
 
     return (
         <Layout>
