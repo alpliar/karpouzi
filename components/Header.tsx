@@ -9,6 +9,7 @@ import NavLogin from '../container/navLogin';
 import NavLogo from '../container/navLogo';
 import NavBurgerMenu from './navBurgerMenu';
 import NavDrawerBody from './navDrawerBody';
+import { useIntl } from 'react-intl';
 
 const MenuItems = ({ children }) => (
     <Text mt={{ base: 0, md: 0 }} mr={6} display={{ base: 'inline', sm: 'inline' }}>
@@ -17,6 +18,9 @@ const MenuItems = ({ children }) => (
 );
 
 const Header = ({ siteTitle }) => {
+    const { formatMessage } = useIntl();
+    const f = (id: string) => formatMessage({ id });
+
     const { isOpen, onOpen, onClose } = useDisclosure();
 
     return (
@@ -47,12 +51,12 @@ const Header = ({ siteTitle }) => {
                         flexGrow={1}>
                         <MenuItems>
                             <Link href="/blog">
-                                <a title="go to blog page">Blog</a>
+                                <a title="go to blog page">{f('menuEntryBlog')}</a>
                             </Link>
                         </MenuItems>
                         <MenuItems>
                             <Link href="/shop">
-                                <a title="go to shop page">Shop</a>
+                                <a title="go to shop page">{f('menuEntryShop')}</a>
                             </Link>
                         </MenuItems>
                     </Box>

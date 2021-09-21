@@ -1,6 +1,8 @@
 export const gr = {
     common: {
-        commonSiteName: 'καρπούζι'
+        commonSiteName: 'καρπούζι',
+        menuEntryBlog: 'Ιστολόγιο',
+        menuEntryShop: 'κατάστημα',
     },
     '/': {
         welcomeMessage: 'καλώς ήλθατε στο',

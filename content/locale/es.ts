@@ -1,6 +1,8 @@
 export const es = {
     common: {
-        commonSiteName: 'Karpouzi'
+        commonSiteName: 'Karpouzi',
+        menuEntryBlog: 'Blog',
+        menuEntryShop: 'Tienda',
     },
     '/': {
         welcomeMessage: 'Bienvenido a',
