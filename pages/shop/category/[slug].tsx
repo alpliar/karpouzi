@@ -7,6 +7,7 @@ import Breadcrumb from '../../../components/breadcrumb';
 import Layout from '../../../components/pageLayout';
 import ProductCard from '../../../components/productCard';
 import { getSortedProductData } from '../../../lib/products';
+import { RootState } from '../../../reducer';
 import { wrapper } from '../../../store';
 
 export const getStaticProps: GetStaticProps = wrapper.getStaticProps(({ store }) => {
@@ -25,7 +26,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 const CategoryPage: NextPage = () => {
-    const { products } = useSelector((state) => state.server);
+    const { products } = useSelector((state: RootState) => state.server);
 
     return (
         <Layout>

@@ -5,6 +5,7 @@ import { SET_POSTS_DATA } from '../../actions/blog';
 import LatestsPosts from '../../components/LatestsPosts';
 import Layout, { siteTitle } from '../../components/pageLayout';
 import { getSortedPostsData } from '../../lib/posts';
+import { RootState } from '../../reducer';
 import { wrapper } from '../../store';
 
 export const getStaticProps = wrapper.getStaticProps(({ store }) => {
@@ -13,7 +14,7 @@ export const getStaticProps = wrapper.getStaticProps(({ store }) => {
 });
 
 export default function Home() {
-    const { posts } = useSelector((state: any) => state.server);
+    const { posts } = useSelector((state: RootState) => state.server);
 
     return (
         <Layout>
