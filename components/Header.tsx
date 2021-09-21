@@ -19,7 +19,7 @@ const MenuItems = ({ children }) => (
 
 const Header = ({ siteTitle }) => {
     const { formatMessage } = useIntl();
-    const f = (id: string) => formatMessage({ id });
+    const f = (id: string, values: any = null) => formatMessage({ id }, values);
 
     const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -51,12 +51,16 @@ const Header = ({ siteTitle }) => {
                         flexGrow={1}>
                         <MenuItems>
                             <Link href="/blog">
-                                <a title="go to blog page">{f('menuEntryBlog')}</a>
+                                <a title={f('goToPageName', { name: f('menuEntryBlog') })}>
+                                    {f('menuEntryBlog')}
+                                </a>
                             </Link>
                         </MenuItems>
                         <MenuItems>
                             <Link href="/shop">
-                                <a title="go to shop page">{f('menuEntryShop')}</a>
+                                <a title={f('goToPageName', { name: f('menuEntryShop') })}>
+                                    {f('menuEntryShop')}
+                                </a>
                             </Link>
                         </MenuItems>
                     </Box>
