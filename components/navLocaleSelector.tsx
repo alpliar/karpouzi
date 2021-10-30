@@ -6,6 +6,7 @@ import { Menu, MenuButton, MenuItem, MenuList } from '@chakra-ui/menu';
 import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
 import { FaFlag } from 'react-icons/fa';
+import getFlagEmoji from '../utils/flags';
 
 const NavLocaleSelector = ({ compact }) => {
     const router = useRouter();
@@ -43,7 +44,7 @@ const NavLocaleSelector = ({ compact }) => {
                                 handleSelection(locale);
                             }}
                             key={locale}>
-                            <Image
+                            {/* <Image
                                 boxSize="2rem"
                                 borderRadius="full"
                                 src={`https://www.countryflags.io/${
@@ -51,8 +52,8 @@ const NavLocaleSelector = ({ compact }) => {
                                 }/flat/64.png`}
                                 alt={locale}
                                 mr="12px"
-                            />
-                            {localeName}
+                            /> */}
+                            {getFlagEmoji(locale == 'en' ? 'gb' : locale)} {localeName}
                         </MenuItem>
                     );
                 })}
