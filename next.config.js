@@ -1,8 +1,9 @@
 const withPWA = require('next-pwa');
-const withImages = require('next-images');
+// const withImages = require('next-images');
 const runtimeCaching = require('next-pwa/cache');
 
-module.exports = withImages(
+module.exports =
+    // withImages(
     withPWA({
         pwa: {
             dest: 'public',
@@ -17,5 +18,5 @@ module.exports = withImages(
             locales: ['en', 'fr', 'es', 'gr'],
             defaultLocale: 'en'
         }
-    })
-);
+    });
+// );
