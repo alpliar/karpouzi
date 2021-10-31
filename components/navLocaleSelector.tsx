@@ -1,12 +1,14 @@
 import { Button, IconButton } from '@chakra-ui/button';
 import { useColorModeValue } from '@chakra-ui/color-mode';
 import { Image } from '@chakra-ui/image';
+import { LinkBox, LinkOverlay, Stack } from '@chakra-ui/layout';
 import { useBreakpointValue } from '@chakra-ui/media-query';
 import { Menu, MenuButton, MenuItem, MenuList } from '@chakra-ui/menu';
 import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
 import { FaFlag } from 'react-icons/fa';
 import getFlagEmoji from '../utils/flags';
+import Link from './link';
 
 const NavLocaleSelector = ({ compact }) => {
     const router = useRouter();
@@ -27,6 +29,7 @@ const NavLocaleSelector = ({ compact }) => {
     return (
         <Menu>
             <MenuButton
+                e2e="localeToggle"
                 size={size}
                 color="white"
                 colorScheme={colorScheme}
@@ -34,27 +37,21 @@ const NavLocaleSelector = ({ compact }) => {
                 icon={compact === true && <FaFlag />}>
                 {compact === false && 'Language'}
             </MenuButton>
-            <MenuList color={useColorModeValue('black', 'white')}>
+            <MenuList paddingX="2" e2e="localeMenu" color={useColorModeValue('black', 'white')}>
                 {router.locales.map((locale) => {
                     const localeName = localesInfos[locale];
                     return (
-                        <MenuItem
-                            cursor="pointer"
-                            onClick={() => {
-                                handleSelection(locale);
-                            }}
-                            key={locale}>
-                            {/* <Image
-                                boxSize="2rem"
-                                borderRadius="full"
-                                src={`https://www.countryflags.io/${
-                                    locale == 'en' ? 'gb' : locale
-                                }/flat/64.png`}
-                                alt={locale}
-                                mr="12px"
-                            /> */}
-                            {getFlagEmoji(locale == 'en' ? 'gb' : locale)} {localeName}
-                        </MenuItem>
+                        <LinkBox as={MenuItem} cursor="pointer" key={locale}>
+                            <LinkOverlay
+                                as={Link}
+                                w="full"
+                                d="block"
+                                href={`/${locale !== 'en' ? locale : ''}`}
+                                alt={`choose ${locale}`}>
+                                {getFlagEmoji(locale === 'en' ? 'gb' : locale)}
+                                {localeName}
+                            </LinkOverlay>
+                        </LinkBox>
                     );
                 })}
             </MenuList>
