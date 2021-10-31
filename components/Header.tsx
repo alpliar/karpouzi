@@ -24,7 +24,7 @@ const Header = ({ siteTitle }) => {
     const { isOpen, onOpen, onClose } = useDisclosure();
 
     return (
-        <Flex as="nav" bg="teal.600" color="white">
+        <Flex as="nav" data-e2e="mainNavigation" bg="teal.600" color="white">
             <Flex
                 align={{ base: 'auto', md: 'center' }}
                 justify="space-between"
