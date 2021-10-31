@@ -1,19 +1,19 @@
-import PropTypes from 'prop-types';
+import { chakra, Link as UiLink } from '@chakra-ui/react';
 import NextLink from 'next/link';
-import { Link as UiLink } from '@chakra-ui/react';
 
-const Link = ({ href, alt, children }) => {
+interface LinkProps {
+    href: string;
+    alt: string;
+    locale?: string | false;
+    children;
+}
+
+const Link = ({ href, alt, children, locale }: LinkProps) => {
     return (
-        <NextLink href={href} passHref>
+        <NextLink href={href} passHref locale={locale}>
             <UiLink alt={alt}>{children}</UiLink>
         </NextLink>
     );
 };
 
-export default Link;
-
-Link.propTypes = {
-    href: PropTypes.string.isRequired,
-    alt: PropTypes.string.isRequired,
-    children: PropTypes.node.isRequired
-};
+export default chakra(Link);
