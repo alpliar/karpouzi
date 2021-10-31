@@ -1,14 +1,14 @@
 import { Button, IconButton } from '@chakra-ui/button';
 import { useColorModeValue } from '@chakra-ui/color-mode';
-import { Image } from '@chakra-ui/image';
-import { LinkBox, LinkOverlay, Stack } from '@chakra-ui/layout';
+import { Link, LinkBox, LinkOverlay, Stack } from '@chakra-ui/layout';
 import { useBreakpointValue } from '@chakra-ui/media-query';
 import { Menu, MenuButton, MenuItem, MenuList } from '@chakra-ui/menu';
+import { background } from '@chakra-ui/styled-system';
 import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
 import { FaFlag } from 'react-icons/fa';
 import getFlagEmoji from '../utils/flags';
-import Link from './link';
+import NextLink from 'next/link';
 
 const NavLocaleSelector = ({ compact }) => {
     const router = useRouter();
@@ -29,7 +29,7 @@ const NavLocaleSelector = ({ compact }) => {
     return (
         <Menu>
             <MenuButton
-                e2e="localeToggle"
+                data-e2e="localeToggle"
                 size={size}
                 color="white"
                 colorScheme={colorScheme}
@@ -37,20 +37,31 @@ const NavLocaleSelector = ({ compact }) => {
                 icon={compact === true && <FaFlag />}>
                 {compact === false && 'Language'}
             </MenuButton>
-            <MenuList paddingX="2" e2e="localeMenu" color={useColorModeValue('black', 'white')}>
+            <MenuList
+                padding="0"
+                minW={'4xs'}
+                maxW={'3xs'}
+                data-e2e="localeMenu"
+                color={useColorModeValue('black', 'white')}>
                 {router.locales.map((locale) => {
                     const localeName = localesInfos[locale];
                     return (
-                        <LinkBox as={MenuItem} cursor="pointer" key={locale}>
-                            <LinkOverlay
-                                as={Link}
-                                w="full"
-                                d="block"
-                                href={`/${locale !== 'en' ? locale : ''}`}
-                                alt={`choose ${locale}`}>
-                                {getFlagEmoji(locale === 'en' ? 'gb' : locale)}
-                                {localeName}
-                            </LinkOverlay>
+                        <LinkBox
+                            key={locale}
+                            paddingX="4"
+                            paddingY="2"
+                            d="flex"
+                            _hover={{
+                                backgroundColor: 'gray.100',
+                                color: 'black'
+                            }}>
+                            {getFlagEmoji(locale === 'en' ? 'gb' : locale)}
+                            &nbsp;
+                            <NextLink href={'/'} passHref locale={locale}>
+                                <LinkOverlay flexGrow={1} alt={`choose ${locale}`}>
+                                    {localeName}
+                                </LinkOverlay>
+                            </NextLink>
                         </LinkBox>
                     );
                 })}

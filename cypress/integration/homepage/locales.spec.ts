@@ -16,8 +16,8 @@ describe('Locale', () => {
 
     locales.forEach((locale) => {
         it(`Set locale to ${locale.name} (${locale.code})`, () => {
-            cy.get('button[e2e=localeToggle]').should('be.visible').screenshot().click();
-            cy.get('[e2e=localeMenu]')
+            cy.get('button[data-e2e=localeToggle]').should('be.visible').screenshot().click();
+            cy.get('[data-e2e=localeMenu]')
                 .screenshot()
                 .should('be.visible')
                 .contains(locale.name)
