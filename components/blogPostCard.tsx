@@ -20,7 +20,7 @@ const BlogPostCard = ({ title, date, slug, author, authorAvatar }) => {
         <LinkBox>
             <Card>
                 <Box
-                    maxh={'210px'}
+                    maxH={64}
                     bg={'gray.100'}
                     mt={-6}
                     mx={-6}
@@ -41,26 +41,28 @@ const BlogPostCard = ({ title, date, slug, author, authorAvatar }) => {
                         letterSpacing="1.1">
                         Blog
                     </Text>
-                    <Heading
-                        color={useColorModeValue('gray.700', 'white')}
-                        fontSize={'xl'}
-                        fontFamily={'body'}>
-                        <Link
-                            href={{
-                                pathname: '/blog/post/[slug]',
-                                query: { slug }
-                            }}
-                            passHref>
-                            <LinkOverlay>
-                                <Text noOfLines={1}>{title}</Text>
-                            </LinkOverlay>
-                        </Link>
-                    </Heading>
-                    <Text color={'gray.500'} noOfLines={3}>
-                        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
-                        eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-                        voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
-                    </Text>
+                    <Stack h={32}>
+                        <Heading
+                            color={useColorModeValue('gray.700', 'white')}
+                            fontSize={'xl'}
+                            fontFamily={'body'}>
+                            <Link
+                                href={{
+                                    pathname: '/blog/post/[slug]',
+                                    query: { slug }
+                                }}
+                                passHref>
+                                <LinkOverlay>
+                                    <Text noOfLines={3}>{title}</Text>
+                                </LinkOverlay>
+                            </Link>
+                        </Heading>
+                        <Text color={'gray.500'} noOfLines={3}>
+                            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+                            eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+                            voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+                        </Text>
+                    </Stack>
                 </Stack>
                 <Stack mt={6} direction={'row'} spacing={4} align={'center'}>
                     <Avatar src={authorAvatar} alt={'Author'} bg="blackAlpha.400" />
