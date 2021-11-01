@@ -2,7 +2,7 @@ import Head from 'next/head';
 import Layout from '../../../components/pageLayout';
 import Date from '../../../components/Date';
 import { getAllPostIds, getPostData } from '../../../lib/posts';
-import { Box, Container, Divider, Heading } from '@chakra-ui/react';
+import { Avatar, Text, Stack, Box, Container, Divider, Heading } from '@chakra-ui/react';
 
 import PropTypes from 'prop-types';
 import Breadcrumb from '../../../components/breadcrumb';
@@ -52,9 +52,15 @@ export default function Post({ postData }) {
                 <Heading size="xl" mb={4} pr="20%">
                     {postData.title}
                 </Heading>
-                <Heading size="xs">
-                    <Date dateString={postData.date} />
-                </Heading>
+                <Stack mt={6} direction="row" spacing={4} align="center">
+                    <Avatar src={'/icon-48x48.png'} alt="Author" bg="green.500" />
+                    <Stack direction="column" spacing={0} fontSize="sm">
+                        <Heading size="xs">Karpouzi</Heading>
+                        <Text>
+                            <Date dateString={postData.date} />· 6min read
+                        </Text>
+                    </Stack>
+                </Stack>
             </Container>
 
             <Divider w="100%" />
