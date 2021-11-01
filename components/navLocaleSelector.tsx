@@ -29,7 +29,7 @@ const NavLocaleSelector = ({ compact }) => {
     return (
         <Menu>
             <MenuButton
-                data-e2e="localeToggle"
+                data-e2e="localeCTA"
                 aria-label="Toggle locale"
                 size={size}
                 color="white"
@@ -42,7 +42,6 @@ const NavLocaleSelector = ({ compact }) => {
                 padding="0"
                 minW={'4xs'}
                 maxW={'3xs'}
-                data-e2e="localeMenu"
                 color={useColorModeValue('black', 'white')}>
                 {router.locales.map((locale) => {
                     const localeName = localesInfos[locale];

@@ -9,6 +9,11 @@ describe('Navbar', () => {
         context(`when ${testedViewport}`, () => {
             beforeEach(() => {
                 cy.viewport(testedViewport).get('[data-e2e=mainNavigation]').as('mainNav');
+                cy.get('[data-e2e=menuCTA]').as('menuCTA');
+                cy.get('[data-e2e=loginCTA]').as('loginCTA');
+                cy.get('[data-e2e=cartCTA]').as('cartCTA');
+                cy.get('[data-e2e=localeCTA]').as('localeCTA');
+                cy.get('[data-e2e=themeCTA]').as('themeCTA');
             });
             it('navbar should exist', () => {
                 cy.get('@mainNav').should('exist');
@@ -21,16 +26,22 @@ describe('Navbar', () => {
             });
             it('navbar has correct shortcuts', () => {
                 if (testedViewport.match(/iphone*/)) {
-                    cy.get('@mainNav').contains('Menu');
-                    cy.get('@mainNav').contains('Login');
-                    cy.get('@mainNav').contains('Cart');
+                    cy.get('@mainNav').get('@menuCTA').should('be.visible');
+                    cy.get('@mainNav').get('@loginCTA').should('be.visible');
+                    cy.get('@mainNav').get('@cartCTA').should('be.visible');
                 }
-                if (testedViewport.match(/(ipad|macbook)*/)) {
-                    cy.get('@mainNav').contains('theme');
-                    cy.get('@mainNav').contains('Cart');
-                    cy.get('@mainNav').contains('Login');
-                    cy.get('@mainNav').contains('Cart');
+                if (testedViewport.match(/ipad*/)) {
+                    cy.get('@mainNav').get('@menuCTA').should('be.visible');
+                    cy.get('@mainNav').get('@loginCTA').should('be.visible');
+                    cy.get('@mainNav').get('@cartCTA').should('be.visible');
+                    cy.get('@mainNav').get('@localeCTA').should('be.visible');
+                    cy.get('@mainNav').get('@themeCTA').should('be.visible');
                 } else {
+                    cy.get('@mainNav').get('@menuCTA').should('not.be.visible');
+                    cy.get('@mainNav').get('@loginCTA').should('be.visible');
+                    cy.get('@mainNav').get('@cartCTA').should('be.visible');
+                    cy.get('@mainNav').get('@localeCTA').should('be.visible');
+                    cy.get('@mainNav').get('@themeCTA').should('be.visible');
                 }
             });
         });

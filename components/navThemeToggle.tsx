@@ -8,6 +8,7 @@ const NavThemeToggle = ({ compact }) => {
     const ToggleIcon = useColorModeValue(MoonIcon, SunIcon);
     return (
         <NavButton
+            data-e2e="themeCTA"
             icon={<ToggleIcon />}
             label={'Toggle theme'}
             compact={compact}

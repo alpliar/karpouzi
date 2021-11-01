@@ -17,6 +17,7 @@ const NavCart = ({ cartCount }) => {
     return (
         <Box position="relative">
             <NavButton
+                data-e2e="cartCTA"
                 label="Go to cart"
                 icon={<Icon as={FaShoppingCart} />}
                 handleClick={handleClick}
