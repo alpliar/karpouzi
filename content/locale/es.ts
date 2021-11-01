@@ -3,7 +3,8 @@ export const es = {
         commonSiteName: 'Karpouzi',
         menuEntryBlog: 'Blog',
         menuEntryShop: 'Tienda',
-        goToPageName: 'Ir a la página de {name}'
+        goToPageName: 'Ir a la página de {name}',
+        openMenu: 'Abrir el menú'
     },
     '/': {
         welcomeMessage: 'Bienvenido a',

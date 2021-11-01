@@ -3,7 +3,8 @@ export const gr = {
         commonSiteName: 'καρπούζι',
         menuEntryBlog: 'Ιστολόγιο',
         menuEntryShop: 'κατάστημα',
-        goToPageName: 'μεταβείτε στη σελίδ {name}'
+        goToPageName: 'μεταβείτε στη σελίδ {name}',
+        openMenu: 'ανοίξτε το μενού'
     },
     '/': {
         welcomeMessage: 'καλώς ήλθατε στο',

@@ -30,6 +30,7 @@ const NavLocaleSelector = ({ compact }) => {
         <Menu>
             <MenuButton
                 data-e2e="localeToggle"
+                aria-label="Toggle locale"
                 size={size}
                 color="white"
                 colorScheme={colorScheme}
