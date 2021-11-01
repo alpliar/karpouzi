@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { Button, IconButton, useColorModeValue, useBreakpointValue } from '@chakra-ui/react';
 
-const NavButton = ({ icon, label, handleClick, isPrimary, compact }) => {
+const NavButton = ({ icon, label, handleClick, isPrimary, compact, e2e }) => {
     const lightColorScheme = isPrimary ? 'whiteAlpha' : 'teal';
     const darkColorScheme = isPrimary ? 'teal' : 'whiteAlpha';
 
@@ -23,6 +23,7 @@ const NavButton = ({ icon, label, handleClick, isPrimary, compact }) => {
                 colorScheme={colorScheme}
                 variant={variant}
                 size={size}
+                data-e2e={e2e}
             />
         );
     } else {
@@ -34,7 +35,8 @@ const NavButton = ({ icon, label, handleClick, isPrimary, compact }) => {
                 onClick={handleClick}
                 colorScheme={colorScheme}
                 variant={variant}
-                size={size}>
+                size={size}
+                data-e2e={e2e}>
                 {label}
             </Button>
         );
@@ -48,10 +50,12 @@ NavButton.propTypes = {
     label: PropTypes.string.isRequired,
     handleClick: PropTypes.func.isRequired,
     isPrimary: PropTypes.bool,
-    compact: PropTypes.bool
+    compact: PropTypes.bool,
+    e2e: PropTypes.string
 };
 
 NavButton.defaultProps = {
     isPrimary: false,
-    compact: true
+    compact: true,
+    e2e: null
 };

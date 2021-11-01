@@ -11,7 +11,9 @@ const NavLogin = () => {
     };
     const icon = <Icon as={FaUserCircle} />;
 
-    return <NavButton icon={icon} label="Login or register" handleClick={handleClick} />;
+    return (
+        <NavButton e2e="loginCTA" icon={icon} label="Login or register" handleClick={handleClick} />
+    );
 };
 
 export default NavLogin;

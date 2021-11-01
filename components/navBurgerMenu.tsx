@@ -10,7 +10,13 @@ const NavBurgerMenu = ({ handleClick }) => {
     const icon = <Icon as={HamburgerIcon} />;
 
     return (
-        <NavButton icon={icon} label={f('openMenu')} handleClick={handleClick} isPrimary={true} />
+        <NavButton
+            e2e="menuCTA"
+            icon={icon}
+            label={f('openMenu')}
+            handleClick={handleClick}
+            isPrimary={true}
+        />
     );
 };
 
