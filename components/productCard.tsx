@@ -1,10 +1,12 @@
 import PropTypes from 'prop-types';
-import { Box, Img, LinkBox, LinkOverlay, useBreakpointValue } from '@chakra-ui/react';
 import { BellIcon, TriangleDownIcon } from '@chakra-ui/icons';
 import ProductCardBadge from './productCardBadge';
 import Link from 'next/link';
 import Rating from './rating';
 import Card from './card';
+import { useBreakpointValue } from '@chakra-ui/media-query';
+import { Box, Heading, LinkBox, LinkOverlay, Stack } from '@chakra-ui/layout';
+import { Img } from '@chakra-ui/image';
 
 const ProductCard = ({
     slug,
@@ -56,7 +58,7 @@ const ProductCard = ({
                     )}
                 </Box>
 
-                <Box>
+                <Stack spacing={2} height="full">
                     {/* <Box d="flex" alignItems="baseline">
                     <Box
                         color="gray.800"
@@ -71,26 +73,30 @@ const ProductCard = ({
 
                     <Box mt="1" fontWeight="semibold" lineHeight="tight" isTruncated>
                         <Link
+                            passHref
                             href={{
                                 pathname: '/shop/product/[slug]',
                                 query: { slug }
-                            }}
-                            passHref>
-                            <LinkOverlay>{title}</LinkOverlay>
+                            }}>
+                            <LinkOverlay>
+                                <Heading size="md">{title}</Heading>
+                            </LinkOverlay>
                         </Link>
                     </Box>
 
                     <Box>
-                        {formattedPrice}
-                        <Box as="span" /*color="gray.600"*/ fontSize="sm">
-                            / piece
+                        <Box>
+                            {formattedPrice}
+                            <Box as="span" /*color="gray.600"*/ fontSize="sm">
+                                / piece
+                            </Box>
+                        </Box>
+
+                        <Box isTruncated>
+                            <Rating rate={rating} count={reviewCount} />
                         </Box>
                     </Box>
-
-                    <Box isTruncated>
-                        <Rating rate={rating} count={reviewCount} />
-                    </Box>
-                </Box>
+                </Stack>
             </Card>
         </LinkBox>
     );

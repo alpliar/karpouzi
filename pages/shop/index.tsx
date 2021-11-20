@@ -1,99 +1,58 @@
-import { Container, Divider, Heading, SimpleGrid } from '@chakra-ui/react';
+import { Avatar } from '@chakra-ui/avatar';
+import { useColorMode, useColorModeValue } from '@chakra-ui/color-mode';
+import {
+    Container,
+    Divider,
+    Flex,
+    Heading,
+    SimpleGrid,
+    Stack,
+    Text,
+    Wrap
+} from '@chakra-ui/layout';
 import Head from 'next/head';
-import PropTypes from 'prop-types';
+import BlockQuote from '../../components/blockQuote';
+import Breadcrumb from '../../components/breadcrumb';
 import CategoryCard from '../../components/categoryCard';
 import Layout, { siteTitle } from '../../components/pageLayout';
-import { getRandomProduct } from '../api/products';
+import ShopStat from '../../components/shopStat';
 
 export async function getStaticProps() {
-    const categories = [
-        {
-            slug: 'fruits',
-            lang: 'fr',
-            title: 'Fruits',
-            description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
-            productsCount: 7,
-            products: [
-                getRandomProduct(),
-                getRandomProduct(),
-                getRandomProduct(),
-                getRandomProduct(),
-                getRandomProduct(),
-                getRandomProduct(),
-                getRandomProduct()
-            ]
-        },
-        {
-            slug: 'veggies',
-            lang: 'fr',
-            title: 'Veggies',
-            description: 'Ex dolorem non soluta sit reprehenderit! Natus vitae doloribus amet?',
-            productsCount: 3,
-            products: [getRandomProduct(), getRandomProduct(), getRandomProduct()]
-        },
-        {
-            slug: 'spices',
-            lang: 'fr',
-            title: 'Spices',
-            description:
-                'Reprehenderit, tempora excepturi tempore porro natus assumenda recusandae ipsam aliquid non velit officiis nihil, eum veritatis quaerat, corporis a totam quia rerum!',
-            productsCount: 7,
-            products: [
-                getRandomProduct(),
-                getRandomProduct(),
-                getRandomProduct(),
-                getRandomProduct(),
-                getRandomProduct(),
-                getRandomProduct(),
-                getRandomProduct()
-            ]
-        },
-        {
-            slug: 'oils',
-            lang: 'fr',
-            title: 'Oils',
-            description:
-                'Magni veritatis officia dolore fuga cum, aliquid animi illum odit enim eius culpa tenetur deleniti quos, tempore velit, sequi possimus commodi aut?',
-            productsCount: 5,
-            products: [
-                getRandomProduct(),
-                getRandomProduct(),
-                getRandomProduct(),
-                getRandomProduct(),
-                getRandomProduct()
-            ]
-        }
-    ];
+    const response = await fetch('http://localhost:3000/api/shop/categories');
+    const data = await response.json();
+
+    if (!data.categories) {
+        return { notFound: true };
+    }
 
     return {
         props: {
-            categories
+            categories: data.categories
         }
     };
 }
 
-// export const getStaticPaths = ({ defaultLocale }) => {
-//     return {
-//         paths: [{ params: '', locale: defaultLocale }],
-//         fallback: true
-//     };
-// };
-
 type Product = any;
 
-type Category = {
+interface CategoryProducts {
+    count: number;
+    featured?: Product[];
+}
+
+interface Category {
     slug: string;
-    title: string;
+    name: string;
     description: string;
-    products: Product[];
-    productsCount: number;
-};
+    products: CategoryProducts;
+    image: string;
+}
 
 type ShopPageProps = {
     categories: Category[];
 };
 
 export default function ShopPage({ categories }: ShopPageProps) {
+    const { colorMode } = useColorMode();
     return (
         <Layout>
             <Head>
@@ -101,26 +60,63 @@ export default function ShopPage({ categories }: ShopPageProps) {
             </Head>
 
             <Container p={4} maxW="4xl">
-                <Heading>Shop</Heading>
+                <Stack spacing={2}>
+                    <Breadcrumb
+                        entries={[
+                            {
+                                text: 'Home',
+                                link: '/',
+                                alt: 'go to home page',
+                                isCurrentPage: false
+                            },
+                            {
+                                text: 'Shop',
+                                link: '/shop',
+                                alt: 'go to shop home',
+                                isCurrentPage: true
+                            }
+                        ]}
+                    />
+                    <Wrap spacing={1} justify="space-between">
+                        <Heading>Shop</Heading>
+
+                        <ShopStat
+                            label="Categories"
+                            number={categories?.length ?? 0}
+                            textAlign="right"
+                        />
+                        {/* <ShopStat label="Products" number={5} /> */}
+                    </Wrap>
+                    <Flex justifyContent={{ base: 'center', md: 'flex-end' }}>
+                        <BlockQuote>
+                            She put his pistol down, picked up her fletcher, dialed the barrel over
+                            to single shot, and very carefully put a toxin dart through the center
+                            of a broken mirror bent and elongated as they fell. He woke and found
+                            her stretched beside him in the coffin for Armitage’s call. Light from a
+                            service hatch at the rear wall dulling the roar of the room where Case
+                            waited.
+                        </BlockQuote>
+                    </Flex>
+                </Stack>
+                {/* <Text>{categories?.length ?? 0} categories</Text> */}
             </Container>
 
             <Divider maxW="100%" />
 
             <Container p={4} maxW="4xl">
-                <SimpleGrid
-                    minChildWidth={{ base: 'full', sm: '250px', md: '300px' }}
-                    spacingX="0.5em"
-                    spacingY="1em">
+                <SimpleGrid columns={{ base: 1, sm: 2, md: 3 }} spacing={4}>
                     {categories &&
-                        categories.map((category) => {
+                        categories.map((category: Category) => {
                             return (
                                 <CategoryCard
+                                    fullHeight
                                     key={category.slug}
                                     slug={category.slug}
-                                    title={category.title}
+                                    title={category.name}
+                                    image={category.image}
                                     shortDescription={category.description}
-                                    products={category.products}
-                                    productsCount={category.productsCount}
+                                    products={category.products.featured}
+                                    productsCount={category.products.count}
                                 />
                             );
                         })}
@@ -129,13 +125,3 @@ export default function ShopPage({ categories }: ShopPageProps) {
         </Layout>
     );
 }
-
-ShopPage.propTypes = {
-    categories: PropTypes.arrayOf(
-        PropTypes.shape({
-            slug: PropTypes.string.isRequired,
-            productsCount: PropTypes.number.isRequired,
-            products: PropTypes.array.isRequired
-        }).isRequired
-    ).isRequired
-};

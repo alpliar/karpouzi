@@ -1,15 +1,17 @@
-import { Box, Flex, HStack, Text, useDisclosure } from '@chakra-ui/react';
+import { useDisclosure } from '@chakra-ui/hooks';
+import { Box, Flex, HStack, Text, Wrap } from '@chakra-ui/layout';
 import Link from 'next/link';
 import PropTypes from 'prop-types';
+import { useIntl } from 'react-intl';
 import NavDrawer from '../components/navDrawer';
 import NavThemeToggle from '../components/navThemeToggle';
-import NavLocaleSelector from '../container/navLocaleSelector';
+import { BASE_TRANSITION } from '../constants/ui/transitions';
 import NavCart from '../container/navCart';
+import NavLocaleSelector from '../container/navLocaleSelector';
 import NavLogin from '../container/navLogin';
 import NavLogo from '../container/navLogo';
 import NavBurgerMenu from './navBurgerMenu';
 import NavDrawerBody from './navDrawerBody';
-import { useIntl } from 'react-intl';
 
 const MenuItems = ({ children }) => (
     <Text mt={{ base: 0, md: 0 }} mr={6} display={{ base: 'inline', sm: 'inline' }}>
@@ -25,10 +27,9 @@ const Header = ({ siteTitle }) => {
 
     return (
         <Flex as="nav" data-e2e="mainNavigation" bg="teal.600" color="white">
-            <Flex
+            <Wrap
                 align={{ base: 'auto', md: 'center' }}
-                justify="space-between"
-                wrap="wrap"
+                justify="flex-end"
                 maxW={{ md: '4xl' }}
                 w="100%"
                 p={2}
@@ -41,7 +42,7 @@ const Header = ({ siteTitle }) => {
                     alignItems="center"
                     justifyContent="center"
                     flexGrow={1}
-                    transition="all 0.2s ease-in">
+                    transition={BASE_TRANSITION}>
                     <Box
                         display={{ base: 'none', md: 'block' }}
                         minW="auto"
@@ -65,7 +66,7 @@ const Header = ({ siteTitle }) => {
                         </MenuItems>
                     </Box>
                 </Flex>
-                <HStack spacing="1">
+                <HStack spacing={1}>
                     <Box display={{ base: 'none', sm: 'block' }}>
                         <HStack spacing="1">
                             <NavThemeToggle />
@@ -88,7 +89,7 @@ const Header = ({ siteTitle }) => {
                             }></NavDrawer>
                     </Box>
                 </HStack>
-            </Flex>
+            </Wrap>
         </Flex>
     );
 };

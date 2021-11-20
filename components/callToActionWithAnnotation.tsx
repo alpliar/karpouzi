@@ -11,6 +11,7 @@ import {
     createIcon
 } from '@chakra-ui/react';
 import PropTypes from 'prop-types';
+import { BASE_TRANSITION } from '../constants/ui/transitions';
 
 const CallToActionWithAnnotation = ({
     title,
@@ -77,7 +78,7 @@ const CallToActionWithAnnotation = ({
                                 }}
                                 w={{ base: 50, sm: 71 }}
                                 position={'absolute'}
-                                transition={'all ease-out .2s'}
+                                transition={BASE_TRANSITION}
                                 right={{ base: -50, sm: -71 }}
                                 top={'10px'}
                                 transform={{
@@ -91,7 +92,7 @@ const CallToActionWithAnnotation = ({
                                 position={'absolute'}
                                 right={{ base: '-30px', sm: '-90px', md: '-100px', lg: '-115px' }}
                                 top={{ base: '-22px', sm: '-20px' }}
-                                transition={'all ease-out .2s'}
+                                transition={BASE_TRANSITION}
                                 transform={{ base: 'rotate(5deg)', sm: 'rotate(10deg)' }}>
                                 {primaryActionAnnotation}
                             </Text>

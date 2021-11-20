@@ -1,4 +1,4 @@
-import { Container, Divider, Heading, SimpleGrid } from '@chakra-ui/react';
+import { Container, Divider, Heading, SimpleGrid, Wrap } from '@chakra-ui/layout';
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import Head from 'next/head';
 import { useSelector } from 'react-redux';
@@ -6,6 +6,7 @@ import { SET_PRODUCTS_DATA } from '../../../actions/shop';
 import Breadcrumb from '../../../components/breadcrumb';
 import Layout from '../../../components/pageLayout';
 import ProductCard from '../../../components/productCard';
+import ShopStat from '../../../components/shopStat';
 import { getSortedProductData } from '../../../lib/products';
 import { RootState } from '../../../reducer';
 import { wrapper } from '../../../store';
@@ -38,26 +39,35 @@ const CategoryPage: NextPage = () => {
                 <Breadcrumb
                     entries={[
                         {
+                            text: 'Home',
+                            link: '/',
+                            alt: 'go to home'
+                        },
+                        {
                             text: 'Shop',
                             link: '/shop',
-                            alt: 'go to shop home',
-                            isCurrentPage: false
+                            alt: 'go to shop home'
                         },
-                        { text: 'category.slug', link: '', alt: '', isCurrentPage: true }
+                        {
+                            text: 'category',
+                            link: '/shop/category/fruits',
+                            alt: 'fruits page',
+                            isCurrentPage: true
+                        }
                     ]}
                 />
-                <Heading size="xl" pr="20%">
-                    category.slug
-                </Heading>
+                <Wrap spacing={1} justify="space-between">
+                    <Heading>Category</Heading>
+
+                    <ShopStat label="Products" number={products?.length ?? 0} />
+                    {/* <ShopStat label="Products" number={5} /> */}
+                </Wrap>
             </Container>
 
             <Divider w="100%" />
 
             <Container py={4} px={{ base: 0, sm: 4 }} maxW="4xl">
-                <SimpleGrid
-                    minChildWidth={{ base: 'full', sm: '230px' }}
-                    spacingX="0.5em"
-                    spacingY="1em">
+                <SimpleGrid minChildWidth={{ base: 'full', sm: '230px' }} spacing={4}>
                     {products &&
                         products.length &&
                         products.map((product, index) => (

@@ -12,7 +12,13 @@ module.exports =
             publicExcludes: ['!robots.txt']
         },
         images: {
-            domains: ['fakeimg.pl', 'images.unsplash.com']
+            domains: [
+                'fakeimg.pl',
+                'images.unsplash.com',
+                'picsum.photos',
+                'loremflickr.com',
+                'lorempixel.com'
+            ]
         },
         i18n: {
             locales: ['en', 'fr', 'es', 'gr'],

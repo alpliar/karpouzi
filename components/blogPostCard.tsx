@@ -18,6 +18,7 @@ const BlogPostCard = ({ title, date, slug, author, authorAvatar }) => {
         <LinkBox>
             <Card>
                 <Box
+                    minH={32}
                     maxH={64}
                     bg="gray.100"
                     mt={-6}
@@ -40,21 +41,21 @@ const BlogPostCard = ({ title, date, slug, author, authorAvatar }) => {
                         Blog
                     </Text>
                     <Stack h={32}>
-                        <Heading
-                            color={useColorModeValue('gray.700', 'white')}
-                            fontSize="xl"
-                            fontFamily="body">
-                            <Link
-                                href={{
-                                    pathname: '/blog/post/[slug]',
-                                    query: { slug }
-                                }}
-                                passHref>
-                                <LinkOverlay>
+                        <Link
+                            passHref
+                            href={{
+                                pathname: '/blog/post/[slug]',
+                                query: { slug }
+                            }}>
+                            <LinkOverlay>
+                                <Heading
+                                    color={useColorModeValue('gray.700', 'white')}
+                                    fontSize="xl"
+                                    fontFamily="body">
                                     <Text noOfLines={3}>{title}</Text>
-                                </LinkOverlay>
-                            </Link>
-                        </Heading>
+                                </Heading>
+                            </LinkOverlay>
+                        </Link>
                         <Text color="gray.500" noOfLines={4}>
                             Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
                             eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam

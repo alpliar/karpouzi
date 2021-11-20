@@ -44,7 +44,7 @@ export const getRandomProduct = (slug = null) => {
         rating: getRandomInteger(1, 5),
         reviewCount: getRandomInteger(1, 49),
         isNew: getRandomBoolean(),
-        imageUrl: `https://fakeimg.pl/300x200/282828/eae0d0/?retina=1&text=${name}%20picture`,
+        imageUrl: `https://loremflickr.com/320/320/${name.replace('-', ',')}`,
         imageAlt: `picture of ${name}`,
         description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem doloremque voluptates officia corrupti iste officiis magni ratione? Iste inventore fugit nemo quisquam reprehenderit nisi voluptas incidunt eum, esse praesentium laborum?`
     };

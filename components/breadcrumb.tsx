@@ -1,7 +1,9 @@
 import PropTypes from 'prop-types';
-import { Breadcrumb as UiBreadcrumb, BreadcrumbItem } from '@chakra-ui/react';
+// import { Breadcrumb as UiBreadcrumb, BreadcrumbItem } from '@chakra-ui/react';
 import { ChevronRightIcon } from '@chakra-ui/icons';
 import Link from './link';
+import { Breadcrumb as UiBreadcrumb, BreadcrumbItem } from '@chakra-ui/breadcrumb';
+import { Text } from '@chakra-ui/layout';
 
 const Breadcrumb = ({ entries }) => {
     return (
@@ -12,7 +14,7 @@ const Breadcrumb = ({ entries }) => {
                         key={`${entry.slug}-${index}`}
                         isCurrentPage={entry.isCurrentPage}>
                         {entry.isCurrentPage ? (
-                            <span>{entry.text}</span>
+                            <Text>{entry.text}</Text>
                         ) : (
                             <Link href={entry.link} alt={entry.alt}>
                                 {entry.text}
@@ -27,13 +29,19 @@ const Breadcrumb = ({ entries }) => {
 
 export default Breadcrumb;
 
+Breadcrumb.defaultProps = {
+    isCurrentPage: false,
+    link: null,
+    alt: null
+};
+
 Breadcrumb.propTypes = {
     entries: PropTypes.arrayOf(
         PropTypes.shape({
             text: PropTypes.string.isRequired,
-            link: PropTypes.string.isRequired,
-            alt: PropTypes.string.isRequired,
-            isCurrentPage: PropTypes.bool.isRequired
+            link: PropTypes.string,
+            alt: PropTypes.string,
+            isCurrentPage: PropTypes.bool
         }).isRequired
     ).isRequired
 };
