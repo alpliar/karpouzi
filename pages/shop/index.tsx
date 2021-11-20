@@ -29,6 +29,11 @@ export async function getStaticProps() {
     //         categories: data.categories
     //     }
     // };
+    return {
+        props: {
+            categories: []
+        }
+    };
 }
 
 type Product = any;
