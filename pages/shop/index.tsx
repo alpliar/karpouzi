@@ -16,9 +16,10 @@ import Breadcrumb from '../../components/breadcrumb';
 import CategoryCard from '../../components/categoryCard';
 import Layout, { siteTitle } from '../../components/pageLayout';
 import ShopStat from '../../components/shopStat';
+import { API_BASE_URL } from '../../constants/api';
 
 export async function getStaticProps() {
-    const response = await fetch('http://localhost:3000/api/shop/categories');
+    const response = await fetch(API_BASE_URL + '/shop/categories');
     const data = await response.json();
 
     if (!data.categories) {
