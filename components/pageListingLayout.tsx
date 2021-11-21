@@ -67,7 +67,7 @@ const PageListingLayout = ({
             // roundedBottom="3xl"
             >
                 <Container
-                    p={{ sm: 4 }}
+                    p={{ base: 4 }}
                     maxW={{ md: '4xl', xl: '6xl' }} /*paddingInline={{ base: 0, sm: '1rem' }}*/
                 >
                     {children}

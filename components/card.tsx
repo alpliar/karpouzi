@@ -8,7 +8,7 @@ const Card = ({ children, padding, fullHeight }) => {
             w={'full'}
             bg={useColorModeValue('white', 'gray.900')}
             boxShadow={'lg'}
-            rounded={{ base: 'none', sm: 'md' }}
+            rounded={{ base: 'md' }}
             p={padding}
             h={fullHeight ? '100%' : null}
             overflow={'hidden'}
