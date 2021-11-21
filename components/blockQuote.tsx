@@ -29,7 +29,12 @@ const BlockQuote = ({ children, author }: IBlockQuoteProps) => {
             {author && (
                 <Wrap alignSelf="flex-end" as="figcaption">
                     <Text>— </Text>
-                    <Avatar src={'/icon-48x48.png'} alt="Author" bg="green.500" size="xs" />
+                    <Avatar
+                        src={'/icon-48x48.png'}
+                        name="Karpouzi avatar"
+                        bg="green.500"
+                        size="xs"
+                    />
                     <Heading size="xs">{author}</Heading>
                     {/* <Text>,</Text> */}
                     {/* <cite>Karpouzi</cite> */}
