@@ -1,3 +1,4 @@
+import { useColorMode } from '@chakra-ui/color-mode';
 import { useDisclosure } from '@chakra-ui/hooks';
 import { Box, Flex, HStack, Text, Wrap } from '@chakra-ui/layout';
 import Link from 'next/link';
@@ -19,18 +20,34 @@ const MenuItems = ({ children }) => (
     </Text>
 );
 
+export const headerBgGradient = (colorMode) => {
+    return colorMode === 'light'
+        ? 'linear(to-b, tomato, green.200, green.300)'
+        : 'linear(to-b, red.600, green.700, green.800)';
+};
+
+export const headerBgColor = (colorMode) => {
+    return colorMode === 'light' ? 'green.300' : 'green.800';
+};
+
 const Header = ({ siteTitle }) => {
+    const { colorMode } = useColorMode();
+
     const { formatMessage } = useIntl();
     const f = (id: string, values: any = null) => formatMessage({ id }, values);
 
     const { isOpen, onOpen, onClose } = useDisclosure();
 
     return (
-        <Flex as="nav" data-e2e="mainNavigation" bg="teal.600" color="white">
+        <Flex
+            as="nav"
+            data-e2e="mainNavigation"
+            // bgGradient={headerBgGradient(colorMode)} /*color="white"*/
+            bgColor={headerBgColor(colorMode)}>
             <Wrap
                 align={{ base: 'auto', md: 'center' }}
                 justify="flex-end"
-                maxW={{ md: '4xl' }}
+                maxW={{ md: '4xl', xl: '6xl' }}
                 w="100%"
                 p={2}
                 m={{ base: 0, md: 'auto' }}>
