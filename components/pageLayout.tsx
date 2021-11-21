@@ -7,7 +7,7 @@ import Footer from './pageFooter';
 export const siteTitle = `Karpouzi`;
 
 interface IPageLayoutProps {
-    home: boolean;
+    home?: boolean;
     children;
 }
 
