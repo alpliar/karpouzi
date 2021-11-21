@@ -59,7 +59,7 @@ const CategoryPage: NextPage = () => {
                 </BlockQuote>
             }
             titleSlot={<ShopStat label="Products" number={products?.length ?? 0} />}>
-            <SimpleGrid minChildWidth={{ base: 'full', sm: '230px' }} spacing={4}>
+            <SimpleGrid columns={{ base: 1, sm: 2, md: 3, xl: 4 }} spacing={4}>
                 {products &&
                     products.length &&
                     products.map((product, index) => (

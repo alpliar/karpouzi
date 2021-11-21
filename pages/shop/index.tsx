@@ -84,7 +84,7 @@ export default function ShopPage({ categories }: ShopPageProps) {
                     wall dulling the roar of the room where Case waited.
                 </BlockQuote>
             }>
-            <SimpleGrid columns={{ base: 1, sm: 2, md: 3 }} spacing={4}>
+            <SimpleGrid columns={{ base: 1, sm: 2, md: 3, xl: 4 }} spacing={4}>
                 {categories &&
                     categories.map((category: Category) => {
                         return (
