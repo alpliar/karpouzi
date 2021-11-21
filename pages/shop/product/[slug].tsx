@@ -14,8 +14,10 @@ import { GetStaticPaths, GetStaticPathsContext, GetStaticPathsResult, NextPage }
 import Head from 'next/head';
 import PropTypes from 'prop-types';
 import { FC, WeakValidationMap } from 'react';
+import BlockQuote from '../../../components/blockQuote';
 import Breadcrumb from '../../../components/breadcrumb';
 import Layout from '../../../components/pageLayout';
+import PageListingLayout from '../../../components/pageListingLayout';
 import Rating from '../../../components/rating';
 import AddToCart from '../../../container/addToCart';
 import { getAllProductIds, getProductData } from '../../../lib/products';
@@ -65,46 +67,38 @@ const ProductPage = ({
         return false;
     }
     return (
-        <Layout>
+        <PageListingLayout
+            title={title}
+            breadcrumbs={[
+                {
+                    text: 'Shop',
+                    link: '/shop',
+                    alt: 'go to shop home',
+                    isCurrentPage: false
+                },
+                {
+                    text: 'category',
+                    link: '/shop/category/fruits',
+                    alt: 'go to fruits category',
+                    isCurrentPage: false
+                },
+                { text: slug, link: '', alt: '', isCurrentPage: true }
+            ]}
+            titleSlot={
+                isNew && (
+                    <Badge>
+                        <BellIcon /> NEW!
+                    </Badge>
+                )
+            }
+            introSlot={<BlockQuote>Blah blah</BlockQuote>}>
             <Head>
                 <title>Shop - {title}</title>
             </Head>
 
-            <Container px={4} py={4} maxW="4xl">
-                <Stack spacing={2}>
-                    <Breadcrumb
-                        entries={[
-                            {
-                                text: 'Shop',
-                                link: '/shop',
-                                alt: 'go to shop home',
-                                isCurrentPage: false
-                            },
-                            {
-                                text: 'category',
-                                link: '/shop/category/fruits',
-                                alt: 'go to fruits category',
-                                isCurrentPage: false
-                            },
-                            { text: slug, link: '', alt: '', isCurrentPage: true }
-                        ]}
-                    />
-                    <Heading size="xl" pr={{ base: 0, md: '20%' }}>
-                        {title}{' '}
-                        {isNew && (
-                            <Badge>
-                                <BellIcon /> NEW!
-                            </Badge>
-                        )}
-                    </Heading>
-                </Stack>
-            </Container>
-
-            <Divider w="100%" />
-
-            <Container p={{ base: 0, sm: 4 }} maxW="4xl">
+            <Container p={{ base: 0 }} maxW="full">
                 <SimpleGrid columns={{ base: 1, sm: 2 }} spacing={{ md: '1em' }}>
-                    <Box bg="#282828" width="full" maxH="15em" overflow="hidden">
+                    <Box bg="#282828" width="full" maxH="20em" overflow="hidden">
                         <Img src={imageUrl} alt={`picture of ${title}`} width="full" />
                     </Box>
                     <Box bg="" p={4} textAlign={{ base: 'center', md: 'left' }}>
@@ -128,7 +122,7 @@ const ProductPage = ({
                     />
                 </Box>
             </Container>
-        </Layout>
+        </PageListingLayout>
     );
 };
 

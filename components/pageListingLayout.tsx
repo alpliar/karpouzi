@@ -50,7 +50,7 @@ const PageListingLayout = ({
                             {titleSlot && titleSlot}
                             {/* <ShopStat label="Products" number={5} /> */}
                         </Wrap>
-                        <Flex justifyContent={{ base: 'center', md: 'flex-end' }}>
+                        <Flex pt={6} justifyContent={{ base: 'center', md: 'flex-end' }}>
                             {introSlot && introSlot}
                         </Flex>
                     </Stack>
