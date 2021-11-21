@@ -1,7 +1,7 @@
 ---
 title: 'Mutsu Apple'
 date: '2021-02-18'
-price: '3.5 €'
+price: '3.50€'
 rating: 5
 reviewCount: 30
 isNew: false

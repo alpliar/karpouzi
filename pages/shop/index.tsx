@@ -15,6 +15,7 @@ import BlockQuote from '../../components/blockQuote';
 import Breadcrumb from '../../components/breadcrumb';
 import CategoryCard from '../../components/categoryCard';
 import Layout, { siteTitle } from '../../components/pageLayout';
+import PageListingLayout from '../../components/pageListingLayout';
 import ShopStat from '../../components/shopStat';
 import { API_BASE_URL } from '../../constants/api';
 
@@ -55,74 +56,51 @@ type ShopPageProps = {
 export default function ShopPage({ categories }: ShopPageProps) {
     const { colorMode } = useColorMode();
     return (
-        <Layout>
-            <Head>
-                <title>Shop - {siteTitle}</title>
-            </Head>
-
-            <Container p={4} maxW="4xl">
-                <Stack spacing={2}>
-                    <Breadcrumb
-                        entries={[
-                            {
-                                text: 'Home',
-                                link: '/',
-                                alt: 'go to home page',
-                                isCurrentPage: false
-                            },
-                            {
-                                text: 'Shop',
-                                link: '/shop',
-                                alt: 'go to shop home',
-                                isCurrentPage: true
-                            }
-                        ]}
-                    />
-                    <Wrap spacing={1} justify="space-between">
-                        <Heading>Shop</Heading>
-
-                        <ShopStat
-                            label="Categories"
-                            number={categories?.length ?? 0}
-                            textAlign="right"
-                        />
-                        {/* <ShopStat label="Products" number={5} /> */}
-                    </Wrap>
-                    <Flex justifyContent={{ base: 'center', md: 'flex-end' }}>
-                        <BlockQuote>
-                            She put his pistol down, picked up her fletcher, dialed the barrel over
-                            to single shot, and very carefully put a toxin dart through the center
-                            of a broken mirror bent and elongated as they fell. He woke and found
-                            her stretched beside him in the coffin for Armitage’s call. Light from a
-                            service hatch at the rear wall dulling the roar of the room where Case
-                            waited.
-                        </BlockQuote>
-                    </Flex>
-                </Stack>
-                {/* <Text>{categories?.length ?? 0} categories</Text> */}
-            </Container>
-
-            <Divider maxW="100%" />
-
-            <Container p={4} maxW="4xl">
-                <SimpleGrid columns={{ base: 1, sm: 2, md: 3 }} spacing={4}>
-                    {categories &&
-                        categories.map((category: Category) => {
-                            return (
-                                <CategoryCard
-                                    fullHeight
-                                    key={category.slug}
-                                    slug={category.slug}
-                                    title={category.name}
-                                    image={category.image}
-                                    shortDescription={category.description}
-                                    products={category.products.featured}
-                                    productsCount={category.products.count}
-                                />
-                            );
-                        })}
-                </SimpleGrid>
-            </Container>
-        </Layout>
+        <PageListingLayout
+            title="Shop"
+            breadcrumbs={[
+                {
+                    text: 'Home',
+                    link: '/',
+                    alt: 'go to home page',
+                    isCurrentPage: false
+                },
+                {
+                    text: 'Shop',
+                    link: '/shop',
+                    alt: 'go to shop home',
+                    isCurrentPage: true
+                }
+            ]}
+            titleSlot={
+                <ShopStat label="Categories" number={categories?.length ?? 0} textAlign="right" />
+            }
+            introSlot={
+                <BlockQuote>
+                    She put his pistol down, picked up her fletcher, dialed the barrel over to
+                    single shot, and very carefully put a toxin dart through the center of a broken
+                    mirror bent and elongated as they fell. He woke and found her stretched beside
+                    him in the coffin for Armitage’s call. Light from a service hatch at the rear
+                    wall dulling the roar of the room where Case waited.
+                </BlockQuote>
+            }>
+            <SimpleGrid columns={{ base: 1, sm: 2, md: 3 }} spacing={4}>
+                {categories &&
+                    categories.map((category: Category) => {
+                        return (
+                            <CategoryCard
+                                fullHeight
+                                key={category.slug}
+                                slug={category.slug}
+                                title={category.name}
+                                image={category.image}
+                                shortDescription={category.description}
+                                products={category.products.featured}
+                                productsCount={category.products.count}
+                            />
+                        );
+                    })}
+            </SimpleGrid>
+        </PageListingLayout>
     );
 }

@@ -6,7 +6,11 @@ import Footer from './pageFooter';
 
 export const siteTitle = `Karpouzi`;
 
-const PageLayout = ({ children }) => {
+interface IPageLayoutProps {
+    children;
+}
+
+const PageLayout = ({ children }: IPageLayoutProps) => {
     return (
         <>
             <Head>
@@ -17,10 +21,7 @@ const PageLayout = ({ children }) => {
                     name="viewport"
                     content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=5"
                 />
-                <meta
-                    name="description"
-                    content="Learn how to build a personal website using Next.js"
-                />
+                <meta name="description" content={`${siteTitle} e-shop`} />
                 <meta name="keywords" content="Keywords" />
                 <title>{siteTitle}</title>
                 <meta
@@ -52,8 +53,3 @@ const PageLayout = ({ children }) => {
 };
 
 export default PageLayout;
-
-PageLayout.propTypes = {
-    children: PropTypes.node.isRequired,
-    home: PropTypes.bool
-};

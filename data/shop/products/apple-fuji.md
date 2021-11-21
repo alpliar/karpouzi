@@ -1,7 +1,7 @@
 ---
 title: 'Fuji Apple'
 date: '2021-01-14'
-price: '4.5 €'
+price: '4.50€'
 rating: 4
 reviewCount: 46
 isNew: false

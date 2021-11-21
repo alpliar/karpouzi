@@ -1,47 +1,54 @@
-import PropTypes from 'prop-types';
-// import { Breadcrumb as UiBreadcrumb, BreadcrumbItem } from '@chakra-ui/react';
+import { Breadcrumb as ChakraBreadcrumb, BreadcrumbItem } from '@chakra-ui/breadcrumb';
 import { ChevronRightIcon } from '@chakra-ui/icons';
-import Link from './link';
-import { Breadcrumb as UiBreadcrumb, BreadcrumbItem } from '@chakra-ui/breadcrumb';
 import { Text } from '@chakra-ui/layout';
+import Script from 'next/script';
+import Head from 'next/head';
+import Link from './link';
 
-const Breadcrumb = ({ entries }) => {
+export interface IBreadcrumbItemProps {
+    text: string;
+    link?: string;
+    alt?: string;
+    isCurrentPage?: boolean;
+}
+export interface IBreadcrumbProps {
+    entries: IBreadcrumbItemProps[];
+}
+
+const Breadcrumb = ({ entries }: IBreadcrumbProps) => {
+    const structuredData: any = {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: entries.map((entry, index) => ({
+            '@type': 'ListItem',
+            position: index + 1,
+            name: entry.text,
+            item: entry.link
+        }))
+    };
     return (
-        <UiBreadcrumb fontSize="sm" separator={<ChevronRightIcon color="gray.500" />}>
-            {entries.map((entry, index) => {
-                return (
-                    <BreadcrumbItem
-                        key={`${entry.slug}-${index}`}
-                        isCurrentPage={entry.isCurrentPage}>
-                        {entry.isCurrentPage ? (
-                            <Text>{entry.text}</Text>
-                        ) : (
-                            <Link href={entry.link} alt={entry.alt}>
-                                {entry.text}
-                            </Link>
-                        )}
-                    </BreadcrumbItem>
-                );
-            })}
-        </UiBreadcrumb>
+        <>
+            <Script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+            />
+            <ChakraBreadcrumb fontSize="sm" separator={<ChevronRightIcon color="gray.500" />}>
+                {entries.map(({ text, isCurrentPage = false, link = null, alt = null }, index) => {
+                    return (
+                        <BreadcrumbItem key={`${text}-${index}`} isCurrentPage={isCurrentPage}>
+                            {isCurrentPage ? (
+                                <Text>{text}</Text>
+                            ) : (
+                                <Link href={link} alt={alt}>
+                                    {text}
+                                </Link>
+                            )}
+                        </BreadcrumbItem>
+                    );
+                })}
+            </ChakraBreadcrumb>
+        </>
     );
 };
 
 export default Breadcrumb;
-
-Breadcrumb.defaultProps = {
-    isCurrentPage: false,
-    link: null,
-    alt: null
-};
-
-Breadcrumb.propTypes = {
-    entries: PropTypes.arrayOf(
-        PropTypes.shape({
-            text: PropTypes.string.isRequired,
-            link: PropTypes.string,
-            alt: PropTypes.string,
-            isCurrentPage: PropTypes.bool
-        }).isRequired
-    ).isRequired
-};

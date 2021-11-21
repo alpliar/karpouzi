@@ -1,7 +1,7 @@
 ---
 title: 'Red-Delicious Apple'
 date: '2021-02-18'
-price: '2.98 €'
+price: '2.98€'
 rating: 4
 reviewCount: 12
 isNew: true

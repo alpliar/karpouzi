@@ -5,7 +5,7 @@ import Link from 'next/link';
 import Rating from './rating';
 import Card from './card';
 import { useBreakpointValue } from '@chakra-ui/media-query';
-import { Box, Heading, LinkBox, LinkOverlay, Stack } from '@chakra-ui/layout';
+import { Box, Heading, HStack, LinkBox, LinkOverlay, Stack, Text, Wrap } from '@chakra-ui/layout';
 import { Img } from '@chakra-ui/image';
 
 const ProductCard = ({
@@ -16,9 +16,10 @@ const ProductCard = ({
     formattedPrice,
     isNew,
     reviewCount,
-    rating
+    rating,
+    ratingIcon
 }) => {
-    const imageHeight = useBreakpointValue({ base: '280px', sm: '210px' });
+    const imageHeight = useBreakpointValue({ base: 64, sm: 48, md: 48, lg: 64 });
 
     return (
         <LinkBox>
@@ -59,19 +60,19 @@ const ProductCard = ({
                 </Box>
 
                 <Stack spacing={2} height="full">
-                    {/* <Box d="flex" alignItems="baseline">
-                    <Box
-                        color="gray.800"
-                        fontWeight="semibold"
-                        letterSpacing="wide"
-                        fontSize="xs"
-                        textTransform="uppercase"
-                        ml="2">
-                        {property.beds} beds &bull; {property.baths} baths
+                    <Box d="flex" alignItems="baseline">
+                        <Box
+                            color="white.800"
+                            fontWeight="semibold"
+                            letterSpacing="wide"
+                            fontSize="xs"
+                            textTransform="uppercase"
+                            ml="2">
+                            3 beds &bull; 2 baths
+                        </Box>
                     </Box>
-                </Box> */}
 
-                    <Box mt="1" fontWeight="semibold" lineHeight="tight" isTruncated>
+                    <Box fontWeight="semibold" lineHeight="tight" isTruncated>
                         <Link
                             passHref
                             href={{
@@ -79,22 +80,29 @@ const ProductCard = ({
                                 query: { slug }
                             }}>
                             <LinkOverlay>
-                                <Heading size="md">{title}</Heading>
+                                <Heading
+                                    size="md"
+                                    textShadow="sm"
+                                    _hover={{
+                                        textShadow: '0.5px 0.5px 0.5px teal'
+                                    }}>
+                                    {title}
+                                </Heading>
                             </LinkOverlay>
                         </Link>
                     </Box>
 
-                    <Box>
-                        <Box>
-                            {formattedPrice}
-                            <Box as="span" /*color="gray.600"*/ fontSize="sm">
-                                / piece
-                            </Box>
-                        </Box>
+                    <Box isTruncated>
+                        <Rating rate={rating} count={reviewCount} icon={ratingIcon} />
+                    </Box>
 
-                        <Box isTruncated>
-                            <Rating rate={rating} count={reviewCount} />
-                        </Box>
+                    <Box>
+                        <Text as="b" fontSize="3xl">
+                            {formattedPrice}
+                        </Text>
+                        <Text as="span" /*color="gray.600"*/ fontSize="sm">
+                            / piece
+                        </Text>
                     </Box>
                 </Stack>
             </Card>
@@ -112,5 +120,6 @@ ProductCard.propTypes = {
     formattedPrice: PropTypes.string.isRequired,
     isNew: PropTypes.bool.isRequired,
     reviewCount: PropTypes.number.isRequired,
-    rating: PropTypes.number.isRequired
+    rating: PropTypes.number.isRequired,
+    ratingIcon: PropTypes.node
 };

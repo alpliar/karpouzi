@@ -36,7 +36,14 @@ const CategoryCard = ({
     return (
         <LinkBox height={fullHeight ? 'full' : null} onMouseEnter={onHover} onMouseLeave={onHover}>
             <Card key={slug} fullHeight padding={6}>
-                <Box bg="#282828" h={imageHeight} mt={-6} mx={-6} mb={6} overflow="hidden">
+                <Box
+                    bg="#282828"
+                    minH={imageHeight}
+                    h={imageHeight}
+                    mt={-6}
+                    mx={-6}
+                    mb={6}
+                    overflow="hidden">
                     <Img
                         w="full"
                         minH={imageHeight}

@@ -1,5 +1,15 @@
 import { BellIcon } from '@chakra-ui/icons';
-import { Badge, Box, Container, Divider, Heading, Img, SimpleGrid, Text } from '@chakra-ui/react';
+import { Img } from '@chakra-ui/image';
+import {
+    Badge,
+    Box,
+    Container,
+    Divider,
+    Heading,
+    SimpleGrid,
+    Stack,
+    Text
+} from '@chakra-ui/layout';
 import { GetStaticPaths, GetStaticPathsContext, GetStaticPathsResult, NextPage } from 'next';
 import Head from 'next/head';
 import PropTypes from 'prop-types';
@@ -61,31 +71,33 @@ const ProductPage = ({
             </Head>
 
             <Container px={4} py={4} maxW="4xl">
-                <Breadcrumb
-                    entries={[
-                        {
-                            text: 'Shop',
-                            link: '/shop',
-                            alt: 'go to shop home',
-                            isCurrentPage: false
-                        },
-                        {
-                            text: 'category',
-                            link: '/shop/category/fruits',
-                            alt: 'go to fruits category',
-                            isCurrentPage: false
-                        },
-                        { text: slug, link: '', alt: '', isCurrentPage: true }
-                    ]}
-                />
-                <Heading size="xl" pr={{ base: 0, md: '20%' }}>
-                    {title}{' '}
-                    {isNew && (
-                        <Badge>
-                            <BellIcon /> NEW!
-                        </Badge>
-                    )}
-                </Heading>
+                <Stack spacing={2}>
+                    <Breadcrumb
+                        entries={[
+                            {
+                                text: 'Shop',
+                                link: '/shop',
+                                alt: 'go to shop home',
+                                isCurrentPage: false
+                            },
+                            {
+                                text: 'category',
+                                link: '/shop/category/fruits',
+                                alt: 'go to fruits category',
+                                isCurrentPage: false
+                            },
+                            { text: slug, link: '', alt: '', isCurrentPage: true }
+                        ]}
+                    />
+                    <Heading size="xl" pr={{ base: 0, md: '20%' }}>
+                        {title}{' '}
+                        {isNew && (
+                            <Badge>
+                                <BellIcon /> NEW!
+                            </Badge>
+                        )}
+                    </Heading>
+                </Stack>
             </Container>
 
             <Divider w="100%" />

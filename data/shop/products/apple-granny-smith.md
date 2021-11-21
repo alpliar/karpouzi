@@ -1,7 +1,7 @@
 ---
 title: 'Granny Smith Apple'
 date: '2021-01-15'
-price: '2.5 €'
+price: '2.50€'
 rating: 5
 reviewCount: 121
 isNew: false

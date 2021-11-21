@@ -1,7 +1,7 @@
 ---
 title: 'Jonagold Apple'
 date: '2021-01-30'
-price: '3 €'
+price: '3.00€'
 rating: 4
 reviewCount: 32
 isNew: true
