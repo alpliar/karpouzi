@@ -86,9 +86,11 @@ const ProductPage = ({
             ]}
             titleSlot={
                 isNew && (
-                    <Badge>
-                        <BellIcon /> NEW!
-                    </Badge>
+                    <Box>
+                        <Badge>
+                            <BellIcon /> NEW!
+                        </Badge>
+                    </Box>
                 )
             }
             introSlot={<BlockQuote>Blah blah</BlockQuote>}>
