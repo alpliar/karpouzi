@@ -22,12 +22,12 @@ const MenuItems = ({ children }) => (
 
 export const headerBgGradient = (colorMode) => {
     return colorMode === 'light'
-        ? 'linear(to-b, tomato, green.200, green.300)'
+        ? 'linear(to-b, tomato, green.300, green.400)'
         : 'linear(to-b, red.600, green.700, green.800)';
 };
 
 export const headerBgColor = (colorMode) => {
-    return colorMode === 'light' ? 'green.300' : 'green.800';
+    return colorMode === 'light' ? 'green.400' : 'green.800';
 };
 
 const Header = ({ siteTitle }) => {
