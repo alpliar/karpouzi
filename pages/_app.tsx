@@ -6,6 +6,7 @@ import { IntlProvider } from 'react-intl';
 import * as locales from '../content/locale';
 import { wrapper } from '../store';
 import '../styles/global.scss';
+import theme from '../theme';
 
 const App = ({ Component, pageProps }: AppProps) => {
     const router = useRouter();
@@ -15,7 +16,7 @@ const App = ({ Component, pageProps }: AppProps) => {
 
     return (
         <IntlProvider locale={locale} defaultLocale={defaultLocale} messages={messages}>
-            <ChakraProvider resetCSS>
+            <ChakraProvider theme={theme} resetCSS>
                 <Component {...pageProps} />
             </ChakraProvider>
         </IntlProvider>
