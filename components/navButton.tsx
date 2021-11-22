@@ -2,12 +2,12 @@ import PropTypes from 'prop-types';
 import { Button, IconButton, useColorModeValue, useBreakpointValue } from '@chakra-ui/react';
 
 const NavButton = ({ icon, label, handleClick, isPrimary, compact, e2e }) => {
-    const lightColorScheme = isPrimary ? 'whiteAlpha' : 'teal';
-    const darkColorScheme = isPrimary ? 'teal' : 'whiteAlpha';
+    const lightColorScheme = isPrimary ? 'red' : 'white';
+    const darkColorScheme = isPrimary ? 'red' : 'white';
 
     const colorScheme = useColorModeValue(lightColorScheme, darkColorScheme);
     const variant = isPrimary ? 'outline' : 'solid';
-    const lightColor = 'white';
+    const lightColor = 'gray.800';
     const darkColor = 'white';
     const color = useColorModeValue(lightColor, darkColor);
     // useBreakPoint value is not available instantly, need a 'sm' fallback in order to prevent buttons resize on load

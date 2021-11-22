@@ -23,7 +23,8 @@ const NavLocaleSelector = ({ compact }) => {
         gr: 'Ελληνικά'
     };
 
-    const colorScheme = useColorModeValue('teal', 'whiteAlpha');
+    const colorScheme = useColorModeValue('white', 'white');
+    const color = useColorModeValue('gray.800', 'white');
     const size = useBreakpointValue({ base: 'md', md: 'sm' }) || 'sm';
 
     return (
@@ -32,17 +33,13 @@ const NavLocaleSelector = ({ compact }) => {
                 data-e2e="localeCTA"
                 aria-label="Toggle locale"
                 size={size}
-                color="white"
+                color={color}
                 colorScheme={colorScheme}
                 as={compact === true ? IconButton : Button}
                 icon={compact === true && <FaFlag />}>
                 {compact === false && 'Language'}
             </MenuButton>
-            <MenuList
-                padding="0"
-                minW={'4xs'}
-                maxW={'3xs'}
-                color={useColorModeValue('black', 'white')}>
+            <MenuList padding="0" minW={'4xs'} maxW={'3xs'} color={color}>
                 {router.locales.map((locale) => {
                     const localeName = localesInfos[locale];
                     return (
