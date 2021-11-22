@@ -1,4 +1,4 @@
-import { VStack } from '@chakra-ui/react';
+import { Stack } from '@chakra-ui/layout';
 import { useIntl } from 'react-intl';
 import NavDrawerBodyItem from './navDrawerBodyItem';
 
@@ -7,7 +7,7 @@ const NavDrawerBody = () => {
     const f = (id: string, values: any = null) => formatMessage({ id }, values);
 
     return (
-        <VStack spacing="2">
+        <Stack spacing="2">
             <NavDrawerBodyItem
                 href="/blog"
                 alt={f('goToPageName', { name: f('menuEntryBlog') })}
@@ -18,7 +18,7 @@ const NavDrawerBody = () => {
                 alt={f('goToPageName', { name: f('menuEntryShop') })}
                 text={f('menuEntryShop')}
             />
-        </VStack>
+        </Stack>
     );
 };
 
