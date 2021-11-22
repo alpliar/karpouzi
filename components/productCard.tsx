@@ -60,7 +60,7 @@ const ProductCard = ({
                 </Box>
 
                 <Stack spacing={2} height="full">
-                    <Box d="flex" alignItems="baseline">
+                    {/* <Box d="flex" alignItems="baseline">
                         <Box
                             color="white.800"
                             fontWeight="semibold"
@@ -68,9 +68,9 @@ const ProductCard = ({
                             fontSize="xs"
                             textTransform="uppercase"
                             ml="2">
-                            3 beds &bull; 2 baths
+                            NEW &bull; 2 baths
                         </Box>
-                    </Box>
+                    </Box> */}
 
                     <Box fontWeight="semibold" lineHeight="tight" isTruncated>
                         <Link
