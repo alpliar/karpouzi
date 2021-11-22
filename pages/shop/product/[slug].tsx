@@ -93,7 +93,7 @@ const ProductPage = ({
                     </Box>
                 )
             }
-            introSlot={<BlockQuote>Blah blah</BlockQuote>}>
+            introSlot={<BlockQuote noOfLines={3}>Blah blah</BlockQuote>}>
             <Head>
                 <title>Shop - {title}</title>
             </Head>

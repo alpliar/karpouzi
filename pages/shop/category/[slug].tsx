@@ -52,7 +52,7 @@ const CategoryPage: NextPage = () => {
                 }
             ]}
             introSlot={
-                <BlockQuote>
+                <BlockQuote noOfLines={3}>
                     Case had never seen him wear the same suit twice, although his wardrobe seemed
                     to consist entirely of meticulous reconstruction’s of garments of the blowers
                     and the amplified breathing of the fighters.

@@ -76,7 +76,7 @@ export default function ShopPage({ categories }: ShopPageProps) {
                 <ShopStat label="Categories" number={categories?.length ?? 0} textAlign="right" />
             }
             introSlot={
-                <BlockQuote>
+                <BlockQuote noOfLines={3}>
                     She put his pistol down, picked up her fletcher, dialed the barrel over to
                     single shot, and very carefully put a toxin dart through the center of a broken
                     mirror bent and elongated as they fell. He woke and found her stretched beside
