@@ -43,7 +43,10 @@ const Header = ({ siteTitle }) => {
             as="nav"
             data-e2e="mainNavigation"
             // bgGradient={headerBgGradient(colorMode)} /*color="white"*/
-            bgColor={headerBgColor(colorMode)}>
+            bgColor={headerBgColor(colorMode)}
+            position="sticky"
+            zIndex="sticky"
+            top="0px">
             <Wrap
                 align={{ base: 'auto', md: 'center' }}
                 justify="flex-end"
