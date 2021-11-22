@@ -28,10 +28,13 @@ const Breadcrumb = ({ entries }: IBreadcrumbProps) => {
     };
     return (
         <>
-            <Script
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-            />
+            <Head>
+                <script
+                    key="breadcrumb"
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+                />
+            </Head>
             <ChakraBreadcrumb fontSize="sm" separator={<ChevronRightIcon color="gray.500" />}>
                 {entries.map(({ text, isCurrentPage = false, link = null, alt = null }, index) => {
                     return (
