@@ -9,17 +9,6 @@ const NavBurgerMenu = ({ handleClick }) => {
     const f = (id: string) => formatMessage({ id });
     const icon = <Icon as={HamburgerIcon} />;
 
-    const lightColor = 'gray.800';
-    const darkColor = 'white';
-
-    const isPrimary = true;
-    const lightColorScheme = isPrimary ? 'red' : 'white';
-    const darkColorScheme = isPrimary ? 'red' : 'white';
-
-    const colorScheme = useColorModeValue(lightColorScheme, darkColorScheme);
-
-    const color = useColorModeValue(lightColor, darkColor);
-
     return (
         <NavButton
             e2e="menuCTA"

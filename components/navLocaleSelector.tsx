@@ -1,5 +1,5 @@
 import { Button, IconButton } from '@chakra-ui/button';
-import { useColorModeValue } from '@chakra-ui/color-mode';
+import { useColorMode, useColorModeValue } from '@chakra-ui/color-mode';
 import { Link, LinkBox, LinkOverlay, Stack } from '@chakra-ui/layout';
 import { useBreakpointValue } from '@chakra-ui/media-query';
 import { Menu, MenuButton, MenuItem, MenuList } from '@chakra-ui/menu';
@@ -23,9 +23,10 @@ const NavLocaleSelector = ({ compact }) => {
         gr: 'Ελληνικά'
     };
 
-    const colorScheme = useColorModeValue('white', 'white');
-    const color = useColorModeValue('gray.800', 'white');
+    const menuBgColor = useColorModeValue('white', 'gray.800');
     const size = useBreakpointValue({ base: 'md', md: 'sm' }) || 'sm';
+    const itemHoverColor = useColorModeValue('gray.800', 'white');
+    const itemHoverBgColor = useColorModeValue('blackAlpha.100', 'whiteAlpha.100');
 
     return (
         <Menu>
@@ -33,13 +34,12 @@ const NavLocaleSelector = ({ compact }) => {
                 data-e2e="localeCTA"
                 aria-label="Toggle locale"
                 size={size}
-                color={color}
-                colorScheme={colorScheme}
+                variant="ghost"
                 as={compact === true ? IconButton : Button}
                 icon={compact === true && <FaFlag />}>
                 {compact === false && 'Language'}
             </MenuButton>
-            <MenuList padding="0" minW={'4xs'} maxW={'3xs'} color={color}>
+            <MenuList padding="0" minW={'4xs'} maxW={'3xs'} bgColor={menuBgColor}>
                 {router.locales.map((locale) => {
                     const localeName = localesInfos[locale];
                     return (
@@ -49,8 +49,8 @@ const NavLocaleSelector = ({ compact }) => {
                             paddingY="2"
                             d="flex"
                             _hover={{
-                                backgroundColor: 'gray.100',
-                                color: 'black'
+                                backgroundColor: itemHoverBgColor
+                                // color: itemHoverColor
                             }}>
                             {getFlagEmoji(locale === 'en' ? 'gb' : locale)}
                             &nbsp;
