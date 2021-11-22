@@ -1,5 +1,5 @@
 import { Avatar } from '@chakra-ui/avatar';
-import { useColorMode } from '@chakra-ui/color-mode';
+import { useColorMode, useColorModeValue } from '@chakra-ui/color-mode';
 import { Heading, Stack, Text, Wrap } from '@chakra-ui/layout';
 
 interface IBlockQuoteProps {
@@ -13,19 +13,23 @@ const BlockQuote = ({ children, author }: IBlockQuoteProps) => {
     return (
         <Stack as="figure">
             {/* <Date dateString={postData.date} />· 6min read */}
-            <blockquote>
+            <Text as="blockquote">
                 <Text
                     maxW="60ch"
                     fontSize="sm"
                     as="p"
                     p={2}
-                    backgroundColor={colorMode === 'light' ? 'blackAlpha.100' : 'whiteAlpha.300'}
+                    border={`1px solid ${useColorModeValue(
+                        'rgba(0,0,0,0.1)',
+                        'rgba(255,255,255,0.1)'
+                    )}`}
+                    backgroundColor={colorMode === 'light' ? 'whiteAlpha.200' : 'blackAlpha.200'}
                     rounded="md"
                     _before={{ content: '"«"', marginRight: '1ch' }}
                     _after={{ content: '"»"', marginLeft: '1ch' }}>
                     {children}
                 </Text>
-            </blockquote>
+            </Text>
             {author && (
                 <Wrap alignSelf="flex-end" as="figcaption">
                     <Text>— </Text>
