@@ -13,8 +13,8 @@ const Card = ({ children, padding, fullHeight }) => {
             h={fullHeight ? '100%' : null}
             overflow={'hidden'}
             _hover={{
-                boxShadow: '2xl',
-                transform: 'skewY(-0.25deg) scale(1.01)'
+                boxShadow: 'dark-lg',
+                transform: 'skewY(-0.1deg) scale(1.01)'
             }}
             transition={BASE_TRANSITION}>
             {children}
