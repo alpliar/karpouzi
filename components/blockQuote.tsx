@@ -1,7 +1,7 @@
 import { Avatar } from '@chakra-ui/avatar';
 import { useColorMode, useColorModeValue } from '@chakra-ui/color-mode';
-import { useBoolean, useDisclosure } from '@chakra-ui/hooks';
-import { Heading, Stack, Text, Wrap } from '@chakra-ui/layout';
+import { useBoolean } from '@chakra-ui/hooks';
+import { Flex, Heading, HStack, Stack, Text, Wrap } from '@chakra-ui/layout';
 
 interface IBlockQuoteProps {
     author?: string;
@@ -40,15 +40,17 @@ const BlockQuote = ({ children, author, noOfLines = null }: IBlockQuoteProps) =>
                 </Text>
             </Text>
             {author && (
-                <Wrap alignSelf="flex-end" as="figcaption">
+                <Wrap alignSelf="flex-end" align="center" as="figcaption">
                     <Text>— </Text>
-                    <Avatar
-                        src={'/icon-48x48.png'}
-                        name="Karpouzi avatar"
-                        bg="green.500"
-                        size="xs"
-                    />
-                    <Heading size="xs">{author}</Heading>
+                    <HStack spacing={1}>
+                        <Avatar
+                            src={'/icon-48x48.png'}
+                            name="Karpouzi avatar"
+                            bg="green.500"
+                            size="2xs"
+                        />
+                        <Heading size="xs">{author}</Heading>
+                    </HStack>
                     {/* <Text>,</Text> */}
                     {/* <cite>Karpouzi</cite> */}
                 </Wrap>
