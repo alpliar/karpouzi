@@ -17,7 +17,7 @@ const BlockQuote = ({ children, author, noOfLines = null }: IBlockQuoteProps) =>
         setIsOpen.toggle();
     };
     return (
-        <Stack as="figure">
+        <Stack as="figure" spacing={1}>
             {/* <Date dateString={postData.date} />· 6min read */}
             <Text
                 as="blockquote"
