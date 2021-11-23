@@ -46,22 +46,7 @@ const PageListingLayout = ({
             <Box
                 position="relative"
                 // bgColor={headerBgColor(colorMode)}
-                bgGradient={headerBgGradient(colorMode)}
-                _before={{
-                    content: `''`,
-                    display: 'block',
-                    backgroundImage: bgPattern,
-                    position: 'absolute',
-                    width: '100%',
-                    height: '50%',
-                    top: '50%',
-                    bottom: 0,
-                    left: 0,
-                    right: 0,
-                    opacity: 0.2,
-                    '-webkit-mask-image':
-                        '-webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,0)), to(rgba(0,0,0,1)))'
-                }}>
+                bgGradient={headerBgGradient(colorMode)}>
                 <Container p={4} maxW={{ md: '4xl', xl: '6xl' }}>
                     <Stack spacing={2}>
                         <Breadcrumb entries={breadcrumbs} />
@@ -71,22 +56,33 @@ const PageListingLayout = ({
                             {titleSlot && titleSlot}
                             {/* <ShopStat label="Products" number={5} /> */}
                         </Wrap>
-                        <Flex pt={6} justifyContent={{ base: 'center', md: 'flex-end' }}>
+                        <Flex pt={6} justifyContent={{ base: 'center', md: 'flex-end' }} zIndex="1">
                             {introSlot && introSlot}
                         </Flex>
                     </Stack>
                     {/* <Text>{categories?.length ?? 0} categories</Text> */}
                 </Container>
+
+                <Box
+                    _before={{
+                        content: `''`,
+                        display: 'block',
+                        backgroundImage: bgPattern,
+                        position: 'absolute',
+                        width: '100%',
+                        height: '50%',
+                        top: '50%',
+                        bottom: 0,
+                        left: 0,
+                        right: 0,
+                        opacity: 0.2,
+                        '-webkit-mask-image':
+                            '-webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,0)), to(rgba(0,0,0,1)))'
+                    }}
+                />
             </Box>
 
-            <Divider maxW="100%" />
-
-            <Box
-            // backgroundColor={
-            //     colorMode === 'light' ? 'rgba(255,99,71,0.8)' : 'rgba(255,0,0,0.1)'
-            // }
-            // roundedBottom="3xl"
-            >
+            <Box>
                 <Container
                     p={{ base: 4 }}
                     maxW={{ md: '4xl', xl: '6xl' }} /*paddingInline={{ base: 0, sm: '1rem' }}*/
