@@ -1,11 +1,9 @@
-import { Avatar } from '@chakra-ui/avatar';
-import { Container, Divider, Heading, Stack, Text } from '@chakra-ui/layout';
-import Head from 'next/head';
 import { useSelector } from 'react-redux';
 import { SET_POSTS_DATA } from '../../actions/blog';
-import Breadcrumb from '../../components/breadcrumb';
+import BlockQuote from '../../components/blockQuote';
 import LatestsPosts from '../../components/LatestsPosts';
-import Layout, { siteTitle } from '../../components/pageLayout';
+import PageListingLayout from '../../components/pageListingLayout';
+import ShopStat from '../../components/shopStat';
 import { getSortedPostsData } from '../../lib/posts';
 import { RootState } from '../../reducer';
 import { wrapper } from '../../store';
@@ -19,45 +17,33 @@ export default function Home() {
     const { posts } = useSelector((state: RootState) => state.server);
 
     return (
-        <Layout>
-            <Head>
-                <title>Blog - {siteTitle}</title>
-            </Head>
-
-            <Container p={4} maxW="4xl">
-                <Breadcrumb
-                    entries={[
-                        {
-                            text: 'Home',
-                            link: '/',
-                            alt: 'go to home page'
-                        },
-                        {
-                            text: 'Blog',
-                            link: '/blog',
-                            alt: 'go to blog home',
-                            isCurrentPage: true
-                        }
-                    ]}
-                />
-                <Heading>Blog</Heading>
-                <Stack mt={6} direction="row" spacing={4} align="center">
-                    <Avatar src={'/icon-48x48.png'} alt="Author" bg="green.500" />
-                    <Stack direction="column" spacing={0} fontSize="sm">
-                        <Heading size="xs">Karpouzi</Heading>
-                        <Text>
-                            {/* <Date dateString={postData.date} />· 6min read */}
-                            fafazfazf
-                        </Text>
-                    </Stack>
-                </Stack>
-            </Container>
-
-            <Divider maxW="100%" />
-
-            <Container p={{ base: 0, sm: 4 }} maxW="4xl">
-                {posts && <LatestsPosts posts={posts} />}
-            </Container>
-        </Layout>
+        <PageListingLayout
+            title="Blog"
+            breadcrumbs={[
+                {
+                    text: 'Home',
+                    link: '/',
+                    alt: 'go to home page',
+                    isCurrentPage: false
+                },
+                {
+                    text: 'Blog',
+                    link: '/blog',
+                    alt: 'go to blog home',
+                    isCurrentPage: true
+                }
+            ]}
+            titleSlot={<ShopStat label="Posts" number={posts?.length ?? 0} textAlign="right" />}
+            introSlot={
+                <BlockQuote noOfLines={3}>
+                    She put his pistol down, picked up her fletcher, dialed the barrel over to
+                    single shot, and very carefully put a toxin dart through the center of a broken
+                    mirror bent and elongated as they fell. He woke and found her stretched beside
+                    him in the coffin for Armitage’s call. Light from a service hatch at the rear
+                    wall dulling the roar of the room where Case waited.
+                </BlockQuote>
+            }>
+            {posts && <LatestsPosts posts={posts} />}
+        </PageListingLayout>
     );
 }
