@@ -2,7 +2,8 @@ import { Avatar } from '@chakra-ui/avatar';
 import Icon from '@chakra-ui/icon';
 import { Box, Heading, HStack, Stack, Text } from '@chakra-ui/layout';
 import PropTypes from 'prop-types';
-import { GiOpenBook } from 'react-icons/gi';
+import { GiFountainPen, GiOpenBook } from 'react-icons/gi';
+import BlockQuote from '../../../components/blockQuote';
 import Date from '../../../components/Date';
 import PageListingLayout from '../../../components/pageListingLayout';
 import { getAllPostIds, getPostData } from '../../../lib/posts';
@@ -42,23 +43,25 @@ export default function Post({ postData }) {
                 { text: postData.id, link: '', alt: '', isCurrentPage: true }
             ]}
             titleSlot={
-                <HStack>
-                    <Icon as={GiOpenBook} />
-                    <Text>6min read</Text>
-                </HStack>
+                <Stack spacing={0}>
+                    <HStack>
+                        <Icon as={GiOpenBook} />
+                        <Text>6min read</Text>
+                    </HStack>
+                    <HStack>
+                        <Icon as={GiFountainPen} />
+                        <Date dateString={postData.date} />
+                    </HStack>
+                </Stack>
             }
             introSlot={
-                <Stack mt={6} direction="row" spacing={4} align="center">
-                    <Avatar src={'/icon-48x48.png'} alt="Author" bg="green.500" />
-                    <Stack direction="column" spacing={0} fontSize="sm">
-                        <Heading size="xs">Karpouzi</Heading>
-                        <Text>
-                            <Date dateString={postData.date} />
-                        </Text>
-                    </Stack>
-                </Stack>
+                <BlockQuote noOfLines={3} author="Author">
+                    Article subtitle goes there.
+                </BlockQuote>
             }>
             <Box
+                maxW="70ch"
+                margin="auto"
                 className="externalHtml"
                 dangerouslySetInnerHTML={{ __html: sanitizeText(postData.contentHtml) }}
             />
