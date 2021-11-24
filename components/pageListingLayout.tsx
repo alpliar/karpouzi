@@ -10,6 +10,7 @@ import PageLayout, { siteTitle } from './pageLayout';
 interface IPageLayoutProps {
     title: string;
     breadcrumbs: IBreadcrumbItemProps[];
+    fullWidth?: boolean;
     titleSlot?: React.ReactNode;
     introSlot?: React.ReactNode;
     children;
@@ -19,6 +20,7 @@ const PageListingLayout = ({
     children,
     breadcrumbs,
     title,
+    fullWidth,
     titleSlot = null,
     introSlot = null
 }: IPageLayoutProps) => {
@@ -87,8 +89,10 @@ const PageListingLayout = ({
 
             <Box>
                 <Container
-                    p={{ base: 4 }}
-                    maxW={APP_MAX_WIDTH} /*paddingInline={{ base: 0, sm: '1rem' }}*/
+                    p={fullWidth ? 0 : { base: 4 }}
+                    maxW={
+                        fullWidth ? 'full' : APP_MAX_WIDTH
+                    } /*paddingInline={{ base: 0, sm: '1rem' }}*/
                 >
                     {children}
                 </Container>
