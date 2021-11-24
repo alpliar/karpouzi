@@ -1,7 +1,6 @@
 import { Breadcrumb as ChakraBreadcrumb, BreadcrumbItem } from '@chakra-ui/breadcrumb';
 import { ChevronRightIcon } from '@chakra-ui/icons';
 import { Text } from '@chakra-ui/layout';
-import Script from 'next/script';
 import Head from 'next/head';
 import Link from './link';
 
