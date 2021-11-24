@@ -52,7 +52,7 @@ const PageListingLayout = ({
                     <Stack spacing={2}>
                         <Breadcrumb entries={breadcrumbs} />
                         <Wrap spacing={1} justify="space-between">
-                            <Heading>{title}</Heading>
+                            <Heading maxW="lg">{title}</Heading>
 
                             {titleSlot && titleSlot}
                             {/* <ShopStat label="Products" number={5} /> */}
