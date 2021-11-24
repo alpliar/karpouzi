@@ -2,6 +2,7 @@ import { useColorMode, useColorModeValue } from '@chakra-ui/color-mode';
 import { Box, Container, Divider, Flex, Heading, Stack, Wrap } from '@chakra-ui/layout';
 import { chakra } from '@chakra-ui/system';
 import Head from 'next/head';
+import { APP_MAX_WIDTH } from '../constants/ui/main.layout';
 import Breadcrumb, { IBreadcrumbItemProps } from './breadcrumb';
 import { headerBgColor, headerBgGradient } from './Header';
 import PageLayout, { siteTitle } from './pageLayout';
@@ -47,7 +48,7 @@ const PageListingLayout = ({
                 position="relative"
                 // bgColor={headerBgColor(colorMode)}
                 bgGradient={headerBgGradient(colorMode)}>
-                <Container p={4} maxW={{ md: '4xl', xl: '6xl' }}>
+                <Container p={4} maxW={APP_MAX_WIDTH}>
                     <Stack spacing={2}>
                         <Breadcrumb entries={breadcrumbs} />
                         <Wrap spacing={1} justify="space-between">
@@ -85,7 +86,7 @@ const PageListingLayout = ({
             <Box>
                 <Container
                     p={{ base: 4 }}
-                    maxW={{ md: '4xl', xl: '6xl' }} /*paddingInline={{ base: 0, sm: '1rem' }}*/
+                    maxW={APP_MAX_WIDTH} /*paddingInline={{ base: 0, sm: '1rem' }}*/
                 >
                     {children}
                 </Container>

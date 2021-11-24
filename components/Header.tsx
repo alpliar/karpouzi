@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';
 import NavDrawer from '../components/navDrawer';
 import NavThemeToggle from '../components/navThemeToggle';
+import { APP_MAX_WIDTH } from '../constants/ui/main.layout';
 import { BASE_TRANSITION } from '../constants/ui/transitions';
 import NavCart from '../container/navCart';
 import NavLocaleSelector from '../container/navLocaleSelector';
@@ -50,7 +51,7 @@ const Header = ({ siteTitle }) => {
             <Wrap
                 align={{ base: 'auto', md: 'center' }}
                 justify="flex-end"
-                maxW={{ md: '4xl', xl: '6xl' }}
+                maxW={APP_MAX_WIDTH}
                 w="100%"
                 p={2}
                 m={{ base: 0, md: 'auto' }}>
