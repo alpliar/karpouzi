@@ -39,14 +39,17 @@ const Header = ({ siteTitle }) => {
 
     const { isOpen, onOpen, onClose } = useDisclosure();
 
+    const boxShadow = null;
+
     return (
         <Flex
+            boxShadow={boxShadow}
             as="nav"
             data-e2e="mainNavigation"
             // bgGradient={headerBgGradient(colorMode)} /*color="white"*/
             bgColor={headerBgColor(colorMode)}
             position="sticky"
-            zIndex="sticky"
+            zIndex="tooltip"
             top="0px">
             <Wrap
                 align={{ base: 'auto', md: 'center' }}
