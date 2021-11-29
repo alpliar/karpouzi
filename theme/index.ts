@@ -20,7 +20,9 @@ const breakpoints = createBreakpoints({
 // Component style overrides
 // import Button from './components/button';
 const config: ThemeConfig = {
-    initialColorMode: 'system'
+    // initialColorMode: 'system'
+    // Type '"system"' is not assignable to type 'ColorMode'
+    initialColorMode: 'dark'
     // useSystemColorMode: true
 };
 
