@@ -1,8 +1,10 @@
 import { Avatar } from '@chakra-ui/avatar';
 import Icon from '@chakra-ui/icon';
-import { Box, Heading, HStack, Stack, Text } from '@chakra-ui/layout';
+import { Box, Container, Flex, Heading, HStack, Stack, Text } from '@chakra-ui/layout';
+import { chakra } from '@chakra-ui/system';
 import PropTypes from 'prop-types';
 import { GiFountainPen, GiOpenBook } from 'react-icons/gi';
+import Banner from '../../../components/banner';
 import BlockQuote from '../../../components/blockQuote';
 import Date from '../../../components/Date';
 import PageListingLayout from '../../../components/pageListingLayout';
@@ -27,6 +29,12 @@ export async function getStaticPaths() {
 }
 
 export default function Post({ postData }) {
+    const BlogBanner = chakra(Banner, {
+        baseStyle: {
+            maxWidth: '70ch'
+        }
+    });
+
     if (!postData) {
         return false;
     }
@@ -58,13 +66,28 @@ export default function Post({ postData }) {
                 <BlockQuote noOfLines={3} author="Author">
                     Article subtitle goes there.
                 </BlockQuote>
-            }>
-            <Box
-                maxW="70ch"
-                margin="auto"
-                className="externalHtml"
-                dangerouslySetInnerHTML={{ __html: sanitizeText(postData.contentHtml) }}
-            />
+            }
+            bannerSlot={null}>
+            <Stack>
+                <BlogBanner pattern="leaf">
+                    <Stack maxW="md" fontSize="sm" fontWeight="bold" p={3}>
+                        <Heading>Leaves !</Heading>
+                        <Text>
+                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Earum minima
+                            quaerat fugit ullam illo ipsa perspiciatis sit voluptatem!
+                        </Text>
+                    </Stack>
+                </BlogBanner>
+                <Box>
+                    <Box
+                        maxW="70ch"
+                        fontSize={{ md: 'xl' }}
+                        margin="auto"
+                        className="externalHtml"
+                        dangerouslySetInnerHTML={{ __html: sanitizeText(postData.contentHtml) }}
+                    />
+                </Box>
+            </Stack>
         </PageListingLayout>
     );
 }
