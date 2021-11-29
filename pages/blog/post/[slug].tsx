@@ -1,8 +1,7 @@
-import { Avatar } from '@chakra-ui/avatar';
 import Icon from '@chakra-ui/icon';
-import { Box, Container, Flex, Heading, HStack, Stack, Text } from '@chakra-ui/layout';
+import { Box, Heading, HStack, Stack, Text } from '@chakra-ui/layout';
 import { chakra } from '@chakra-ui/system';
-import PropTypes from 'prop-types';
+import { GetStaticPaths, GetStaticProps, GetStaticPropsContext, NextPage } from 'next';
 import { GiFountainPen, GiOpenBook } from 'react-icons/gi';
 import Banner from '../../../components/banner';
 import BlockQuote from '../../../components/blockQuote';
@@ -11,24 +10,16 @@ import PageListingLayout from '../../../components/pageListingLayout';
 import { getAllPostIds, getPostData } from '../../../lib/posts';
 import { sanitizeText } from '../../../utils/sanitize';
 
-export async function getStaticProps({ params }) {
-    const postData = await getPostData(params.slug);
-    return {
-        props: {
-            postData
-        }
-    };
+interface Post {
+    id: string;
+    title: string;
+    date: string;
+}
+interface Props {
+    postData: Post;
 }
 
-export async function getStaticPaths() {
-    const paths = await getAllPostIds();
-    return {
-        paths,
-        fallback: true
-    };
-}
-
-export default function Post({ postData }) {
+const Page: NextPage<Props> = ({ postData }) => {
     const BlogBanner = chakra(Banner, {
         baseStyle: {
             maxWidth: '70ch'
@@ -36,7 +27,7 @@ export default function Post({ postData }) {
     });
 
     if (!postData) {
-        return false;
+        return null;
     }
     return (
         <PageListingLayout
@@ -90,13 +81,26 @@ export default function Post({ postData }) {
             </Stack>
         </PageListingLayout>
     );
-}
-
-Post.propTypes = {
-    postData: PropTypes.shape({
-        title: PropTypes.string.isRequired,
-        id: PropTypes.string.isRequired,
-        date: PropTypes.string.isRequired,
-        contentHtml: PropTypes.string.isRequired
-    })
 };
+
+export const getStaticProps: GetStaticProps = async (context: GetStaticPropsContext) => {
+    const { params } = context;
+    const slug = params.slug.toString();
+
+    const postData = await getPostData(slug);
+    return {
+        props: {
+            postData
+        }
+    };
+};
+
+export const getStaticPaths: GetStaticPaths = async () => {
+    const paths = await getAllPostIds();
+    return {
+        paths,
+        fallback: true
+    };
+};
+
+export default Page;
