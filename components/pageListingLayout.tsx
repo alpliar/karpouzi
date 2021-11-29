@@ -13,6 +13,7 @@ interface IPageLayoutProps {
     fullWidth?: boolean;
     titleSlot?: React.ReactNode;
     introSlot?: React.ReactNode;
+    bannerSlot?: React.ReactNode;
     children;
 }
 
@@ -22,7 +23,8 @@ const PageListingLayout = ({
     title,
     fullWidth,
     titleSlot = null,
-    introSlot = null
+    introSlot = null,
+    bannerSlot = null
 }: IPageLayoutProps) => {
     const { colorMode } = useColorMode();
 
@@ -88,6 +90,7 @@ const PageListingLayout = ({
             </Box>
 
             <Box>
+                {bannerSlot && bannerSlot}
                 <Container
                     p={fullWidth ? 0 : { base: 4 }}
                     maxW={
