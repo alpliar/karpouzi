@@ -19,7 +19,35 @@ export const en = {
     '/shop': {
         title: 'Shop'
     },
-    '/login': {
+    '/user/account': {
+        title: 'Account settings',
+        personalInformations: 'Personal Info',
+        name: 'Name',
+        email: 'Email',
+        emailHelperText: "We'll never share your email",
+        bio: 'Bio',
+        bioHelperText: 'Brief description for your profile. URLs are hyperlinked',
+        profilePhoto: 'Profile Photo',
+        changePhoto: 'Change photo',
+        deletePhoto: 'Delete',
+        photoHelperText: '.jpg, .gif, or .png. Max file size 700K.',
+        language: 'Language',
+        displayLanguage: 'Display Language',
+        displayLanguagePlaceholder: 'Select country',
+        displayCurrency: 'Display currency',
+        displayCurrencyPlaceholder: 'Select currency',
+        displayCurrencyHelperText:
+            'Note that we only charge in EUR, other currencies are here for price comparison',
+        notifications: 'Notifications',
+        getUpdatesAboutLatestMeetups: 'Get updates about the latest meetups',
+        getNotificationsAboutAccountActivities: 'Get notifications about your account activities',
+        connectAccounts: 'Connect accounts',
+        connectGithub: 'Connect Github',
+        connectGoogle: 'Connect Google',
+        saveChanges: 'Save changes',
+        cancel: 'Cancel'
+    },
+    '/user/login': {
         title: 'Login',
         signInLong: 'Sign in to your account',
         signIn: 'Sign in',

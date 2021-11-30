@@ -14,9 +14,9 @@ import {
 import { NextPage } from 'next';
 import React from 'react';
 import { useIntl } from 'react-intl';
-import Link from '../../components/link';
-import Layout from '../../components/pageLayout';
-import { sendToast } from '../../utils/uiToast';
+import Link from '../../../components/link';
+import Layout from '../../../components/pageLayout';
+import { sendToast } from '../../../utils/uiToast';
 
 const LoginPage: NextPage = () => {
     const { formatMessage } = useIntl();

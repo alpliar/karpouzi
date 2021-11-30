@@ -7,7 +7,7 @@ const NavLogin = () => {
     const router = useRouter();
     const handleClick = (event) => {
         event.preventDefault();
-        router.push('/login');
+        router.push('/user/login');
     };
     const icon = <Icon as={FaUserCircle} />;
 
