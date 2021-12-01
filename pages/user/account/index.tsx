@@ -1,6 +1,7 @@
 import { Avatar } from '@chakra-ui/avatar';
 import { Button } from '@chakra-ui/button';
 import { Checkbox } from '@chakra-ui/checkbox';
+import { useColorModeValue } from '@chakra-ui/color-mode';
 import { FormControl, FormHelperText, FormLabel } from '@chakra-ui/form-control';
 import Icon from '@chakra-ui/icon';
 import { Input } from '@chakra-ui/input';
@@ -20,12 +21,20 @@ interface UserAccountSectionProps {
 }
 const UserAccountSection = ({ title, children }: UserAccountSectionProps) => {
     return (
-        <Stack spacing={4}>
-            <Heading as="h2" fontSize="lg">
+        <Stack spacing={4} direction={{ base: 'column', md: 'row' }}>
+            <Heading as="h2" fontSize="lg" minWidth={{ md: '3xs' }}>
                 {title}
             </Heading>
-            <Stack spacing={2}>{children}</Stack>
+            <Stack spacing={4}>{children}</Stack>
         </Stack>
+    );
+};
+
+const HelperText = ({ children }: any) => {
+    return (
+        <Text fontSize="sm" color={useColorModeValue('gray.500', 'whiteAlpha.600')}>
+            {children}
+        </Text>
     );
 };
 
@@ -83,24 +92,24 @@ const Page: NextPage = () => {
                 <Divider />
 
                 <UserAccountSection title={f('profilePhoto')}>
-                    <Wrap align="center">
+                    <Stack direction={{ base: 'column', sm: 'row' }} align="center" spacing={4}>
                         <Avatar size="xl" name="toto" />
-                        <Wrap>
+                        <Stack direction="column">
                             <Wrap>
                                 <Button>{f('changePhoto')}</Button>
                                 <Button variant="ghost" colorScheme="red">
                                     {f('deletePhoto')}
                                 </Button>
                             </Wrap>
-                            <Text>{f('photoHelperText')}</Text>
-                        </Wrap>
-                    </Wrap>
+                            <HelperText>{f('photoHelperText')}</HelperText>
+                        </Stack>
+                    </Stack>
                 </UserAccountSection>
 
                 <Divider />
 
                 <UserAccountSection title={f('language')}>
-                    <Stack>
+                    <Stack spacing={4}>
                         <FormControl id="country">
                             <FormLabel>{f('displayLanguage')}</FormLabel>
                             <Select
@@ -120,7 +129,7 @@ const Page: NextPage = () => {
                                 <option value="USD">USD ($)</option>
                                 <option value="EUR">EUR (€)</option>
                             </Select>
-                            <Text>{f('displayCurrencyHelperText')}</Text>
+                            <HelperText>{f('displayCurrencyHelperText')}</HelperText>
                         </FormControl>
                     </Stack>
                 </UserAccountSection>
@@ -129,8 +138,7 @@ const Page: NextPage = () => {
 
                 <UserAccountSection title={f('notifications')}>
                     <FormControl id="country">
-                        <FormLabel>{f('displayCurrency')}</FormLabel>
-                        <Stack>
+                        <Stack spacing={4}>
                             <Checkbox>{f('getUpdatesAboutLatestMeetups')}</Checkbox>
                             <Checkbox defaultIsChecked>
                                 {f('getNotificationsAboutAccountActivities')}
