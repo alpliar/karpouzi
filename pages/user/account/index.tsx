@@ -43,6 +43,10 @@ const Page: NextPage = () => {
     const f = (id: string) => formatMessage({ id });
     const router = useRouter();
 
+    const changeLocale = (newLocale) => {
+        router.push(router.pathname, router.asPath, { locale: newLocale });
+    };
+
     const localesInfos = {
         en: 'English',
         fr: 'Français',
@@ -114,7 +118,8 @@ const Page: NextPage = () => {
                             <FormLabel>{f('displayLanguage')}</FormLabel>
                             <Select
                                 placeholder={f('displayLanguagePlaceholder')}
-                                defaultValue={router.locale}>
+                                defaultValue={router.locale}
+                                onChange={(event) => changeLocale(event.target.value)}>
                                 {router.locales.map((locale) => {
                                     const localeName = localesInfos[locale];
                                     return <option value={locale}>{localeName}</option>;
