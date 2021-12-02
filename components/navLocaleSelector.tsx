@@ -55,7 +55,13 @@ const NavLocaleSelector = ({ compact }) => {
                             {getFlagEmoji(locale === 'en' ? 'gb' : locale)}
                             &nbsp;
                             <NextLink href={'/'} passHref locale={locale}>
-                                <LinkOverlay flexGrow={1} alt={`choose ${locale}`}>
+                                <LinkOverlay
+                                    flexGrow={1}
+                                    alt={`choose ${locale}`}
+                                    onClick={(event) => {
+                                        event.preventDefault();
+                                        handleSelection(locale);
+                                    }}>
                                     {localeName}
                                 </LinkOverlay>
                             </NextLink>
