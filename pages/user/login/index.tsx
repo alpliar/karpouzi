@@ -1,21 +1,17 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
-import {
-    Box,
-    Button,
-    Container,
-    FormControl,
-    FormHelperText,
-    FormLabel,
-    Heading,
-    Input,
-    Stack,
-    Text
-} from '@chakra-ui/react';
+import { Alert, AlertIcon } from '@chakra-ui/alert';
+import { Button } from '@chakra-ui/button';
+import { Checkbox } from '@chakra-ui/checkbox';
+import { FormControl, FormHelperText, FormLabel } from '@chakra-ui/form-control';
+import Icon from '@chakra-ui/icon';
+import { Input } from '@chakra-ui/input';
+import { Box, Container, Divider, Flex, SimpleGrid, Stack, Text } from '@chakra-ui/layout';
 import { NextPage } from 'next';
 import React from 'react';
+import { FaFacebook, FaGithub, FaGoogle } from 'react-icons/fa';
 import { useIntl } from 'react-intl';
+import Card from '../../../components/card';
 import Link from '../../../components/link';
-import Layout from '../../../components/pageLayout';
+import PageListingLayout from '../../../components/pageListingLayout';
 import { sendToast } from '../../../utils/uiToast';
 
 const LoginPage: NextPage = () => {
@@ -28,68 +24,83 @@ const LoginPage: NextPage = () => {
     };
 
     return (
-        <Layout>
-            <Container
-                p={4}
-                sx={{
-                    textAlign: 'center',
-                    maxWidth: '640px'
-                }}>
-                <Box>
-                    <Heading as="h2" className="text-center">
-                        <span>{f('signInLong')}</span>
-                    </Heading>
-                    <Text mt={4} className="mt-2 text-center text-sm">
-                        {f('or')}{' '}
+        <PageListingLayout
+            title={f('signInLong')}
+            breadcrumbs={[]}
+            introSlot={
+                <Alert status="info">
+                    <AlertIcon />
+                    <Text>
+                        {f('or')}
+                        {` `}
                         <a href="#" className="font-medium">
                             {f('startFreeTrial')}
                         </a>
                     </Text>
+                </Alert>
+            }>
+            <Container maxW="sm">
+                <Card>
+                    <Stack spacing={4}>
+                        <form action="#" method="POST">
+                            <input type="hidden" name="remember" value="true" />
+                            <Stack spacing={4}>
+                                <FormControl id="email">
+                                    <FormLabel>{f('emailAddress')}</FormLabel>
+                                    <Input type="email" />
+                                    <FormHelperText>{f('emailReassurance')}</FormHelperText>
+                                </FormControl>
+                                <FormControl id="email">
+                                    <SimpleGrid
+                                        columns={{ base: 1, sm: 2 }}
+                                        alignItems="baseline"
+                                        justifyContent="baseline">
+                                        <FormLabel>{f('password')}</FormLabel>
+                                        <Link href="/lost-password" alt="go to lost password page">
+                                            <Text as="em" fontSize="smaller">
+                                                {f('lostPassword')}
+                                            </Text>
+                                        </Link>
+                                    </SimpleGrid>
+                                    <Input type="password" />
+                                    <FormHelperText>{f('passwordReassurance')}</FormHelperText>
+                                </FormControl>
 
-                    <form action="#" method="POST">
-                        <input type="hidden" name="remember" value="true" />
-                        <Stack spacing={2} my={8}>
-                            <FormControl id="email">
-                                <FormLabel>{f('emailAddress')}</FormLabel>
-                                <Input type="email" />
-                                <FormHelperText>{f('emailReassurance')}</FormHelperText>
-                            </FormControl>
-                            <FormControl id="email">
-                                <FormLabel>{f('password')}</FormLabel>
-                                <Input type="password" />
-                                <FormHelperText>{f('passwordReassurance')}</FormHelperText>
-                            </FormControl>
-                        </Stack>
+                                <Flex
+                                    direction={{ base: 'column', sm: 'row' }}
+                                    justifyContent="space-between">
+                                    <Box className="flex items-center">
+                                        <Checkbox
+                                            colorScheme="green"
+                                            id="remember_me"
+                                            name="remember_me"
+                                            type="checkbox"
+                                            className="h-4 w-4 focus:ring-indigo-500 border-gray-300 rounded">
+                                            {f('rememberMe')}
+                                        </Checkbox>
+                                    </Box>
+                                </Flex>
 
-                        <div className="flex items-center justify-between">
-                            <div className="flex items-center">
-                                <input
-                                    id="remember_me"
-                                    name="remember_me"
-                                    type="checkbox"
-                                    className="h-4 w-4 focus:ring-indigo-500 border-gray-300 rounded"
-                                />
-                                <label htmlFor="remember_me" className="ml-2 block text-sm">
-                                    {f('rememberMe')}
-                                </label>
-                            </div>
-
-                            <Container p={4} bg="muted">
-                                <Link href="/lost-password" alt="go to lost password page">
-                                    {f('lostPassword')}
-                                </Link>
-                            </Container>
-                        </div>
-
-                        <div>
-                            <Button type="submit" onClick={handleSubmit}>
-                                {f('signIn')}
-                            </Button>
-                        </div>
-                    </form>
-                </Box>
+                                <Button
+                                    isFullWidth
+                                    colorScheme="green"
+                                    type="submit"
+                                    onClick={handleSubmit}>
+                                    {f('signIn')}
+                                </Button>
+                            </Stack>
+                        </form>
+                        <Divider />
+                        <Text textAlign="center">Or continue with</Text>
+                        <SimpleGrid columns={{ base: 1, sm: 2, md: 3 }} spacing={2}>
+                            <Button leftIcon={<Icon as={FaGithub} />}> Github</Button>
+                            <Button leftIcon={<Icon as={FaGoogle} />}> Google</Button>
+                            <Button leftIcon={<Icon as={FaFacebook} />}> Facebook</Button>
+                        </SimpleGrid>
+                    </Stack>
+                </Card>
             </Container>
-        </Layout>
+        </PageListingLayout>
     );
 };
 
