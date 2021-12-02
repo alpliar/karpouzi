@@ -1,5 +1,6 @@
 import { useColorMode } from '@chakra-ui/color-mode';
 import { useDisclosure } from '@chakra-ui/hooks';
+import { Input } from '@chakra-ui/input';
 import { Box, Flex, HStack, Text, Wrap } from '@chakra-ui/layout';
 import Link from 'next/link';
 import PropTypes from 'prop-types';
@@ -12,6 +13,7 @@ import NavCart from '../container/navCart';
 import NavLocaleSelector from '../container/navLocaleSelector';
 import NavLogin from '../container/navLogin';
 import NavLogo from '../container/navLogo';
+import BurgerMenu from './BurgerMenu';
 import NavBurgerMenu from './navBurgerMenu';
 import NavDrawerBody from './navDrawerBody';
 
@@ -100,7 +102,8 @@ const Header = ({ siteTitle }) => {
                     <NavLogin />
                     <NavCart />
                     <Box display={{ base: 'block', md: 'none' }}>
-                        <NavBurgerMenu handleClick={onOpen} />
+                        <BurgerMenu />
+                        {/* <NavBurgerMenu handleClick={onOpen} />
                         <NavDrawer
                             isOpen={isOpen}
                             onClose={onClose}
@@ -110,7 +113,7 @@ const Header = ({ siteTitle }) => {
                                     <NavThemeToggle compact={false} />
                                     <NavLocaleSelector compact={false} />
                                 </HStack>
-                            }></NavDrawer>
+                            }></NavDrawer> */}
                     </Box>
                 </HStack>
             </Wrap>
