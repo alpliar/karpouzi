@@ -11,9 +11,9 @@ import getFlagEmoji from '../utils/flags';
 
 const NavLocaleSelector = ({ compact }) => {
     const router = useRouter();
-    const handleSelection = (newLocale) => {
-        router.push(router.pathname, router.asPath, { locale: newLocale });
-    };
+    // const handleSelection = (newLocale) => {
+    //     router.push(router.pathname, router.asPath, { locale: newLocale });
+    // };
 
     const localesInfos = {
         en: 'English',
@@ -53,14 +53,15 @@ const NavLocaleSelector = ({ compact }) => {
                             }}>
                             {getFlagEmoji(locale === 'en' ? 'gb' : locale)}
                             &nbsp;
-                            <NextLink href={'/'} passHref locale={locale}>
+                            <NextLink href={router.pathname} passHref locale={locale}>
                                 <LinkOverlay
                                     flexGrow={1}
                                     alt={`choose ${locale}`}
-                                    onClick={(event) => {
-                                        event.preventDefault();
-                                        handleSelection(locale);
-                                    }}>
+                                    // onClick={(event) => {
+                                    //     event.preventDefault();
+                                    //     handleSelection(locale);
+                                    // }}
+                                >
                                     {localeName}
                                 </LinkOverlay>
                             </NextLink>
