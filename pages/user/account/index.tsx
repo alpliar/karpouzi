@@ -122,7 +122,11 @@ const Page: NextPage = () => {
                                 onChange={(event) => changeLocale(event.target.value)}>
                                 {router.locales.map((locale) => {
                                     const localeName = localesInfos[locale];
-                                    return <option value={locale}>{localeName}</option>;
+                                    return (
+                                        <option key={locale} value={locale}>
+                                            {localeName}
+                                        </option>
+                                    );
                                 })}
                             </Select>
                         </FormControl>
