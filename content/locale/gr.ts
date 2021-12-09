@@ -6,7 +6,8 @@ export const gr = {
         goToPageName: 'μεταβείτε στη σελίδ {name}',
         openMenu: 'ανοίξτε το μενού',
         feelingLost: 'Νιώθεις χαμένος;',
-        goBackToHome: 'Επιστρέψτε στην αρχική σελίδα'
+        goBackToHome: 'Επιστρέψτε στην αρχική σελίδα',
+        cancel: 'Ματαίωση'
     },
     '/': {
         welcomeMessage: 'καλώς ήλθατε στο',
@@ -48,8 +49,7 @@ export const gr = {
         connectAccounts: 'Σύνδεση λογαριασμών',
         connectGithub: 'Συνδέστε το Github',
         connectGoogle: 'Συνδέστε το Google',
-        saveChanges: 'Αποθήκευσε τις αλλαγές',
-        cancel: 'Ματαίωση'
+        saveChanges: 'Αποθήκευσε τις αλλαγές'
     },
     '/user/login': {
         title: 'Σύνδεση',

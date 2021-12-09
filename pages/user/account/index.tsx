@@ -5,7 +5,8 @@ import { useColorModeValue } from '@chakra-ui/color-mode';
 import { FormControl, FormHelperText, FormLabel } from '@chakra-ui/form-control';
 import Icon from '@chakra-ui/icon';
 import { Input } from '@chakra-ui/input';
-import { Divider, Heading, Stack, Wrap, Text } from '@chakra-ui/layout';
+import { Divider, Heading, Stack, Wrap, Text, WrapItem, Box } from '@chakra-ui/layout';
+import { useBreakpointValue } from '@chakra-ui/media-query';
 import { Select } from '@chakra-ui/select';
 import { Textarea } from '@chakra-ui/textarea';
 import { NextPage } from 'next';
@@ -53,6 +54,8 @@ const Page: NextPage = () => {
         es: 'Español',
         gr: 'Ελληνικά'
     };
+
+    const isFullWidthFormButtons: boolean = useBreakpointValue({ base: true, sm: false });
 
     return (
         <PageListingLayout
@@ -164,6 +167,19 @@ const Page: NextPage = () => {
                         <Button leftIcon={<Icon as={FaGoogle} />}>{f('connectGoogle')}</Button>
                     </Wrap>
                 </UserAccountSection>
+
+                <Box>
+                    <Stack
+                        direction={{ base: 'column', sm: 'row' }}
+                        marginTop={16}
+                        spacing={2}
+                        justify="center">
+                        <Button isFullWidth={isFullWidthFormButtons} colorScheme="green">
+                            {f('saveChanges')}
+                        </Button>
+                        <Button isFullWidth={isFullWidthFormButtons}>{f('cancel')}</Button>
+                    </Stack>
+                </Box>
             </Stack>
         </PageListingLayout>
     );

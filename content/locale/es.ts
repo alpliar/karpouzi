@@ -6,7 +6,8 @@ export const es = {
         goToPageName: 'Ir a la página de {name}',
         openMenu: 'Abrir el menú',
         feelingLost: '¿Te sientes perdida·o?',
-        goBackToHome: 'Volver a la página principal'
+        goBackToHome: 'Volver a la página principal',
+        cancel: 'Cancelar'
     },
     '/': {
         welcomeMessage: 'Bienvenido a',
@@ -47,8 +48,7 @@ export const es = {
         connectAccounts: 'Conectar cuentas',
         connectGithub: 'Conectar Github',
         connectGoogle: 'Conectar Google',
-        saveChanges: 'Guardar cambios',
-        cancel: 'Cancelar'
+        saveChanges: 'Guardar cambios'
     },
     '/user/login': {
         title: 'Login',

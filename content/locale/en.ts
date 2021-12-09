@@ -6,7 +6,8 @@ export const en = {
         goToPageName: 'Go to {name} page',
         openMenu: 'Open menu',
         feelingLost: 'Feeling lost ?',
-        goBackToHome: 'Go back to home'
+        goBackToHome: 'Go back to home',
+        cancel: 'Cancel'
     },
     '/': {
         welcomeMessage: 'Welcome to',
@@ -46,8 +47,7 @@ export const en = {
         connectAccounts: 'Connect accounts',
         connectGithub: 'Connect Github',
         connectGoogle: 'Connect Google',
-        saveChanges: 'Save changes',
-        cancel: 'Cancel'
+        saveChanges: 'Save changes'
     },
     '/user/login': {
         title: 'Login',

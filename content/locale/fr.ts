@@ -6,7 +6,8 @@ export const fr = {
         goToPageName: 'Aller à la page {name}',
         openMenu: 'Ouvrir le menu',
         feelingLost: 'Perdu·e ?',
-        goBackToHome: "Retour à la page d'accueil"
+        goBackToHome: "Retour à la page d'accueil",
+        cancel: 'Annuler'
     },
     '/': {
         welcomeMessage: 'Bienvenue sur',
@@ -46,8 +47,7 @@ export const fr = {
         connectAccounts: "Connecter d'autres comptes",
         connectGithub: 'Connecter avec Github',
         connectGoogle: 'Connecter avec Google',
-        saveChanges: 'Enregistrer les changements',
-        cancel: 'Annuler'
+        saveChanges: 'Enregistrer les changements'
     },
     '/user/login': {
         title: 'Identification',
