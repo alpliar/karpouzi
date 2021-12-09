@@ -33,7 +33,7 @@ export const en = {
         photoHelperText: '.jpg, .gif, or .png. Max file size 700K.',
         language: 'Language',
         displayLanguage: 'Display Language',
-        displayLanguagePlaceholder: 'Select country',
+        displayLanguagePlaceholder: 'Select language',
         displayCurrency: 'Display currency',
         displayCurrencyPlaceholder: 'Select currency',
         displayCurrencyHelperText:
