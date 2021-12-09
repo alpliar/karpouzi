@@ -160,8 +160,8 @@ const Page: NextPage = () => {
 
                 <UserAccountSection title={f('connectAccounts')}>
                     <Wrap>
-                        <Button leftIcon={<Icon as={FaGithub} />}>Connect Github</Button>
-                        <Button leftIcon={<Icon as={FaGoogle} />}>Connect Google</Button>
+                        <Button leftIcon={<Icon as={FaGithub} />}>{f('connectGithub')}</Button>
+                        <Button leftIcon={<Icon as={FaGoogle} />}>{f('connectGoogle')}</Button>
                     </Wrap>
                 </UserAccountSection>
             </Stack>

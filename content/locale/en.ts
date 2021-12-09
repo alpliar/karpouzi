@@ -4,7 +4,9 @@ export const en = {
         menuEntryBlog: 'Blog',
         menuEntryShop: 'Shop',
         goToPageName: 'Go to {name} page',
-        openMenu: 'Open menu'
+        openMenu: 'Open menu',
+        feelingLost: 'Feeling lost ?',
+        goBackToHome: 'Go back to home'
     },
     '/': {
         welcomeMessage: 'Welcome to',
@@ -26,7 +28,7 @@ export const en = {
         email: 'Email',
         emailHelperText: "We'll never share your email",
         bio: 'Bio',
-        bioHelperText: 'Brief description for your profile. URLs are hyperlinked',
+        bioHelperText: 'Brief description for your profile.',
         profilePhoto: 'Profile Photo',
         changePhoto: 'Change photo',
         deletePhoto: 'Delete',
