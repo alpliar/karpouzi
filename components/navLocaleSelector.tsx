@@ -1,14 +1,13 @@
 import { Button, IconButton } from '@chakra-ui/button';
-import { useColorMode, useColorModeValue } from '@chakra-ui/color-mode';
-import { Link, LinkBox, LinkOverlay, Stack } from '@chakra-ui/layout';
+import { useColorModeValue } from '@chakra-ui/color-mode';
+import { LinkBox, LinkOverlay } from '@chakra-ui/layout';
 import { useBreakpointValue } from '@chakra-ui/media-query';
-import { Menu, MenuButton, MenuItem, MenuList } from '@chakra-ui/menu';
-import { background } from '@chakra-ui/styled-system';
+import { Menu, MenuButton, MenuList } from '@chakra-ui/menu';
+import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
 import { FaFlag } from 'react-icons/fa';
 import getFlagEmoji from '../utils/flags';
-import NextLink from 'next/link';
 
 const NavLocaleSelector = ({ compact }) => {
     const router = useRouter();
