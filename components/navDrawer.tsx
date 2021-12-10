@@ -1,5 +1,6 @@
 import PropType from 'prop-types';
 import {
+    useColorMode,
     Drawer,
     DrawerBody,
     DrawerCloseButton,
@@ -8,12 +9,17 @@ import {
     DrawerHeader,
     DrawerOverlay
 } from '@chakra-ui/react';
+import { headerBgColor, headerBgGradient } from './Header';
 
 const NavDrawer = ({ isOpen, onClose, body, footer }) => {
+    const { colorMode } = useColorMode();
+    const bgGradient = headerBgGradient(colorMode);
     return (
         <Drawer isOpen={isOpen} onClose={onClose} placement="right">
             <DrawerOverlay>
-                <DrawerContent color="white" bg="teal.600">
+                <DrawerContent
+                    // bg={headerBgColor(colorMode)}
+                    bgGradient={bgGradient}>
                     <DrawerCloseButton fontSize="md" width={10} height={10} />
                     <DrawerHeader>Menu</DrawerHeader>
 

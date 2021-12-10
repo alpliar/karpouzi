@@ -23,8 +23,8 @@ const MenuItems = ({ children }) => (
 
 export const headerBgGradient = (colorMode) => {
     return colorMode === 'light'
-        ? 'linear(to-b, tomato, green.300, green.400)'
-        : 'linear(to-b, red.600, green.700, green.800)';
+        ? 'linear(to-b, green.300, green.400)'
+        : 'linear(to-b, green.700, green.800)';
 };
 
 export const headerBgColor = (colorMode) => {
@@ -37,7 +37,7 @@ const Header = ({ siteTitle }) => {
     const { formatMessage } = useIntl();
     const f = (id: string, values: any = null) => formatMessage({ id }, values);
 
-    const { isOpen, onOpen, onClose } = useDisclosure();
+    const { isOpen, onOpen, onClose, onToggle } = useDisclosure();
 
     const boxShadow = null;
 
@@ -49,7 +49,7 @@ const Header = ({ siteTitle }) => {
             // bgGradient={headerBgGradient(colorMode)} /*color="white"*/
             bgColor={headerBgColor(colorMode)}
             position="sticky"
-            zIndex="tooltip"
+            zIndex="1"
             top="0px">
             <Wrap
                 align={{ base: 'auto', md: 'center' }}
@@ -100,7 +100,7 @@ const Header = ({ siteTitle }) => {
                     <NavLogin />
                     <NavCart />
                     <Box display={{ base: 'block', md: 'none' }}>
-                        <NavBurgerMenu handleClick={onOpen} />
+                        <NavBurgerMenu handleClick={onToggle} />
                         <NavDrawer
                             isOpen={isOpen}
                             onClose={onClose}
