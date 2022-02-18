@@ -11,6 +11,7 @@ import {
     Wrap
 } from '@chakra-ui/layout';
 import Head from 'next/head';
+import { useIntl } from 'react-intl';
 import BlockQuote from '../../components/blockQuote';
 import Breadcrumb from '../../components/breadcrumb';
 import CategoryCard from '../../components/categoryCard';
@@ -55,9 +56,12 @@ type ShopPageProps = {
 
 export default function ShopPage({ categories }: ShopPageProps) {
     const { colorMode } = useColorMode();
+    const { formatMessage } = useIntl();
+    const f = (id: string) => formatMessage({ id });
+
     return (
         <PageListingLayout
-            title="Shop"
+            title={f('title')}
             breadcrumbs={[
                 {
                     text: 'Home',
@@ -66,7 +70,7 @@ export default function ShopPage({ categories }: ShopPageProps) {
                     isCurrentPage: false
                 },
                 {
-                    text: 'Shop',
+                    text: f('title'),
                     link: '/shop',
                     alt: 'go to shop home',
                     isCurrentPage: true

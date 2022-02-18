@@ -1,7 +1,6 @@
-import { LinkBox, LinkOverlay, Stack, Wrap, WrapItem } from '@chakra-ui/layout';
-import { useIntl } from 'react-intl';
-import NavDrawerBodyItem from './navDrawerBodyItem';
+import { LinkBox, LinkOverlay, Wrap, WrapItem } from '@chakra-ui/layout';
 import Link from 'next/link';
+import { useIntl } from 'react-intl';
 
 const NavDrawerBody = () => {
     const { formatMessage } = useIntl();
