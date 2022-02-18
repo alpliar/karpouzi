@@ -23,12 +23,7 @@ const CartItem = ({ title, picture = `/images/${title}.webp`, quantity }) => {
                         alignContent="center"
                         display={{ base: 'none', sm: 'inline-block' }}>
                         {/* <Avatar src={picture} name={title} size="lg" /> */}
-                        <Img
-                            fallback="https://picsum.photos/300/200"
-                            width="full"
-                            src={picture}
-                            alt={`picture of ${title}`}
-                        />
+                        <Img width="full" src={picture} alt={`picture of ${title}`} />
                     </Flex>
                     <Stack ml="3" spacing="1" w={{ base: 'full' }}>
                         <Text fontWeight="bold">

@@ -23,7 +23,6 @@ const ProductCardSmall = ({
                     <Box bg="#282828" position="relative" pos={'relative'} overflow="hidden">
                         <Img
                             objectFit="cover"
-                            fallback="https://picsum.photos/300/200"
                             src={imageUrl}
                             alt={imageAlt}
                             w={'96px'}

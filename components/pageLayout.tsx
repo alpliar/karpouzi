@@ -1,6 +1,5 @@
 import { Container } from '@chakra-ui/react';
 import Head from 'next/head';
-import PropTypes from 'prop-types';
 import Header from './Header';
 import Footer from './pageFooter';
 

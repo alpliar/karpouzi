@@ -91,7 +91,7 @@ const Page: NextPage = () => {
                     </FormControl>
                     <FormControl id="bio">
                         <FormLabel>{f('bio')}</FormLabel>
-                        <Textarea type="text" />
+                        <Textarea />
                         <FormHelperText>{f('bioHelperText')}.</FormHelperText>
                     </FormControl>
                 </UserAccountSection>

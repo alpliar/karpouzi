@@ -48,7 +48,6 @@ const CategoryCard = ({
                         w="full"
                         minH={imageHeight}
                         objectFit="cover"
-                        fallback={image}
                         src={image}
                         alt={`illustration for ${title}`}
                     />

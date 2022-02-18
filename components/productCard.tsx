@@ -1,12 +1,12 @@
-import PropTypes from 'prop-types';
 import { BellIcon, TriangleDownIcon } from '@chakra-ui/icons';
-import ProductCardBadge from './productCardBadge';
-import Link from 'next/link';
-import Rating from './rating';
-import Card from './card';
-import { useBreakpointValue } from '@chakra-ui/media-query';
-import { Box, Heading, HStack, LinkBox, LinkOverlay, Stack, Text, Wrap } from '@chakra-ui/layout';
 import { Img } from '@chakra-ui/image';
+import { Box, Heading, LinkBox, LinkOverlay, Stack, Text } from '@chakra-ui/layout';
+import { useBreakpointValue } from '@chakra-ui/media-query';
+import Link from 'next/link';
+import PropTypes from 'prop-types';
+import Card from './card';
+import ProductCardBadge from './productCardBadge';
+import Rating from './rating';
 
 const ProductCard = ({
     slug,
@@ -33,13 +33,7 @@ const ProductCard = ({
                     mb={6}
                     pos={'relative'}
                     overflow="hidden">
-                    <Img
-                        objectFit="cover"
-                        fallback="https://picsum.photos/300/200"
-                        minH={imageHeight}
-                        src={imageUrl}
-                        alt={imageAlt}
-                    />
+                    <Img objectFit="cover" minH={imageHeight} src={imageUrl} alt={imageAlt} />
                     {isNew && (
                         <ProductCardBadge
                             icon={isNew ? BellIcon : TriangleDownIcon}

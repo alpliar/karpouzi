@@ -24,8 +24,7 @@ const CallToActionNewsletter = () => {
                 bg={useColorModeValue('white', 'whiteAlpha.100')}
                 boxShadow={'xl'}
                 rounded={'lg'}
-                p={6}
-                direction={'column'}>
+                p={6}>
                 <Heading as={'h2'} fontSize={{ base: 'xl', sm: '2xl' }} textAlign={'center'} mb={5}>
                     Subscribe to our Newsletter
                 </Heading>

@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { Badge } from '@chakra-ui/react';
+import { Badge, Icon } from '@chakra-ui/react';
 
 interface IBadgePositionAttributes {
     top?: string;
@@ -40,8 +40,8 @@ const ProductCardBadge = ({ positionX, positionY, icon, text }) => {
             position="absolute"
             {...position}
             bg="teal.600"
-            color="white"
-            icon={icon}>
+            color="white">
+            <Icon as={icon} />
             {text}
         </Badge>
     );

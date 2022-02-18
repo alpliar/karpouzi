@@ -1,7 +1,6 @@
 import { AddIcon, MinusIcon } from '@chakra-ui/icons';
 import { HStack, Icon, IconButton, Input } from '@chakra-ui/react';
 import PropTypes from 'prop-types';
-import { useEffect, useState } from 'react';
 
 const QuantitySelector = ({ quantity, minQuantity, maxQuantity, handleChange }) => {
     const disableReduceQuantity = quantity == minQuantity;

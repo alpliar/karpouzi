@@ -56,7 +56,7 @@ const NavLocaleSelector = ({ compact }) => {
                             <NextLink href={router.pathname} passHref locale={locale}>
                                 <LinkOverlay
                                     flexGrow={1}
-                                    alt={`choose ${locale}`}
+                                    title={`choose ${locale}`}
                                     // onClick={(event) => {
                                     //     event.preventDefault();
                                     //     handleSelection(locale);

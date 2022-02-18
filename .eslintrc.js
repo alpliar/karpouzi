@@ -7,7 +7,7 @@ module.exports = {
             jsx: true // Enable JSX since we're using React
         }
     },
-    plugins: ['simple-import-sort'],
+    plugins: ['@typescript-eslint', 'simple-import-sort'],
     settings: {
         react: {
             version: 'detect' // Automatically detect the react version
@@ -20,6 +20,7 @@ module.exports = {
     },
     extends: [
         'eslint:recommended',
+        'plugin:@typescript-eslint/recommended',
         'plugin:react/recommended',
         'plugin:jsx-a11y/recommended',
         'plugin:@next/next/recommended',

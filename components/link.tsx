@@ -11,7 +11,7 @@ interface LinkProps {
 const Link = ({ href, alt, children, locale }: LinkProps) => {
     return (
         <NextLink href={href} passHref locale={locale}>
-            <UiLink alt={alt}>{children}</UiLink>
+            <UiLink title={alt}>{children}</UiLink>
         </NextLink>
     );
 };

@@ -61,7 +61,7 @@ const BlogPostCard = ({ title, date, slug, author, authorAvatar }) => {
                     </Stack>
                 </Stack>
                 <Stack mt={6} direction="row" spacing={4} align="center">
-                    <Avatar src={authorAvatar} alt="Author" bg="green.500" />
+                    <Avatar src={authorAvatar} bg="green.500" />
                     <Stack direction="column" spacing={0} fontSize="sm">
                         <Text fontWeight="600">{author}</Text>
                         <Text color="gray.500">{date} · 6min read</Text>
