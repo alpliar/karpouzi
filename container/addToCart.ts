@@ -24,7 +24,7 @@ const mapStateToProps = (state: rootState, ownProps: IOwnProps) => ({
 
 // eslint-disable-next-line no-unused-vars
 const mapDispatchToProps = (dispatch: Dispatch<any>) => ({
-    addToCart: (slug: string, quantity: number, cart: any) => {
+    addToCart: (slug: string, quantity: number, cart: Array<ICartItem>) => {
         const existingItem: ICartItem = cart.find((item: ICartItem): boolean => item.slug === slug);
 
         if (existingItem) {

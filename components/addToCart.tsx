@@ -1,9 +1,16 @@
-import PropTypes from 'prop-types';
 import { Button, Icon, Tooltip, useBreakpointValue } from '@chakra-ui/react';
 import { FaShoppingCart } from 'react-icons/fa';
+import { ICartItem } from '../container/addToCart';
 import { sendToast } from '../utils/uiToast';
+interface IAddToCartProps {
+    slug: string;
+    quantity: number;
+    inCart: number;
+    addToCart: (slug: string, quantity: number, cart: Array<ICartItem>) => void;
+    cart: Array<ICartItem>;
+}
 
-const AddToCart = ({ slug, quantity, inCart, cart, addToCart }) => {
+const AddToCart: React.FC<IAddToCartProps> = ({ slug, quantity, inCart, addToCart, cart }) => {
     const handleClick = () => {
         addToCart(slug, quantity, cart);
         sendToast('Item added to cart', slug, 'success');
@@ -23,11 +30,3 @@ const AddToCart = ({ slug, quantity, inCart, cart, addToCart }) => {
 };
 
 export default AddToCart;
-
-AddToCart.propTypes = {
-    slug: PropTypes.string.isRequired,
-    quantity: PropTypes.number,
-    inCart: PropTypes.number,
-    addToCart: PropTypes.func.isRequired,
-    cart: PropTypes.array.isRequired
-};
