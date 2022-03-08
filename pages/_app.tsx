@@ -12,7 +12,7 @@ const App = ({ Component, pageProps }: AppProps) => {
     const router = useRouter();
     const { locale, defaultLocale, pathname } = router;
     const localeCopy: string = locales[locale || defaultLocale];
-    const messages: any = { ...localeCopy[pathname], ...localeCopy['common'] };
+    const messages: Record<string, string> = { ...localeCopy[pathname], ...localeCopy['common'] };
 
     return (
         <IntlProvider locale={locale} defaultLocale={defaultLocale} messages={messages}>
