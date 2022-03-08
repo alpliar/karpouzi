@@ -26,6 +26,7 @@ module.exports = {
         'plugin:@next/next/recommended',
         'plugin:prettier/recommended' // Make this the last element so prettier config overrides other formatting rules
     ],
+    parser: '@typescript-eslint/parser',
     rules: {
         'react/react-in-jsx-scope': 'off',
         'jsx-a11y/anchor-is-valid': [
