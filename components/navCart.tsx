@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { Badge, Box, Icon } from '@chakra-ui/react';
+import { Badge, Box, Center, Icon } from '@chakra-ui/react';
 //import { EmailIcon } from '@chakra-ui/icons';
 import { FaShoppingCart } from 'react-icons/fa';
 import { useRouter } from 'next/dist/client/router';
@@ -23,19 +23,19 @@ const NavCart = ({ cartCount }) => {
                 handleClick={handleClick}
             />
             {cartCount > 0 && (
-                <Badge
-                    borderRadius="full"
-                    fontWeight="bold"
-                    colorScheme="red"
+                <Center
+                    as={Badge}
+                    height={{ base: '4' }}
+                    width={{ base: '4' }}
                     position="absolute"
-                    top="-1"
-                    right="-1"
-                    height="1.5em"
-                    width={cartCount > 10 ? '2em' : '1.5em'}
-                    textAlign="center"
+                    top="0"
+                    right="0"
+                    bgColor="red"
+                    borderRadius="full"
+                    fontSize={{ base: '0.7rem' }}
                     variant="solid">
                     {cartCount}
-                </Badge>
+                </Center>
             )}
         </Box>
     );
