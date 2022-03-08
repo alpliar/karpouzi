@@ -40,6 +40,7 @@ export const getRandomProduct = (slug = null) => {
     return {
         slug: name.toLowerCase(),
         title: name,
+        date: new Date().toString(),
         price: `${getRandomInteger(1, 10)}€`,
         rating: getRandomInteger(1, 5),
         reviewCount: getRandomInteger(1, 49),
