@@ -1,15 +1,16 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
+import { Product } from '../../../reducer/server';
 import { getRandomProduct } from '../products';
 
 interface CategoryProducts {
-    count: Number;
-    featured?: any[];
+    count: number;
+    featured?: Array<Product>;
 }
 
 interface Category {
-    slug: String;
-    name: String;
-    description: String;
+    slug: string;
+    name: string;
+    description: string;
     products: CategoryProducts;
 }
 

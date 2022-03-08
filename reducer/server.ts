@@ -9,7 +9,7 @@ interface Post {
     date: string;
 }
 
-interface Product {
+export interface Product {
     slug: string;
     title: string;
     date: string;
