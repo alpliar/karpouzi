@@ -83,7 +83,7 @@ const PageListingLayout = ({
                         left: 0,
                         right: 0,
                         opacity: 0.2,
-                        '-webkit-mask-image':
+                        WebkitMaskImage:
                             '-webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,0)), to(rgba(0,0,0,1)))'
                     }}
                 />
