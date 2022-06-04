@@ -1,17 +1,21 @@
-import PropTypes from 'prop-types';
 import { DeleteIcon } from '@chakra-ui/icons';
 import { HStack, Icon, IconButton } from '@chakra-ui/react';
-import QuantitySelector from './quantitySelector';
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { REMOVE_FROM_CART, UPDATE_QUANTITY_CART } from '../actions/shop';
 import PopoverConfirm from './popoverConfirm';
-import { useState } from 'react';
+import QuantitySelector from './quantitySelector';
 
-const CartItemActions = ({ slug, quantity }) => {
+interface IProps {
+    slug: string;
+    quantity: number;
+}
+
+const CartItemActions: React.FC<IProps> = ({ slug, quantity }) => {
     const dispatch = useDispatch();
     const [isOpenConfirmRemove, setIsOpenConfirmRemove] = useState(false);
 
-    const handleQuantityUpdate = (newQuantity) => {
+    const handleQuantityUpdate = (newQuantity: number) => {
         newQuantity > 0
             ? dispatch({ type: UPDATE_QUANTITY_CART, slug: slug, newQuantity: newQuantity })
             : handleRemove();
@@ -50,8 +54,3 @@ const CartItemActions = ({ slug, quantity }) => {
 };
 
 export default CartItemActions;
-
-CartItemActions.propTypes = {
-    slug: PropTypes.string.isRequired,
-    quantity: PropTypes.number.isRequired
-};
