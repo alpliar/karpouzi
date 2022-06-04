@@ -5,7 +5,7 @@ import { useColorModeValue } from '@chakra-ui/color-mode';
 import { FormControl, FormHelperText, FormLabel } from '@chakra-ui/form-control';
 import Icon from '@chakra-ui/icon';
 import { Input } from '@chakra-ui/input';
-import { Divider, Heading, Stack, Wrap, Text, WrapItem, Box } from '@chakra-ui/layout';
+import { Box, Divider, Heading, Stack, Text, Wrap } from '@chakra-ui/layout';
 import { useBreakpointValue } from '@chakra-ui/media-query';
 import { Select } from '@chakra-ui/select';
 import { Textarea } from '@chakra-ui/textarea';

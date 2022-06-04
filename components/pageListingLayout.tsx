@@ -1,10 +1,10 @@
 import { useColorMode, useColorModeValue } from '@chakra-ui/color-mode';
-import { Box, Container, Divider, Flex, Heading, Stack, Wrap } from '@chakra-ui/layout';
+import { Box, Container, Flex, Heading, Stack, Wrap } from '@chakra-ui/layout';
 import { chakra } from '@chakra-ui/system';
 import Head from 'next/head';
 import { APP_MAX_WIDTH } from '../constants/ui/main.layout';
 import Breadcrumb, { IBreadcrumbItemProps } from './breadcrumb';
-import { headerBgColor, headerBgGradient } from './Header';
+import { headerBgColor } from './Header';
 import PageLayout, { siteTitle } from './pageLayout';
 
 interface IPageLayoutProps {

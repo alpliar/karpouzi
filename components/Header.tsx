@@ -31,13 +31,13 @@ export const headerBgColor = (colorMode) => {
     return colorMode === 'light' ? 'green.400' : 'green.800';
 };
 
-const Header = ({ siteTitle }) => {
+const Header = ({}) => {
     const { colorMode } = useColorMode();
 
     const { formatMessage } = useIntl();
     const f = (id: string, values: any = null) => formatMessage({ id }, values);
 
-    const { isOpen, onOpen, onClose, onToggle } = useDisclosure();
+    const { isOpen, onClose, onToggle } = useDisclosure();
 
     const boxShadow = null;
 

@@ -26,6 +26,7 @@ const NavDrawerBody = () => {
 
                 return (
                     <LinkBox
+                        key={href}
                         as={WrapItem}
                         width="full"
                         fontSize="xl"

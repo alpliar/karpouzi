@@ -1,8 +1,7 @@
-import { GiWatermelon } from 'react-icons/gi';
-import { StarIcon } from '@chakra-ui/icons';
-import PropTypes from 'prop-types';
 import Icon from '@chakra-ui/icon';
 import { Flex, Text } from '@chakra-ui/layout';
+import PropTypes from 'prop-types';
+import { GiWatermelon } from 'react-icons/gi';
 
 interface IOwnProps {
     rate: number;

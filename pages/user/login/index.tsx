@@ -33,9 +33,7 @@ const LoginPage: NextPage = () => {
                     <Text>
                         {f('or')}
                         {` `}
-                        <a href="#" className="font-medium">
-                            {f('startFreeTrial')}
-                        </a>
+                        {f('startFreeTrial')}
                     </Text>
                 </Alert>
             }>

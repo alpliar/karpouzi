@@ -7,7 +7,7 @@ module.exports = {
             jsx: true // Enable JSX since we're using React
         }
     },
-    plugins: ['@typescript-eslint', 'simple-import-sort'],
+    plugins: ['@typescript-eslint'],
     settings: {
         react: {
             version: 'detect' // Automatically detect the react version
@@ -18,25 +18,11 @@ module.exports = {
         amd: true, // Enables require() and define() as global variables as per the amd spec.
         node: true // Enables Node.js global variables and Node.js scoping.
     },
-    extends: [
-        'eslint:recommended',
-        'plugin:@typescript-eslint/recommended',
-        'plugin:react/recommended',
-        'plugin:jsx-a11y/recommended',
-        'plugin:@next/next/recommended',
-        'plugin:prettier/recommended' // Make this the last element so prettier config overrides other formatting rules
-    ],
+    extends: ['next/core-web-vitals', 'plugin:@typescript-eslint/recommended', 'prettier'],
     parser: '@typescript-eslint/parser',
     rules: {
-        'react/react-in-jsx-scope': 'off',
-        'jsx-a11y/anchor-is-valid': [
-            'error',
-            {
-                components: ['Link'],
-                specialLink: ['hrefLeft', 'hrefRight'],
-                aspects: ['invalidHref', 'preferButton']
-            }
-        ],
-        'prettier/prettier': ['error', {}, { usePrettierrc: true }] // Use our .prettierrc file as source
+        'no-unused-vars': 'off',
+        '@typescript-eslint/no-unused-vars': 'error',
+        '@typescript-eslint/no-explicit-any': 'warn'
     }
 };

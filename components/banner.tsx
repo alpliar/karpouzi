@@ -1,11 +1,6 @@
 import { useColorModeValue } from '@chakra-ui/color-mode';
 import { Box, Flex } from '@chakra-ui/layout';
-import {
-    BackgroundProps,
-    FilterProps,
-    LayoutProps,
-    TextDecorationProps
-} from '@chakra-ui/styled-system';
+import { BackgroundProps, FilterProps, LayoutProps } from '@chakra-ui/styled-system';
 
 interface IBannerProps {
     height?: LayoutProps['height'];
@@ -23,20 +18,15 @@ interface IBannerProps {
         | 'autumn';
     children;
 }
-const Banner = ({
-    children,
-    height = '3xs',
-    bgColor = useColorModeValue('green.400', 'green.800'),
-    pattern = 'kiwi'
-}: IBannerProps) => {
-    const patternOpacity: number = 0.3;
-    const bgOpacity: number = 1;
+const Banner = ({ children, height = '3xs', bgColor, pattern = 'kiwi' }: IBannerProps) => {
+    const patternOpacity = 0.3;
+    const bgOpacity = 1;
     const bgFilter: FilterProps['filter'] = null;
     const patternColor: string = useColorModeValue('white', 'black');
-    const textShadow: TextDecorationProps['textShadow'] = useColorModeValue(
-        '3px 3px 5px rgba(255,255,255,0.5)',
-        '3px 3px 5px rgba(0,0,0,0.5)'
-    );
+    // const textShadow: TextDecorationProps['textShadow'] = useColorModeValue(
+    //     '3px 3px 5px rgba(255,255,255,0.5)',
+    //     '3px 3px 5px rgba(0,0,0,0.5)'
+    // );
     const backgroundPatterns = {
         autumn: `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='88' height='24' viewBox='0 0 88 24'%3E%3Cg fill-rule='evenodd'%3E%3Cg id='autumn' fill='${patternColor}' fill-opacity='${patternOpacity}'%3E%3Cpath d='M10 0l30 15 2 1V2.18A10 10 0 0 0 41.76 0H39.7a8 8 0 0 1 .3 2.18v10.58L14.47 0H10zm31.76 24a10 10 0 0 0-5.29-6.76L4 1 2 0v13.82a10 10 0 0 0 5.53 8.94L10 24h4.47l-6.05-3.02A8 8 0 0 1 4 13.82V3.24l31.58 15.78A8 8 0 0 1 39.7 24h2.06zM78 24l2.47-1.24A10 10 0 0 0 86 13.82V0l-2 1-32.47 16.24A10 10 0 0 0 46.24 24h2.06a8 8 0 0 1 4.12-4.98L84 3.24v10.58a8 8 0 0 1-4.42 7.16L73.53 24H78zm0-24L48 15l-2 1V2.18A10 10 0 0 1 46.24 0h2.06a8 8 0 0 0-.3 2.18v10.58L73.53 0H78z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E`,
         bubbles: `data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='${patternColor}' fill-opacity='${patternOpacity}' fill-rule='evenodd'/%3E%3C/svg%3E`,
@@ -51,6 +41,8 @@ const Banner = ({
     };
 
     const bgImage: BackgroundProps['backgroundImage'] = backgroundPatterns[pattern]; //backgroundPatterns.linesInMotion;
+
+    const defaultBgColor = useColorModeValue('green.400', 'green.800');
 
     return (
         <Flex
@@ -73,7 +65,7 @@ const Banner = ({
                 height="100%"
                 width="100%"
                 opacity={bgOpacity}
-                bgColor={bgColor}
+                bgColor={bgColor || defaultBgColor}
                 backgroundImage={`url("${bgImage}")`}
             />
         </Flex>

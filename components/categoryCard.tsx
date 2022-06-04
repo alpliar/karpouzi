@@ -1,40 +1,22 @@
-import { Avatar, AvatarGroup } from '@chakra-ui/avatar';
-import { useBoolean, useDisclosure } from '@chakra-ui/hooks';
 import { Img } from '@chakra-ui/image';
-import {
-    Box,
-    Divider,
-    Heading,
-    HeadingProps,
-    LinkBox,
-    LinkOverlay,
-    Stack,
-    Text
-} from '@chakra-ui/layout';
+import { Box, Heading, LinkBox, LinkOverlay, Stack, Text } from '@chakra-ui/layout';
 import { useBreakpointValue } from '@chakra-ui/media-query';
-import { textDecoration } from '@chakra-ui/styled-system';
 import Link from 'next/link';
 import PropTypes from 'prop-types';
 import Card from './card';
 
-const CategoryCard = ({
-    slug,
-    title,
-    shortDescription,
-    products,
-    productsCount,
-    fullHeight,
-    image
-}) => {
-    const [isHovered, setIsHovered] = useBoolean(false);
+const CategoryCard = ({ slug, title, shortDescription, fullHeight, image }) => {
+    // const [isHovered, setIsHovered] = useBoolean(false);
     const imageHeight = useBreakpointValue({ base: 64, sm: 48, md: 48, lg: 64 });
 
-    const onHover = () => {
-        setIsHovered.toggle();
-    };
+    // const onHover = () => {
+    //     setIsHovered.toggle();
+    // };
 
     return (
-        <LinkBox height={fullHeight ? 'full' : null} onMouseEnter={onHover} onMouseLeave={onHover}>
+        <LinkBox
+            height={fullHeight ? 'full' : null} /*onMouseEnter={onHover} onMouseLeave={onHover} */
+        >
             <Card key={slug} fullHeight padding={6}>
                 <Box
                     bg="#282828"

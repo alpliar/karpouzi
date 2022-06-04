@@ -1,7 +1,7 @@
 import { Avatar } from '@chakra-ui/avatar';
 import { useColorMode, useColorModeValue } from '@chakra-ui/color-mode';
 import { useBoolean } from '@chakra-ui/hooks';
-import { Flex, Heading, HStack, Stack, Text, Wrap } from '@chakra-ui/layout';
+import { Heading, HStack, Stack, Text, Wrap } from '@chakra-ui/layout';
 
 interface IBlockQuoteProps {
     author?: string;

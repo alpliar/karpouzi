@@ -6,11 +6,10 @@ import Footer from './pageFooter';
 export const siteTitle = `Karpouzi`;
 
 interface IPageLayoutProps {
-    home?: boolean;
     children;
 }
 
-const PageLayout = ({ children, home = false }: IPageLayoutProps) => {
+const PageLayout = ({ children }: IPageLayoutProps) => {
     return (
         <>
             <Head>

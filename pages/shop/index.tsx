@@ -1,21 +1,7 @@
-import { Avatar } from '@chakra-ui/avatar';
-import { useColorMode, useColorModeValue } from '@chakra-ui/color-mode';
-import {
-    Container,
-    Divider,
-    Flex,
-    Heading,
-    SimpleGrid,
-    Stack,
-    Text,
-    Wrap
-} from '@chakra-ui/layout';
-import Head from 'next/head';
+import { SimpleGrid } from '@chakra-ui/layout';
 import { useIntl } from 'react-intl';
 import BlockQuote from '../../components/blockQuote';
-import Breadcrumb from '../../components/breadcrumb';
 import CategoryCard from '../../components/categoryCard';
-import Layout, { siteTitle } from '../../components/pageLayout';
 import PageListingLayout from '../../components/pageListingLayout';
 import ShopStat from '../../components/shopStat';
 import { API_BASE_URL } from '../../constants/api';
@@ -35,7 +21,7 @@ export async function getStaticProps() {
     };
 }
 
-type Product = any;
+type Product = unknown;
 
 interface CategoryProducts {
     count: number;
@@ -55,7 +41,7 @@ type ShopPageProps = {
 };
 
 export default function ShopPage({ categories }: ShopPageProps) {
-    const { colorMode } = useColorMode();
+    // const { colorMode } = useColorMode();
     const { formatMessage } = useIntl();
     const f = (id: string) => formatMessage({ id });
 

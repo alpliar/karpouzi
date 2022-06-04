@@ -1,21 +1,23 @@
-import { FormEvent, ChangeEvent, useState } from 'react';
-import {
-    Stack,
-    FormControl,
-    Input,
-    Button,
-    useColorModeValue,
-    Heading,
-    Text,
-    Container,
-    Flex
-} from '@chakra-ui/react';
 import { CheckIcon } from '@chakra-ui/icons';
+import {
+    Button,
+    Container,
+    Flex,
+    FormControl,
+    Heading,
+    Input,
+    Stack,
+    Text,
+    useColorModeValue
+} from '@chakra-ui/react';
+import { useState } from 'react';
 
 const CallToActionNewsletter = () => {
     const [email, setEmail] = useState('');
     const [state, setState] = useState('initial');
     const [error, setError] = useState(false);
+
+    const feedbackTextColor = useColorModeValue('gray.800', 'gray.300');
 
     return (
         <Flex align={'center'} justify={'center'} bg={useColorModeValue('gray.50', 'gray.800')}>
@@ -77,10 +79,7 @@ const CallToActionNewsletter = () => {
                         </Button>
                     </FormControl>
                 </Stack>
-                <Text
-                    mt={2}
-                    textAlign={'center'}
-                    color={error ? 'red.500' : useColorModeValue('gray.800', 'gray.300')}>
+                <Text mt={2} textAlign={'center'} color={error ? 'red.500' : feedbackTextColor}>
                     {error
                         ? 'Oh no an error occured! 😢 Please try again later.'
                         : "You won't receive any spam! ✌️"}

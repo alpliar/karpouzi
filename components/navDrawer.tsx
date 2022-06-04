@@ -1,15 +1,15 @@
-import PropType from 'prop-types';
 import {
-    useColorMode,
     Drawer,
     DrawerBody,
     DrawerCloseButton,
     DrawerContent,
     DrawerFooter,
     DrawerHeader,
-    DrawerOverlay
+    DrawerOverlay,
+    useColorMode
 } from '@chakra-ui/react';
-import { headerBgColor, headerBgGradient } from './Header';
+import PropType from 'prop-types';
+import { headerBgGradient } from './Header';
 
 const NavDrawer = ({ isOpen, onClose, body, footer }) => {
     const { colorMode } = useColorMode();

@@ -115,5 +115,5 @@ ProductCard.propTypes = {
     isNew: PropTypes.bool.isRequired,
     reviewCount: PropTypes.number.isRequired,
     rating: PropTypes.number.isRequired,
-    ratingIcon: PropTypes.node
+    ratingIcon: PropTypes.any
 };

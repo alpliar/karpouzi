@@ -1,5 +1,4 @@
-import { useColorModeValue } from '@chakra-ui/color-mode';
-import { Icon, HamburgerIcon } from '@chakra-ui/icons';
+import { HamburgerIcon, Icon } from '@chakra-ui/icons';
 import PropType from 'prop-types';
 import { useIntl } from 'react-intl';
 import NavButton from './navButton';

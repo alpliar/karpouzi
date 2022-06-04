@@ -1,22 +1,10 @@
 import { BellIcon } from '@chakra-ui/icons';
 import { Img } from '@chakra-ui/image';
-import {
-    Badge,
-    Box,
-    Container,
-    Divider,
-    Heading,
-    SimpleGrid,
-    Stack,
-    Text
-} from '@chakra-ui/layout';
-import { GetStaticPaths, GetStaticPathsContext, GetStaticPathsResult, NextPage } from 'next';
+import { Badge, Box, Container, Divider, SimpleGrid, Text } from '@chakra-ui/layout';
+import { GetStaticPaths } from 'next';
 import Head from 'next/head';
 import PropTypes from 'prop-types';
-import { FC, WeakValidationMap } from 'react';
 import BlockQuote from '../../../components/blockQuote';
-import Breadcrumb from '../../../components/breadcrumb';
-import Layout from '../../../components/pageLayout';
 import PageListingLayout from '../../../components/pageListingLayout';
 import Rating from '../../../components/rating';
 import AddToCart from '../../../container/addToCart';
@@ -42,7 +30,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
     };
 };
 
-type ProductPageProps = {
+interface IProductPageProps {
     slug: string;
     title: string;
     price: string;
@@ -50,8 +38,8 @@ type ProductPageProps = {
     reviewCount: string;
     isNew: boolean;
     imageUrl: string;
-    contentHtml: any;
-};
+    contentHtml: string;
+}
 
 const ProductPage = ({
     slug,
@@ -62,7 +50,7 @@ const ProductPage = ({
     isNew,
     imageUrl,
     contentHtml
-}: ProductPageProps) => {
+}: IProductPageProps) => {
     if (!slug) {
         return false;
     }

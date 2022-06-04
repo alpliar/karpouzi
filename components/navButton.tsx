@@ -1,5 +1,5 @@
+import { Button, IconButton, useBreakpointValue } from '@chakra-ui/react';
 import PropTypes from 'prop-types';
-import { Button, IconButton, useColorModeValue, useBreakpointValue } from '@chakra-ui/react';
 
 const NavButton = ({ icon, label, handleClick, isPrimary, compact, e2e }) => {
     const variant = isPrimary ? 'outline' : 'ghost';

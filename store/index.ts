@@ -1,8 +1,8 @@
-import { createStore, compose, Store } from 'redux';
+/* eslint-disable @typescript-eslint/no-var-requires */
 import { createWrapper } from 'next-redux-wrapper';
+import { compose, createStore, Store } from 'redux';
 import { persistStore } from 'redux-persist';
 import rootReducer from '../reducer/index';
-import { Persistor } from 'redux-persist/es/types';
 
 declare global {
     interface Window {

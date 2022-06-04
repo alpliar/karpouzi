@@ -1,9 +1,6 @@
-import { Alert, AlertIcon, Container, Divider, Heading, SimpleGrid } from '@chakra-ui/react';
-import Head from 'next/head';
+import { Alert, AlertIcon, SimpleGrid } from '@chakra-ui/react';
 import { useSelector } from 'react-redux';
-import Breadcrumb from '../../../components/breadcrumb';
 import CartItem from '../../../components/cartItem';
-import Layout from '../../../components/pageLayout';
 import PageListingLayout from '../../../components/pageListingLayout';
 import ShopStat from '../../../components/shopStat';
 import { RootState } from '../../../reducer';

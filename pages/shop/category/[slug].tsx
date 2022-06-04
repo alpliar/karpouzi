@@ -1,10 +1,9 @@
-import { Container, Divider, Heading, SimpleGrid, Stack, Wrap } from '@chakra-ui/layout';
+import { SimpleGrid } from '@chakra-ui/layout';
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
-import { GiBananaBunch, GiTomato } from 'react-icons/gi';
+import { GiTomato } from 'react-icons/gi';
 import { useSelector } from 'react-redux';
 import { SET_PRODUCTS_DATA } from '../../../actions/shop';
 import BlockQuote from '../../../components/blockQuote';
-import Breadcrumb from '../../../components/breadcrumb';
 import PageListingLayout from '../../../components/pageListingLayout';
 import ProductCard from '../../../components/productCard';
 import ShopStat from '../../../components/shopStat';

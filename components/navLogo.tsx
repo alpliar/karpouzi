@@ -3,7 +3,7 @@ import { Box, Flex, LinkBox, LinkOverlay } from '@chakra-ui/react';
 import Link from 'next/link';
 import { useIntl } from 'react-intl';
 
-const NavLogo = ({ siteName, siteEmoji, siteEmojiLabel }) => {
+const NavLogo = ({ siteEmoji, siteEmojiLabel }) => {
     const { formatMessage } = useIntl();
     const f = (id) => formatMessage({ id });
     return (

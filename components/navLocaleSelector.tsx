@@ -24,7 +24,7 @@ const NavLocaleSelector = ({ compact }) => {
 
     const menuBgColor = useColorModeValue('white', 'gray.800');
     const size = useBreakpointValue({ base: 'md', md: 'sm' }) || 'sm';
-    const itemHoverColor = useColorModeValue('gray.800', 'white');
+    // const itemHoverColor = useColorModeValue('gray.800', 'white');
     const itemHoverBgColor = useColorModeValue('blackAlpha.100', 'whiteAlpha.100');
 
     return (
