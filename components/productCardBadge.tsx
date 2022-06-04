@@ -1,5 +1,6 @@
-import PropTypes from 'prop-types';
-import { Badge, Icon } from '@chakra-ui/react';
+import { Badge, Icon, IconProps } from '@chakra-ui/react';
+import { ComponentWithAs } from '@chakra-ui/system';
+import { IconType } from 'react-icons';
 
 interface IBadgePositionAttributes {
     top?: string;
@@ -30,7 +31,15 @@ const getPositionAttributes = (positionX: string, positionY: string) => {
     return attributes;
 };
 
-const ProductCardBadge = ({ positionX, positionY, icon, text }) => {
+type BadgePosition = 'left' | 'right' | 'center' | 'top' | 'bottom' | 'center';
+interface IProps {
+    positionX: BadgePosition;
+    positionY: BadgePosition;
+    icon: IconType | ComponentWithAs<'svg', IconProps>;
+    text: string;
+}
+
+const ProductCardBadge: React.FC<IProps> = ({ positionX, positionY, icon, text }) => {
     const position = getPositionAttributes(positionX, positionY);
     return (
         <Badge
@@ -48,10 +57,3 @@ const ProductCardBadge = ({ positionX, positionY, icon, text }) => {
 };
 
 export default ProductCardBadge;
-
-ProductCardBadge.propTypes = {
-    positionX: PropTypes.string.isRequired,
-    positionY: PropTypes.string.isRequired,
-    icon: PropTypes.any,
-    text: PropTypes.string.isRequired
-};

@@ -1,12 +1,22 @@
-import PropTypes from 'prop-types';
-import { Box, Flex, Img, LinkBox, LinkOverlay } from '@chakra-ui/react';
 import { BellIcon, TriangleDownIcon } from '@chakra-ui/icons';
-import ProductCardBadge from './productCardBadge';
+import { Box, Flex, Img, LinkBox, LinkOverlay } from '@chakra-ui/react';
 import Link from 'next/link';
-import Rating from './rating';
 import Card from './card';
+import ProductCardBadge from './productCardBadge';
+import Rating from './rating';
 
-const ProductCardSmall = ({
+interface IProps {
+    slug: string;
+    imageUrl: string;
+    imageAlt: string;
+    title: string;
+    formattedPrice: string;
+    isNew: boolean;
+    reviewCount: number;
+    rating: number;
+}
+
+const ProductCardSmall: React.FC<IProps> = ({
     slug,
     imageUrl,
     imageAlt,
@@ -60,7 +70,7 @@ const ProductCardSmall = ({
                     </Box>
                 </Box> */}
 
-                        <Box mt="1" fontWeight="semibold" lineHeight="tight" isTruncated>
+                        <Box mt="1" fontWeight="semibold" lineHeight="tight">
                             <Link
                                 href={{
                                     pathname: '/shop/product/[slug]',
@@ -78,7 +88,7 @@ const ProductCardSmall = ({
                             </Box>
                         </Box>
 
-                        <Box isTruncated>
+                        <Box>
                             <Rating rate={rating} count={reviewCount} />
                         </Box>
                     </Box>
@@ -89,14 +99,3 @@ const ProductCardSmall = ({
 };
 
 export default ProductCardSmall;
-
-ProductCardSmall.propTypes = {
-    slug: PropTypes.string.isRequired,
-    imageUrl: PropTypes.string.isRequired,
-    imageAlt: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    formattedPrice: PropTypes.string.isRequired,
-    isNew: PropTypes.bool.isRequired,
-    reviewCount: PropTypes.number.isRequired,
-    rating: PropTypes.number.isRequired
-};

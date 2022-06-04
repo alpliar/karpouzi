@@ -2,7 +2,6 @@ import { Img } from '@chakra-ui/image';
 import { Box, Heading, LinkBox, LinkOverlay, Stack, Text } from '@chakra-ui/layout';
 import { useBreakpointValue } from '@chakra-ui/media-query';
 import Link from 'next/link';
-import PropTypes from 'prop-types';
 import Card from './card';
 
 interface IProps {

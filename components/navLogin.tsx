@@ -1,18 +1,22 @@
-import { Icon } from '@chakra-ui/react';
 import { useRouter } from 'next/dist/client/router';
+import { MouseEventHandler } from 'react';
 import { FaUserCircle } from 'react-icons/fa';
 import NavButton from './navButton';
 
 const NavLogin = () => {
     const router = useRouter();
-    const handleClick = (event) => {
+    const handleClick: MouseEventHandler<HTMLButtonElement> = (event) => {
         event.preventDefault();
         router.push('/user/login');
     };
-    const icon = <Icon as={FaUserCircle} />;
 
     return (
-        <NavButton e2e="loginCTA" icon={icon} label="Login or register" handleClick={handleClick} />
+        <NavButton
+            e2e="loginCTA"
+            icon={FaUserCircle}
+            label="Login or register"
+            handleClick={handleClick}
+        />
     );
 };
 

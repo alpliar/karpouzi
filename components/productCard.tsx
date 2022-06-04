@@ -3,12 +3,23 @@ import { Img } from '@chakra-ui/image';
 import { Box, Heading, LinkBox, LinkOverlay, Stack, Text } from '@chakra-ui/layout';
 import { useBreakpointValue } from '@chakra-ui/media-query';
 import Link from 'next/link';
-import PropTypes from 'prop-types';
 import Card from './card';
 import ProductCardBadge from './productCardBadge';
 import Rating from './rating';
 
-const ProductCard = ({
+interface IProps {
+    slug: string;
+    imageUrl: string;
+    imageAlt: string;
+    title: string;
+    formattedPrice: string;
+    isNew: boolean;
+    reviewCount: number;
+    rating: number;
+    ratingIcon?: string;
+}
+
+const ProductCard: React.FC<IProps> = ({
     slug,
     imageUrl,
     imageAlt,
@@ -17,7 +28,7 @@ const ProductCard = ({
     isNew,
     reviewCount,
     rating,
-    ratingIcon
+    ratingIcon = undefined
 }) => {
     const imageHeight = useBreakpointValue({ base: 64, sm: 48, md: 48, lg: 64 });
 
@@ -66,7 +77,7 @@ const ProductCard = ({
                         </Box>
                     </Box> */}
 
-                    <Box fontWeight="semibold" lineHeight="tight" isTruncated>
+                    <Box fontWeight="semibold" lineHeight="tight">
                         <Link
                             passHref
                             href={{
@@ -86,7 +97,7 @@ const ProductCard = ({
                         </Link>
                     </Box>
 
-                    <Box isTruncated>
+                    <Box>
                         <Rating rate={rating} count={reviewCount} icon={ratingIcon} />
                     </Box>
 
@@ -105,15 +116,3 @@ const ProductCard = ({
 };
 
 export default ProductCard;
-
-ProductCard.propTypes = {
-    slug: PropTypes.string.isRequired,
-    imageUrl: PropTypes.string.isRequired,
-    imageAlt: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    formattedPrice: PropTypes.string.isRequired,
-    isNew: PropTypes.bool.isRequired,
-    reviewCount: PropTypes.number.isRequired,
-    rating: PropTypes.number.isRequired,
-    ratingIcon: PropTypes.any
-};

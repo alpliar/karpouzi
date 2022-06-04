@@ -5,11 +5,14 @@ import { useBreakpointValue } from '@chakra-ui/media-query';
 import { Menu, MenuButton, MenuList } from '@chakra-ui/menu';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
-import PropTypes from 'prop-types';
 import { FaFlag } from 'react-icons/fa';
 import getFlagEmoji from '../utils/flags';
 
-const NavLocaleSelector = ({ compact }) => {
+export interface INavLocaleSelectorProps {
+    compact?: boolean;
+}
+
+const NavLocaleSelector: React.FC<INavLocaleSelectorProps> = ({ compact = false }) => {
     const router = useRouter();
     // const handleSelection = (newLocale) => {
     //     router.push(router.pathname, router.asPath, { locale: newLocale });
@@ -39,14 +42,14 @@ const NavLocaleSelector = ({ compact }) => {
                 {compact === false && 'Language'}
             </MenuButton>
             <MenuList padding="0" minW={'4xs'} maxW={'3xs'} bgColor={menuBgColor}>
-                {router.locales.map((locale) => {
-                    const localeName = localesInfos[locale];
+                {router.locales?.map((locale: string) => {
+                    const localeName = localesInfos[locale as keyof typeof localesInfos];
                     return (
                         <LinkBox
                             key={locale}
                             paddingX="4"
                             paddingY="2"
-                            d="flex"
+                            display="flex"
                             _hover={{
                                 backgroundColor: itemHoverBgColor
                                 // color: itemHoverColor
@@ -74,12 +77,3 @@ const NavLocaleSelector = ({ compact }) => {
 };
 
 export default NavLocaleSelector;
-
-NavLocaleSelector.propTypes = {
-    locales: PropTypes.arrayOf(PropTypes.string),
-    compact: PropTypes.bool
-};
-
-NavLocaleSelector.defaultProps = {
-    compact: true
-};

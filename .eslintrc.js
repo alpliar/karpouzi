@@ -22,7 +22,7 @@ module.exports = {
     parser: '@typescript-eslint/parser',
     rules: {
         'no-unused-vars': 'off',
-        '@typescript-eslint/no-unused-vars': 'error',
+        '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
         '@typescript-eslint/no-explicit-any': 'warn'
     }
 };

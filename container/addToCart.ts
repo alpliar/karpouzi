@@ -1,5 +1,6 @@
 import { Dispatch } from 'react';
 import { connect } from 'react-redux';
+import { AnyAction } from 'redux';
 import { addToCart, updateQuantityCart } from '../actions/shop';
 import AddToCart from '../components/addToCart';
 import { rootState } from '../reducer';
@@ -23,9 +24,11 @@ const mapStateToProps = (state: rootState, ownProps: IOwnProps) => ({
 });
 
 // eslint-disable-next-line no-unused-vars
-const mapDispatchToProps = (dispatch: Dispatch<any>) => ({
+const mapDispatchToProps = (dispatch: Dispatch<AnyAction>) => ({
     addToCart: (slug: string, quantity: number, cart: Array<ICartItem>) => {
-        const existingItem: ICartItem = cart.find((item: ICartItem): boolean => item.slug === slug);
+        const existingItem: ICartItem | undefined = cart.find(
+            (item: ICartItem): boolean => item.slug === slug
+        );
 
         if (existingItem) {
             const newQuantity: number = existingItem.quantity + quantity;

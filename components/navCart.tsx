@@ -1,15 +1,18 @@
-import PropTypes from 'prop-types';
-import { Badge, Box, Center, Icon } from '@chakra-ui/react';
-//import { EmailIcon } from '@chakra-ui/icons';
-import { FaShoppingCart } from 'react-icons/fa';
+import { Badge, Box, Center } from '@chakra-ui/react';
 import { useRouter } from 'next/dist/client/router';
+import { MouseEventHandler } from 'react';
+import { FaShoppingCart } from 'react-icons/fa';
 import NavButton from './navButton';
 
-const NavCart = ({ cartCount }) => {
+interface IProps {
+    cartCount: number;
+}
+
+const NavCart: React.FC<IProps> = ({ cartCount }) => {
     const router = useRouter();
     const href = '/shop/cart/';
 
-    const handleClick = (event) => {
+    const handleClick: MouseEventHandler<HTMLButtonElement> = (event) => {
         event.preventDefault();
         router.push(href);
     };
@@ -19,7 +22,7 @@ const NavCart = ({ cartCount }) => {
             <NavButton
                 e2e="cartCTA"
                 label="Go to cart"
-                icon={<Icon as={FaShoppingCart} />}
+                icon={FaShoppingCart}
                 handleClick={handleClick}
             />
             {cartCount > 0 && (
@@ -42,7 +45,3 @@ const NavCart = ({ cartCount }) => {
 };
 
 export default NavCart;
-
-NavCart.propTypes = {
-    cartCount: PropTypes.number
-};

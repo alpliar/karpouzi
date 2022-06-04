@@ -8,10 +8,16 @@ import {
     DrawerOverlay,
     useColorMode
 } from '@chakra-ui/react';
-import PropType from 'prop-types';
 import { headerBgGradient } from './Header';
 
-const NavDrawer = ({ isOpen, onClose, body, footer }) => {
+interface IProps {
+    isOpen: boolean;
+    onClose: () => void;
+    body: React.ReactNode;
+    footer?: React.ReactNode;
+}
+
+const NavDrawer: React.FC<IProps> = ({ isOpen, onClose, body, footer }) => {
     const { colorMode } = useColorMode();
     const bgGradient = headerBgGradient(colorMode);
     return (
@@ -33,10 +39,3 @@ const NavDrawer = ({ isOpen, onClose, body, footer }) => {
 };
 
 export default NavDrawer;
-
-NavDrawer.propTypes = {
-    isOpen: PropType.bool.isRequired,
-    onClose: PropType.func.isRequired,
-    body: PropType.node.isRequired,
-    footer: PropType.node
-};

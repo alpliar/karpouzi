@@ -1,23 +1,16 @@
 import { Dispatch } from 'react';
 import { connect } from 'react-redux';
-import NavLocaleSelector from '../components/navLocaleSelector';
+import { AnyAction } from 'redux';
+import NavLocaleSelector, { INavLocaleSelectorProps } from '../components/navLocaleSelector';
 import { rootState } from '../reducer';
 
-interface IProps {
-    compact?: boolean;
-}
-
-interface IOwnProps {
-    compact?: boolean;
-}
-
-const mapStateToProps = (state: rootState, ownProps: IOwnProps): IProps => {
+const mapStateToProps = (state: rootState, ownProps: INavLocaleSelectorProps) => {
     return {
         compact: ownProps.compact
     };
 };
 
 // eslint-disable-next-line no-unused-vars
-const mapDispatchToProps = (dispatch: Dispatch<any>) => ({});
+const mapDispatchToProps = (_dispatch: Dispatch<AnyAction>) => ({});
 
 export default connect(mapStateToProps, mapDispatchToProps)(NavLocaleSelector);

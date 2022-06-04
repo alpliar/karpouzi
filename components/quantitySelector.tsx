@@ -1,8 +1,20 @@
 import { AddIcon, MinusIcon } from '@chakra-ui/icons';
 import { HStack, Icon, IconButton, Input } from '@chakra-ui/react';
-import PropTypes from 'prop-types';
+import { ChangeEventHandler } from 'react';
 
-const QuantitySelector = ({ quantity, minQuantity, maxQuantity, handleChange }) => {
+interface IProps {
+    quantity: number;
+    minQuantity?: number;
+    maxQuantity?: number;
+    handleChange: (arg: number) => void;
+}
+
+const QuantitySelector: React.FC<IProps> = ({
+    quantity,
+    minQuantity = 1,
+    maxQuantity = 99,
+    handleChange
+}) => {
     const disableReduceQuantity = quantity == minQuantity;
     const disableIncreaseQuantity = quantity == maxQuantity;
 
@@ -17,7 +29,7 @@ const QuantitySelector = ({ quantity, minQuantity, maxQuantity, handleChange }) 
         handleChange(newQuantity);
     };
 
-    const handleInputChange = (event) => {
+    const handleInputChange: ChangeEventHandler<HTMLInputElement> = (event) => {
         const newQuantity = parseInt(event.target.value);
         if (newQuantity && !(newQuantity > maxQuantity || newQuantity < minQuantity)) {
             handleChange(newQuantity);
@@ -59,15 +71,3 @@ const QuantitySelector = ({ quantity, minQuantity, maxQuantity, handleChange }) 
 };
 
 export default QuantitySelector;
-
-QuantitySelector.defaultProps = {
-    minQuantity: 1,
-    maxQuantity: 99
-};
-
-QuantitySelector.propTypes = {
-    quantity: PropTypes.number.isRequired,
-    handleChange: PropTypes.func.isRequired,
-    minQuantity: PropTypes.number,
-    maxQuantity: PropTypes.number
-};

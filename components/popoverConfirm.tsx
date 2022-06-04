@@ -45,7 +45,7 @@ const PopoverConfirm: React.FC<IProps> = ({
                 <PopoverArrow />
                 <PopoverCloseButton />
                 <PopoverBody>{body}</PopoverBody>
-                <PopoverFooter d="flex" justifyContent="flex-end">
+                <PopoverFooter display="flex" justifyContent="flex-end">
                     <ButtonGroup size="sm">
                         <Button variant="outline" onClick={onClose}>
                             Cancel

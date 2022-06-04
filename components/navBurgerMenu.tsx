@@ -1,4 +1,4 @@
-import { HamburgerIcon, Icon } from '@chakra-ui/icons';
+import { FaHamburger } from 'react-icons/fa';
 import { useIntl } from 'react-intl';
 import NavButton from './navButton';
 
@@ -9,12 +9,11 @@ interface IProps {
 const NavBurgerMenu: React.FC<IProps> = ({ handleClick }) => {
     const { formatMessage } = useIntl();
     const f = (id: string) => formatMessage({ id });
-    const icon = <Icon as={HamburgerIcon} />;
 
     return (
         <NavButton
             e2e="menuCTA"
-            icon={icon}
+            icon={FaHamburger}
             label={f('openMenu')}
             handleClick={handleClick}
             isPrimary={true}

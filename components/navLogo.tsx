@@ -1,11 +1,15 @@
-import PropTypes from 'prop-types';
 import { Box, Flex, LinkBox, LinkOverlay } from '@chakra-ui/react';
 import Link from 'next/link';
 import { useIntl } from 'react-intl';
 
-const NavLogo = ({ siteEmoji, siteEmojiLabel }) => {
+interface IProps {
+    siteEmoji: string;
+    siteEmojiLabel: string;
+}
+
+const NavLogo: React.FC<IProps> = ({ siteEmoji, siteEmojiLabel }) => {
     const { formatMessage } = useIntl();
-    const f = (id) => formatMessage({ id });
+    const f = (id: string) => formatMessage({ id });
     return (
         <LinkBox as={Flex}>
             <Box fontSize="xl" fontWeight="bold">
@@ -21,9 +25,3 @@ const NavLogo = ({ siteEmoji, siteEmojiLabel }) => {
 };
 
 export default NavLogo;
-
-NavLogo.propTypes = {
-    siteName: PropTypes.string,
-    siteEmoji: PropTypes.string.isRequired,
-    siteEmojiLabel: PropTypes.string.isRequired
-};

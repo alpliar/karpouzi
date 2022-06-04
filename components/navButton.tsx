@@ -1,10 +1,12 @@
-import { Button, Icon, IconButton, useBreakpointValue } from '@chakra-ui/react';
+import { ComponentWithAs } from '@chakra-ui/system';
+import { Button, Icon, IconButton, IconProps, useBreakpointValue } from '@chakra-ui/react';
+import { MouseEventHandler } from 'react';
 import { IconType } from 'react-icons';
 
 interface IProps {
-    icon: IconType;
+    icon: IconType | ComponentWithAs<'svg', IconProps>;
     label: string;
-    handleClick: () => void;
+    handleClick: MouseEventHandler<HTMLButtonElement>;
     isPrimary?: boolean;
     compact?: boolean;
     e2e?: string;

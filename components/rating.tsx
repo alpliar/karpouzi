@@ -1,6 +1,5 @@
 import Icon from '@chakra-ui/icon';
 import { Flex, Text } from '@chakra-ui/layout';
-import PropTypes from 'prop-types';
 import { GiWatermelon } from 'react-icons/gi';
 
 interface IOwnProps {
@@ -22,7 +21,7 @@ const Rating = ({ rate, count, icon = GiWatermelon }: IOwnProps) => {
                         color={i < rate ? 'teal.500' : 'gray.300'}
                     />
                 ))}
-            <Text isTruncated as="span" ml="2" /*color="gray.600"*/ fontSize="sm">
+            <Text /* isTruncated */ as="span" ml="2" /*color="gray.600"*/ fontSize="sm">
                 {count.toString()} reviews
             </Text>
         </Flex>
@@ -30,8 +29,3 @@ const Rating = ({ rate, count, icon = GiWatermelon }: IOwnProps) => {
 };
 
 export default Rating;
-
-Rating.propTypes = {
-    rate: PropTypes.number.isRequired,
-    count: PropTypes.number.isRequired
-};

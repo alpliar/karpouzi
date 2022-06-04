@@ -33,7 +33,7 @@ export const getSortedPostsData = () => {
         };
     });
     // Sort posts by date
-    return allPostsData.sort((a: Post, b: Post): 1 | -1 => {
+    return allPostsData.sort((a: Post, b: Post): number => {
         if (a.date < b.date) {
             return 1;
         } else {
