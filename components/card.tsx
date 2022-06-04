@@ -1,8 +1,17 @@
-import PropTypes from 'prop-types';
-import { Box, useColorModeValue } from '@chakra-ui/react';
+import { Box, SpacerProps, useColorModeValue } from '@chakra-ui/react';
+import { PropsWithChildren } from 'react';
 import { BASE_TRANSITION } from '../constants/ui/transitions';
 
-const Card = ({ children, padding, fullHeight }) => {
+interface ICardProps {
+    padding: SpacerProps['p'];
+    fullHeight: boolean;
+}
+
+const Card: React.FC<PropsWithChildren<ICardProps>> = ({
+    children,
+    padding = 6,
+    fullHeight = false
+}) => {
     return (
         <Box
             w={'full'}
@@ -10,7 +19,7 @@ const Card = ({ children, padding, fullHeight }) => {
             boxShadow={'lg'}
             rounded={{ base: 'md' }}
             p={padding}
-            h={fullHeight ? '100%' : null}
+            h={fullHeight ? '100%' : undefined}
             overflow={'hidden'}
             _hover={{
                 boxShadow: 'dark-lg',
@@ -23,14 +32,3 @@ const Card = ({ children, padding, fullHeight }) => {
 };
 
 export default Card;
-
-Card.defaultProps = {
-    padding: 6,
-    fullHeight: false
-};
-
-Card.propTypes = {
-    children: PropTypes.node.isRequired,
-    padding: PropTypes.number,
-    fullHeight: PropTypes.bool
-};

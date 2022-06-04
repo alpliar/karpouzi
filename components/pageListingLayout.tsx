@@ -1,7 +1,7 @@
-import { useColorMode, useColorModeValue } from '@chakra-ui/color-mode';
-import { Box, Container, Flex, Heading, Stack, Wrap } from '@chakra-ui/layout';
-import { chakra } from '@chakra-ui/system';
+import { Box, Container, Flex, Heading, Stack, Wrap } from '@chakra-ui/react';
+import { chakra, ColorMode, useColorMode, useColorModeValue } from '@chakra-ui/system';
 import Head from 'next/head';
+import { PropsWithChildren } from 'react';
 import { APP_MAX_WIDTH } from '../constants/ui/main.layout';
 import Breadcrumb, { IBreadcrumbItemProps } from './breadcrumb';
 import { headerBgColor } from './Header';
@@ -14,10 +14,9 @@ interface IPageLayoutProps {
     titleSlot?: React.ReactNode;
     introSlot?: React.ReactNode;
     bannerSlot?: React.ReactNode;
-    children;
 }
 
-const PageListingLayout = ({
+const PageListingLayout: React.FC<PropsWithChildren<IPageLayoutProps>> = ({
     children,
     breadcrumbs,
     title,
@@ -25,10 +24,10 @@ const PageListingLayout = ({
     titleSlot = null,
     introSlot = null,
     bannerSlot = null
-}: IPageLayoutProps) => {
+}) => {
     const { colorMode } = useColorMode();
 
-    const headerBgGradient = (colorMode) => {
+    const headerBgGradient = (colorMode: ColorMode) => {
         const gradientStart = headerBgColor(colorMode);
         return colorMode === 'light'
             ? `linear(to-b, ${gradientStart}, green.400)`

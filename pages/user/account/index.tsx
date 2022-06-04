@@ -1,26 +1,27 @@
 import { Avatar } from '@chakra-ui/avatar';
-import { Button } from '@chakra-ui/button';
 import { Checkbox } from '@chakra-ui/checkbox';
 import { useColorModeValue } from '@chakra-ui/color-mode';
 import { FormControl, FormHelperText, FormLabel } from '@chakra-ui/form-control';
 import Icon from '@chakra-ui/icon';
 import { Input } from '@chakra-ui/input';
 import { Box, Divider, Heading, Stack, Text, Wrap } from '@chakra-ui/layout';
-import { useBreakpointValue } from '@chakra-ui/media-query';
+import { Button } from '@chakra-ui/react';
 import { Select } from '@chakra-ui/select';
 import { Textarea } from '@chakra-ui/textarea';
 import { NextPage } from 'next';
 import { useRouter } from 'next/router';
-import React from 'react';
+import React, { PropsWithChildren } from 'react';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
 import { useIntl } from 'react-intl';
 import PageListingLayout from '../../../components/pageListingLayout';
 
-interface UserAccountSectionProps {
+interface IUserAccountSectionProps {
     title: string;
-    children?;
 }
-const UserAccountSection = ({ title, children }: UserAccountSectionProps) => {
+const UserAccountSection: React.FC<PropsWithChildren<IUserAccountSectionProps>> = ({
+    title,
+    children
+}) => {
     return (
         <Stack spacing={4} direction={{ base: 'column', md: 'row' }}>
             <Heading as="h2" fontSize="lg" minWidth={{ md: '3xs' }}>
@@ -31,7 +32,7 @@ const UserAccountSection = ({ title, children }: UserAccountSectionProps) => {
     );
 };
 
-const HelperText = ({ children }: any) => {
+const HelperText: React.FC<PropsWithChildren<unknown>> = ({ children }) => {
     return (
         <Text fontSize="sm" color={useColorModeValue('gray.500', 'whiteAlpha.600')}>
             {children}
@@ -44,7 +45,7 @@ const Page: NextPage = () => {
     const f = (id: string) => formatMessage({ id });
     const router = useRouter();
 
-    const changeLocale = (newLocale) => {
+    const changeLocale = (newLocale: string) => {
         router.push(router.pathname, router.asPath, { locale: newLocale });
     };
 
@@ -54,8 +55,6 @@ const Page: NextPage = () => {
         es: 'Español',
         gr: 'Ελληνικά'
     };
-
-    const isFullWidthFormButtons: boolean = useBreakpointValue({ base: true, sm: false });
 
     return (
         <PageListingLayout
@@ -123,8 +122,9 @@ const Page: NextPage = () => {
                                 placeholder={f('displayLanguagePlaceholder')}
                                 defaultValue={router.locale}
                                 onChange={(event) => changeLocale(event.target.value)}>
-                                {router.locales.map((locale) => {
-                                    const localeName = localesInfos[locale];
+                                {router.locales?.map((locale) => {
+                                    const localeName =
+                                        localesInfos[locale as keyof typeof localesInfos];
                                     return (
                                         <option key={locale} value={locale}>
                                             {localeName}
@@ -152,7 +152,7 @@ const Page: NextPage = () => {
                     <FormControl id="country">
                         <Stack spacing={4}>
                             <Checkbox>{f('getUpdatesAboutLatestMeetups')}</Checkbox>
-                            <Checkbox defaultIsChecked>
+                            <Checkbox defaultChecked>
                                 {f('getNotificationsAboutAccountActivities')}
                             </Checkbox>
                         </Stack>
@@ -174,10 +174,8 @@ const Page: NextPage = () => {
                         marginTop={16}
                         spacing={2}
                         justify="center">
-                        <Button isFullWidth={isFullWidthFormButtons} colorScheme="green">
-                            {f('saveChanges')}
-                        </Button>
-                        <Button isFullWidth={isFullWidthFormButtons}>{f('cancel')}</Button>
+                        <Button colorScheme="green">{f('saveChanges')}</Button>
+                        <Button>{f('cancel')}</Button>
                     </Stack>
                 </Box>
             </Stack>

@@ -1,15 +1,15 @@
 import { Container } from '@chakra-ui/react';
 import Head from 'next/head';
+import { PropsWithChildren } from 'react';
 import Header from './Header';
 import Footer from './pageFooter';
 
 export const siteTitle = `Karpouzi`;
 
-interface IPageLayoutProps {
-    children;
-}
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+interface IPageLayoutProps {}
 
-const PageLayout = ({ children }: IPageLayoutProps) => {
+const PageLayout: React.FC<PropsWithChildren<IPageLayoutProps>> = ({ children }) => {
     return (
         <>
             <Head>

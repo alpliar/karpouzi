@@ -1,6 +1,7 @@
 import { useColorModeValue } from '@chakra-ui/color-mode';
 import { Box, Flex } from '@chakra-ui/layout';
 import { BackgroundProps, FilterProps, LayoutProps } from '@chakra-ui/styled-system';
+import { PropsWithChildren } from 'react';
 
 interface IBannerProps {
     height?: LayoutProps['height'];
@@ -16,12 +17,16 @@ interface IBannerProps {
         | 'wiggle'
         | 'bubbles'
         | 'autumn';
-    children;
 }
-const Banner = ({ children, height = '3xs', bgColor, pattern = 'kiwi' }: IBannerProps) => {
+const Banner: React.FC<PropsWithChildren<IBannerProps>> = ({
+    children,
+    height = '3xs',
+    bgColor,
+    pattern = 'kiwi'
+}) => {
     const patternOpacity = 0.3;
     const bgOpacity = 1;
-    const bgFilter: FilterProps['filter'] = null;
+    const bgFilter: FilterProps['filter'] = undefined;
     const patternColor: string = useColorModeValue('white', 'black');
     // const textShadow: TextDecorationProps['textShadow'] = useColorModeValue(
     //     '3px 3px 5px rgba(255,255,255,0.5)',

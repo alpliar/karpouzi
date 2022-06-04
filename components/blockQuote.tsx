@@ -2,14 +2,19 @@ import { Avatar } from '@chakra-ui/avatar';
 import { useColorMode, useColorModeValue } from '@chakra-ui/color-mode';
 import { useBoolean } from '@chakra-ui/hooks';
 import { Heading, HStack, Stack, Text, Wrap } from '@chakra-ui/layout';
+import { ChakraProps } from '@chakra-ui/system';
+import { PropsWithChildren } from 'react';
 
 interface IBlockQuoteProps {
     author?: string;
-    noOfLines?: number;
-    children;
+    noOfLines?: ChakraProps['noOfLines'];
 }
 
-const BlockQuote = ({ children, author, noOfLines = null }: IBlockQuoteProps) => {
+const BlockQuote: React.FC<PropsWithChildren<IBlockQuoteProps>> = ({
+    children,
+    author,
+    noOfLines = undefined
+}) => {
     const { colorMode } = useColorMode();
     const [isOpen, setIsOpen] = useBoolean(false);
 
@@ -33,7 +38,7 @@ const BlockQuote = ({ children, author, noOfLines = null }: IBlockQuoteProps) =>
                     fontSize="sm"
                     onClick={handleClick}
                     maxW="60ch"
-                    noOfLines={!isOpen ? noOfLines : null}
+                    noOfLines={!isOpen ? noOfLines : undefined}
                     _before={{ content: '"«"', marginRight: '1ch' }}
                     _after={{ content: '"»"', marginLeft: '1ch' }}>
                     {children}
