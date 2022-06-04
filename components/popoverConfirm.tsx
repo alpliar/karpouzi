@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import {
     Button,
     ButtonGroup,
@@ -17,7 +16,7 @@ import { ReactNode } from 'react';
 interface IProps {
     isOpen: boolean;
     trigger: ReactNode;
-    title: ReactNode;
+    title?: ReactNode;
     body: ReactNode;
     placement?: PlacementWithLogical;
     onClose: any;
@@ -27,7 +26,7 @@ interface IProps {
 const PopoverConfirm: React.FC<IProps> = ({
     isOpen,
     trigger,
-    title,
+    title = 'Confirmation',
     body,
     placement,
     onClose,
@@ -62,19 +61,3 @@ const PopoverConfirm: React.FC<IProps> = ({
 };
 
 export default PopoverConfirm;
-
-PopoverConfirm.defaultProps = {
-    title: 'Confirmation',
-    body: 'Are you sure you want to continue with your action?',
-    placement: 'top'
-};
-
-PopoverConfirm.propTypes = {
-    isOpen: PropTypes.bool.isRequired,
-    trigger: PropTypes.node.isRequired,
-    onClose: PropTypes.func.isRequired,
-    onConfirm: PropTypes.func.isRequired,
-    title: PropTypes.string,
-    body: PropTypes.oneOf([PropTypes.node, PropTypes.string]).isRequired,
-    placement: PropTypes.oneOf(['right', 'left', 'top', 'bottom'])
-};
