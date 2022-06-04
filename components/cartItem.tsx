@@ -1,10 +1,15 @@
 import { Badge, Flex, HStack, Img, LinkBox, LinkOverlay, Stack, Text } from '@chakra-ui/react';
 import Link from 'next/link';
-import PropTypes from 'prop-types';
 import Card from './card';
 import CartItemActions from './cartItemActions';
 
-const CartItem = ({ title, picture = `/images/${title}.webp`, quantity }) => {
+interface IProps {
+    title: string;
+    picture: string;
+    quantity: number;
+}
+
+const CartItem: React.FC<IProps> = ({ title, picture = `/images/${title}.webp`, quantity }) => {
     const slug = title;
     const cardPadding = 4;
     const imageDimensions = `${cardPadding * 1.7}rem`;
@@ -51,9 +56,3 @@ const CartItem = ({ title, picture = `/images/${title}.webp`, quantity }) => {
 };
 
 export default CartItem;
-
-CartItem.propTypes = {
-    title: PropTypes.string.isRequired,
-    picture: PropTypes.string,
-    quantity: PropTypes.number.isRequired
-};
