@@ -1,7 +1,23 @@
-import { Button, IconButton, useBreakpointValue } from '@chakra-ui/react';
-import PropTypes from 'prop-types';
+import { Button, Icon, IconButton, useBreakpointValue } from '@chakra-ui/react';
+import { IconType } from 'react-icons';
 
-const NavButton = ({ icon, label, handleClick, isPrimary, compact, e2e }) => {
+interface IProps {
+    icon: IconType;
+    label: string;
+    handleClick: () => void;
+    isPrimary?: boolean;
+    compact?: boolean;
+    e2e?: string;
+}
+
+const NavButton: React.FC<IProps> = ({
+    icon,
+    label,
+    handleClick,
+    isPrimary = false,
+    compact = true,
+    e2e = undefined
+}) => {
     const variant = isPrimary ? 'outline' : 'ghost';
     // const lightColor = 'gray.800';
     // const darkColor = 'white';
@@ -13,7 +29,7 @@ const NavButton = ({ icon, label, handleClick, isPrimary, compact, e2e }) => {
         return (
             <IconButton
                 aria-label={label}
-                icon={icon}
+                icon={<Icon as={icon} />}
                 onClick={handleClick}
                 variant={variant}
                 size={size}
@@ -24,7 +40,7 @@ const NavButton = ({ icon, label, handleClick, isPrimary, compact, e2e }) => {
         return (
             <Button
                 aria-label={label}
-                leftIcon={icon}
+                leftIcon={<Icon as={icon} />}
                 onClick={handleClick}
                 variant={variant}
                 size={size}
@@ -36,18 +52,3 @@ const NavButton = ({ icon, label, handleClick, isPrimary, compact, e2e }) => {
 };
 
 export default NavButton;
-
-NavButton.propTypes = {
-    icon: PropTypes.node,
-    label: PropTypes.string.isRequired,
-    handleClick: PropTypes.func.isRequired,
-    isPrimary: PropTypes.bool,
-    compact: PropTypes.bool,
-    e2e: PropTypes.string
-};
-
-NavButton.defaultProps = {
-    isPrimary: false,
-    compact: true,
-    e2e: null
-};
