@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import {
     Button,
     ButtonGroup,
+    PlacementWithLogical,
     Popover,
     PopoverArrow,
     PopoverBody,
@@ -18,12 +19,12 @@ interface IProps {
     trigger: ReactNode;
     title: ReactNode;
     body: ReactNode;
-    placement?: 'right' | 'left' | 'top' | 'bottom';
+    placement?: PlacementWithLogical;
     onClose: any;
     onConfirm: any;
 }
 
-const PopoverConfirm = ({
+const PopoverConfirm: React.FC<IProps> = ({
     isOpen,
     trigger,
     title,
@@ -31,7 +32,7 @@ const PopoverConfirm = ({
     placement,
     onClose,
     onConfirm
-}: IProps) => {
+}) => {
     return (
         <Popover
             returnFocusOnClose={false}
