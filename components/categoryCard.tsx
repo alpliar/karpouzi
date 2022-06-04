@@ -5,7 +5,21 @@ import Link from 'next/link';
 import PropTypes from 'prop-types';
 import Card from './card';
 
-const CategoryCard = ({ slug, title, shortDescription, fullHeight, image }) => {
+interface IProps {
+    slug: string;
+    title: string;
+    shortDescription: string;
+    fullHeight: boolean;
+    image: string;
+}
+
+const CategoryCard: React.FC<IProps> = ({
+    slug,
+    title,
+    shortDescription,
+    fullHeight = false,
+    image
+}) => {
     // const [isHovered, setIsHovered] = useBoolean(false);
     const imageHeight = useBreakpointValue({ base: 64, sm: 48, md: 48, lg: 64 });
 
@@ -15,7 +29,9 @@ const CategoryCard = ({ slug, title, shortDescription, fullHeight, image }) => {
 
     return (
         <LinkBox
-            height={fullHeight ? 'full' : null} /*onMouseEnter={onHover} onMouseLeave={onHover} */
+            height={
+                fullHeight ? 'full' : undefined
+            } /*onMouseEnter={onHover} onMouseLeave={onHover} */
         >
             <Card key={slug} fullHeight padding={6}>
                 <Box
@@ -104,17 +120,3 @@ const CategoryCard = ({ slug, title, shortDescription, fullHeight, image }) => {
 };
 
 export default CategoryCard;
-
-CategoryCard.defaultProps = {
-    fullHeight: false
-};
-
-CategoryCard.propTypes = {
-    slug: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    image: PropTypes.string.isRequired,
-    shortDescription: PropTypes.string.isRequired,
-    products: PropTypes.array.isRequired,
-    productsCount: PropTypes.number.isRequired,
-    fullHeight: PropTypes.bool
-};
