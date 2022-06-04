@@ -1,19 +1,29 @@
-import Head from 'next/head';
+/* eslint-disable @next/next/no-page-custom-font */
 import {
     Box,
-    Heading,
-    Container,
-    Text,
     Button,
-    Stack,
+    Container,
+    createIcon,
+    Heading,
     Icon,
-    useColorModeValue,
-    createIcon
+    Stack,
+    Text,
+    useColorModeValue
 } from '@chakra-ui/react';
-import PropTypes from 'prop-types';
+import Head from 'next/head';
 import { BASE_TRANSITION } from '../constants/ui/transitions';
 
-const CallToActionWithAnnotation = ({
+interface IProps {
+    title: string;
+    description: string;
+    primaryActionLabel: string;
+    secondaryActionLabel: string;
+    handlePrimaryAction?: () => void;
+    handleSecondaryAction?: () => void;
+    primaryActionAnnotation: string;
+}
+
+const CallToActionWithAnnotation: React.FC<IProps> = ({
     title,
     description,
     primaryActionLabel,
@@ -118,13 +128,3 @@ const Arrow = createIcon({
 });
 
 export default CallToActionWithAnnotation;
-
-CallToActionWithAnnotation.propTypes = {
-    title: PropTypes.oneOfType([PropTypes.node, PropTypes.string]).isRequired,
-    description: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
-    primaryActionLabel: PropTypes.string.isRequired,
-    secondaryActionLabel: PropTypes.string,
-    handlePrimaryAction: PropTypes.func.isRequired,
-    handleSecondaryAction: PropTypes.func,
-    primaryActionAnnotation: PropTypes.string.isRequired
-};
