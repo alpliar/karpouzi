@@ -6,8 +6,8 @@ import Link from './link';
 
 export interface IBreadcrumbItemProps {
     text: string;
-    link?: string;
-    alt?: string;
+    link?: string | undefined;
+    alt?: string | undefined;
     isCurrentPage?: boolean;
 }
 export interface IBreadcrumbProps {
@@ -35,19 +35,24 @@ const Breadcrumb = ({ entries }: IBreadcrumbProps) => {
                 />
             </Head>
             <ChakraBreadcrumb fontSize="sm" separator={<ChevronRightIcon color="gray.500" />}>
-                {entries.map(({ text, isCurrentPage = false, link = null, alt = null }, index) => {
-                    return (
-                        <BreadcrumbItem key={`${text}-${index}`} isCurrentPage={isCurrentPage}>
-                            {isCurrentPage ? (
-                                <Text>{text}</Text>
-                            ) : (
-                                <Link href={link} alt={alt}>
-                                    {text}
-                                </Link>
-                            )}
-                        </BreadcrumbItem>
-                    );
-                })}
+                {entries.map(
+                    (
+                        { text, isCurrentPage = false, link = 'undefined', alt = 'undefined' },
+                        index
+                    ) => {
+                        return (
+                            <BreadcrumbItem key={`${text}-${index}`} isCurrentPage={isCurrentPage}>
+                                {isCurrentPage ? (
+                                    <Text>{text}</Text>
+                                ) : (
+                                    <Link href={link} alt={alt}>
+                                        {text}
+                                    </Link>
+                                )}
+                            </BreadcrumbItem>
+                        );
+                    }
+                )}
             </ChakraBreadcrumb>
         </>
     );
