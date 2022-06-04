@@ -1,9 +1,12 @@
 import { HamburgerIcon, Icon } from '@chakra-ui/icons';
-import PropType from 'prop-types';
 import { useIntl } from 'react-intl';
 import NavButton from './navButton';
 
-const NavBurgerMenu = ({ handleClick }) => {
+interface IProps {
+    handleClick: () => void;
+}
+
+const NavBurgerMenu: React.FC<IProps> = ({ handleClick }) => {
     const { formatMessage } = useIntl();
     const f = (id: string) => formatMessage({ id });
     const icon = <Icon as={HamburgerIcon} />;
@@ -20,7 +23,3 @@ const NavBurgerMenu = ({ handleClick }) => {
 };
 
 export default NavBurgerMenu;
-
-NavBurgerMenu.propTypes = {
-    handleClick: PropType.func.isRequired
-};
