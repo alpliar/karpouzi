@@ -3,8 +3,8 @@ import { PropsWithChildren } from 'react';
 import { BASE_TRANSITION } from '../constants/ui/transitions';
 
 interface ICardProps {
-    padding: SpacerProps['p'];
-    fullHeight: boolean;
+    padding?: SpacerProps['p'];
+    fullHeight?: boolean;
 }
 
 const Card: React.FC<PropsWithChildren<ICardProps>> = ({

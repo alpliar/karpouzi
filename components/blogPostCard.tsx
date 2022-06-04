@@ -10,10 +10,23 @@ import {
     useColorModeValue
 } from '@chakra-ui/react';
 import Link from 'next/link';
-import PropTypes from 'prop-types';
 import Card from './card';
 
-const BlogPostCard = ({ title, date, slug, author, authorAvatar }) => {
+interface IBlogPostCardProps {
+    title: string;
+    date: string;
+    slug: string;
+    author?: string;
+    authorAvatar?: string;
+}
+
+const BlogPostCard: React.FC<IBlogPostCardProps> = ({
+    title,
+    date,
+    slug,
+    author = 'Karpouzi',
+    authorAvatar = '/icon-48x48.png'
+}) => {
     return (
         <LinkBox>
             <Card>
@@ -73,16 +86,3 @@ const BlogPostCard = ({ title, date, slug, author, authorAvatar }) => {
 };
 
 export default BlogPostCard;
-
-BlogPostCard.defaultProps = {
-    author: 'Karpouzi',
-    authorAvatar: '/icon-48x48.png'
-};
-
-BlogPostCard.propTypes = {
-    title: PropTypes.string.isRequired,
-    date: PropTypes.string.isRequired,
-    slug: PropTypes.string.isRequired,
-    author: PropTypes.string,
-    authorAvatar: PropTypes.string
-};
