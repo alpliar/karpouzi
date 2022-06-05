@@ -119,7 +119,6 @@ const handler = async (
     if (!errors && categories !== undefined) {
         res.status(200).json({
             categories: categories.map((category) => {
-                console.log(category.picture);
                 const { slug, name, description, picture } = category;
                 return { slug, name, description, image: picture?.url };
             })

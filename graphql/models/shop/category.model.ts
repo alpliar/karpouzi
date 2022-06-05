@@ -17,7 +17,7 @@ interface ShopCategory {
     id: Id;
     slug: string;
     name: string;
-    picture?: Asset;
+    picture: Asset;
     description: string;
     products: Array<ProductExcerpt>;
 }
