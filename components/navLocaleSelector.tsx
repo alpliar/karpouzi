@@ -8,6 +8,7 @@ import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 import { FaFlag } from 'react-icons/fa';
 import getFlagEmoji from '../utils/flags';
+import { sendToast } from '../utils/uiToast';
 
 export interface INavLocaleSelectorProps {
     compact?: boolean;
@@ -29,7 +30,16 @@ const NavLocaleSelector: React.FC<INavLocaleSelectorProps> = ({ compact = false 
     const menuBgColor = useColorModeValue('white', 'gray.800');
     const size = useBreakpointValue({ base: 'md', md: 'sm' }) || 'sm';
     // const itemHoverColor = useColorModeValue('gray.800', 'white');
-    const itemHoverBgColor = useColorModeValue('blackAlpha.100', 'whiteAlpha.100');
+    // const itemHoverBgColor = useColorModeValue('blackAlpha.100', 'whiteAlpha.100');
+
+    const handleClick = (locale: string) => {
+        if (locale !== router.locale)
+            sendToast(
+                'Locale changed',
+                `Now viewing ${locale.toLocaleUpperCase()} version of Karpouzi`,
+                'info'
+            );
+    };
 
     return (
         <Menu>
@@ -57,7 +67,10 @@ const NavLocaleSelector: React.FC<INavLocaleSelectorProps> = ({ compact = false 
                             // }}
                             >
                                 <NextLink href={router.pathname} passHref locale={locale}>
-                                    <LinkOverlay flexGrow={1} title={`choose ${locale}`}>
+                                    <LinkOverlay
+                                        flexGrow={1}
+                                        title={`choose ${locale}`}
+                                        onClick={() => handleClick(locale)}>
                                         {getFlagEmoji(locale === 'en' ? 'gb' : locale)}
                                         &nbsp;
                                         {localeName}
