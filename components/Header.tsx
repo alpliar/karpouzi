@@ -54,7 +54,7 @@ const Header = ({}) => {
             // bgGradient={headerBgGradient(colorMode)} /*color="white"*/
             bgColor={headerBgColor(colorMode)}
             position="sticky"
-            zIndex="1"
+            zIndex="sticky"
             top="0px">
             <Wrap
                 align={{ base: 'auto', md: 'center' }}
