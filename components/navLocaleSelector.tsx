@@ -3,6 +3,7 @@ import { useColorModeValue } from '@chakra-ui/color-mode';
 import { LinkBox, LinkOverlay } from '@chakra-ui/layout';
 import { useBreakpointValue } from '@chakra-ui/media-query';
 import { Menu, MenuButton, MenuList } from '@chakra-ui/menu';
+import { MenuItem } from '@chakra-ui/react';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 import { FaFlag } from 'react-icons/fa';
@@ -45,30 +46,25 @@ const NavLocaleSelector: React.FC<INavLocaleSelectorProps> = ({ compact = false 
                 {router.locales?.map((locale: string) => {
                     const localeName = localesInfos[locale as keyof typeof localesInfos];
                     return (
-                        <LinkBox
-                            key={locale}
-                            paddingX="4"
-                            paddingY="2"
-                            display="flex"
-                            _hover={{
-                                backgroundColor: itemHoverBgColor
-                                // color: itemHoverColor
-                            }}>
-                            {getFlagEmoji(locale === 'en' ? 'gb' : locale)}
-                            &nbsp;
-                            <NextLink href={router.pathname} passHref locale={locale}>
-                                <LinkOverlay
-                                    flexGrow={1}
-                                    title={`choose ${locale}`}
-                                    // onClick={(event) => {
-                                    //     event.preventDefault();
-                                    //     handleSelection(locale);
-                                    // }}
-                                >
-                                    {localeName}
-                                </LinkOverlay>
-                            </NextLink>
-                        </LinkBox>
+                        <MenuItem key={locale}>
+                            <LinkBox
+                            // paddingX="4"
+                            // paddingY="2"
+                            // display="flex"
+                            // _hover={{
+                            //     backgroundColor: itemHoverBgColor
+                            //     // color: itemHoverColor
+                            // }}
+                            >
+                                <NextLink href={router.pathname} passHref locale={locale}>
+                                    <LinkOverlay flexGrow={1} title={`choose ${locale}`}>
+                                        {getFlagEmoji(locale === 'en' ? 'gb' : locale)}
+                                        &nbsp;
+                                        {localeName}
+                                    </LinkOverlay>
+                                </NextLink>
+                            </LinkBox>
+                        </MenuItem>
                     );
                 })}
             </MenuList>
