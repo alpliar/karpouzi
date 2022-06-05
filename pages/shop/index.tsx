@@ -42,23 +42,23 @@ type ShopPageProps = {
 
 export default function ShopPage({ categories }: ShopPageProps) {
     // const { colorMode } = useColorMode();
-    const { formatMessage } = useIntl();
-    const f = (id: string) => formatMessage({ id });
+    const intl = useIntl();
+    const f = (id: string) => intl.formatMessage({ id });
 
     return (
         <PageListingLayout
             title={f('title')}
             breadcrumbs={[
                 {
-                    text: 'Home',
+                    text: f('home'),
                     link: '/',
-                    alt: 'go to home page',
+                    alt: intl.formatMessage({ id: 'goToPageName' }, { name: f('home') }),
                     isCurrentPage: false
                 },
                 {
                     text: f('title'),
                     link: '/shop',
-                    alt: 'go to shop home',
+                    alt: intl.formatMessage({ id: 'goToPageName' }, { name: f('title') }),
                     isCurrentPage: true
                 }
             ]}

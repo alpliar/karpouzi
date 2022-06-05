@@ -1,4 +1,5 @@
 import { NextPage } from 'next';
+import { useIntl } from 'react-intl';
 import { useSelector } from 'react-redux';
 import { SET_POSTS_DATA } from '../../actions/blog';
 import BlockQuote from '../../components/blockQuote';
@@ -17,21 +18,23 @@ export const getStaticProps = wrapper.getStaticProps((store) => () => {
 
 const BlogHome: NextPage = () => {
     const { posts } = useSelector((state: RootState) => state.server);
+    const intl = useIntl();
+    const f = (id: string) => intl.formatMessage({ id });
 
     return (
         <PageListingLayout
-            title="Blog"
+            title={f('title')}
             breadcrumbs={[
                 {
-                    text: 'Home',
+                    text: f('home'),
                     link: '/',
-                    alt: 'go to home page',
+                    alt: intl.formatMessage({ id: 'goToPageName' }, { name: f('home') }),
                     isCurrentPage: false
                 },
                 {
-                    text: 'Blog',
+                    text: f('title'),
                     link: '/blog',
-                    alt: 'go to blog home',
+                    alt: intl.formatMessage({ id: 'goToPageName' }, { name: f('title') }),
                     isCurrentPage: true
                 }
             ]}

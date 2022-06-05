@@ -1,6 +1,7 @@
 export const es = {
     common: {
         commonSiteName: 'Karpouzi',
+        home: 'Inicio',
         menuEntryBlog: 'Blog',
         menuEntryShop: 'Tienda',
         goToPageName: 'Ir a la página de {name}',
