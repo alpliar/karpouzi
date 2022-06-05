@@ -16,7 +16,7 @@ export async function getStaticProps() {
     }
 
     const categories = data.categories as Category;
-    console.log(categories);
+    // console.log(categories);
 
     return {
         props: {
