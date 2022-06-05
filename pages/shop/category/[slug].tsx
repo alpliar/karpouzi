@@ -1,5 +1,5 @@
 import { SimpleGrid } from '@chakra-ui/layout';
-import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
+import { GetStaticPaths, NextPage } from 'next';
 import { GiTomato } from 'react-icons/gi';
 import { useSelector } from 'react-redux';
 import { SET_PRODUCTS_DATA } from '../../../actions/shop';
@@ -9,11 +9,16 @@ import ProductCard from '../../../components/productCard';
 import ShopStat from '../../../components/shopStat';
 import { getSortedProductData } from '../../../lib/products';
 import { RootState } from '../../../reducer';
+import { Product } from '../../../reducer/server';
 import { wrapper } from '../../../store';
 
-export const getStaticProps: GetStaticProps = wrapper.getStaticProps(({ store }) => {
+export const getStaticProps = wrapper.getStaticProps((store) => () => {
     const products = getSortedProductData();
     store.dispatch({ type: SET_PRODUCTS_DATA, products: products });
+
+    return {
+        props: {}
+    };
 });
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -61,7 +66,7 @@ const CategoryPage: NextPage = () => {
             <SimpleGrid columns={{ base: 1, sm: 2, md: 3, xl: 4 }} spacing={4}>
                 {products &&
                     products.length &&
-                    products.map((product, index) => (
+                    products.map((product: Product, index: number) => (
                         <ProductCard
                             key={`${product.slug}-${index}`}
                             slug={product.slug}

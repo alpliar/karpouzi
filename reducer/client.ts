@@ -10,11 +10,11 @@ export interface ClientState {
     cart: CartRow[];
 }
 
-const initialState = {
+const initialState: ClientState = {
     cart: []
 };
 
-const reducer = (state = initialState, action: AnyAction) => {
+const clientReducer = (state = initialState, action: AnyAction) => {
     switch (action.type) {
         case ADD_TO_CART: {
             return {
@@ -43,4 +43,4 @@ const reducer = (state = initialState, action: AnyAction) => {
     }
 };
 
-export default reducer;
+export default clientReducer;

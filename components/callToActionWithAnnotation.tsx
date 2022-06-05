@@ -14,8 +14,8 @@ import Head from 'next/head';
 import { BASE_TRANSITION } from '../constants/ui/transitions';
 
 interface IProps {
-    title: string;
-    description: string;
+    title: React.ReactNode;
+    description: React.ReactNode;
     primaryActionLabel: string;
     secondaryActionLabel: string;
     handlePrimaryAction?: () => void;

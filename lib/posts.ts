@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
-import remark from 'remark';
+import { remark } from 'remark';
 import html from 'remark-html';
 
 const postsDirectory: string = path.join(process.cwd(), 'posts');
@@ -12,7 +12,7 @@ interface Post {
     date: string;
 }
 
-export const getSortedPostsData = () => {
+export const getSortedPostsData = (): Array<Post> => {
     // Get file names under /posts
     const fileNames = fs.readdirSync(postsDirectory);
     const allPostsData = fileNames.map((fileName) => {
@@ -25,12 +25,15 @@ export const getSortedPostsData = () => {
 
         // Use gray-matter to parse the post metadata section
         const matterResult: matter.GrayMatterFile<string> = matter(fileContents);
+        const postData = matterResult.data as Post;
 
         // Combine the data with the id
-        return {
-            id,
-            ...matterResult.data
+        const post: Post = {
+            ...postData,
+            id
         };
+
+        return post;
     });
     // Sort posts by date
     return allPostsData.sort((a: Post, b: Post): number => {

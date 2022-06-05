@@ -79,11 +79,7 @@ const LoginPage: NextPage = () => {
                                     </Box>
                                 </Flex>
 
-                                <Button
-                                    isFullWidth
-                                    colorScheme="green"
-                                    type="submit"
-                                    onClick={handleSubmit}>
+                                <Button colorScheme="green" type="submit" onClick={handleSubmit}>
                                     {f('signIn')}
                                 </Button>
                             </Stack>

@@ -33,7 +33,7 @@ const getRandomProductName = () => {
     return products[Math.floor(Math.random() * products.length)];
 };
 
-export const getRandomProduct = (slug = null) => {
+export const getRandomProduct = (slug) => {
     const name = slug || getRandomProductName();
 
     // imageUrl: `https://picsum.photos/seed/${name}${Date.now()}/300/200/`,

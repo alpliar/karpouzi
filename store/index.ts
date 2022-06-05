@@ -1,45 +1,18 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
 import { createWrapper } from 'next-redux-wrapper';
-import { compose, createStore, Store } from 'redux';
-import { persistStore } from 'redux-persist';
-import rootReducer from '../reducer/index';
+import { applyMiddleware, createStore, Middleware } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
+import rootReducer from '../reducer';
 
-declare global {
-    interface Window {
-        __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose;
+// const middlewares = [aMiddleware];
+
+const bindMiddlewares = (middlewares: Array<Middleware>) => {
+    if (process.env.NODE_ENV !== 'production') {
+        return composeWithDevTools(applyMiddleware(...middlewares));
     }
-}
-
-const makeStore = (initialState) => {
-    let store: Store | any;
-
-    const composeEnhancers =
-        (typeof window !== 'undefined' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose;
-
-    const isClient: boolean = typeof window !== 'undefined';
-
-    if (isClient) {
-        const { persistReducer } = require('redux-persist');
-        const storage = require('redux-persist/lib/storage').default;
-
-        const persistConfig = {
-            key: 'root',
-            storage
-        };
-
-        store = createStore(
-            persistReducer(persistConfig, rootReducer),
-            initialState,
-            composeEnhancers()
-        );
-
-        store.__PERSISTOR = persistStore(store);
-    } else {
-        store = createStore(rootReducer, initialState);
-    }
-
-    return store;
+    return applyMiddleware(...middlewares);
 };
 
-// export an assembled wrapper
-export const wrapper = createWrapper(makeStore, { debug: false });
+// const makeStore = () => createStore(rootReducer, bindMiddlewares(middlewares));
+const makeStore = () => createStore(rootReducer, bindMiddlewares([]));
+
+export const wrapper = createWrapper(makeStore, { debug: process.env.NODE_ENV !== 'production' });

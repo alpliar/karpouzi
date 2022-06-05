@@ -10,6 +10,8 @@ interface IProps {
     shortDescription: string;
     fullHeight: boolean;
     image: string;
+    // products?: CategoryProducts;
+    // productCount?: number;
 }
 
 const CategoryCard: React.FC<IProps> = ({

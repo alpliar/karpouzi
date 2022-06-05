@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { AnyAction } from 'redux';
 import { addToCart, updateQuantityCart } from '../actions/shop';
 import AddToCart from '../components/addToCart';
-import { rootState } from '../reducer';
+import { RootState } from '../reducer';
 import { getQuantityInCartBySlug } from '../utils/shop';
 
 interface IOwnProps {
@@ -16,7 +16,7 @@ export interface ICartItem {
     quantity: number;
 }
 
-const mapStateToProps = (state: rootState, ownProps: IOwnProps) => ({
+const mapStateToProps = (state: RootState, ownProps: IOwnProps) => ({
     cart: state.client.cart,
     inCart: getQuantityInCartBySlug(ownProps.slug, state.client.cart),
     slug: ownProps.slug,

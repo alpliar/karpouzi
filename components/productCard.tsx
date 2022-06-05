@@ -2,7 +2,10 @@ import { BellIcon, TriangleDownIcon } from '@chakra-ui/icons';
 import { Img } from '@chakra-ui/image';
 import { Box, Heading, LinkBox, LinkOverlay, Stack, Text } from '@chakra-ui/layout';
 import { useBreakpointValue } from '@chakra-ui/media-query';
+import { ComponentWithAs } from '@chakra-ui/system';
+import { IconProps } from '@chakra-ui/react';
 import Link from 'next/link';
+import { IconType } from 'react-icons';
 import Card from './card';
 import ProductCardBadge from './productCardBadge';
 import Rating from './rating';
@@ -16,7 +19,7 @@ interface IProps {
     isNew: boolean;
     reviewCount: number;
     rating: number;
-    ratingIcon?: string;
+    ratingIcon?: IconType | ComponentWithAs<'svg', IconProps>;
 }
 
 const ProductCard: React.FC<IProps> = ({

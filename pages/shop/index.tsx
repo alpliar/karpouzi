@@ -23,9 +23,9 @@ export async function getStaticProps() {
 
 type Product = unknown;
 
-interface CategoryProducts {
+export interface CategoryProducts {
     count: number;
-    featured?: Product[];
+    featured?: Array<Product>;
 }
 
 interface Category {
@@ -85,8 +85,8 @@ export default function ShopPage({ categories }: ShopPageProps) {
                                 title={category.name}
                                 image={category.image}
                                 shortDescription={category.description}
-                                products={category.products.featured}
-                                productsCount={category.products.count}
+                                // products={category.products.featured}
+                                // productsCount={category.products.count}
                             />
                         );
                     })}

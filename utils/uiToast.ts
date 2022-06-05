@@ -14,7 +14,8 @@ export const sendToast = (
     position: ToastPosition = defaultPosition,
     isClosable = true
 ) => {
-    const toast = createStandaloneToast();
+    const toast = createStandaloneToast().toast;
+
     toast({
         title: title,
         description: description,

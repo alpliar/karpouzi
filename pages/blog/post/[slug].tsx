@@ -86,7 +86,7 @@ const Page: NextPage<Props> = ({ postData }) => {
 
 export const getStaticProps: GetStaticProps = async (context: GetStaticPropsContext) => {
     const { params } = context;
-    const slug = params.slug.toString();
+    const slug = params?.slug?.toString() || '';
 
     const postData = await getPostData(slug);
     return {

@@ -3,7 +3,7 @@ import { HYDRATE } from 'next-redux-wrapper';
 import { SET_PRODUCTS_DATA } from '../actions/shop';
 import { AnyAction } from 'redux';
 
-interface Post {
+export interface Post {
     id: string;
     title: string;
     date: string;
@@ -21,8 +21,8 @@ export interface Product {
 }
 
 export interface ServerState {
-    posts: Post[];
-    products: Product[];
+    posts: Array<Post>;
+    products: Array<Product>;
 }
 
 const initialState: ServerState = {
@@ -30,7 +30,7 @@ const initialState: ServerState = {
     products: []
 };
 
-const reducer = (state = initialState, action: AnyAction) => {
+const serverReducer = (state = initialState, action: AnyAction): ServerState => {
     switch (action.type) {
         case HYDRATE:
             return { ...state, ...action.payload.server };
@@ -43,4 +43,4 @@ const reducer = (state = initialState, action: AnyAction) => {
     }
 };
 
-export default reducer;
+export default serverReducer;

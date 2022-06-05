@@ -1,12 +1,12 @@
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
-import remark from 'remark';
+import { remark } from 'remark';
 import html from 'remark-html';
 
 const productsDirectory: string = path.join(process.cwd(), 'data', 'shop', 'products');
 
-interface Product {
+export interface Product {
     slug: string;
     title: string;
     date: string;
@@ -20,8 +20,8 @@ interface Product {
 
 export const getSortedProductData = () => {
     // Get file names under /products
-    const fileNames: string[] = fs.readdirSync(productsDirectory);
-    const allProductsData: any = fileNames.map((fileName) => {
+    const fileNames: Array<string> = fs.readdirSync(productsDirectory);
+    const allProductsData: Array<Product> = fileNames.map((fileName) => {
         // Remove ".md" from file name to get slug
         const slug: string = fileName.replace(/\.md$/, '');
 
@@ -30,12 +30,21 @@ export const getSortedProductData = () => {
         const fileContents: string = fs.readFileSync(fullPath, 'utf8');
 
         // Use gray-matter to parse the product metadata section
-        const matterResult: matter.GrayMatterFile<string> = matter(fileContents);
+        const {
+            data: { title, date, price, rating, reviewCount, isNew, imageUrl, contentHtml }
+        }: matter.GrayMatterFile<string> = matter(fileContents);
 
         // Combine the data with the slug
         return {
             slug,
-            ...matterResult.data
+            title,
+            date,
+            price,
+            rating,
+            reviewCount,
+            isNew,
+            imageUrl,
+            contentHtml: contentHtml || ''
         };
     });
     // Sort products by date

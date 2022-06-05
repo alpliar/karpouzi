@@ -1,9 +1,8 @@
 import { BellIcon } from '@chakra-ui/icons';
 import { Img } from '@chakra-ui/image';
 import { Badge, Box, Container, Divider, SimpleGrid, Text } from '@chakra-ui/layout';
-import { GetStaticPaths } from 'next';
+import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType, NextPage } from 'next';
 import Head from 'next/head';
-import PropTypes from 'prop-types';
 import BlockQuote from '../../../components/blockQuote';
 import PageListingLayout from '../../../components/pageListingLayout';
 import Rating from '../../../components/rating';
@@ -11,15 +10,24 @@ import AddToCart from '../../../container/addToCart';
 import { getAllProductIds, getProductData } from '../../../lib/products';
 import { sanitizeText } from '../../../utils/sanitize';
 
-export async function getStaticProps({ params }) {
-    const productData = await getProductData(params.slug);
+export const getStaticProps: GetStaticProps = async (context) => {
+    try {
+        const product = context.params?.slug
+            ? await getProductData(context.params.slug?.toLocaleString())
+            : undefined;
+        return {
+            props: {
+                product
+            }
+        };
+    } catch (_err) {
+        // console.warn(err);
+    }
 
     return {
-        props: {
-            ...productData
-        }
+        props: {}
     };
-}
+};
 
 export const getStaticPaths: GetStaticPaths = async () => {
     const paths = await getAllProductIds();
@@ -30,30 +38,11 @@ export const getStaticPaths: GetStaticPaths = async () => {
     };
 };
 
-interface IProductPageProps {
-    slug: string;
-    title: string;
-    price: string;
-    rating: string;
-    reviewCount: string;
-    isNew: boolean;
-    imageUrl: string;
-    contentHtml: string;
-}
-
-const ProductPage = ({
-    slug,
-    title,
-    price,
-    rating,
-    reviewCount,
-    isNew,
-    imageUrl,
-    contentHtml
-}: IProductPageProps) => {
-    if (!slug) {
-        return false;
-    }
+const ProductPage: NextPage = ({ product }: InferGetStaticPropsType<typeof getStaticProps>) => {
+    const { title, slug, isNew, rating, imageUrl, reviewCount, contentHtml, price } = product;
+    // if (!slug) {
+    //     return false;
+    // }
     return (
         <PageListingLayout
             title={title}
@@ -117,14 +106,3 @@ const ProductPage = ({
 };
 
 export default ProductPage;
-
-ProductPage.propTypes = {
-    slug: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    price: PropTypes.string.isRequired,
-    rating: PropTypes.number.isRequired,
-    reviewCount: PropTypes.number.isRequired,
-    isNew: PropTypes.bool.isRequired,
-    imageUrl: PropTypes.string.isRequired,
-    contentHtml: PropTypes.string.isRequired
-};

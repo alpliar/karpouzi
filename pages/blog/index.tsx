@@ -1,3 +1,4 @@
+import { NextPage } from 'next';
 import { useSelector } from 'react-redux';
 import { SET_POSTS_DATA } from '../../actions/blog';
 import BlockQuote from '../../components/blockQuote';
@@ -8,12 +9,13 @@ import { getSortedPostsData } from '../../lib/posts';
 import { RootState } from '../../reducer';
 import { wrapper } from '../../store';
 
-export const getStaticProps = wrapper.getStaticProps(({ store }) => {
+export const getStaticProps = wrapper.getStaticProps((store) => () => {
     // const postsData = getSortedPostsData();
     store.dispatch({ type: SET_POSTS_DATA, posts: getSortedPostsData() });
+    return { props: {} };
 });
 
-export default function Home() {
+const BlogHome: NextPage = () => {
     const { posts } = useSelector((state: RootState) => state.server);
 
     return (
@@ -46,4 +48,6 @@ export default function Home() {
             {posts && <LatestsPosts posts={posts} />}
         </PageListingLayout>
     );
-}
+};
+
+export default BlogHome;

@@ -1,17 +1,10 @@
 import { combineReducers } from 'redux';
-import client from './client';
-import server from './server';
-import { ClientState } from '../reducer/client';
-import { ServerState } from '../reducer/server';
-
-export interface rootState {
-    client: ClientState;
-    server: ServerState;
-}
+import clientReducer from '../reducer/client';
+import serverReducer from '../reducer/server';
 
 const rootReducer = combineReducers({
-    client,
-    server
+    client: clientReducer,
+    server: serverReducer
 });
 
 export type RootState = ReturnType<typeof rootReducer>;

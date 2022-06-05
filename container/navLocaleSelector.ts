@@ -2,9 +2,9 @@ import { Dispatch } from 'react';
 import { connect } from 'react-redux';
 import { AnyAction } from 'redux';
 import NavLocaleSelector, { INavLocaleSelectorProps } from '../components/navLocaleSelector';
-import { rootState } from '../reducer';
+import { RootState } from '../reducer';
 
-const mapStateToProps = (state: rootState, ownProps: INavLocaleSelectorProps) => {
+const mapStateToProps = (state: RootState, ownProps: INavLocaleSelectorProps) => {
     return {
         compact: ownProps.compact
     };

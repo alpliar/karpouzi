@@ -26,9 +26,9 @@ const config: ThemeConfig = {
 };
 
 const fonts: ThemeOverride['fonts'] = {
-    body: null,
-    heading: null,
-    mono: null
+    body: undefined,
+    heading: undefined,
+    mono: undefined
 };
 
 // const overrides: ThemeOverride = {

@@ -5,7 +5,7 @@ import CartItemActions from './cartItemActions';
 
 interface IProps {
     title: string;
-    picture: string;
+    picture?: string;
     quantity: number;
 }
 
