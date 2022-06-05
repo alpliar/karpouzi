@@ -8,15 +8,19 @@ import { API_BASE_URL } from '../../constants/api';
 
 export async function getStaticProps() {
     const response = await fetch(API_BASE_URL + '/shop/categories');
+
     const data = await response.json();
 
     if (!data.categories) {
         return { notFound: true };
     }
 
+    const categories = data.categories as Category;
+    console.log(categories);
+
     return {
         props: {
-            categories: data.categories
+            categories
         }
     };
 }
@@ -33,7 +37,7 @@ interface Category {
     name: string;
     description: string;
     products: CategoryProducts;
-    image: string;
+    image?: string;
 }
 
 type ShopPageProps = {
@@ -83,7 +87,7 @@ export default function ShopPage({ categories }: ShopPageProps) {
                                 key={category.slug}
                                 slug={category.slug}
                                 title={category.name}
-                                image={category.image}
+                                image={category.image || ''}
                                 shortDescription={category.description}
                                 // products={category.products.featured}
                                 // productsCount={category.products.count}
