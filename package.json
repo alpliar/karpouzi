@@ -12,6 +12,7 @@
         "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc"
     },
     "dependencies": {
+        "@apollo/client": "^3.6.6",
         "@chakra-ui/icons": "^2.0.1",
         "@chakra-ui/react": "^2.1.2",
         "@chakra-ui/system": "^2.1.1",
@@ -22,6 +23,7 @@
         "date-fns": "^2.16.1",
         "eslint-plugin-cypress": "^2.11.2",
         "framer-motion": "^6.3.10",
+        "graphql": "^16.5.0",
         "gray-matter": "^4.0.2",
         "next": "^12.0.10",
         "next-images": "^1.7.0",
