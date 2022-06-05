@@ -39,6 +39,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 const ProductPage: NextPage = ({ product }: InferGetStaticPropsType<typeof getStaticProps>) => {
+    if (!product) return null;
+
     const { title, slug, isNew, rating, imageUrl, reviewCount, contentHtml, price } = product;
     // if (!slug) {
     //     return false;
