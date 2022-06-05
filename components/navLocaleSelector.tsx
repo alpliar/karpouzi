@@ -55,8 +55,9 @@ const NavLocaleSelector: React.FC<INavLocaleSelectorProps> = ({ compact = false 
             <MenuList padding="0" minW={'4xs'} maxW={'3xs'} bgColor={menuBgColor}>
                 {router.locales?.map((locale: string) => {
                     const localeName = localesInfos[locale as keyof typeof localesInfos];
+                    const isCurrentLocale = locale !== router.locale;
                     return (
-                        <MenuItem key={locale}>
+                        <MenuItem key={locale} cursor={isCurrentLocale ? 'default' : 'pointer'}>
                             <LinkBox
                             // paddingX="4"
                             // paddingY="2"
