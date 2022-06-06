@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import apolloClient from '../../../graphql/apollo-client';
 import { ShopCategoriesData } from '../../../graphql/models/shop/category.model';
-import { GET_SHOP_CATEGORIES } from '../../../graphql/queries/product';
+import { GET_SHOP_CATEGORIES } from '../../../graphql/queries/shop';
 
 // interface CategoryProducts {
 //     count: number;
