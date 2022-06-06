@@ -10,15 +10,6 @@ import { API_BASE_URL } from '../../../constants/api';
 import ShopCategory, { ShopCategoriesData } from '../../../graphql/models/shop/category.model';
 import { CategoryResponse } from '../../api/shop/category';
 
-// export const getStaticProps = wrapper.getStaticProps((store) => () => {
-//     const products = getSortedProductData();
-//     store.dispatch({ type: SET_PRODUCTS_DATA, products: products });
-
-//     return {
-//         props: {}
-//     };
-// });
-
 export const getStaticProps: GetStaticProps = async ({ params }) => {
     try {
         const slug = params?.slug;
