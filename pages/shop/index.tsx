@@ -71,7 +71,7 @@ export default function ShopPage({ categories }: ShopPageProps) {
                                 key={category.slug}
                                 slug={category.slug}
                                 title={category.name}
-                                image={''}
+                                image={category.picture.url}
                                 shortDescription={category.description}
                                 // products={category.products.featured}
                                 // productsCount={category.products.count}
