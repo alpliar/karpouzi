@@ -60,8 +60,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 const CategoryPage: NextPage = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
-    // const { products } = useSelector((state: RootState) => state.server);
-
     if (!props.category) return null;
 
     const category = props.category as ShopCategory;
