@@ -23,7 +23,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<CategoryRespons
             category
         });
     } else {
-        res.status(200).json({
+        res.status(404).json({
             error: 'Could not fetch shop category: ' + error?.message
         });
     }
