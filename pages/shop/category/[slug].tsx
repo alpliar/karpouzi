@@ -1,4 +1,4 @@
-import { SimpleGrid } from '@chakra-ui/layout';
+import { Alert, SimpleGrid } from '@chakra-ui/react';
 import axios from 'axios';
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType, NextPage } from 'next';
 import BlockQuote from '../../../components/blockQuote';
@@ -89,15 +89,19 @@ const CategoryPage: NextPage = (props: InferGetStaticPropsType<typeof getStaticP
             ]}
             introSlot={<BlockQuote noOfLines={3}>{category.description}</BlockQuote>}
             titleSlot={<ShopStat label="Products" number={category.products.length ?? 0} />}>
-            <SimpleGrid columns={{ base: 1, sm: 2, md: 3, xl: 4 }} spacing={4}>
-                {category.products.map((product) => {
-                    return (
-                        <>
-                            <ProductCard key={product.id} product={product} />
-                        </>
-                    );
-                })}
-            </SimpleGrid>
+            {!!category.products.length ? (
+                <SimpleGrid columns={{ base: 1, sm: 2, md: 3, xl: 4 }} spacing={4}>
+                    {category.products.map((product) => {
+                        return (
+                            <>
+                                <ProductCard key={product.id} product={product} />
+                            </>
+                        );
+                    })}
+                </SimpleGrid>
+            ) : (
+                <Alert>No products to show</Alert>
+            )}
         </PageListingLayout>
     );
 };
