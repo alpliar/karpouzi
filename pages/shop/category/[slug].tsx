@@ -38,9 +38,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         };
     } catch (err) {
         return {
-            props: {
-                category: undefined
-            }
+            notFound: true
         };
     }
 };
