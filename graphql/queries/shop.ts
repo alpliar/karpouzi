@@ -49,6 +49,18 @@ export const GET_SHOP_CATEGORY = gql`
                     currency
                     measurementUnit
                 }
+                reviews {
+                    id
+                    author {
+                        firstName
+                        postalAddress {
+                            countryName
+                        }
+                    }
+                    message
+                    rating
+                    isVerified
+                }
             }
         }
     }

@@ -1,8 +1,16 @@
 import Asset from '../common/asset.model';
 import { Id } from '../common/types.model';
-import Product from './product.model';
+import Product, { ProductExcerpt } from './product.model';
 
-interface ShopCategory {
+export interface ShopCategoryExcerpt {
+    id: Id;
+    slug: string;
+    name: string;
+    picture: Asset;
+    description: string;
+    products: Array<ProductExcerpt>;
+}
+export default interface ShopCategory {
     id: Id;
     slug: string;
     name: string;
@@ -12,10 +20,8 @@ interface ShopCategory {
 }
 
 export interface ShopCategoriesData {
-    categories: Array<ShopCategory>;
+    categories: Array<ShopCategoryExcerpt>;
 }
 export interface ShopCategoryData {
-    category: ShopCategory;
+    category: ShopCategoryExcerpt;
 }
-
-export default ShopCategory;

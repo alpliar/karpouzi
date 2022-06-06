@@ -4,7 +4,7 @@ import { Id } from '../common/types.model';
 export interface ReviewExcerpt {
     id: Id;
     message?: string;
-    rating?: number;
+    rating: number;
     isVerified?: boolean;
     author?: Person;
 }

@@ -1,5 +1,6 @@
 import Asset from '../common/asset.model';
 import { Id } from '../common/types.model';
+import Review, { ReviewExcerpt } from './review.model';
 
 enum MeasurementUnits {
     PER_UNIT = 'PER_UNIT',
@@ -11,6 +12,11 @@ enum MeasurementUnits {
 export interface ProductExcerpt {
     id: Id;
     name: string;
+    slug: string;
+    description: string;
+    picture: Asset;
+    prices: Array<Price>;
+    reviews: Array<ReviewExcerpt>;
 }
 
 export interface Price {
@@ -20,10 +26,11 @@ export interface Price {
 }
 
 export default interface Product {
-    id: string;
+    id: Id;
     name: string;
     slug: string;
     description: string;
     picture: Asset;
     prices: Array<Price>;
+    reviews: Array<Review>;
 }

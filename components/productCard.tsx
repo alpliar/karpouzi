@@ -2,14 +2,14 @@ import { BellIcon, TriangleDownIcon } from '@chakra-ui/icons';
 import { Img } from '@chakra-ui/image';
 import { Box, Heading, LinkBox, LinkOverlay, Stack, Text } from '@chakra-ui/layout';
 import { useBreakpointValue } from '@chakra-ui/media-query';
-import { ComponentWithAs } from '@chakra-ui/system';
 import { IconProps } from '@chakra-ui/react';
+import { ComponentWithAs } from '@chakra-ui/system';
 import Link from 'next/link';
 import { IconType } from 'react-icons';
+import { ProductExcerpt } from '../graphql/models/shop/product.model';
 import Card from './card';
 import ProductCardBadge from './productCardBadge';
 import Rating from './rating';
-import Product from '../graphql/models/shop/product.model';
 
 interface IProps {
     // slug: string;
@@ -20,7 +20,7 @@ interface IProps {
     // isNew: boolean;
     // reviewCount: number;
     // rating: number;
-    product: Product;
+    product: ProductExcerpt;
     ratingIcon?: IconType | ComponentWithAs<'svg', IconProps>;
 }
 
@@ -29,8 +29,9 @@ const ProductCard: React.FC<IProps> = ({ product, ratingIcon = undefined }) => {
     const fallbackPicture = '';
     const isNew = true;
     const formattedPrice = '1.00 €';
-    const rating = 2;
-    const reviewCount = 2;
+    const reviewCount = product.reviews.length;
+    const rating =
+        product.reviews.map((rev) => rev.rating).reduce((a, b) => a + b, 0) / reviewCount;
     const measurementUnit = '/ piece';
 
     return (

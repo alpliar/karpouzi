@@ -1,9 +1,12 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import apolloClient from '../../../graphql/apollo-client';
-import ShopCategory, { ShopCategoriesData } from '../../../graphql/models/shop/category.model';
+import {
+    ShopCategoriesData,
+    ShopCategoryExcerpt
+} from '../../../graphql/models/shop/category.model';
 import { GET_SHOP_CATEGORIES } from '../../../graphql/queries/shop';
 interface CategoriesResponse {
-    categories?: ShopCategory[];
+    categories?: ShopCategoryExcerpt[];
     error?: string;
 }
 

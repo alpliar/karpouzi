@@ -6,7 +6,10 @@ import PageListingLayout from '../../../components/pageListingLayout';
 import ProductCard from '../../../components/productCard';
 import ShopStat from '../../../components/shopStat';
 import { API_BASE_URL } from '../../../constants/api';
-import ShopCategory, { ShopCategoriesData } from '../../../graphql/models/shop/category.model';
+import {
+    ShopCategoriesData,
+    ShopCategoryExcerpt
+} from '../../../graphql/models/shop/category.model';
 import { CategoryResponse } from '../../api/shop/category';
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
@@ -61,7 +64,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 const CategoryPage: NextPage = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
     if (!props.category) return null;
 
-    const category = props.category as ShopCategory;
+    const category = props.category as ShopCategoryExcerpt;
 
     return (
         <PageListingLayout
