@@ -38,3 +38,10 @@ export default interface Product {
 export interface ProductData {
     product: Product;
 }
+
+export interface ProductSlug {
+    slug: string;
+}
+export interface ShopProductsData {
+    products: Array<ProductSlug>;
+}

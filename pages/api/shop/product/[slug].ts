@@ -9,7 +9,7 @@ export interface ProductResponse {
 }
 
 const handler = async (req: NextApiRequest, res: NextApiResponse<ProductResponse>) => {
-    const { slug } = req.body;
+    const { slug } = req.query;
 
     const { data, error } = await apolloClient.query<ProductData>({
         query: GET_SHOP_PRODUCT,

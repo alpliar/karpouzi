@@ -33,3 +33,11 @@ export const GET_SHOP_PRODUCT = gql`
         }
     }
 `;
+
+export const GET_SHOP_PRODUCTS = gql`
+    query GetShopProducts {
+        products {
+            slug
+        }
+    }
+`;
