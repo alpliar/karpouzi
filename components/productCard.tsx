@@ -108,9 +108,9 @@ const ProductCard: React.FC<IProps> = ({
                         <Text as="b" fontSize="3xl">
                             {formattedPrice}
                         </Text>
-                        <Text as="span" /*color="gray.600"*/ fontSize="sm">
+                        {/*<Text as="span" fontSize="sm">
                             / piece
-                        </Text>
+                        </Text>*/}
                     </Box>
                 </Stack>
             </Card>

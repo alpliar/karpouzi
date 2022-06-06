@@ -44,6 +44,11 @@ export const GET_SHOP_CATEGORY = gql`
                     fileName
                     mimeType
                 }
+                prices {
+                    amount
+                    currency
+                    measurementUnit
+                }
             }
         }
     }

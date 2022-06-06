@@ -1,18 +1,9 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import apolloClient from '../../../graphql/apollo-client';
-import { ShopCategoriesData } from '../../../graphql/models/shop/category.model';
+import ShopCategory, { ShopCategoriesData } from '../../../graphql/models/shop/category.model';
 import { GET_SHOP_CATEGORIES } from '../../../graphql/queries/shop';
-
-interface Category {
-    slug: string;
-    name: string;
-    description: string;
-    image: string;
-    // products: CategoryProducts;
-}
-
 interface CategoriesResponse {
-    categories?: Category[];
+    categories?: ShopCategory[];
     error?: string;
 }
 
@@ -31,14 +22,11 @@ const handler = async (
 
     if (!errors && categories !== undefined) {
         res.status(200).json({
-            categories: categories.map((category) => {
-                const { slug, name, description, picture } = category;
-                return { slug, name, description, image: picture?.url };
-            })
+            categories
         });
     } else {
         if (errors) console.warn('KO******', errors);
-        res.status(200).json({
+        res.status(404).json({
             categories: [],
             error: 'Could not fetch shop categories: '
         });

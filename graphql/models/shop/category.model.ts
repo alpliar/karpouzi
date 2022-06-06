@@ -1,30 +1,6 @@
+import Asset from '../common/asset.model';
 import { Id } from '../common/types.model';
-
-interface Asset {
-    id: Id;
-    url: string;
-    fileName: string;
-    mimeType: string;
-    createdAt: string;
-}
-
-interface ProductExcerpt {
-    id: Id;
-    name: string;
-}
-
-interface Price {
-    amount: number;
-    currency: 'EUR' | 'USD' | 'JPY' | 'CHF';
-}
-
-interface Product {
-    name: string;
-    slug: string;
-    description: string;
-    picture: Asset;
-    prices: Array<Price>;
-}
+import Product from './product.model';
 
 interface ShopCategory {
     id: Id;
@@ -32,7 +8,7 @@ interface ShopCategory {
     name: string;
     picture: Asset;
     description: string;
-    products: Array<ProductExcerpt | Product>;
+    products: Array<Product>;
 }
 
 export interface ShopCategoriesData {
