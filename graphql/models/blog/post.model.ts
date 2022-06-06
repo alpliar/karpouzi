@@ -16,9 +16,6 @@ export interface BlogPostData {
     post: BlogPost;
 }
 
-export interface BlogPostSlug {
-    slug: string;
-}
 export interface BlogPostsData {
     posts: Array<BlogPost>;
 }

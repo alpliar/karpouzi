@@ -9,8 +9,7 @@ import BlockQuote from '../../../components/blockQuote';
 import Date from '../../../components/Date';
 import PageListingLayout from '../../../components/pageListingLayout';
 import { API_BASE_URL } from '../../../constants/api';
-import BlogPost from '../../../graphql/models/blog/post.model';
-import { getAllPostIds } from '../../../lib/posts';
+import BlogPost, { BlogPostsData } from '../../../graphql/models/blog/post.model';
 import { BlogPostResponse } from '../../api/blog/post/[slug]';
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
@@ -32,6 +31,31 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         // console.error(err);
         return {
             notFound: true
+        };
+    }
+};
+
+export const getStaticPaths: GetStaticPaths = async () => {
+    try {
+        const {
+            data: { posts }
+        } = await axios.post<BlogPostsData>(API_BASE_URL + '/blog/posts');
+
+        if (!posts) throw new Error('Could not fetch blog posts data');
+
+        return {
+            paths: posts.map(({ slug }) => ({
+                params: {
+                    slug
+                },
+                locale: 'en'
+            })),
+            fallback: true
+        };
+    } catch (err) {
+        return {
+            paths: [],
+            fallback: true
         };
     }
 };
@@ -95,14 +119,6 @@ const BlogPostPage = ({ post }: { post: BlogPost }) => {
             </Stack>
         </PageListingLayout>
     );
-};
-
-export const getStaticPaths: GetStaticPaths = async () => {
-    const paths = await getAllPostIds();
-    return {
-        paths,
-        fallback: true
-    };
 };
 
 export default BlogPostPage;
