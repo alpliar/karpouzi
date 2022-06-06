@@ -1,42 +1,74 @@
-import { SimpleGrid } from '@chakra-ui/layout';
-import { GetStaticPaths, NextPage } from 'next';
-import { GiTomato } from 'react-icons/gi';
-import { useSelector } from 'react-redux';
-import { SET_PRODUCTS_DATA } from '../../../actions/shop';
+import { Alert, SimpleGrid } from '@chakra-ui/react';
+import axios from 'axios';
+import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType, NextPage } from 'next';
 import BlockQuote from '../../../components/blockQuote';
 import PageListingLayout from '../../../components/pageListingLayout';
 import ProductCard from '../../../components/productCard';
 import ShopStat from '../../../components/shopStat';
-import { getSortedProductData } from '../../../lib/products';
-import { RootState } from '../../../reducer';
-import { Product } from '../../../reducer/server';
-import { wrapper } from '../../../store';
+import { API_BASE_URL } from '../../../constants/api';
+import {
+    ShopCategoriesData,
+    ShopCategoryExcerpt
+} from '../../../graphql/models/shop/category.model';
+import { CategoryResponse } from '../../api/shop/category';
 
-export const getStaticProps = wrapper.getStaticProps((store) => () => {
-    const products = getSortedProductData();
-    store.dispatch({ type: SET_PRODUCTS_DATA, products: products });
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+    try {
+        const slug = params?.slug;
 
-    return {
-        props: {}
-    };
-});
+        const {
+            data: { category }
+        } = await axios.post<CategoryResponse>(API_BASE_URL + '/shop/category', {
+            slug
+        });
 
-export const getStaticPaths: GetStaticPaths = async () => {
-    return {
-        paths: [
-            { params: { slug: 'fruits' }, locale: 'en' },
-            { params: { slug: 'veggies' }, locale: 'en' }
-        ],
-        fallback: true
-    };
+        if (!category) throw new Error('Could not fetch category data');
+
+        return {
+            props: {
+                category: category
+            }
+        };
+    } catch (err) {
+        return {
+            notFound: true
+        };
+    }
 };
 
-const CategoryPage: NextPage = () => {
-    const { products } = useSelector((state: RootState) => state.server);
+export const getStaticPaths: GetStaticPaths = async () => {
+    try {
+        const {
+            data: { categories }
+        } = await axios.post<ShopCategoriesData>(API_BASE_URL + '/shop/categories');
+
+        if (!categories) throw new Error('Could not fetch categories data');
+
+        return {
+            paths: categories.map(({ slug }) => ({
+                params: {
+                    slug
+                },
+                locale: 'en'
+            })),
+            fallback: true
+        };
+    } catch (err) {
+        return {
+            paths: [],
+            fallback: true
+        };
+    }
+};
+
+const CategoryPage: NextPage = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
+    if (!props.category) return null;
+
+    const category = props.category as ShopCategoryExcerpt;
 
     return (
         <PageListingLayout
-            title="Fruits"
+            title={category.name}
             breadcrumbs={[
                 {
                     text: 'Home',
@@ -49,38 +81,27 @@ const CategoryPage: NextPage = () => {
                     alt: 'go to shop home'
                 },
                 {
-                    text: 'category',
-                    link: '/shop/category/fruits',
-                    alt: 'fruits page',
+                    text: category.name,
+                    link: `/shop/category/${category.slug}`,
+                    alt: `${category.name} page`,
                     isCurrentPage: true
                 }
             ]}
-            introSlot={
-                <BlockQuote noOfLines={3}>
-                    Case had never seen him wear the same suit twice, although his wardrobe seemed
-                    to consist entirely of meticulous reconstruction’s of garments of the blowers
-                    and the amplified breathing of the fighters.
-                </BlockQuote>
-            }
-            titleSlot={<ShopStat label="Products" number={products?.length ?? 0} />}>
-            <SimpleGrid columns={{ base: 1, sm: 2, md: 3, xl: 4 }} spacing={4}>
-                {products &&
-                    products.length &&
-                    products.map((product: Product, index: number) => (
-                        <ProductCard
-                            key={`${product.slug}-${index}`}
-                            slug={product.slug}
-                            title={product.title}
-                            imageUrl={product.imageUrl}
-                            imageAlt={`${product.title} picture`}
-                            formattedPrice={product.price}
-                            isNew={product.isNew}
-                            reviewCount={product.reviewCount}
-                            rating={product.rating}
-                            ratingIcon={GiTomato}
-                        />
-                    ))}
-            </SimpleGrid>
+            introSlot={<BlockQuote noOfLines={3}>{category.description}</BlockQuote>}
+            titleSlot={<ShopStat label="Products" number={category.products.length ?? 0} />}>
+            {!!category.products.length ? (
+                <SimpleGrid columns={{ base: 1, sm: 2, md: 3, xl: 4 }} spacing={4}>
+                    {category.products.map((product) => {
+                        return (
+                            <>
+                                <ProductCard key={product.id} product={product} />
+                            </>
+                        );
+                    })}
+                </SimpleGrid>
+            ) : (
+                <Alert>No products to show</Alert>
+            )}
         </PageListingLayout>
     );
 };

@@ -40,7 +40,7 @@ const HelperText: React.FC<PropsWithChildren<unknown>> = ({ children }) => {
     );
 };
 
-const Page: NextPage = () => {
+const UserAccountPage: NextPage = () => {
     const { formatMessage } = useIntl();
     const f = (id: string) => formatMessage({ id });
     const router = useRouter();
@@ -183,4 +183,4 @@ const Page: NextPage = () => {
     );
 };
 
-export default Page;
+export default UserAccountPage;

@@ -5,18 +5,16 @@ import CategoryCard from '../../components/categoryCard';
 import PageListingLayout from '../../components/pageListingLayout';
 import ShopStat from '../../components/shopStat';
 import { API_BASE_URL } from '../../constants/api';
+import ShopCategory from '../../graphql/models/shop/category.model';
 
 export async function getStaticProps() {
     const response = await fetch(API_BASE_URL + '/shop/categories');
 
-    const data = await response.json();
+    const { categories } = await response.json();
 
-    if (!data.categories) {
+    if (!categories) {
         return { notFound: true };
     }
-
-    const categories = data.categories as Category;
-    // console.log(categories);
 
     return {
         props: {
@@ -25,23 +23,8 @@ export async function getStaticProps() {
     };
 }
 
-type Product = unknown;
-
-export interface CategoryProducts {
-    count: number;
-    featured?: Array<Product>;
-}
-
-interface Category {
-    slug: string;
-    name: string;
-    description: string;
-    products: CategoryProducts;
-    image?: string;
-}
-
 type ShopPageProps = {
-    categories: Category[];
+    categories: ShopCategory[];
 };
 
 export default function ShopPage({ categories }: ShopPageProps) {
@@ -80,14 +63,14 @@ export default function ShopPage({ categories }: ShopPageProps) {
             }>
             <SimpleGrid columns={{ base: 1, sm: 2, md: 3, xl: 4 }} spacing={4}>
                 {categories &&
-                    categories.map((category: Category) => {
+                    categories.map((category) => {
                         return (
                             <CategoryCard
                                 fullHeight
                                 key={category.slug}
                                 slug={category.slug}
                                 title={category.name}
-                                image={category.image || ''}
+                                image={category.picture.url || ''}
                                 shortDescription={category.description}
                                 // products={category.products.featured}
                                 // productsCount={category.products.count}

@@ -2,38 +2,38 @@ import { BellIcon, TriangleDownIcon } from '@chakra-ui/icons';
 import { Img } from '@chakra-ui/image';
 import { Box, Heading, LinkBox, LinkOverlay, Stack, Text } from '@chakra-ui/layout';
 import { useBreakpointValue } from '@chakra-ui/media-query';
-import { ComponentWithAs } from '@chakra-ui/system';
 import { IconProps } from '@chakra-ui/react';
+import { ComponentWithAs } from '@chakra-ui/system';
 import Link from 'next/link';
 import { IconType } from 'react-icons';
+import { ProductExcerpt } from '../graphql/models/shop/product.model';
 import Card from './card';
 import ProductCardBadge from './productCardBadge';
 import Rating from './rating';
 
 interface IProps {
-    slug: string;
-    imageUrl: string;
-    imageAlt: string;
-    title: string;
-    formattedPrice: string;
-    isNew: boolean;
-    reviewCount: number;
-    rating: number;
+    // slug: string;
+    // imageUrl: string;
+    // imageAlt: string;
+    // title: string;
+    // formattedPrice: string;
+    // isNew: boolean;
+    // reviewCount: number;
+    // rating: number;
+    product: ProductExcerpt;
     ratingIcon?: IconType | ComponentWithAs<'svg', IconProps>;
 }
 
-const ProductCard: React.FC<IProps> = ({
-    slug,
-    imageUrl,
-    imageAlt,
-    title,
-    formattedPrice,
-    isNew,
-    reviewCount,
-    rating,
-    ratingIcon = undefined
-}) => {
+const ProductCard: React.FC<IProps> = ({ product, ratingIcon = undefined }) => {
     const imageHeight = useBreakpointValue({ base: 64, sm: 48, md: 48, lg: 64 });
+    const fallbackPicture = '';
+    const isNew = true;
+    const price = product.prices.find(({ currency }) => currency === 'EUR');
+    const formattedPrice = `${price?.amount} ${price?.currency}`;
+    const reviewCount = product.reviews.length;
+    const rating =
+        product.reviews.map((rev) => rev.rating).reduce((a, b) => a + b, 0) / reviewCount;
+    const measurementUnit = price?.measurementUnit;
 
     return (
         <LinkBox>
@@ -47,7 +47,12 @@ const ProductCard: React.FC<IProps> = ({
                     mb={6}
                     pos={'relative'}
                     overflow="hidden">
-                    <Img objectFit="cover" minH={imageHeight} src={imageUrl} alt={imageAlt} />
+                    <Img
+                        objectFit="cover"
+                        minH={imageHeight}
+                        src={product.picture.url || fallbackPicture}
+                        alt={`${product.name} picture`}
+                    />
                     {isNew && (
                         <ProductCardBadge
                             icon={isNew ? BellIcon : TriangleDownIcon}
@@ -85,7 +90,7 @@ const ProductCard: React.FC<IProps> = ({
                             passHref
                             href={{
                                 pathname: '/shop/product/[slug]',
-                                query: { slug }
+                                query: { slug: product.slug }
                             }}>
                             <LinkOverlay>
                                 <Heading
@@ -94,7 +99,7 @@ const ProductCard: React.FC<IProps> = ({
                                     _hover={{
                                         textShadow: '0.5px 0.5px 0.5px teal'
                                     }}>
-                                    {title}
+                                    {product.name}
                                 </Heading>
                             </LinkOverlay>
                         </Link>
@@ -105,11 +110,12 @@ const ProductCard: React.FC<IProps> = ({
                     </Box>
 
                     <Box>
-                        <Text as="b" fontSize="3xl">
+                        <Text as="b" fontSize="2xl">
                             {formattedPrice}
                         </Text>
-                        <Text as="span" /*color="gray.600"*/ fontSize="sm">
-                            / piece
+                        {` `}
+                        <Text as="span" fontSize="xs">
+                            {measurementUnit}
                         </Text>
                     </Box>
                 </Stack>
