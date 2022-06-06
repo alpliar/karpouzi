@@ -1,7 +1,6 @@
-import { SET_POSTS_DATA } from '../actions/blog';
 import { HYDRATE } from 'next-redux-wrapper';
-import { SET_PRODUCTS_DATA } from '../actions/shop';
 import { AnyAction } from 'redux';
+import { SET_POSTS_DATA } from '../actions/blog';
 
 export interface Post {
     id: string;
@@ -9,25 +8,12 @@ export interface Post {
     date: string;
 }
 
-export interface Product {
-    slug: string;
-    title: string;
-    date: string;
-    price: string;
-    rating: number;
-    reviewCount: number;
-    isNew: boolean;
-    imageUrl: string;
-}
-
 export interface ServerState {
     posts: Array<Post>;
-    products: Array<Product>;
 }
 
 const initialState: ServerState = {
-    posts: [],
-    products: []
+    posts: []
 };
 
 const serverReducer = (state = initialState, action: AnyAction): ServerState => {
@@ -36,8 +22,6 @@ const serverReducer = (state = initialState, action: AnyAction): ServerState => 
             return { ...state, ...action.payload.server };
         case SET_POSTS_DATA:
             return { ...state, posts: action.posts };
-        case SET_PRODUCTS_DATA:
-            return { ...state, products: action.products };
         default:
             return state;
     }
