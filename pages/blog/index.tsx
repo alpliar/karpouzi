@@ -1,23 +1,29 @@
-import { NextPage } from 'next';
+import { GetStaticProps } from 'next';
 import { useIntl } from 'react-intl';
-import { useSelector } from 'react-redux';
-import { SET_POSTS_DATA } from '../../actions/blog';
 import BlockQuote from '../../components/blockQuote';
 import LatestsPosts from '../../components/LatestsPosts';
 import PageListingLayout from '../../components/pageListingLayout';
 import ShopStat from '../../components/shopStat';
-import { getSortedPostsData } from '../../lib/posts';
-import { RootState } from '../../reducer';
-import { wrapper } from '../../store';
+import { API_BASE_URL } from '../../constants/api';
+import BlogPost from '../../graphql/models/blog/post.model';
 
-export const getStaticProps = wrapper.getStaticProps((store) => () => {
-    // const postsData = getSortedPostsData();
-    store.dispatch({ type: SET_POSTS_DATA, posts: getSortedPostsData() });
-    return { props: {} };
-});
+export const getStaticProps: GetStaticProps = async () => {
+    const response = await fetch(API_BASE_URL + '/blog/posts');
 
-const BlogHome: NextPage = () => {
-    const { posts } = useSelector((state: RootState) => state.server);
+    const { posts } = await response.json();
+
+    if (!posts) {
+        return { notFound: true };
+    }
+
+    return {
+        props: {
+            posts
+        }
+    };
+};
+
+const BlogHome = ({ posts }: { posts: Array<BlogPost> }) => {
     const intl = useIntl();
     const f = (id: string) => intl.formatMessage({ id });
 
