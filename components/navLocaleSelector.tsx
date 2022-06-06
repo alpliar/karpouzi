@@ -67,11 +67,13 @@ const NavLocaleSelector: React.FC<INavLocaleSelectorProps> = ({ compact = false 
                             //     // color: itemHoverColor
                             // }}
                             >
-                                <NextLink href={router.pathname} passHref locale={locale}>
+                                <NextLink href={router.asPath} passHref locale={locale}>
                                     <LinkOverlay
                                         flexGrow={1}
                                         title={`choose ${locale}`}
-                                        onClick={() => handleClick(locale)}>
+                                        onClick={() => {
+                                            handleClick(locale);
+                                        }}>
                                         {getFlagEmoji(locale === 'en' ? 'gb' : locale)}
                                         &nbsp;
                                         {localeName}
