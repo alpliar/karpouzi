@@ -8,6 +8,13 @@ export const GET_BLOG_POST = gql`
             title
             subtitle
             content
+            picture {
+                id
+                fileName
+                mimeType
+                createdAt
+                url(transformation: { image: { resize: { height: 300, width: 300 } } })
+            }
             authors {
                 id
                 firstName
@@ -40,6 +47,13 @@ export const GET_BLOG_POSTS = gql`
             title
             subtitle
             content
+            picture {
+                id
+                fileName
+                mimeType
+                createdAt
+                url(transformation: { image: { resize: { height: 300, width: 300 } } })
+            }
             authors {
                 id
                 firstName
