@@ -29,7 +29,7 @@ const Rating = ({ rate, count, icon = GiWatermelon }: IOwnProps) => {
                 /* isTruncated */ as="span"
                 marginLeft={!!count ? 2 : 0}
                 /*color="gray.600"*/ fontSize="sm">
-                {count.toString()} review{!!count ?? 's'}
+                {!!count ? count.toString() : 'No'} review{!!count ? 's' : ' yet'}
             </Text>
         </Flex>
     );
