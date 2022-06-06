@@ -20,3 +20,31 @@ export const GET_SHOP_CATEGORIES = gql`
         }
     }
 `;
+
+export const GET_SHOP_CATEGORY = gql`
+    query GetShopCategory($slug: String!) {
+        category: shopCategory(where: { slug: $slug }) {
+            name
+            slug
+            description
+            picture {
+                id
+                url(transformation: { image: { resize: { width: 300, height: 300 } } })
+                fileName
+                mimeType
+            }
+            products {
+                id
+                name
+                slug
+                description
+                picture {
+                    id
+                    url(transformation: { image: { resize: { width: 300, height: 300 } } })
+                    fileName
+                    mimeType
+                }
+            }
+        }
+    }
+`;
