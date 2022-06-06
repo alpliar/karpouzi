@@ -1,4 +1,5 @@
 import { SimpleGrid } from '@chakra-ui/layout';
+import { GetStaticProps } from 'next';
 import { useIntl } from 'react-intl';
 import BlockQuote from '../../components/blockQuote';
 import CategoryCard from '../../components/categoryCard';
@@ -7,7 +8,7 @@ import ShopStat from '../../components/shopStat';
 import { API_BASE_URL } from '../../constants/api';
 import ShopCategory from '../../graphql/models/shop/category.model';
 
-export async function getStaticProps() {
+export const getStaticProps: GetStaticProps = async () => {
     const response = await fetch(API_BASE_URL + '/shop/categories');
 
     const { categories } = await response.json();
@@ -21,7 +22,7 @@ export async function getStaticProps() {
             categories
         }
     };
-}
+};
 
 type ShopPageProps = {
     categories: ShopCategory[];
