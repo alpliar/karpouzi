@@ -1,7 +1,6 @@
 import { SimpleGrid } from '@chakra-ui/layout';
 import axios from 'axios';
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType, NextPage } from 'next';
-import { GiTomato } from 'react-icons/gi';
 import BlockQuote from '../../../components/blockQuote';
 import PageListingLayout from '../../../components/pageListingLayout';
 import ProductCard from '../../../components/productCard';
