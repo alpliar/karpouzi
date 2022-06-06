@@ -28,11 +28,12 @@ const ProductCard: React.FC<IProps> = ({ product, ratingIcon = undefined }) => {
     const imageHeight = useBreakpointValue({ base: 64, sm: 48, md: 48, lg: 64 });
     const fallbackPicture = '';
     const isNew = true;
-    const formattedPrice = '1.00 €';
+    const price = product.prices.find(({ currency }) => currency === 'EUR');
+    const formattedPrice = `${price?.amount} ${price?.currency}`;
     const reviewCount = product.reviews.length;
     const rating =
         product.reviews.map((rev) => rev.rating).reduce((a, b) => a + b, 0) / reviewCount;
-    const measurementUnit = '/ piece';
+    const measurementUnit = price?.measurementUnit;
 
     return (
         <LinkBox>
@@ -109,10 +110,11 @@ const ProductCard: React.FC<IProps> = ({ product, ratingIcon = undefined }) => {
                     </Box>
 
                     <Box>
-                        <Text as="b" fontSize="3xl">
+                        <Text as="b" fontSize="2xl">
                             {formattedPrice}
                         </Text>
-                        <Text as="span" fontSize="sm">
+                        {` `}
+                        <Text as="span" fontSize="xs">
                             {measurementUnit}
                         </Text>
                     </Box>
