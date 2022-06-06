@@ -34,3 +34,7 @@ export default interface Product {
     prices: Array<Price>;
     reviews: Array<Review>;
 }
+
+export interface ProductData {
+    product: Product;
+}

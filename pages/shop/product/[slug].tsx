@@ -1,32 +1,38 @@
 import { BellIcon } from '@chakra-ui/icons';
 import { Img } from '@chakra-ui/image';
 import { Badge, Box, Container, Divider, SimpleGrid, Text } from '@chakra-ui/layout';
+import axios from 'axios';
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType, NextPage } from 'next';
 import Head from 'next/head';
 import BlockQuote from '../../../components/blockQuote';
 import PageListingLayout from '../../../components/pageListingLayout';
 import Rating from '../../../components/rating';
+import { API_BASE_URL } from '../../../constants/api';
 import AddToCart from '../../../container/addToCart';
-import { getAllProductIds, getProductData } from '../../../lib/products';
+import { getAllProductIds } from '../../../lib/products';
 import { sanitizeText } from '../../../utils/sanitize';
+import { ProductResponse } from '../../api/shop/product/[slug]';
 
-export const getStaticProps: GetStaticProps = async (context) => {
+export const getStaticProps: GetStaticProps = async ({ params }) => {
     try {
-        const product = context.params?.slug
-            ? await getProductData(context.params.slug?.toLocaleString())
-            : undefined;
+        const slug = params?.slug;
+
+        const {
+            data: { product }
+        } = await axios.get<ProductResponse>(API_BASE_URL + '/shop/product' + slug);
+
+        if (!product) throw new Error('Could not fetch category data');
+
         return {
             props: {
                 product
             }
         };
-    } catch (_err) {
-        // console.warn(err);
+    } catch (err) {
+        return {
+            notFound: true
+        };
     }
-
-    return {
-        props: {}
-    };
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
