@@ -91,18 +91,7 @@ const CategoryPage: NextPage = (props: InferGetStaticPropsType<typeof getStaticP
                 {category.products.map((product) => {
                     return (
                         <>
-                            <ProductCard
-                                key={product.id}
-                                slug={product.slug}
-                                title={product.name}
-                                imageUrl={product.picture.url}
-                                imageAlt={`${product.name} picture`}
-                                formattedPrice={`price`}
-                                isNew={false}
-                                reviewCount={0}
-                                rating={0}
-                                ratingIcon={GiTomato}
-                            />
+                            <ProductCard key={product.id} product={product} />
                         </>
                     );
                 })}

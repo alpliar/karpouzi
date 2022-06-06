@@ -9,31 +9,29 @@ import { IconType } from 'react-icons';
 import Card from './card';
 import ProductCardBadge from './productCardBadge';
 import Rating from './rating';
+import Product from '../graphql/models/shop/product.model';
 
 interface IProps {
-    slug: string;
-    imageUrl: string;
-    imageAlt: string;
-    title: string;
-    formattedPrice: string;
-    isNew: boolean;
-    reviewCount: number;
-    rating: number;
+    // slug: string;
+    // imageUrl: string;
+    // imageAlt: string;
+    // title: string;
+    // formattedPrice: string;
+    // isNew: boolean;
+    // reviewCount: number;
+    // rating: number;
+    product: Product;
     ratingIcon?: IconType | ComponentWithAs<'svg', IconProps>;
 }
 
-const ProductCard: React.FC<IProps> = ({
-    slug,
-    imageUrl,
-    imageAlt,
-    title,
-    formattedPrice,
-    isNew,
-    reviewCount,
-    rating,
-    ratingIcon = undefined
-}) => {
+const ProductCard: React.FC<IProps> = ({ product, ratingIcon = undefined }) => {
     const imageHeight = useBreakpointValue({ base: 64, sm: 48, md: 48, lg: 64 });
+    const fallbackPicture = '';
+    const isNew = true;
+    const formattedPrice = '1.00 €';
+    const rating = 2;
+    const reviewCount = 2;
+    const measurementUnit = '/ piece';
 
     return (
         <LinkBox>
@@ -47,7 +45,12 @@ const ProductCard: React.FC<IProps> = ({
                     mb={6}
                     pos={'relative'}
                     overflow="hidden">
-                    <Img objectFit="cover" minH={imageHeight} src={imageUrl} alt={imageAlt} />
+                    <Img
+                        objectFit="cover"
+                        minH={imageHeight}
+                        src={product.picture.url || fallbackPicture}
+                        alt={`${product.name} picture`}
+                    />
                     {isNew && (
                         <ProductCardBadge
                             icon={isNew ? BellIcon : TriangleDownIcon}
@@ -85,7 +88,7 @@ const ProductCard: React.FC<IProps> = ({
                             passHref
                             href={{
                                 pathname: '/shop/product/[slug]',
-                                query: { slug }
+                                query: { slug: product.slug }
                             }}>
                             <LinkOverlay>
                                 <Heading
@@ -94,7 +97,7 @@ const ProductCard: React.FC<IProps> = ({
                                     _hover={{
                                         textShadow: '0.5px 0.5px 0.5px teal'
                                     }}>
-                                    {title}
+                                    {product.name}
                                 </Heading>
                             </LinkOverlay>
                         </Link>
@@ -108,9 +111,9 @@ const ProductCard: React.FC<IProps> = ({
                         <Text as="b" fontSize="3xl">
                             {formattedPrice}
                         </Text>
-                        {/*<Text as="span" fontSize="sm">
-                            / piece
-                        </Text>*/}
+                        <Text as="span" fontSize="sm">
+                            {measurementUnit}
+                        </Text>
                     </Box>
                 </Stack>
             </Card>
