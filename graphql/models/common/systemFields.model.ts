@@ -5,7 +5,7 @@ export interface GraphCMSUser {
     name: string;
 }
 
-export default interface SystemFields {
+export default interface GraphCMSSystemFields {
     id: Id;
     // scheduledIn: Array<unknown>;
     publishedBy?: string;

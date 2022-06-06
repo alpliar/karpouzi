@@ -1,38 +1,55 @@
 import Icon from '@chakra-ui/icon';
 import { Box, Heading, HStack, Stack, Text } from '@chakra-ui/layout';
 import { chakra } from '@chakra-ui/system';
-import { GetStaticPaths, GetStaticProps, GetStaticPropsContext, NextPage } from 'next';
+import axios from 'axios';
+import { GetStaticPaths, GetStaticProps } from 'next';
 import { GiFountainPen, GiOpenBook } from 'react-icons/gi';
 import Banner from '../../../components/banner';
 import BlockQuote from '../../../components/blockQuote';
 import Date from '../../../components/Date';
 import PageListingLayout from '../../../components/pageListingLayout';
-import { getAllPostIds, getPostData } from '../../../lib/posts';
-import { sanitizeText } from '../../../utils/sanitize';
+import { API_BASE_URL } from '../../../constants/api';
+import BlogPost from '../../../graphql/models/blog/post.model';
+import { getAllPostIds } from '../../../lib/posts';
+import { BlogPostResponse } from '../../api/blog/post/[slug]';
 
-interface Post {
-    id: string;
-    title: string;
-    date: string;
-    contentHtml: string;
-}
-interface Props {
-    postData: Post;
-}
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+    try {
+        const slug = params?.slug;
 
-const Page: NextPage<Props> = ({ postData }) => {
+        const {
+            data: { post }
+        } = await axios.get<BlogPostResponse>(API_BASE_URL + '/blog/post/' + slug);
+
+        if (!post) throw new Error('Could not fetch blogpost data');
+
+        return {
+            props: {
+                post
+            }
+        };
+    } catch (err) {
+        // console.error(err);
+        return {
+            notFound: true
+        };
+    }
+};
+
+const BlogPostPage = ({ post }: { post: BlogPost }) => {
+    if (!post) {
+        return null;
+    }
+
     const BlogBanner = chakra(Banner, {
         baseStyle: {
             maxWidth: '70ch'
         }
     });
 
-    if (!postData) {
-        return null;
-    }
     return (
         <PageListingLayout
-            title={postData.title}
+            title={post.title}
             breadcrumbs={[
                 {
                     text: 'Blog',
@@ -40,23 +57,23 @@ const Page: NextPage<Props> = ({ postData }) => {
                     alt: 'go back to blog home',
                     isCurrentPage: false
                 },
-                { text: postData.id, link: '', alt: '', isCurrentPage: true }
+                { text: post.slug, link: '', alt: '', isCurrentPage: true }
             ]}
             titleSlot={
                 <Stack spacing={0}>
                     <HStack>
                         <Icon as={GiOpenBook} />
-                        <Text>6min read</Text>
+                        <Text>{post.timeToRead} min read</Text>
                     </HStack>
                     <HStack>
                         <Icon as={GiFountainPen} />
-                        <Date dateString={postData.date} />
+                        <Date dateString={post.createdAt} />
                     </HStack>
                 </Stack>
             }
             introSlot={
                 <BlockQuote noOfLines={3} author="Author">
-                    Article subtitle goes there.
+                    {post.subtitle}
                 </BlockQuote>
             }
             bannerSlot={null}>
@@ -71,29 +88,13 @@ const Page: NextPage<Props> = ({ postData }) => {
                     </Stack>
                 </BlogBanner>
                 <Box>
-                    <Box
-                        maxW="70ch"
-                        fontSize={{ md: 'xl' }}
-                        margin="auto"
-                        className="externalHtml"
-                        dangerouslySetInnerHTML={{ __html: sanitizeText(postData.contentHtml) }}
-                    />
+                    <Box maxW="70ch" fontSize={{ md: 'xl' }} margin="auto">
+                        {post.content}
+                    </Box>
                 </Box>
             </Stack>
         </PageListingLayout>
     );
-};
-
-export const getStaticProps: GetStaticProps = async (context: GetStaticPropsContext) => {
-    const { params } = context;
-    const slug = params?.slug?.toString() || '';
-
-    const postData = await getPostData(slug);
-    return {
-        props: {
-            postData
-        }
-    };
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -104,4 +105,4 @@ export const getStaticPaths: GetStaticPaths = async () => {
     };
 };
 
-export default Page;
+export default BlogPostPage;

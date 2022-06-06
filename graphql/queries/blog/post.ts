@@ -4,6 +4,7 @@ export const GET_BLOG_POST = gql`
     query GetBlogPost($slug: String!) {
         post: blogPost(where: { slug: $slug }) {
             id
+            slug
             title
             subtitle
             content
@@ -35,6 +36,7 @@ export const GET_BLOG_POSTS = gql`
     query GetBlogPosts {
         posts: blogPosts {
             id
+            slug
             title
             subtitle
             content
