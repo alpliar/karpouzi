@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import apolloClient from '../../../../graphql/apollo-client';
 import Product, { ProductData } from '../../../../graphql/models/shop/product.model';
-import { GET_SHOP_PRODUCT } from '../../../../graphql/queries/shop/product';
+import { GET_SHOP_PRODUCT } from '../../../../graphql/queries/shop/shop.products.queries';
 
 export interface ProductResponse {
     product?: Product;

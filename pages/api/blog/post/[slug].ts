@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import apolloClient from '../../../../graphql/apollo-client';
 import BlogPost, { BlogPostData } from '../../../../graphql/models/blog/post.model';
-import { GET_BLOG_POST } from '../../../../graphql/queries/blog/post';
+import { GET_BLOG_POST } from '../../../../graphql/queries/blog/blog.posts.queries';
 
 export interface BlogPostResponse {
     post?: BlogPost;

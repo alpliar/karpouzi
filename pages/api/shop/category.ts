@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import apolloClient from '../../../graphql/apollo-client';
 import { ShopCategoryData, ShopCategoryExcerpt } from '../../../graphql/models/shop/category.model';
-import { GET_SHOP_CATEGORY } from '../../../graphql/queries/shop';
+import { GET_SHOP_CATEGORY } from '../../../graphql/queries/shop/shop.categories.queries';
 
 export interface CategoryResponse {
     category?: ShopCategoryExcerpt;

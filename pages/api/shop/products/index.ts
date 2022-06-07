@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import apolloClient from '../../../../graphql/apollo-client';
 import { ProductSlug, ShopProductsData } from '../../../../graphql/models/shop/product.model';
-import { GET_SHOP_PRODUCTS } from '../../../../graphql/queries/shop/product';
+import { GET_SHOP_PRODUCTS } from '../../../../graphql/queries/shop/shop.products.queries';
 
 interface ProductsResponse {
     products?: Array<ProductSlug>;

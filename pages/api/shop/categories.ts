@@ -4,7 +4,7 @@ import {
     ShopCategoriesData,
     ShopCategoryExcerpt
 } from '../../../graphql/models/shop/category.model';
-import { GET_SHOP_CATEGORIES } from '../../../graphql/queries/shop';
+import { GET_SHOP_CATEGORIES } from '../../../graphql/queries/shop/shop.categories.queries';
 interface CategoriesResponse {
     categories?: ShopCategoryExcerpt[];
     error?: string;
