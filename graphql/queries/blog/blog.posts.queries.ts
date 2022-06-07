@@ -8,7 +8,13 @@ export const GET_BLOG_POST = gql`
             title
             subtitle
             content
-            picture
+            picture {
+                id
+                fileName
+                mimeType
+                createdAt
+                url(transformation: { image: { resize: { height: 500, width: 500 } } })
+            }
             coverPicture {
                 alternativeText
                 asset {
@@ -51,7 +57,13 @@ export const GET_BLOG_POSTS = gql`
             title
             subtitle
             content
-            picture
+            picture {
+                id
+                fileName
+                mimeType
+                createdAt
+                url(transformation: { image: { resize: { height: 500, width: 500 } } })
+            }
             coverPicture {
                 alternativeText
                 asset {
