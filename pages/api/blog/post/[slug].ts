@@ -17,8 +17,6 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<BlogPostRespons
             variables: { slug }
         });
 
-        console.log(error, data);
-
         if (!error && data) {
             const { post } = data;
 

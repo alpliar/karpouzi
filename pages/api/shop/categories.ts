@@ -21,8 +21,6 @@ const handler = async (
         query: GET_SHOP_CATEGORIES
     });
 
-    // console.log(categories);
-
     if (!errors && categories !== undefined) {
         res.status(200).json({
             categories
