@@ -8,12 +8,16 @@ export const GET_BLOG_POST = gql`
             title
             subtitle
             content
-            picture {
-                id
-                fileName
-                mimeType
-                createdAt
-                url(transformation: { image: { resize: { height: 500, width: 500 } } })
+            picture
+            coverPicture {
+                alternativeText
+                asset {
+                    id
+                    fileName
+                    mimeType
+                    createdAt
+                    url(transformation: { image: { resize: { height: 500, width: 500 } } })
+                }
             }
             authors {
                 id
@@ -47,12 +51,16 @@ export const GET_BLOG_POSTS = gql`
             title
             subtitle
             content
-            picture {
-                id
-                fileName
-                mimeType
-                createdAt
-                url(transformation: { image: { resize: { height: 500, width: 500 } } })
+            picture
+            coverPicture {
+                alternativeText
+                asset {
+                    id
+                    fileName
+                    mimeType
+                    createdAt
+                    url(transformation: { image: { resize: { height: 500, width: 500 } } })
+                }
             }
             authors {
                 id
