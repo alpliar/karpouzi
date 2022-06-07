@@ -13,7 +13,7 @@ export const GET_BLOG_POST = gql`
                 fileName
                 mimeType
                 createdAt
-                url(transformation: { image: { resize: { height: 290, width: 410 } } })
+                url(transformation: { image: { resize: { height: 410, width: 410 } } })
             }
             authors {
                 id
@@ -52,7 +52,7 @@ export const GET_BLOG_POSTS = gql`
                 fileName
                 mimeType
                 createdAt
-                url(transformation: { image: { resize: { height: 290, width: 410 } } })
+                url(transformation: { image: { resize: { height: 410, width: 410 } } })
             }
             authors {
                 id
