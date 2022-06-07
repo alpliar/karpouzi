@@ -25,7 +25,7 @@ const handler = async (
             });
         }
     } catch (err) {
-        console.error(err);
+        // console.error(err);
         res.status(404).json({
             posts: [],
             error: 'Could not fetch blogposts:'
