@@ -8,19 +8,21 @@ import { API_BASE_URL } from '../../constants/api';
 import BlogPost from '../../graphql/models/blog/post.model';
 
 export const getStaticProps: GetStaticProps = async () => {
-    const response = await fetch(API_BASE_URL + '/blog/posts');
+    try {
+        const response = await fetch(API_BASE_URL + '/blog/posts');
 
-    const { posts } = await response.json();
+        const { posts } = await response.json();
 
-    if (!posts) {
-        return { notFound: true };
+        return {
+            props: {
+                posts
+            }
+        };
+    } catch (err) {
+        return {
+            notFound: true
+        };
     }
-
-    return {
-        props: {
-            posts
-        }
-    };
 };
 
 const BlogHome = ({ posts }: { posts: Array<BlogPost> }) => {
