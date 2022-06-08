@@ -120,6 +120,8 @@ const ProductPage = ({ product }: { product: Product }) => {
                         <Image
                             src={product.coverPicture.asset.url}
                             alt={product.coverPicture.alternativeText}
+                            width={500}
+                            height={500}
                             placeholder="blur"
                             // bg="#282828"
                             // width={{ base: 'full', sm: '100%' }}

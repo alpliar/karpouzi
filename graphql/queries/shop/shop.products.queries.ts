@@ -14,12 +14,12 @@ export const GET_SHOP_PRODUCT = gql`
                     fileName
                     mimeType
                     createdAt
-                    url(transformation: { image: { resize: { height: 500, width: 500 } } })
+                    url
                 }
             }
             picture {
                 id
-                url(transformation: { image: { resize: { width: 500, height: 500 } } })
+                url
                 fileName
                 mimeType
             }
