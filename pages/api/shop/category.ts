@@ -9,22 +9,26 @@ export interface CategoryResponse {
 }
 
 const handler = async (req: NextApiRequest, res: NextApiResponse<CategoryResponse>) => {
-    const { slug } = req.body;
+    try {
+        const { slug } = req.body;
 
-    const { data, error } = await apolloClient.query<ShopCategoryData>({
-        query: GET_SHOP_CATEGORY,
-        variables: { slug }
-    });
+        const {
+            data: { category },
+            error
+        } = await apolloClient.query<ShopCategoryData>({
+            query: GET_SHOP_CATEGORY,
+            variables: { slug }
+        });
 
-    if (!error && data) {
-        const { category } = data;
+        if (error) throw error;
 
         res.status(200).json({
             category
         });
-    } else {
+    } catch (_err) {
+        console.log(_err);
         res.status(404).json({
-            error: 'Could not fetch shop category: ' + error?.message
+            error: 'Could not fetch shop category'
         });
     }
 };
