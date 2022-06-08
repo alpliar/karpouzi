@@ -1,4 +1,5 @@
 import Asset from '../common/asset.model';
+import Picture from '../common/picture.model';
 import { Id } from '../common/types.model';
 import Review, { ReviewExcerpt } from './review.model';
 
@@ -14,7 +15,11 @@ export interface ProductExcerpt {
     name: string;
     slug: string;
     description: string;
+    /**
+     * @deprecated use coverPicture instead
+     */
     picture: Asset;
+    coverPicture: Picture;
     prices: Array<Price>;
     reviews: Array<ReviewExcerpt>;
 }
@@ -30,7 +35,11 @@ export default interface Product {
     name: string;
     slug: string;
     description: string;
+    /**
+     * @deprecated use coverPicture instead
+     */
     picture: Asset;
+    coverPicture: Picture;
     prices: Array<Price>;
     reviews: Array<Review>;
 }
