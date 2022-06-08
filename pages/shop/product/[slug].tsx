@@ -115,7 +115,7 @@ const ProductPage = ({ product }: { product: Product }) => {
             </Head>
 
             <Container p={{ base: 0 }} maxW="full">
-                <SimpleGrid columns={{ base: 1, sm: 2 }} spacing={{ md: '1em' }}>
+                <SimpleGrid columns={{ base: 1, md: 2 }} spacing={{ md: '1em' }}>
                     <AspectRatio ratio={1 / 1}>
                         <Image
                             src={product.coverPicture.asset.url}
@@ -149,7 +149,7 @@ const ProductPage = ({ product }: { product: Product }) => {
                         className="externalHtml"
                         dangerouslySetInnerHTML={{ __html: sanitizeText(prod) }}
                     /> */}
-                            <Box>
+                            <Box textAlign="left">
                                 <Text as="p">{product.description}</Text>
                             </Box>
                         </Box>
