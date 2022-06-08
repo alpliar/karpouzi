@@ -6,11 +6,18 @@ interface ILinkProps {
     href: string;
     alt: string;
     locale?: string | false;
+    prefetch?: boolean;
 }
 
-const Link: React.FC<PropsWithChildren<ILinkProps>> = ({ href, alt, children, locale }) => {
+const Link: React.FC<PropsWithChildren<ILinkProps>> = ({
+    href,
+    alt,
+    children,
+    locale,
+    prefetch = true
+}) => {
     return (
-        <NextLink href={href} passHref locale={locale}>
+        <NextLink href={href} passHref locale={locale} prefetch={prefetch}>
             <UiLink title={alt}>{children}</UiLink>
         </NextLink>
     );
