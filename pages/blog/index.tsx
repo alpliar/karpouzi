@@ -27,6 +27,8 @@ const BlogHome = ({ posts }: { posts: Array<BlogPost> }) => {
     const intl = useIntl();
     const f = (id: string) => intl.formatMessage({ id });
 
+    if (!posts) return null;
+
     return (
         <PageListingLayout
             title={f('title')}

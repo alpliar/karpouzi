@@ -61,9 +61,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 const BlogPostPage = ({ post }: { post: BlogPost }) => {
-    if (!post) {
-        return null;
-    }
+    if (!post) return null;
 
     const BlogBanner = chakra(Banner, {
         baseStyle: {
