@@ -27,7 +27,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<CategoryRespons
         });
     } catch (_err) {
         console.log(_err);
-        res.status(404).json({
+        res.status(200).json({
             error: 'Could not fetch shop category'
         });
     }
