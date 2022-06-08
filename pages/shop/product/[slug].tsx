@@ -142,19 +142,19 @@ const ProductPage = ({ product }: { product: Product }) => {
                         </Text>
 
                         <AddToCart slug={product.slug} quantity={1} />
-                    </Box>
-                </SimpleGrid>
 
-                <Box p={4} width="full" padding="1em">
-                    <Divider my={4} w="100%" />
-                    {/* <Box
+                        <Box p={4} width="full" padding="1em">
+                            <Divider my={4} w="100%" />
+                            {/* <Box
                         className="externalHtml"
                         dangerouslySetInnerHTML={{ __html: sanitizeText(prod) }}
                     /> */}
-                    <Box>
-                        <Text as="p">{product.description}</Text>
+                            <Box>
+                                <Text as="p">{product.description}</Text>
+                            </Box>
+                        </Box>
                     </Box>
-                </Box>
+                </SimpleGrid>
             </Container>
         </PageListingLayout>
     );
