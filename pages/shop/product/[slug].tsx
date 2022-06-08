@@ -117,8 +117,8 @@ const ProductPage = ({ product }: { product: Product }) => {
                 <SimpleGrid columns={{ base: 1, sm: 2 }} spacing={{ md: '1em' }}>
                     <Box bg="#282828" width="full" maxH="20em" overflow="hidden">
                         <Img
-                            src={product.picture.url}
-                            alt={`picture of ${product.name}`}
+                            src={product.coverPicture.asset.url}
+                            alt={product.coverPicture.alternativeText}
                             width="full"
                         />
                     </Box>
