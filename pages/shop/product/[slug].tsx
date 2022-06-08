@@ -1,12 +1,13 @@
 import { BellIcon } from '@chakra-ui/icons';
 import { Badge, Box, Container, Divider, SimpleGrid, Text } from '@chakra-ui/layout';
-import { AspectRatio } from '@chakra-ui/react';
+import { AspectRatio, useBreakpointValue } from '@chakra-ui/react';
 import axios from 'axios';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
 import BlockQuote from '../../../components/blockQuote';
 import { Image } from '../../../components/image';
 import PageListingLayout from '../../../components/pageListingLayout';
+import Polaroid from '../../../components/polaroid';
 import Rating from '../../../components/rating';
 import { API_BASE_URL } from '../../../constants/api';
 import AddToCart from '../../../container/addToCart';
@@ -62,12 +63,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 const ProductPage = ({ product }: { product: Product }) => {
-    if (!product) return null;
+    const showAsPolaroid = useBreakpointValue({ base: true, md: false });
 
-    // const { name, slug, isNew, rating, imageUrl, reviewCount, contentHtml, price } = product as Product;
-    // if (!slug) {
-    //     return false;
-    // }
+    if (!product) return null;
 
     const isNew = false;
     const reviewCount = product.reviews.length;
@@ -116,19 +114,21 @@ const ProductPage = ({ product }: { product: Product }) => {
 
             <Container p={{ base: 0 }} maxW="full">
                 <SimpleGrid columns={{ base: 1, md: 2 }} spacing={{ md: '1em' }}>
-                    <AspectRatio ratio={1 / 1}>
-                        <Image
-                            src={product.coverPicture.asset.url}
-                            alt={product.coverPicture.alternativeText}
-                            width={500}
-                            height={500}
-                            placeholder="blur"
-                            // bg="#282828"
-                            // width={{ base: 'full', sm: '100%' }}
-                            // h={{ base: '100vw', sm: 'auto' }}
-                            // overflow="hidden"
-                        />
-                    </AspectRatio>
+                    <Polaroid title={product.name} unstyled={showAsPolaroid}>
+                        <AspectRatio ratio={1 / 1}>
+                            <Image
+                                src={product.coverPicture.asset.url}
+                                alt={product.coverPicture.alternativeText}
+                                width={500}
+                                height={500}
+                                placeholder="blur"
+                                // bg="#282828"
+                                // width={{ base: 'full', sm: '100%' }}
+                                // h={{ base: '100vw', sm: 'auto' }}
+                                // overflow="hidden"
+                            />
+                        </AspectRatio>
+                    </Polaroid>
 
                     <Box bg="" p={4} textAlign={{ base: 'center', md: 'left' }}>
                         {/* <Heading>{title}</Heading> */}
@@ -143,13 +143,10 @@ const ProductPage = ({ product }: { product: Product }) => {
 
                         <AddToCart slug={product.slug} quantity={1} />
 
-                        <Box p={4} width="full" padding="1em">
-                            <Divider my={4} w="100%" />
-                            {/* <Box
-                        className="externalHtml"
-                        dangerouslySetInnerHTML={{ __html: sanitizeText(prod) }}
-                    /> */}
-                            <Box textAlign="left">
+                        <Divider my={4} w="100%" />
+
+                        <Box padding={{ base: '1rem', xl: '1.5rem' }}>
+                            <Box textAlign="left" fontSize="xl">
                                 <Text as="p">{product.description}</Text>
                             </Box>
                         </Box>
