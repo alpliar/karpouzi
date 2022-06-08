@@ -50,8 +50,8 @@ const ProductCard: React.FC<IProps> = ({ product, ratingIcon = undefined }) => {
                     <Img
                         objectFit="cover"
                         minH={imageHeight}
-                        src={product.picture.url || fallbackPicture}
-                        alt={`${product.name} picture`}
+                        src={product.coverPicture.asset.url || fallbackPicture}
+                        alt={product.coverPicture.alternativeText}
                     />
                     {isNew && (
                         <ProductCardBadge
