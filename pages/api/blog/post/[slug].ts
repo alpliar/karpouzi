@@ -12,21 +12,21 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<BlogPostRespons
     try {
         const { slug } = req.query;
 
-        const { data, error } = await apolloClient.query<BlogPostData>({
+        const {
+            data: { post }
+        } = await apolloClient.query<BlogPostData>({
             query: GET_BLOG_POST,
             variables: { slug }
         });
 
-        if (!error && data) {
-            const { post } = data;
-
+        if (post) {
             res.status(200).json({
                 post
             });
         }
     } catch (err) {
         res.status(404).json({
-            error: 'Could not fetch shop product: ' + err
+            error: `Could not fetch blog post`
         });
     }
 };
