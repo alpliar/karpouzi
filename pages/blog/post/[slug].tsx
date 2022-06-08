@@ -1,10 +1,8 @@
 import Icon from '@chakra-ui/icon';
-import { Box, Heading, HStack, Stack, Text } from '@chakra-ui/layout';
-import { chakra } from '@chakra-ui/system';
+import { Box, HStack, Stack, Text } from '@chakra-ui/layout';
 import axios from 'axios';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { GiFountainPen, GiOpenBook } from 'react-icons/gi';
-import Banner from '../../../components/banner';
 import BlockQuote from '../../../components/blockQuote';
 import Date from '../../../components/Date';
 import PageListingLayout from '../../../components/pageListingLayout';
@@ -63,11 +61,11 @@ export const getStaticPaths: GetStaticPaths = async () => {
 const BlogPostPage = ({ post }: { post: BlogPost }) => {
     if (!post) return null;
 
-    const BlogBanner = chakra(Banner, {
-        baseStyle: {
-            maxWidth: '70ch'
-        }
-    });
+    // const BlogBanner = chakra(Banner, {
+    //     baseStyle: {
+    //         maxWidth: '70ch'
+    //     }
+    // });
 
     return (
         <PageListingLayout
@@ -100,7 +98,7 @@ const BlogPostPage = ({ post }: { post: BlogPost }) => {
             }
             bannerSlot={null}>
             <Stack>
-                <BlogBanner pattern="leaf">
+                {/* <BlogBanner pattern="leaf">
                     <Stack maxW="md" fontSize="sm" fontWeight="bold" p={3}>
                         <Heading>Leaves !</Heading>
                         <Text>
@@ -108,7 +106,7 @@ const BlogPostPage = ({ post }: { post: BlogPost }) => {
                             quaerat fugit ullam illo ipsa perspiciatis sit voluptatem!
                         </Text>
                     </Stack>
-                </BlogBanner>
+                </BlogBanner> */}
                 <Box>
                     <Box maxW="70ch" fontSize={{ md: 'xl' }} margin="auto">
                         {post.content}
