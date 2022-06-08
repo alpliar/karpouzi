@@ -10,7 +10,7 @@ import {
     ShopCategoriesData,
     ShopCategoryExcerpt
 } from '../../../graphql/models/shop/category.model';
-import { CategoryResponse } from '../../api/shop/category';
+import { CategoryResponse } from '../../api/shop/category/[slug]';
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
     try {
