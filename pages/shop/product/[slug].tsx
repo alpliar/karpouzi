@@ -130,7 +130,11 @@ const ProductPage = ({ product }: { product: Product }) => {
                         </AspectRatio>
                     </Polaroid>
 
-                    <Box bg="" p={4} textAlign={{ base: 'center', md: 'left' }}>
+                    <Box
+                        bg=""
+                        p={4}
+                        textAlign={{ base: 'center', md: 'left' }}
+                        transform={{ base: 'rotate(0deg)', md: 'rotate(-1deg)' }}>
                         {/* <Heading>{title}</Heading> */}
 
                         <Rating rate={rate} count={reviewCount} />
@@ -146,7 +150,7 @@ const ProductPage = ({ product }: { product: Product }) => {
                         <Divider my={4} w="100%" />
 
                         <Box padding={{ base: '1rem', xl: '1.5rem' }}>
-                            <Box textAlign="left" fontSize="xl">
+                            <Box textAlign="left" fontSize={{ base: 'xl', xl: '2xl' }}>
                                 <Text as="p">{product.description}</Text>
                             </Box>
                         </Box>
