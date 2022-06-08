@@ -40,10 +40,14 @@ export const GET_SHOP_CATEGORY = gql`
                 slug
                 description
                 coverPicture {
-                    id
-                    url(transformation: { image: { resize: { width: 500, height: 500 } } })
-                    fileName
-                    mimeType
+                    alternativeText
+                    asset {
+                        id
+                        fileName
+                        mimeType
+                        createdAt
+                        url(transformation: { image: { resize: { height: 500, width: 500 } } })
+                    }
                 }
                 picture {
                     id
