@@ -1,10 +1,11 @@
 import { BellIcon } from '@chakra-ui/icons';
-import { Img } from '@chakra-ui/image';
 import { Badge, Box, Container, Divider, SimpleGrid, Text } from '@chakra-ui/layout';
+import { AspectRatio } from '@chakra-ui/react';
 import axios from 'axios';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
 import BlockQuote from '../../../components/blockQuote';
+import { Image } from '../../../components/image';
 import PageListingLayout from '../../../components/pageListingLayout';
 import Rating from '../../../components/rating';
 import { API_BASE_URL } from '../../../constants/api';
@@ -115,13 +116,18 @@ const ProductPage = ({ product }: { product: Product }) => {
 
             <Container p={{ base: 0 }} maxW="full">
                 <SimpleGrid columns={{ base: 1, sm: 2 }} spacing={{ md: '1em' }}>
-                    <Box bg="#282828" width="full" maxH="20em" overflow="hidden">
-                        <Img
+                    <AspectRatio ratio={1 / 1}>
+                        <Image
                             src={product.coverPicture.asset.url}
                             alt={product.coverPicture.alternativeText}
-                            width="full"
+                            placeholder="blur"
+                            // bg="#282828"
+                            // width={{ base: 'full', sm: '100%' }}
+                            // h={{ base: '100vw', sm: 'auto' }}
+                            // overflow="hidden"
                         />
-                    </Box>
+                    </AspectRatio>
+
                     <Box bg="" p={4} textAlign={{ base: 'center', md: 'left' }}>
                         {/* <Heading>{title}</Heading> */}
 
