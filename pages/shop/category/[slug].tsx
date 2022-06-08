@@ -18,9 +18,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
         const {
             data: { category }
-        } = await axios.post<CategoryResponse>(API_BASE_URL + '/shop/category', {
-            slug
-        });
+        } = await axios.get<CategoryResponse>(API_BASE_URL + `/shop/category/${slug}`);
 
         if (!category) throw new Error('Could not fetch category data');
 
