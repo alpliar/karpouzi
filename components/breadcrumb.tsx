@@ -45,7 +45,7 @@ const Breadcrumb = ({ entries }: IBreadcrumbProps) => {
                                 {isCurrentPage ? (
                                     <Text>{text}</Text>
                                 ) : (
-                                    <Link href={link} alt={alt}>
+                                    <Link href={link} alt={alt} prefetch={false}>
                                         {text}
                                     </Link>
                                 )}
