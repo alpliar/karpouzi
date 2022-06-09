@@ -126,63 +126,65 @@ const ProductPage = ({ product }: { product: Product }) => {
             </Head>
 
             <Container p={{ base: 0 }} maxW="full">
-                <SimpleGrid columns={{ base: 1, md: 2 }} spacing={{ md: '1em' }}>
-                    <Polaroid title={product.name} unstyled={!showAsPolaroid}>
-                        <AspectRatio ratio={1 / 1}>
-                            <Image
-                                src={product.coverPicture.asset.url}
-                                alt={product.coverPicture.alternativeText}
-                                width={0}
-                                height={0}
-                                sizes="35vw"
-                                placeholder="blur"
-                                // bg="#282828"
-                                // width={{ base: 'full', sm: '100%' }}
-                                // h={{ base: '100vw', sm: 'auto' }}
-                                // overflow="hidden"
-                            />
-                        </AspectRatio>
-                    </Polaroid>
-
-                    <Box
-                        bg=""
-                        p={4}
-                        textAlign={{ base: 'center', md: 'left' }}
-                        // transform={{ base: 'rotate(0deg)', md: 'rotate(-1deg)' }}
-                    >
-                        {/* <Heading>{title}</Heading> */}
-
-                        <Rating rate={rate} count={reviewCount} />
-
-                        <Text fontSize="4xl" fontWeight="bolder">
-                            {firstPrice.amount}
-                            {` `}
-                            {firstPrice.currency}
-                        </Text>
-
-                        <AddToCart slug={product.slug} quantity={1} />
-
-                        <Divider my={4} w="100%" />
+                <Stack spacing={16}>
+                    <SimpleGrid columns={{ base: 1, md: 2 }} spacing={{ md: '1em' }}>
+                        <Polaroid title={product.name} unstyled={!showAsPolaroid}>
+                            <AspectRatio ratio={1 / 1}>
+                                <Image
+                                    src={product.coverPicture.asset.url}
+                                    alt={product.coverPicture.alternativeText}
+                                    width={0}
+                                    height={0}
+                                    sizes="35vw"
+                                    placeholder="blur"
+                                    // bg="#282828"
+                                    // width={{ base: 'full', sm: '100%' }}
+                                    // h={{ base: '100vw', sm: 'auto' }}
+                                    // overflow="hidden"
+                                />
+                            </AspectRatio>
+                        </Polaroid>
 
                         <Box
-                            padding={{ base: '1rem', xl: '1.5rem' }}
-                            maxH={{ base: undefined, md: '80' }}
-                            overflow="auto">
-                            <Box textAlign="left" fontSize={{ base: 'xl', xl: '2xl' }}>
-                                <Text as="p">{product.description}</Text>
+                            bg=""
+                            p={4}
+                            textAlign={{ base: 'center', md: 'left' }}
+                            // transform={{ base: 'rotate(0deg)', md: 'rotate(-1deg)' }}
+                        >
+                            {/* <Heading>{title}</Heading> */}
+
+                            <Rating rate={rate} count={reviewCount} />
+
+                            <Text fontSize="4xl" fontWeight="bolder">
+                                {firstPrice.amount}
+                                {` `}
+                                {firstPrice.currency}
+                            </Text>
+
+                            <AddToCart slug={product.slug} quantity={1} />
+
+                            <Divider my={4} w="100%" />
+
+                            <Box
+                                padding={{ base: '1rem', xl: '1.5rem' }}
+                                maxH={{ base: undefined, md: '80' }}
+                                overflow="auto">
+                                <Box textAlign="left" fontSize={{ base: 'xl', xl: '2xl' }}>
+                                    <Text as="p">{product.description}</Text>
+                                </Box>
                             </Box>
                         </Box>
-                    </Box>
-                </SimpleGrid>
-                <Banner pattern="wiggle">
-                    <Stack maxW="md" fontSize="sm" fontWeight="bold" p={3}>
-                        <Heading>Fond of {category.name} ?</Heading>
-                        <Text>
-                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Earum minima
-                            quaerat fugit ullam illo ipsa perspiciatis sit voluptatem!
-                        </Text>
-                    </Stack>
-                </Banner>
+                    </SimpleGrid>
+                    <Banner pattern="wiggle">
+                        <Stack maxW="md" fontSize="sm" fontWeight="bold" p={3}>
+                            <Heading>Fond of {category.name} ?</Heading>
+                            <Text>
+                                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Earum
+                                minima quaerat fugit ullam illo ipsa perspiciatis sit voluptatem!
+                            </Text>
+                        </Stack>
+                    </Banner>
+                </Stack>
             </Container>
         </PageListingLayout>
     );
