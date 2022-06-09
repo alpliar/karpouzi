@@ -63,7 +63,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 const ProductPage = ({ product }: { product: Product }) => {
-    const showAsPolaroid = useBreakpointValue({ base: true, md: false });
+    const showAsPolaroid = useBreakpointValue({ base: false, xl: true });
 
     if (!product) return null;
 
@@ -114,7 +114,7 @@ const ProductPage = ({ product }: { product: Product }) => {
 
             <Container p={{ base: 0 }} maxW="full">
                 <SimpleGrid columns={{ base: 1, md: 2 }} spacing={{ md: '1em' }}>
-                    <Polaroid title={product.name} unstyled={showAsPolaroid}>
+                    <Polaroid title={product.name} unstyled={!showAsPolaroid}>
                         <AspectRatio ratio={1 / 1}>
                             <Image
                                 src={product.coverPicture.asset.url}
@@ -134,7 +134,8 @@ const ProductPage = ({ product }: { product: Product }) => {
                         bg=""
                         p={4}
                         textAlign={{ base: 'center', md: 'left' }}
-                        transform={{ base: 'rotate(0deg)', md: 'rotate(-1deg)' }}>
+                        // transform={{ base: 'rotate(0deg)', md: 'rotate(-1deg)' }}
+                    >
                         {/* <Heading>{title}</Heading> */}
 
                         <Rating rate={rate} count={reviewCount} />

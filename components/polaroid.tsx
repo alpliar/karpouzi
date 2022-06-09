@@ -16,8 +16,9 @@ const Polaroid: React.FC<IPolaroidProps> = ({ children, title, unstyled = false 
         boxShadow: '0 0.2rem 1.2rem rgba(0,0,0,0.2)',
         transform: {
             base: 'rotate(-1deg) scale(95%) translateY(0px)',
-            md: 'rotate(-2deg) scale(90%) translateY(-15%)'
-        }
+            lg: 'rotate(-1deg) scale(90%) translateY(-15%)'
+        },
+        transition: 'all .25s ease'
     };
 
     const textStyle: TextProps = {
