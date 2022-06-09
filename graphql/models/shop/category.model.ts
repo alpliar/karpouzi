@@ -1,8 +1,17 @@
 import Asset from '../common/asset.model';
 import { Id } from '../common/types.model';
 import Product, { ProductExcerpt } from './product.model';
-
-export interface ShopCategoryExcerpt {
+export default interface ShopCategory {
+    id: Id;
+    slug: string;
+    name: string;
+    picture: Asset;
+    description: string;
+}
+export interface ShopCategoryWithProducts extends ShopCategory {
+    products: Array<Product>;
+}
+export interface ShopCategoryWithProductsExcerpts extends ShopCategory {
     id: Id;
     slug: string;
     name: string;
@@ -10,18 +19,10 @@ export interface ShopCategoryExcerpt {
     description: string;
     products: Array<ProductExcerpt>;
 }
-export default interface ShopCategory {
-    id: Id;
-    slug: string;
-    name: string;
-    picture: Asset;
-    description: string;
-    products: Array<Product>;
-}
 
 export interface ShopCategoriesData {
-    categories: Array<ShopCategoryExcerpt>;
+    categories: Array<ShopCategoryWithProductsExcerpts>;
 }
 export interface ShopCategoryData {
-    category: ShopCategoryExcerpt;
+    category: ShopCategoryWithProducts;
 }
