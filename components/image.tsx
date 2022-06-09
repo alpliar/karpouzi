@@ -40,7 +40,7 @@ export const Image: React.FC<ImageProps & Omit<BoxProps, 'as'>> = ({
                 layout="fill"
                 src={src}
                 alt={alt}
-                sizes="25vw 100vw"
+                sizes="520"
                 blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(500, 500))}`}
                 placeholder="blur"
             />
