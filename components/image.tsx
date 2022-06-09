@@ -7,6 +7,7 @@ interface ImageProps {
     alt: string;
     width: LayoutProps['width'];
     height: LayoutProps['height'];
+    sizes?: string | undefined;
 }
 
 const shimmer = (w: number, h: number) => `
@@ -31,6 +32,7 @@ export const Image: React.FC<ImageProps & Omit<BoxProps, 'as'>> = ({
     alt,
     width,
     height,
+    sizes,
     ...rest
 }) => {
     return (
@@ -40,7 +42,7 @@ export const Image: React.FC<ImageProps & Omit<BoxProps, 'as'>> = ({
                 layout="fill"
                 src={src}
                 alt={alt}
-                sizes="520"
+                sizes={sizes}
                 blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(500, 500))}`}
                 placeholder="blur"
             />

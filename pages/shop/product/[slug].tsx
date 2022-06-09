@@ -1,9 +1,20 @@
 import { BellIcon } from '@chakra-ui/icons';
-import { Badge, Box, Container, Divider, SimpleGrid, Text } from '@chakra-ui/layout';
-import { AspectRatio, useBreakpointValue } from '@chakra-ui/react';
+import {
+    AspectRatio,
+    Badge,
+    Box,
+    Container,
+    Divider,
+    Heading,
+    SimpleGrid,
+    Stack,
+    Text,
+    useBreakpointValue
+} from '@chakra-ui/react';
 import axios from 'axios';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
+import Banner from '../../../components/banner';
 import BlockQuote from '../../../components/blockQuote';
 import { Image } from '../../../components/image';
 import PageListingLayout from '../../../components/pageListingLayout';
@@ -121,8 +132,9 @@ const ProductPage = ({ product }: { product: Product }) => {
                             <Image
                                 src={product.coverPicture.asset.url}
                                 alt={product.coverPicture.alternativeText}
-                                width={500}
-                                height={500}
+                                width={0}
+                                height={0}
+                                sizes="35vw"
                                 placeholder="blur"
                                 // bg="#282828"
                                 // width={{ base: 'full', sm: '100%' }}
@@ -162,6 +174,15 @@ const ProductPage = ({ product }: { product: Product }) => {
                         </Box>
                     </Box>
                 </SimpleGrid>
+                <Banner pattern="wiggle">
+                    <Stack maxW="md" fontSize="sm" fontWeight="bold" p={3}>
+                        <Heading>Fond of {category.name} ?</Heading>
+                        <Text>
+                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Earum minima
+                            quaerat fugit ullam illo ipsa perspiciatis sit voluptatem!
+                        </Text>
+                    </Stack>
+                </Banner>
             </Container>
         </PageListingLayout>
     );
