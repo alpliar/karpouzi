@@ -96,12 +96,7 @@ const ProductCard: React.FC<IProps> = ({ product, ratingIcon = undefined }) => {
                                 _hover={{
                                     textShadow: '0.5px 0.5px 0.5px teal'
                                 }}>
-                                <Heading
-                                    size="md"
-                                    textShadow="sm"
-                                    _hover={{
-                                        textShadow: '0.5px 0.5px 0.5px teal'
-                                    }}>
+                                <Heading size="md" textShadow="sm">
                                     {product.name}
                                 </Heading>
                             </LinkOverlay>
