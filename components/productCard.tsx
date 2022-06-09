@@ -92,7 +92,10 @@ const ProductCard: React.FC<IProps> = ({ product, ratingIcon = undefined }) => {
                                 pathname: '/shop/product/[slug]',
                                 query: { slug: product.slug }
                             }}>
-                            <LinkOverlay>
+                            <LinkOverlay
+                                _hover={{
+                                    textShadow: '0.5px 0.5px 0.5px teal'
+                                }}>
                                 <Heading
                                     size="md"
                                     textShadow="sm"

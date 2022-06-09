@@ -54,7 +54,10 @@ const BlogPostCard: React.FC<IBlogPostCardProps> = ({ post }) => {
                                 pathname: '/blog/post/[slug]',
                                 query: { slug: post.slug }
                             }}>
-                            <LinkOverlay>
+                            <LinkOverlay
+                                _hover={{
+                                    textShadow: '0.5px 0.5px 0.5px teal'
+                                }}>
                                 <Heading
                                     color={useColorModeValue('gray.700', 'white')}
                                     fontSize="xl"
