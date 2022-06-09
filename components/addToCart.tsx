@@ -22,7 +22,10 @@ const AddToCart: React.FC<IAddToCartProps> = ({ slug, quantity, inCart, addToCar
             label={`Already ${inCart} in cart !`}
             placement={useBreakpointValue({ base: 'bottom', md: 'right' })}
             isOpen={inCart > 0}>
-            <Button leftIcon={<Icon as={FaShoppingCart} />} onClick={handleClick}>
+            <Button
+                leftIcon={<Icon as={FaShoppingCart} />}
+                onClick={handleClick}
+                colorScheme="green">
                 Add to cart
             </Button>
         </Tooltip>
