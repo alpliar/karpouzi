@@ -22,8 +22,8 @@ const Card: React.FC<PropsWithChildren<ICardProps>> = ({
             h={fullHeight ? '100%' : undefined}
             overflow={'hidden'}
             _hover={{
-                boxShadow: 'dark-lg',
-                transform: 'skewY(-0.1deg) scale(1.01)'
+                boxShadow: 'xl'
+                // transform: 'skewY(-0.1deg)'
             }}
             transition={BASE_TRANSITION}>
             {children}
