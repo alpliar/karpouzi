@@ -11,6 +11,7 @@ import Polaroid from '../../../components/polaroid';
 import Rating from '../../../components/rating';
 import { API_BASE_URL } from '../../../constants/api';
 import AddToCart from '../../../container/addToCart';
+import ShopCategory from '../../../graphql/models/shop/category.model';
 import Product, { ShopProductsData } from '../../../graphql/models/shop/product.model';
 import { ProductResponse } from '../../api/shop/product/[slug]';
 
@@ -74,7 +75,7 @@ const ProductPage = ({ product }: { product: Product }) => {
             ? product.reviews.map((rev) => rev.rating).reduce((a, b) => a + b) / reviewCount
             : 0;
     const [firstPrice] = product.prices;
-    // const [category]: Array<ShopCategory> | undefined = product.productCategories;
+    const [category]: Array<ShopCategory> | undefined = product.productCategories;
 
     return (
         <PageListingLayout
@@ -86,12 +87,12 @@ const ProductPage = ({ product }: { product: Product }) => {
                     alt: 'go to shop home',
                     isCurrentPage: false
                 },
-                // {
-                //     text: category.name,
-                //     link: `/shop/category/${category.slug}`,
-                //     alt: `go to ${category.name} category`,
-                //     isCurrentPage: false
-                // },
+                {
+                    text: category.name,
+                    link: `/shop/category/${category.slug}`,
+                    alt: `go to ${category.name} category`,
+                    isCurrentPage: false
+                },
                 {
                     text: product.name,
                     link: `/shop/product/${product.slug}`,
