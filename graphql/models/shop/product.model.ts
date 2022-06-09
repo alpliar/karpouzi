@@ -1,6 +1,7 @@
 import Asset from '../common/asset.model';
 import Picture from '../common/picture.model';
 import { Id } from '../common/types.model';
+import ShopCategory from './category.model';
 import Review, { ReviewExcerpt } from './review.model';
 
 enum MeasurementUnits {
@@ -42,6 +43,7 @@ export default interface Product {
     coverPicture: Picture;
     prices: Array<Price>;
     reviews: Array<Review>;
+    productCategories: Array<ShopCategory>;
 }
 
 export interface ProductData {

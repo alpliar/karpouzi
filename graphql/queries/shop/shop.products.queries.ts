@@ -40,6 +40,18 @@ export const GET_SHOP_PRODUCT = gql`
                 rating
                 isVerified
             }
+            productCategories {
+                id
+                slug
+                name
+                picture {
+                    id
+                    url
+                    fileName
+                    mimeType
+                }
+                description
+            }
         }
     }
 `;

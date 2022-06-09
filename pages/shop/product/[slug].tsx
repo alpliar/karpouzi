@@ -11,6 +11,7 @@ import Polaroid from '../../../components/polaroid';
 import Rating from '../../../components/rating';
 import { API_BASE_URL } from '../../../constants/api';
 import AddToCart from '../../../container/addToCart';
+import ShopCategory from '../../../graphql/models/shop/category.model';
 import Product, { ShopProductsData } from '../../../graphql/models/shop/product.model';
 import { ProductResponse } from '../../api/shop/product/[slug]';
 
@@ -22,7 +23,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
             data: { product }
         } = await axios.get<ProductResponse>(API_BASE_URL + '/shop/product/' + slug);
 
-        if (!product) throw new Error('Could not fetch category data');
+        if (!product) throw new Error('Could not fetch product data');
 
         return {
             props: {
@@ -74,6 +75,7 @@ const ProductPage = ({ product }: { product: Product }) => {
             ? product.reviews.map((rev) => rev.rating).reduce((a, b) => a + b) / reviewCount
             : 0;
     const [firstPrice] = product.prices;
+    const [category]: Array<ShopCategory> | undefined = product.productCategories;
 
     return (
         <PageListingLayout
@@ -86,9 +88,9 @@ const ProductPage = ({ product }: { product: Product }) => {
                     isCurrentPage: false
                 },
                 {
-                    text: 'category',
-                    link: '/shop/category/fruits',
-                    alt: 'go to fruits category',
+                    text: category.name,
+                    link: `/shop/category/${category.slug}`,
+                    alt: `go to ${category.name} category`,
                     isCurrentPage: false
                 },
                 {
@@ -150,7 +152,10 @@ const ProductPage = ({ product }: { product: Product }) => {
 
                         <Divider my={4} w="100%" />
 
-                        <Box padding={{ base: '1rem', xl: '1.5rem' }}>
+                        <Box
+                            padding={{ base: '1rem', xl: '1.5rem' }}
+                            maxH={{ base: undefined, md: '80' }}
+                            overflow="auto">
                             <Box textAlign="left" fontSize={{ base: 'xl', xl: '2xl' }}>
                                 <Text as="p">{product.description}</Text>
                             </Box>
