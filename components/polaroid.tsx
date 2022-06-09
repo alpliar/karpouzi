@@ -14,7 +14,7 @@ interface IPolaroidProps {
 }
 
 const Polaroid: React.FC<IPolaroidProps> = ({ children, title, unstyled = false }) => {
-    const bgColor: BackgroundProps['backgroundColor'] = useColorModeValue('white', 'gray.700');
+    const bgColor: BackgroundProps['backgroundColor'] = useColorModeValue('#48BB78', '#22543D');
     const textColor: TextProps['color'] = useColorModeValue('black', 'white');
     const borderColor: BoxProps['border'] = '0.5px solid rgba(126,126,126,0.5)';
 
@@ -26,8 +26,8 @@ const Polaroid: React.FC<IPolaroidProps> = ({ children, title, unstyled = false 
         backgroundColor: bgColor,
         boxShadow: '0 0.2rem 1.2rem rgba(0,0,0,0.2)',
         transform: {
-            base: 'rotate(-1deg) scale(95%) translateY(0px)',
-            lg: 'rotate(-1deg) scale(90%) translateY(-15%)'
+            base: 'rotate(-1deg) scale(100%) translateY(0px)'
+            // lg: 'rotate(-1deg) scale(90%) translateY(-15%)'
         },
         transition: 'all .25s ease',
         color: textColor,
@@ -45,7 +45,8 @@ const Polaroid: React.FC<IPolaroidProps> = ({ children, title, unstyled = false 
         fontWeight: 'bold',
         fontStyle: 'italic',
         padding: '1rem',
-        textAlign: 'center'
+        textAlign: 'center',
+        display: unstyled ? 'none' : 'inherit'
     };
 
     return (
