@@ -17,7 +17,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<ProductResponse
             product
         });
     } catch (err) {
-        res.status(200).json({
+        res.status(404).json({
             error: 'Could not fetch shop product'
         });
     }

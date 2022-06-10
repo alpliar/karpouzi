@@ -16,6 +16,7 @@ export const GET_SHOP_CATEGORIES = gql`
             description
             products {
                 id
+                slug
             }
         }
     }
