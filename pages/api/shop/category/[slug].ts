@@ -1,13 +1,9 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import apolloClient from '../../../../graphql/apollo-client';
-import {
-    ShopCategoryData,
-    ShopCategoryWithProductsExcerpts
-} from '../../../../graphql/models/shop/category.model';
-import { GET_SHOP_CATEGORY } from '../../../../graphql/queries/shop/shop.categories.queries';
+import { ShopCategoryWithProducts } from '../../../../graphql/models/shop/category.model';
+import CategoryHelper from '../../../../helpers/category.helper';
 
 export interface CategoryResponse {
-    category?: ShopCategoryWithProductsExcerpts;
+    category?: ShopCategoryWithProducts;
     error?: string;
 }
 
@@ -15,22 +11,15 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<CategoryRespons
     try {
         const { slug } = req.query;
 
-        const {
-            data: { category },
-            error
-        } = await apolloClient.query<ShopCategoryData>({
-            query: GET_SHOP_CATEGORY,
-            variables: { slug }
-        });
+        if (typeof slug !== 'string') throw new Error('Slug is missing in params');
 
-        if (error) throw error;
+        const category = await CategoryHelper.getCategory(slug);
 
         res.status(200).json({
             category
         });
     } catch (_err) {
-        console.log(_err);
-        res.status(200).json({
+        res.status(404).json({
             error: 'Could not fetch shop category'
         });
     }

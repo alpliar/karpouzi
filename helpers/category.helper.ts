@@ -1,11 +1,14 @@
 import apolloClient from '../graphql/apollo-client';
-import ShopCategory, { ShopCategoryData } from '../graphql/models/shop/category.model';
+import ShopCategory, {
+    ShopCategoryData,
+    ShopCategoryWithProducts
+} from '../graphql/models/shop/category.model';
 import { GET_SHOP_CATEGORY } from '../graphql/queries/shop/shop.categories.queries';
 import Category from '../models/category.model';
 import ProductHelper from './product.helper';
 
 export default class CategoryHelper {
-    static getCategory = async (slug: ShopCategory['slug']): Promise<ShopCategory> => {
+    static getCategory = async (slug: ShopCategory['slug']): Promise<ShopCategoryWithProducts> => {
         return new Promise(async (resolve, reject) => {
             try {
                 const {
