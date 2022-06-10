@@ -1,8 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import apolloClient from '../../../../graphql/apollo-client';
-import Product, { ProductData } from '../../../../graphql/models/shop/product.model';
-import { GET_SHOP_PRODUCT } from '../../../../graphql/queries/shop/shop.products.queries';
-import { addThumbnailToProduct } from '../../../../utils/thumbnails';
+import Product from '../../../../graphql/models/shop/product.model';
+import ProductHelper from '../../../../helpers/product.helper';
 
 export interface ProductResponse {
     product?: Product;
@@ -13,17 +11,10 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<ProductResponse
     try {
         const { slug } = req.query;
 
-        const {
-            data: { product }
-        } = await apolloClient.query<ProductData>({
-            query: GET_SHOP_PRODUCT,
-            variables: { slug }
-        });
-
-        const productWithPictureThumbnail = await addThumbnailToProduct(product);
+        const product = await ProductHelper.getProduct(slug.toString());
 
         res.status(200).json({
-            product: productWithPictureThumbnail
+            product
         });
     } catch (err) {
         res.status(200).json({

@@ -1,6 +1,6 @@
-import GraphCMSAsset from './asset.model';
+import { Asset } from './asset.model';
 
 export default interface Picture {
-    asset: GraphCMSAsset;
+    asset: Asset;
     alternativeText: string;
 }

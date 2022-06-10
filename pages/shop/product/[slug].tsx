@@ -14,7 +14,6 @@ import {
 import axios from 'axios';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
-import { getPlaiceholder } from 'plaiceholder';
 import Banner from '../../../components/banner';
 import BlockQuote from '../../../components/blockQuote';
 import { Image } from '../../../components/image';
@@ -37,12 +36,9 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
         if (!product) throw new Error('Could not fetch product data');
 
-        const { base64 } = await getPlaiceholder(product?.coverPicture.asset.url);
-
         return {
             props: {
-                product,
-                thumbnail: base64
+                product
             }
         };
     } catch (err) {
@@ -78,13 +74,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
     }
 };
 
-const ProductPage = ({
-    product,
-    thumbnail
-}: {
-    product: Product;
-    thumbnail: string | undefined;
-}) => {
+const ProductPage = ({ product }: { product: Product }) => {
     const showAsPolaroid = useBreakpointValue({ base: false, xl: true });
     const pictureSizes = useBreakpointValue({ base: '100vw', md: '33vw' });
 
@@ -147,7 +137,7 @@ const ProductPage = ({
                                     sizes={pictureSizes}
                                     priority
                                     quality={100}
-                                    blurDataURL={thumbnail}
+                                    blurDataURL={product.coverPicture.asset.thumbnail}
                                     // bg="#282828"
                                     // width={{ base: 'full', sm: '100%' }}
                                     // h={{ base: '100vw', sm: 'auto' }}
