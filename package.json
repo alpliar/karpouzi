@@ -30,6 +30,7 @@
         "next-images": "^1.7.0",
         "next-pwa": "^5.0.4",
         "next-redux-wrapper": "^7.0.5",
+        "plaiceholder": "^2.3.0",
         "postcss-flexbugs-fixes": "^5.0.2",
         "postcss-preset-env": "^7.7.1",
         "react": "18.1.0",
@@ -41,6 +42,7 @@
         "remark": "^14.0.2",
         "remark-html": "^15.0.1",
         "sass": "^1.32.5",
+        "sharp": "^0.30.6",
         "xss": "^1.0.8"
     },
     "devDependencies": {
