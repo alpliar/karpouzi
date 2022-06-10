@@ -1,4 +1,4 @@
-import Asset from '../common/asset.model';
+import GraphCMSAsset from '../common/asset.model';
 import Person from '../common/person.model';
 import Picture from '../common/picture.model';
 import GraphCMSSystemFields from '../common/systemFields.model';
@@ -13,7 +13,7 @@ export default interface BlogPost extends GraphCMSSystemFields {
     /**
      * @deprecated use coverPicture instead
      */
-    picture: Asset;
+    picture: GraphCMSAsset;
     coverPicture: Picture;
 }
 

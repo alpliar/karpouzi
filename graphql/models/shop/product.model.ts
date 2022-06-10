@@ -1,4 +1,4 @@
-import Asset from '../common/asset.model';
+import GraphCMSAsset from '../common/asset.model';
 import Picture from '../common/picture.model';
 import { Id } from '../common/types.model';
 import ShopCategory from './category.model';
@@ -19,7 +19,7 @@ export interface ProductExcerpt {
     /**
      * @deprecated use coverPicture instead
      */
-    picture: Asset;
+    picture: GraphCMSAsset;
     coverPicture: Picture;
     prices: Array<Price>;
     reviews: Array<ReviewExcerpt>;
@@ -39,7 +39,7 @@ export default interface Product {
     /**
      * @deprecated use coverPicture instead
      */
-    picture: Asset;
+    picture: GraphCMSAsset;
     coverPicture: Picture;
     prices: Array<Price>;
     reviews: Array<Review>;

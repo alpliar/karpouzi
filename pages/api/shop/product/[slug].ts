@@ -2,6 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import apolloClient from '../../../../graphql/apollo-client';
 import Product, { ProductData } from '../../../../graphql/models/shop/product.model';
 import { GET_SHOP_PRODUCT } from '../../../../graphql/queries/shop/shop.products.queries';
+import { addThumbnailToProduct } from '../../../../utils/thumbnails';
 
 export interface ProductResponse {
     product?: Product;
@@ -9,22 +10,24 @@ export interface ProductResponse {
 }
 
 const handler = async (req: NextApiRequest, res: NextApiResponse<ProductResponse>) => {
-    const { slug } = req.query;
+    try {
+        const { slug } = req.query;
 
-    const { data, error } = await apolloClient.query<ProductData>({
-        query: GET_SHOP_PRODUCT,
-        variables: { slug }
-    });
+        const {
+            data: { product }
+        } = await apolloClient.query<ProductData>({
+            query: GET_SHOP_PRODUCT,
+            variables: { slug }
+        });
 
-    if (!error && data) {
-        const { product } = data;
+        const productWithPictureThumbnail = await addThumbnailToProduct(product);
 
         res.status(200).json({
-            product
+            product: productWithPictureThumbnail
         });
-    } else {
-        res.status(404).json({
-            error: 'Could not fetch shop product: ' + error?.message
+    } catch (err) {
+        res.status(200).json({
+            error: 'Could not fetch shop product'
         });
     }
 };

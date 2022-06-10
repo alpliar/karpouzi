@@ -1,9 +1,18 @@
 import GraphCMSSystemFields from './systemFields.model';
 import { Id } from './types.model';
 
-export default interface Asset extends GraphCMSSystemFields {
+export interface Asset extends GraphCMSAsset {
+    thumbnail: string;
+}
+
+export default interface GraphCMSAsset extends GraphCMSSystemFields {
     id: Id;
     url: string;
     fileName: string;
     mimeType: string;
+    thumbnail: string;
+}
+
+export interface AssetData {
+    asset: GraphCMSAsset;
 }
