@@ -76,6 +76,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 const ProductPage = ({ product }: { product: Product }) => {
     const showAsPolaroid = useBreakpointValue({ base: false, xl: true });
+    const pictureSizes = useBreakpointValue({ base: '100vw', md: '33vw' });
 
     if (!product) return null;
 
@@ -133,11 +134,9 @@ const ProductPage = ({ product }: { product: Product }) => {
                                 <Image
                                     src={product.coverPicture.asset.url}
                                     alt={product.coverPicture.alternativeText}
-                                    width={0}
-                                    height={0}
-                                    sizes="35vw"
-                                    placeholder="blur"
+                                    sizes={pictureSizes}
                                     priority
+                                    quality={100}
                                     // bg="#282828"
                                     // width={{ base: 'full', sm: '100%' }}
                                     // h={{ base: '100vw', sm: 'auto' }}
