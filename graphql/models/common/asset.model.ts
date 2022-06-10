@@ -10,7 +10,6 @@ export default interface GraphCMSAsset extends GraphCMSSystemFields {
     url: string;
     fileName: string;
     mimeType: string;
-    thumbnail: string;
 }
 
 export interface AssetData {
