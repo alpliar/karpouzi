@@ -10,6 +10,7 @@ interface ImageProps {
     sizes?: NextImageProps['sizes'];
     priority?: NextImageProps['priority'];
     quality: NextImageProps['quality'];
+    blurDataURL?: NextImageProps['blurDataURL'];
 }
 
 const shimmer = (w: number, h: number) => `
@@ -37,6 +38,7 @@ export const Image: React.FC<ImageProps & Omit<BoxProps, 'as'>> = ({
     sizes,
     priority = undefined,
     quality = 75,
+    blurDataURL = `data:image/svg+xml;base64,${toBase64(shimmer(500, 500))}`,
     ...rest
 }) => {
     return (
@@ -48,7 +50,7 @@ export const Image: React.FC<ImageProps & Omit<BoxProps, 'as'>> = ({
                 src={src}
                 alt={alt}
                 sizes={sizes}
-                blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(500, 500))}`}
+                blurDataURL={blurDataURL}
                 placeholder="blur"
                 priority={priority}
                 quality={quality}
