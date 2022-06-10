@@ -2,25 +2,14 @@ import { Img } from '@chakra-ui/image';
 import { Box, Heading, LinkBox, LinkOverlay, Stack, Text } from '@chakra-ui/layout';
 import { useBreakpointValue } from '@chakra-ui/media-query';
 import Link from 'next/link';
+import { ShopCategoryWithProducts } from '../graphql/models/shop/category.model';
 import Card from './card';
 
 interface IProps {
-    slug: string;
-    title: string;
-    shortDescription: string;
-    fullHeight: boolean;
-    image: string;
-    // products?: CategoryProducts;
-    // productCount?: number;
+    category: ShopCategoryWithProducts;
 }
 
-const CategoryCard: React.FC<IProps> = ({
-    slug,
-    title,
-    shortDescription,
-    fullHeight = false,
-    image
-}) => {
+const CategoryCard: React.FC<IProps> = ({ category }) => {
     // const [isHovered, setIsHovered] = useBoolean(false);
     const imageHeight = useBreakpointValue({ base: 64, sm: 48, md: 48, lg: 64 });
 
@@ -29,12 +18,8 @@ const CategoryCard: React.FC<IProps> = ({
     // };
 
     return (
-        <LinkBox
-            height={
-                fullHeight ? 'full' : undefined
-            } /*onMouseEnter={onHover} onMouseLeave={onHover} */
-        >
-            <Card key={slug} fullHeight padding={6}>
+        <LinkBox>
+            <Card key={category.slug} fullHeight padding={6}>
                 <Box
                     bg="#282828"
                     minH={imageHeight}
@@ -47,23 +32,23 @@ const CategoryCard: React.FC<IProps> = ({
                         w="full"
                         minH={imageHeight}
                         objectFit="cover"
-                        src={image}
-                        alt={`illustration for ${title}`}
+                        src={category.picture.url}
+                        alt={`illustration for ${category.name}`}
                     />
                 </Box>
                 <Stack spacing={4} height="full">
                     {/* <Wrap justify="space-between" align="center"> */}
                     {/* <Box width={{ base: '100%', md: 'inherit' }}> */}
                     <Box>
-                        <Link href={`/shop/category/${slug}`} passHref>
+                        <Link href={`/shop/category/${category.slug}`} passHref>
                             <LinkOverlay
-                                title={`go to ${slug} category`}
+                                title={`go to ${category.slug} category`}
                                 textShadow="sm"
                                 _hover={{
                                     textShadow: '0.5px 0.5px 0.5px teal'
                                 }}>
                                 <Heading as="h2" size="md">
-                                    {title}
+                                    {category.name}
                                 </Heading>
                             </LinkOverlay>
                         </Link>
@@ -79,7 +64,7 @@ const CategoryCard: React.FC<IProps> = ({
                         </Text> */}
                     {/* </Wrap> */}
 
-                    <Text noOfLines={3}>{shortDescription}</Text>
+                    <Text noOfLines={3}>{category.description}</Text>
 
                     {/* {productsCount > 0 && (
                         <>

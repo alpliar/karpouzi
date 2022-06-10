@@ -6,7 +6,7 @@ import CategoryCard from '../../components/categoryCard';
 import PageListingLayout from '../../components/pageListingLayout';
 import ShopStat from '../../components/shopStat';
 import { API_BASE_URL } from '../../constants/api';
-import ShopCategory from '../../graphql/models/shop/category.model';
+import { ShopCategoryWithProducts } from '../../graphql/models/shop/category.model';
 
 export const getStaticProps: GetStaticProps = async () => {
     const response = await fetch(API_BASE_URL + '/shop/categories');
@@ -25,7 +25,7 @@ export const getStaticProps: GetStaticProps = async () => {
 };
 
 type ShopPageProps = {
-    categories: ShopCategory[];
+    categories: ShopCategoryWithProducts[];
 };
 
 export default function ShopPage({ categories }: ShopPageProps) {
@@ -65,18 +65,7 @@ export default function ShopPage({ categories }: ShopPageProps) {
             <SimpleGrid columns={{ base: 1, sm: 2, md: 3, xl: 4 }} spacing={4}>
                 {categories &&
                     categories.map((category) => {
-                        return (
-                            <CategoryCard
-                                fullHeight
-                                key={category.slug}
-                                slug={category.slug}
-                                title={category.name}
-                                image={category.picture.url}
-                                shortDescription={category.description}
-                                // products={category.products.featured}
-                                // productsCount={category.products.count}
-                            />
-                        );
+                        return <CategoryCard key={category.id} category={category} />;
                     })}
             </SimpleGrid>
         </PageListingLayout>
