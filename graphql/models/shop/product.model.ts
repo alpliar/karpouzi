@@ -53,6 +53,14 @@ export interface ProductData {
 export interface ProductSlug {
     slug: string;
 }
-export interface ShopProductsData {
+export interface ShopProductSlugsData {
     products: Array<ProductSlug>;
+}
+
+export interface ShopProductsData {
+    products: Array<Product>;
+}
+
+export interface GetShopProductsRequestVariables {
+    slugs: Array<Product['slug']>;
 }

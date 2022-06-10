@@ -11,7 +11,6 @@ import {
     Text,
     useBreakpointValue
 } from '@chakra-ui/react';
-import axios from 'axios';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
 import Banner from '../../../components/banner';
@@ -20,21 +19,18 @@ import { Image } from '../../../components/image';
 import PageListingLayout from '../../../components/pageListingLayout';
 import Polaroid from '../../../components/polaroid';
 import Rating from '../../../components/rating';
-import { API_BASE_URL } from '../../../constants/api';
 import AddToCart from '../../../container/addToCart';
 import ShopCategory from '../../../graphql/models/shop/category.model';
-import Product, { ShopProductsData } from '../../../graphql/models/shop/product.model';
-import { ProductResponse } from '../../api/shop/product/[slug]';
+import Product from '../../../graphql/models/shop/product.model';
+import ProductHelper from '../../../helpers/product.helper';
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
     try {
         const slug = params?.slug;
 
-        const {
-            data: { product }
-        } = await axios.get<ProductResponse>(API_BASE_URL + '/shop/product/' + slug);
+        if (typeof slug !== 'string') throw new Error('Slug is missing in params');
 
-        if (!product) throw new Error('Could not fetch product data');
+        const product = await ProductHelper.getProduct(slug);
 
         return {
             props: {
@@ -51,11 +47,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
 export const getStaticPaths: GetStaticPaths = async () => {
     try {
-        const {
-            data: { products }
-        } = await axios.post<ShopProductsData>(API_BASE_URL + '/shop/products');
-
-        if (!products) throw new Error('Could not fetch products data');
+        const products = await ProductHelper.getAllProductsSlugs();
 
         return {
             paths: products.map(({ slug }) => ({
