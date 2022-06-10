@@ -31,7 +31,7 @@ export default class AssetHelper {
     static getThumbnail = async (url: string): Promise<Asset['thumbnail']> => {
         return new Promise(async (resolve, reject) => {
             try {
-                const { base64 } = await getPlaiceholder(url, { size: 64 });
+                const { base64 } = await getPlaiceholder(url /*, { size: 64 }*/);
                 resolve(base64);
             } catch {
                 reject(undefined);
