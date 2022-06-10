@@ -1,12 +1,8 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import apolloClient from '../../../graphql/apollo-client';
-import {
-    ShopCategoriesData,
-    ShopCategoryWithProductsExcerpts
-} from '../../../graphql/models/shop/category.model';
-import { GET_SHOP_CATEGORIES } from '../../../graphql/queries/shop/shop.categories.queries';
+import { ShopCategoryWithProducts } from '../../../graphql/models/shop/category.model';
+import CategoryHelper from '../../../helpers/category.helper';
 interface CategoriesResponse {
-    categories?: ShopCategoryWithProductsExcerpts[];
+    categories?: ShopCategoryWithProducts[];
     error?: string;
 }
 
@@ -15,11 +11,7 @@ const handler = async (
     res: NextApiResponse<CategoriesResponse | undefined>
 ) => {
     try {
-        const {
-            data: { categories }
-        } = await apolloClient.query<ShopCategoriesData>({
-            query: GET_SHOP_CATEGORIES
-        });
+        const categories = await CategoryHelper.getCategories();
 
         res.status(200).json({
             categories
