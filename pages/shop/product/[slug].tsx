@@ -129,7 +129,7 @@ const ProductPage = ({ product }: { product: Product }) => {
                                     sizes={pictureSizes}
                                     priority
                                     quality={100}
-                                    // blurDataURL={product.coverPicture.asset.thumbnail}
+                                    blurDataURL={product.coverPicture.asset.thumbnail}
                                     // bg="#282828"
                                     // width={{ base: 'full', sm: '100%' }}
                                     // h={{ base: '100vw', sm: 'auto' }}
