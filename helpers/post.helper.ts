@@ -19,7 +19,10 @@ export default class PostHelper {
 
                 const newPost: BlogPost = {
                     ...post,
-                    picture: await AssetHelper.getAsset(post.coverPicture.asset.id)
+                    coverPicture: {
+                        ...post.coverPicture,
+                        asset: await AssetHelper.getAsset(post.coverPicture.asset.id)
+                    }
                 };
 
                 resolve(newPost);
