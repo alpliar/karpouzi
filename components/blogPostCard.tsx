@@ -2,40 +2,47 @@ import {
     Avatar,
     Box,
     Heading,
-    Img,
     LinkBox,
     LinkOverlay,
     Stack,
     Text,
+    useBreakpointValue,
     useColorModeValue
 } from '@chakra-ui/react';
 import Link from 'next/link';
 import BlogPost from '../graphql/models/blog/post.model';
 import Card from './card';
+import { Image } from './image';
 
 interface IBlogPostCardProps {
     post: BlogPost;
 }
 
 const BlogPostCard: React.FC<IBlogPostCardProps> = ({ post }) => {
+    const pictureSizes = useBreakpointValue({ base: '100vw', md: '33vw' });
+
     const [author] = post.authors;
-    const fallbackPicture =
-        'https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80';
+
     return (
         <LinkBox>
             <Card>
-                <Box
-                    minH={32}
-                    maxH={64}
-                    bg="gray.100"
-                    mt={-6}
-                    mx={-6}
-                    mb={6}
-                    pos="relative"
-                    overflow="hidden">
-                    <Img
+                <Box h={64} bg="gray.100" mt={-6} mx={-6} mb={6} pos="relative" overflow="hidden">
+                    {/* <Img
                         alt={post.coverPicture.alternativeText}
                         src={post.coverPicture.asset.url || fallbackPicture}
+                    /> */}
+                    <Image
+                        src={post.coverPicture.asset.url}
+                        alt={post.coverPicture.alternativeText}
+                        sizes={pictureSizes}
+                        priority
+                        height={64}
+                        quality={100}
+                        blurDataURL={post.coverPicture.asset.thumbnail}
+                        // bg="#282828"
+                        // width={{ base: 'full', sm: '100%' }}
+                        // h={{ base: '100vw', sm: 'auto' }}
+                        // overflow="hidden"
                     />
                 </Box>
                 <Stack>
