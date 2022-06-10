@@ -6,7 +6,7 @@ import CategoryCard from '../../components/categoryCard';
 import PageListingLayout from '../../components/pageListingLayout';
 import ShopStat from '../../components/shopStat';
 import { API_BASE_URL } from '../../constants/api';
-import { ShopCategoryWithProducts } from '../../graphql/models/shop/category.model';
+import { ShopCategoryWithProductsAndAsset } from '../../graphql/models/shop/category.model';
 
 export const getStaticProps: GetStaticProps = async () => {
     const response = await fetch(API_BASE_URL + '/shop/categories');
@@ -25,7 +25,7 @@ export const getStaticProps: GetStaticProps = async () => {
 };
 
 type ShopPageProps = {
-    categories: ShopCategoryWithProducts[];
+    categories: ShopCategoryWithProductsAndAsset[];
 };
 
 export default function ShopPage({ categories }: ShopPageProps) {
