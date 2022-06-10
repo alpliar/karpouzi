@@ -22,14 +22,7 @@ const CategoryCard: React.FC<IProps> = ({ category }) => {
     return (
         <LinkBox>
             <Card key={category.slug} fullHeight padding={6}>
-                <Box
-                    bg="#282828"
-                    minH={imageHeight}
-                    h={imageHeight}
-                    mt={-6}
-                    mx={-6}
-                    mb={6}
-                    overflow="hidden">
+                <Box minH={imageHeight} h={imageHeight} mt={-6} mx={-6} mb={6} overflow="hidden">
                     <Image
                         src={category.picture.url}
                         alt={category.name}
