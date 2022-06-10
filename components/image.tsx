@@ -1,14 +1,15 @@
 import { Box, BoxProps, LayoutProps } from '@chakra-ui/react';
-import NextImage from 'next/image';
+import NextImage, { ImageProps as NextImageProps } from 'next/image';
 import * as React from 'react';
 
 interface ImageProps {
-    src: string;
-    alt: string;
-    width: LayoutProps['width'];
-    height: LayoutProps['height'];
-    sizes?: string | undefined;
-    priority?: boolean;
+    src: NextImageProps['src'];
+    alt: NextImageProps['alt'];
+    width?: LayoutProps['width'];
+    height?: LayoutProps['height'];
+    sizes?: NextImageProps['sizes'];
+    priority?: NextImageProps['priority'];
+    quality: NextImageProps['quality'];
 }
 
 const shimmer = (w: number, h: number) => `
@@ -31,16 +32,18 @@ const toBase64 = (str: string) =>
 export const Image: React.FC<ImageProps & Omit<BoxProps, 'as'>> = ({
     src,
     alt,
-    width,
-    height,
+    width = undefined,
+    height = undefined,
     sizes,
     priority = undefined,
+    quality = 75,
     ...rest
 }) => {
     return (
         <Box position="relative" width={width} height={height} {...rest}>
             <NextImage
                 objectFit="cover"
+                objectPosition="center"
                 layout="fill"
                 src={src}
                 alt={alt}
@@ -48,6 +51,7 @@ export const Image: React.FC<ImageProps & Omit<BoxProps, 'as'>> = ({
                 blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(500, 500))}`}
                 placeholder="blur"
                 priority={priority}
+                quality={quality}
             />
         </Box>
     );
