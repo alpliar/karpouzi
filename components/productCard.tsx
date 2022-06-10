@@ -26,6 +26,8 @@ interface IProps {
 
 const ProductCard: React.FC<IProps> = ({ product, ratingIcon = undefined }) => {
     const imageHeight = useBreakpointValue({ base: 64 /*, sm: 48, md: 48, lg: 64  */ });
+    const pictureSizes = useBreakpointValue({ base: '100vw' });
+
     // const fallbackPicture = '';
     const isNew = true;
     const price = product.prices.find(({ currency }) => currency === 'EUR');
@@ -56,11 +58,11 @@ const ProductCard: React.FC<IProps> = ({ product, ratingIcon = undefined }) => {
                     <Image
                         src={product.coverPicture.asset.url}
                         alt={product.coverPicture.alternativeText}
-                        sizes="100vw"
+                        sizes={pictureSizes}
                         priority
                         height={imageHeight}
                         quality={100}
-                        // blurDataURL={product.coverPicture.asset.thumbnail}
+                        blurDataURL={product.coverPicture.asset.thumbnail}
                         // bg="#282828"
                         // width={{ base: 'full', sm: '100%' }}
                         // h={{ base: '100vw', sm: 'auto' }}
