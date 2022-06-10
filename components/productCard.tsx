@@ -26,7 +26,7 @@ interface IProps {
 
 const ProductCard: React.FC<IProps> = ({ product, ratingIcon = undefined }) => {
     const imageHeight = useBreakpointValue({ base: 64 /*, sm: 48, md: 48, lg: 64  */ });
-    const pictureSizes = useBreakpointValue({ base: '100vw' });
+    const pictureSizes = useBreakpointValue({ base: '100vw', md: '33vw' });
 
     // const fallbackPicture = '';
     const isNew = true;
