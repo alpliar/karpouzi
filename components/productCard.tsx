@@ -41,7 +41,6 @@ const ProductCard: React.FC<IProps> = ({ product, ratingIcon = undefined }) => {
         <LinkBox>
             <Card>
                 <Box
-                    bg="#282828"
                     position="relative"
                     h={imageHeight}
                     mt={-6}
