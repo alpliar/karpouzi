@@ -26,7 +26,7 @@ const BlogPostCard: React.FC<IBlogPostCardProps> = ({ post }) => {
     return (
         <LinkBox>
             <Card>
-                <Box h={64} bg="gray.100" mt={-6} mx={-6} mb={6} pos="relative" overflow="hidden">
+                <Box h={64} mt={-6} mx={-6} mb={6} pos="relative" overflow="hidden">
                     {/* <Img
                         alt={post.coverPicture.alternativeText}
                         src={post.coverPicture.asset.url || fallbackPicture}
