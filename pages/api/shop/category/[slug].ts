@@ -10,7 +10,6 @@ export interface CategoryResponse {
 const handler = async (req: NextApiRequest, res: NextApiResponse<CategoryResponse>) => {
     try {
         const { slug } = req.query;
-
         if (typeof slug !== 'string') throw new Error('Slug is missing in params');
 
         const category = await CategoryHelper.getCategory(slug);
@@ -19,6 +18,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<CategoryRespons
             category
         });
     } catch (_err) {
+        console.log(_err);
         res.status(404).json({
             error: 'Could not fetch shop category'
         });

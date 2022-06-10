@@ -1,13 +1,13 @@
 import { BellIcon, TriangleDownIcon } from '@chakra-ui/icons';
-import { Img } from '@chakra-ui/image';
 import { Box, Heading, LinkBox, LinkOverlay, Stack, Text } from '@chakra-ui/layout';
 import { useBreakpointValue } from '@chakra-ui/media-query';
 import { IconProps } from '@chakra-ui/react';
 import { ComponentWithAs } from '@chakra-ui/system';
 import Link from 'next/link';
 import { IconType } from 'react-icons';
-import { ProductExcerpt } from '../graphql/models/shop/product.model';
+import Product from '../graphql/models/shop/product.model';
 import Card from './card';
+import { Image } from './image';
 import ProductCardBadge from './productCardBadge';
 import Rating from './rating';
 
@@ -20,13 +20,13 @@ interface IProps {
     // isNew: boolean;
     // reviewCount: number;
     // rating: number;
-    product: ProductExcerpt;
+    product: Product;
     ratingIcon?: IconType | ComponentWithAs<'svg', IconProps>;
 }
 
 const ProductCard: React.FC<IProps> = ({ product, ratingIcon = undefined }) => {
-    const imageHeight = useBreakpointValue({ base: 64, sm: 48, md: 48, lg: 64 });
-    const fallbackPicture = '';
+    const imageHeight = useBreakpointValue({ base: 64 /*, sm: 48, md: 48, lg: 64  */ });
+    // const fallbackPicture = '';
     const isNew = true;
     const price = product.prices.find(({ currency }) => currency === 'EUR');
     const formattedPrice = `${price?.amount} ${price?.currency}`;
@@ -47,11 +47,24 @@ const ProductCard: React.FC<IProps> = ({ product, ratingIcon = undefined }) => {
                     mb={6}
                     pos={'relative'}
                     overflow="hidden">
-                    <Img
+                    {/* <Img
                         objectFit="cover"
                         minH={imageHeight}
                         src={product.coverPicture.asset.url || fallbackPicture}
                         alt={product.coverPicture.alternativeText}
+                    /> */}
+                    <Image
+                        src={product.coverPicture.asset.url}
+                        alt={product.coverPicture.alternativeText}
+                        sizes="100vw"
+                        priority
+                        height={imageHeight}
+                        quality={100}
+                        // blurDataURL={product.coverPicture.asset.thumbnail}
+                        // bg="#282828"
+                        // width={{ base: 'full', sm: '100%' }}
+                        // h={{ base: '100vw', sm: 'auto' }}
+                        // overflow="hidden"
                     />
                     {isNew && (
                         <ProductCardBadge

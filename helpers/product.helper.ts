@@ -8,6 +8,7 @@ import Product, {
 } from '../graphql/models/shop/product.model';
 import {
     GET_SHOP_PRODUCT,
+    GET_SHOP_PRODUCTS,
     GET_SHOP_PRODUCTS_SLUGS
 } from '../graphql/queries/shop/shop.products.queries';
 import AssetHelper from './asset.helper';
@@ -33,6 +34,7 @@ export default class ProductHelper {
 
                 resolve(newProduct);
             } catch {
+                console.log('err - getProduct');
                 reject(undefined);
             }
         });
@@ -44,7 +46,7 @@ export default class ProductHelper {
                 const {
                     data: { products }
                 } = await apolloClient.query<ShopProductsData, GetShopProductsRequestVariables>({
-                    query: GET_SHOP_PRODUCTS_SLUGS,
+                    query: GET_SHOP_PRODUCTS,
                     variables: { slugs }
                 });
 
@@ -63,6 +65,7 @@ export default class ProductHelper {
 
                 resolve(newProducts);
             } catch {
+                console.log('err - getProducts');
                 reject(undefined);
             }
         });
@@ -79,6 +82,7 @@ export default class ProductHelper {
 
                 resolve(products);
             } catch {
+                console.log('err - getAllProductsSlugs');
                 reject(undefined);
             }
         });
