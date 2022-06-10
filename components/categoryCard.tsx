@@ -13,7 +13,7 @@ interface IProps {
 const CategoryCard: React.FC<IProps> = ({ category }) => {
     // const [isHovered, setIsHovered] = useBoolean(false);
     const imageHeight = useBreakpointValue({ base: 64, sm: 48, md: 48, lg: 64 });
-    const pictureSizes = useBreakpointValue({ base: '100vw', md: '25vw' });
+    const pictureSizes = useBreakpointValue({ base: '100vw', sm: '50vw', md: '25vw' });
 
     // const onHover = () => {
     //     setIsHovered.toggle();
