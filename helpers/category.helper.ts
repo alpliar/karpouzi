@@ -2,7 +2,8 @@ import apolloClient from '../graphql/apollo-client';
 import ShopCategory, {
     ShopCategoriesData,
     ShopCategoryData,
-    ShopCategoryWithProducts
+    ShopCategoryWithProducts,
+    ShopCategoryWithProductsAndAsset
 } from '../graphql/models/shop/category.model';
 import {
     GET_SHOP_CATEGORIES,
@@ -25,7 +26,7 @@ export default class CategoryHelper {
                 const productSlugs = category.products.map(({ slug }) => slug);
                 const products = await ProductHelper.getProducts(productSlugs);
 
-                const newCategory: ShopCategoryWithProducts = {
+                const newCategory: ShopCategoryWithProductsAndAsset = {
                     ...category,
                     picture: await AssetHelper.getAsset(category.picture.id),
                     products

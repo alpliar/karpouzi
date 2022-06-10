@@ -1,4 +1,4 @@
-import GraphCMSAsset from '../common/asset.model';
+import GraphCMSAsset, { Asset } from '../common/asset.model';
 import { Id } from '../common/types.model';
 import Product, { ProductExcerpt } from './product.model';
 export default interface ShopCategory {
@@ -10,6 +10,10 @@ export default interface ShopCategory {
 }
 export interface ShopCategoryWithProducts extends ShopCategory {
     products: Array<Product>;
+}
+
+export interface ShopCategoryWithProductsAndAsset extends ShopCategoryWithProducts {
+    picture: Asset;
 }
 export interface ShopCategoryWithProductsExcerpts extends ShopCategory {
     id: Id;

@@ -2,11 +2,12 @@ import { Img } from '@chakra-ui/image';
 import { Box, Heading, LinkBox, LinkOverlay, Stack, Text } from '@chakra-ui/layout';
 import { useBreakpointValue } from '@chakra-ui/media-query';
 import Link from 'next/link';
-import { ShopCategoryWithProducts } from '../graphql/models/shop/category.model';
+import { ShopCategoryWithProductsAndAsset } from '../graphql/models/shop/category.model';
 import Card from './card';
+import { Image } from './image';
 
 interface IProps {
-    category: ShopCategoryWithProducts;
+    category: ShopCategoryWithProductsAndAsset;
 }
 
 const CategoryCard: React.FC<IProps> = ({ category }) => {
@@ -28,6 +29,19 @@ const CategoryCard: React.FC<IProps> = ({ category }) => {
                     mx={-6}
                     mb={6}
                     overflow="hidden">
+                    <Image
+                        src={category.picture.url}
+                        alt={category.name}
+                        sizes={'100vw'}
+                        priority
+                        height={imageHeight}
+                        quality={100}
+                        blurDataURL={category.picture.thumbnail}
+                        // bg="#282828"
+                        // width={{ base: 'full', sm: '100%' }}
+                        // h={{ base: '100vw', sm: 'auto' }}
+                        // overflow="hidden"
+                    />
                     <Img
                         w="full"
                         minH={imageHeight}
