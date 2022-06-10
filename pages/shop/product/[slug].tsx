@@ -11,6 +11,7 @@ import {
     Text,
     useBreakpointValue
 } from '@chakra-ui/react';
+import axios from 'axios';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
 import Banner from '../../../components/banner';
@@ -19,10 +20,12 @@ import { Image } from '../../../components/image';
 import PageListingLayout from '../../../components/pageListingLayout';
 import Polaroid from '../../../components/polaroid';
 import Rating from '../../../components/rating';
+import { API_BASE_URL } from '../../../constants/api';
 import AddToCart from '../../../container/addToCart';
 import ShopCategory from '../../../graphql/models/shop/category.model';
 import Product from '../../../graphql/models/shop/product.model';
-import ProductHelper from '../../../helpers/product.helper';
+import { ProductResponse } from '../../api/shop/product/[slug]';
+import { ProductsResponse } from '../../api/shop/products/slugs';
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
     try {
@@ -30,7 +33,9 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
         if (typeof slug !== 'string') throw new Error('Slug is missing in params');
 
-        const product = await ProductHelper.getProduct(slug);
+        const {
+            data: { product }
+        } = await axios.get<ProductResponse>(API_BASE_URL + `/shop/product/${slug}`);
 
         return {
             props: {
@@ -47,15 +52,19 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
 export const getStaticPaths: GetStaticPaths = async () => {
     try {
-        const products = await ProductHelper.getAllProductsSlugs();
+        const {
+            data: { products }
+        } = await axios.get<ProductsResponse>(API_BASE_URL + `/shop/products/slugs`);
+
+        const paths = products.map(({ slug }) => ({
+            params: {
+                slug
+            },
+            locale: 'en'
+        }));
 
         return {
-            paths: products.map(({ slug }) => ({
-                params: {
-                    slug
-                },
-                locale: 'en'
-            })),
+            paths,
             fallback: true
         };
     } catch (err) {
