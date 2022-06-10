@@ -137,6 +137,7 @@ const ProductPage = ({ product }: { product: Product }) => {
                                     height={0}
                                     sizes="35vw"
                                     placeholder="blur"
+                                    priority
                                     // bg="#282828"
                                     // width={{ base: 'full', sm: '100%' }}
                                     // h={{ base: '100vw', sm: 'auto' }}

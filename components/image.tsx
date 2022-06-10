@@ -8,6 +8,7 @@ interface ImageProps {
     width: LayoutProps['width'];
     height: LayoutProps['height'];
     sizes?: string | undefined;
+    priority?: boolean;
 }
 
 const shimmer = (w: number, h: number) => `
@@ -33,6 +34,7 @@ export const Image: React.FC<ImageProps & Omit<BoxProps, 'as'>> = ({
     width,
     height,
     sizes,
+    priority = undefined,
     ...rest
 }) => {
     return (
@@ -45,6 +47,7 @@ export const Image: React.FC<ImageProps & Omit<BoxProps, 'as'>> = ({
                 sizes={sizes}
                 blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(500, 500))}`}
                 placeholder="blur"
+                priority={priority}
             />
         </Box>
     );
