@@ -4,7 +4,7 @@ import ShopCategory, {
     ShopCategoryWithProducts
 } from '../graphql/models/shop/category.model';
 import { GET_SHOP_CATEGORY } from '../graphql/queries/shop/shop.categories.queries';
-import Category from '../models/category.model';
+import AssetHelper from './asset.helper';
 import ProductHelper from './product.helper';
 
 export default class CategoryHelper {
@@ -18,15 +18,18 @@ export default class CategoryHelper {
                     variables: { slug }
                 });
 
-                const newCategory: Category = {
+                const productSlugs = category.products.map(({ slug }) => slug);
+                const products = await ProductHelper.getProducts(productSlugs);
+
+                const newCategory: ShopCategoryWithProducts = {
                     ...category,
-                    products: await ProductHelper.getProducts(
-                        category.products.map(({ slug }) => slug)
-                    )
+                    picture: await AssetHelper.getAsset(category.picture.id),
+                    products
                 };
 
                 resolve(newCategory);
             } catch {
+                console.log('err - getCategory');
                 reject(undefined);
             }
         });

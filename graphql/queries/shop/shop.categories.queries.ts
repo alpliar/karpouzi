@@ -29,49 +29,10 @@ export const GET_SHOP_CATEGORY = gql`
             description
             picture {
                 id
-                fileName
-                mimeType
-                createdAt
-                url(transformation: { image: { resize: { height: 300, width: 300 } } })
             }
             products {
                 id
-                name
                 slug
-                description
-                coverPicture {
-                    alternativeText
-                    asset {
-                        id
-                        fileName
-                        mimeType
-                        createdAt
-                        url(transformation: { image: { resize: { height: 500, width: 500 } } })
-                    }
-                }
-                picture {
-                    id
-                    url(transformation: { image: { resize: { width: 300, height: 300 } } })
-                    fileName
-                    mimeType
-                }
-                prices {
-                    amount
-                    currency
-                    measurementUnit
-                }
-                reviews {
-                    id
-                    author {
-                        firstName
-                        postalAddress {
-                            countryName
-                        }
-                    }
-                    message
-                    rating
-                    isVerified
-                }
             }
         }
     }

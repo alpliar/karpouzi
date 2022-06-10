@@ -24,5 +24,5 @@ export interface ShopCategoriesData {
     categories: Array<ShopCategoryWithProductsExcerpts>;
 }
 export interface ShopCategoryData {
-    category: ShopCategoryWithProducts;
+    category: ShopCategoryWithProductsExcerpts;
 }

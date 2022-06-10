@@ -20,7 +20,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
             data: { category }
         } = await axios.get<CategoryResponse>(API_BASE_URL + `/shop/category/${slug}`);
 
-        if (!category) throw new Error('Could not fetch category data');
+        // if (!category) throw new Error('Could not fetch category data');
 
         return {
             props: {
