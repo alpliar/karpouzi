@@ -89,11 +89,7 @@ const CategoryPage: NextPage = (props: InferGetStaticPropsType<typeof getStaticP
             {!!category.products.length ? (
                 <SimpleGrid columns={{ base: 1, sm: 2, md: 3, xl: 4 }} spacing={4}>
                     {category.products.map((product) => {
-                        return (
-                            <>
-                                <ProductCard key={product.id} product={product} />
-                            </>
-                        );
+                        return <ProductCard key={product.id} product={product} />;
                     })}
                 </SimpleGrid>
             ) : (
