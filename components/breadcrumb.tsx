@@ -15,14 +15,16 @@ export interface IBreadcrumbProps {
 }
 
 const Breadcrumb = ({ entries }: IBreadcrumbProps) => {
-    const structuredData: any = {
+    const baseUrl: string = process.env.NEXT_PUBLIC_URL || '';
+
+    const structuredData: unknown = {
         '@context': 'https://schema.org',
         '@type': 'BreadcrumbList',
         itemListElement: entries.map((entry, index) => ({
             '@type': 'ListItem',
             position: index + 1,
             name: entry.text,
-            item: !entry.isCurrentPage ?? entry.link
+            item: !entry.isCurrentPage ? baseUrl + entry.link : undefined
         }))
     };
     return (
@@ -45,10 +47,7 @@ const Breadcrumb = ({ entries }: IBreadcrumbProps) => {
                                 {isCurrentPage ? (
                                     <Text>{text}</Text>
                                 ) : (
-                                    <Link
-                                        href={process.env.NEXT_PUBLIC_URL + link}
-                                        alt={alt}
-                                        prefetch={false}>
+                                    <Link href={link} alt={alt} prefetch={false}>
                                         {text}
                                     </Link>
                                 )}
