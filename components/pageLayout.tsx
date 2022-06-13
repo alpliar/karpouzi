@@ -1,4 +1,4 @@
-import { Container } from '@chakra-ui/react';
+import { Container, useColorModeValue } from '@chakra-ui/react';
 import Head from 'next/head';
 import { PropsWithChildren } from 'react';
 import Header from './Header';
@@ -10,6 +10,7 @@ export const siteTitle = `Karpouzi`;
 interface IPageLayoutProps {}
 
 const PageLayout: React.FC<PropsWithChildren<IPageLayoutProps>> = ({ children }) => {
+    const themeColor: string = useColorModeValue('#48BB78', '#2A4F3A');
     return (
         <>
             <Head>
@@ -37,7 +38,7 @@ const PageLayout: React.FC<PropsWithChildren<IPageLayoutProps>> = ({ children })
                 <link href="/icon-32x32.png" rel="icon" type="image/png" sizes="32x32" />
                 <link rel="apple-touch-icon" href="/icon-512x512.png"></link>
 
-                <meta name="theme-color" content="#000" />
+                <meta name="theme-color" content={themeColor} />
             </Head>
 
             <Header siteTitle={siteTitle} />

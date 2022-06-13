@@ -34,14 +34,12 @@ const PageListingLayout: React.FC<PropsWithChildren<IPageLayoutProps>> = ({
             : `linear(to-b, ${gradientStart}, green.900)`;
     };
 
-    const themeColor: string = useColorModeValue('#48BB78', '#2A4F3A');
     const bgPatternFillColor = useColorModeValue('white', 'gray.800');
     const bgPattern = `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h20v20H0V0zm10 17a7 7 0 1 0 0-14 7 7 0 0 0 0 14zm20 0a7 7 0 1 0 0-14 7 7 0 0 0 0 14zM10 37a7 7 0 1 0 0-14 7 7 0 0 0 0 14zm10-17h20v20H20V20zm10 17a7 7 0 1 0 0-14 7 7 0 0 0 0 14z' fill='${bgPatternFillColor}' fill-opacity='0.4' fill-rule='evenodd'/%3E%3C/svg%3E")`;
 
     return (
         <PageLayout>
             <Head>
-                <meta name="theme-color" content={themeColor} />
                 <title>
                     {title} - {siteTitle}
                 </title>
