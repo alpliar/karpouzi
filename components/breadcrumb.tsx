@@ -2,6 +2,7 @@ import { Breadcrumb as ChakraBreadcrumb, BreadcrumbItem } from '@chakra-ui/bread
 import { ChevronRightIcon } from '@chakra-ui/icons';
 import { Text } from '@chakra-ui/layout';
 import Head from 'next/head';
+import { BreadcrumbList, WithContext } from 'schema-dts';
 import Link from './link';
 
 export interface IBreadcrumbItemProps {
@@ -17,7 +18,7 @@ export interface IBreadcrumbProps {
 const Breadcrumb = ({ entries }: IBreadcrumbProps) => {
     const baseUrl: string = process.env.NEXT_PUBLIC_URL || '';
 
-    const structuredData: unknown = {
+    const structuredData: WithContext<BreadcrumbList> = {
         '@context': 'https://schema.org',
         '@type': 'BreadcrumbList',
         itemListElement: entries.map((entry, index) => ({
