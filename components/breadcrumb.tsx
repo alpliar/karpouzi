@@ -22,7 +22,7 @@ const Breadcrumb = ({ entries }: IBreadcrumbProps) => {
             '@type': 'ListItem',
             position: index + 1,
             name: entry.text,
-            item: entry.link
+            item: !entry.isCurrentPage ?? entry.link
         }))
     };
     return (
