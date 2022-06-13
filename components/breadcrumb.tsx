@@ -45,7 +45,10 @@ const Breadcrumb = ({ entries }: IBreadcrumbProps) => {
                                 {isCurrentPage ? (
                                     <Text>{text}</Text>
                                 ) : (
-                                    <Link href={link} alt={alt} prefetch={false}>
+                                    <Link
+                                        href={process.env.NEXT_PUBLIC_URL + link}
+                                        alt={alt}
+                                        prefetch={false}>
                                         {text}
                                     </Link>
                                 )}
