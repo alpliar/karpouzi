@@ -95,6 +95,12 @@ const ProductPage = ({ product }: { product: Product }) => {
             title={product.name}
             breadcrumbs={[
                 {
+                    text: 'Home',
+                    link: '/',
+                    alt: 'go to home page',
+                    isCurrentPage: false
+                },
+                {
                     text: 'Shop',
                     link: '/shop',
                     alt: 'go to shop home',
@@ -122,7 +128,8 @@ const ProductPage = ({ product }: { product: Product }) => {
                     </Box>
                 )
             }
-            introSlot={<BlockQuote noOfLines={3}>Blah blah</BlockQuote>}>
+            // introSlot={<BlockQuote noOfLines={3}>Blah blah</BlockQuote>}
+        >
             <Head>
                 <title>Shop - {product.name}</title>
             </Head>
