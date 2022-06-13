@@ -15,7 +15,6 @@ import axios from 'axios';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
 import Banner from '../../../components/banner';
-import BlockQuote from '../../../components/blockQuote';
 import { Image } from '../../../components/image';
 import PageListingLayout from '../../../components/pageListingLayout';
 import Polaroid from '../../../components/polaroid';
