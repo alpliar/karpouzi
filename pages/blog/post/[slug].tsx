@@ -1,10 +1,12 @@
 import Icon from '@chakra-ui/icon';
 import { Box, HStack, Stack, Text } from '@chakra-ui/layout';
+import { useBreakpointValue } from '@chakra-ui/react';
 import axios from 'axios';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { GiFountainPen, GiOpenBook } from 'react-icons/gi';
 import BlockQuote from '../../../components/blockQuote';
 import Date from '../../../components/Date';
+import { Image } from '../../../components/image';
 import PageListingLayout from '../../../components/pageListingLayout';
 import { API_BASE_URL } from '../../../constants/api';
 import BlogPost, { BlogPostsData } from '../../../graphql/models/blog/post.model';
@@ -58,6 +60,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 const BlogPostPage = ({ post }: { post: BlogPost }) => {
+    const pictureSizes = useBreakpointValue({ base: '100vw', md: '50vw' });
+
     if (!post) return null;
 
     // const BlogBanner = chakra(Banner, {
@@ -95,17 +99,19 @@ const BlogPostPage = ({ post }: { post: BlogPost }) => {
                     {post.subtitle}
                 </BlockQuote>
             }
-            bannerSlot={null}>
+            bannerSlot={<></>}>
             <Stack>
-                {/* <BlogBanner pattern="leaf">
-                    <Stack maxW="md" fontSize="sm" fontWeight="bold" p={3}>
-                        <Heading>Leaves !</Heading>
-                        <Text>
-                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Earum minima
-                            quaerat fugit ullam illo ipsa perspiciatis sit voluptatem!
-                        </Text>
-                    </Stack>
-                </BlogBanner> */}
+                <Image
+                    src={post.coverPicture.asset.url}
+                    alt={post.coverPicture.alternativeText}
+                    sizes={pictureSizes}
+                    priority
+                    width="full"
+                    height={{ base: '3xs', md: 'sm', xl: 'md' }}
+                    quality={75}
+                    blurDataURL={post.coverPicture.asset.thumbnail}
+                    objectFit="contain"
+                />
                 <Box>
                     <Box maxW="70ch" fontSize={{ md: 'xl' }} margin="auto">
                         {post.content}
