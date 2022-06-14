@@ -44,7 +44,7 @@ export const GET_BLOG_POST = gql`
 
 export const GET_BLOG_POSTS = gql`
     query GetBlogPosts {
-        posts: blogPosts {
+        posts: blogPosts(orderBy: createdAt_DESC) {
             id
             slug
             title
