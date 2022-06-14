@@ -1,4 +1,5 @@
 import { SimpleGrid } from '@chakra-ui/layout';
+import axios from 'axios';
 import { GetStaticProps } from 'next';
 import { useIntl } from 'react-intl';
 import BlockQuote from '../../components/blockQuote';
@@ -7,21 +8,26 @@ import PageListingLayout from '../../components/pageListingLayout';
 import ShopStat from '../../components/shopStat';
 import { API_BASE_URL } from '../../constants/api';
 import { ShopCategoryWithProductsAndAsset } from '../../graphql/models/shop/category.model';
+import errorHandler from '../../utils/errorsHandler';
+import { CategoriesResponse } from '../api/shop/categories';
 
 export const getStaticProps: GetStaticProps = async () => {
-    const response = await fetch(API_BASE_URL + '/shop/categories');
+    try {
+        const {
+            data: { categories }
+        } = await axios.get<CategoriesResponse>(API_BASE_URL + '/shop/categories');
 
-    const { categories } = await response.json();
-
-    if (!categories) {
-        return { notFound: true };
+        return {
+            props: {
+                categories
+            }
+        };
+    } catch (err) {
+        console.error(errorHandler(err));
+        return {
+            notFound: true
+        };
     }
-
-    return {
-        props: {
-            categories
-        }
-    };
 };
 
 type ShopPageProps = {

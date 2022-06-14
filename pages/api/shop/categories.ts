@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { ShopCategoryWithProducts } from '../../../graphql/models/shop/category.model';
 import CategoryHelper from '../../../helpers/category.helper';
-interface CategoriesResponse {
+export interface CategoriesResponse {
     categories?: ShopCategoryWithProducts[];
     error?: string;
 }
