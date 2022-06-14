@@ -12,6 +12,7 @@ import {
 import Link from 'next/link';
 import BlogPost from '../graphql/models/blog/post.model';
 import Card from './card';
+import Date from './Date';
 import { Image } from './image';
 
 interface IBlogPostCardProps {
@@ -22,11 +23,6 @@ const BlogPostCard: React.FC<IBlogPostCardProps> = ({ post }) => {
     const pictureSizes = useBreakpointValue({ base: '100vw', md: '33vw' });
 
     const [author] = post.authors;
-    const createdAt = new Intl.DateTimeFormat('en-US', {
-        month: 'long',
-        day: 'numeric',
-        year: 'numeric'
-    }).format(new Date(post.createdAt));
 
     return (
         <LinkBox>
@@ -88,7 +84,7 @@ const BlogPostCard: React.FC<IBlogPostCardProps> = ({ post }) => {
                     <Stack direction="column" spacing={0} fontSize="sm">
                         <Text fontWeight="600">{author.firstName}</Text>
                         <Text color="gray.500">
-                            {createdAt} · {post.timeToRead} min to read
+                            <Date dateString={post.createdAt} /> · {post.timeToRead} min to read
                         </Text>
                     </Stack>
                 </Stack>
