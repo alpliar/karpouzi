@@ -2,6 +2,7 @@ import apolloClient from '../graphql/apollo-client';
 import BlogPost, { BlogPostData, BlogPostsData } from '../graphql/models/blog/post.model';
 import { Asset } from '../graphql/models/common/asset.model';
 import { GET_BLOG_POST, GET_BLOG_POSTS } from '../graphql/queries/blog/blog.posts.queries';
+import errorHandler from '../utils/errorsHandler';
 import AssetHelper from './asset.helper';
 
 export default class PostHelper {
@@ -26,9 +27,8 @@ export default class PostHelper {
                 };
 
                 resolve(newPost);
-            } catch {
-                console.log('err - getPost');
-                reject(undefined);
+            } catch (anyError) {
+                reject(errorHandler(anyError));
             }
         });
     };
@@ -42,23 +42,44 @@ export default class PostHelper {
                     query: GET_BLOG_POSTS
                 });
 
-                const newPosts: BlogPost[] = await Promise.all(
-                    posts.map(async (post) => {
-                        const asset: Asset = await AssetHelper.getAsset(post.coverPicture.asset.id);
-                        return {
-                            ...post,
-                            coverPicture: {
-                                ...post.coverPicture,
-                                asset
-                            }
-                        };
-                    })
+                resolve(this.resolveBlogPostsNodes(posts));
+            } catch (anyError) {
+                reject(errorHandler(anyError));
+            }
+        });
+    };
+
+    private static resolveBlogPostNodes = async (post: BlogPost): Promise<BlogPost> => {
+        return new Promise(async (resolve, reject) => {
+            try {
+                const asset: Asset = await AssetHelper.getAsset(post.coverPicture.asset.id);
+                const resolvedPost = {
+                    ...post,
+                    coverPicture: {
+                        ...post.coverPicture,
+                        asset
+                    }
+                };
+
+                resolve(resolvedPost);
+            } catch (anyError) {
+                reject(errorHandler(anyError));
+            }
+        });
+    };
+
+    private static resolveBlogPostsNodes = async (
+        posts: Array<BlogPost>
+    ): Promise<Array<BlogPost>> => {
+        return new Promise(async (resolve, reject) => {
+            try {
+                const newPosts: Array<BlogPost> = await Promise.all(
+                    posts.map(this.resolveBlogPostNodes)
                 );
 
                 resolve(newPosts);
-            } catch {
-                console.log('err - getPosts');
-                reject(undefined);
+            } catch (anyError) {
+                reject(errorHandler(anyError));
             }
         });
     };

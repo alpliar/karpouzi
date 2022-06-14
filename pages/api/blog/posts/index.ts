@@ -1,16 +1,15 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import BlogPost from '../../../../graphql/models/blog/post.model';
 import PostHelper from '../../../../helpers/post.helper';
+import errorHandler from '../../../../utils/errorsHandler';
 
 interface BlogPostsResponse {
     posts?: BlogPost[];
-    error?: string;
+    error?: { message: string; cause: string };
+    cause?: string;
 }
 
-const handler = async (
-    _req: NextApiRequest,
-    res: NextApiResponse<BlogPostsResponse | undefined>
-) => {
+const handler = async (_req: NextApiRequest, res: NextApiResponse<BlogPostsResponse>) => {
     try {
         const posts = await PostHelper.getPosts();
 
@@ -19,9 +18,12 @@ const handler = async (
                 posts
             });
         }
-    } catch {
-        res.status(404).json({
-            error: 'Could not fetch blogposts'
+    } catch (anyError) {
+        res.status(500).json({
+            error: {
+                message: 'Error - Could not fetch blog posts',
+                cause: errorHandler(anyError).message
+            }
         });
     }
 };
