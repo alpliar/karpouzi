@@ -3,7 +3,7 @@ import BlogPost from '../../../../graphql/models/blog/post.model';
 import PostHelper from '../../../../helpers/post.helper';
 import errorHandler from '../../../../utils/errorsHandler';
 
-interface BlogPostsResponse {
+export interface BlogPostsResponse {
     posts?: BlogPost[];
     error?: { message: string; cause: string };
     cause?: string;
