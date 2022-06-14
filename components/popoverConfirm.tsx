@@ -19,8 +19,8 @@ interface IProps {
     title?: ReactNode;
     body: ReactNode;
     placement?: PlacementWithLogical;
-    onClose: any;
-    onConfirm: any;
+    onClose: () => void;
+    onConfirm: () => void;
 }
 
 const PopoverConfirm: React.FC<IProps> = ({
