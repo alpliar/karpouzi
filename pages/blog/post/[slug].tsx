@@ -8,6 +8,7 @@ import Date from '../../../components/Date';
 import PageListingLayout from '../../../components/pageListingLayout';
 import { API_BASE_URL } from '../../../constants/api';
 import BlogPost, { BlogPostsData } from '../../../graphql/models/blog/post.model';
+import errorHandler from '../../../utils/errorsHandler';
 import { BlogPostResponse } from '../../api/blog/post/[slug]';
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
@@ -18,15 +19,13 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
             data: { post }
         } = await axios.get<BlogPostResponse>(API_BASE_URL + '/blog/post/' + slug);
 
-        if (!post) throw new Error('Could not fetch blogpost data');
-
         return {
             props: {
                 post
             }
         };
     } catch (err) {
-        // console.error(err);
+        console.error(errorHandler(err));
         return {
             notFound: true
         };
