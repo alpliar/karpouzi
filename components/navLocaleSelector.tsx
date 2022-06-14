@@ -24,7 +24,13 @@ const NavLocaleSelector: React.FC<INavLocaleSelectorProps> = ({ compact = false 
         en: 'English',
         fr: 'Français',
         es: 'Español',
-        gr: 'Ελληνικά'
+        el: 'Ελληνικά'
+    };
+
+    const countryCode = (localeCode: string) => {
+        if (localeCode === 'en') return 'gb';
+        if (localeCode === 'el') return 'gr';
+        return localeCode || 'en';
     };
 
     const menuBgColor = useColorModeValue('white', 'gray.800');
@@ -74,7 +80,7 @@ const NavLocaleSelector: React.FC<INavLocaleSelectorProps> = ({ compact = false 
                                         onClick={() => {
                                             handleClick(locale);
                                         }}>
-                                        {getFlagEmoji(locale === 'en' ? 'gb' : locale)}
+                                        {getFlagEmoji(countryCode(locale))}
                                         &nbsp;
                                         {localeName}
                                     </LinkOverlay>

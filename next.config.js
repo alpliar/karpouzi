@@ -16,7 +16,7 @@ module.exports =
             domains: ['media.graphassets.com']
         },
         i18n: {
-            locales: ['en', 'fr', 'es', 'gr'],
+            locales: ['en', 'fr', 'es', 'el'],
             defaultLocale: 'en'
         }
     });

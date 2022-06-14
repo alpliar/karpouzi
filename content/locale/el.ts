@@ -1,4 +1,4 @@
-export const gr = {
+export const el = {
     common: {
         commonSiteName: 'καρπούζι',
         home: 'αρχή',
