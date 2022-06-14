@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { GetStaticProps } from 'next';
 import { useIntl } from 'react-intl';
 import BlockQuote from '../../components/blockQuote';
@@ -6,12 +7,13 @@ import PageListingLayout from '../../components/pageListingLayout';
 import ShopStat from '../../components/shopStat';
 import { API_BASE_URL } from '../../constants/api';
 import BlogPost from '../../graphql/models/blog/post.model';
+import { BlogPostsResponse } from '../api/blog/posts';
 
 export const getStaticProps: GetStaticProps = async () => {
     try {
-        const response = await fetch(API_BASE_URL + '/blog/posts');
-
-        const { posts } = await response.json();
+        const {
+            data: { posts }
+        } = await axios.get<BlogPostsResponse>(API_BASE_URL + '/blog/posts');
 
         return {
             props: {
