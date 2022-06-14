@@ -54,10 +54,6 @@ export const GET_BLOG_POSTS = gql`
                 alternativeText
                 asset {
                     id
-                    fileName
-                    mimeType
-                    createdAt
-                    url(transformation: { image: { resize: { height: 500, width: 500 } } })
                 }
             }
             authors {
