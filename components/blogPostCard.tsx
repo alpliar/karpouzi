@@ -9,7 +9,6 @@ import {
     useBreakpointValue,
     useColorModeValue
 } from '@chakra-ui/react';
-import { format } from 'date-fns';
 import Link from 'next/link';
 import BlogPost from '../graphql/models/blog/post.model';
 import Card from './card';
