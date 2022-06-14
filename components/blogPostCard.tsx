@@ -9,6 +9,7 @@ import {
     useBreakpointValue,
     useColorModeValue
 } from '@chakra-ui/react';
+import { format } from 'date-fns';
 import Link from 'next/link';
 import BlogPost from '../graphql/models/blog/post.model';
 import Card from './card';
@@ -22,6 +23,11 @@ const BlogPostCard: React.FC<IBlogPostCardProps> = ({ post }) => {
     const pictureSizes = useBreakpointValue({ base: '100vw', md: '33vw' });
 
     const [author] = post.authors;
+    const createdAt = new Intl.DateTimeFormat('en-US', {
+        month: 'long',
+        day: 'numeric',
+        year: 'numeric'
+    }).format(new Date(post.createdAt));
 
     return (
         <LinkBox>
@@ -83,7 +89,7 @@ const BlogPostCard: React.FC<IBlogPostCardProps> = ({ post }) => {
                     <Stack direction="column" spacing={0} fontSize="sm">
                         <Text fontWeight="600">{author.firstName}</Text>
                         <Text color="gray.500">
-                            {post.createdAt} · {post.timeToRead} min to read
+                            {createdAt} · {post.timeToRead} min to read
                         </Text>
                     </Stack>
                 </Stack>
