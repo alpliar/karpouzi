@@ -6,12 +6,15 @@ import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { GiFountainPen, GiOpenBook } from 'react-icons/gi';
+import { Root } from 'remark-html';
 import BlockQuote from '../../../components/blockQuote';
 import Date from '../../../components/Date';
 import { Image } from '../../../components/image';
+import MarkdownRendered from '../../../components/MarkdownRendered';
 import PageListingLayout from '../../../components/pageListingLayout';
 import { API_BASE_URL } from '../../../constants/api';
 import BlogPost, { BlogPostsData } from '../../../graphql/models/blog/post.model';
+import MarkdownHelper from '../../../helpers/markdown.helper';
 import errorHandler from '../../../utils/errorsHandler';
 import { BlogPostResponse } from '../../api/blog/post/[slug]';
 
@@ -23,9 +26,14 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
             data: { post }
         } = await axios.get<BlogPostResponse>(API_BASE_URL + '/blog/post/' + slug);
 
+        if (!post) throw new Error('Could not fetch post');
+
+        const postContent = MarkdownHelper.parseMarkdown(post.content);
+
         return {
             props: {
-                post
+                post,
+                postContent
             }
         };
     } catch (err) {
@@ -61,7 +69,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
     }
 };
 
-const BlogPostPage = ({ post }: { post: BlogPost }) => {
+const BlogPostPage = ({ post, postContent }: { post: BlogPost; postContent: Root }) => {
     const { asPath } = useRouter();
     const pictureSizes = useBreakpointValue({ base: '100vw', md: '50vw' });
 
@@ -139,9 +147,10 @@ const BlogPostPage = ({ post }: { post: BlogPost }) => {
                         objectFit="contain"
                     />
                     <Box>
-                        <Box maxW="70ch" fontSize={{ md: 'xl' }} margin="auto">
-                            {post.content}
-                        </Box>
+                        <Stack spacing={5} maxW="70ch" fontSize={{ md: 'xl' }} margin="auto">
+                            {/* {post.content} */}
+                            <MarkdownRendered ast={postContent} />
+                        </Stack>
                     </Box>
                 </Stack>
             </PageListingLayout>
