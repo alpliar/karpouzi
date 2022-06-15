@@ -6,10 +6,8 @@ import PageListingLayout from '../../../components/pageListingLayout';
 import ProductCard from '../../../components/productCard';
 import ShopStat from '../../../components/shopStat';
 import { API_BASE_URL } from '../../../constants/api';
-import {
-    ShopCategoriesData,
-    ShopCategoryWithProductsAndAsset
-} from '../../../graphql/models/shop/category.model';
+import { ShopCategoryWithProductsAndAsset } from '../../../graphql/models/shop/category.model';
+import CategoryHelper from '../../../helpers/category.helper';
 import { CategoryResponse } from '../../api/shop/category/[slug]';
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
@@ -35,11 +33,9 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 };
 export const getStaticPaths: GetStaticPaths = async () => {
     try {
-        const {
-            data: { categories }
-        } = await axios.post<ShopCategoriesData>(API_BASE_URL + '/shop/categories');
+        const categories = await CategoryHelper.getCategoriesSlugs();
 
-        const paths = categories.map(({ slug }) => ({
+        const paths = categories.map((slug) => ({
             params: {
                 slug
             },
