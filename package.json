@@ -7,6 +7,7 @@
         "cypress:open": "cypress open",
         "cypress:run": "cypress run",
         "build": "next build",
+        "postbuild": "next-sitemap",
         "start": "next start",
         "lint": "next lint",
         "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc"
@@ -30,6 +31,7 @@
         "next-images": "^1.7.0",
         "next-pwa": "^5.0.4",
         "next-redux-wrapper": "^7.0.5",
+        "next-sitemap": "^3.0.5",
         "plaiceholder": "^2.3.0",
         "postcss-flexbugs-fixes": "^5.0.2",
         "postcss-preset-env": "^7.7.1",
