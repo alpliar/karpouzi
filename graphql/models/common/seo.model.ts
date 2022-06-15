@@ -1,8 +1,10 @@
+import { Asset } from './asset.model';
+
 interface SeoProps {
     title: string;
-    subtitle: string;
+    description: string;
     keywords: string[];
-    openGraphImage: string;
+    openGraphImage: Asset;
 }
 
 export default SeoProps;
