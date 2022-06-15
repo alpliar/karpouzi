@@ -35,6 +35,10 @@ public/workbox-*.js
 public/sw.js.map
 public/workbox-*.js.map
 
+# seo files
+public/robots.txt
+public/sitemap*.xml
+
 # tests results
 cypress/screenshots/*
 cypress/videos/*

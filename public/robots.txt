@@ -1,4 +1,9 @@
-# User-agent: AdsBot-Google
-# Disallow: /
+# *
 User-agent: *
 Allow: /
+
+# Host
+Host: https://karpouzi.vercel.app
+
+# Sitemaps
+Sitemap: https://karpouzi.vercel.app/sitemap.xml
