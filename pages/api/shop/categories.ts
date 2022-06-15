@@ -1,10 +1,10 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { ShopCategoryWithProducts } from '../../../graphql/models/shop/category.model';
+import { ShopCategoryWithProductsAndAsset } from '../../../graphql/models/shop/category.model';
 import CategoryHelper from '../../../helpers/category.helper';
 import errorHandler from '../../../utils/errorsHandler';
 
 export interface CategoriesResponse {
-    categories?: ShopCategoryWithProducts[];
+    categories?: ShopCategoryWithProductsAndAsset[];
     error?: string;
 }
 

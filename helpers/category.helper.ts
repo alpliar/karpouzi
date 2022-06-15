@@ -40,7 +40,7 @@ export default class CategoryHelper {
         });
     };
 
-    static getCategories = async (): Promise<Array<ShopCategoryWithProducts>> => {
+    static getCategories = async (): Promise<Array<ShopCategoryWithProductsAndAsset>> => {
         return new Promise(async (resolve, reject) => {
             try {
                 const {
@@ -49,7 +49,7 @@ export default class CategoryHelper {
                     query: GET_SHOP_CATEGORIES
                 });
 
-                const newCategories: Array<ShopCategoryWithProducts> = await Promise.all(
+                const newCategories: Array<ShopCategoryWithProductsAndAsset> = await Promise.all(
                     categories.map(async (category) => {
                         const productSlugs = category.products.map(({ slug }) => slug);
                         const products = await ProductHelper.getProducts(productSlugs);
