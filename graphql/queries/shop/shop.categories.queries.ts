@@ -1,5 +1,12 @@
 import { gql } from '@apollo/client';
 
+export const GET_SHOP_CATEGORIES_SLUGS = gql`
+    query GetShopCategories {
+        categories: shopCategories {
+            slug
+        }
+    }
+`;
 export const GET_SHOP_CATEGORIES = gql`
     query GetShopCategories {
         categories: shopCategories {

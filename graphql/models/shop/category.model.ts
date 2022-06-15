@@ -27,6 +27,9 @@ export interface ShopCategoryWithProductsExcerpts extends ShopCategory {
 export interface ShopCategoriesData {
     categories: Array<ShopCategoryWithProductsExcerpts>;
 }
+export interface ShopCategoriesSlugs {
+    categories: Array<ShopCategory['slug']>;
+}
 export interface ShopCategoryData {
     category: ShopCategoryWithProductsExcerpts;
 }
