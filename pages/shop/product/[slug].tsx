@@ -14,8 +14,10 @@ import {
 import axios from 'axios';
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import Head from 'next/head';
+import { Root } from 'remark-html';
 import Banner from '../../../components/banner';
 import { Image } from '../../../components/image';
+import MarkdownRendered from '../../../components/MarkdownRendered';
 import PageListingLayout from '../../../components/pageListingLayout';
 import Polaroid from '../../../components/polaroid';
 import Rating from '../../../components/rating';
@@ -23,6 +25,7 @@ import { API_BASE_URL } from '../../../constants/api';
 import AddToCart from '../../../container/addToCart';
 import ShopCategory from '../../../graphql/models/shop/category.model';
 import Product from '../../../graphql/models/shop/product.model';
+import MarkdownHelper from '../../../helpers/markdown.helper';
 import { ProductResponse } from '../../api/shop/product/[slug]';
 import { ProductsResponse } from '../../api/shop/products/slugs';
 
@@ -36,9 +39,13 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
             data: { product }
         } = await axios.get<ProductResponse>(API_BASE_URL + `/shop/product/${slug}`);
 
+        if (!product) throw new Error('Could not fetch product');
+        const description = MarkdownHelper.parseMarkdown(product.description);
+
         return {
             props: {
-                product
+                product,
+                description
             }
         };
     } catch (err) {
@@ -76,9 +83,10 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 interface ProductPageProps {
     product: Product;
+    description: Root;
 }
 
-const ProductPage: NextPage<ProductPageProps> = ({ product }) => {
+const ProductPage: NextPage<ProductPageProps> = ({ product, description }) => {
     const showAsPolaroid = useBreakpointValue({ base: false, xl: true });
     const pictureSizes = useBreakpointValue({ base: '100vw', md: '33vw' });
 
@@ -182,7 +190,8 @@ const ProductPage: NextPage<ProductPageProps> = ({ product }) => {
                                 maxH={{ base: undefined, md: '96' }}
                                 overflow="auto">
                                 <Box textAlign="left" fontSize={{ base: 'xl', xl: '2xl' }}>
-                                    <Text as="p">{product.description}</Text>
+                                    {/* <Text as="p">{product.description}</Text> */}
+                                    <MarkdownRendered ast={description} />
                                 </Box>
                             </Box>
                         </Box>
