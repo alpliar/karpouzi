@@ -81,7 +81,8 @@ export default class CategoryHelper {
                 } = await apolloClient.query<ShopCategoriesSlugs>({
                     query: GET_SHOP_CATEGORIES_SLUGS
                 });
-                resolve(categories);
+                const slugs = categories.map(({ slug }) => slug);
+                resolve(slugs);
             } catch (err) {
                 reject(errorHandler(err));
             }

@@ -8,6 +8,7 @@ import ShopStat from '../../../components/shopStat';
 import { API_BASE_URL } from '../../../constants/api';
 import { ShopCategoryWithProductsAndAsset } from '../../../graphql/models/shop/category.model';
 import CategoryHelper from '../../../helpers/category.helper';
+import errorHandler from '../../../utils/errorsHandler';
 import { CategoryResponse } from '../../api/shop/category/[slug]';
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
@@ -26,6 +27,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
             }
         };
     } catch (err) {
+        console.log(errorHandler(err));
         return {
             notFound: true
         };
@@ -33,14 +35,16 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 };
 export const getStaticPaths: GetStaticPaths = async () => {
     try {
-        const categories = await CategoryHelper.getCategoriesSlugs();
+        const slugs = await CategoryHelper.getCategoriesSlugs();
 
-        const paths = categories.map((slug) => ({
-            params: {
-                slug
-            },
-            locale: 'en'
-        }));
+        const paths = slugs.map((slug) => {
+            return {
+                params: {
+                    slug
+                },
+                locale: 'en'
+            };
+        });
 
         return {
             paths,

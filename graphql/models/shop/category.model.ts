@@ -8,6 +8,10 @@ export default interface ShopCategory {
     picture: GraphCMSAsset;
     description: string;
 }
+
+export interface ShopCategorySlug {
+    slug: ShopCategory['slug'];
+}
 export interface ShopCategoryWithProducts extends ShopCategory {
     products: Array<Product>;
 }
@@ -28,7 +32,7 @@ export interface ShopCategoriesData {
     categories: Array<ShopCategoryWithProductsExcerpts>;
 }
 export interface ShopCategoriesSlugs {
-    categories: Array<ShopCategory['slug']>;
+    categories: Array<ShopCategorySlug>;
 }
 export interface ShopCategoryData {
     category: ShopCategoryWithProductsExcerpts;
