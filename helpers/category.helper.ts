@@ -54,13 +54,14 @@ export default class CategoryHelper {
 
                 const newCategories: Array<ShopCategoryWithProductsAndAsset> = await Promise.all(
                     categories.map(async (category) => {
-                        const productSlugs = category.products.map(({ slug }) => slug);
-                        const products = await ProductHelper.getProducts(productSlugs);
+                        // const productSlugs = category.products.map(({ slug }) => slug);
+                        // const products = await ProductHelper.getProducts(productSlugs);
 
                         return {
                             ...category,
                             picture: await AssetHelper.getAsset(category.picture.id),
-                            products
+                            products: []
+                            // products
                         };
                     })
                 );
