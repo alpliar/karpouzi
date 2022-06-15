@@ -22,8 +22,6 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
         ({ slug }) => `${baseUrl}/blog/post/${slug}`
     );
 
-    console.log(productsUrls);
-
     return getServerSideSitemapIndex(ctx, [
         ...shopCategoriesUrls,
         ...productsUrls,
