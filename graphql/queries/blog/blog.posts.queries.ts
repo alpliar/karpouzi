@@ -38,6 +38,18 @@ export const GET_BLOG_POST = gql`
                 name
             }
             createdAt
+            meta {
+                title
+                description
+                keywords
+                openGraphImage {
+                    id
+                    url
+                    fileName
+                    mimeType
+                }
+                noIndex
+            }
         }
     }
 `;
