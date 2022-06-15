@@ -1,6 +1,6 @@
 import { Alert, SimpleGrid } from '@chakra-ui/react';
 import axios from 'axios';
-import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType, NextPage } from 'next';
+import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import BlockQuote from '../../../components/blockQuote';
 import PageListingLayout from '../../../components/pageListingLayout';
 import ProductCard from '../../../components/productCard';
@@ -8,7 +8,7 @@ import ShopStat from '../../../components/shopStat';
 import { API_BASE_URL } from '../../../constants/api';
 import {
     ShopCategoriesData,
-    ShopCategoryWithProducts
+    ShopCategoryWithProductsAndAsset
 } from '../../../graphql/models/shop/category.model';
 import { CategoryResponse } from '../../api/shop/category/[slug]';
 
@@ -39,15 +39,15 @@ export const getStaticPaths: GetStaticPaths = async () => {
             data: { categories }
         } = await axios.post<ShopCategoriesData>(API_BASE_URL + '/shop/categories');
 
-        if (!categories) throw new Error('Could not fetch categories data');
+        const paths = categories.map(({ slug }) => ({
+            params: {
+                slug
+            },
+            locale: 'en'
+        }));
 
         return {
-            paths: categories.map(({ slug }) => ({
-                params: {
-                    slug
-                },
-                locale: 'en'
-            })),
+            paths,
             fallback: true
         };
     } catch (err) {
@@ -58,10 +58,12 @@ export const getStaticPaths: GetStaticPaths = async () => {
     }
 };
 
-const CategoryPage: NextPage = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
-    if (!props.category) return null;
+interface CategoryPageProps {
+    category: ShopCategoryWithProductsAndAsset;
+}
 
-    const category = props.category as ShopCategoryWithProducts;
+const CategoryPage: NextPage<CategoryPageProps> = ({ category }) => {
+    if (!category) return null;
 
     return (
         <PageListingLayout

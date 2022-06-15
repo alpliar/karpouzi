@@ -12,7 +12,7 @@ import {
     useBreakpointValue
 } from '@chakra-ui/react';
 import axios from 'axios';
-import { GetStaticPaths, GetStaticProps } from 'next';
+import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import Head from 'next/head';
 import Banner from '../../../components/banner';
 import { Image } from '../../../components/image';
@@ -74,7 +74,11 @@ export const getStaticPaths: GetStaticPaths = async () => {
     }
 };
 
-const ProductPage = ({ product }: { product: Product }) => {
+interface ProductPageProps {
+    product: Product;
+}
+
+const ProductPage: NextPage<ProductPageProps> = ({ product }) => {
     const showAsPolaroid = useBreakpointValue({ base: false, xl: true });
     const pictureSizes = useBreakpointValue({ base: '100vw', md: '33vw' });
 
