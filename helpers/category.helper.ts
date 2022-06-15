@@ -1,14 +1,17 @@
 import apolloClient from '../graphql/apollo-client';
 import ShopCategory, {
     ShopCategoriesData,
+    ShopCategoriesSlugs,
     ShopCategoryData,
     ShopCategoryWithProducts,
     ShopCategoryWithProductsAndAsset
 } from '../graphql/models/shop/category.model';
 import {
     GET_SHOP_CATEGORIES,
+    GET_SHOP_CATEGORIES_SLUGS,
     GET_SHOP_CATEGORY
 } from '../graphql/queries/shop/shop.categories.queries';
+import errorHandler from '../utils/errorsHandler';
 import AssetHelper from './asset.helper';
 import ProductHelper from './product.helper';
 
@@ -66,6 +69,21 @@ export default class CategoryHelper {
             } catch {
                 console.log('err - getCategory');
                 reject(undefined);
+            }
+        });
+    };
+
+    static getCategoriesSlugs = async (): Promise<Array<ShopCategory['slug']>> => {
+        return new Promise(async (resolve, reject) => {
+            try {
+                const {
+                    data: { categories }
+                } = await apolloClient.query<ShopCategoriesSlugs>({
+                    query: GET_SHOP_CATEGORIES_SLUGS
+                });
+                resolve(categories);
+            } catch (err) {
+                reject(errorHandler(err));
             }
         });
     };
