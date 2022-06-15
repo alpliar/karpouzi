@@ -55,7 +55,7 @@ const NavLocaleSelector: React.FC<INavLocaleSelectorProps> = ({ compact = false 
                 size={size}
                 variant="ghost"
                 as={compact === true ? IconButton : Button}
-                icon={compact === true && <FaFlag />}>
+                icon={compact === true ? <FaFlag /> : undefined}>
                 {compact === false && 'Language'}
             </MenuButton>
             <MenuList padding="0" minW={'4xs'} maxW={'3xs'} bgColor={menuBgColor}>
