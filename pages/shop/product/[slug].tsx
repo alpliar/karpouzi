@@ -189,10 +189,13 @@ const ProductPage: NextPage<ProductPageProps> = ({ product, description }) => {
                                 padding={{ base: '1rem', xl: '1.5rem' }}
                                 maxH={{ base: undefined, md: '96' }}
                                 overflow="auto">
-                                <Box textAlign="left" fontSize={{ base: 'xl', xl: '2xl' }}>
+                                <Stack
+                                    spacing={5}
+                                    textAlign="left"
+                                    fontSize={{ base: 'xl', xl: '2xl' }}>
                                     {/* <Text as="p">{product.description}</Text> */}
                                     <MarkdownRendered ast={description} />
-                                </Box>
+                                </Stack>
                             </Box>
                         </Box>
                     </SimpleGrid>
