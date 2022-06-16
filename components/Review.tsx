@@ -24,7 +24,7 @@ const Review: React.FC<Props> = ({ review }) => {
                     <CheckCircleIcon /> Verified review
                 </Text>
             )}
-            <Text as="cite" fontSize="xl">
+            <Text as="cite" fontFamily="cursive" fontSize="xl">
                 {review.message}
             </Text>
 
