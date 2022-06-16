@@ -1,5 +1,5 @@
-import Person from '../common/person.model';
-import { Id } from '../common/types.model';
+import Person from './person.model';
+import { Id } from './types.model';
 
 export interface ReviewExcerpt {
     id: Id;
@@ -9,7 +9,7 @@ export interface ReviewExcerpt {
     author?: Person;
 }
 
-export default interface Review {
+export default interface Review /*extends GraphCMSSystemFields*/ {
     id: Id;
     message: string;
     rating: number;

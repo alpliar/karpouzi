@@ -2,7 +2,7 @@ import GraphCMSAsset from '../common/asset.model';
 import Picture from '../common/picture.model';
 import { Id } from '../common/types.model';
 import ShopCategory from './category.model';
-import Review, { ReviewExcerpt } from './review.model';
+import Review, { ReviewExcerpt } from '../common/review.model';
 
 enum MeasurementUnits {
     PER_UNIT = 'PER_UNIT',
