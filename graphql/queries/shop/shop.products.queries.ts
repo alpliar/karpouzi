@@ -39,6 +39,7 @@ export const GET_SHOP_PRODUCT = gql`
                 message
                 rating
                 isVerified
+                createdAt
             }
             productCategories {
                 id

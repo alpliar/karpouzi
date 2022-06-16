@@ -15,4 +15,5 @@ export default interface Review /*extends GraphCMSSystemFields*/ {
     rating: number;
     isVerified: boolean;
     author: Person;
+    createdAt: string;
 }
