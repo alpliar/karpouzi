@@ -9,7 +9,7 @@ export const GET_SHOP_CATEGORIES_SLUGS = gql`
 `;
 export const GET_SHOP_CATEGORIES = gql`
     query GetShopCategories {
-        categories: shopCategories {
+        categories: shopCategories(orderBy: name_ASC) {
             id
             slug
             name
