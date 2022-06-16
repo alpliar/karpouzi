@@ -13,6 +13,7 @@ import { Image } from '../../../components/image';
 import MarkdownRendered from '../../../components/MarkdownRendered';
 import PageListingLayout from '../../../components/pageListingLayout';
 import { API_BASE_URL } from '../../../constants/api';
+import { ONE_DAY } from '../../../constants/time.constants';
 import BlogPost, { BlogPostsData } from '../../../graphql/models/blog/post.model';
 import MarkdownHelper from '../../../helpers/markdown.helper';
 import errorHandler from '../../../utils/errorsHandler';
@@ -34,7 +35,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
             props: {
                 post,
                 postContent
-            }
+            },
+            revalidate: ONE_DAY
         };
     } catch (err) {
         console.error(errorHandler(err));
