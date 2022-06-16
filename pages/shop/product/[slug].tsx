@@ -24,6 +24,7 @@ import Rating from '../../../components/rating';
 import Review from '../../../components/Review';
 import Reviews from '../../../components/Reviews';
 import { API_BASE_URL } from '../../../constants/api';
+import { ONE_DAY } from '../../../constants/time.constants';
 import AddToCart from '../../../container/addToCart';
 import ShopCategory from '../../../graphql/models/shop/category.model';
 import Product from '../../../graphql/models/shop/product.model';
@@ -48,7 +49,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
             props: {
                 product,
                 description
-            }
+            },
+            revalidate: ONE_DAY
         };
     } catch (err) {
         console.error(err);
