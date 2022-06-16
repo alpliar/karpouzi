@@ -21,7 +21,7 @@ const Review: React.FC<Props> = ({ review }) => {
                 </Text>
                 <Date dateString={review.createdAt} />
             </HStack>
-            {review.isVerified ?? (
+            {review.isVerified && (
                 <Text>
                     <CheckCircleIcon /> Verified review
                 </Text>
