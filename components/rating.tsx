@@ -31,7 +31,11 @@ const Rating = ({ rate, count, icon = GiWatermelon }: IOwnProps) => {
                                 />
                             ))}
                     </Text>
-                    {isIndividualRating && <Text as="span">{rate / 20} / 5</Text>}
+                    {isIndividualRating && (
+                        <Text as="strong" fontSize="xl">
+                            {rate / 20} / 5
+                        </Text>
+                    )}
                     {hasMultipleReviews && (
                         <Text
                             /* isTruncated */ as="span"
