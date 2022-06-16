@@ -29,7 +29,8 @@ module.exports =
                 removeConsole: {
                     exclude: ['error']
                 }
-            }
+            },
+            swcMinify: true
         })
     );
 // );
