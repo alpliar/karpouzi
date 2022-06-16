@@ -6,6 +6,7 @@ import LatestsPosts from '../../components/LatestsPosts';
 import PageListingLayout from '../../components/pageListingLayout';
 import ShopStat from '../../components/shopStat';
 import { API_BASE_URL } from '../../constants/api';
+import { ONE_HOUR } from '../../constants/time.constants';
 import BlogPost from '../../graphql/models/blog/post.model';
 import { BlogPostsResponse } from '../api/blog/posts';
 
@@ -18,7 +19,8 @@ export const getStaticProps: GetStaticProps = async () => {
         return {
             props: {
                 posts
-            }
+            },
+            revalidate: ONE_HOUR
         };
     } catch (err) {
         return {

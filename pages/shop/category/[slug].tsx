@@ -6,6 +6,7 @@ import PageListingLayout from '../../../components/pageListingLayout';
 import ProductCard from '../../../components/productCard';
 import ShopStat from '../../../components/shopStat';
 import { API_BASE_URL } from '../../../constants/api';
+import { ONE_HOUR } from '../../../constants/time.constants';
 import { ShopCategoryWithProductsAndAsset } from '../../../graphql/models/shop/category.model';
 import CategoryHelper from '../../../helpers/category.helper';
 import errorHandler from '../../../utils/errorsHandler';
@@ -24,7 +25,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         return {
             props: {
                 category: category
-            }
+            },
+            revalidate: ONE_HOUR
         };
     } catch (err) {
         console.log(errorHandler(err));
