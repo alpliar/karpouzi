@@ -17,6 +17,7 @@
     },
     "dependencies": {
         "@apollo/client": "^3.6.6",
+        "@babel/core": "^7.0.0",
         "@chakra-ui/icons": "^2.0.1",
         "@chakra-ui/react": "^2.1.2",
         "@chakra-ui/system": "^2.1.1",
@@ -37,6 +38,7 @@
         "next-redux-wrapper": "^7.0.5",
         "next-sitemap": "^3.0.5",
         "plaiceholder": "^2.3.0",
+        "postcss": "^8.4.14",
         "postcss-flexbugs-fixes": "^5.0.2",
         "postcss-preset-env": "^7.7.1",
         "react": "18.1.0",
@@ -52,6 +54,7 @@
         "sass": "^1.32.5",
         "schema-dts": "^1.1.0",
         "sharp": "^0.30.6",
+        "webpack": "^5.73.0",
         "xss": "^1.0.8"
     },
     "devDependencies": {
