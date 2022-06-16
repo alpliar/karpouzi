@@ -3,6 +3,7 @@ import { HStack, Icon, Stack, Text } from '@chakra-ui/react';
 import React from 'react';
 import { FaUserCircle } from 'react-icons/fa';
 import Review from '../graphql/models/common/review.model';
+import Date from './Date';
 import Rating from './rating';
 
 type Props = {
@@ -18,6 +19,7 @@ const Review: React.FC<Props> = ({ review }) => {
                 <Text as="strong">
                     {review.author.firstName} ({review.author.postalAddress.countryName})
                 </Text>
+                <Date dateString={review.createdAt} />
             </HStack>
             {review.isVerified ?? (
                 <Text>
