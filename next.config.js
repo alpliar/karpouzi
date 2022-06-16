@@ -24,6 +24,11 @@ module.exports =
             i18n: {
                 locales: ['en', 'fr', 'es', 'el'],
                 defaultLocale: 'en'
+            },
+            compiler: {
+                removeConsole: {
+                    exclude: ['error']
+                }
             }
         })
     );
