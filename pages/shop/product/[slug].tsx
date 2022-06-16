@@ -22,6 +22,7 @@ import PageListingLayout from '../../../components/pageListingLayout';
 import Polaroid from '../../../components/polaroid';
 import Rating from '../../../components/rating';
 import Review from '../../../components/Review';
+import Reviews from '../../../components/Reviews';
 import { API_BASE_URL } from '../../../constants/api';
 import AddToCart from '../../../container/addToCart';
 import ShopCategory from '../../../graphql/models/shop/category.model';
@@ -210,13 +211,7 @@ const ProductPage: NextPage<ProductPageProps> = ({ product, description }) => {
                         </Stack>
                     </Banner>
                     <Box>
-                        <Heading>Reviews</Heading>
-                        {!product.reviews.length && (
-                            <Text>No reviews yet, be the first to do it !</Text>
-                        )}
-                        {product.reviews.map((review) => {
-                            return <Review review={review} key={review.id} />;
-                        })}
+                        <Reviews reviews={product.reviews} />
                     </Box>
                 </Stack>
             </Container>
