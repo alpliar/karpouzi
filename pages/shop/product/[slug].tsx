@@ -21,7 +21,6 @@ import MarkdownRendered from '../../../components/MarkdownRendered';
 import PageListingLayout from '../../../components/pageListingLayout';
 import Polaroid from '../../../components/polaroid';
 import Rating from '../../../components/rating';
-import Review from '../../../components/Review';
 import Reviews from '../../../components/Reviews';
 import { API_BASE_URL } from '../../../constants/api';
 import { ONE_DAY } from '../../../constants/time.constants';

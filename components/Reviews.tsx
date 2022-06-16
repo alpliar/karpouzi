@@ -1,4 +1,4 @@
-import { Alert, Heading, Stack, Text } from '@chakra-ui/react';
+import { Heading, Stack, Text } from '@chakra-ui/react';
 import React from 'react';
 import Review from '../graphql/models/common/review.model';
 import ReviewComponent from './Review';
