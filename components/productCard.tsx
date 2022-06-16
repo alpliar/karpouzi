@@ -118,7 +118,11 @@ const ProductCard: React.FC<IProps> = ({ product, ratingIcon = undefined }) => {
                     </Box>
 
                     <Box>
-                        <Rating rate={rating} count={reviewCount} icon={ratingIcon} />
+                        <Rating
+                            rate={reviewCount > 0 ? rating : undefined}
+                            count={reviewCount > 0 ? reviewCount : undefined}
+                            icon={ratingIcon}
+                        />
                     </Box>
 
                     <Box>
