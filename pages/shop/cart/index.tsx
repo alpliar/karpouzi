@@ -6,7 +6,7 @@ import ShopStat from '../../../components/shopStat';
 import { RootState } from '../../../redux/reducer';
 
 export default function CartPage() {
-    const { cart } = useSelector((state: RootState) => state.client);
+    const { cart } = useSelector((state: RootState) => state.client.shop);
 
     return (
         <PageListingLayout
