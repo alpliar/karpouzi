@@ -1,6 +1,6 @@
 import { Button, Icon, Tooltip, useBreakpointValue } from '@chakra-ui/react';
 import { FaShoppingCart } from 'react-icons/fa';
-import { ICartItem } from '../container/addToCart';
+import { ICartItem } from '../redux/container/addToCart';
 import { sendToast } from '../utils/uiToast';
 interface IAddToCartProps {
     slug: string;

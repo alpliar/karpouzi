@@ -10,10 +10,10 @@ import NavDrawer from '../components/navDrawer';
 import NavThemeToggle from '../components/navThemeToggle';
 import { APP_MAX_WIDTH } from '../constants/ui/main.layout';
 import { BASE_TRANSITION } from '../constants/ui/transitions';
-import NavCart from '../container/navCart';
-import NavLocaleSelector from '../container/navLocaleSelector';
-import NavLogin from '../container/navLogin';
-import NavLogo from '../container/navLogo';
+import NavCart from '../redux/container/navCart';
+import NavLocaleSelector from '../redux/container/navLocaleSelector';
+import NavLogin from '../redux/container/navLogin';
+import NavLogo from '../redux/container/navLogo';
 import NavBurgerMenu from './navBurgerMenu';
 import NavDrawerBody from './navDrawerBody';
 
