@@ -17,8 +17,8 @@ export interface ICartItem {
 }
 
 const mapStateToProps = (state: RootState, ownProps: IOwnProps) => ({
-    cart: state.client.cart,
-    inCart: getQuantityInCartBySlug(ownProps.slug, state.client.cart),
+    cart: state.client.shop.cart,
+    inCart: getQuantityInCartBySlug(ownProps.slug, state.client.shop.cart),
     slug: ownProps.slug,
     quantity: ownProps.quantity
 });

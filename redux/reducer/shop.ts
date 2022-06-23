@@ -1,7 +1,9 @@
 import { AnyAction } from 'redux';
 import { ADD_TO_CART, REMOVE_FROM_CART, UPDATE_QUANTITY_CART } from '../../actions/shop';
-import { CartRow } from './client';
-
+export interface CartRow {
+    slug: string;
+    quantity: number;
+}
 interface ShopState {
     cart: Array<CartRow>;
 }
@@ -10,7 +12,7 @@ const initialState: ShopState = {
     cart: []
 };
 
-const reducer = (state = initialState, action: AnyAction) => {
+const shopReducer = (state = initialState, action: AnyAction) => {
     switch (action.type) {
         case ADD_TO_CART: {
             return {
@@ -39,4 +41,4 @@ const reducer = (state = initialState, action: AnyAction) => {
     }
 };
 
-export default reducer;
+export default shopReducer;
