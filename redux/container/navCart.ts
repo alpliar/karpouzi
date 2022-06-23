@@ -1,11 +1,11 @@
 import { Dispatch } from 'react';
 import { connect } from 'react-redux';
 import { AnyAction } from 'redux';
-import NavCart from '../components/navCart';
+import NavCart from '../../components/navCart';
 import { RootState } from '../reducer';
 
 const mapStateToProps = (state: RootState) => ({
-    cartCount: state.client.cart.length || 0
+    cartCount: state.client.shop.cart.length || 0
 });
 
 // eslint-disable-next-line no-unused-vars

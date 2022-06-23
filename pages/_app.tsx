@@ -3,7 +3,7 @@ import type { AppProps } from 'next/app';
 import { NextRouter, useRouter } from 'next/router';
 import { IntlProvider } from 'react-intl';
 import * as locales from '../content/locale';
-import { wrapper } from '../store';
+import { wrapper } from '../redux/store';
 import '../styles/global.scss';
 import theme from '../theme';
 

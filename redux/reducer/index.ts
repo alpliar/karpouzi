@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import clientReducer from '../reducer/client';
-import serverReducer from '../reducer/server';
+import clientReducer from './client';
+import serverReducer from './server';
 
 const rootReducer = combineReducers({
     client: clientReducer,

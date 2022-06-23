@@ -1,10 +1,10 @@
 import { Dispatch } from 'react';
 import { connect } from 'react-redux';
 import { AnyAction } from 'redux';
-import { addToCart, updateQuantityCart } from '../actions/shop';
-import AddToCart from '../components/addToCart';
+import { addToCart, updateQuantityCart } from '../../actions/shop';
+import AddToCart from '../../components/addToCart';
 import { RootState } from '../reducer';
-import { getQuantityInCartBySlug } from '../utils/shop';
+import { getQuantityInCartBySlug } from '../../utils/shop';
 
 interface IOwnProps {
     slug: string;
@@ -17,8 +17,8 @@ export interface ICartItem {
 }
 
 const mapStateToProps = (state: RootState, ownProps: IOwnProps) => ({
-    cart: state.client.cart,
-    inCart: getQuantityInCartBySlug(ownProps.slug, state.client.cart),
+    cart: state.client.shop.cart,
+    inCart: getQuantityInCartBySlug(ownProps.slug, state.client.shop.cart),
     slug: ownProps.slug,
     quantity: ownProps.quantity
 });

@@ -3,10 +3,10 @@ import { useSelector } from 'react-redux';
 import CartItem from '../../../components/cartItem';
 import PageListingLayout from '../../../components/pageListingLayout';
 import ShopStat from '../../../components/shopStat';
-import { RootState } from '../../../reducer';
+import { RootState } from '../../../redux/reducer';
 
 export default function CartPage() {
-    const { cart } = useSelector((state: RootState) => state.client);
+    const { cart } = useSelector((state: RootState) => state.client.shop);
 
     return (
         <PageListingLayout

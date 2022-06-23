@@ -24,7 +24,7 @@ import Rating from '../../../components/rating';
 import Reviews from '../../../components/Reviews';
 import { API_BASE_URL } from '../../../constants/api';
 import { ONE_DAY } from '../../../constants/time.constants';
-import AddToCart from '../../../container/addToCart';
+import AddToCart from '../../../redux/container/addToCart';
 import ShopCategory from '../../../graphql/models/shop/category.model';
 import Product from '../../../graphql/models/shop/product.model';
 import MarkdownHelper from '../../../helpers/markdown.helper';
