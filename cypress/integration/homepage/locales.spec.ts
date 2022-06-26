@@ -1,13 +1,13 @@
-import { en, fr, es, gr } from '../../../content/locale/';
+import { en, fr, es, el } from '../../../content/locale/';
 
 describe('Locale', () => {
     const locales = [
         { code: 'en', name: 'English' },
         { code: 'fr', name: 'Français' },
         { code: 'es', name: 'Español' },
-        { code: 'gr', name: 'Ελληνικά' }
+        { code: 'el', name: 'Ελληνικά' }
     ];
-    const translations = { en, fr, es, gr };
+    const translations = { en, fr, es, el };
     const defaultLocale = 'en';
 
     beforeEach(() => {

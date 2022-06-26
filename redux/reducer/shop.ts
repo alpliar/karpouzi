@@ -4,7 +4,7 @@ export interface CartRow {
     slug: string;
     quantity: number;
 }
-interface ShopState {
+export interface ShopState {
     cart: Array<CartRow>;
 }
 
