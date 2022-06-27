@@ -53,7 +53,7 @@ const UserAccountPage: NextPage = () => {
         en: 'English',
         fr: 'Français',
         es: 'Español',
-        gr: 'Ελληνικά'
+        el: 'Ελληνικά'
     };
 
     return (
