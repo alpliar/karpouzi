@@ -9,6 +9,7 @@ import { Button } from '@chakra-ui/react';
 import { Select } from '@chakra-ui/select';
 import { Textarea } from '@chakra-ui/textarea';
 import { NextPage } from 'next';
+import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import React, { PropsWithChildren } from 'react';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
@@ -45,6 +46,10 @@ const UserAccountPage: NextPage = () => {
     const { formatMessage } = useIntl();
     const f = (id: string) => formatMessage({ id });
     const router = useRouter();
+    const { data: session } = useSession();
+
+    if (!session || !session.user) return null;
+    const { name, image, email } = session.user;
 
     const changeLocale = (newLocale: string) => {
         if (newLocale !== router.locale) {
@@ -88,12 +93,12 @@ const UserAccountPage: NextPage = () => {
                 <UserAccountSection title={f('personalInformations')}>
                     <FormControl id="name">
                         <FormLabel>{f('name')}</FormLabel>
-                        <Input type="text" />
+                        <Input type="text" value={name || ''} />
                         {/* <FormHelperText>We'll never share your email.</FormHelperText> */}
                     </FormControl>
                     <FormControl id="email">
                         <FormLabel>{f('email')}</FormLabel>
-                        <Input type="email" />
+                        <Input type="email" value={email || ''} />
                         <FormHelperText>{f('emailHelperText')}</FormHelperText>
                     </FormControl>
                     <FormControl id="bio">
@@ -107,7 +112,7 @@ const UserAccountPage: NextPage = () => {
 
                 <UserAccountSection title={f('profilePhoto')}>
                     <Stack direction={{ base: 'column', sm: 'row' }} align="center" spacing={4}>
-                        <Avatar size="xl" name="toto" />
+                        <Avatar src={image || ''} size="xl" name="toto" />
                         <Stack direction="column">
                             <Wrap>
                                 <Button>{f('changePhoto')}</Button>
