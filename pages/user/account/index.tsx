@@ -49,6 +49,7 @@ const UserAccountPage: NextPage = () => {
     const { data: session } = useSession();
 
     if (!session || !session.user) return null;
+    const { name, image, email } = session.user;
 
     const changeLocale = (newLocale: string) => {
         if (newLocale !== router.locale) {
@@ -92,12 +93,12 @@ const UserAccountPage: NextPage = () => {
                 <UserAccountSection title={f('personalInformations')}>
                     <FormControl id="name">
                         <FormLabel>{f('name')}</FormLabel>
-                        <Input type="text" value={session.user.name || ''} />
+                        <Input type="text" value={name || ''} />
                         {/* <FormHelperText>We'll never share your email.</FormHelperText> */}
                     </FormControl>
                     <FormControl id="email">
                         <FormLabel>{f('email')}</FormLabel>
-                        <Input type="email" value={session.user.email || ''} />
+                        <Input type="email" value={email || ''} />
                         <FormHelperText>{f('emailHelperText')}</FormHelperText>
                     </FormControl>
                     <FormControl id="bio">
@@ -111,7 +112,7 @@ const UserAccountPage: NextPage = () => {
 
                 <UserAccountSection title={f('profilePhoto')}>
                     <Stack direction={{ base: 'column', sm: 'row' }} align="center" spacing={4}>
-                        <Avatar src={session.user.image} size="xl" name="toto" />
+                        <Avatar src={image || ''} size="xl" name="toto" />
                         <Stack direction="column">
                             <Wrap>
                                 <Button>{f('changePhoto')}</Button>
