@@ -1,4 +1,4 @@
-import { addToCart, ADD_TO_CART, updateQuantityCart } from '../actions/shop';
+import { addToCart, removeFromCart, updateQuantityCart } from '../actions/shop';
 import reducer, { ShopState } from '../redux/reducer/shop';
 
 const initialState: ShopState = { cart: [] };
@@ -38,5 +38,22 @@ describe('shop reducer', () => {
         };
 
         expect(reducer(stateBefore, updateQuantityCart('test', 8))).toEqual(stateAfter);
+    });
+    it('should remove product from cart', () => {
+        const stateBefore = {
+            ...initialState,
+            cart: [
+                {
+                    slug: 'test',
+                    quantity: 1
+                }
+            ]
+        };
+        const stateAfter = {
+            ...stateBefore,
+            cart: []
+        };
+
+        expect(reducer(stateBefore, removeFromCart('test'))).toEqual(stateAfter);
     });
 });
