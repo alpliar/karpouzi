@@ -7,12 +7,13 @@ import { Input } from '@chakra-ui/input';
 import { Box, Container, Divider, Flex, SimpleGrid, Stack, Text } from '@chakra-ui/layout';
 import { NextPage } from 'next';
 import React from 'react';
-import { FaFacebook, FaGithub, FaGoogle } from 'react-icons/fa';
+import { FaDiscord, FaFacebook, FaGithub, FaGoogle } from 'react-icons/fa';
 import { useIntl } from 'react-intl';
 import Card from '../../../components/card';
 import Link from '../../../components/link';
 import PageListingLayout from '../../../components/pageListingLayout';
 import { sendToast } from '../../../utils/uiToast';
+import { signIn } from 'next-auth/react';
 
 const LoginPage: NextPage = () => {
     const { formatMessage } = useIntl();
@@ -87,9 +88,24 @@ const LoginPage: NextPage = () => {
                         <Divider />
                         <Text textAlign="center">Or continue with</Text>
                         <SimpleGrid columns={{ base: 1, sm: 2, md: 3 }} spacing={2}>
-                            <Button leftIcon={<Icon as={FaGithub} />}> Github</Button>
-                            <Button leftIcon={<Icon as={FaGoogle} />}> Google</Button>
-                            <Button leftIcon={<Icon as={FaFacebook} />}> Facebook</Button>
+                            <Button
+                                onClick={() => signIn('discord')}
+                                leftIcon={<Icon as={FaDiscord} />}>
+                                {' '}
+                                Discord
+                            </Button>
+                            <Button
+                                onClick={() => signIn('google')}
+                                leftIcon={<Icon as={FaGoogle} />}>
+                                {' '}
+                                Google
+                            </Button>
+                            <Button
+                                onClick={() => signIn('discord')}
+                                leftIcon={<Icon as={FaFacebook} />}>
+                                {' '}
+                                Facebook
+                            </Button>
                         </SimpleGrid>
                     </Stack>
                 </Card>
