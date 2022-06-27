@@ -89,7 +89,11 @@ const LoginPage: NextPage = () => {
                         <Text textAlign="center">Or continue with</Text>
                         <SimpleGrid columns={{ base: 1, sm: 2, md: 3 }} spacing={2}>
                             <Button
-                                onClick={() => signIn('discord')}
+                                onClick={() =>
+                                    signIn('discord', {
+                                        callbackUrl: '/user/account'
+                                    })
+                                }
                                 leftIcon={<Icon as={FaDiscord} />}>
                                 {' '}
                                 Discord
