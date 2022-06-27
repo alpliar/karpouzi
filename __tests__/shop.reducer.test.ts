@@ -55,4 +55,30 @@ describe('shop reducer', () => {
 
         expect(reducer(stateBefore, removeFromCart('test'))).toEqual(stateAfter);
     });
+    it('should remove product from cart without impacting other products', () => {
+        const stateBefore = {
+            ...initialState,
+            cart: [
+                {
+                    slug: 'productToDelete',
+                    quantity: 4
+                },
+                {
+                    slug: 'productToKeep',
+                    quantity: 7
+                }
+            ]
+        };
+        const stateAfter = {
+            ...stateBefore,
+            cart: [
+                {
+                    slug: 'productToKeep',
+                    quantity: 7
+                }
+            ]
+        };
+
+        expect(reducer(stateBefore, removeFromCart('productToDelete'))).toEqual(stateAfter);
+    });
 });
