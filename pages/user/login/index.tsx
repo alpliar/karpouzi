@@ -6,14 +6,14 @@ import Icon from '@chakra-ui/icon';
 import { Input } from '@chakra-ui/input';
 import { Box, Container, Divider, Flex, SimpleGrid, Stack, Text } from '@chakra-ui/layout';
 import { NextPage } from 'next';
+import { signIn } from 'next-auth/react';
 import React from 'react';
-import { FaDiscord, FaFacebook, FaGithub, FaGoogle } from 'react-icons/fa';
+import { FaDiscord, FaFacebook, FaGoogle } from 'react-icons/fa';
 import { useIntl } from 'react-intl';
 import Card from '../../../components/card';
 import Link from '../../../components/link';
 import PageListingLayout from '../../../components/pageListingLayout';
 import { sendToast } from '../../../utils/uiToast';
-import { signIn } from 'next-auth/react';
 
 const LoginPage: NextPage = () => {
     const { formatMessage } = useIntl();
