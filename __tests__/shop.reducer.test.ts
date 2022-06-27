@@ -1,12 +1,11 @@
-import { addToCart, removeFromCart, updateQuantityCart } from '../actions/shop';
-import reducer, { ShopState } from '../redux/reducer/shop';
-
-const initialState: ShopState = { cart: [] };
+import { addToCart, removeFromCart, updateQuantityCart } from '../actions/shop.actions';
+import reducer, { initialState } from '../redux/reducer/shop.reducer';
 
 describe('shop reducer', () => {
     it('should return the initial state', () => {
-        expect(reducer(initialState, { type: '' })).toEqual(initialState);
+        expect(reducer(initialState, removeFromCart('test'))).toEqual(initialState);
     });
+
     it('should add a product to cart', () => {
         expect(reducer(initialState, addToCart('test', 6))).toEqual({
             ...initialState,
