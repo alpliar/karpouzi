@@ -14,6 +14,7 @@ import React, { PropsWithChildren } from 'react';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
 import { useIntl } from 'react-intl';
 import PageListingLayout from '../../../components/pageListingLayout';
+import { sendToast } from '../../../utils/uiToast';
 
 interface IUserAccountSectionProps {
     title: string;
@@ -46,6 +47,13 @@ const UserAccountPage: NextPage = () => {
     const router = useRouter();
 
     const changeLocale = (newLocale: string) => {
+        if (newLocale !== router.locale) {
+            sendToast(
+                'Locale changed',
+                `Now viewing ${newLocale.toLocaleUpperCase()} version of Karpouzi`,
+                'info'
+            );
+        }
         router.push(router.pathname, router.asPath, { locale: newLocale });
     };
 
