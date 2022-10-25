@@ -46,21 +46,26 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     }
 };
 
-export const getStaticPaths: GetStaticPaths = async () => {
+export const getStaticPaths: GetStaticPaths = async ({ locales }) => {
     try {
         const {
             data: { posts }
         } = await axios.post<BlogPostsData>(API_BASE_URL + '/blog/posts');
 
         if (!posts) throw new Error('Could not fetch blog posts data');
+        if (!locales) throw new Error('no locales provided in next.config.js');
 
         return {
-            paths: posts.map(({ slug }) => ({
-                params: {
-                    slug
-                },
-                locale: 'en'
-            })),
+            paths: posts.flatMap(({ slug }) => {
+                return locales.map((locale) => {
+                    return {
+                        params: {
+                            slug
+                        },
+                        locale
+                    };
+                });
+            }),
             fallback: true
         };
     } catch (err) {

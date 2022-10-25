@@ -11,6 +11,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<ProductResponse
     try {
         const { slug } = req.query;
 
+        if (!slug) throw new Error('Asset id was not provided');
+
         const product = await ProductHelper.getProduct(slug.toString());
 
         res.status(200).json({

@@ -11,6 +11,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<AssetResponse>)
     try {
         const { id } = req.query;
 
+        if (!id) throw new Error('Asset id was not provided');
+
         const asset = await AssetHelper.getAsset(id.toString());
 
         res.status(200).json({
