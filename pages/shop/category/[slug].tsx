@@ -16,6 +16,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     try {
         const slug = params?.slug;
 
+        if (!slug) throw new Error('Slug was not provided');
+
         const {
             data: { category }
         } = await axios.get<CategoryResponse>(API_BASE_URL + `/shop/category/${slug}`);
@@ -35,17 +37,21 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         };
     }
 };
-export const getStaticPaths: GetStaticPaths = async () => {
+export const getStaticPaths: GetStaticPaths = async ({ locales }) => {
     try {
         const slugs = await CategoryHelper.getCategoriesSlugs();
 
-        const paths = slugs.map((slug) => {
-            return {
-                params: {
-                    slug
-                },
-                locale: 'en'
-            };
+        if (!locales) throw new Error('no locales provided in next.config.js');
+
+        const paths = slugs.flatMap((slug) => {
+            return locales.map((locale) => {
+                return {
+                    params: {
+                        slug
+                    },
+                    locale
+                };
+            });
         });
 
         return {

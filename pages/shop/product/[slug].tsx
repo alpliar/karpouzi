@@ -59,18 +59,24 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     }
 };
 
-export const getStaticPaths: GetStaticPaths = async () => {
+export const getStaticPaths: GetStaticPaths = async ({ locales }) => {
     try {
         const {
             data: { products }
         } = await axios.get<ProductsResponse>(API_BASE_URL + `/shop/products/slugs`);
 
-        const paths = products.map(({ slug }) => ({
-            params: {
-                slug
-            },
-            locale: 'en'
-        }));
+        if (!locales) throw new Error('no locales provided in next.config.js');
+
+        const paths = products.flatMap(({ slug }) => {
+            return locales.map((locale) => {
+                return {
+                    params: {
+                        slug
+                    },
+                    locale
+                };
+            });
+        });
 
         return {
             paths,
