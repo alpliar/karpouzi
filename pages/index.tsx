@@ -4,7 +4,9 @@ import Head from 'next/head';
 import { useIntl } from 'react-intl';
 import CallToActionNewsletter from '../components/callToActionNewsletter';
 import CallToActionWithAnnotation from '../components/callToActionWithAnnotation';
+import SectionSideBySide from '../components/layout/sectionSideBySide';
 import PageLayout, { siteTitle } from '../components/pageLayout';
+import { APP_MAX_WIDTH } from '../constants/ui/main.layout';
 
 export default function Home() {
     const router = useRouter();
@@ -25,7 +27,7 @@ export default function Home() {
                 <title>{siteTitle}</title>
             </Head>
 
-            <Container p={4} maxW="4xl">
+            <Container p={4} maxW={APP_MAX_WIDTH}>
                 <CallToActionWithAnnotation
                     title={
                         <>
@@ -48,11 +50,9 @@ export default function Home() {
                     handleSecondaryAction={handleKnowMore}
                     primaryActionAnnotation={f('welcomeDeals')}
                 />
-            </Container>
-
-            <Divider />
-
-            <Container p={4}>
+                <Divider />
+                <SectionSideBySide />
+                <Divider />
                 <CallToActionNewsletter />
             </Container>
         </PageLayout>

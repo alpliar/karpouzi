@@ -1,12 +1,14 @@
-import { chakra, Link as UiLink } from '@chakra-ui/react';
+import { Button, ButtonProps, chakra, Link as UiLink } from '@chakra-ui/react';
 import NextLink from 'next/link';
 import { PropsWithChildren } from 'react';
 
 interface ILinkProps {
     href: string;
-    alt: string;
+    alt?: string;
     locale?: string | false;
     prefetch?: boolean;
+    asButton?: boolean;
+    buttonProps?: ButtonProps[];
 }
 
 const Link: React.FC<PropsWithChildren<ILinkProps>> = ({
@@ -14,11 +16,19 @@ const Link: React.FC<PropsWithChildren<ILinkProps>> = ({
     alt,
     children,
     locale,
-    prefetch = true
+    prefetch = true,
+    asButton = false,
+    ...buttonProps
 }) => {
     return (
         <NextLink href={href} passHref locale={locale} prefetch={prefetch}>
-            <UiLink title={alt}>{children}</UiLink>
+            {asButton ? (
+                <Button as={UiLink} {...buttonProps}>
+                    {children}
+                </Button>
+            ) : (
+                <UiLink title={alt}>{children}</UiLink>
+            )}
         </NextLink>
     );
 };
