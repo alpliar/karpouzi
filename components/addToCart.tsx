@@ -23,6 +23,7 @@ const AddToCart: React.FC<IAddToCartProps> = ({ slug, quantity, inCart, addToCar
             placement={useBreakpointValue({ base: 'bottom', md: 'right' })}
             isOpen={inCart > 0}>
             <Button
+                fontFamily="heading"
                 leftIcon={<Icon as={FaShoppingCart} />}
                 onClick={handleClick}
                 colorScheme="green">
