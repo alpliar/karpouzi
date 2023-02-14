@@ -39,7 +39,7 @@ export default function CartPage() {
             {cart.length === 0 && (
                 <Alert status="info">
                     <AlertIcon />
-                    You don&rsquo;t have any product in your cart !
+                    {`You don't have any product in your cart !`}
                 </Alert>
             )}
         </PageListingLayout>
