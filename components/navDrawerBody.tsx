@@ -33,7 +33,7 @@ const NavDrawerBody = () => {
                         cursor="pointer"
                         // _hover={{ bg: 'whiteAlpha.500' }}
                     >
-                        <Link href={href}>
+                        <Link legacyBehavior href={href}>
                             <LinkOverlay title={alt} w="full" textAlign="center">
                                 {text}
                             </LinkOverlay>

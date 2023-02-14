@@ -21,7 +21,7 @@ const Link: React.FC<PropsWithChildren<ILinkProps>> = ({
     ...buttonProps
 }) => {
     return (
-        <NextLink href={href} passHref locale={locale} prefetch={prefetch}>
+        <NextLink legacyBehavior href={href} passHref locale={locale} prefetch={prefetch}>
             {asButton ? (
                 <Button as={UiLink} {...buttonProps}>
                     {children}

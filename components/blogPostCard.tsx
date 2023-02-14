@@ -57,6 +57,7 @@ const BlogPostCard: React.FC<IBlogPostCardProps> = ({ post }) => {
                     </Text>
                     <Stack h={32}>
                         <Link
+                            legacyBehavior
                             passHref
                             href={{
                                 pathname: '/blog/post/[slug]',

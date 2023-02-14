@@ -73,6 +73,7 @@ const CartItem: React.FC<IProps> = ({ slug, quantity }) => {
                             <Text fontWeight="bold">
                                 <HStack>
                                     <Link
+                                        legacyBehavior
                                         href={{
                                             pathname: '/shop/product/[slug]',
                                             query: { slug }

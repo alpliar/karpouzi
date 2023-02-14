@@ -73,7 +73,11 @@ const NavLocaleSelector: React.FC<INavLocaleSelectorProps> = ({ compact = false 
                             //     // color: itemHoverColor
                             // }}
                             >
-                                <NextLink href={router.asPath} passHref locale={locale}>
+                                <NextLink
+                                    legacyBehavior
+                                    href={router.asPath}
+                                    passHref
+                                    locale={locale}>
                                     <LinkOverlay
                                         flexGrow={1}
                                         title={`choose ${locale}`}

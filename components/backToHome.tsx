@@ -10,7 +10,7 @@ const BackToHome = () => {
         <LinkBox as="aside">
             <Text as="span" fontStyle="italic">
                 {f('feelingLost')}{' '}
-                <Link href="/" passHref>
+                <Link legacyBehavior href="/" passHref>
                     <LinkOverlay title={f('goBackToHome')}>{f('goBackToHome')}</LinkOverlay>
                 </Link>
             </Text>

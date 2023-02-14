@@ -16,7 +16,7 @@ const NavLogo: React.FC<IProps> = ({ siteEmoji, siteEmojiLabel }) => {
                 <span role="img" aria-label={siteEmojiLabel}>
                     {siteEmoji}
                 </span>
-                <Link href="/" passHref>
+                <Link legacyBehavior href="/" passHref>
                     <LinkOverlay title="Go to homepage">{f('commonSiteName')}</LinkOverlay>
                 </Link>
             </Box>

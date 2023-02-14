@@ -79,14 +79,14 @@ const Header = ({}) => {
                         flexWrap="wrap"
                         flexGrow={1}>
                         <MenuItems>
-                            <Link href="/blog">
+                            <Link legacyBehavior href="/blog">
                                 <a title={f('goToPageName', { name: f('menuEntryBlog') })}>
                                     {f('menuEntryBlog')}
                                 </a>
                             </Link>
                         </MenuItems>
                         <MenuItems>
-                            <Link href="/shop">
+                            <Link legacyBehavior href="/shop">
                                 <a title={f('goToPageName', { name: f('menuEntryShop') })}>
                                     {f('menuEntryShop')}
                                 </a>
