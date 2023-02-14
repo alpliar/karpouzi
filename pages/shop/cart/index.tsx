@@ -22,10 +22,7 @@ export default function CartPage() {
             ]}
             titleSlot={<ShopStat label="Items" number={cart.length} />}>
             {cart.length > 0 && (
-                <SimpleGrid
-                    minChildWidth={{ base: 'full', md: '450px' }}
-                    spacingX="0.5em"
-                    spacingY="1em">
+                <SimpleGrid columns={{ base: 1, md: 2 }} spacingX="0.5em" spacingY="1em">
                     {cart.map((item, index) => (
                         <CartItem
                             key={`${item.slug}-${index}`}

@@ -1,10 +1,21 @@
-import { Badge, Flex, HStack, Img, LinkBox, LinkOverlay, Stack, Text } from '@chakra-ui/react';
+import {
+    Badge,
+    Box,
+    Flex,
+    HStack,
+    LinkBox,
+    LinkOverlay,
+    Stack,
+    Text,
+    useBreakpointValue
+} from '@chakra-ui/react';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { API_BASE_URL } from '../constants/api';
 import Product from '../graphql/models/shop/product.model';
 import Card from './card';
 import CartItemActions from './cartItemActions';
+import { Image } from './image';
 
 interface IProps {
     slug: string;
@@ -29,27 +40,28 @@ const CartItem: React.FC<IProps> = ({ slug, quantity }) => {
             });
     }, [slug]);
 
+    const imageSize = useBreakpointValue({ base: '180px', md: '200px' });
+
     if (isLoading) return <p>Loading...</p>;
     if (!product) return null;
 
     return (
         <LinkBox>
             <Card padding={cardPadding}>
-                <HStack spacing={{ base: 0, sm: 4 }}>
-                    <Flex
-                        mt={-cardPadding}
-                        ml={-cardPadding}
-                        mb={-cardPadding}
-                        pos="relative"
-                        maxH={imageDimensions}
-                        maxW={imageDimensions}
-                        alignItems="center"
-                        alignContent="center"
-                        display={{ base: 'none', sm: 'inline-block' }}>
-                        {/* <Avatar src={picture} name={title} size="lg" /> */}
-                        <Img width="full" src={product.coverPicture.asset.url} alt={product.name} />
-                    </Flex>
-                    <Stack ml="3" spacing="1" w={{ base: 'full' }}>
+                <Stack spacing={4} direction={{ base: 'column', sm: 'row' }}>
+                    <Box w={{ base: 'full', sm: imageSize }} marginY={-4} ml={-4}>
+                        <Image
+                            quality={75}
+                            src={product.coverPicture.asset.url}
+                            alt={product.coverPicture.alternativeText || product.name}
+                            sizes={imageSize}
+                            priority
+                            height={imageSize}
+                            w={{ base: imageSize }}
+                            blurDataURL={product.coverPicture.asset.thumbnail}
+                        />
+                    </Box>
+                    <Stack ml="3" spacing="1">
                         <Text fontWeight="bold">
                             <HStack>
                                 <Link
@@ -63,7 +75,7 @@ const CartItem: React.FC<IProps> = ({ slug, quantity }) => {
                                 <Badge colorScheme="teal">New</Badge>
                             </HStack>
                         </Text>
-                        <Text fontSize="sm" noOfLines={2}>
+                        <Text fontSize="sm" noOfLines={1}>
                             {product.description}
                         </Text>
                         <Flex>
@@ -77,7 +89,7 @@ const CartItem: React.FC<IProps> = ({ slug, quantity }) => {
                             </Stack>
                         </Flex>
                     </Stack>
-                </HStack>
+                </Stack>
             </Card>
         </LinkBox>
     );
