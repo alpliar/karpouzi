@@ -2,10 +2,9 @@
 import { Box, Container, Heading, Stack, Text } from '@chakra-ui/layout';
 
 import { Button } from '@chakra-ui/button';
-import { Icon, createIcon } from '@chakra-ui/icon';
 import { useColorModeValue } from '@chakra-ui/color-mode';
+import { createIcon, Icon } from '@chakra-ui/icon';
 
-import Head from 'next/head';
 import { BASE_TRANSITION } from '../constants/ui/transitions';
 
 interface IProps {
@@ -29,13 +28,6 @@ const CallToActionWithAnnotation: React.FC<IProps> = ({
 }) => {
     return (
         <>
-            <Head>
-                <link
-                    href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap"
-                    rel="stylesheet"
-                />
-            </Head>
-
             <Container maxW={'3xl'}>
                 <Stack
                     as={Box}
@@ -56,6 +48,7 @@ const CallToActionWithAnnotation: React.FC<IProps> = ({
                         alignSelf={'center'}
                         position={'relative'}>
                         <Button
+                            fontFamily="heading"
                             colorScheme={'green'}
                             bg={'green.400'}
                             rounded={'full'}
@@ -67,6 +60,7 @@ const CallToActionWithAnnotation: React.FC<IProps> = ({
                             {primaryActionLabel}
                         </Button>
                         <Button
+                            fontFamily="heading"
                             variant={'link'}
                             colorScheme={'blue'}
                             size={'sm'}
@@ -93,7 +87,7 @@ const CallToActionWithAnnotation: React.FC<IProps> = ({
                             />
                             <Text
                                 fontSize={'lg'}
-                                fontFamily={'Caveat'}
+                                fontFamily="body"
                                 position={'absolute'}
                                 right={{ base: '-30px', sm: '-90px', md: '-100px', lg: '-115px' }}
                                 top={{ base: '-22px', sm: '-20px' }}

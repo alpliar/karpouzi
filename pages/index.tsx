@@ -31,7 +31,7 @@ export default function Home() {
                 <CallToActionWithAnnotation
                     title={
                         <>
-                            <Text>
+                            <Text as="span">
                                 {f('welcomeMessage')} <br />
                                 <Text as={'span'} color={'green.400'}>
                                     {f('commonSiteName')}
