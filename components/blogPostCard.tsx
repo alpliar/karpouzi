@@ -80,7 +80,7 @@ const BlogPostCard: React.FC<IBlogPostCardProps> = ({ post }) => {
                     </Stack>
                 </Stack>
                 <Stack mt={6} direction="row" spacing={4} align="center">
-                    <Avatar src={'/icon-48x48.png'} bg="green.500" />
+                    <Avatar src={'/icon-48x48.png'} bg="green.500" name={'Karpouzi'} />
                     <Stack direction="column" spacing={0} fontSize="sm">
                         <Text fontWeight="600">{author.firstName}</Text>
                         <Text color="gray.500">

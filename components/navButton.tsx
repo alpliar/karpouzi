@@ -1,5 +1,5 @@
+import { Button, Icon, IconButton, IconProps } from '@chakra-ui/react';
 import { ComponentWithAs } from '@chakra-ui/system';
-import { Button, Icon, IconButton, IconProps, useBreakpointValue } from '@chakra-ui/react';
 import { MouseEventHandler } from 'react';
 import { IconType } from 'react-icons';
 
@@ -21,11 +21,9 @@ const NavButton: React.FC<IProps> = ({
     e2e = undefined
 }) => {
     const variant = isPrimary ? 'outline' : 'ghost';
-    // const lightColor = 'gray.800';
-    // const darkColor = 'white';
-    // const color = useColorModeValue(lightColor, darkColor);
     // useBreakPoint value is not available instantly, need a 'sm' fallback in order to prevent buttons resize on load
-    const size = useBreakpointValue({ base: 'md', md: 'sm' }) || 'sm';
+    // const size = useBreakpointValue({ base: 'md', md: 'sm' }) || 'sm';
+    const size = 'sm';
 
     if (compact === true) {
         return (

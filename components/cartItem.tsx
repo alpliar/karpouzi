@@ -43,14 +43,14 @@ const CartItem: React.FC<IProps> = ({ slug, quantity }) => {
 
     const imageSize = useBreakpointValue({ base: '180px', md: '200px' });
 
-    if (!product) return null;
+    // if (!product) return null;
 
     return (
         <LinkBox>
             <Card padding={cardPadding}>
                 <Stack spacing={4} direction={{ base: 'column', sm: 'row' }}>
                     <Box w={{ base: 'full', sm: imageSize }} marginY={-4} ml={-4}>
-                        {isLoading ? (
+                        {isLoading || !product ? (
                             <Skeleton height={imageSize} width={imageSize} marginY={-4} ml={-4} />
                         ) : (
                             <Image
@@ -66,7 +66,7 @@ const CartItem: React.FC<IProps> = ({ slug, quantity }) => {
                         )}
                     </Box>
 
-                    {isLoading ? (
+                    {isLoading || !product ? (
                         <SkeletonText w="full" />
                     ) : (
                         <Stack ml="3" spacing="1">

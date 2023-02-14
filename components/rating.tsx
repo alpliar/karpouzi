@@ -16,7 +16,7 @@ const Rating = ({ rate, count, icon = GiWatermelon }: IOwnProps) => {
     const isIndividualRating = !hasMultipleReviews;
 
     return (
-        <Flex as={Text} fontSize="sm" alignItems="end">
+        <Flex fontSize="sm" alignItems="end">
             {isRated && (
                 <HStack alignItems="center">
                     <Text as="span">

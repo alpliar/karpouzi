@@ -1,5 +1,6 @@
 import { Container, useColorModeValue } from '@chakra-ui/react';
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 import { PropsWithChildren } from 'react';
 import Header from './Header';
 import Footer from './pageFooter';
@@ -11,6 +12,8 @@ interface IPageLayoutProps {}
 
 const PageLayout: React.FC<PropsWithChildren<IPageLayoutProps>> = ({ children }) => {
     const themeColor: string = useColorModeValue('#48BB78', '#2A4F3A');
+    const router = useRouter();
+    const canonicalUrl = router.asPath;
     return (
         <>
             <Head>
@@ -31,6 +34,7 @@ const PageLayout: React.FC<PropsWithChildren<IPageLayoutProps>> = ({ children })
                     )}.png?theme=light&md=0&fontSize=75px&images=https%3A%2F%2Fassets.vercel.com%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fnextjs-black-logo.svg`}
                 />
                 <meta name="og:title" content={siteTitle} />
+                <meta name="og:url" content={canonicalUrl} />
                 <meta name="twitter:card" content="summary_large_image" />
 
                 <link rel="manifest" href="/manifest.json" />

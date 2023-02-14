@@ -1,15 +1,5 @@
 import { CheckCircleIcon } from '@chakra-ui/icons';
-import {
-    HStack,
-    Icon,
-    Stack,
-    Tag,
-    TagLabel,
-    TagLeftIcon,
-    Text,
-    Wrap,
-    WrapItem
-} from '@chakra-ui/react';
+import { Flex, HStack, Icon, Stack, Tag, TagLabel, TagLeftIcon, Text } from '@chakra-ui/react';
 import React from 'react';
 import { FaUserCircle } from 'react-icons/fa';
 import Review from '../graphql/models/common/review.model';
@@ -30,17 +20,15 @@ const Review: React.FC<Props> = ({ review }) => {
 
             <Rating rate={review.rating} />
 
-            <Wrap fontSize="sm" alignItems="center">
-                <HStack as={WrapItem}>
+            <Flex wrap="wrap" fontSize="sm" alignItems="center" gap={2}>
+                <HStack>
                     <Icon as={FaUserCircle} />
                     <Text as="strong">
                         {review.author.firstName} ({review.author.postalAddress.countryName})
                     </Text>
                 </HStack>
 
-                <WrapItem>
-                    <Date dateString={review.createdAt} />
-                </WrapItem>
+                <Date dateString={review.createdAt} />
 
                 {review.isVerified && (
                     <Tag variant="subtle" colorScheme="green">
@@ -50,7 +38,7 @@ const Review: React.FC<Props> = ({ review }) => {
                         </TagLabel>
                     </Tag>
                 )}
-            </Wrap>
+            </Flex>
 
             {/* <Box>
                 <Text>{review.rating} / 100</Text>

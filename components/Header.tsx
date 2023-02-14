@@ -51,7 +51,6 @@ const Header = ({}) => {
             boxShadow={boxShadow}
             as="nav"
             data-e2e="mainNavigation"
-            // bgGradient={headerBgGradient(colorMode)} /*color="white"*/
             bgColor={headerBgColor(colorMode)}
             position="sticky"
             zIndex="sticky"
@@ -61,13 +60,12 @@ const Header = ({}) => {
                 justify="flex-end"
                 maxW={APP_MAX_WIDTH}
                 w="100%"
-                p={2}
-                m={{ base: 0, md: 'auto' }}>
-                <Flex align="center" mr={{ base: 2, sm: 5 }}>
-                    <NavLogo /* siteTitle={siteTitle} */ />
+                p={2}>
+                <Flex align="center" mr={{ base: 2, sm: 4 }}>
+                    <NavLogo />
                 </Flex>
                 <Flex
-                    textAlign={{ base: 'center', md: 'inherit' }}
+                    textAlign={{ base: 'center', md: 'left' }}
                     alignItems="center"
                     justifyContent="center"
                     flexGrow={1}
@@ -99,7 +97,7 @@ const Header = ({}) => {
                     <Box display={{ base: 'none', sm: 'block' }}>
                         <HStack spacing="1">
                             <NavThemeToggle />
-                            <NavLocaleSelector />
+                            <NavLocaleSelector compact />
                         </HStack>
                     </Box>
                     <NavLogin />

@@ -152,6 +152,13 @@ const ProductPage: NextPage<ProductPageProps> = ({ product, description }) => {
         >
             <Head>
                 <title>Shop - {product.name}</title>
+                <meta property="og:type" content="og:product" />
+                <meta property="og:title" content={product.name} />
+                <meta property="og:image" content={product.coverPicture.asset.url} />
+                <meta property="og:description" content={product.description.slice(0, 100)} />
+                {/* <meta property="product:plural_title" content={product.pluralName} /> */}
+                <meta property="product:price:amount" content={firstPrice.amount.toString()} />
+                <meta property="product:price:currency" content={firstPrice.currency} />
             </Head>
 
             <Container p={{ base: 0 }} maxW="full">
