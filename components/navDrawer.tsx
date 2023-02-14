@@ -5,9 +5,10 @@ import {
     DrawerContent,
     DrawerFooter,
     DrawerHeader,
-    DrawerOverlay,
-    useColorMode
-} from '@chakra-ui/react';
+    DrawerOverlay
+} from '@chakra-ui/modal';
+import { useColorMode } from '@chakra-ui/color-mode';
+
 import { headerBgGradient } from './Header';
 
 interface IProps {

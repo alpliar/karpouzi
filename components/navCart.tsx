@@ -1,4 +1,4 @@
-import { Badge, Box, Center } from '@chakra-ui/react';
+import { Badge, Box, Center } from '@chakra-ui/layout';
 import { useRouter } from 'next/dist/client/router';
 import { MouseEventHandler } from 'react';
 import { FaShoppingCart } from 'react-icons/fa';

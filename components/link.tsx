@@ -1,4 +1,7 @@
-import { Button, ButtonProps, chakra, Link as UiLink } from '@chakra-ui/react';
+import { Link as UiLink } from '@chakra-ui/layout';
+import { Button, ButtonProps } from '@chakra-ui/button';
+import { chakra } from '@chakra-ui/system';
+
 import NextLink from 'next/link';
 import { PropsWithChildren } from 'react';
 
@@ -21,7 +24,7 @@ const Link: React.FC<PropsWithChildren<ILinkProps>> = ({
     ...buttonProps
 }) => {
     return (
-        <NextLink href={href} passHref locale={locale} prefetch={prefetch}>
+        <NextLink legacyBehavior href={href} passHref locale={locale} prefetch={prefetch}>
             {asButton ? (
                 <Button as={UiLink} {...buttonProps}>
                     {children}

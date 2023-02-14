@@ -48,7 +48,7 @@ const CategoryCard: React.FC<IProps> = ({ category }) => {
                     {/* <Wrap justify="space-between" align="center"> */}
                     {/* <Box width={{ base: '100%', md: 'inherit' }}> */}
                     <Box>
-                        <Link href={`/shop/category/${category.slug}`} passHref>
+                        <Link legacyBehavior href={`/shop/category/${category.slug}`} passHref>
                             <LinkOverlay
                                 title={`go to ${category.slug} category`}
                                 textShadow="sm"

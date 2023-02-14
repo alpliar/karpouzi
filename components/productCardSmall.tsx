@@ -72,6 +72,7 @@ const ProductCardSmall: React.FC<IProps> = ({
 
                         <Box mt="1" fontWeight="semibold" lineHeight="tight">
                             <Link
+                                legacyBehavior
                                 href={{
                                     pathname: '/shop/product/[slug]',
                                     query: { slug }

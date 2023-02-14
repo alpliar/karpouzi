@@ -1,15 +1,10 @@
 /* eslint-disable @next/next/no-page-custom-font */
-import {
-    Box,
-    Button,
-    Container,
-    createIcon,
-    Heading,
-    Icon,
-    Stack,
-    Text,
-    useColorModeValue
-} from '@chakra-ui/react';
+import { Box, Container, Heading, Stack, Text } from '@chakra-ui/layout';
+
+import { Button } from '@chakra-ui/button';
+import { Icon, createIcon } from '@chakra-ui/icon';
+import { useColorModeValue } from '@chakra-ui/color-mode';
+
 import Head from 'next/head';
 import { BASE_TRANSITION } from '../constants/ui/transitions';
 

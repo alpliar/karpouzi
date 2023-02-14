@@ -101,6 +101,7 @@ const ProductCard: React.FC<IProps> = ({ product, ratingIcon = undefined }) => {
 
                     <Box fontWeight="semibold" lineHeight="tight">
                         <Link
+                            legacyBehavior
                             passHref
                             href={{
                                 pathname: '/shop/product/[slug]',

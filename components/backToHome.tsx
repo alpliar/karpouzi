@@ -1,4 +1,4 @@
-import { LinkBox, LinkOverlay, Text } from '@chakra-ui/react';
+import { LinkBox, LinkOverlay, Text } from '@chakra-ui/layout';
 import Link from 'next/link';
 import { useIntl } from 'react-intl';
 
@@ -10,7 +10,7 @@ const BackToHome = () => {
         <LinkBox as="aside">
             <Text as="span" fontStyle="italic">
                 {f('feelingLost')}{' '}
-                <Link href="/" passHref>
+                <Link legacyBehavior href="/" passHref>
                     <LinkOverlay title={f('goBackToHome')}>{f('goBackToHome')}</LinkOverlay>
                 </Link>
             </Text>

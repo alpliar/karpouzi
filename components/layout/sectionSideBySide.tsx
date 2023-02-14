@@ -1,4 +1,7 @@
-import { Box, Center, chakra, Flex, SimpleGrid, useBreakpointValue } from '@chakra-ui/react';
+import { Box, Center, Flex, SimpleGrid } from '@chakra-ui/layout';
+import { useBreakpointValue } from '@chakra-ui/media-query';
+import { chakra } from '@chakra-ui/system';
+
 import React from 'react';
 import { Image } from '../image';
 import Link from '../link';

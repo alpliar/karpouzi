@@ -1,4 +1,4 @@
-import { Container, Divider, Text } from '@chakra-ui/react';
+import { Container, Divider, Text } from '@chakra-ui/layout';
 import { useRouter } from 'next/dist/client/router';
 import Head from 'next/head';
 import { useIntl } from 'react-intl';

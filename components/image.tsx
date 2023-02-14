@@ -1,4 +1,6 @@
-import { Box, BoxProps, LayoutProps } from '@chakra-ui/react';
+import { Box, BoxProps } from '@chakra-ui/layout';
+import { LayoutProps } from '@chakra-ui/styled-system';
+
 import NextImage, { ImageProps as NextImageProps } from 'next/image';
 import * as React from 'react';
 

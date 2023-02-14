@@ -1,15 +1,9 @@
 import { CheckIcon } from '@chakra-ui/icons';
-import {
-    Button,
-    Container,
-    Flex,
-    FormControl,
-    Heading,
-    Input,
-    Stack,
-    Text,
-    useColorModeValue
-} from '@chakra-ui/react';
+import { Container, Flex, Heading, Stack, Text } from '@chakra-ui/layout';
+import { Button } from '@chakra-ui/button';
+import { FormControl } from '@chakra-ui/form-control';
+import { useColorModeValue } from '@chakra-ui/color-mode';
+import { Input } from '@chakra-ui/input';
 import { useState } from 'react';
 
 const CallToActionNewsletter = () => {

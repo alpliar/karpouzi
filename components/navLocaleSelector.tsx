@@ -3,7 +3,7 @@ import { useColorModeValue } from '@chakra-ui/color-mode';
 import { LinkBox, LinkOverlay } from '@chakra-ui/layout';
 import { useBreakpointValue } from '@chakra-ui/media-query';
 import { Menu, MenuButton, MenuList } from '@chakra-ui/menu';
-import { MenuItem } from '@chakra-ui/react';
+import { MenuItem } from '@chakra-ui/menu';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 import { FaFlag } from 'react-icons/fa';
@@ -73,7 +73,11 @@ const NavLocaleSelector: React.FC<INavLocaleSelectorProps> = ({ compact = false 
                             //     // color: itemHoverColor
                             // }}
                             >
-                                <NextLink href={router.asPath} passHref locale={locale}>
+                                <NextLink
+                                    legacyBehavior
+                                    href={router.asPath}
+                                    passHref
+                                    locale={locale}>
                                     <LinkOverlay
                                         flexGrow={1}
                                         title={`choose ${locale}`}

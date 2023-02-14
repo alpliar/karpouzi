@@ -1,4 +1,4 @@
-import { createStandaloneToast, ToastPosition, UseToastOptions } from '@chakra-ui/react';
+import { createStandaloneToast, ToastPosition, UseToastOptions } from '@chakra-ui/toast';
 import { ReactNode } from 'react';
 
 type ToastStatus = UseToastOptions['status'];
