@@ -26,8 +26,8 @@ const config: ThemeConfig = {
 };
 
 const fonts: ThemeOverride['fonts'] = {
-    body: undefined,
-    heading: undefined,
+    body: "'Biryani'",
+    heading: "'Overlock'",
     mono: undefined
 };
 

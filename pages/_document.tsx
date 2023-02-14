@@ -9,7 +9,20 @@ class MyDocument extends Document {
     render() {
         return (
             <Html lang="en">
-                <Head />
+                <Head>
+                    <link
+                        href="https://fonts.googleapis.com/css2?family=Martel:wght@300&display=swap"
+                        rel="stylesheet"
+                    />
+                    <link
+                        href="https://fonts.googleapis.com/css2?family=Overlock&display=swap"
+                        rel="stylesheet"
+                    />
+                    <link
+                        href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&display=swap"
+                        rel="stylesheet"
+                    />
+                </Head>
                 <body
                     style={{
                         overflowY: 'scroll'

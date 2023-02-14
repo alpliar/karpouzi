@@ -1,6 +1,5 @@
-import { Box, Center, Flex, SimpleGrid } from '@chakra-ui/layout';
+import { Box, Center, Flex, Heading, SimpleGrid, Text } from '@chakra-ui/layout';
 import { useBreakpointValue } from '@chakra-ui/media-query';
-import { chakra } from '@chakra-ui/system';
 
 import React from 'react';
 import { Image } from '../image';
@@ -55,7 +54,8 @@ const SectionSideBySide: React.FC<Props> = ({}) => {
                                     base: 'initial',
                                     md: isEven ? 'initial' : 2
                                 }}>
-                                <chakra.h2
+                                <Heading
+                                    as="h2"
                                     mb={4}
                                     fontSize={{
                                         base: '2xl',
@@ -77,8 +77,8 @@ const SectionSideBySide: React.FC<Props> = ({}) => {
                                     // textShadow="2px 0 currentcolor"
                                 >
                                     {block.title}
-                                </chakra.h2>
-                                <chakra.p
+                                </Heading>
+                                <Text
                                     mb={5}
                                     // textAlign={{
                                     //     base: 'center',
@@ -92,9 +92,10 @@ const SectionSideBySide: React.FC<Props> = ({}) => {
                                         md: 'lg'
                                     }}>
                                     {block.description}
-                                </chakra.p>
+                                </Text>
 
                                 <Link
+                                    fontFamily="heading"
                                     w={{
                                         base: 'full',
                                         sm: 'auto'

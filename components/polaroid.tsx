@@ -36,7 +36,7 @@ const Polaroid: React.FC<IPolaroidProps> = ({ children, title, unstyled = false 
     };
 
     const textStyle: TextProps = {
-        fontFamily: 'cursive',
+        fontFamily: 'heading',
         fontSize: {
             base: '2xl',
             sm: '3xl',
