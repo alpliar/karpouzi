@@ -5,6 +5,8 @@ import {
     HStack,
     LinkBox,
     LinkOverlay,
+    Skeleton,
+    SkeletonText,
     Stack,
     Text,
     useBreakpointValue
@@ -41,7 +43,6 @@ const CartItem: React.FC<IProps> = ({ slug, quantity }) => {
 
     const imageSize = useBreakpointValue({ base: '180px', md: '200px' });
 
-    if (isLoading) return <p>Loading...</p>;
     if (!product) return null;
 
     return (
@@ -49,45 +50,54 @@ const CartItem: React.FC<IProps> = ({ slug, quantity }) => {
             <Card padding={cardPadding}>
                 <Stack spacing={4} direction={{ base: 'column', sm: 'row' }}>
                     <Box w={{ base: 'full', sm: imageSize }} marginY={-4} ml={-4}>
-                        <Image
-                            quality={75}
-                            src={product.coverPicture.asset.url}
-                            alt={product.coverPicture.alternativeText || product.name}
-                            sizes={imageSize}
-                            priority
-                            height={imageSize}
-                            w={{ base: imageSize }}
-                            blurDataURL={product.coverPicture.asset.thumbnail}
-                        />
+                        {isLoading ? (
+                            <Skeleton height={imageSize} width={imageSize} marginY={-4} ml={-4} />
+                        ) : (
+                            <Image
+                                quality={75}
+                                src={product.coverPicture.asset.url}
+                                alt={product.coverPicture.alternativeText || product.name}
+                                sizes={imageSize}
+                                priority
+                                height={imageSize}
+                                w={{ base: imageSize }}
+                                blurDataURL={product.coverPicture.asset.thumbnail}
+                            />
+                        )}
                     </Box>
-                    <Stack ml="3" spacing="1">
-                        <Text fontWeight="bold">
-                            <HStack>
-                                <Link
-                                    href={{
-                                        pathname: '/shop/product/[slug]',
-                                        query: { slug }
-                                    }}
-                                    passHref>
-                                    <LinkOverlay>{product.name}</LinkOverlay>
-                                </Link>
-                                <Badge colorScheme="teal">New</Badge>
-                            </HStack>
-                        </Text>
-                        <Text fontSize="sm" noOfLines={1}>
-                            {product.description}
-                        </Text>
-                        <Flex>
-                            <Stack>
-                                {firstPrice && (
-                                    <Text fontSize="2xl" fontWeight="bold" color="teal">{`${
-                                        firstPrice.amount * quantity
-                                    } ${firstPrice.currency}`}</Text>
-                                )}
-                                <CartItemActions slug={slug} quantity={quantity} />
-                            </Stack>
-                        </Flex>
-                    </Stack>
+
+                    {isLoading ? (
+                        <SkeletonText w="full" />
+                    ) : (
+                        <Stack ml="3" spacing="1">
+                            <Text fontWeight="bold">
+                                <HStack>
+                                    <Link
+                                        href={{
+                                            pathname: '/shop/product/[slug]',
+                                            query: { slug }
+                                        }}
+                                        passHref>
+                                        <LinkOverlay>{product.name}</LinkOverlay>
+                                    </Link>
+                                    <Badge colorScheme="teal">New</Badge>
+                                </HStack>
+                            </Text>
+                            <Text fontSize="sm" noOfLines={1}>
+                                {product.description}
+                            </Text>
+                            <Flex>
+                                <Stack>
+                                    {firstPrice && (
+                                        <Text fontSize="2xl" fontWeight="bold" color="teal">{`${
+                                            firstPrice.amount * quantity
+                                        } ${firstPrice.currency}`}</Text>
+                                    )}
+                                    <CartItemActions slug={slug} quantity={quantity} />
+                                </Stack>
+                            </Flex>
+                        </Stack>
+                    )}
                 </Stack>
             </Card>
         </LinkBox>
