@@ -1,5 +1,5 @@
 // theme/index.js
-import { extendTheme, ThemeOverride } from '@chakra-ui/react';
+import { extendTheme, ThemeOverride } from '@chakra-ui/theme-utils';
 import { ThemeConfig } from '@chakra-ui/theme';
 
 // Global style overrides

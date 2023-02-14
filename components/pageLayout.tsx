@@ -1,4 +1,5 @@
-import { Container, useColorModeValue } from '@chakra-ui/react';
+import { Container } from '@chakra-ui/layout';
+import { useColorModeValue } from '@chakra-ui/color-mode';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { PropsWithChildren } from 'react';

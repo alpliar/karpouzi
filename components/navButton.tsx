@@ -1,5 +1,7 @@
-import { Button, Icon, IconButton, IconProps } from '@chakra-ui/react';
+import { Icon, IconProps } from '@chakra-ui/icon';
+import { Button, IconButton } from '@chakra-ui/button';
 import { ComponentWithAs } from '@chakra-ui/system';
+
 import { MouseEventHandler } from 'react';
 import { IconType } from 'react-icons';
 

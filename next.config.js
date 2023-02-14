@@ -25,6 +25,11 @@ const nextConfig = withPWA({
         }
     },
     swcMinify: true
+    // modularizeImports: {
+    //     '@chakra-ui/react': {
+    //         transform: '@chakra-ui/core/dist/{{member}}'
+    //     }
+    // }
 });
 
 module.exports = nextConfig;

@@ -1,4 +1,4 @@
-import { Box, Flex, LinkBox, LinkOverlay } from '@chakra-ui/react';
+import { Box, Flex, LinkBox, LinkOverlay } from '@chakra-ui/layout';
 import Link from 'next/link';
 import { useIntl } from 'react-intl';
 
