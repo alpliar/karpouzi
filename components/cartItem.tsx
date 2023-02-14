@@ -24,7 +24,6 @@ interface IProps {
 
 const CartItem: React.FC<IProps> = ({ slug, quantity }) => {
     const cardPadding = 4;
-    const imageDimensions = `${cardPadding * 1.7}rem`;
 
     const [product, setProduct] = useState<Product | null>(null);
     const [isLoading, setLoading] = useState(false);
