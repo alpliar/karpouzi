@@ -7,19 +7,17 @@ import Card from './card';
 import CartItemActions from './cartItemActions';
 
 interface IProps {
-    title: string;
-    picture?: string;
+    slug: string;
     quantity: number;
 }
 
-const CartItem: React.FC<IProps> = ({ title, picture = `/images/${title}.webp`, quantity }) => {
-    const slug = title;
+const CartItem: React.FC<IProps> = ({ slug, quantity }) => {
     const cardPadding = 4;
     const imageDimensions = `${cardPadding * 1.7}rem`;
 
     const [product, setProduct] = useState<Product | null>(null);
     const [isLoading, setLoading] = useState(false);
-    const [firstPrice] = product?.prices;
+    const firstPrice = product?.prices[0];
 
     useEffect(() => {
         setLoading(true);
@@ -49,11 +47,7 @@ const CartItem: React.FC<IProps> = ({ title, picture = `/images/${title}.webp`, 
                         alignContent="center"
                         display={{ base: 'none', sm: 'inline-block' }}>
                         {/* <Avatar src={picture} name={title} size="lg" /> */}
-                        <Img
-                            width="full"
-                            src={product.coverPicture.asset.url}
-                            alt={`picture of ${title}`}
-                        />
+                        <Img width="full" src={product.coverPicture.asset.url} alt={product.name} />
                     </Flex>
                     <Stack ml="3" spacing="1" w={{ base: 'full' }}>
                         <Text fontWeight="bold">
@@ -74,9 +68,11 @@ const CartItem: React.FC<IProps> = ({ title, picture = `/images/${title}.webp`, 
                         </Text>
                         <Flex>
                             <Stack>
-                                <Text fontSize="2xl" fontWeight="bold" color="teal">{`${
-                                    firstPrice.amount * quantity
-                                } ${firstPrice.currency}`}</Text>
+                                {firstPrice && (
+                                    <Text fontSize="2xl" fontWeight="bold" color="teal">{`${
+                                        firstPrice.amount * quantity
+                                    } ${firstPrice.currency}`}</Text>
+                                )}
                                 <CartItemActions slug={slug} quantity={quantity} />
                             </Stack>
                         </Flex>

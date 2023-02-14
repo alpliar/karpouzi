@@ -29,7 +29,7 @@ export default function CartPage() {
                     {cart.map((item, index) => (
                         <CartItem
                             key={`${item.slug}-${index}`}
-                            title={item.slug}
+                            slug={item.slug}
                             quantity={item.quantity}
                         />
                     ))}
