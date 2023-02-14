@@ -2,12 +2,12 @@ import { CheckCircleIcon } from '@chakra-ui/icons';
 import { Flex, HStack, Icon, Stack, Tag, TagLabel, TagLeftIcon, Text } from '@chakra-ui/react';
 import React from 'react';
 import { FaUserCircle } from 'react-icons/fa';
-import Review from '../graphql/models/common/review.model';
+import IReview from '../graphql/models/common/review.model';
 import Date from './Date';
 import Rating from './rating';
 
 type Props = {
-    review: Review;
+    review: IReview;
 };
 
 const Review: React.FC<Props> = ({ review }) => {
