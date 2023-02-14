@@ -8,7 +8,7 @@ type NodeType = {
     properties: { [key: string]: string };
     tagName?: string;
     type: string;
-    value?: any;
+    value?: string;
 };
 
 // type keyable = {
