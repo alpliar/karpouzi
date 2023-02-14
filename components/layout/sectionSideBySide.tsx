@@ -1,5 +1,6 @@
-import { Box, chakra, Flex, SimpleGrid, useBreakpointValue } from '@chakra-ui/react';
+import { Box, Center, chakra, Flex, SimpleGrid, useBreakpointValue } from '@chakra-ui/react';
 import React from 'react';
+import { Image } from '../image';
 import Link from '../link';
 
 // eslint-disable-next-line @typescript-eslint/ban-types
@@ -15,15 +16,19 @@ const SectionSideBySide: React.FC<Props> = ({}) => {
             title: 'Discover our products',
             description:
                 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequuntur, ipsa perferendis. Iusto, hic ipsum numquam inventore quasi necessitatibus minus et cumque, libero aspernatur incidunt saepe voluptatibus rem repellendus, dolores ducimus!',
-            url: '/shop'
+            url: '/shop',
+            image: '/images/category/fruits.webp'
         },
         {
             title: 'About Karpouzi',
             description:
                 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum accusamus laborum suscipit, fuga obcaecati, illo sapiente officia ratione, laudantium atque repudiandae quis minima eaque alias error quae eligendi perspiciatis! Debitis.',
-            url: '/blog'
+            url: '/blog',
+            image: '/images/karpouzi.webp'
         }
     ];
+
+    const imageSize = useBreakpointValue({ base: '250px', xl: '400px' });
 
     return (
         <Flex w="full" justifyContent="center" alignItems="center">
@@ -97,14 +102,30 @@ const SectionSideBySide: React.FC<Props> = ({}) => {
                                     Learn More
                                 </Link>
                             </Box>
-                            <Box
+                            <Center
+                                padding={4}
                                 w="full"
                                 h="full"
-                                py={48}
                                 bg="gray.200"
+                                rounded="md"
                                 _dark={{
                                     bg: 'gray.700'
-                                }}></Box>
+                                }}>
+                                <Box
+                                    rounded={{ lg: 'full' }}
+                                    overflow="hidden"
+                                    w={imageSize}
+                                    h={imageSize}>
+                                    <Image
+                                        sizes={imageSize}
+                                        quality={75}
+                                        src={block.image}
+                                        alt={block.title}
+                                        w={imageSize}
+                                        h={imageSize}
+                                    />
+                                </Box>
+                            </Center>
                         </SimpleGrid>
                     );
                 })}
