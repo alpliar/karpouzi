@@ -21,9 +21,6 @@ const NavButton: React.FC<IProps> = ({
     e2e = undefined
 }) => {
     const variant = isPrimary ? 'outline' : 'ghost';
-    // useBreakPoint value is not available instantly, need a 'sm' fallback in order to prevent buttons resize on load
-    // const size = useBreakpointValue({ base: 'md', md: 'sm' }) || 'sm';
-    const size = 'sm';
 
     if (compact === true) {
         return (
