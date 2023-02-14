@@ -59,6 +59,7 @@ const Header = ({}) => {
                 align={{ base: 'auto', md: 'center' }}
                 justify="flex-end"
                 maxW={APP_MAX_WIDTH}
+                margin="auto"
                 w="100%"
                 p={2}>
                 <Flex align="center" mr={{ base: 2, sm: 4 }}>

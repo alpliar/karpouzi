@@ -32,7 +32,6 @@ const NavButton: React.FC<IProps> = ({
                 icon={<Icon as={icon} />}
                 onClick={handleClick}
                 variant={variant}
-                size={size}
                 data-e2e={e2e}
             />
         );
@@ -43,7 +42,6 @@ const NavButton: React.FC<IProps> = ({
                 leftIcon={<Icon as={icon} />}
                 onClick={handleClick}
                 variant={variant}
-                size={size}
                 data-e2e={e2e}>
                 {label}
             </Button>
