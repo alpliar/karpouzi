@@ -28,30 +28,26 @@ const CallToActionWithAnnotation: React.FC<IProps> = ({
 }) => {
     return (
         <>
-            <Container maxW={'3xl'}>
-                <Stack
-                    as={Box}
-                    textAlign={'center'}
-                    spacing={{ base: 8, md: 14 }}
-                    py={{ base: 4, md: 15 }}>
-                    <Heading
-                        fontWeight="600"
-                        fontSize={{ base: '2xl', sm: '4xl', md: '6xl' }}
-                        lineHeight={'110%'}>
-                        {title}
-                    </Heading>
-                    <Text color={useColorModeValue('gray.800', 'gray.300')}>{description}</Text>
+            <Container maxW="3xl" paddingY={16}>
+                <Stack as={Box} spacing={{ base: 8, md: 7 }} py={{ base: 4, md: 15 }}>
+                    <Heading fontSize={{ base: '4xl', sm: '6xl', md: '6xl' }}>{title}</Heading>
+                    <Text
+                        fontSize="lg"
+                        textAlign="center"
+                        color={useColorModeValue('gray.800', 'gray.300')}>
+                        {description}
+                    </Text>
                     <Stack
-                        direction={'column'}
+                        direction="column"
                         spacing={3}
-                        align={'center'}
-                        alignSelf={'center'}
-                        position={'relative'}>
+                        align="center"
+                        alignSelf="center"
+                        position="relative">
                         <Button
                             fontFamily="heading"
-                            colorScheme={'green'}
-                            bg={'green.400'}
-                            rounded={'full'}
+                            colorScheme="green"
+                            bg="green.400"
+                            rounded="full"
                             px={6}
                             _hover={{
                                 bg: 'green.500'
@@ -61,9 +57,9 @@ const CallToActionWithAnnotation: React.FC<IProps> = ({
                         </Button>
                         <Button
                             fontFamily="heading"
-                            variant={'link'}
-                            colorScheme={'blue'}
-                            size={'sm'}
+                            variant="link"
+                            colorScheme="blue"
+                            size="sm"
                             onClick={handleSecondaryAction}>
                             {secondaryActionLabel}
                         </Button>
@@ -76,19 +72,19 @@ const CallToActionWithAnnotation: React.FC<IProps> = ({
                                     sm: 'inherit'
                                 }}
                                 w={{ base: 50, sm: 71 }}
-                                position={'absolute'}
+                                position="absolute"
                                 transition={BASE_TRANSITION}
                                 right={{ base: -50, sm: -71 }}
-                                top={'10px'}
+                                top="10px"
                                 transform={{
                                     base: 'scale(.5) rotate(-38deg) translate(-20px, -14px)',
                                     sm: 'scale(1)'
                                 }}
                             />
                             <Text
-                                fontSize={'lg'}
+                                fontSize="lg"
                                 fontFamily="body"
-                                position={'absolute'}
+                                position="absolute"
                                 right={{ base: '-30px', sm: '-90px', md: '-100px', lg: '-115px' }}
                                 top={{ base: '-22px', sm: '-20px' }}
                                 transition={BASE_TRANSITION}

@@ -1,4 +1,4 @@
-import { Container, Divider, Text } from '@chakra-ui/layout';
+import { Container, Divider, Flex, Text } from '@chakra-ui/layout';
 import { useRouter } from 'next/dist/client/router';
 import Head from 'next/head';
 import { useIntl } from 'react-intl';
@@ -7,6 +7,7 @@ import CallToActionWithAnnotation from '../components/callToActionWithAnnotation
 import SectionSideBySide from '../components/layout/sectionSideBySide';
 import PageLayout, { siteTitle } from '../components/pageLayout';
 import { APP_MAX_WIDTH } from '../constants/ui/main.layout';
+import Banner from '../components/banner';
 
 export default function Home() {
     const router = useRouter();
@@ -26,17 +27,25 @@ export default function Home() {
             <Head>
                 <title>{siteTitle}</title>
             </Head>
-
-            <Container p={4} maxW={APP_MAX_WIDTH}>
+            <Banner pattern="linesInMotion" height="inherit">
                 <CallToActionWithAnnotation
                     title={
                         <>
-                            <Text as="span">
-                                {f('welcomeMessage')} <br />
-                                <Text as={'span'} color={'green.400'}>
+                            <Flex direction="column" as="span" align="start" justify="start">
+                                <Text>{f('welcomeMessage')}</Text>
+                                <Text
+                                    lineHeight="1em"
+                                    // fontSize="9xl"
+                                    as={'span'}
+                                    color={'white'}
+                                    style={{
+                                        textShadow: `
+                                        2px 0 #000, -2px 0 #000, 0 2px #000, 0 -2px #000,
+                                        1px 1px #000, -1px -1px #000, 1px -1px #000, -1px 1px #000`
+                                    }}>
                                     {f('commonSiteName')}
                                 </Text>
-                            </Text>
+                            </Flex>
                         </>
                     }
                     description={
@@ -52,6 +61,8 @@ export default function Home() {
                     handleSecondaryAction={handleKnowMore}
                     primaryActionAnnotation={f('welcomeDeals')}
                 />
+            </Banner>
+            <Container p={4} maxW={APP_MAX_WIDTH}>
                 <Divider />
                 <SectionSideBySide />
                 <Divider />

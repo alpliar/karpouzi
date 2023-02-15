@@ -12,7 +12,7 @@ export const en = {
     },
     '/': {
         welcomeMessage: 'Welcome to',
-        welcomeDescription: 'Fresh fruits and vegetables for your mind and body...',
+        welcomeDescription: 'Fresh, seasonal fruit and vegetables!',
         welcomeDeals: 'Great deals!',
         welcomeDiscoverShop: 'Discover our shop',
         welcomeLearnMore: 'Learn more'

@@ -61,7 +61,6 @@ const SectionSideBySide: React.FC<Props> = ({}) => {
                                         base: '2xl',
                                         md: '4xl'
                                     }}
-                                    fontWeight="extrabold"
                                     letterSpacing="tight"
                                     // textAlign={{
                                     //     base: 'center',
