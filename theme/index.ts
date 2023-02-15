@@ -26,8 +26,8 @@ const config: ThemeConfig = {
 };
 
 const fonts: ThemeOverride['fonts'] = {
-    body: "'Biryani'",
-    heading: "'Andika', sans-serif",
+    body: "'PT Sans Caption', sans-serif",
+    heading: "'Montserrat', sans-serif",
     mono: undefined
 };
 

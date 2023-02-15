@@ -2,12 +2,12 @@ import { Container, Divider, Flex, Text } from '@chakra-ui/layout';
 import { useRouter } from 'next/dist/client/router';
 import Head from 'next/head';
 import { useIntl } from 'react-intl';
+import Banner from '../components/banner';
 import CallToActionNewsletter from '../components/callToActionNewsletter';
 import CallToActionWithAnnotation from '../components/callToActionWithAnnotation';
 import SectionSideBySide from '../components/layout/sectionSideBySide';
 import PageLayout, { siteTitle } from '../components/pageLayout';
 import { APP_MAX_WIDTH } from '../constants/ui/main.layout';
-import Banner from '../components/banner';
 
 export default function Home() {
     const router = useRouter();
@@ -27,34 +27,26 @@ export default function Home() {
             <Head>
                 <title>{siteTitle}</title>
             </Head>
-            <Banner pattern="linesInMotion" height="inherit">
+            <Banner pattern="wiggle" height="inherit">
                 <CallToActionWithAnnotation
                     title={
                         <>
                             <Flex direction="column" as="span" align="start" justify="start">
-                                <Text>{f('welcomeMessage')}</Text>
+                                <Text fontSize="0.75em" style={{ fontVariantCaps: 'small-caps' }}>
+                                    {f('welcomeMessage')}
+                                </Text>
                                 <Text
+                                    fontSize="1.5em"
+                                    alignSelf="end"
                                     lineHeight="1em"
-                                    // fontSize="9xl"
                                     as={'span'}
-                                    color={'white'}
-                                    style={{
-                                        textShadow: `
-                                        2px 0 #000, -2px 0 #000, 0 2px #000, 0 -2px #000,
-                                        1px 1px #000, -1px -1px #000, 1px -1px #000, -1px 1px #000`
-                                    }}>
+                                    color="currentColor">
                                     {f('commonSiteName')}
                                 </Text>
                             </Flex>
                         </>
                     }
-                    description={
-                        <>
-                            <Text as="span" p={2}>
-                                {f('welcomeDescription')}
-                            </Text>
-                        </>
-                    }
+                    description={<>{f('welcomeDescription')}</>}
                     primaryActionLabel={f('welcomeDiscoverShop')}
                     secondaryActionLabel={f('welcomeLearnMore')}
                     handlePrimaryAction={handleVisitShop}

@@ -1,7 +1,9 @@
 import { Box, Center, Flex, Heading, SimpleGrid, Text } from '@chakra-ui/layout';
 import { useBreakpointValue } from '@chakra-ui/media-query';
+import { useColorModeValue } from '@chakra-ui/system';
 
 import React from 'react';
+import Banner from '../banner';
 import { Image } from '../image';
 import Link from '../link';
 
@@ -31,6 +33,7 @@ const SectionSideBySide: React.FC<Props> = ({}) => {
     ];
 
     const imageSize = useBreakpointValue({ base: '250px', xl: '400px' });
+    const bgColor = useColorModeValue('green.200', 'green.800');
 
     return (
         <Flex w="full" justifyContent="center" alignItems="center">
@@ -62,27 +65,17 @@ const SectionSideBySide: React.FC<Props> = ({}) => {
                                         md: '4xl'
                                     }}
                                     letterSpacing="tight"
-                                    // textAlign={{
-                                    //     base: 'center',
-                                    //     md: 'left'
-                                    // }}
                                     color="gray.900"
                                     _dark={{
                                         color: 'gray.400'
                                     }}
                                     lineHeight={{
                                         md: 'shorter'
-                                    }}
-                                    // textShadow="2px 0 currentcolor"
-                                >
+                                    }}>
                                     {block.title}
                                 </Heading>
                                 <Text
                                     mb={5}
-                                    // textAlign={{
-                                    //     base: 'center',
-                                    //     sm: 'left'
-                                    // }}
                                     color="gray.600"
                                     _dark={{
                                         color: 'gray.400'
@@ -105,30 +98,21 @@ const SectionSideBySide: React.FC<Props> = ({}) => {
                                     Learn More
                                 </Link>
                             </Box>
-                            <Center
-                                padding={4}
-                                w="full"
-                                h="full"
-                                bg="gray.200"
-                                rounded="md"
-                                _dark={{
-                                    bg: 'gray.700'
-                                }}>
-                                <Box
-                                    rounded={{ lg: 'full' }}
-                                    overflow="hidden"
-                                    w={imageSize}
-                                    h={imageSize}>
-                                    <Image
-                                        sizes={imageSize}
-                                        quality={75}
-                                        src={block.image}
-                                        alt={block.title}
-                                        w={imageSize}
-                                        h={imageSize}
-                                    />
-                                </Box>
-                            </Center>
+
+                            <Banner pattern="kiwi" height="75%" bgColor={bgColor}>
+                                <Center>
+                                    <Box w={imageSize} h={imageSize}>
+                                        <Image
+                                            sizes={imageSize}
+                                            quality={75}
+                                            src={block.image}
+                                            alt={block.title}
+                                            w={imageSize}
+                                            h={imageSize}
+                                        />
+                                    </Box>
+                                </Center>
+                            </Banner>
                         </SimpleGrid>
                     );
                 })}
