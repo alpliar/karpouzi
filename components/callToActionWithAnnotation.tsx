@@ -6,14 +6,15 @@ import { useColorModeValue } from '@chakra-ui/color-mode';
 import { createIcon, Icon } from '@chakra-ui/icon';
 
 import { BASE_TRANSITION } from '../constants/ui/transitions';
+import Link from './link';
 
 interface IProps {
     title: React.ReactNode;
     description: React.ReactNode;
     primaryActionLabel: string;
     secondaryActionLabel: string;
-    handlePrimaryAction?: () => void;
-    handleSecondaryAction?: () => void;
+    primaryUrl?: string;
+    secondaryUrl?: string;
     primaryActionAnnotation: string;
 }
 
@@ -22,10 +23,11 @@ const CallToActionWithAnnotation: React.FC<IProps> = ({
     description,
     primaryActionLabel,
     secondaryActionLabel,
-    handlePrimaryAction,
-    handleSecondaryAction,
+    primaryUrl,
+    secondaryUrl,
     primaryActionAnnotation
 }) => {
+    const colorScheme = useColorModeValue('yellow', 'orange');
     return (
         <>
             <Container maxW="3xl" paddingY={16}>
@@ -40,22 +42,30 @@ const CallToActionWithAnnotation: React.FC<IProps> = ({
                         align="center"
                         alignSelf="center"
                         position="relative">
-                        <Button
-                            fontFamily="heading"
-                            colorScheme={useColorModeValue('yellow', 'orange')}
-                            rounded="lg"
-                            px={6}
-                            size="lg"
-                            onClick={handlePrimaryAction}>
-                            {primaryActionLabel}
-                        </Button>
-                        <Button
-                            fontFamily="heading"
-                            rounded="lg"
-                            size="sm"
-                            onClick={handleSecondaryAction}>
-                            {secondaryActionLabel}
-                        </Button>
+                        {primaryUrl && (
+                            <Link
+                                asButton
+                                fontFamily="heading"
+                                buttonProps={{
+                                    size: 'lg',
+                                    colorScheme: colorScheme
+                                }}
+                                rounded="lg"
+                                px={6}
+                                href={primaryUrl}>
+                                {primaryActionLabel}
+                            </Link>
+                        )}
+                        {secondaryUrl && (
+                            <Link
+                                asButton
+                                fontFamily="heading"
+                                rounded="lg"
+                                size="sm"
+                                href={secondaryUrl}>
+                                {secondaryActionLabel}
+                            </Link>
+                        )}
                         <Box>
                             <Icon
                                 as={Arrow}

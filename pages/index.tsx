@@ -49,8 +49,8 @@ export default function Home() {
                     description={<>{f('welcomeDescription')}</>}
                     primaryActionLabel={f('welcomeDiscoverShop')}
                     secondaryActionLabel={f('welcomeLearnMore')}
-                    handlePrimaryAction={handleVisitShop}
-                    handleSecondaryAction={handleKnowMore}
+                    primaryUrl="/shop"
+                    secondaryUrl="/blog"
                     primaryActionAnnotation={f('welcomeDeals')}
                 />
             </Banner>
