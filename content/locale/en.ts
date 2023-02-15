@@ -15,7 +15,15 @@ export const en = {
         welcomeDescription: 'Fresh, seasonal fruit and vegetables!',
         welcomeDeals: 'Great deals!',
         welcomeDiscoverShop: 'Discover our shop',
-        welcomeLearnMore: 'Learn more'
+        welcomeLearnMore: 'Learn more',
+        welcomeDiscoverProducts: 'Discover our products',
+        welcomeDiscoverProductsDescription:
+            'We offer a unique selection of fruits, vegetables, starches, spices, ... There is something for every taste !',
+        welcomeDiscoverKarpouzi: 'About Karpouzi',
+        welcomeDiscoverKarpouziDescription:
+            'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequuntur, ipsa perferendis. Iusto, hic ipsum numquam inventore quasi necessitatibus minus et cumque, libero aspernatur incidunt saepe voluptatibus rem repellendus, dolores ducimus!',
+        welcomeShopCTA: 'Go to shop',
+        welcomeBlogCTA: 'Go to blog'
     },
     '/blog': {
         title: 'Blog'

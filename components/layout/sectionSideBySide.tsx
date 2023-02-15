@@ -8,29 +8,22 @@ import { Image } from '../image';
 import Link from '../link';
 
 // eslint-disable-next-line @typescript-eslint/ban-types
-type Props = {};
+type Props = {
+    sections: Section[];
+};
 
-const SectionSideBySide: React.FC<Props> = ({}) => {
+export interface Section {
+    title: string;
+    description: string;
+    url: string;
+    image: string;
+    buttonLabel: string;
+}
+
+const SectionSideBySide: React.FC<Props> = ({ sections }) => {
     const gridSpacingX = useBreakpointValue({ base: 10, md: 16, lg: 24 });
     const gridSpacingY = useBreakpointValue({ base: 10, md: 16, lg: 32 });
     const gridRowMarginBottom = useBreakpointValue({ base: 10, md: 16, lg: 24 });
-
-    const mock = [
-        {
-            title: 'Discover our products',
-            description:
-                'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequuntur, ipsa perferendis. Iusto, hic ipsum numquam inventore quasi necessitatibus minus et cumque, libero aspernatur incidunt saepe voluptatibus rem repellendus, dolores ducimus!',
-            url: '/shop',
-            image: '/images/category/fruits.webp'
-        },
-        {
-            title: 'About Karpouzi',
-            description:
-                'Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum accusamus laborum suscipit, fuga obcaecati, illo sapiente officia ratione, laudantium atque repudiandae quis minima eaque alias error quae eligendi perspiciatis! Debitis.',
-            url: '/blog',
-            image: '/images/karpouzi.webp'
-        }
-    ];
 
     const imageSize = useBreakpointValue({ base: '250px', xl: '400px' });
     const bgColor = useColorModeValue('green.200', 'green.800');
@@ -38,7 +31,7 @@ const SectionSideBySide: React.FC<Props> = ({}) => {
     return (
         <Flex w="full" justifyContent="center" alignItems="center">
             <Box px={8} py={8} mx="auto">
-                {mock.map((block, index) => {
+                {sections.map((section, index) => {
                     const isEven: boolean = index % 2 === 0;
                     return (
                         <SimpleGrid
@@ -72,7 +65,7 @@ const SectionSideBySide: React.FC<Props> = ({}) => {
                                     lineHeight={{
                                         md: 'shorter'
                                     }}>
-                                    {block.title}
+                                    {section.title}
                                 </Heading>
                                 <Text
                                     mb={5}
@@ -83,7 +76,7 @@ const SectionSideBySide: React.FC<Props> = ({}) => {
                                     fontSize={{
                                         md: 'lg'
                                     }}>
-                                    {block.description}
+                                    {section.description}
                                 </Text>
 
                                 <Link
@@ -93,9 +86,9 @@ const SectionSideBySide: React.FC<Props> = ({}) => {
                                         sm: 'auto'
                                     }}
                                     // size="lg"
-                                    href={block.url}
+                                    href={section.url}
                                     asButton>
-                                    Learn More
+                                    {section.buttonLabel}
                                 </Link>
                             </Box>
 
@@ -108,8 +101,8 @@ const SectionSideBySide: React.FC<Props> = ({}) => {
                                         <Image
                                             sizes={imageSize}
                                             quality={75}
-                                            src={block.image}
-                                            alt={block.title}
+                                            src={section.image}
+                                            alt={section.title}
                                             w={imageSize}
                                             h={imageSize}
                                         />

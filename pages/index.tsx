@@ -4,13 +4,30 @@ import { useIntl } from 'react-intl';
 import Banner from '../components/banner';
 import CallToActionNewsletter from '../components/callToActionNewsletter';
 import CallToActionWithAnnotation from '../components/callToActionWithAnnotation';
-import SectionSideBySide from '../components/layout/sectionSideBySide';
+import SectionSideBySide, { Section } from '../components/layout/sectionSideBySide';
 import PageLayout, { siteTitle } from '../components/pageLayout';
 import { APP_MAX_WIDTH } from '../constants/ui/main.layout';
 
 export default function Home() {
     const { formatMessage } = useIntl();
     const f = (id: string) => formatMessage({ id });
+
+    const sections: Section[] = [
+        {
+            title: f('welcomeDiscoverProducts'),
+            description: f('welcomeDiscoverProductsDescription'),
+            url: '/shop',
+            image: '/images/category/fruits.webp',
+            buttonLabel: f('welcomeShopCTA')
+        },
+        {
+            title: f('welcomeDiscoverKarpouzi'),
+            description: f('welcomeDiscoverKarpouziDescription'),
+            url: '/blog',
+            image: '/images/karpouzi.webp',
+            buttonLabel: f('welcomeBlogCTA')
+        }
+    ];
 
     return (
         <PageLayout>
@@ -46,7 +63,7 @@ export default function Home() {
             </Banner>
             <Container p={4} maxW={APP_MAX_WIDTH}>
                 <Divider />
-                <SectionSideBySide />
+                <SectionSideBySide sections={sections} />
                 <Divider />
                 <CallToActionNewsletter />
             </Container>
