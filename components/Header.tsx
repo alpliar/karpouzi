@@ -1,11 +1,10 @@
+import { ButtonProps } from '@chakra-ui/button';
 import { ColorMode, useColorMode } from '@chakra-ui/color-mode';
 import { useDisclosure } from '@chakra-ui/hooks';
 import { Box, Flex, HStack, Text, Wrap } from '@chakra-ui/layout';
 import { EffectProps } from '@chakra-ui/system';
-import Link from 'next/link';
 import PropTypes from 'prop-types';
 import { PropsWithChildren } from 'react';
-import { useIntl } from 'react-intl';
 import NavDrawer from '../components/navDrawer';
 import NavThemeToggle from '../components/navThemeToggle';
 import { APP_MAX_WIDTH } from '../constants/ui/main.layout';
@@ -14,6 +13,7 @@ import NavCart from '../redux/container/navCart';
 import NavLocaleSelector from '../redux/container/navLocaleSelector';
 import NavLogin from '../redux/container/navLogin';
 import NavLogo from '../redux/container/navLogo';
+import Link from './link';
 import NavBurgerMenu from './navBurgerMenu';
 import NavDrawerBody from './navDrawerBody';
 
@@ -38,14 +38,23 @@ export const headerBgColor = (colorMode: ColorMode) => {
 
 const Header = ({}) => {
     const { colorMode } = useColorMode();
-
-    const { formatMessage } = useIntl();
-    const f = (id: string, values: any = null) => formatMessage({ id }, values);
-
     const { isOpen, onClose, onToggle } = useDisclosure();
 
     const boxShadow: EffectProps['boxShadow'] = undefined;
+    const headerButtonStyle: ButtonProps = { size: 'xs', variant: 'ghost', color: 'currentColor' };
 
+    const headerLinks = [
+        {
+            label: 'Blog',
+            // helper: f('goToPageName', { name: f('menuEntryBlog') }),
+            href: '/blog'
+        },
+        {
+            label: 'Shop',
+            // helper: f('goToPageName', { name: f('menuEntryShop') }),
+            href: '/shop'
+        }
+    ];
     return (
         <Flex
             boxShadow={boxShadow}
@@ -77,21 +86,18 @@ const Header = ({}) => {
                         alignItems="left"
                         justifyContent="flex-start"
                         flexWrap="wrap"
-                        flexGrow={1}>
-                        <MenuItems>
-                            <Link legacyBehavior href="/blog">
-                                <a title={f('goToPageName', { name: f('menuEntryBlog') })}>
-                                    {f('menuEntryBlog')}
-                                </a>
+                        flexGrow={1}
+                        paddingX={2}
+                        overflow="hidden">
+                        {headerLinks.map((link, index) => (
+                            <Link
+                                key={index}
+                                asButton
+                                buttonProps={headerButtonStyle}
+                                href={link.href}>
+                                {link.label}
                             </Link>
-                        </MenuItems>
-                        <MenuItems>
-                            <Link legacyBehavior href="/shop">
-                                <a title={f('goToPageName', { name: f('menuEntryShop') })}>
-                                    {f('menuEntryShop')}
-                                </a>
-                            </Link>
-                        </MenuItems>
+                        ))}
                     </Box>
                 </Flex>
                 <HStack spacing={1}>
