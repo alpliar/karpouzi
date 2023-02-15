@@ -1,7 +1,6 @@
 /* eslint-disable @next/next/no-page-custom-font */
 import { Box, Container, Heading, Stack, Text } from '@chakra-ui/layout';
 
-import { Button } from '@chakra-ui/button';
 import { useColorModeValue } from '@chakra-ui/color-mode';
 import { createIcon, Icon } from '@chakra-ui/icon';
 
@@ -61,7 +60,9 @@ const CallToActionWithAnnotation: React.FC<IProps> = ({
                                 asButton
                                 fontFamily="heading"
                                 rounded="lg"
-                                size="sm"
+                                buttonProps={{
+                                    size: 'sm'
+                                }}
                                 href={secondaryUrl}>
                                 {secondaryActionLabel}
                             </Link>

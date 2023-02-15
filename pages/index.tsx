@@ -1,5 +1,4 @@
 import { Container, Divider, Flex, Text } from '@chakra-ui/layout';
-import { useRouter } from 'next/dist/client/router';
 import Head from 'next/head';
 import { useIntl } from 'react-intl';
 import Banner from '../components/banner';
@@ -10,17 +9,8 @@ import PageLayout, { siteTitle } from '../components/pageLayout';
 import { APP_MAX_WIDTH } from '../constants/ui/main.layout';
 
 export default function Home() {
-    const router = useRouter();
     const { formatMessage } = useIntl();
     const f = (id: string) => formatMessage({ id });
-
-    const handleVisitShop = () => {
-        router.push('/shop');
-    };
-
-    const handleKnowMore = () => {
-        router.push('/blog');
-    };
 
     return (
         <PageLayout>
