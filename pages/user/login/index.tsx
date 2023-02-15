@@ -38,9 +38,9 @@ const LoginPage: NextPage = () => {
                     </Text>
                 </Alert>
             }>
-            <Container maxW="sm">
+            <Container maxW={{ base: 'sm', md: 'md', lg: 'lg' }}>
                 <Card>
-                    <Stack spacing={4}>
+                    <SimpleGrid columns={{ base: 1 }} spacing={{ base: 4, lg: 8 }}>
                         <form action="#" method="POST">
                             <input type="hidden" name="remember" value="true" />
                             <Stack spacing={4}>
@@ -85,33 +85,43 @@ const LoginPage: NextPage = () => {
                                 </Button>
                             </Stack>
                         </form>
-                        <Divider />
-                        <Text textAlign="center">Or continue with</Text>
-                        <SimpleGrid columns={{ base: 1, sm: 2, md: 3 }} spacing={2}>
-                            <Button
-                                onClick={() =>
-                                    signIn('discord', {
-                                        callbackUrl: '/user/account'
-                                    })
-                                }
-                                leftIcon={<Icon as={FaDiscord} />}>
-                                {' '}
-                                Discord
-                            </Button>
-                            <Button
-                                onClick={() => signIn('google')}
-                                leftIcon={<Icon as={FaGoogle} />}>
-                                {' '}
-                                Google
-                            </Button>
-                            <Button
-                                onClick={() => signIn('discord')}
-                                leftIcon={<Icon as={FaFacebook} />}>
-                                {' '}
-                                Facebook
-                            </Button>
-                        </SimpleGrid>
-                    </Stack>
+                        <Stack spacing={4}>
+                            <Divider />
+                            <Text textAlign="center">Or continue with</Text>
+
+                            <Stack spacing={2}>
+                                <Button
+                                    onClick={() =>
+                                        signIn('discord', {
+                                            callbackUrl: '/user/account'
+                                        })
+                                    }
+                                    leftIcon={<Icon as={FaDiscord} />}>
+                                    Discord
+                                </Button>
+                                <Button
+                                    disabled
+                                    onClick={() =>
+                                        signIn('google', {
+                                            callbackUrl: '/user/account'
+                                        })
+                                    }
+                                    leftIcon={<Icon as={FaGoogle} />}>
+                                    Google
+                                </Button>
+                                <Button
+                                    disabled
+                                    onClick={() =>
+                                        signIn('facebook', {
+                                            callbackUrl: '/user/account'
+                                        })
+                                    }
+                                    leftIcon={<Icon as={FaFacebook} />}>
+                                    Facebook
+                                </Button>
+                            </Stack>
+                        </Stack>
+                    </SimpleGrid>
                 </Card>
             </Container>
         </PageListingLayout>
