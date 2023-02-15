@@ -8,7 +8,13 @@ export const fr = {
         openMenu: 'Ouvrir le menu',
         feelingLost: 'Perdu·e ?',
         goBackToHome: "Retour à la page d'accueil",
-        cancel: 'Annuler'
+        cancel: 'Annuler',
+        submit: 'Valider',
+        newsletterSubscribing: 'Inscription...',
+        newsletterSubscribe: 'Inscription à notre liste de diffusion',
+        newsletterYourEmail: 'Votre email',
+        newsletterSubscribed: 'Merci ! Vous ne recevrez aucun spam ! ✌️',
+        newsletterError: 'Oh non, une erreur a eu lieu ! 😢 Veuillez réessayer plus tard.'
     },
     '/': {
         welcomeMessage: 'Bienvenue sur',

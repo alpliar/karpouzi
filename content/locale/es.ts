@@ -8,7 +8,13 @@ export const es = {
         openMenu: 'Abrir el menú',
         feelingLost: '¿Te sientes perdida·o?',
         goBackToHome: 'Volver a la página principal',
-        cancel: 'Cancelar'
+        cancel: 'Cancelar',
+        submit: 'Enviar',
+        newsletterSubscribing: 'Suscribiendo...',
+        newsletterSubscribe: 'Suscríbete a nuestro boletín',
+        newsletterYourEmail: 'Tu correo electrónico',
+        newsletterSubscribed: '¡Gracias! ¡No recibirás spam! ✌️',
+        newsletterError: '¡Oh no! ¡Ha ocurrido un error! 😢 Por favor, intenta de nuevo más tarde.'
     },
     '/': {
         welcomeMessage: 'Bienvenido a',

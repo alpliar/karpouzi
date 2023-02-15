@@ -8,7 +8,13 @@ export const el = {
         openMenu: 'ανοίξτε το μενού',
         feelingLost: 'Νιώθεις χαμένος;',
         goBackToHome: 'Επιστρέψτε στην αρχική σελίδα',
-        cancel: 'Ματαίωση'
+        cancel: 'Ματαίωση',
+        submit: 'Υποβολή',
+        newsletterSubscribing: 'Εγγραφή...',
+        newsletterSubscribe: 'Εγγραφείτε στο ενημερωτικό μας δελτίο',
+        newsletterYourEmail: 'το email σας',
+        newsletterSubscribed: 'Ευχαριστούμε! Δεν θα λαμβάνετε ανεπιθύμητα μηνύματα! ✌️',
+        newsletterError: 'Ωχ, συνέβη ένα σφάλμα! 😢 Παρακαλούμε δοκιμάστε ξανά αργότερα.'
     },
     '/': {
         welcomeMessage: 'καλώς ήλθατε στο',

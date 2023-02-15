@@ -5,8 +5,12 @@ import { FormControl } from '@chakra-ui/form-control';
 import { useColorModeValue } from '@chakra-ui/color-mode';
 import { Input } from '@chakra-ui/input';
 import { useState } from 'react';
+import { useIntl } from 'react-intl';
 
 const CallToActionNewsletter = () => {
+    const { formatMessage } = useIntl();
+    const f = (id: string) => formatMessage({ id });
+
     const [email, setEmail] = useState('');
     const [state, setState] = useState('initial');
     const [error, setError] = useState(false);
@@ -16,18 +20,18 @@ const CallToActionNewsletter = () => {
     return (
         <Flex align={'center'} justify={'center'} bg={useColorModeValue('gray.50', 'gray.800')}>
             <Container
-                maxW={'lg'}
+                maxW="lg"
                 bg={useColorModeValue('white', 'whiteAlpha.100')}
-                boxShadow={'xl'}
-                rounded={'lg'}
+                boxShadow="xl"
+                rounded="lg"
                 p={6}>
-                <Heading as={'h2'} fontSize={{ base: 'xl', sm: '2xl' }} textAlign={'center'} mb={5}>
-                    Subscribe to our Newsletter
+                <Heading as="h2" fontSize={{ base: 'xl', sm: '2xl' }} textAlign="center" mb={5}>
+                    {f('newsletterSubscribe')}
                 </Heading>
                 <Stack
                     direction={{ base: 'column', md: 'row' }}
-                    as={'form'}
-                    spacing={'12px'}
+                    as="form"
+                    spacing="12px"
                     onSubmit={(e) => {
                         e.preventDefault();
                         setError(false);
@@ -46,18 +50,18 @@ const CallToActionNewsletter = () => {
                     }}>
                     <FormControl>
                         <Input
-                            variant={'solid'}
+                            variant="solid"
                             borderWidth={1}
-                            color={'gray.800'}
+                            color="gray.800"
                             _placeholder={{
                                 color: 'gray.400'
                             }}
                             borderColor={useColorModeValue('gray.300', 'gray.700')}
-                            id={'email'}
-                            type={'email'}
+                            id="email"
+                            type="email"
                             required
-                            placeholder={'Your Email'}
-                            aria-label={'Your Email'}
+                            placeholder={f('newsletterYourEmail')}
+                            aria-label={f('newsletterYourEmail')}
                             value={email}
                             disabled={state !== 'initial'}
                             onChange={(e) => setEmail(e.target.value)}
@@ -68,15 +72,18 @@ const CallToActionNewsletter = () => {
                             colorScheme={state === 'success' ? 'green' : 'blue'}
                             isLoading={state === 'submitting'}
                             w="100%"
-                            type={state === 'success' ? 'button' : 'submit'}>
-                            {state === 'success' ? <CheckIcon /> : 'Submit'}
+                            type={state === 'success' ? 'button' : 'submit'}
+                            disabled={state === 'success'}>
+                            {state === 'success' ? <CheckIcon /> : f('submit')}
                         </Button>
                     </FormControl>
                 </Stack>
-                <Text mt={2} textAlign={'center'} color={error ? 'red.500' : feedbackTextColor}>
+                <Text mt={2} textAlign="center" color={error ? 'red.500' : feedbackTextColor}>
                     {error
-                        ? 'Oh no an error occured! 😢 Please try again later.'
-                        : "You won't receive any spam! ✌️"}
+                        ? f('newsletterError')
+                        : state === 'submitting'
+                        ? f('newsletterSubscribing')
+                        : f('newsletterSubscribed')}
                 </Text>
             </Container>
         </Flex>

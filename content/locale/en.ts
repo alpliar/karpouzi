@@ -8,7 +8,13 @@ export const en = {
         openMenu: 'Open menu',
         feelingLost: 'Feeling lost ?',
         goBackToHome: 'Go back to home',
-        cancel: 'Cancel'
+        cancel: 'Cancel',
+        submit: 'Submit',
+        newsletterSubscribing: 'Subscribing...',
+        newsletterSubscribe: 'Subscribe to our Newsletter',
+        newsletterYourEmail: 'Your Email',
+        newsletterSubscribed: "Thanks ! You won't receive any spam! ✌️",
+        newsletterError: 'Oh no an error occured! 😢 Please try again later.'
     },
     '/': {
         welcomeMessage: 'Welcome to',
