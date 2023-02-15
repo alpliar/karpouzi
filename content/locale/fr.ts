@@ -63,6 +63,7 @@ export const fr = {
         signInLong: 'Connectez-vous à votre compte',
         signIn: "S'identifier",
         or: 'ou',
+        orContinueWith: 'ou se connecter avec',
         startFreeTrial: 'commencez votre essai gratuit de 14 jours',
         emailAddress: 'Adresse e-mail',
         emailReassurance: 'Nous ne partagerons jamais votre adresse e-mail.',

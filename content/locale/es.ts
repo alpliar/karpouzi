@@ -64,6 +64,7 @@ export const es = {
         signInLong: 'Iniciar sesión en su cuenta',
         signIn: 'Registrarse',
         or: 'o',
+        orContinueWith: 'o conectar con',
         startFreeTrial: 'comience su prueba gratuita de 14 días',
         emailAddress: 'Dirección de correo electrónico',
         emailReassurance: 'Nunca compartiremos su correo electrónico.',

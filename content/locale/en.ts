@@ -63,6 +63,7 @@ export const en = {
         signInLong: 'Sign in to your account',
         signIn: 'Sign in',
         or: 'or',
+        orContinueWith: 'or continue with',
         startFreeTrial: 'start your 14-day free trial',
         emailAddress: 'Email address',
         emailReassurance: "We'll never share your email.",

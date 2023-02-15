@@ -1,4 +1,3 @@
-import { Alert, AlertIcon } from '@chakra-ui/alert';
 import { Button } from '@chakra-ui/button';
 import { Checkbox } from '@chakra-ui/checkbox';
 import { FormControl, FormHelperText, FormLabel } from '@chakra-ui/form-control';
@@ -28,16 +27,17 @@ const LoginPage: NextPage = () => {
         <PageListingLayout
             title={f('signInLong')}
             breadcrumbs={[]}
-            introSlot={
-                <Alert status="info">
-                    <AlertIcon />
-                    <Text>
-                        {f('or')}
-                        {` `}
-                        {f('startFreeTrial')}
-                    </Text>
-                </Alert>
-            }>
+            // introSlot={
+            //     <Alert status="info">
+            //         <AlertIcon />
+            //         <Text>
+            //             {f('or')}
+            //             {` `}
+            //             {f('startFreeTrial')}
+            //         </Text>
+            //     </Alert>
+            // }
+        >
             <Container maxW={{ base: 'sm', md: 'md', lg: 'lg' }}>
                 <Card>
                     <SimpleGrid columns={{ base: 1 }} spacing={{ base: 4, lg: 8 }}>
@@ -87,7 +87,7 @@ const LoginPage: NextPage = () => {
                         </form>
                         <Stack spacing={4}>
                             <Divider />
-                            <Text textAlign="center">Or continue with</Text>
+                            <Text textAlign="center">{f('orContinueWith')}</Text>
 
                             <Stack spacing={2}>
                                 <Button

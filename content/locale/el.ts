@@ -65,6 +65,7 @@ export const el = {
         signInLong: 'Συνδεθείτε στο λογαριασμό σας',
         signIn: 'Συνδεθείτε',
         or: 'ή',
+        orContinueWith: 'ή συνδεθείτε με',
         startFreeTrial: 'ξεκινήστε τη δωρεάν δοκιμή 14 ημερών',
         emailAddress: 'ηλεκτρονική διεύθυνσή',
         emailReassurance: 'Δεν θα κοινοποιήσουμε ποτέ το email σας.',
