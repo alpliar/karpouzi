@@ -77,5 +77,8 @@ export const en = {
         passwordReassurance: 'Choose wisely !',
         rememberMe: 'Remember me',
         lostPassword: 'Forgot your password?'
+    },
+    '/shop/category/[slug]': {
+        noProductsInCategory: "Sorry, there's nothing here (yet) 😅"
     }
 };

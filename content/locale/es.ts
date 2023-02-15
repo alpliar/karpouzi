@@ -78,5 +78,10 @@ export const es = {
         passwordReassurance: 'Elegir sabiamente !',
         rememberMe: 'Recuérdame',
         lostPassword: 'Olvidaste tu contraseña ?'
+    },
+    '/shop/category/[slug]': {
+        noProductsInCategory: 'Lo siento, no hay nada aquí (por el momento) 😅',
+        products: 'Productos',
+        sinceYoureHere: 'Desde que estás aquí'
     }
 };

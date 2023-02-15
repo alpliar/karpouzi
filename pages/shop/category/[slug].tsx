@@ -1,7 +1,18 @@
-import { Alert, SimpleGrid } from '@chakra-ui/react';
+import {
+    Center,
+    SimpleGrid,
+    Stack,
+    Text,
+    useColorModeValue,
+    Wrap,
+    WrapItem
+} from '@chakra-ui/react';
 import axios from 'axios';
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
+import { useIntl } from 'react-intl';
+import Banner from '../../../components/banner';
 import BlockQuote from '../../../components/blockQuote';
+import Link from '../../../components/link';
 import PageListingLayout from '../../../components/pageListingLayout';
 import ProductCard from '../../../components/productCard';
 import ShopStat from '../../../components/shopStat';
@@ -71,6 +82,10 @@ interface CategoryPageProps {
 }
 
 const CategoryPage: NextPage<CategoryPageProps> = ({ category }) => {
+    const { formatMessage } = useIntl();
+    const f = (id: string, values: any = null) => formatMessage({ id }, values);
+
+    const noProductBackground = useColorModeValue('orange.400', 'orange.800');
     if (!category) return null;
 
     return (
@@ -78,14 +93,14 @@ const CategoryPage: NextPage<CategoryPageProps> = ({ category }) => {
             title={category.name}
             breadcrumbs={[
                 {
-                    text: 'Home',
+                    text: f('home'),
                     link: '/',
-                    alt: 'go to home'
+                    alt: f('goToPageName', { name: f('home') })
                 },
                 {
-                    text: 'Shop',
+                    text: f('menuEntryShop'),
                     link: '/shop',
-                    alt: 'go to shop home'
+                    alt: f('goToPageName', { name: f('menuEntryShop') })
                 },
                 {
                     text: category.name,
@@ -95,7 +110,7 @@ const CategoryPage: NextPage<CategoryPageProps> = ({ category }) => {
                 }
             ]}
             introSlot={<BlockQuote noOfLines={3}>{category.description}</BlockQuote>}
-            titleSlot={<ShopStat label="Products" number={category.products.length ?? 0} />}>
+            titleSlot={<ShopStat label={f('products')} number={category.products.length ?? 0} />}>
             {!!category.products.length ? (
                 <SimpleGrid columns={{ base: 1, sm: 2, md: 3, xl: 4 }} spacing={4}>
                     {category.products.map((product) => {
@@ -103,7 +118,40 @@ const CategoryPage: NextPage<CategoryPageProps> = ({ category }) => {
                     })}
                 </SimpleGrid>
             ) : (
-                <Alert>No products to show</Alert>
+                <Banner
+                    pattern="wiggle"
+                    bgColor={noProductBackground}
+                    height="inherit"
+                    padding={16}>
+                    <Center fontFamily="heading" fontSize={{ base: '2xl', lg: '4xl' }}>
+                        <Stack spacing={8}>
+                            <Text maxW="20ch">{f('noProductsInCategory')}</Text>
+                            <Stack spacing={4}>
+                                <Text fontSize={{ base: 'sm' }}>{f('sinceYoureHere')}</Text>
+                                <Wrap justify="center">
+                                    <WrapItem>
+                                        <Link
+                                            maxW={4}
+                                            asButton
+                                            href="/shop"
+                                            buttonProps={{ size: 'sm' }}>
+                                            {f('goToPageName', { name: 'shop' })}
+                                        </Link>
+                                    </WrapItem>
+                                    <WrapItem>
+                                        <Link
+                                            maxW={4}
+                                            asButton
+                                            href="/"
+                                            buttonProps={{ size: 'sm' }}>
+                                            {f('goToPageName', { name: 'home' })}
+                                        </Link>
+                                    </WrapItem>
+                                </Wrap>
+                            </Stack>
+                        </Stack>
+                    </Center>
+                </Banner>
             )}
         </PageListingLayout>
     );

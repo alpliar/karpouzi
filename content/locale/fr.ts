@@ -77,5 +77,10 @@ export const fr = {
         passwordReassurance: 'Choisissez un mot de passe sécurisé !',
         rememberMe: 'Rester connecté',
         lostPassword: 'Mot de passe perdu ?'
+    },
+    '/shop/category/[slug]': {
+        noProductsInCategory: "Désolé, il n'y a rien ici (pour le moment) 😅",
+        products: 'Produits',
+        sinceYoureHere: 'Puisque vous êtes là'
     }
 };

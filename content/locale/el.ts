@@ -79,5 +79,10 @@ export const el = {
         passwordReassurance: 'Επιλέξτε με σύνεση!',
         rememberMe: 'Θυμήσου με',
         lostPassword: 'Ξεχάσατε τον κωδικό σας;'
+    },
+    '/shop/category/[slug]': {
+        noProductsInCategory: 'Λυπούμαστε, δεν υπάρχουν προϊόντα εδώ (προς το παρόν) 😅',
+        products: 'Προϊόντα',
+        sinceYoureHere: 'Αφού είσαι εδώ'
     }
 };
