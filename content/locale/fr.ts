@@ -21,7 +21,7 @@ export const fr = {
             'Nous vous proposons une sélection unique de fruits, légumes, féculents, épices, ... Il y en a pour tous les goûts !',
         welcomeDiscoverKarpouzi: 'À propos de Karpouzi',
         welcomeDiscoverKarpouziDescription:
-            'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequuntur, ipsa perferendis. Iusto, hic ipsum numquam inventore quasi necessitatibus minus et cumque, libero aspernatur incidunt saepe voluptatibus rem repellendus, dolores ducimus!',
+            'Vous voulez en savoir plus sur Karpouzi, ses valeurs et son histoire ?',
         welcomeShopCTA: 'Accéder à la boutique',
         welcomeBlogCTA: 'Accéder au blog'
     },

@@ -21,7 +21,7 @@ export const el = {
             'Προσφέρουμε μια μοναδική επιλογή από φρούτα, λαχανικά, άμυλα, μπαχαρικά, ... Υπάρχει κάτι για κάθε γούστο!',
         welcomeDiscoverKarpouzi: 'Περί Καρπούζη',
         welcomeDiscoverKarpouziDescription:
-            'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequuntur, ipsa perferendis. Iusto, hic ipsum numquam inventore quasi necessitatibus minus et cumque, libero aspernatur incidunt saepe voluptatibus rem repellendus, dolores ducimus!',
+            'Θέλετε να μάθετε περισσότερα για το Καρπούζι, τις αξίες και την ιστορία του;',
         welcomeShopCTA: 'μεταβείτε στη κατάστημα',
         welcomeBlogCTA: 'μεταβείτε στη Ιστολόγιο'
     },

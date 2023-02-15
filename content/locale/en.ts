@@ -21,7 +21,7 @@ export const en = {
             'We offer a unique selection of fruits, vegetables, starches, spices, ... There is something for every taste !',
         welcomeDiscoverKarpouzi: 'About Karpouzi',
         welcomeDiscoverKarpouziDescription:
-            'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequuntur, ipsa perferendis. Iusto, hic ipsum numquam inventore quasi necessitatibus minus et cumque, libero aspernatur incidunt saepe voluptatibus rem repellendus, dolores ducimus!',
+            'Want to know more about Karpouzi, its values and its history?',
         welcomeShopCTA: 'Go to shop',
         welcomeBlogCTA: 'Go to blog'
     },

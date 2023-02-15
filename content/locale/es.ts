@@ -21,7 +21,7 @@ export const es = {
             'Ofrecemos una selección única de frutas, verduras, almidones, especias,... ¡Hay algo para todos los gustos!',
         welcomeDiscoverKarpouzi: 'Sobre Karpouzi',
         welcomeDiscoverKarpouziDescription:
-            'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequuntur, ipsa perferendis. Iusto, hic ipsum numquam inventore quasi necessitatibus minus et cumque, libero aspernatur incidunt saepe voluptatibus rem repellendus, dolores ducimus!',
+            '¿Quieres saber más sobre Karpouzi, sus valores y su historia?',
         welcomeShopCTA: 'Ir a la tienda',
         welcomeBlogCTA: 'Ir al blog'
     },
