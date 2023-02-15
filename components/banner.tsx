@@ -1,11 +1,11 @@
 import { useColorModeValue } from '@chakra-ui/color-mode';
-import { Box, Flex } from '@chakra-ui/layout';
+import { Box, BoxProps, Flex } from '@chakra-ui/layout';
 import { BackgroundProps, FilterProps, LayoutProps } from '@chakra-ui/styled-system';
-import { PropsWithChildren } from 'react';
 
 interface IBannerProps {
+    children: React.ReactElement;
     height?: LayoutProps['height'];
-    bgColor?: BackgroundProps['bgColor'];
+    bgColor?: BoxProps['bgColor'];
     pattern?:
         | 'stars'
         | 'kiwi'
@@ -17,12 +17,14 @@ interface IBannerProps {
         | 'wiggle'
         | 'bubbles'
         | 'autumn';
+    other?: BoxProps[];
 }
-const Banner: React.FC<PropsWithChildren<IBannerProps>> = ({
+const Banner: React.FC<IBannerProps & BoxProps> = ({
     children,
     height = '3xs',
+    pattern = 'kiwi',
     bgColor,
-    pattern = 'kiwi'
+    ...rest
 }) => {
     const patternOpacity = 0.3;
     const bgOpacity = 1;
@@ -58,7 +60,7 @@ const Banner: React.FC<PropsWithChildren<IBannerProps>> = ({
             fontSize="4xl"
             position="relative">
             {/* <Box zIndex="banner" rounded="xl" bgColor={bgColor}> */}
-            <Box zIndex="docked" rounded="xl">
+            <Box zIndex="banner" rounded="xl" {...rest}>
                 {children}
             </Box>
             <Box
