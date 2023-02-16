@@ -32,7 +32,8 @@ export const es = {
         welcomeBlogCTA: 'Ir al blog'
     },
     '/blog': {
-        title: 'Blog'
+        title: 'Blog',
+        posts: 'Entradas'
     },
     '/shop': {
         title: 'Tienda'

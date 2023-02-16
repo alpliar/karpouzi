@@ -32,7 +32,8 @@ export const el = {
         welcomeBlogCTA: 'μεταβείτε στη Ιστολόγιο'
     },
     '/blog': {
-        title: 'Ιστολόγιο'
+        title: 'Ιστολόγιο',
+        posts: 'ανάρτηση'
     },
     '/shop': {
         title: 'κατάστημα'

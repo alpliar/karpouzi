@@ -52,7 +52,9 @@ const BlogHome = ({ posts }: { posts: Array<BlogPost> }) => {
                     isCurrentPage: true
                 }
             ]}
-            titleSlot={<ShopStat label="Posts" number={posts?.length ?? 0} textAlign="right" />}
+            titleSlot={
+                <ShopStat label={f('posts')} number={posts?.length ?? 0} textAlign="right" />
+            }
             introSlot={
                 <BlockQuote noOfLines={3}>
                     She put his pistol down, picked up her fletcher, dialed the barrel over to
