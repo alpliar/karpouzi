@@ -20,7 +20,7 @@ export const el = {
         products: 'Προϊόντα',
         reviews: 'κριτικές',
         noReviewsYet: 'Δεν υπάρχουν ακόμη κριτικές',
-        beTheFirstToLeaveReview: "Pas encore d'avis, soyez le/la premier·ère à le faire !",
+        beTheFirstToLeaveReview: 'Δεν υπάρχουν κριτικές ακόμα, γίνετε ο πρώτος που θα το κάνετε !',
         noOfReviews: '{count} κριτικέ(ς)',
         verifiedReview: 'Επαληθευμένη κριτική',
         addToCart: 'Προσθήκη στο καλάθι',
