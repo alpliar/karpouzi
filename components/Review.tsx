@@ -32,14 +32,15 @@ const Review: React.FC<Props> = ({ review }) => {
     if (!review) return null;
     return (
         <Stack spacing={1} padding={5} rounded="md" bg="blackAlpha.100">
-            <Collapse startingHeight={150} in={show}>
+            <Collapse onClick={handleToggle} startingHeight={150} in={show}>
                 <Text
                     cursor={show ? undefined : 'pointer'}
-                    onClick={handleToggle}
                     flexGrow={1}
                     as="cite"
                     fontFamily="Patrick Hand"
-                    fontSize="2xl">
+                    fontSize="2xl"
+                    position="relative"
+                    display="block">
                     {review.message}
                 </Text>
             </Collapse>
