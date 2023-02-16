@@ -1,5 +1,6 @@
 import { CheckCircleIcon } from '@chakra-ui/icons';
 import {
+    Collapse,
     Divider,
     Flex,
     HStack,
@@ -25,12 +26,23 @@ const Review: React.FC<Props> = ({ review }) => {
     const { formatMessage } = useIntl();
     const f = (id: string, values: any = null) => formatMessage({ id }, values);
 
+    const [show, setShow] = React.useState(false);
+    const handleToggle = () => setShow(!show);
+
     if (!review) return null;
     return (
         <Stack spacing={1} padding={5} rounded="md" bg="blackAlpha.100">
-            <Text flexGrow={1} as="cite" fontFamily="Patrick Hand" fontSize="2xl">
-                {review.message}
-            </Text>
+            <Collapse startingHeight={150} in={show}>
+                <Text
+                    cursor={show ? undefined : 'pointer'}
+                    onClick={handleToggle}
+                    flexGrow={1}
+                    as="cite"
+                    fontFamily="Patrick Hand"
+                    fontSize="2xl">
+                    {review.message}
+                </Text>
+            </Collapse>
             <Divider />
 
             <Rating rate={review.rating} />
