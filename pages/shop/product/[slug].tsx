@@ -112,7 +112,7 @@ const ProductPage: NextPage<ProductPageProps> = ({ product, description, localiz
     const f = (id: string, values: any = null) => formatMessage({ id }, values);
 
     const showAsPolaroid = useBreakpointValue({ base: false, xl: true });
-    const pictureSizes = useBreakpointValue({ base: '100vw', md: '33vw' });
+    const pictureSizes = useBreakpointValue({ base: '320px', md: '640px' });
 
     if (!product) return null;
 
@@ -197,8 +197,9 @@ const ProductPage: NextPage<ProductPageProps> = ({ product, description, localiz
                                     src={product.coverPicture.asset.url}
                                     alt={product.coverPicture.alternativeText}
                                     sizes={pictureSizes}
+                                    width={pictureSizes}
                                     priority
-                                    quality={100}
+                                    quality={90}
                                     blurDataURL={product.coverPicture.asset.thumbnail}
                                 />
                             </AspectRatio>
