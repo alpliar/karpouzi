@@ -219,7 +219,7 @@ const ProductPage: NextPage<ProductPageProps> = ({ product, description, localiz
                                 })}
                             </Text>
 
-                            <AddToCart slug={product.slug} quantity={1} />
+                            <AddToCart slug={product.slug} name={productName} quantity={1} />
 
                             <Divider my={4} w="100%" />
 

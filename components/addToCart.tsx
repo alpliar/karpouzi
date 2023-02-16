@@ -5,19 +5,27 @@ import { ICartItem } from '../redux/container/addToCart';
 import { sendToast } from '../utils/uiToast';
 interface IAddToCartProps {
     slug: string;
+    name: string;
     quantity: number;
     inCart: number;
     addToCart: (slug: string, quantity: number, cart: Array<ICartItem>) => void;
     cart: Array<ICartItem>;
 }
 
-const AddToCart: React.FC<IAddToCartProps> = ({ slug, quantity, inCart, addToCart, cart }) => {
+const AddToCart: React.FC<IAddToCartProps> = ({
+    slug,
+    quantity,
+    inCart,
+    addToCart,
+    cart,
+    name
+}) => {
     const { formatMessage } = useIntl();
     const f = (id: string, values: any = null) => formatMessage({ id }, values);
 
     const handleClick = () => {
         addToCart(slug, quantity, cart);
-        sendToast(f('addedToCart'), slug, 'success');
+        sendToast(f('addedToCart'), name, 'success');
     };
 
     return (
