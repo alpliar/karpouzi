@@ -15,6 +15,7 @@ import axios from 'axios';
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
+import { useIntl } from 'react-intl';
 import { Root } from 'remark-html';
 import Banner from '../../../components/banner';
 import { Image } from '../../../components/image';
@@ -107,6 +108,9 @@ interface ProductPageProps {
 
 const ProductPage: NextPage<ProductPageProps> = ({ product, description, localizations }) => {
     const router = useRouter();
+    const { formatMessage } = useIntl();
+    const f = (id: string, values: any = null) => formatMessage({ id }, values);
+
     const showAsPolaroid = useBreakpointValue({ base: false, xl: true });
     const pictureSizes = useBreakpointValue({ base: '100vw', md: '33vw' });
 
@@ -133,27 +137,27 @@ const ProductPage: NextPage<ProductPageProps> = ({ product, description, localiz
             title={productName}
             breadcrumbs={[
                 {
-                    text: 'Home',
-                    link: '/',
-                    alt: 'go to home page',
+                    link: '/home',
+                    alt: f('goToPageName', { name: f('home') }),
+                    text: f('home'),
                     isCurrentPage: false
                 },
                 {
-                    text: 'Shop',
                     link: '/shop',
-                    alt: 'go to shop home',
+                    alt: f('goToPageName', { name: f('menuEntryShop') }),
+                    text: f('menuEntryShop'),
                     isCurrentPage: false
                 },
                 {
                     text: category.name,
                     link: `/shop/category/${category.slug}`,
-                    alt: `go to ${category.name} category`,
+                    alt: f('goToPageName', { name: category.name }),
                     isCurrentPage: false
                 },
                 {
                     text: productName,
                     link: `/shop/product/${product.slug}`,
-                    alt: `${productName} picture`,
+                    alt: productName,
                     isCurrentPage: true
                 }
             ]}
