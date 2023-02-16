@@ -35,7 +35,7 @@ export default function CartPage() {
                 <ShopStat label={intl.formatMessage({ id: 'products' })} number={cart.length} />
             }>
             {cart.length > 0 && (
-                <SimpleGrid columns={{ base: 1, md: 2 }} spacingX="0.5em" spacingY="1em">
+                <SimpleGrid columns={{ base: 1, sm: 2, lg: 3 }} spacingX="0.5em" spacingY="1em">
                     {cart.map((item, index) => (
                         <CartItem
                             key={`${item.slug}-${index}`}

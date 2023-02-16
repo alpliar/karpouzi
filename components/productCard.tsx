@@ -24,9 +24,14 @@ interface IProps {
     // rating: number;
     product: Product;
     ratingIcon?: IconType | ComponentWithAs<'svg', IconProps>;
+    priceSlot?: React.ReactElement;
 }
 
-const ProductCard: React.FC<IProps> = ({ product, ratingIcon = undefined }) => {
+const ProductCard: React.FC<IProps> = ({
+    product,
+    ratingIcon = undefined,
+    priceSlot = undefined
+}) => {
     const router = useRouter();
     const { formatNumber } = useIntl();
     const imageHeight = useBreakpointValue({ base: 64 /*, sm: 48, md: 48, lg: 64  */ });
@@ -142,6 +147,7 @@ const ProductCard: React.FC<IProps> = ({ product, ratingIcon = undefined }) => {
                             <Text as="span" fontSize="2xs">
                                 {measurementUnit}
                             </Text>
+                            {priceSlot && <Box>{priceSlot}</Box>}
                         </Box>
                     </Stack>
                 </Flex>

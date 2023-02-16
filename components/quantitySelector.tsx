@@ -18,7 +18,7 @@ const QuantitySelector: React.FC<IProps> = ({
     const disableReduceQuantity = quantity == minQuantity;
     const disableIncreaseQuantity = quantity == maxQuantity;
 
-    const buttonsSize = 'xs';
+    const buttonsSize = 'sm';
 
     const handleReduceQuantity = () => {
         const newQuantity = quantity - 1;
@@ -44,7 +44,7 @@ const QuantitySelector: React.FC<IProps> = ({
                 aria-label="Reduce quantity"
                 size={buttonsSize}
                 icon={<Icon as={MinusIcon} />}
-                colorScheme="teal"
+                colorScheme="yellow"
                 onClick={handleReduceQuantity}
                 disabled={disableReduceQuantity}
             />
@@ -62,7 +62,7 @@ const QuantitySelector: React.FC<IProps> = ({
                 aria-label="Increase quantity"
                 size={buttonsSize}
                 icon={<Icon as={AddIcon} />}
-                colorScheme="teal"
+                colorScheme="yellow"
                 onClick={handleIncreaseQuantity}
                 disabled={disableIncreaseQuantity}
             />

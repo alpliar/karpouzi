@@ -39,9 +39,9 @@ const CartItemActions: React.FC<IProps> = ({ slug, quantity }) => {
                 trigger={
                     <IconButton
                         aria-label="Remove from cart"
-                        size="xs"
+                        size="sm"
                         icon={<Icon as={DeleteIcon} />}
-                        colorScheme="teal"
+                        colorScheme="red"
                         onClick={() => {
                             setIsOpenConfirmRemove(!isOpenConfirmRemove);
                         }}

@@ -1,23 +1,10 @@
-import {
-    Badge,
-    Box,
-    Flex,
-    HStack,
-    LinkBox,
-    LinkOverlay,
-    Skeleton,
-    SkeletonText,
-    Stack,
-    Text,
-    useBreakpointValue
-} from '@chakra-ui/react';
-import Link from 'next/link';
+import { Highlight, Stack, Text } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
+import { useIntl } from 'react-intl';
 import { API_BASE_URL } from '../constants/api';
-import Product from '../graphql/models/shop/product.model';
-import Card from './card';
+import Product, { Price } from '../graphql/models/shop/product.model';
 import CartItemActions from './cartItemActions';
-import { Image } from './image';
+import ProductCard from './productCard';
 
 interface IProps {
     slug: string;
@@ -25,83 +12,54 @@ interface IProps {
 }
 
 const CartItem: React.FC<IProps> = ({ slug, quantity }) => {
-    const cardPadding = 4;
+    const { formatNumber } = useIntl();
 
     const [product, setProduct] = useState<Product | null>(null);
-    const [isLoading, setLoading] = useState(false);
-    const firstPrice = product?.prices[0];
+    const firstPrice = product?.prices[0] as Price;
+    const formattedPrice = firstPrice
+        ? formatNumber(firstPrice.amount * quantity, {
+              style: 'currency',
+              currency: firstPrice.currency
+          })
+        : '???';
 
     useEffect(() => {
-        setLoading(true);
         fetch(API_BASE_URL + `/shop/product/${slug}`)
             .then((res) => res.json())
             .then((data) => {
                 setProduct(data.product);
-                setLoading(false);
             });
     }, [slug]);
 
-    const imageSize = useBreakpointValue({ base: '180px', md: '200px' });
-
-    // if (!product) return null;
+    if (!product) return null;
 
     return (
-        <LinkBox>
-            <Card padding={cardPadding}>
-                <Stack spacing={4} direction={{ base: 'column', sm: 'row' }}>
-                    <Box w={{ base: 'full', sm: imageSize }} marginY={-4} ml={-4}>
-                        {isLoading || !product ? (
-                            <Skeleton height={imageSize} width={imageSize} marginY={-4} ml={-4} />
-                        ) : (
-                            <Image
-                                quality={75}
-                                src={product.coverPicture.asset.url}
-                                alt={product.coverPicture.alternativeText || product.name}
-                                sizes={imageSize}
-                                priority
-                                height={imageSize}
-                                w={{ base: imageSize }}
-                                blurDataURL={product.coverPicture.asset.thumbnail}
-                            />
+        <>
+            <ProductCard
+                product={product}
+                priceSlot={
+                    <Stack>
+                        {firstPrice && (
+                            <>
+                                <Text fontSize="2xl" fontWeight="bold">
+                                    <Highlight
+                                        query={formattedPrice}
+                                        styles={{
+                                            px: '2',
+                                            py: '1',
+                                            rounded: 'full',
+                                            bg: 'green.100'
+                                        }}>
+                                        {`x${quantity} = ${formattedPrice}`}
+                                    </Highlight>
+                                </Text>
+                            </>
                         )}
-                    </Box>
-
-                    {isLoading || !product ? (
-                        <SkeletonText w="full" />
-                    ) : (
-                        <Stack ml="3" spacing="1">
-                            <Text fontWeight="bold">
-                                <HStack>
-                                    <Link
-                                        legacyBehavior
-                                        href={{
-                                            pathname: '/shop/product/[slug]',
-                                            query: { slug }
-                                        }}
-                                        passHref>
-                                        <LinkOverlay>{product.name}</LinkOverlay>
-                                    </Link>
-                                    <Badge colorScheme="teal">New</Badge>
-                                </HStack>
-                            </Text>
-                            <Text fontSize="sm" noOfLines={1}>
-                                {product.description}
-                            </Text>
-                            <Flex>
-                                <Stack>
-                                    {firstPrice && (
-                                        <Text fontSize="2xl" fontWeight="bold" color="teal">{`${
-                                            firstPrice.amount * quantity
-                                        } ${firstPrice.currency}`}</Text>
-                                    )}
-                                    <CartItemActions slug={slug} quantity={quantity} />
-                                </Stack>
-                            </Flex>
-                        </Stack>
-                    )}
-                </Stack>
-            </Card>
-        </LinkBox>
+                        <CartItemActions slug={slug} quantity={quantity} />
+                    </Stack>
+                }
+            />
+        </>
     );
 };
 
