@@ -3,6 +3,7 @@ import Picture from '../common/picture.model';
 import { Id } from '../common/types.model';
 import ShopCategory from './category.model';
 import Review, { ReviewExcerpt } from '../common/review.model';
+import { Root } from 'remark-html';
 
 enum MeasurementUnits {
     PER_UNIT = 'PER_UNIT',
@@ -31,11 +32,26 @@ export interface Price {
     measurementUnit: keyof typeof MeasurementUnits;
 }
 
+export interface ProductLocalization {
+    locale: string;
+    name: Product['name'];
+    description: Product['description'];
+}
+export interface ParsedProductLocalization {
+    locale: string;
+    name: Product['name'];
+    description: Root;
+}
+
+export type ProductLocalizations = ProductLocalization[];
+export type ParsedProductLocalizations = ParsedProductLocalization[];
+
 export default interface Product {
     id: Id;
     name: string;
     slug: string;
     description: string;
+    localizations: ProductLocalizations;
     /**
      * @deprecated use coverPicture instead
      */

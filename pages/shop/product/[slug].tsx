@@ -14,6 +14,7 @@ import {
 import axios from 'axios';
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 import { Root } from 'remark-html';
 import Banner from '../../../components/banner';
 import { Image } from '../../../components/image';
@@ -24,10 +25,13 @@ import Rating from '../../../components/rating';
 import Reviews from '../../../components/Reviews';
 import { API_BASE_URL } from '../../../constants/api';
 import { ONE_DAY } from '../../../constants/time.constants';
-import AddToCart from '../../../redux/container/addToCart';
 import ShopCategory from '../../../graphql/models/shop/category.model';
-import Product from '../../../graphql/models/shop/product.model';
+import Product, {
+    ParsedProductLocalization,
+    ParsedProductLocalizations
+} from '../../../graphql/models/shop/product.model';
 import MarkdownHelper from '../../../helpers/markdown.helper';
+import AddToCart from '../../../redux/container/addToCart';
 import { ProductResponse } from '../../api/shop/product/[slug]';
 import { ProductsResponse } from '../../api/shop/products/slugs';
 
@@ -43,11 +47,16 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
         if (!product) throw new Error('Could not fetch product');
         const description = MarkdownHelper.parseMarkdown(product.description);
+        const localizations = product.localizations.map((locale) => ({
+            ...locale,
+            description: MarkdownHelper.parseMarkdown(locale.description)
+        }));
 
         return {
             props: {
                 product,
-                description
+                description,
+                localizations
             },
             revalidate: ONE_DAY
         };
@@ -93,9 +102,11 @@ export const getStaticPaths: GetStaticPaths = async ({ locales }) => {
 interface ProductPageProps {
     product: Product;
     description: Root;
+    localizations: ParsedProductLocalizations;
 }
 
-const ProductPage: NextPage<ProductPageProps> = ({ product, description }) => {
+const ProductPage: NextPage<ProductPageProps> = ({ product, description, localizations }) => {
+    const router = useRouter();
     const showAsPolaroid = useBreakpointValue({ base: false, xl: true });
     const pictureSizes = useBreakpointValue({ base: '100vw', md: '33vw' });
 
@@ -110,9 +121,16 @@ const ProductPage: NextPage<ProductPageProps> = ({ product, description }) => {
     const [firstPrice] = product.prices;
     const [category]: Array<ShopCategory> | undefined = product.productCategories;
 
+    const localized: ParsedProductLocalization | undefined = localizations.find(
+        (i18n) => i18n.locale === router.locale
+    );
+
+    const productName = localized?.name || product.name;
+    const productDescription = localized?.description || description;
+
     return (
         <PageListingLayout
-            title={product.name}
+            title={productName}
             breadcrumbs={[
                 {
                     text: 'Home',
@@ -133,9 +151,9 @@ const ProductPage: NextPage<ProductPageProps> = ({ product, description }) => {
                     isCurrentPage: false
                 },
                 {
-                    text: product.name,
+                    text: productName,
                     link: `/shop/product/${product.slug}`,
-                    alt: `${product.name} picture`,
+                    alt: `${productName} picture`,
                     isCurrentPage: true
                 }
             ]}
@@ -151,11 +169,14 @@ const ProductPage: NextPage<ProductPageProps> = ({ product, description }) => {
             // introSlot={<BlockQuote noOfLines={3}>Blah blah</BlockQuote>}
         >
             <Head>
-                <title>Shop - {product.name}</title>
+                <title>Shop - {productName}</title>
                 <meta property="og:type" content="og:product" />
-                <meta property="og:title" content={product.name} />
+                <meta property="og:title" content={productName} />
                 <meta property="og:image" content={product.coverPicture.asset.url} />
-                <meta property="og:description" content={product.description.slice(0, 100)} />
+                <meta
+                    property="og:description"
+                    content={productDescription.toString().slice(0, 100)}
+                />
                 {/* <meta property="product:plural_title" content={product.pluralName} /> */}
                 <meta property="product:price:amount" content={firstPrice.amount.toString()} />
                 <meta property="product:price:currency" content={firstPrice.currency} />
@@ -164,7 +185,7 @@ const ProductPage: NextPage<ProductPageProps> = ({ product, description }) => {
             <Container p={{ base: 0 }} maxW="full">
                 <Stack spacing={16}>
                     <SimpleGrid columns={{ base: 1, md: 2 }} spacing={{ md: '1em' }}>
-                        <Polaroid title={product.name} unstyled={!showAsPolaroid}>
+                        <Polaroid title={productName} unstyled={!showAsPolaroid}>
                             <AspectRatio ratio={1 / 1}>
                                 <Image
                                     src={product.coverPicture.asset.url}
@@ -209,8 +230,8 @@ const ProductPage: NextPage<ProductPageProps> = ({ product, description }) => {
                                     spacing={5}
                                     textAlign="left"
                                     fontSize={{ base: 'xl', xl: '2xl' }}>
-                                    {/* <Text as="p">{product.description}</Text> */}
-                                    <MarkdownRendered ast={description} />
+                                    {/* <Text as="p">{productDescription}</Text> */}
+                                    <MarkdownRendered ast={productDescription} />
                                 </Stack>
                             </Box>
                         </Box>
