@@ -36,7 +36,10 @@ export const fr = {
         posts: 'Articles'
     },
     '/shop': {
-        title: 'Boutique'
+        title: 'Boutique',
+        categories: 'Catégories',
+        shopDescription:
+            "Bienvenue sur notre épicerie en ligne ! Nous sommes ravis de vous proposer une large sélection de produits de qualité pour répondre à tous vos besoins culinaires. Que vous cherchiez des ingrédients frais pour préparer un repas sain, des collations savoureuses pour grignoter tout au long de la journée, ou des produits d'épicerie essentiels pour remplir votre garde-manger, vous trouverez tout cela et bien plus encore sur notre site. Nous sommes fiers de travailler en étroite collaboration avec des producteurs locaux et des fournisseurs de confiance pour garantir la fraîcheur et la qualité de tous nos produits."
     },
     '/user/account': {
         title: 'Paramètres du compte',

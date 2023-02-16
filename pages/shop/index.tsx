@@ -59,15 +59,15 @@ export default function ShopPage({ categories }: ShopPageProps) {
                 }
             ]}
             titleSlot={
-                <ShopStat label="Categories" number={categories?.length ?? 0} textAlign="right" />
+                <ShopStat
+                    label={intl.formatMessage({ id: 'categories' })}
+                    number={categories?.length ?? 0}
+                    textAlign="right"
+                />
             }
             introSlot={
                 <BlockQuote noOfLines={3}>
-                    She put his pistol down, picked up her fletcher, dialed the barrel over to
-                    single shot, and very carefully put a toxin dart through the center of a broken
-                    mirror bent and elongated as they fell. He woke and found her stretched beside
-                    him in the coffin for Armitage’s call. Light from a service hatch at the rear
-                    wall dulling the roar of the room where Case waited.
+                    {intl.formatMessage({ id: 'shopDescription' })}
                 </BlockQuote>
             }>
             <SimpleGrid columns={{ base: 1, sm: 2, md: 3, xl: 4 }} spacing={4}>

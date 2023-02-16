@@ -36,7 +36,10 @@ export const en = {
         posts: 'Posts'
     },
     '/shop': {
-        title: 'Shop'
+        title: 'Shop',
+        categories: 'Categories',
+        shopDescription:
+            "Welcome to our online grocery store! We are delighted to offer you a wide selection of quality products to meet all your culinary needs. Whether you're looking for fresh ingredients to prepare a healthy meal, tasty snacks to munch on throughout the day, or essential grocery products to stock your pantry, you'll find all that and more on our website. We take pride in working closely with local producers and trusted suppliers to ensure the freshness and quality of all our products."
     },
     '/user/account': {
         title: 'Account settings',
