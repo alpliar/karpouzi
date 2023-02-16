@@ -137,7 +137,7 @@ const ProductCard: React.FC<IProps> = ({ product, ratingIcon = undefined }) => {
                             {formattedPrice}
                         </Text>
                         {` `}
-                        <Text as="span" fontSize="xs">
+                        <Text as="span" fontSize="2xs">
                             {measurementUnit}
                         </Text>
                     </Box>
