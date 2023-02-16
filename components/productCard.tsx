@@ -4,6 +4,7 @@ import { useBreakpointValue } from '@chakra-ui/media-query';
 import { IconProps } from '@chakra-ui/react';
 import { ComponentWithAs } from '@chakra-ui/system';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { IconType } from 'react-icons';
 import { useIntl } from 'react-intl';
 import Product from '../graphql/models/shop/product.model';
@@ -26,9 +27,13 @@ interface IProps {
 }
 
 const ProductCard: React.FC<IProps> = ({ product, ratingIcon = undefined }) => {
+    const router = useRouter();
     const { formatNumber } = useIntl();
     const imageHeight = useBreakpointValue({ base: 64 /*, sm: 48, md: 48, lg: 64  */ });
     const pictureSizes = useBreakpointValue({ base: '320px', md: '640px' });
+
+    const localization = product.localizations?.find((i18n) => i18n.locale === router.locale);
+    const productName = localization?.name || product.name;
 
     // const fallbackPicture = '';
     const isNew = true;
@@ -118,7 +123,7 @@ const ProductCard: React.FC<IProps> = ({ product, ratingIcon = undefined }) => {
                                     textShadow: '0.5px 0.5px 0.5px teal'
                                 }}>
                                 <Heading size="md" textShadow="sm">
-                                    {product.name}
+                                    {productName}
                                 </Heading>
                             </LinkOverlay>
                         </Link>

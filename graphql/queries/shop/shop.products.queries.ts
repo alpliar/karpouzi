@@ -69,6 +69,11 @@ export const GET_SHOP_PRODUCTS = gql`
             name
             slug
             description
+            localizations {
+                locale
+                name
+                description
+            }
             coverPicture {
                 alternativeText
                 asset {
