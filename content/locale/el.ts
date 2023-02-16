@@ -17,7 +17,11 @@ export const el = {
         newsletterError: 'Ωχ, συνέβη ένα σφάλμα! 😢 Παρακαλούμε δοκιμάστε ξανά αργότερα.',
         nothingToDisplay: 'Λυπούμαστε, δεν υπάρχουν προϊόντα εδώ (προς το παρόν) 😅',
         sinceYoureHere: 'Αφού είσαι εδώ',
-        products: 'Προϊόντα'
+        products: 'Προϊόντα',
+        noReviewsYet: 'Δεν υπάρχουν ακόμη κριτικές',
+        noOfReviews: '{count} κριτικέ(ς)',
+        verifiedReview: 'Επαληθευμένη κριτική',
+        addToCart: 'Προσθήκη στο καλάθι'
     },
     '/': {
         welcomeMessage: 'καλώς ήλθατε στο',

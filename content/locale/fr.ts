@@ -17,7 +17,11 @@ export const fr = {
         newsletterError: 'Oh non, une erreur a eu lieu ! 😢 Veuillez réessayer plus tard.',
         nothingToDisplay: "Désolé, il n'y a rien ici (pour le moment) 😅",
         sinceYoureHere: 'Puisque vous êtes là',
-        products: 'Produits'
+        products: 'Produits',
+        noReviewsYet: "Pas encore d'avis",
+        noOfReviews: '{count} avis',
+        verifiedReview: 'Avis vérifié',
+        addToCart: 'Ajouter au panier'
     },
     '/': {
         welcomeMessage: 'Bienvenue sur',

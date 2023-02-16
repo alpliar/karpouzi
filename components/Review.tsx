@@ -2,6 +2,7 @@ import { CheckCircleIcon } from '@chakra-ui/icons';
 import { Flex, HStack, Icon, Stack, Tag, TagLabel, TagLeftIcon, Text } from '@chakra-ui/react';
 import React from 'react';
 import { FaUserCircle } from 'react-icons/fa';
+import { useIntl } from 'react-intl';
 import IReview from '../graphql/models/common/review.model';
 import Date from './Date';
 import Rating from './rating';
@@ -11,6 +12,9 @@ type Props = {
 };
 
 const Review: React.FC<Props> = ({ review }) => {
+    const { formatMessage } = useIntl();
+    const f = (id: string, values: any = null) => formatMessage({ id }, values);
+
     if (!review) return null;
     return (
         <Stack spacing={1} padding={5} rounded="md" bg="blackAlpha.100">
@@ -34,7 +38,7 @@ const Review: React.FC<Props> = ({ review }) => {
                     <Tag variant="subtle" colorScheme="green">
                         <TagLeftIcon boxSize="12px" as={CheckCircleIcon} />
                         <TagLabel fontSize="xs" fontFamily="monospace">
-                            Verified review
+                            {f('verifiedReview')}
                         </TagLabel>
                     </Tag>
                 )}

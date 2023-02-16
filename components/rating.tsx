@@ -3,20 +3,23 @@ import { Flex, HStack, IconProps, Text } from '@chakra-ui/react';
 import { ComponentWithAs } from '@chakra-ui/system';
 import { IconType } from 'react-icons';
 import { GiWatermelon } from 'react-icons/gi';
+import { useIntl } from 'react-intl';
 
 interface IOwnProps {
-    rate?: number;
+    rate: number;
     count?: number;
     icon?: ComponentWithAs<'svg', IconProps> | IconType | undefined;
 }
 
 const Rating = ({ rate, count, icon = GiWatermelon }: IOwnProps) => {
-    const isRated = typeof rate === 'number';
-    const hasMultipleReviews = typeof count === 'number';
-    const isIndividualRating = !hasMultipleReviews;
+    const { formatMessage } = useIntl();
+    const f = (id: string, values: any = null) => formatMessage({ id }, values);
+    const isRated = (rate as number) > 0;
+    const hasMultipleReviews = count; //&& count > 1;
+    const isIndividualRating = !count;
 
     return (
-        <Flex fontSize="sm" alignItems="end">
+        <Flex fontSize="sm" alignItems="center" minH={8}>
             {isRated && (
                 <HStack alignItems="center">
                     <Text as="span">
@@ -42,13 +45,14 @@ const Rating = ({ rate, count, icon = GiWatermelon }: IOwnProps) => {
                             marginLeft={!!count ? 2 : 0}
                             /*color="gray.600"*/
                         >
-                            {count} review(s)
+                            {f('noOfReviews', { count })}
+                            {/* {count} review(s) */}
                         </Text>
                     )}
                 </HStack>
             )}
 
-            {!isRated && <Text as="span">No reviews yet</Text>}
+            {!isRated && <Text as="span">{f('noReviewsYet')}</Text>}
         </Flex>
     );
 };
