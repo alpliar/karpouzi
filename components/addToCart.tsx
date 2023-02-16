@@ -37,7 +37,7 @@ const AddToCart: React.FC<IAddToCartProps> = ({
             label={f('noAlreadyInCart', { count: inCart })}
             isOpen={hasAccuratePointingDevice ? isOpen && inCart > 0 : inCart > 0}>
             <Button
-                my={isOpen || inCart > 0 ? 4 : undefined}
+                my={{ base: 4, sm: 0 }}
                 fontFamily="heading"
                 leftIcon={<Icon as={FaShoppingCart} />}
                 onClick={handleClick}
