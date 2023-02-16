@@ -11,13 +11,8 @@ interface IProps {
 }
 
 const CategoryCard: React.FC<IProps> = ({ category }) => {
-    // const [isHovered, setIsHovered] = useBoolean(false);
     const imageHeight = useBreakpointValue({ base: 64, sm: 48, md: 48, lg: 64 });
-    const pictureSizes = useBreakpointValue({ base: '100vw', sm: '50vw', md: '25vw' });
-
-    // const onHover = () => {
-    //     setIsHovered.toggle();
-    // };
+    const pictureSizes = useBreakpointValue({ base: '320px', md: '640px' });
 
     return (
         <LinkBox>
@@ -29,24 +24,11 @@ const CategoryCard: React.FC<IProps> = ({ category }) => {
                         sizes={pictureSizes}
                         priority
                         height={imageHeight}
-                        quality={100}
+                        quality={80}
                         blurDataURL={category.picture.thumbnail}
-                        // bg="#282828"
-                        // width={{ base: 'full', sm: '100%' }}
-                        // h={{ base: '100vw', sm: 'auto' }}
-                        // overflow="hidden"
-                    />
-                    <Img
-                        w="full"
-                        minH={imageHeight}
-                        objectFit="cover"
-                        src={category.picture.url}
-                        alt={`illustration for ${category.name}`}
                     />
                 </Box>
                 <Stack spacing={4} height="full">
-                    {/* <Wrap justify="space-between" align="center"> */}
-                    {/* <Box width={{ base: '100%', md: 'inherit' }}> */}
                     <Box>
                         <Link legacyBehavior href={`/shop/category/${category.slug}`} passHref>
                             <LinkOverlay
@@ -61,16 +43,6 @@ const CategoryCard: React.FC<IProps> = ({ category }) => {
                             </LinkOverlay>
                         </Link>
                     </Box>
-
-                    {/* <Text
-                            as="span"
-                            fontSize="sm"
-                            fontStyle="italic"
-                            display={{ base: 'block', sm: 'inline' }}>
-                            {' '}
-                            {productsCount} products
-                        </Text> */}
-                    {/* </Wrap> */}
 
                     <Text noOfLines={3}>{category.description}</Text>
 
