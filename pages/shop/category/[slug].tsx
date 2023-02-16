@@ -1,7 +1,9 @@
 import { SimpleGrid } from '@chakra-ui/react';
 import axios from 'axios';
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
+import { useRouter } from 'next/router';
 import { useIntl } from 'react-intl';
+import { Root } from 'remark-html';
 import BlockQuote from '../../../components/blockQuote';
 import NoContentBanner from '../../../components/NoContentBanner';
 import PageListingLayout from '../../../components/pageListingLayout';
@@ -9,8 +11,12 @@ import ProductCard from '../../../components/productCard';
 import ShopStat from '../../../components/shopStat';
 import { API_BASE_URL } from '../../../constants/api';
 import { ONE_HOUR } from '../../../constants/time.constants';
-import { ShopCategoryWithProductsAndAsset } from '../../../graphql/models/shop/category.model';
+import {
+    ParsedCategoryLocalizations,
+    ShopCategoryWithProductsAndAsset
+} from '../../../graphql/models/shop/category.model';
 import CategoryHelper from '../../../helpers/category.helper';
+import MarkdownHelper from '../../../helpers/markdown.helper';
 import errorHandler from '../../../utils/errorsHandler';
 import { CategoryResponse } from '../../api/shop/category/[slug]';
 
@@ -24,11 +30,20 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
             data: { category }
         } = await axios.get<CategoryResponse>(API_BASE_URL + `/shop/category/${slug}`);
 
-        // if (!category) throw new Error('Could not fetch category data');
+        console.error(category);
+        if (!category) throw new Error('Could not fetch category data');
+
+        const description = MarkdownHelper.parseMarkdown(category.description);
+        const localizations = category.localizations.map((locale) => ({
+            ...locale
+            // description: MarkdownHelper.parseMarkdown(locale.description)
+        }));
 
         return {
             props: {
-                category: category
+                category: category,
+                description,
+                localizations
             },
             revalidate: ONE_HOUR
         };
@@ -70,17 +85,27 @@ export const getStaticPaths: GetStaticPaths = async ({ locales }) => {
 
 interface CategoryPageProps {
     category: ShopCategoryWithProductsAndAsset;
+    localizations: ParsedCategoryLocalizations;
+    _description: Root;
 }
 
-const CategoryPage: NextPage<CategoryPageProps> = ({ category }) => {
+const CategoryPage: NextPage<CategoryPageProps> = ({ category, localizations, _description }) => {
+    const router = useRouter();
     const { formatMessage } = useIntl();
     const f = (id: string, values: any = null) => formatMessage({ id }, values);
 
     if (!category) return null;
 
+    const localized = localizations?.find((i18n) => i18n.locale === router.locale);
+
+    const categoryName = localized?.name || category.name;
+    const categoryDescription = localized?.description || category.description;
+
+    // console.log(categoryName, categoryDescription);
+
     return (
         <PageListingLayout
-            title={category.name}
+            title={categoryName}
             breadcrumbs={[
                 {
                     text: f('home'),
@@ -93,13 +118,13 @@ const CategoryPage: NextPage<CategoryPageProps> = ({ category }) => {
                     alt: f('goToPageName', { name: f('menuEntryShop') })
                 },
                 {
-                    text: category.name,
+                    text: categoryName,
                     link: `/shop/category/${category.slug}`,
-                    alt: `${category.name} page`,
+                    alt: f('goToPageName', { name: categoryName }),
                     isCurrentPage: true
                 }
             ]}
-            introSlot={<BlockQuote noOfLines={3}>{category.description}</BlockQuote>}
+            introSlot={<BlockQuote noOfLines={3}>{categoryDescription.toString()}</BlockQuote>}
             titleSlot={<ShopStat label={f('products')} number={category.products.length ?? 0} />}>
             {!!category.products.length ? (
                 <SimpleGrid columns={{ base: 1, sm: 2, md: 3, xl: 4 }} spacing={4}>

@@ -13,6 +13,11 @@ export const GET_SHOP_CATEGORIES = gql`
             id
             slug
             name
+            localizations {
+                locale
+                name
+                description
+            }
             picture {
                 id
                 fileName
@@ -34,6 +39,11 @@ export const GET_SHOP_CATEGORY = gql`
         category: shopCategory(where: { slug: $slug }) {
             name
             slug
+            localizations {
+                locale
+                name
+                description
+            }
             description
             picture {
                 id
