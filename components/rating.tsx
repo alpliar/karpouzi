@@ -27,18 +27,18 @@ const Rating: React.FC<RatingProps & FlexProps> = ({
         <Flex fontSize="sm" minH={8} {...rest}>
             {isRated && (
                 <HStack alignItems="center">
-                    <Text as="span">
+                    <Flex as="span" align="center">
                         {Array(5)
                             .fill('')
                             .map((_, i) => (
                                 <Icon
-                                    boxSize={6}
+                                    boxSize="2em"
                                     as={icon}
                                     key={i}
-                                    color={i < rate / 20 ? 'teal.500' : 'gray.300'}
+                                    color={i < rate / 20 ? 'currentColor' : 'gray.300'}
                                 />
                             ))}
-                    </Text>
+                    </Flex>
                     {isIndividualRating && (
                         <Text as="strong" fontSize="xl">
                             {rate / 20} / 5
@@ -46,6 +46,7 @@ const Rating: React.FC<RatingProps & FlexProps> = ({
                     )}
                     {hasMultipleReviews && (
                         <Text
+                            fontWeight="bold"
                             /* isTruncated */ as="span"
                             marginLeft={!!count ? 2 : 0}
                             /*color="gray.600"*/
