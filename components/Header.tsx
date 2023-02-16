@@ -5,6 +5,7 @@ import { Box, Flex, HStack, Text, Wrap } from '@chakra-ui/layout';
 import { EffectProps } from '@chakra-ui/system';
 import PropTypes from 'prop-types';
 import { PropsWithChildren } from 'react';
+import { useIntl } from 'react-intl';
 import NavDrawer from '../components/navDrawer';
 import NavThemeToggle from '../components/navThemeToggle';
 import { APP_MAX_WIDTH } from '../constants/ui/main.layout';
@@ -39,20 +40,22 @@ export const headerBgColor = (colorMode: ColorMode) => {
 const Header = ({}) => {
     const { colorMode } = useColorMode();
     const { isOpen, onClose, onToggle } = useDisclosure();
+    const { formatMessage } = useIntl();
+    const f = (id: string, values: any = null) => formatMessage({ id }, values);
 
     const boxShadow: EffectProps['boxShadow'] = undefined;
     const headerButtonStyle: ButtonProps = { size: 'xs', variant: 'ghost', color: 'currentColor' };
 
     const headerLinks = [
         {
-            label: 'Blog',
-            // helper: f('goToPageName', { name: f('menuEntryBlog') }),
-            href: '/blog'
-        },
-        {
-            label: 'Shop',
+            label: f('menuEntryShop'),
             // helper: f('goToPageName', { name: f('menuEntryShop') }),
             href: '/shop'
+        },
+        {
+            label: f('menuEntryBlog'),
+            // helper: f('goToPageName', { name: f('menuEntryBlog') }),
+            href: '/blog'
         }
     ];
     return (
