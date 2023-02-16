@@ -1,5 +1,5 @@
 import Icon from '@chakra-ui/icon';
-import { Box, HStack, Stack, Text } from '@chakra-ui/layout';
+import { Box, Heading, HStack, Stack, Text } from '@chakra-ui/layout';
 import { useBreakpointValue } from '@chakra-ui/react';
 import axios from 'axios';
 import { GetStaticPaths, GetStaticProps } from 'next';
@@ -152,13 +152,13 @@ const BlogPostPage = ({ post, postContent }: { post: BlogPost; postContent: Root
                     <Box>
                         <Box maxW="70ch" fontSize={{ md: 'xl' }} margin="auto">
                             {/* {post.content} */}
-                            <Box float={{ lg: 'left' }} rounded="lg" overflow="hidden">
+                            <Box>
                                 <Image
                                     src={post.coverPicture.asset.url}
                                     alt={post.coverPicture.alternativeText}
                                     sizes={pictureSizes}
                                     priority
-                                    width={{ base: 'full', lg: 480 }}
+                                    width={{ base: 'full', lg: 'full' }}
                                     height={{ base: 240, lg: 480 }}
                                     mr={8}
                                     mb={8}
@@ -167,7 +167,10 @@ const BlogPostPage = ({ post, postContent }: { post: BlogPost; postContent: Root
                                     objectFit="contain"
                                 />
                             </Box>
-                            <MarkdownRendered ast={postContent} />
+                            <Stack spacing={4}>
+                                <Heading as="span">{post.title}</Heading>
+                                <MarkdownRendered ast={postContent} />
+                            </Stack>
                         </Box>
                     </Box>
                 </Stack>
