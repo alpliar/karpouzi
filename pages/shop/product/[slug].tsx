@@ -112,7 +112,7 @@ const ProductPage: NextPage<ProductPageProps> = ({ product, description, localiz
     const f = (id: string, values: any = null) => formatMessage({ id }, values);
 
     const pictureSizes = useBreakpointValue({ base: '320px', md: '640px' });
-    const bgColor = useColorModeValue('gold', 'darkorchid');
+    const bgColor = useColorModeValue('yellow.300', 'green.700');
 
     if (!product) return null;
 
@@ -193,7 +193,7 @@ const ProductPage: NextPage<ProductPageProps> = ({ product, description, localiz
                     <SimpleGrid columns={{ base: 1, md: 2 }} spacing={{ md: '1em' }}>
                         <Box position="relative">
                             <AspectRatio
-                                ratio={{ base: 3 / 2, md: 1 }}
+                                ratio={{ base: 4 / 3, md: 1 }}
                                 maxH={{ sm: 'sm', md: 'sm', lg: 'inherit' }}>
                                 <Image
                                     src={product.coverPicture.asset.url}
@@ -209,12 +209,16 @@ const ProductPage: NextPage<ProductPageProps> = ({ product, description, localiz
                             <Box position={{ sm: 'absolute' }} top={0} right={0}>
                                 <Banner
                                     height="inherit"
-                                    paddingX={{ base: 4, lg: 8 }}
-                                    paddingY={{ base: 2, lg: 4 }}
-                                    pattern="topography"
+                                    fontSize="initial"
+                                    paddingX={{ base: 2, lg: 4 }}
+                                    paddingY={{ base: 8, sm: 4 }}
+                                    pattern="linesInMotion"
                                     bgColor={bgColor}>
-                                    <>
-                                        <Heading as="p" fontSize="3xl">
+                                    <Stack maxW="2xs" spacing={2}>
+                                        <Heading
+                                            as="p"
+                                            fontSize={{ base: 'xl', sm: 'md' }}
+                                            noOfLines={{ sm: 1 }}>
                                             {productName}
                                         </Heading>
 
@@ -234,7 +238,7 @@ const ProductPage: NextPage<ProductPageProps> = ({ product, description, localiz
                                             name={productName}
                                             quantity={1}
                                         />
-                                    </>
+                                    </Stack>
                                 </Banner>
                             </Box>
                         </Box>

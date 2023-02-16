@@ -16,7 +16,7 @@ const Banner: React.FC<IBannerProps & BoxProps> = ({
     bgColor,
     ...rest
 }) => {
-    const patternOpacity = 0.3;
+    const patternOpacity = 0.1;
     const bgOpacity = 1;
     const bgFilter: FilterProps['filter'] = undefined;
     const patternColor: string = useColorModeValue('white', 'black');

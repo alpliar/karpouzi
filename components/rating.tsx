@@ -24,7 +24,7 @@ const Rating: React.FC<RatingProps & FlexProps> = ({
     const isIndividualRating = !count;
 
     return (
-        <Flex fontSize="sm" minH={8} {...rest}>
+        <Flex {...rest}>
             {isRated && (
                 <HStack alignItems="center">
                     <Flex as="span" align="center">
@@ -32,27 +32,17 @@ const Rating: React.FC<RatingProps & FlexProps> = ({
                             .fill('')
                             .map((_, i) => (
                                 <Icon
-                                    boxSize="2em"
+                                    boxSize="1rem"
                                     as={icon}
                                     key={i}
                                     color={i < rate / 20 ? 'currentColor' : 'gray.300'}
                                 />
                             ))}
                     </Flex>
-                    {isIndividualRating && (
-                        <Text as="strong" fontSize="xl">
-                            {rate / 20} / 5
-                        </Text>
-                    )}
+                    {isIndividualRating && <Text as="strong">{rate / 20} / 5</Text>}
                     {hasMultipleReviews && (
-                        <Text
-                            fontWeight="bold"
-                            /* isTruncated */ as="span"
-                            marginLeft={!!count ? 2 : 0}
-                            /*color="gray.600"*/
-                        >
+                        <Text fontWeight="bold" as="span" marginLeft={!!count ? 2 : 0}>
                             {f('noOfReviews', { count })}
-                            {/* {count} review(s) */}
                         </Text>
                     )}
                 </HStack>

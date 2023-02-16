@@ -1,4 +1,11 @@
-import { Button, Icon, Tooltip, useDisclosure, useMediaQuery } from '@chakra-ui/react';
+import {
+    Button,
+    Icon,
+    Tooltip,
+    useColorModeValue,
+    useDisclosure,
+    useMediaQuery
+} from '@chakra-ui/react';
 import { FaShoppingCart } from 'react-icons/fa';
 import { useIntl } from 'react-intl';
 import { ICartItem } from '../redux/container/addToCart';
@@ -41,7 +48,7 @@ const AddToCart: React.FC<IAddToCartProps> = ({
                 fontFamily="heading"
                 leftIcon={<Icon as={FaShoppingCart} />}
                 onClick={handleClick}
-                colorScheme="green"
+                colorScheme={useColorModeValue('green', 'yellow')}
                 onMouseEnter={onToggle}
                 onMouseOut={onToggle}>
                 {f('addToCart')}
