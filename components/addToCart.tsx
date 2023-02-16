@@ -1,4 +1,4 @@
-import { Button, Icon, Tooltip, useBreakpointValue } from '@chakra-ui/react';
+import { Button, Icon, Tooltip } from '@chakra-ui/react';
 import { FaShoppingCart } from 'react-icons/fa';
 import { useIntl } from 'react-intl';
 import { ICartItem } from '../redux/container/addToCart';
