@@ -1,5 +1,5 @@
 import { BellIcon, TriangleDownIcon } from '@chakra-ui/icons';
-import { Box, Heading, LinkBox, LinkOverlay, Stack, Text } from '@chakra-ui/layout';
+import { Box, Flex, Heading, LinkBox, LinkOverlay, Stack, Text } from '@chakra-ui/layout';
 import { useBreakpointValue } from '@chakra-ui/media-query';
 import { IconProps } from '@chakra-ui/react';
 import { ComponentWithAs } from '@chakra-ui/system';
@@ -50,55 +50,56 @@ const ProductCard: React.FC<IProps> = ({ product, ratingIcon = undefined }) => {
 
     return (
         <LinkBox>
-            <Card>
-                <Box
-                    position="relative"
-                    h={imageHeight}
-                    mt={-6}
-                    mx={-6}
-                    mb={6}
-                    pos={'relative'}
-                    overflow="hidden">
-                    {/* <Img
+            <Card fullHeight>
+                <Flex direction="column" height="100%">
+                    <Box
+                        position="relative"
+                        h={imageHeight}
+                        mt={-6}
+                        mx={-6}
+                        mb={6}
+                        pos={'relative'}
+                        overflow="hidden">
+                        {/* <Img
                         objectFit="cover"
                         minH={imageHeight}
                         src={product.coverPicture.asset.url || fallbackPicture}
                         alt={product.coverPicture.alternativeText}
                     /> */}
-                    <Image
-                        src={product.coverPicture.asset.url}
-                        alt={product.coverPicture.alternativeText}
-                        sizes={pictureSizes}
-                        priority
-                        height={imageHeight}
-                        quality={90}
-                        blurDataURL={product.coverPicture.asset.thumbnail}
-                        // bg="#282828"
-                        // width={{ base: 'full', sm: '100%' }}
-                        // h={{ base: '100vw', sm: 'auto' }}
-                        // overflow="hidden"
-                    />
-                    {isNew && (
-                        <ProductCardBadge
-                            icon={isNew ? BellIcon : TriangleDownIcon}
-                            text={isNew ? 'NEW' : '-20%'}
-                            positionX="right"
-                            positionY="top"
+                        <Image
+                            src={product.coverPicture.asset.url}
+                            alt={product.coverPicture.alternativeText}
+                            sizes={pictureSizes}
+                            priority
+                            height={imageHeight}
+                            quality={90}
+                            blurDataURL={product.coverPicture.asset.thumbnail}
+                            // bg="#282828"
+                            // width={{ base: 'full', sm: '100%' }}
+                            // h={{ base: '100vw', sm: 'auto' }}
+                            // overflow="hidden"
                         />
-                    )}
+                        {isNew && (
+                            <ProductCardBadge
+                                icon={isNew ? BellIcon : TriangleDownIcon}
+                                text={isNew ? 'NEW' : '-20%'}
+                                positionX="right"
+                                positionY="top"
+                            />
+                        )}
 
-                    {!isNew && (
-                        <ProductCardBadge
-                            icon={isNew ? BellIcon : TriangleDownIcon}
-                            text={isNew ? 'NEW' : '-20%'}
-                            positionX="right"
-                            positionY="bottom"
-                        />
-                    )}
-                </Box>
+                        {!isNew && (
+                            <ProductCardBadge
+                                icon={isNew ? BellIcon : TriangleDownIcon}
+                                text={isNew ? 'NEW' : '-20%'}
+                                positionX="right"
+                                positionY="bottom"
+                            />
+                        )}
+                    </Box>
 
-                <Stack spacing={2} height="full">
-                    {/* <Box d="flex" alignItems="baseline">
+                    <Stack spacing={2} flexGrow={1}>
+                        {/* <Box d="flex" alignItems="baseline">
                         <Box
                             color="white.800"
                             fontWeight="semibold"
@@ -110,39 +111,40 @@ const ProductCard: React.FC<IProps> = ({ product, ratingIcon = undefined }) => {
                         </Box>
                     </Box> */}
 
-                    <Box fontWeight="semibold" lineHeight="tight">
-                        <Link
-                            legacyBehavior
-                            passHref
-                            href={{
-                                pathname: '/shop/product/[slug]',
-                                query: { slug: product.slug }
-                            }}>
-                            <LinkOverlay
-                                _hover={{
-                                    textShadow: '0.5px 0.5px 0.5px teal'
+                        <Box fontWeight="semibold" lineHeight="tight" flexGrow={1}>
+                            <Link
+                                legacyBehavior
+                                passHref
+                                href={{
+                                    pathname: '/shop/product/[slug]',
+                                    query: { slug: product.slug }
                                 }}>
-                                <Heading size="md" textShadow="sm">
-                                    {productName}
-                                </Heading>
-                            </LinkOverlay>
-                        </Link>
-                    </Box>
+                                <LinkOverlay
+                                    _hover={{
+                                        textShadow: '0.5px 0.5px 0.5px teal'
+                                    }}>
+                                    <Heading size="md" textShadow="sm" flexGrow={1}>
+                                        {productName}
+                                    </Heading>
+                                </LinkOverlay>
+                            </Link>
+                        </Box>
 
-                    <Box>
-                        <Rating rate={rating} count={reviewCount} icon={ratingIcon} />
-                    </Box>
+                        <Box>
+                            <Rating rate={rating} count={reviewCount} icon={ratingIcon} />
+                        </Box>
 
-                    <Box>
-                        <Text as="b" fontSize="2xl">
-                            {formattedPrice}
-                        </Text>
-                        {` `}
-                        <Text as="span" fontSize="2xs">
-                            {measurementUnit}
-                        </Text>
-                    </Box>
-                </Stack>
+                        <Box>
+                            <Text as="b" fontSize="2xl">
+                                {formattedPrice}
+                            </Text>
+                            {` `}
+                            <Text as="span" fontSize="2xs">
+                                {measurementUnit}
+                            </Text>
+                        </Box>
+                    </Stack>
+                </Flex>
             </Card>
         </LinkBox>
     );
