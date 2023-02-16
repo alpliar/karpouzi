@@ -101,6 +101,7 @@ const SectionSideBySide: React.FC<Props> = ({ sections }) => {
                                         <Image
                                             sizes={imageSize}
                                             quality={75}
+                                            priority
                                             src={section.image}
                                             alt={section.title}
                                             w={imageSize}
