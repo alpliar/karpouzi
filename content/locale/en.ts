@@ -21,7 +21,9 @@ export const en = {
         noReviewsYet: 'No reviews yet',
         noOfReviews: '{count} review(s)',
         verifiedReview: 'Verified review',
-        addToCart: 'Add to cart'
+        addToCart: 'Add to cart',
+        addedToCart: 'Item added to cart',
+        noAlreadyInCart: 'Already {count} in cart'
     },
     '/': {
         welcomeMessage: 'Welcome to',

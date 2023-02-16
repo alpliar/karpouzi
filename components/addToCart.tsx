@@ -1,5 +1,6 @@
 import { Button, Icon, Tooltip, useBreakpointValue } from '@chakra-ui/react';
 import { FaShoppingCart } from 'react-icons/fa';
+import { useIntl } from 'react-intl';
 import { ICartItem } from '../redux/container/addToCart';
 import { sendToast } from '../utils/uiToast';
 interface IAddToCartProps {
@@ -11,15 +12,18 @@ interface IAddToCartProps {
 }
 
 const AddToCart: React.FC<IAddToCartProps> = ({ slug, quantity, inCart, addToCart, cart }) => {
+    const { formatMessage } = useIntl();
+    const f = (id: string, values: any = null) => formatMessage({ id }, values);
+
     const handleClick = () => {
         addToCart(slug, quantity, cart);
-        sendToast('Item added to cart', slug, 'success');
+        sendToast(f('addedToCart'), slug, 'success');
     };
 
     return (
         <Tooltip
             hasArrow
-            label={`Already ${inCart} in cart !`}
+            label={f('noAlreadyInCart', { count: inCart })}
             placement={useBreakpointValue({ base: 'bottom', md: 'right' })}
             isOpen={inCart > 0}>
             <Button
@@ -27,7 +31,7 @@ const AddToCart: React.FC<IAddToCartProps> = ({ slug, quantity, inCart, addToCar
                 leftIcon={<Icon as={FaShoppingCart} />}
                 onClick={handleClick}
                 colorScheme="green">
-                Add to cart
+                {f('addToCart')}
             </Button>
         </Tooltip>
     );

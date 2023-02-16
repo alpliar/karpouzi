@@ -21,7 +21,9 @@ export const es = {
         noReviewsYet: 'Aún no hay reseñas',
         noOfReviews: '{count} opinion(es)',
         verifiedReview: 'Reseña verificada',
-        addToCart: 'Añadir a la cesta'
+        addToCart: 'Añadir a la cesta',
+        addedToCart: 'Producto añadido a la cesta',
+        noAlreadyInCart: 'Ya {count} en la cesta'
     },
     '/': {
         welcomeMessage: 'Bienvenido a',
@@ -49,7 +51,7 @@ export const es = {
             '¡Bienvenido a nuestra tienda de comestibles en línea! Estamos encantados de ofrecerle una amplia selección de productos de calidad para satisfacer todas sus necesidades culinarias. Ya sea que esté buscando ingredientes frescos para preparar una comida saludable, deliciosos bocadillos para picar durante todo el día, o productos de abarrotes esenciales para llenar su despensa, encontrará todo eso y más en nuestro sitio web. Nos enorgullece trabajar en estrecha colaboración con productores locales y proveedores de confianza para garantizar la frescura y calidad de todos nuestros productos.'
     },
     '/shop/cart': {
-        title: 'Carrito',
+        title: 'Cesta',
         cartEmpty: 'Tu cesta está vacía 😊'
     },
     '/user/account': {

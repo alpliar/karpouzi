@@ -21,7 +21,9 @@ export const fr = {
         noReviewsYet: "Pas encore d'avis",
         noOfReviews: '{count} avis',
         verifiedReview: 'Avis vérifié',
-        addToCart: 'Ajouter au panier'
+        addToCart: 'Ajouter au panier',
+        addedToCart: 'Article ajouté au panier',
+        noAlreadyInCart: 'Déjà {count} au panier'
     },
     '/': {
         welcomeMessage: 'Bienvenue sur',

@@ -21,7 +21,9 @@ export const el = {
         noReviewsYet: 'Δεν υπάρχουν ακόμη κριτικές',
         noOfReviews: '{count} κριτικέ(ς)',
         verifiedReview: 'Επαληθευμένη κριτική',
-        addToCart: 'Προσθήκη στο καλάθι'
+        addToCart: 'Προσθήκη στο καλάθι',
+        addedToCart: 'Το αντικείμενο προστέθηκε στο καλάθι',
+        noAlreadyInCart: 'Ήδη {count} στο καλάθι'
     },
     '/': {
         welcomeMessage: 'καλώς ήλθατε στο',
