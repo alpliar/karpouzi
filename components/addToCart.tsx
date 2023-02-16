@@ -31,8 +31,6 @@ const AddToCart: React.FC<IAddToCartProps> = ({
 
     const [hasAccuratePointingDevice] = useMediaQuery('(pointer: fine)');
 
-    console.error(hasAccuratePointingDevice);
-
     return (
         <Tooltip
             hasArrow
