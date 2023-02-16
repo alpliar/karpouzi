@@ -1,4 +1,4 @@
-import { Button, Icon, Tooltip } from '@chakra-ui/react';
+import { Button, Icon, Tooltip, useDisclosure, useMediaQuery } from '@chakra-ui/react';
 import { FaShoppingCart } from 'react-icons/fa';
 import { useIntl } from 'react-intl';
 import { ICartItem } from '../redux/container/addToCart';
@@ -22,19 +22,30 @@ const AddToCart: React.FC<IAddToCartProps> = ({
 }) => {
     const { formatMessage } = useIntl();
     const f = (id: string, values: any = null) => formatMessage({ id }, values);
+    const { isOpen, onToggle } = useDisclosure();
 
     const handleClick = () => {
         addToCart(slug, quantity, cart);
         sendToast(f('addedToCart'), name, 'success');
     };
 
+    const [hasAccuratePointingDevice] = useMediaQuery('(pointer: fine)');
+
+    console.error(hasAccuratePointingDevice);
+
     return (
-        <Tooltip hasArrow label={f('noAlreadyInCart', { count: inCart })} isOpen={inCart > 0}>
+        <Tooltip
+            hasArrow
+            label={f('noAlreadyInCart', { count: inCart })}
+            isOpen={hasAccuratePointingDevice ? isOpen && inCart > 0 : inCart > 0}>
             <Button
+                my={isOpen || inCart > 0 ? 4 : undefined}
                 fontFamily="heading"
                 leftIcon={<Icon as={FaShoppingCart} />}
                 onClick={handleClick}
-                colorScheme="green">
+                colorScheme="green"
+                onMouseEnter={onToggle}
+                onMouseOut={onToggle}>
                 {f('addToCart')}
             </Button>
         </Tooltip>
