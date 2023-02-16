@@ -14,7 +14,10 @@ export const en = {
         newsletterSubscribe: 'Subscribe to our Newsletter',
         newsletterYourEmail: 'Your Email',
         newsletterSubscribed: "Thanks ! You won't receive any spam! ✌️",
-        newsletterError: 'Oh no an error occured! 😢 Please try again later.'
+        newsletterError: 'Oh no an error occured! 😢 Please try again later.',
+        nothingToDisplay: "Sorry, there's nothing here (yet) 😅",
+        sinceYoureHere: "Since you're here",
+        products: 'Products'
     },
     '/': {
         welcomeMessage: 'Welcome to',
@@ -40,6 +43,10 @@ export const en = {
         categories: 'Categories',
         shopDescription:
             "Welcome to our online grocery store! We are delighted to offer you a wide selection of quality products to meet all your culinary needs. Whether you're looking for fresh ingredients to prepare a healthy meal, tasty snacks to munch on throughout the day, or essential grocery products to stock your pantry, you'll find all that and more on our website. We take pride in working closely with local producers and trusted suppliers to ensure the freshness and quality of all our products."
+    },
+    '/shop/cart': {
+        title: 'Cart',
+        cartEmpty: 'Your cart is empty 😊'
     },
     '/user/account': {
         title: 'Account settings',
@@ -82,9 +89,7 @@ export const en = {
         rememberMe: 'Remember me',
         lostPassword: 'Forgot your password?'
     },
-    '/shop/category/[slug]': {
-        noProductsInCategory: "Sorry, there's nothing here (yet) 😅"
-    },
+    '/shop/category/[slug]': {},
     '/blog/post/[slug]': {
         noMinutesToRead: '{minutes} minutes de lecture'
     }

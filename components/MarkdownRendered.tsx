@@ -1,5 +1,5 @@
 /* eslint-disable react/display-name */
-import { Code, Heading, HeadingProps, Text } from '@chakra-ui/react';
+import { Code, Heading, HeadingProps, Stack, Text } from '@chakra-ui/react';
 import React, { PropsWithChildren } from 'react';
 import { Root } from 'remark-html';
 import Link from './link';
@@ -105,6 +105,10 @@ const Node = (node: any) => {
     );
 };
 
-const MarkdownRenderer = ({ ast }: { ast: Root }) => <Node {...ast} />;
+const MarkdownRenderer = ({ ast }: { ast: Root }) => (
+    <Stack spacing={6}>
+        <Node {...ast} />
+    </Stack>
+);
 
 export default React.memo(MarkdownRenderer);

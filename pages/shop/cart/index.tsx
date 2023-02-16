@@ -1,26 +1,39 @@
-import { Alert, AlertIcon, SimpleGrid } from '@chakra-ui/react';
+import { SimpleGrid } from '@chakra-ui/react';
+import { useIntl } from 'react-intl';
 import { useSelector } from 'react-redux';
 import CartItem from '../../../components/cartItem';
+import NoContentBanner from '../../../components/NoContentBanner';
 import PageListingLayout from '../../../components/pageListingLayout';
 import ShopStat from '../../../components/shopStat';
 import { RootState } from '../../../redux/reducer';
 
 export default function CartPage() {
+    const intl = useIntl();
     const { cart } = useSelector((state: RootState) => state.client.shop);
 
     return (
         <PageListingLayout
-            title="Cart"
+            title={intl.formatMessage({ id: 'title' })}
             breadcrumbs={[
                 {
-                    text: 'Shop',
+                    text: intl.formatMessage({ id: 'menuEntryShop' }),
                     link: '/shop',
-                    alt: 'go to shop home',
+                    alt: intl.formatMessage(
+                        { id: 'goToPageName' },
+                        { name: intl.formatMessage({ id: 'menuEntryShop' }) }
+                    ),
                     isCurrentPage: false
                 },
-                { text: 'Cart', link: '', alt: '', isCurrentPage: true }
+                {
+                    text: intl.formatMessage({ id: 'title' }),
+                    link: '',
+                    alt: '',
+                    isCurrentPage: true
+                }
             ]}
-            titleSlot={<ShopStat label="Items" number={cart.length} />}>
+            titleSlot={
+                <ShopStat label={intl.formatMessage({ id: 'products' })} number={cart.length} />
+            }>
             {cart.length > 0 && (
                 <SimpleGrid columns={{ base: 1, md: 2 }} spacingX="0.5em" spacingY="1em">
                     {cart.map((item, index) => (
@@ -34,10 +47,19 @@ export default function CartPage() {
             )}
 
             {cart.length === 0 && (
-                <Alert status="info">
-                    <AlertIcon />
-                    {`You don't have any product in your cart !`}
-                </Alert>
+                <NoContentBanner
+                    text={intl.formatMessage({ id: 'cartEmpty' })}
+                    helperText={intl.formatMessage({ id: 'sinceYoureHere' })}
+                    links={[
+                        {
+                            href: '/shop',
+                            text: intl.formatMessage(
+                                { id: 'goToPageName' },
+                                { name: intl.formatMessage({ id: 'menuEntryShop' }) }
+                            )
+                        }
+                    ]}
+                />
             )}
         </PageListingLayout>
     );

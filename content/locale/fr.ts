@@ -14,7 +14,10 @@ export const fr = {
         newsletterSubscribe: 'Inscription à notre liste de diffusion',
         newsletterYourEmail: 'Votre email',
         newsletterSubscribed: 'Merci ! Vous ne recevrez aucun spam ! ✌️',
-        newsletterError: 'Oh non, une erreur a eu lieu ! 😢 Veuillez réessayer plus tard.'
+        newsletterError: 'Oh non, une erreur a eu lieu ! 😢 Veuillez réessayer plus tard.',
+        nothingToDisplay: "Désolé, il n'y a rien ici (pour le moment) 😅",
+        sinceYoureHere: 'Puisque vous êtes là',
+        products: 'Produits'
     },
     '/': {
         welcomeMessage: 'Bienvenue sur',
@@ -40,6 +43,10 @@ export const fr = {
         categories: 'Catégories',
         shopDescription:
             "Bienvenue sur notre épicerie en ligne ! Nous sommes ravis de vous proposer une large sélection de produits de qualité pour répondre à tous vos besoins culinaires. Que vous cherchiez des ingrédients frais pour préparer un repas sain, des collations savoureuses pour grignoter tout au long de la journée, ou des produits d'épicerie essentiels pour remplir votre garde-manger, vous trouverez tout cela et bien plus encore sur notre site. Nous sommes fiers de travailler en étroite collaboration avec des producteurs locaux et des fournisseurs de confiance pour garantir la fraîcheur et la qualité de tous nos produits."
+    },
+    '/shop/cart': {
+        title: 'Panier',
+        cartEmpty: 'Votre panier est vide 😊'
     },
     '/user/account': {
         title: 'Paramètres du compte',
@@ -82,11 +89,7 @@ export const fr = {
         rememberMe: 'Rester connecté',
         lostPassword: 'Mot de passe perdu ?'
     },
-    '/shop/category/[slug]': {
-        noProductsInCategory: "Désolé, il n'y a rien ici (pour le moment) 😅",
-        products: 'Produits',
-        sinceYoureHere: 'Puisque vous êtes là'
-    },
+    '/shop/category/[slug]': {},
     '/blog/post/[slug]': {
         noMinutesToRead: '{minutes} minutes de lecture'
     }

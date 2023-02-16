@@ -14,7 +14,10 @@ export const es = {
         newsletterSubscribe: 'Suscríbete a nuestro boletín',
         newsletterYourEmail: 'Tu correo electrónico',
         newsletterSubscribed: '¡Gracias! ¡No recibirás spam! ✌️',
-        newsletterError: '¡Oh no! ¡Ha ocurrido un error! 😢 Por favor, intenta de nuevo más tarde.'
+        newsletterError: '¡Oh no! ¡Ha ocurrido un error! 😢 Por favor, intenta de nuevo más tarde.',
+        nothingToDisplay: 'Lo siento, no hay nada aquí (por el momento) 😅',
+        sinceYoureHere: 'Desde que estás aquí',
+        products: 'Productos'
     },
     '/': {
         welcomeMessage: 'Bienvenido a',
@@ -40,6 +43,10 @@ export const es = {
         categories: 'Categorías',
         shopDescription:
             '¡Bienvenido a nuestra tienda de comestibles en línea! Estamos encantados de ofrecerle una amplia selección de productos de calidad para satisfacer todas sus necesidades culinarias. Ya sea que esté buscando ingredientes frescos para preparar una comida saludable, deliciosos bocadillos para picar durante todo el día, o productos de abarrotes esenciales para llenar su despensa, encontrará todo eso y más en nuestro sitio web. Nos enorgullece trabajar en estrecha colaboración con productores locales y proveedores de confianza para garantizar la frescura y calidad de todos nuestros productos.'
+    },
+    '/shop/cart': {
+        title: 'Carrito',
+        cartEmpty: 'Tu cesta está vacía 😊'
     },
     '/user/account': {
         title: 'Configuraciones de la cuenta',
@@ -83,11 +90,7 @@ export const es = {
         rememberMe: 'Recuérdame',
         lostPassword: 'Olvidaste tu contraseña ?'
     },
-    '/shop/category/[slug]': {
-        noProductsInCategory: 'Lo siento, no hay nada aquí (por el momento) 😅',
-        products: 'Productos',
-        sinceYoureHere: 'Desde que estás aquí'
-    },
+    '/shop/category/[slug]': {},
     '/blog/post/[slug]': {
         noMinutesToRead: '{minutes} minutos de lectura'
     }
