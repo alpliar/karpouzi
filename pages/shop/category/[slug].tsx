@@ -109,7 +109,7 @@ const CategoryPage: NextPage<CategoryPageProps> = ({ category }) => {
                 </SimpleGrid>
             ) : (
                 <NoContentBanner
-                    text={f('noProductsInCategory')}
+                    text={f('nothingToDisplay')}
                     helperText={f('sinceYoureHere')}
                     links={[
                         {
