@@ -200,21 +200,14 @@ const ProductPage: NextPage<ProductPageProps> = ({ product, description, localiz
                                     priority
                                     quality={100}
                                     blurDataURL={product.coverPicture.asset.thumbnail}
-                                    // bg="#282828"
-                                    // width={{ base: 'full', sm: '100%' }}
-                                    // h={{ base: '100vw', sm: 'auto' }}
-                                    // overflow="hidden"
                                 />
                             </AspectRatio>
                         </Polaroid>
 
-                        <Box
-                            bg=""
-                            p={4}
-                            textAlign={{ base: 'center', md: 'left' }}
-                            // transform={{ base: 'rotate(0deg)', md: 'rotate(-1deg)' }}
-                        >
-                            {/* <Heading>{title}</Heading> */}
+                        <Box bg="" p={4} textAlign={{ base: 'center', md: 'left' }}>
+                            <Heading as="p" fontSize="2xl">
+                                {productName}
+                            </Heading>
 
                             <Rating rate={rate} count={reviewCount} />
 
