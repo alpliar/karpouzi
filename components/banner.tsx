@@ -39,7 +39,7 @@ const Banner: React.FC<IBannerProps & BoxProps> = ({
             fontSize="4xl"
             position="relative">
             {/* <Box zIndex="banner" rounded="xl" bgColor={bgColor}> */}
-            <Box zIndex="banner" rounded="xl" {...rest}>
+            <Box zIndex={1} rounded="xl" {...rest}>
                 {children}
             </Box>
             <Box

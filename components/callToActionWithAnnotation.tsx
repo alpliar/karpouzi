@@ -32,7 +32,12 @@ const CallToActionWithAnnotation: React.FC<IProps> = ({
             <Container maxW="3xl" paddingY={16}>
                 <Stack as={Box} spacing={{ base: 8, md: 7 }} py={{ base: 4, md: 15 }}>
                     <Heading fontSize={{ base: '4xl', sm: '6xl', md: '6xl' }}>{title}</Heading>
-                    <Text fontSize="xl" fontWeight="bold" fontStyle="italic" textAlign="center">
+                    <Text
+                        pb={{ base: 8, md: 4 }}
+                        fontSize="xl"
+                        fontWeight="bold"
+                        fontStyle="italic"
+                        textAlign="center">
                         {description}
                     </Text>
                     <Stack
@@ -75,24 +80,29 @@ const CallToActionWithAnnotation: React.FC<IProps> = ({
                                     base: useColorModeValue('gray.800', 'gray.300'),
                                     sm: 'inherit'
                                 }}
-                                w={{ base: 50, sm: 71 }}
+                                w={{ base: 50, md: 71 }}
                                 position="absolute"
                                 transition={BASE_TRANSITION}
-                                right={{ base: -50, sm: -71 }}
+                                right={{ base: -50, md: -71 }}
                                 top="10px"
                                 transform={{
-                                    base: 'scale(.5) rotate(-38deg) translate(-20px, -14px)',
-                                    sm: 'scale(1)'
+                                    base: 'scale(.8) rotate(-90deg) translateY(-45px) translateX(30px)',
+                                    // sm: 'rotate(-90deg) translateY(-35px) translateX(30px) scale(1)'
+                                    // base: 'scale(.5) rotate(-38deg) translate(-20px, -14px)',
+                                    md: 'scale(1)'
                                 }}
                             />
                             <Text
-                                fontSize="3xl"
+                                fontSize={{ base: 'xl', md: '2xl' }}
                                 fontFamily="Caveat"
                                 position="absolute"
-                                right={{ base: '-35px', sm: '-90px', md: '-100px', lg: '-115px' }}
-                                top={{ base: '-45px', sm: '-20px' }}
+                                right={{ base: '-35px', md: '-100px', lg: '-115px' }}
+                                top={{ base: '-45px', md: '-25px' }}
                                 transition={BASE_TRANSITION}
-                                transform={{ base: 'rotate(5deg)', sm: 'rotate(10deg)' }}>
+                                transform={{
+                                    base: 'rotate(0deg) translateX(-50%) translateY(10px)',
+                                    md: 'rotate(10deg)'
+                                }}>
                                 {primaryActionAnnotation}
                             </Text>
                         </Box>
