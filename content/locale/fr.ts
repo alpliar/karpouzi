@@ -18,7 +18,9 @@ export const fr = {
         nothingToDisplay: "Désolé, il n'y a rien ici (pour le moment) 😅",
         sinceYoureHere: 'Puisque vous êtes là',
         products: 'Produits',
+        reviews: 'Avis',
         noReviewsYet: "Pas encore d'avis",
+        beTheFirstToLeaveReview: "Pas encore d'avis, soyez la·le premier·ère à le faire !",
         noOfReviews: '{count} avis',
         verifiedReview: 'Avis vérifié',
         addToCart: 'Ajouter au panier',
@@ -94,6 +96,9 @@ export const fr = {
         passwordReassurance: 'Choisissez un mot de passe sécurisé !',
         rememberMe: 'Rester connecté',
         lostPassword: 'Mot de passe perdu ?'
+    },
+    '/shop/product/[slug]': {
+        fondOfName: 'Amateur·ice de {name} ?'
     },
     '/shop/category/[slug]': {},
     '/blog/post/[slug]': {

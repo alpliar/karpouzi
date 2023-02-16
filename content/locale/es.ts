@@ -18,7 +18,9 @@ export const es = {
         nothingToDisplay: 'Lo siento, no hay nada aquí (por el momento) 😅',
         sinceYoureHere: 'Desde que estás aquí',
         products: 'Productos',
-        noReviewsYet: 'Aún no hay reseñas',
+        reviews: 'Opiniones',
+        noReviewsYet: 'Aún no hay opiniones',
+        beTheFirstToLeaveReview: 'Aún no hay reseñas, ¡sé el primero en hacerlo!',
         noOfReviews: '{count} opinion(es)',
         verifiedReview: 'Reseña verificada',
         addToCart: 'Añadir a la cesta',
@@ -95,6 +97,9 @@ export const es = {
         passwordReassurance: 'Elegir sabiamente !',
         rememberMe: 'Recuérdame',
         lostPassword: 'Olvidaste tu contraseña ?'
+    },
+    '/shop/product/[slug]': {
+        fondOfName: 'Aficionado de {name} ?'
     },
     '/shop/category/[slug]': {},
     '/blog/post/[slug]': {

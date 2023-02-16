@@ -236,9 +236,9 @@ const ProductPage: NextPage<ProductPageProps> = ({ product, description, localiz
                             </Box>
                         </Box>
                     </SimpleGrid>
-                    <Banner pattern="wiggle">
-                        <Stack maxW="md" fontSize="sm" fontWeight="bold" p={3}>
-                            <Heading>Fond of {category.name} ?</Heading>
+                    <Banner pattern="iLikeFood">
+                        <Stack maxW="lg" fontSize="sm" fontWeight="bold" p={3} spacing={4}>
+                            <Heading>{f('fondOfName', { name: category.name })}</Heading>
                             <Text>
                                 Lorem ipsum dolor sit amet consectetur, adipisicing elit. Earum
                                 minima quaerat fugit ullam illo ipsa perspiciatis sit voluptatem!

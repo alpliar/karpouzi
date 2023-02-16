@@ -18,7 +18,9 @@ export const en = {
         nothingToDisplay: "Sorry, there's nothing here (yet) 😅",
         sinceYoureHere: "Since you're here",
         products: 'Products',
+        reviews: 'Reviews',
         noReviewsYet: 'No reviews yet',
+        beTheFirstToLeaveReview: 'No reviews yet, be the first to do it !',
         noOfReviews: '{count} review(s)',
         verifiedReview: 'Verified review',
         addToCart: 'Add to cart',
@@ -94,6 +96,9 @@ export const en = {
         passwordReassurance: 'Choose wisely !',
         rememberMe: 'Remember me',
         lostPassword: 'Forgot your password?'
+    },
+    '/shop/product/[slug]': {
+        fondOfName: 'Fond of {name} ?'
     },
     '/shop/category/[slug]': {},
     '/blog/post/[slug]': {

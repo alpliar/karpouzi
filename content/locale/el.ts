@@ -18,7 +18,9 @@ export const el = {
         nothingToDisplay: 'Λυπούμαστε, δεν υπάρχουν προϊόντα εδώ (προς το παρόν) 😅',
         sinceYoureHere: 'Αφού είσαι εδώ',
         products: 'Προϊόντα',
+        reviews: 'κριτικές',
         noReviewsYet: 'Δεν υπάρχουν ακόμη κριτικές',
+        beTheFirstToLeaveReview: "Pas encore d'avis, soyez le/la premier·ère à le faire !",
         noOfReviews: '{count} κριτικέ(ς)',
         verifiedReview: 'Επαληθευμένη κριτική',
         addToCart: 'Προσθήκη στο καλάθι',
@@ -96,6 +98,9 @@ export const el = {
         passwordReassurance: 'Επιλέξτε με σύνεση!',
         rememberMe: 'Θυμήσου με',
         lostPassword: 'Ξεχάσατε τον κωδικό σας;'
+    },
+    '/shop/product/[slug]': {
+        fondOfName: 'Ερασιτέχνης του {name};'
     },
     '/shop/category/[slug]': {},
     '/blog/post/[slug]': {
