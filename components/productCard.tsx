@@ -5,6 +5,7 @@ import { IconProps } from '@chakra-ui/react';
 import { ComponentWithAs } from '@chakra-ui/system';
 import Link from 'next/link';
 import { IconType } from 'react-icons';
+import { useIntl } from 'react-intl';
 import Product from '../graphql/models/shop/product.model';
 import Card from './card';
 import { Image } from './image';
@@ -25,13 +26,18 @@ interface IProps {
 }
 
 const ProductCard: React.FC<IProps> = ({ product, ratingIcon = undefined }) => {
+    const { formatNumber } = useIntl();
     const imageHeight = useBreakpointValue({ base: 64 /*, sm: 48, md: 48, lg: 64  */ });
     const pictureSizes = useBreakpointValue({ base: '100vw', md: '33vw' });
 
     // const fallbackPicture = '';
     const isNew = true;
     const price = product.prices.find(({ currency }) => currency === 'EUR');
-    const formattedPrice = `${price?.amount} ${price?.currency}`;
+    const formattedPrice =
+        formatNumber(Number(price?.amount), {
+            style: 'currency',
+            currency: price?.currency
+        }) || '???';
     const reviewCount = product.reviews.length;
     const rating =
         product.reviews.map((rev) => rev.rating).reduce((a, b) => a + b, 0) / reviewCount;
