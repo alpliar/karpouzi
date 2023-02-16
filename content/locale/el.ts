@@ -85,5 +85,8 @@ export const el = {
         noProductsInCategory: 'Λυπούμαστε, δεν υπάρχουν προϊόντα εδώ (προς το παρόν) 😅',
         products: 'Προϊόντα',
         sinceYoureHere: 'Αφού είσαι εδώ'
+    },
+    '/blog/post/[slug]': {
+        noMinutesToRead: '{minutes} λεπτά ανάγνωσης'
     }
 };

@@ -6,6 +6,7 @@ import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { GiFountainPen, GiOpenBook } from 'react-icons/gi';
+import { useIntl } from 'react-intl';
 import { Root } from 'remark-html';
 import BlockQuote from '../../../components/blockQuote';
 import Date from '../../../components/Date';
@@ -80,6 +81,9 @@ const BlogPostPage = ({ post, postContent }: { post: BlogPost; postContent: Root
     const { asPath } = useRouter();
     const pictureSizes = useBreakpointValue({ base: '100vw', md: '50vw' });
 
+    const intl = useIntl();
+    const f = (id: string, values?: any) => intl.formatMessage({ id }, values);
+
     if (!post) return null;
 
     const authorName = post.authors[0].firstName;
@@ -116,9 +120,12 @@ const BlogPostPage = ({ post, postContent }: { post: BlogPost; postContent: Root
                 title={post.title}
                 breadcrumbs={[
                     {
-                        text: 'Blog',
+                        text: f('menuEntryBlog'),
                         link: '/blog',
-                        alt: 'go back to blog home',
+                        alt: intl.formatMessage(
+                            { id: 'goToPageName' },
+                            { name: f('menuEntryBlog') }
+                        ),
                         isCurrentPage: false
                     },
                     { text: post.slug, link: '', alt: '', isCurrentPage: true }
@@ -127,7 +134,7 @@ const BlogPostPage = ({ post, postContent }: { post: BlogPost; postContent: Root
                     <Stack spacing={0}>
                         <HStack>
                             <Icon as={GiOpenBook} />
-                            <Text>{post.timeToRead} min read</Text>
+                            <Text>{f('noMinutesToRead', { minutes: post.timeToRead })}</Text>
                         </HStack>
                         <HStack>
                             <Icon as={GiFountainPen} />

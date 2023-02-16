@@ -84,5 +84,8 @@ export const es = {
         noProductsInCategory: 'Lo siento, no hay nada aquí (por el momento) 😅',
         products: 'Productos',
         sinceYoureHere: 'Desde que estás aquí'
+    },
+    '/blog/post/[slug]': {
+        noMinutesToRead: '{minutes} minutos de lectura'
     }
 };

@@ -81,5 +81,8 @@ export const en = {
     },
     '/shop/category/[slug]': {
         noProductsInCategory: "Sorry, there's nothing here (yet) 😅"
+    },
+    '/blog/post/[slug]': {
+        noMinutesToRead: '{minutes} minutes de lecture'
     }
 };
