@@ -9,7 +9,8 @@ import {
     SimpleGrid,
     Stack,
     Text,
-    useBreakpointValue
+    useBreakpointValue,
+    useColorModeValue
 } from '@chakra-ui/react';
 import axios from 'axios';
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
@@ -21,7 +22,6 @@ import Banner from '../../../components/banner';
 import { Image } from '../../../components/image';
 import MarkdownRendered from '../../../components/MarkdownRendered';
 import PageListingLayout from '../../../components/pageListingLayout';
-import Polaroid from '../../../components/polaroid';
 import Rating from '../../../components/rating';
 import Reviews from '../../../components/Reviews';
 import { API_BASE_URL } from '../../../constants/api';
@@ -111,8 +111,8 @@ const ProductPage: NextPage<ProductPageProps> = ({ product, description, localiz
     const { formatMessage, formatNumber } = useIntl();
     const f = (id: string, values: any = null) => formatMessage({ id }, values);
 
-    const showAsPolaroid = useBreakpointValue({ base: false, xl: true });
     const pictureSizes = useBreakpointValue({ base: '320px', md: '640px' });
+    const bgColor = useColorModeValue('yellow.300', 'yellow.700');
 
     if (!product) return null;
 
@@ -191,8 +191,10 @@ const ProductPage: NextPage<ProductPageProps> = ({ product, description, localiz
             <Container p={{ base: 0 }} maxW="full">
                 <Stack spacing={16}>
                     <SimpleGrid columns={{ base: 1, md: 2 }} spacing={{ md: '1em' }}>
-                        <Polaroid title={productName} unstyled={!showAsPolaroid}>
-                            <AspectRatio ratio={1 / 1}>
+                        <Box position="relative">
+                            <AspectRatio
+                                ratio={{ base: 3 / 2, md: 1 }}
+                                maxH={{ sm: 'sm', md: 'sm', lg: 'inherit' }}>
                                 <Image
                                     src={product.coverPicture.asset.url}
                                     alt={product.coverPicture.alternativeText}
@@ -203,29 +205,45 @@ const ProductPage: NextPage<ProductPageProps> = ({ product, description, localiz
                                     blurDataURL={product.coverPicture.asset.thumbnail}
                                 />
                             </AspectRatio>
-                        </Polaroid>
 
-                        <Box bg="" p={4} textAlign={{ base: 'center', md: 'left' }}>
-                            <Heading as="p" fontSize="2xl">
-                                {productName}
-                            </Heading>
+                            <Box position={{ sm: 'absolute' }} top={0} right={0}>
+                                <Banner
+                                    height="inherit"
+                                    paddingX={{ base: 4, lg: 8 }}
+                                    paddingY={{ base: 2, lg: 4 }}
+                                    pattern="topography"
+                                    bgColor={bgColor}>
+                                    <>
+                                        <Heading as="p" fontSize="3xl">
+                                            {productName}
+                                        </Heading>
 
-                            <Rating rate={rate} count={reviewCount} />
+                                        <Rating rate={rate} count={reviewCount} justify="center" />
 
-                            <Text fontSize="4xl" fontWeight="bolder">
-                                {formatNumber(firstPrice.amount, {
-                                    style: 'currency',
-                                    currency: firstPrice.currency
-                                })}
-                            </Text>
+                                        <Divider my={2} w="100%" />
 
-                            <AddToCart slug={product.slug} name={productName} quantity={1} />
+                                        <Text fontSize="3xl" lineHeight="1em" fontWeight="bold">
+                                            {formatNumber(firstPrice.amount, {
+                                                style: 'currency',
+                                                currency: firstPrice.currency
+                                            })}
+                                        </Text>
 
-                            <Divider my={4} w="100%" />
+                                        <AddToCart
+                                            slug={product.slug}
+                                            name={productName}
+                                            quantity={1}
+                                        />
+                                    </>
+                                </Banner>
+                            </Box>
+                        </Box>
 
+                        <Stack bg="" p={4} textAlign={{ base: 'center', md: 'left' }} spacing={4}>
+                            <Heading as="h2">{f('description')}</Heading>
                             <Box
-                                padding={{ base: '1rem', xl: '1.5rem' }}
-                                maxH={{ base: undefined, md: '96' }}
+                                // padding={{ base: '1rem', xl: '1.5rem' }}
+                                maxH={{ base: undefined, md: 'md' }}
                                 overflow="auto">
                                 <Stack
                                     spacing={5}
@@ -235,7 +253,7 @@ const ProductPage: NextPage<ProductPageProps> = ({ product, description, localiz
                                     <MarkdownRendered ast={productDescription} />
                                 </Stack>
                             </Box>
-                        </Box>
+                        </Stack>
                     </SimpleGrid>
                     <Banner pattern="iLikeFood">
                         <Stack maxW="lg" fontSize="sm" fontWeight="bold" p={3} spacing={4}>

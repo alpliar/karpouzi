@@ -99,7 +99,8 @@ export const es = {
         lostPassword: 'Olvidaste tu contraseña ?'
     },
     '/shop/product/[slug]': {
-        fondOfName: 'Aficionado de {name} ?'
+        fondOfName: 'Aficionado de {name} ?',
+        description: 'Descripción'
     },
     '/shop/category/[slug]': {},
     '/blog/post/[slug]': {

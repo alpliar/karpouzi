@@ -1,9 +1,9 @@
 export const el = {
     common: {
         commonSiteName: 'καρπούζι',
-        home: 'αρχή',
+        home: 'Αρχή',
         menuEntryBlog: 'Ιστολόγιο',
-        menuEntryShop: 'κατάστημα',
+        menuEntryShop: 'Κατάστημα',
         goToPageName: 'μεταβείτε στη σελίδ {name}',
         openMenu: 'ανοίξτε το μενού',
         feelingLost: 'Νιώθεις χαμένος;',
@@ -100,7 +100,8 @@ export const el = {
         lostPassword: 'Ξεχάσατε τον κωδικό σας;'
     },
     '/shop/product/[slug]': {
-        fondOfName: 'Ερασιτέχνης του {name};'
+        fondOfName: 'Ερασιτέχνης του {name};',
+        description: 'Περιγραφή'
     },
     '/shop/category/[slug]': {},
     '/blog/post/[slug]': {

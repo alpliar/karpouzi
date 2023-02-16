@@ -1,17 +1,22 @@
 import Icon from '@chakra-ui/icon';
-import { Flex, HStack, IconProps, Text } from '@chakra-ui/react';
+import { Flex, FlexProps, HStack, IconProps, Text } from '@chakra-ui/react';
 import { ComponentWithAs } from '@chakra-ui/system';
 import { IconType } from 'react-icons';
 import { GiWatermelon } from 'react-icons/gi';
 import { useIntl } from 'react-intl';
 
-interface IOwnProps {
+interface RatingProps {
     rate: number;
     count?: number;
     icon?: ComponentWithAs<'svg', IconProps> | IconType | undefined;
 }
 
-const Rating = ({ rate, count, icon = GiWatermelon }: IOwnProps) => {
+const Rating: React.FC<RatingProps & FlexProps> = ({
+    rate,
+    count,
+    icon = GiWatermelon,
+    ...rest
+}) => {
     const { formatMessage } = useIntl();
     const f = (id: string, values: any = null) => formatMessage({ id }, values);
     const isRated = (rate as number) > 0;
@@ -19,7 +24,7 @@ const Rating = ({ rate, count, icon = GiWatermelon }: IOwnProps) => {
     const isIndividualRating = !count;
 
     return (
-        <Flex fontSize="sm" alignItems="center" minH={8}>
+        <Flex fontSize="sm" minH={8} {...rest}>
             {isRated && (
                 <HStack alignItems="center">
                     <Text as="span">

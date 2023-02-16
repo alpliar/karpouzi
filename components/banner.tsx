@@ -8,7 +8,6 @@ interface IBannerProps {
     height?: LayoutProps['height'];
     bgColor?: BoxProps['bgColor'];
     pattern?: Pattern;
-    other?: BoxProps[];
 }
 const Banner: React.FC<IBannerProps & BoxProps> = ({
     children,

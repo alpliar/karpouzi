@@ -98,7 +98,8 @@ export const en = {
         lostPassword: 'Forgot your password?'
     },
     '/shop/product/[slug]': {
-        fondOfName: 'Fond of {name} ?'
+        fondOfName: 'Fond of {name} ?',
+        description: 'Description'
     },
     '/shop/category/[slug]': {},
     '/blog/post/[slug]': {
