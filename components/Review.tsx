@@ -18,7 +18,7 @@ const Review: React.FC<Props> = ({ review }) => {
     if (!review) return null;
     return (
         <Stack spacing={1} padding={5} rounded="md" bg="blackAlpha.100">
-            <Text as="cite" fontFamily="cursive" fontSize="2xl">
+            <Text as="cite" fontFamily="Patrick Hand" fontSize="2xl">
                 {review.message}
             </Text>
 
