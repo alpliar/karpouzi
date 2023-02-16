@@ -92,10 +92,7 @@ const SectionSideBySide: React.FC<Props> = ({ sections }) => {
                                 </Link>
                             </Box>
 
-                            <Banner
-                                pattern="linesInMotion"
-                                height={{ base: '75%', md: '50%', xl: '75%' }}
-                                bgColor={bgColor}>
+                            <Banner pattern="linesInMotion" height="75%" bgColor={bgColor}>
                                 <Center>
                                     <Box w={imageSize} h={imageSize} rounded="xl" overflow="hidden">
                                         <Image
