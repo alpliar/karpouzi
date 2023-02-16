@@ -1,18 +1,9 @@
-import {
-    Center,
-    SimpleGrid,
-    Stack,
-    Text,
-    useColorModeValue,
-    Wrap,
-    WrapItem
-} from '@chakra-ui/react';
+import { SimpleGrid } from '@chakra-ui/react';
 import axios from 'axios';
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import { useIntl } from 'react-intl';
-import Banner from '../../../components/banner';
 import BlockQuote from '../../../components/blockQuote';
-import Link from '../../../components/link';
+import NoContentBanner from '../../../components/NoContentBanner';
 import PageListingLayout from '../../../components/pageListingLayout';
 import ProductCard from '../../../components/productCard';
 import ShopStat from '../../../components/shopStat';
@@ -85,7 +76,6 @@ const CategoryPage: NextPage<CategoryPageProps> = ({ category }) => {
     const { formatMessage } = useIntl();
     const f = (id: string, values: any = null) => formatMessage({ id }, values);
 
-    const noProductBackground = useColorModeValue('orange.400', 'orange.800');
     if (!category) return null;
 
     return (
@@ -118,40 +108,20 @@ const CategoryPage: NextPage<CategoryPageProps> = ({ category }) => {
                     })}
                 </SimpleGrid>
             ) : (
-                <Banner
-                    pattern="wiggle"
-                    bgColor={noProductBackground}
-                    height="inherit"
-                    padding={16}>
-                    <Center fontFamily="heading" fontSize={{ base: '2xl', lg: '4xl' }}>
-                        <Stack spacing={8}>
-                            <Text maxW="20ch">{f('noProductsInCategory')}</Text>
-                            <Stack spacing={4}>
-                                <Text fontSize={{ base: 'sm' }}>{f('sinceYoureHere')}</Text>
-                                <Wrap justify="center">
-                                    <WrapItem>
-                                        <Link
-                                            maxW={4}
-                                            asButton
-                                            href="/shop"
-                                            buttonProps={{ size: 'sm' }}>
-                                            {f('goToPageName', { name: 'shop' })}
-                                        </Link>
-                                    </WrapItem>
-                                    <WrapItem>
-                                        <Link
-                                            maxW={4}
-                                            asButton
-                                            href="/"
-                                            buttonProps={{ size: 'sm' }}>
-                                            {f('goToPageName', { name: 'home' })}
-                                        </Link>
-                                    </WrapItem>
-                                </Wrap>
-                            </Stack>
-                        </Stack>
-                    </Center>
-                </Banner>
+                <NoContentBanner
+                    text={f('noProductsInCategory')}
+                    helperText={f('sinceYoureHere')}
+                    links={[
+                        {
+                            href: '/shop',
+                            text: f('goToPageName', { name: f('menuEntryShop') })
+                        },
+                        {
+                            href: '/blog',
+                            text: f('goToPageName', { name: f('menuEntryBlog') })
+                        }
+                    ]}
+                />
             )}
         </PageListingLayout>
     );
