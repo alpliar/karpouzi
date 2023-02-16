@@ -29,11 +29,7 @@ const AddToCart: React.FC<IAddToCartProps> = ({
     };
 
     return (
-        <Tooltip
-            hasArrow
-            label={f('noAlreadyInCart', { count: inCart })}
-            placement={useBreakpointValue({ base: 'bottom', md: 'right' })}
-            isOpen={inCart > 0}>
+        <Tooltip hasArrow label={f('noAlreadyInCart', { count: inCart })} isOpen={inCart > 0}>
             <Button
                 fontFamily="heading"
                 leftIcon={<Icon as={FaShoppingCart} />}
