@@ -112,7 +112,7 @@ const ProductPage: NextPage<ProductPageProps> = ({ product, description, localiz
     const f = (id: string, values: any = null) => formatMessage({ id }, values);
 
     const pictureSizes = useBreakpointValue({ base: '320px', md: '640px' });
-    const bgColor = useColorModeValue('yellow.300', 'yellow.700');
+    const bgColor = useColorModeValue('gold', 'darkorchid');
 
     if (!product) return null;
 
