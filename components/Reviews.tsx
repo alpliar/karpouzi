@@ -1,4 +1,4 @@
-import { Heading, Stack, Text } from '@chakra-ui/react';
+import { Heading, SimpleGrid, Stack, Text } from '@chakra-ui/react';
 import React from 'react';
 import { useIntl } from 'react-intl';
 import Review from '../graphql/models/common/review.model';
@@ -14,15 +14,17 @@ const Reviews: React.FC<ReviewsProps> = ({ reviews }) => {
 
     return (
         <>
-            <Heading>{f('reviews')}</Heading>
-            {!reviews.length && <Text>{f('beTheFirstToLeaveReview')}</Text>}
-            {reviews.length > 0 && (
-                <Stack>
-                    {reviews.map((review) => {
-                        return <ReviewComponent review={review} key={review.id} />;
-                    })}
-                </Stack>
-            )}
+            <Stack spacing={8}>
+                <Heading>{f('reviews')}</Heading>
+                {!reviews.length && <Text>{f('beTheFirstToLeaveReview')}</Text>}
+                {reviews.length > 0 && (
+                    <SimpleGrid columns={{ base: 1, md: 2 }} gap={{ base: 4, lg: 8 }}>
+                        {reviews.map((review) => {
+                            return <ReviewComponent review={review} key={review.id} />;
+                        })}
+                    </SimpleGrid>
+                )}
+            </Stack>
         </>
     );
 };

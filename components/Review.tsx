@@ -1,5 +1,15 @@
 import { CheckCircleIcon } from '@chakra-ui/icons';
-import { Flex, HStack, Icon, Stack, Tag, TagLabel, TagLeftIcon, Text } from '@chakra-ui/react';
+import {
+    Divider,
+    Flex,
+    HStack,
+    Icon,
+    Stack,
+    Tag,
+    TagLabel,
+    TagLeftIcon,
+    Text
+} from '@chakra-ui/react';
 import React from 'react';
 import { FaUserCircle } from 'react-icons/fa';
 import { useIntl } from 'react-intl';
@@ -18,9 +28,10 @@ const Review: React.FC<Props> = ({ review }) => {
     if (!review) return null;
     return (
         <Stack spacing={1} padding={5} rounded="md" bg="blackAlpha.100">
-            <Text as="cite" fontFamily="Patrick Hand" fontSize="2xl">
+            <Text flexGrow={1} as="cite" fontFamily="Patrick Hand" fontSize="2xl">
                 {review.message}
             </Text>
+            <Divider />
 
             <Rating rate={review.rating} />
 
