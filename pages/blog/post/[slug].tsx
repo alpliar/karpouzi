@@ -149,22 +149,26 @@ const BlogPostPage = ({ post, postContent }: { post: BlogPost; postContent: Root
                 }
                 bannerSlot={<></>}>
                 <Stack>
-                    <Image
-                        src={post.coverPicture.asset.url}
-                        alt={post.coverPicture.alternativeText}
-                        sizes={pictureSizes}
-                        priority
-                        width="full"
-                        height={{ base: '3xs', md: 'sm', xl: 'md' }}
-                        quality={75}
-                        blurDataURL={post.coverPicture.asset.thumbnail}
-                        objectFit="contain"
-                    />
                     <Box>
-                        <Stack spacing={5} maxW="70ch" fontSize={{ md: 'xl' }} margin="auto">
+                        <Box maxW="70ch" fontSize={{ md: 'xl' }} margin="auto">
                             {/* {post.content} */}
+                            <Box float={{ lg: 'left' }} rounded="lg" overflow="hidden">
+                                <Image
+                                    src={post.coverPicture.asset.url}
+                                    alt={post.coverPicture.alternativeText}
+                                    sizes={pictureSizes}
+                                    priority
+                                    width={{ base: 'full', lg: 480 }}
+                                    height={{ base: 240, lg: 480 }}
+                                    mr={8}
+                                    mb={8}
+                                    quality={75}
+                                    blurDataURL={post.coverPicture.asset.thumbnail}
+                                    objectFit="contain"
+                                />
+                            </Box>
                             <MarkdownRendered ast={postContent} />
-                        </Stack>
+                        </Box>
                     </Box>
                 </Stack>
             </PageListingLayout>
