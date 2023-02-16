@@ -1,4 +1,3 @@
-import { Img } from '@chakra-ui/image';
 import { Box, Heading, LinkBox, LinkOverlay, Stack, Text } from '@chakra-ui/layout';
 import { useBreakpointValue } from '@chakra-ui/media-query';
 import Link from 'next/link';
@@ -45,40 +44,6 @@ const CategoryCard: React.FC<IProps> = ({ category }) => {
                     </Box>
 
                     <Text noOfLines={3}>{category.description}</Text>
-
-                    {/* {productsCount > 0 && (
-                        <>
-                            <Divider flexGrow={1} alignItems="flex-end" />
-
-                            <Box>
-                                <Text
-                                    as="span"
-                                    fontSize="sm"
-                                    fontStyle="italic"
-                                    display={{ base: 'block', sm: 'inline' }}>
-                                    {' '}
-                                    {productsCount} products
-                                </Text>
-
-                                <AvatarGroup
-                                    size="lg"
-                                    max={useBreakpointValue({ base: 1, sm: 2, md: 4 })}>
-                                    {products.map((product, index) => (
-                                        <Avatar
-                                            border="1px solid #dedede"
-                                            src={
-                                                product.imageUrl
-                                                // .replace('282828', 'fff')
-                                                // .replace('eae0d0', '000')
-                                            }
-                                            name={product.title}
-                                            key={`${index}-${product.slug}`}
-                                        />
-                                    ))}
-                                </AvatarGroup>
-                            </Box>
-                        </>
-                    )} */}
                 </Stack>
             </Card>
         </LinkBox>
