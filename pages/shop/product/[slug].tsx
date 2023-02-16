@@ -108,7 +108,7 @@ interface ProductPageProps {
 
 const ProductPage: NextPage<ProductPageProps> = ({ product, description, localizations }) => {
     const router = useRouter();
-    const { formatMessage } = useIntl();
+    const { formatMessage, formatNumber } = useIntl();
     const f = (id: string, values: any = null) => formatMessage({ id }, values);
 
     const showAsPolaroid = useBreakpointValue({ base: false, xl: true });
@@ -212,9 +212,10 @@ const ProductPage: NextPage<ProductPageProps> = ({ product, description, localiz
                             <Rating rate={rate} count={reviewCount} />
 
                             <Text fontSize="4xl" fontWeight="bolder">
-                                {firstPrice.amount}
-                                {` `}
-                                {firstPrice.currency}
+                                {formatNumber(firstPrice.amount, {
+                                    style: 'currency',
+                                    currency: firstPrice.currency
+                                })}
                             </Text>
 
                             <AddToCart slug={product.slug} quantity={1} />
