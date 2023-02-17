@@ -1,5 +1,13 @@
 /* eslint-disable react/display-name */
-import { Code, Heading, HeadingProps, Stack, Text } from '@chakra-ui/react';
+import {
+    Code,
+    Heading,
+    HeadingProps,
+    ListItem,
+    Stack,
+    Text,
+    UnorderedList
+} from '@chakra-ui/react';
 import React, { PropsWithChildren } from 'react';
 import { Root } from 'remark-html';
 import Link from './link';
@@ -17,6 +25,7 @@ type NodeType = {
 
 const GetComponent = (node?: NodeType) => {
     if (!node || !node.type) return null;
+
     switch (node.type) {
         case 'root':
             const root: React.FC<PropsWithChildren> = ({ children }) => <>{children}</>;
@@ -78,6 +87,20 @@ const GetComponent = (node?: NodeType) => {
                 <Code whiteSpace="pre">{value}</Code>
             );
             return inlineCode;
+
+        case 'list':
+            const list: React.FC<PropsWithChildren> = ({ children }) => (
+                <UnorderedList paddingLeft="12" spacing={8}>
+                    {children}
+                </UnorderedList>
+            );
+            return list;
+
+        case 'listItem':
+            const listItem: React.FC<PropsWithChildren> = ({ children }) => (
+                <ListItem>{children}</ListItem>
+            );
+            return listItem;
 
         /* Handle all types here … */
 
