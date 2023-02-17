@@ -1,7 +1,7 @@
 import { ButtonProps } from '@chakra-ui/button';
 import { ColorMode, useColorMode } from '@chakra-ui/color-mode';
 import { useDisclosure } from '@chakra-ui/hooks';
-import { Box, Flex, HStack, Text, Wrap } from '@chakra-ui/layout';
+import { Box, Flex, HStack, Stack, Text, Wrap } from '@chakra-ui/layout';
 import { EffectProps } from '@chakra-ui/system';
 import PropTypes from 'prop-types';
 import { PropsWithChildren } from 'react';
@@ -17,6 +17,7 @@ import NavLogo from '../redux/container/navLogo';
 import Link from './link';
 import NavBurgerMenu from './navBurgerMenu';
 import NavDrawerBody from './navDrawerBody';
+import ScrollProgressBar from './ScrollProgressBar';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface IProps {}
@@ -59,75 +60,78 @@ const Header = ({}) => {
         }
     ];
     return (
-        <Flex
-            boxShadow={boxShadow}
-            as="nav"
-            data-e2e="mainNavigation"
-            bgColor={headerBgColor(colorMode)}
-            position="sticky"
-            zIndex="sticky"
-            top="0px">
-            <Wrap
-                align={{ base: 'auto', md: 'center' }}
-                justify="flex-end"
-                maxW={APP_MAX_WIDTH}
-                margin="auto"
-                w="100%"
-                p={2}>
-                <Flex align="center" mr={{ base: 2, sm: 4 }}>
-                    <NavLogo />
-                </Flex>
-                <Flex
-                    textAlign={{ base: 'center', md: 'left' }}
-                    alignItems="center"
-                    justifyContent="center"
-                    flexGrow={1}
-                    transition={BASE_TRANSITION}>
-                    <Box
-                        display={{ base: 'none', md: 'block' }}
-                        minW="auto"
-                        alignItems="left"
-                        justifyContent="flex-start"
-                        flexWrap="wrap"
+        <Stack>
+            <Flex
+                boxShadow={boxShadow}
+                as="nav"
+                data-e2e="mainNavigation"
+                bgColor={headerBgColor(colorMode)}
+                position="sticky"
+                zIndex="sticky"
+                top="0px">
+                <Wrap
+                    align={{ base: 'auto', md: 'center' }}
+                    justify="flex-end"
+                    maxW={APP_MAX_WIDTH}
+                    margin="auto"
+                    w="100%"
+                    p={2}>
+                    <Flex align="center" mr={{ base: 2, sm: 4 }}>
+                        <NavLogo />
+                    </Flex>
+                    <Flex
+                        textAlign={{ base: 'center', md: 'left' }}
+                        alignItems="center"
+                        justifyContent="center"
                         flexGrow={1}
-                        paddingX={2}
-                        overflow="hidden">
-                        {headerLinks.map((link, index) => (
-                            <Link
-                                key={index}
-                                asButton
-                                buttonProps={headerButtonStyle}
-                                href={link.href}>
-                                {link.label}
-                            </Link>
-                        ))}
-                    </Box>
-                </Flex>
-                <HStack spacing={1}>
-                    <Box display={{ base: 'none', sm: 'block' }}>
-                        <HStack spacing="1">
-                            <NavThemeToggle />
-                            <NavLocaleSelector compact />
-                        </HStack>
-                    </Box>
-                    <NavLogin />
-                    <NavCart />
-                    <Box display={{ base: 'block', md: 'none' }}>
-                        <NavBurgerMenu handleClick={onToggle} />
-                        <NavDrawer
-                            isOpen={isOpen}
-                            onClose={onClose}
-                            body={<NavDrawerBody />}
-                            footer={
-                                <HStack spacing="1">
-                                    <NavThemeToggle compact={false} />
-                                    <NavLocaleSelector compact={false} />
-                                </HStack>
-                            }></NavDrawer>
-                    </Box>
-                </HStack>
-            </Wrap>
-        </Flex>
+                        transition={BASE_TRANSITION}>
+                        <Box
+                            display={{ base: 'none', md: 'block' }}
+                            minW="auto"
+                            alignItems="left"
+                            justifyContent="flex-start"
+                            flexWrap="wrap"
+                            flexGrow={1}
+                            paddingX={2}
+                            overflow="hidden">
+                            {headerLinks.map((link, index) => (
+                                <Link
+                                    key={index}
+                                    asButton
+                                    buttonProps={headerButtonStyle}
+                                    href={link.href}>
+                                    {link.label}
+                                </Link>
+                            ))}
+                        </Box>
+                    </Flex>
+                    <HStack spacing={1}>
+                        <Box display={{ base: 'none', sm: 'block' }}>
+                            <HStack spacing="1">
+                                <NavThemeToggle />
+                                <NavLocaleSelector compact />
+                            </HStack>
+                        </Box>
+                        <NavLogin />
+                        <NavCart />
+                        <Box display={{ base: 'block', md: 'none' }}>
+                            <NavBurgerMenu handleClick={onToggle} />
+                            <NavDrawer
+                                isOpen={isOpen}
+                                onClose={onClose}
+                                body={<NavDrawerBody />}
+                                footer={
+                                    <HStack spacing="1">
+                                        <NavThemeToggle compact={false} />
+                                        <NavLocaleSelector compact={false} />
+                                    </HStack>
+                                }></NavDrawer>
+                        </Box>
+                    </HStack>
+                </Wrap>
+            </Flex>
+            <ScrollProgressBar />
+        </Stack>
     );
 };
 

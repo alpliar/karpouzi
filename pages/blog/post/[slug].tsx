@@ -149,29 +149,26 @@ const BlogPostPage = ({ post, postContent }: { post: BlogPost; postContent: Root
                 }
                 bannerSlot={<></>}>
                 <Stack>
-                    <Box>
-                        <Box maxW="70ch" fontSize={{ md: 'xl' }} margin="auto">
-                            {/* {post.content} */}
-                            <Box>
-                                <Image
-                                    src={post.coverPicture.asset.url}
-                                    alt={post.coverPicture.alternativeText}
-                                    sizes={pictureSizes}
-                                    priority
-                                    width={{ base: 'full', lg: 'full' }}
-                                    height={{ base: 240, lg: 480 }}
-                                    mr={8}
-                                    mb={8}
-                                    quality={75}
-                                    blurDataURL={post.coverPicture.asset.thumbnail}
-                                    objectFit="contain"
-                                />
-                            </Box>
-                            <Stack spacing={4}>
-                                <Heading as="span">{post.title}</Heading>
-                                <MarkdownRendered ast={postContent} />
-                            </Stack>
+                    <Box maxW="70ch" fontSize={{ md: 'xl' }} margin="auto">
+                        <Box>
+                            <Image
+                                src={post.coverPicture.asset.url}
+                                alt={post.coverPicture.alternativeText}
+                                sizes={pictureSizes}
+                                priority
+                                width={{ base: 'full', lg: 'full' }}
+                                height={{ base: 240, lg: 480 }}
+                                mr={8}
+                                mb={8}
+                                quality={75}
+                                blurDataURL={post.coverPicture.asset.thumbnail}
+                                objectFit="contain"
+                            />
                         </Box>
+                        <Stack spacing={4}>
+                            <Heading as="span">{post.title}</Heading>
+                            <MarkdownRendered ast={postContent} />
+                        </Stack>
                     </Box>
                 </Stack>
             </PageListingLayout>
