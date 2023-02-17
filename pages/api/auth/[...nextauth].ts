@@ -5,6 +5,7 @@ import GoogleProvider from 'next-auth/providers/google';
 
 export default NextAuth({
     // Configure one or more authentication providers
+    secret: process.env.NEXT_AUTH_SECRET,
     providers: [
         DiscordProvider({
             clientId: process.env.DISCORD_CLIENT_ID || '',
