@@ -1,4 +1,5 @@
 import { Breadcrumb as ChakraBreadcrumb, BreadcrumbItem } from '@chakra-ui/breadcrumb';
+import { Button, ButtonProps } from '@chakra-ui/button';
 import { ChevronRightIcon } from '@chakra-ui/icons';
 import { Text } from '@chakra-ui/layout';
 import Head from 'next/head';
@@ -14,6 +15,8 @@ export interface IBreadcrumbItemProps {
 export interface IBreadcrumbProps {
     entries: IBreadcrumbItemProps[];
 }
+
+const breadcrumbItemStyle: ButtonProps = { size: 'xs', variant: 'ghost', color: 'currentColor' };
 
 const Breadcrumb = ({ entries }: IBreadcrumbProps) => {
     const baseUrl: string = process.env.NEXT_PUBLIC_URL || '';
@@ -37,7 +40,10 @@ const Breadcrumb = ({ entries }: IBreadcrumbProps) => {
                     dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
                 />
             </Head>
-            <ChakraBreadcrumb fontSize="sm" separator={<ChevronRightIcon color="gray.500" />}>
+            <ChakraBreadcrumb
+                fontSize="sm"
+                separator={<ChevronRightIcon color="currentColor" />}
+                spacing={0}>
                 {entries.map(
                     (
                         { text, isCurrentPage = false, link = 'undefined', alt = 'undefined' },
@@ -46,9 +52,20 @@ const Breadcrumb = ({ entries }: IBreadcrumbProps) => {
                         return (
                             <BreadcrumbItem key={`${text}-${index}`} isCurrentPage={isCurrentPage}>
                                 {isCurrentPage ? (
-                                    <Text>{text}</Text>
+                                    <Button
+                                        as={Text}
+                                        {...breadcrumbItemStyle}
+                                        fontFamily="heading"
+                                        variant="text">
+                                        {text}
+                                    </Button>
                                 ) : (
-                                    <Link href={link} alt={alt} prefetch={false}>
+                                    <Link
+                                        href={link}
+                                        alt={alt}
+                                        prefetch={false}
+                                        asButton
+                                        buttonProps={breadcrumbItemStyle}>
                                         {text}
                                     </Link>
                                 )}
