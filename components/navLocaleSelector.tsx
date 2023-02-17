@@ -51,7 +51,7 @@ const NavLocaleSelector: React.FC<INavLocaleSelectorProps> = ({ compact = false 
                 aria-label="Toggle locale"
                 variant="ghost"
                 as={compact === true ? IconButton : Button}
-                icon={compact === true ? <LocaleIcon /> : undefined}>
+                icon={<LocaleIcon />}>
                 {compact === false && 'Language'}
             </MenuButton>
             <MenuList padding="0" minW={'4xs'} maxW={'3xs'} bgColor={menuBgColor}>
