@@ -82,7 +82,9 @@ const Header = ({}) => {
                             justifyContent="center"
                             flexGrow={1}
                             transition={BASE_TRANSITION}>
-                            <Box
+                            <Stack
+                                direction="row"
+                                spacing={2}
                                 display={{ base: 'none', md: 'block' }}
                                 minW="auto"
                                 alignItems="left"
@@ -100,7 +102,7 @@ const Header = ({}) => {
                                         {link.label}
                                     </Link>
                                 ))}
-                            </Box>
+                            </Stack>
                         </Flex>
                         <HStack spacing={1}>
                             <Box display={{ base: 'none', sm: 'block' }}>
