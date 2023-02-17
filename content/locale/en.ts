@@ -25,7 +25,9 @@ export const en = {
         verifiedReview: 'Verified review',
         addToCart: 'Add to cart',
         addedToCart: 'Item added to cart',
-        noAlreadyInCart: 'Already {count} in cart'
+        noAlreadyInCart: 'Already {count} in cart',
+        language: 'Language',
+        theme: 'Theme'
     },
     '/': {
         welcomeMessage: 'Welcome to',
@@ -68,7 +70,6 @@ export const en = {
         changePhoto: 'Change photo',
         deletePhoto: 'Delete',
         photoHelperText: '.jpg, .gif, or .png. Max file size 700K.',
-        language: 'Language',
         displayLanguage: 'Display Language',
         displayLanguagePlaceholder: 'Select language',
         displayCurrency: 'Display currency',

@@ -25,7 +25,9 @@ export const el = {
         verifiedReview: 'Επαληθευμένη κριτική',
         addToCart: 'Προσθήκη στο καλάθι',
         addedToCart: 'Το αντικείμενο προστέθηκε στο καλάθι',
-        noAlreadyInCart: 'Ήδη {count} στο καλάθι'
+        noAlreadyInCart: 'Ήδη {count} στο καλάθι',
+        language: 'Γλώσσα',
+        theme: 'Θέμα'
     },
     '/': {
         welcomeMessage: 'καλώς ήλθατε στο',
@@ -69,7 +71,6 @@ export const el = {
         changePhoto: 'Αλλαξε φωτογραφία',
         deletePhoto: 'Διαγράφω',
         photoHelperText: '.jpg, .gif, ή .png. Μέγιστο μέγεθος αρχείου 700K.',
-        language: 'Γλώσσα',
         displayLanguage: 'Γλώσσα εμφάνισης',
         displayLanguagePlaceholder: 'Επιλέξτε γλώσσα',
         displayCurrency: 'Εμφάνιση νομίσματος',

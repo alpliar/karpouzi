@@ -5,6 +5,7 @@ import { Menu, MenuButton, MenuItem, MenuList } from '@chakra-ui/menu';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 import { FaGlobeAmericas as LocaleIcon } from 'react-icons/fa';
+import { useIntl } from 'react-intl';
 import getFlagEmoji from '../utils/flags';
 import { sendToast } from '../utils/uiToast';
 
@@ -13,6 +14,9 @@ export interface INavLocaleSelectorProps {
 }
 
 const NavLocaleSelector: React.FC<INavLocaleSelectorProps> = ({ compact = false }) => {
+    const { formatMessage } = useIntl();
+    const f = (id: string, values: any = null) => formatMessage({ id }, values);
+
     const router = useRouter();
     // const handleSelection = (newLocale) => {
     //     router.push(router.pathname, router.asPath, { locale: newLocale });
@@ -52,7 +56,7 @@ const NavLocaleSelector: React.FC<INavLocaleSelectorProps> = ({ compact = false 
                 variant="ghost"
                 as={compact === true ? IconButton : Button}
                 icon={<LocaleIcon />}>
-                {compact === false && 'Language'}
+                {compact === false && f('language')}
             </MenuButton>
             <MenuList padding="0" minW={'4xs'} maxW={'3xs'} bgColor={menuBgColor}>
                 {router.locales?.map((locale: string) => {

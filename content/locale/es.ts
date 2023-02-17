@@ -25,7 +25,9 @@ export const es = {
         verifiedReview: 'Reseña verificada',
         addToCart: 'Añadir a la cesta',
         addedToCart: 'Producto añadido a la cesta',
-        noAlreadyInCart: 'Ya {count} en la cesta'
+        noAlreadyInCart: 'Ya {count} en la cesta',
+        language: 'Idioma',
+        theme: 'Tema'
     },
     '/': {
         welcomeMessage: 'Bienvenido a',
@@ -68,7 +70,6 @@ export const es = {
         changePhoto: 'Cambiar foto',
         deletePhoto: 'Borrar',
         photoHelperText: '.jpg, .gif,  .png. Tamaño máximo de archivo 700 K.',
-        language: 'Idioma',
         displayLanguage: 'Idioma de la pantalla',
         displayLanguagePlaceholder: 'Seleccione el idioma',
         displayCurrency: 'Moneda de visualización',
