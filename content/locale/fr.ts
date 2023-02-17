@@ -29,7 +29,8 @@ export const fr = {
         language: 'Langue',
         theme: 'Thème',
         updatingLocale: 'Changement de langue',
-        newLocaleDetail: 'Chargement de la version {name} de Karpouzi'
+        newLocaleDetail: 'Chargement de la version {name} de Karpouzi',
+        menuEntryUser: 'Mon compte'
     },
     '/': {
         welcomeMessage: 'Bienvenue sur',

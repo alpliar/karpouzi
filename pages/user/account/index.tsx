@@ -70,18 +70,19 @@ const UserAccountPage: NextPage = () => {
             title={f('title')}
             breadcrumbs={[
                 {
-                    text: 'Home',
+                    text: f('home'),
                     link: '/',
-                    alt: 'go to home page',
+                    alt: f('goToPageName', { name: f('home') }),
                     isCurrentPage: false
                 },
                 {
-                    text: 'User',
-                    link: '/user',
-                    alt: 'go to user home'
+                    text: f('menuEntryUser'),
+                    link: '/',
+                    alt: f('goToPageName', { name: f('menuEntryUser') }),
+                    isCurrentPage: false
                 },
                 {
-                    text: 'Account settings',
+                    text: f('title'),
                     isCurrentPage: true
                 }
             ]}>
