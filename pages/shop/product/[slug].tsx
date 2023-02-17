@@ -204,7 +204,7 @@ const ProductPage: NextPage<ProductPageProps> = ({ product, description, localiz
                                 />
                             </AspectRatio>
 
-                            <Box position={{ sm: 'absolute' }} top={0} right={0}>
+                            <Box position={{ xl: 'absolute' }} top={0} right={0}>
                                 <Banner
                                     height="inherit"
                                     fontSize="initial"
