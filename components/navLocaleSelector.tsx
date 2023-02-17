@@ -1,12 +1,10 @@
 import { Button, IconButton } from '@chakra-ui/button';
 import { useColorModeValue } from '@chakra-ui/color-mode';
 import { LinkBox, LinkOverlay } from '@chakra-ui/layout';
-import { useBreakpointValue } from '@chakra-ui/media-query';
-import { Menu, MenuButton, MenuList } from '@chakra-ui/menu';
-import { MenuItem } from '@chakra-ui/menu';
+import { Menu, MenuButton, MenuItem, MenuList } from '@chakra-ui/menu';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
-import { FaFlag } from 'react-icons/fa';
+import { FaGlobeAmericas as LocaleIcon } from 'react-icons/fa';
 import getFlagEmoji from '../utils/flags';
 import { sendToast } from '../utils/uiToast';
 
@@ -34,7 +32,6 @@ const NavLocaleSelector: React.FC<INavLocaleSelectorProps> = ({ compact = false 
     };
 
     const menuBgColor = useColorModeValue('white', 'gray.800');
-    const size = useBreakpointValue({ base: 'md', md: 'sm' }) || 'sm';
     // const itemHoverColor = useColorModeValue('gray.800', 'white');
     // const itemHoverBgColor = useColorModeValue('blackAlpha.100', 'whiteAlpha.100');
 
@@ -52,10 +49,9 @@ const NavLocaleSelector: React.FC<INavLocaleSelectorProps> = ({ compact = false 
             <MenuButton
                 data-e2e="localeCTA"
                 aria-label="Toggle locale"
-                size={size}
                 variant="ghost"
                 as={compact === true ? IconButton : Button}
-                icon={compact === true ? <FaFlag /> : undefined}>
+                icon={compact === true ? <LocaleIcon /> : undefined}>
                 {compact === false && 'Language'}
             </MenuButton>
             <MenuList padding="0" minW={'4xs'} maxW={'3xs'} bgColor={menuBgColor}>
