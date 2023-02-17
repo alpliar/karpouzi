@@ -173,9 +173,7 @@ const ProductPage: NextPage<ProductPageProps> = ({ product, description, localiz
             // introSlot={<BlockQuote noOfLines={3}>Blah blah</BlockQuote>}
         >
             <Head>
-                <title>
-                    {productName} | {f('menuEntryShop')} | {f('commonSiteName')}
-                </title>
+                <title>{`${productName} | ${f('menuEntryShop')} | ${f('commonSiteName')}`}</title>
                 <meta property="og:type" content="og:product" />
                 <meta property="og:title" content={productName} />
                 <meta property="og:image" content={product.coverPicture.asset.url} />

@@ -41,9 +41,7 @@ const PageListingLayout: React.FC<PropsWithChildren<IPageLayoutProps>> = ({
     return (
         <PageLayout>
             <Head>
-                <title>
-                    {title} - {siteTitle}
-                </title>
+                <title>{`${title} - ${siteTitle}`}</title>
             </Head>
 
             {/* LISTING'S HEADER */}
