@@ -41,11 +41,7 @@ const NavLocaleSelector: React.FC<INavLocaleSelectorProps> = ({ compact = false 
 
     const handleClick = (locale: string) => {
         if (locale !== router.locale)
-            sendToast(
-                'Locale changed',
-                `Now viewing ${locale.toLocaleUpperCase()} version of Karpouzi`,
-                'info'
-            );
+            sendToast(f('updatingLocale'), f('newLocaleDetail', { name: locale }), 'info');
     };
 
     return (
@@ -58,7 +54,7 @@ const NavLocaleSelector: React.FC<INavLocaleSelectorProps> = ({ compact = false 
                 icon={<LocaleIcon />}>
                 {compact === false && f('language')}
             </MenuButton>
-            <MenuList padding="0" minW={'4xs'} maxW={'3xs'} bgColor={menuBgColor}>
+            <MenuList padding="0" minW={'4xs'} maxW={'3xs'} bgColor={menuBgColor} zIndex={2}>
                 {router.locales?.map((locale: string) => {
                     const localeName = localesInfos[locale as keyof typeof localesInfos];
                     const isCurrentLocale = locale !== router.locale;

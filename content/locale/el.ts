@@ -27,7 +27,9 @@ export const el = {
         addedToCart: 'Το αντικείμενο προστέθηκε στο καλάθι',
         noAlreadyInCart: 'Ήδη {count} στο καλάθι',
         language: 'Γλώσσα',
-        theme: 'Θέμα'
+        theme: 'Θέμα',
+        updatingLocale: 'Αλλαγή γλώσσας',
+        newLocaleDetail: 'Φόρτωση έκδοσης {name} του Καρπούζι'
     },
     '/': {
         welcomeMessage: 'καλώς ήλθατε στο',

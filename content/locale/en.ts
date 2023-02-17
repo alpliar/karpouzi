@@ -27,7 +27,9 @@ export const en = {
         addedToCart: 'Item added to cart',
         noAlreadyInCart: 'Already {count} in cart',
         language: 'Language',
-        theme: 'Theme'
+        theme: 'Theme',
+        updatingLocale: 'Changing language',
+        newLocaleDetail: 'Loading {name} version of Karpouzi'
     },
     '/': {
         welcomeMessage: 'Welcome to',

@@ -27,7 +27,9 @@ export const fr = {
         addedToCart: 'Article ajouté au panier',
         noAlreadyInCart: 'Déjà {count} au panier',
         language: 'Langue',
-        theme: 'Thème'
+        theme: 'Thème',
+        updatingLocale: 'Changement de langue',
+        newLocaleDetail: 'Chargement de la version {name} de Karpouzi'
     },
     '/': {
         welcomeMessage: 'Bienvenue sur',

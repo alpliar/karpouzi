@@ -44,7 +44,7 @@ const HelperText: React.FC<PropsWithChildren<unknown>> = ({ children }) => {
 
 const UserAccountPage: NextPage = () => {
     const { formatMessage } = useIntl();
-    const f = (id: string) => formatMessage({ id });
+    const f = (id: string, values?: any) => formatMessage({ id }, values);
     const router = useRouter();
     const { data: session } = useSession();
 
@@ -53,11 +53,7 @@ const UserAccountPage: NextPage = () => {
 
     const changeLocale = (newLocale: string) => {
         if (newLocale !== router.locale) {
-            sendToast(
-                'Locale changed',
-                `Now viewing ${newLocale.toLocaleUpperCase()} version of Karpouzi`,
-                'info'
-            );
+            sendToast(f('updatingLocale'), f('newLocaleDetail', { name: newLocale }), 'info');
         }
         router.push(router.pathname, router.asPath, { locale: newLocale });
     };
