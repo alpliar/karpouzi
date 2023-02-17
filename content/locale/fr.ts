@@ -30,7 +30,9 @@ export const fr = {
         theme: 'Thème',
         updatingLocale: 'Changement de langue',
         newLocaleDetail: 'Chargement de la version {name} de Karpouzi',
-        menuEntryUser: 'Mon compte'
+        menuEntryUser: 'Mon compte',
+        logout: 'Déconnexion',
+        loggedOutSuccessfully: 'Déconnexion réussie !'
     },
     '/': {
         welcomeMessage: 'Bienvenue sur',

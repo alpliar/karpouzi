@@ -30,7 +30,9 @@ export const el = {
         theme: 'Θέμα',
         updatingLocale: 'Αλλαγή γλώσσας',
         newLocaleDetail: 'Φόρτωση έκδοσης {name} του Καρπούζι',
-        menuEntryUser: 'Ο λογαριασμός μου'
+        menuEntryUser: 'Ο λογαριασμός μου',
+        logout: 'Αποσύνδεση',
+        loggedOutSuccessfully: 'Έγινε αποσύνδεση με επιτυχία!'
     },
     '/': {
         welcomeMessage: 'καλώς ήλθατε στο',

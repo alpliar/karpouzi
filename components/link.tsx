@@ -1,6 +1,6 @@
-import { Link as UiLink } from '@chakra-ui/layout';
 import { Button, ButtonProps } from '@chakra-ui/button';
-import { chakra } from '@chakra-ui/system';
+import { Link as UiLink } from '@chakra-ui/layout';
+import { chakra, ChakraProps } from '@chakra-ui/system';
 
 import NextLink from 'next/link';
 import { PropsWithChildren } from 'react';
@@ -12,25 +12,35 @@ interface ILinkProps {
     prefetch?: boolean;
     asButton?: boolean;
     buttonProps?: ButtonProps;
+    onClick?: React.MouseEventHandler<HTMLAnchorElement | HTMLButtonElement>;
 }
 
-const Link: React.FC<PropsWithChildren<ILinkProps>> = ({
+const Link: React.FC<PropsWithChildren<ILinkProps & ChakraProps>> = ({
     href,
     alt,
     children,
     locale,
     prefetch = true,
     asButton = false,
-    buttonProps
+    buttonProps,
+    onClick,
+    ...rest
 }) => {
     return (
         <NextLink legacyBehavior href={href} passHref locale={locale} prefetch={prefetch}>
             {asButton ? (
-                <Button as={UiLink} colorScheme="green" {...buttonProps}>
+                <Button
+                    as={UiLink}
+                    colorScheme="green"
+                    {...buttonProps}
+                    onClick={onClick}
+                    {...rest}>
                     {children}
                 </Button>
             ) : (
-                <UiLink title={alt}>{children}</UiLink>
+                <UiLink title={alt} onClick={onClick} {...rest}>
+                    {children}
+                </UiLink>
             )}
         </NextLink>
     );

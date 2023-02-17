@@ -23,6 +23,14 @@ const LoginPage: NextPage = () => {
         sendToast('Account created.', "We've created your account for you.", 'success', 5000);
     };
 
+    const handleClickOnProvider = (provider: 'discord') => {
+        signIn(provider, {
+            callbackUrl: '/user/account'
+        }).then(() => {
+            sendToast(f('loggedOutSuccessfully'), '', 'info', 5000, 'top-right');
+        });
+    };
+
     return (
         <PageListingLayout
             title={f('signInLong')}
@@ -91,31 +99,19 @@ const LoginPage: NextPage = () => {
 
                             <Stack spacing={2}>
                                 <Button
-                                    onClick={() =>
-                                        signIn('discord', {
-                                            callbackUrl: '/user/account'
-                                        })
-                                    }
+                                    onClick={() => handleClickOnProvider('discord')}
                                     leftIcon={<Icon as={FaDiscord} />}>
                                     Discord
                                 </Button>
                                 <Button
                                     disabled
-                                    onClick={() =>
-                                        signIn('google', {
-                                            callbackUrl: '/user/account'
-                                        })
-                                    }
+                                    // onClick={() => handleClickOnProvider('google')}
                                     leftIcon={<Icon as={FaGoogle} />}>
                                     Google
                                 </Button>
                                 <Button
                                     disabled
-                                    onClick={() =>
-                                        signIn('facebook', {
-                                            callbackUrl: '/user/account'
-                                        })
-                                    }
+                                    // onClick={() => handleClickOnProvider('facebook')}
                                     leftIcon={<Icon as={FaFacebook} />}>
                                     Facebook
                                 </Button>
