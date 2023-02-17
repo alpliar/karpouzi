@@ -1,4 +1,5 @@
 import { Container, Divider, Flex, Text } from '@chakra-ui/layout';
+import { useSession } from 'next-auth/react';
 import Head from 'next/head';
 import { useIntl } from 'react-intl';
 import Banner from '../components/banner';
@@ -11,6 +12,7 @@ import { APP_MAX_WIDTH } from '../constants/ui/main.layout';
 export default function Home() {
     const { formatMessage } = useIntl();
     const f = (id: string) => formatMessage({ id });
+    const { data: session } = useSession();
 
     const sections: Section[] = [
         {
@@ -40,7 +42,8 @@ export default function Home() {
                         <>
                             <Flex direction="column" as="span" align="start" justify="start">
                                 <Text fontSize="0.75em" style={{ fontVariantCaps: 'small-caps' }}>
-                                    {f('welcomeMessage')}
+                                    {`${session?.user?.name ? session?.user?.name + ', ' : ''}
+                                    ${f('welcomeMessage')}`}
                                 </Text>
                                 <Text
                                     fontSize="1.3em"
