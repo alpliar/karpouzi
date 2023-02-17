@@ -6,6 +6,7 @@ import { APP_MAX_WIDTH } from '../constants/ui/main.layout';
 import Breadcrumb, { IBreadcrumbItemProps } from './breadcrumb';
 import { headerBgColor } from './Header';
 import PageLayout, { siteTitle } from './pageLayout';
+import ScrollProgressBar from './ScrollProgressBar';
 
 interface IPageLayoutProps {
     title: string;
@@ -88,6 +89,14 @@ const PageListingLayout: React.FC<PropsWithChildren<IPageLayoutProps>> = ({
             </Box>
 
             <Box>
+                <Box
+                    className="progress-bar-container"
+                    position="sticky"
+                    top="0px"
+                    zIndex={2}
+                    height={1}>
+                    <ScrollProgressBar />
+                </Box>
                 {bannerSlot && bannerSlot}
                 <Container
                     p={fullWidth ? 0 : { base: 4 }}

@@ -1,6 +1,10 @@
-import { Box, useColorModeValue } from '@chakra-ui/react';
-import { motion, useScroll, useSpring } from 'framer-motion';
+import { chakra } from '@chakra-ui/react';
+import { isValidMotionProp, motion, useScroll, useSpring } from 'framer-motion';
 import React from 'react';
+
+const ChakraBox = chakra(motion.div, {
+    shouldForwardProp: isValidMotionProp
+});
 
 const ScrollProgressBar: React.FC = ({}) => {
     const { scrollYProgress } = useScroll();
@@ -11,22 +15,16 @@ const ScrollProgressBar: React.FC = ({}) => {
     });
 
     return (
-        <Box className="progress-bar-container" position="fixed" zIndex="55">
-            <motion.div
-                className="progress-bar"
-                style={{
-                    scaleX,
-                    height: '10px',
-                    width: '100%',
-                    backgroundColor: useColorModeValue('coral', 'gold'),
-                    position: 'fixed',
-                    top: 0,
-                    left: 0,
-                    right: 0,
-                    transformOrigin: '0%'
-                }}
-            />
-        </Box>
+        <ChakraBox
+            className="progress-bar"
+            bgColor="gold"
+            height="full"
+            width="full"
+            style={{
+                scaleX,
+                transformOrigin: '0%'
+            }}
+        />
     );
 };
 
