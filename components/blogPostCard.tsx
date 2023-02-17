@@ -70,8 +70,9 @@ const BlogPostCard: React.FC<IBlogPostCardProps> = ({ post }) => {
                                 <Heading
                                     color={useColorModeValue('gray.700', 'white')}
                                     fontSize="xl"
-                                    fontFamily="body">
-                                    <Text noOfLines={3}>{post.title}</Text>
+                                    fontFamily="body"
+                                    noOfLines={3}>
+                                    {post.title}
                                 </Heading>
                             </LinkOverlay>
                         </Link>
