@@ -24,7 +24,10 @@ const nextConfig = withPWA({
             exclude: ['error']
         }
     },
-    swcMinify: true
+    swcMinify: true,
+    experimental: {
+        scrollRestoration: true
+    }
     // modularizeImports: {
     //     '@chakra-ui/react': {
     //         transform: '@chakra-ui/core/dist/{{member}}'
