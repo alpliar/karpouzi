@@ -43,7 +43,7 @@ export default function Home() {
                                     {f('welcomeMessage')}
                                 </Text>
                                 <Text
-                                    fontSize="1.5em"
+                                    fontSize="1.3em"
                                     alignSelf="end"
                                     lineHeight="1em"
                                     as={'span'}
