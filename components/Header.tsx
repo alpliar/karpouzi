@@ -69,6 +69,7 @@ const Header = ({}) => {
                 position="sticky"
                 zIndex="sticky"
                 top="0px">
+                <ScrollProgressBar />
                 <Wrap
                     align={{ base: 'auto', md: 'center' }}
                     justify="flex-end"
@@ -130,7 +131,6 @@ const Header = ({}) => {
                     </HStack>
                 </Wrap>
             </Flex>
-            <ScrollProgressBar />
         </Stack>
     );
 };
