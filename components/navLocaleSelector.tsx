@@ -1,6 +1,7 @@
-import { Box, Stack } from '@chakra-ui/react';
+import { Box, Heading, Icon, Stack, Text } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import { FaGlobeAmericas as LocaleIcon } from 'react-icons/fa';
+import { IoLanguage } from 'react-icons/io5';
 import { useIntl } from 'react-intl';
 import getFlagEmoji from '../utils/flags';
 import { sendToast } from '../utils/uiToast';
@@ -46,26 +47,41 @@ const NavLocaleSelector: React.FC<INavLocaleSelectorProps> = ({ compact = false 
                             label={f('language')}
                             compact={compact}
                             icon={LocaleIcon}
+                            // icon={IoLanguage}
                             handleClick={() => {
-                                // test
+                                //TODO: do nothing, really ?
                             }}
                         />
                     </Box>
+                }
+                header={
+                    <Heading as="p" fontSize="lg" textAlign="center">
+                        <Text as="span" display="flex" alignItems="center">
+                            {`${f('language')} / `}
+                            <Icon as={IoLanguage} boxSize={7} ml={1} />
+                        </Text>
+                        {/* <Icon as={FaLanguage} boxSize={8} ml={2} /> */}
+                    </Heading>
                 }>
-                <Stack>
+                <Stack spacing={2}>
                     {router.locales?.map((locale: string) => {
                         const localeName = localesInfos[locale as keyof typeof localesInfos];
                         const isCurrentLocale = locale === router.locale;
                         return (
-                            <Link
-                                onClick={() => handleClick(locale)}
-                                key={locale}
-                                href={router.asPath}
-                                locale={locale}
-                                fontWeight={isCurrentLocale ? 'bold' : 'normal'}>
-                                {getFlagEmoji(countryCode(locale))}
-                                &nbsp;{localeName}
-                            </Link>
+                            <>
+                                <Link
+                                    asButton
+                                    onClick={() => handleClick(locale)}
+                                    key={locale}
+                                    href={router.asPath}
+                                    locale={locale}
+                                    fontWeight={isCurrentLocale ? 'bold' : 'normal'}>
+                                    <Text fontSize="sm" as="span">
+                                        {getFlagEmoji(countryCode(locale))}
+                                    </Text>
+                                    <Text as="span">&nbsp;{localeName}</Text>
+                                </Link>
+                            </>
                         );
                     })}
                 </Stack>
