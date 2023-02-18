@@ -28,11 +28,14 @@ const NavLoginAuthenticated: React.FC = () => {
     const userAvatar = session?.user?.image as string;
     return (
         <Popover
-            body={
-                <Link href="/user/account" asButton>
-                    <Icon as={IoHome} boxSize=".8em" mr={1} />
-                    {f('menuEntryUser')}
-                </Link>
+            trigger={
+                <Button
+                    variant="ghost"
+                    aria-label="user account"
+                    // onClick={() => router.push('/user/account')}
+                    leftIcon={<Avatar size="xs" name={userName} src={userAvatar} />}>
+                    {userName}
+                </Button>
             }
             footer={
                 <Link
@@ -48,13 +51,10 @@ const NavLoginAuthenticated: React.FC = () => {
                     <Text as="span">{f('logout')}</Text>
                 </Link>
             }>
-            <Button
-                variant="ghost"
-                aria-label="user account"
-                // onClick={() => router.push('/user/account')}
-                leftIcon={<Avatar size="xs" name={userName} src={userAvatar} />}>
-                {userName}
-            </Button>
+            <Link href="/user/account" asButton>
+                <Icon as={IoHome} boxSize=".8em" mr={1} />
+                {f('menuEntryUser')}
+            </Link>
         </Popover>
     );
 };

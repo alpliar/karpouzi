@@ -12,15 +12,15 @@ import {
 import React from 'react';
 type Props = {
     children: React.ReactElement;
-    body: React.ReactElement;
+    trigger: React.ReactElement;
     footer?: React.ReactElement;
     header?: React.ReactElement;
 };
 
-const Popover: React.FC<Props> = ({ children, body, footer, header }) => {
+const Popover: React.FC<Props> = ({ children, trigger, footer, header }) => {
     return (
         <ChakraPopover trigger="hover">
-            <PopoverTrigger>{children}</PopoverTrigger>
+            <PopoverTrigger>{trigger}</PopoverTrigger>
             <PopoverContent w="auto" minW={40}>
                 <PopoverArrow />
                 {header && (
@@ -33,7 +33,7 @@ const Popover: React.FC<Props> = ({ children, body, footer, header }) => {
                 )}
                 <PopoverBody>
                     <Stack gap={0} align="center">
-                        {body}
+                        {children}
                     </Stack>
                 </PopoverBody>
                 {footer && (
