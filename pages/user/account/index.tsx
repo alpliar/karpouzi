@@ -132,18 +132,8 @@ const UserAccountPage: NextPage = () => {
                     alt: f('goToPageName', { name: f('menuEntryUser') }),
                     isCurrentPage: true
                 }
-                // {
-                //     text: f('title'),
-                //     isCurrentPage: true
-                // }
             ]}>
-            {!session?.user ? (
-                <>
-                    <AuthGard>
-                        <>tralala</>
-                    </AuthGard>
-                </>
-            ) : (
+            <AuthGard>
                 <>
                     <Stack spacing={4}>
                         <UserAccountSection title={f('personalInformations')}>
@@ -256,7 +246,7 @@ const UserAccountPage: NextPage = () => {
                         </Box>
                     </Stack>
                 </>
-            )}
+            </AuthGard>
         </PageListingLayout>
     );
 };
