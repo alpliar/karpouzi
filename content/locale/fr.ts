@@ -4,7 +4,9 @@ export const fr = {
         home: 'Accueil',
         menuEntryBlog: 'Blog',
         menuEntryShop: 'Boutique',
+        menuEntryLogin: 'Identification',
         goToPageName: 'Aller à la page {name}',
+        redirectingYouToPageName: 'Redirection vers la page {name}',
         openMenu: 'Ouvrir le menu',
         feelingLost: 'Perdu·e ?',
         goBackToHome: "Retour à la page d'accueil",
@@ -32,7 +34,10 @@ export const fr = {
         newLocaleDetail: 'Chargement de la version {name} de Karpouzi',
         menuEntryUser: 'Mon compte',
         logout: 'Déconnexion',
-        loggedOutSuccessfully: 'Déconnexion réussie !'
+        loggedOutSuccessfully: 'Déconnexion réussie !',
+        authenticationRequired: 'Cette page nécessite une authentification 🔐',
+        redirectingToLoginPage:
+            'Vous devriez bientôt être redirigé·e vers la page de connexion. Si la redirection automatique ne fonctionne pas, utilisez le bouton suivant :'
     },
     '/': {
         welcomeMessage: 'Bienvenue sur',

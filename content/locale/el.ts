@@ -4,7 +4,9 @@ export const el = {
         home: 'Αρχή',
         menuEntryBlog: 'Ιστολόγιο',
         menuEntryShop: 'Κατάστημα',
+        menuEntryLogin: 'Σύνδεση',
         goToPageName: 'μεταβείτε στη σελίδ {name}',
+        redirectingYouToPageName: 'Ανακατεύθυνσή σας στη σελίδα {name}',
         openMenu: 'ανοίξτε το μενού',
         feelingLost: 'Νιώθεις χαμένος;',
         goBackToHome: 'Επιστρέψτε στην αρχική σελίδα',
@@ -32,7 +34,10 @@ export const el = {
         newLocaleDetail: 'Φόρτωση έκδοσης {name} του Καρπούζι',
         menuEntryUser: 'Ο λογαριασμός μου',
         logout: 'Αποσύνδεση',
-        loggedOutSuccessfully: 'Έγινε αποσύνδεση με επιτυχία!'
+        loggedOutSuccessfully: 'Έγινε αποσύνδεση με επιτυχία!',
+        authenticationRequired: 'Αυτή η σελίδα απαιτεί έλεγχο ταυτότητας 🔐',
+        redirectingToLoginPage:
+            'Θα πρέπει να ανακατευθυνθείτε σύντομα στη σελίδα σύνδεσης. Εάν η αυτόματη ανακατεύθυνση δεν λειτουργεί, χρησιμοποιήστε το ακόλουθο κουμπί :'
     },
     '/': {
         welcomeMessage: 'καλώς ήλθατε στο',

@@ -4,7 +4,9 @@ export const en = {
         home: 'Home',
         menuEntryBlog: 'Blog',
         menuEntryShop: 'Shop',
+        menuEntryLogin: 'login',
         goToPageName: 'Go to {name} page',
+        redirectingYouToPageName: 'Redirecting you to {name} page',
         openMenu: 'Open menu',
         feelingLost: 'Feeling lost ?',
         goBackToHome: 'Go back to home',
@@ -32,7 +34,10 @@ export const en = {
         newLocaleDetail: 'Loading {name} version of Karpouzi',
         menuEntryUser: 'My account',
         logout: 'Logout',
-        loggedOutSuccessfully: 'Logged out successfully!'
+        loggedOutSuccessfully: 'Logged out successfully!',
+        authenticationRequired: 'This page requires authentication 🔐',
+        redirectingToLoginPage:
+            "You should be redirected to login page soon. If auto-redirect doesn't work, use following button :"
     },
     '/': {
         welcomeMessage: 'Welcome to',

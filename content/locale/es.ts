@@ -4,7 +4,9 @@ export const es = {
         home: 'Inicio',
         menuEntryBlog: 'Blog',
         menuEntryShop: 'Tienda',
+        menuEntryLogin: 'Acceso',
         goToPageName: 'Ir a la página de {name}',
+        redirectingYouToPageName: 'Redirigiéndolo a la página {name}',
         openMenu: 'Abrir el menú',
         feelingLost: '¿Te sientes perdida·o?',
         goBackToHome: 'Volver a la página principal',
@@ -32,7 +34,10 @@ export const es = {
         newLocaleDetail: 'Cargando versión {name} de Karpouzi',
         menuEntryUser: 'Mi cuenta',
         logout: 'Cerrar sesión',
-        loggedOutSuccessfully: '¡Cierre de sesión con éxito!'
+        loggedOutSuccessfully: '¡Cierre de sesión con éxito!',
+        authenticationRequired: 'Esta página requiere autenticación 🔐',
+        redirectingToLoginPage:
+            'Deberá ser redirigido a la página de inicio de sesión pronto. Si la redirección automática no funciona, use el siguiente botón:'
     },
     '/': {
         welcomeMessage: 'Bienvenido a',
@@ -91,7 +96,7 @@ export const es = {
         saveChanges: 'Guardar cambios'
     },
     '/user/login': {
-        title: 'Login',
+        title: 'Acceso',
         signInLong: 'Iniciar sesión en su cuenta',
         signIn: 'Registrarse',
         or: 'o',

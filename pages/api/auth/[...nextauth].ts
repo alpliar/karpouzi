@@ -29,9 +29,9 @@ export default NextAuth({
         // ...add more providers here
     ],
     debug: process.env.NODE_ENV !== 'production',
-    // pages: {
-    //     signIn: '/auth/signin'
-    // },
+    pages: {
+        signIn: '/user/login'
+    },
     callbacks: {
         // session({ session, token, user }) {
         session({ session }) {
