@@ -19,9 +19,20 @@ const NavLoginAuthenticated: React.FC = () => {
             redirect: false,
             callbackUrl:
                 router.locale !== 'en' ? `${router.locale}/${router.pathname}` : router.pathname
-        }).then(() => {
-            sendToast(f('loggedOutSuccessfully'), '', 'info', 5000, 'top-right');
-        });
+        })
+            .catch((error) => {
+                sendToast(
+                    f('somethingWentWrong'),
+                    `${f('newsletterError')} ${error.toString()})`,
+                    'error',
+                    3000,
+                    'top'
+                );
+                return;
+            })
+            .finally(() => {
+                sendToast(f('loggedOutSuccessfully'), f('logoutFeatures'), 'success', 5000, 'top');
+            });
     };
 
     const userName = session?.user?.name as string;
@@ -44,7 +55,8 @@ const NavLoginAuthenticated: React.FC = () => {
                         event.preventDefault();
                         handleSignout();
                     }}
-                    href="/api/auth/signout"
+                    // href="/api/auth/signout"
+                    href="#"
                     display="flex"
                     alignItems="center">
                     <Icon as={IoLogOut} mr={1} />

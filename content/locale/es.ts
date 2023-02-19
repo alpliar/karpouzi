@@ -37,7 +37,21 @@ export const es = {
         loggedOutSuccessfully: '¡Cierre de sesión con éxito!',
         authenticationRequired: 'Esta página requiere autenticación 🔐',
         redirectingToLoginPage:
-            'Deberá ser redirigido a la página de inicio de sesión pronto. Si la redirección automática no funciona, use el siguiente botón:'
+            'Deberá ser redirigido a la página de inicio de sesión pronto. Si la redirección automática no funciona, use el siguiente botón:',
+        javaScriptRequiredForSocialLogin:
+            'Se requiere JavaScript para el inicio de sesión social, habilite JavaScript y vuelva a intentarlo',
+        orContinueWith: 'o conectar con',
+        emailAddress: 'Dirección de correo electrónico',
+        emailReassurance: 'Nunca compartiremos su correo electrónico.',
+        password: 'Contraseña',
+        passwordReassurance: 'Elegir sabiamente !',
+        rememberMe: 'Recuérdame',
+        lostPassword: 'Olvidaste tu contraseña ?',
+        onceLoggedInFeatures:
+            'Tan pronto como haya iniciado sesión, podrá aprovechar al máximo esta página de acceso restringido.',
+        somethingWentWrong: 'Algo salió mal',
+        logoutFeatures:
+            '¡Gracias por utilizar nuestro servicio! Si desea realizar un pedido, puede iniciar sesión en cualquier momento. ¡Que tengas un buen día!'
     },
     '/': {
         welcomeMessage: 'Bienvenido a',
@@ -100,14 +114,7 @@ export const es = {
         signInLong: 'Iniciar sesión en su cuenta',
         signIn: 'Registrarse',
         or: 'o',
-        orContinueWith: 'o conectar con',
-        startFreeTrial: 'comience su prueba gratuita de 14 días',
-        emailAddress: 'Dirección de correo electrónico',
-        emailReassurance: 'Nunca compartiremos su correo electrónico.',
-        password: 'Contraseña',
-        passwordReassurance: 'Elegir sabiamente !',
-        rememberMe: 'Recuérdame',
-        lostPassword: 'Olvidaste tu contraseña ?'
+        startFreeTrial: 'comience su prueba gratuita de 14 días'
     },
     '/shop/product/[slug]': {
         fondOfName: 'Aficionado de {name} ?',

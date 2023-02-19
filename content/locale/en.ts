@@ -4,7 +4,7 @@ export const en = {
         home: 'Home',
         menuEntryBlog: 'Blog',
         menuEntryShop: 'Shop',
-        menuEntryLogin: 'login',
+        menuEntryLogin: 'Login',
         goToPageName: 'Go to {name} page',
         redirectingYouToPageName: 'Redirecting you to {name} page',
         openMenu: 'Open menu',
@@ -37,7 +37,21 @@ export const en = {
         loggedOutSuccessfully: 'Logged out successfully!',
         authenticationRequired: 'This page requires authentication 🔐',
         redirectingToLoginPage:
-            "You should be redirected to login page soon. If auto-redirect doesn't work, use following button :"
+            "You should be redirected to login page soon. If auto-redirect doesn't work, use following button :",
+        javaScriptRequiredForSocialLogin:
+            'JavaScript is required for social login, please enable JavaScript and retry.',
+        orContinueWith: 'or continue with',
+        emailAddress: 'Email address',
+        emailReassurance: "We'll never share your email.",
+        password: 'Password',
+        passwordReassurance: 'Choose wisely !',
+        rememberMe: 'Remember me',
+        lostPassword: 'Forgot your password?',
+        onceLoggedInFeatures:
+            'As soon as you have logged in, you will be able to take full advantage of this restricted access page.',
+        somethingWentWrong: 'Something went wrong',
+        logoutFeatures:
+            "Thank you for using our service! You are welcome to log in again whenever you're ready to place an order. Have a great day!"
     },
     '/': {
         welcomeMessage: 'Welcome to',
@@ -99,14 +113,7 @@ export const en = {
         signInLong: 'Sign in to your account',
         signIn: 'Sign in',
         or: 'or',
-        orContinueWith: 'or continue with',
-        startFreeTrial: 'start your 14-day free trial',
-        emailAddress: 'Email address',
-        emailReassurance: "We'll never share your email.",
-        password: 'Password',
-        passwordReassurance: 'Choose wisely !',
-        rememberMe: 'Remember me',
-        lostPassword: 'Forgot your password?'
+        startFreeTrial: 'start your 14-day free trial'
     },
     '/shop/product/[slug]': {
         fondOfName: 'Fond of {name} ?',

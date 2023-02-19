@@ -1,9 +1,9 @@
-import NextAuth from 'next-auth';
+import NextAuth, { AuthOptions } from 'next-auth';
 import DiscordProvider from 'next-auth/providers/discord';
 import GoogleProvider from 'next-auth/providers/google';
 // import EmailProvider from 'next-auth/providers/email';
 
-export default NextAuth({
+export const authOptions: AuthOptions = {
     // Configure one or more authentication providers
     secret: process.env.NEXT_AUTH_SECRET,
     providers: [
@@ -39,4 +39,5 @@ export default NextAuth({
             return session; // The return type will match the one returned in `useSession()`
         }
     }
-});
+};
+export default NextAuth(authOptions);

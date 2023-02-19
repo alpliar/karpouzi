@@ -37,7 +37,21 @@ export const el = {
         loggedOutSuccessfully: 'Έγινε αποσύνδεση με επιτυχία!',
         authenticationRequired: 'Αυτή η σελίδα απαιτεί έλεγχο ταυτότητας 🔐',
         redirectingToLoginPage:
-            'Θα πρέπει να ανακατευθυνθείτε σύντομα στη σελίδα σύνδεσης. Εάν η αυτόματη ανακατεύθυνση δεν λειτουργεί, χρησιμοποιήστε το ακόλουθο κουμπί :'
+            'Θα πρέπει να ανακατευθυνθείτε σύντομα στη σελίδα σύνδεσης. Εάν η αυτόματη ανακατεύθυνση δεν λειτουργεί, χρησιμοποιήστε το ακόλουθο κουμπί :',
+        javaScriptRequiredForSocialLogin:
+            'Απαιτείται JavaScript για σύνδεση μέσω κοινωνικής δικτύωσης, ενεργοποιήστε τη JavaScript και δοκιμάστε ξανά.',
+        orContinueWith: 'ή συνδεθείτε με',
+        emailAddress: 'ηλεκτρονική διεύθυνσή',
+        emailReassurance: 'Δεν θα κοινοποιήσουμε ποτέ το email σας.',
+        password: 'Kodikós prósvasis',
+        passwordReassurance: 'Επιλέξτε με σύνεση!',
+        rememberMe: 'Θυμήσου με',
+        lostPassword: 'Ξεχάσατε τον κωδικό σας;',
+        onceLoggedInFeatures:
+            'Μόλις συνδεθείτε, θα μπορείτε να επωφεληθείτε πλήρως από αυτήν τη σελίδα περιορισμένης πρόσβασης.',
+        somethingWentWrong: 'Κάτι πήγε στραβά',
+        logoutFeatures:
+            'Ευχαριστούμε που χρησιμοποιήσατε την υπηρεσία μας! Είστε ευπρόσδεκτος/η να συνδεθείτε ξανά όταν είστε έτοιμος/η για να κάνετε μια παραγγελία. Καλή συνέχεια!'
     },
     '/': {
         welcomeMessage: 'καλώς ήλθατε στο',
@@ -101,14 +115,7 @@ export const el = {
         signInLong: 'Συνδεθείτε στο λογαριασμό σας',
         signIn: 'Συνδεθείτε',
         or: 'ή',
-        orContinueWith: 'ή συνδεθείτε με',
-        startFreeTrial: 'ξεκινήστε τη δωρεάν δοκιμή 14 ημερών',
-        emailAddress: 'ηλεκτρονική διεύθυνσή',
-        emailReassurance: 'Δεν θα κοινοποιήσουμε ποτέ το email σας.',
-        password: 'Kodikós prósvasis',
-        passwordReassurance: 'Επιλέξτε με σύνεση!',
-        rememberMe: 'Θυμήσου με',
-        lostPassword: 'Ξεχάσατε τον κωδικό σας;'
+        startFreeTrial: 'ξεκινήστε τη δωρεάν δοκιμή 14 ημερών'
     },
     '/shop/product/[slug]': {
         fondOfName: 'Ερασιτέχνης του {name};',

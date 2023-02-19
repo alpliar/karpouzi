@@ -37,7 +37,21 @@ export const fr = {
         loggedOutSuccessfully: 'Déconnexion réussie !',
         authenticationRequired: 'Cette page nécessite une authentification 🔐',
         redirectingToLoginPage:
-            'Vous devriez bientôt être redirigé·e vers la page de connexion. Si la redirection automatique ne fonctionne pas, utilisez le bouton suivant :'
+            'Vous devriez bientôt être redirigé·e vers la page de connexion. Si la redirection automatique ne fonctionne pas, utilisez le bouton suivant :',
+        javaScriptRequiredForSocialLogin:
+            'JavaScript est requis pour la connexion avec réseau social, veuillez activer JavaScript et réessayer.',
+        orContinueWith: 'ou se connecter avec',
+        emailAddress: 'Adresse e-mail',
+        emailReassurance: 'Nous ne partagerons jamais votre adresse e-mail.',
+        password: 'Mot de passe',
+        passwordReassurance: 'Choisissez un mot de passe sécurisé !',
+        rememberMe: 'Rester connecté',
+        lostPassword: 'Mot de passe perdu ?',
+        onceLoggedInFeatures:
+            'Dès que vous vous serez connecté, vous pourrez pleinement profiter de cette page à accès restreint.',
+        somethingWentWrong: "Quelquechose s'est mal passé",
+        logoutFeatures:
+            "Merci d'être passé·e! N'hésitez pas à vous connecter à nouveau lorsque vous serez prêt·e à passer une commande. Bonne journée !            "
     },
     '/': {
         welcomeMessage: 'Bienvenue sur',
@@ -100,14 +114,7 @@ export const fr = {
         signInLong: 'Connectez-vous à votre compte',
         signIn: "S'identifier",
         or: 'ou',
-        orContinueWith: 'ou se connecter avec',
-        startFreeTrial: 'commencez votre essai gratuit de 14 jours',
-        emailAddress: 'Adresse e-mail',
-        emailReassurance: 'Nous ne partagerons jamais votre adresse e-mail.',
-        password: 'Mot de passe',
-        passwordReassurance: 'Choisissez un mot de passe sécurisé !',
-        rememberMe: 'Rester connecté',
-        lostPassword: 'Mot de passe perdu ?'
+        startFreeTrial: 'commencez votre essai gratuit de 14 jours'
     },
     '/shop/product/[slug]': {
         fondOfName: 'Amateur·ice de {name} ?',

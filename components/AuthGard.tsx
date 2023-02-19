@@ -1,7 +1,9 @@
-import { CircularProgress, HStack, Text } from '@chakra-ui/react';
+// import { CircularProgress, HStack, Text } from '@chakra-ui/react';
+import { Box } from '@chakra-ui/react';
 import { useSession } from 'next-auth/react';
 import React from 'react';
 import { useIntl } from 'react-intl';
+import LoginForm from './LoginForm';
 import NoContentBanner from './NoContentBanner';
 // import { sendToast } from '../utils/uiToast';
 
@@ -25,19 +27,23 @@ const AuthGard: React.FC<Props> = ({ children }) => {
         <>
             <NoContentBanner
                 text={f('authenticationRequired')}
-                helperText={f('redirectingToLoginPage')}
-                links={[
-                    {
-                        href: '/user/login',
-                        text: f('goToPageName', { name: f('menuEntryLogin') })
-                    }
-                ]}>
-                <HStack>
+                helperText={f('onceLoggedInFeatures')}
+                // links={[
+                //     {
+                //         href: '/help',
+                //         text: f('goToPageName', { name: f('menuEntryHelp') })
+                //     }
+                // ]}
+            >
+                {/* <HStack>
                     <CircularProgress as="span" size="1em" isIndeterminate color="orange.500" />
                     <Text as="span" fontSize="sm">
                         {f('redirectingYouToPageName', { name: f('menuEntryLogin') })}
                     </Text>
-                </HStack>
+                </HStack> */}
+                <Box fontFamily="body" fontSize="md">
+                    <LoginForm />
+                </Box>
             </NoContentBanner>
         </>
     );

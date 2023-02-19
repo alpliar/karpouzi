@@ -8,7 +8,8 @@ import { Box, Divider, Heading, Stack, Text, Wrap } from '@chakra-ui/layout';
 import { Button } from '@chakra-ui/react';
 import { Select } from '@chakra-ui/select';
 import { Textarea } from '@chakra-ui/textarea';
-import { NextPage } from 'next';
+import { GetServerSideProps, NextPage } from 'next';
+import { getServerSession } from 'next-auth';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import React, { PropsWithChildren } from 'react';
@@ -17,6 +18,32 @@ import { useIntl } from 'react-intl';
 import AuthGard from '../../../components/AuthGard';
 import PageListingLayout from '../../../components/pageListingLayout';
 import { sendToast } from '../../../utils/uiToast';
+import { authOptions } from '../../api/auth/[...nextauth]';
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+    const session = await getServerSession(context.req, context.res, authOptions);
+    // if (session) {
+    //     console.log('has session');
+    // } else {
+    //     console.error('no session');
+    // }
+
+    // if (!session) {
+    //     return {
+    //         redirect: {
+    //             destination: '/user/login',
+    //             statusCode: 301
+    //         },
+    //         props: { session: null }
+    //     };
+    // }
+
+    return {
+        props: {
+            session //: await getServerSession(context.req, context.res, authOptions)
+        }
+    };
+};
 
 interface IUserAccountSectionProps {
     title: string;
@@ -56,6 +83,8 @@ const UserAccountPage: NextPage = () => {
     //         sendToast(f('accessDenied'), f('pageRequiresAuthentication'), 'error');
     //     }
     // });
+
+    // if (!session) return <AuthGard />;
 
     const { name, image, email } = session?.user || {};
 
