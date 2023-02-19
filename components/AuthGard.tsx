@@ -14,7 +14,7 @@ const AuthGard: React.FC<Props> = ({ children }) => {
     const f = (id: string, values?: any) => formatMessage({ id }, values);
     // const { data: session } = useSession();
     const { status } = useSession({
-        required: true
+        required: false
         // onUnauthenticated() {
         // The user is not authenticated, handle it here.
         // sendToast(f('accessDenied'), f('pageRequiresAuthentication'), 'error', 3000, 'top');

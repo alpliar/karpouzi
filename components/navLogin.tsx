@@ -1,5 +1,6 @@
 import { Avatar, Button, Icon } from '@chakra-ui/react';
 import { signIn, useSession } from 'next-auth/react';
+import { useRouter } from 'next/router';
 import { IoLogIn } from 'react-icons/io5';
 import { useIntl } from 'react-intl';
 import Link from './link';
@@ -7,6 +8,7 @@ import NavLoginAuthenticated from './NavLoginAuthenticated';
 import Popover from './Popover';
 
 const NavLogin = () => {
+    const router = useRouter();
     const { data: session } = useSession();
     const { formatMessage } = useIntl();
     const f = (id: string, values: any = null) => formatMessage({ id }, values);
@@ -34,7 +36,7 @@ const NavLogin = () => {
                         <Button
                             variant="ghost"
                             aria-label="user account"
-                            // onClick={() => router.push('/user/account')}
+                            onClick={() => router.push('/user/account')}
                             leftIcon={
                                 <Avatar size="xs" name={f('menuEntryUser')} src={undefined} />
                             }>

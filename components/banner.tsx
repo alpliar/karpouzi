@@ -8,12 +8,14 @@ interface IBannerProps {
     height?: LayoutProps['height'];
     bgColor?: BoxProps['bgColor'];
     pattern?: Pattern;
+    rounded: BoxProps['rounded'];
 }
 const Banner: React.FC<IBannerProps & BoxProps> = ({
     children,
     height = '3xs',
     pattern = 'kiwi',
     bgColor,
+    rounded = 'none',
     ...rest
 }) => {
     const patternOpacity = 0.1;
@@ -36,7 +38,9 @@ const Banner: React.FC<IBannerProps & BoxProps> = ({
             alignItems="center"
             justifyContent="center"
             fontSize="4xl"
-            position="relative">
+            position="relative"
+            rounded={rounded}
+            overflow="hidden">
             {/* <Box zIndex="banner" rounded="xl" bgColor={bgColor}> */}
             <Box zIndex={1} rounded="xl" {...rest}>
                 {children}
