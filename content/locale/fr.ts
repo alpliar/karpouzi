@@ -54,7 +54,8 @@ export const fr = {
             'Dès que vous vous serez connecté, vous pourrez pleinement profiter de cette page à accès restreint.',
         somethingWentWrong: "Quelquechose s'est mal passé",
         logoutFeatures:
-            "Merci d'être passé·e! N'hésitez pas à vous connecter à nouveau lorsque vous serez prêt·e à passer une commande. Bonne journée !            "
+            "Merci d'être passé·e! N'hésitez pas à vous connecter à nouveau lorsque vous serez prêt·e à passer une commande. Bonne journée !",
+        cartIsEmpty: 'Panier vide'
     },
     '/': {
         welcomeMessage: 'Bienvenue sur',

@@ -54,7 +54,8 @@ export const es = {
             'Tan pronto como haya iniciado sesión, podrá aprovechar al máximo esta página de acceso restringido.',
         somethingWentWrong: 'Algo salió mal',
         logoutFeatures:
-            '¡Gracias por utilizar nuestro servicio! Si desea realizar un pedido, puede iniciar sesión en cualquier momento. ¡Que tengas un buen día!'
+            '¡Gracias por utilizar nuestro servicio! Si desea realizar un pedido, puede iniciar sesión en cualquier momento. ¡Que tengas un buen día!',
+        cartIsEmpty: 'Carrito vacío'
     },
     '/': {
         welcomeMessage: 'Bienvenido a',

@@ -54,7 +54,8 @@ export const en = {
             'As soon as you have logged in, you will be able to take full advantage of this restricted access page.',
         somethingWentWrong: 'Something went wrong',
         logoutFeatures:
-            "Thank you for using our service! You are welcome to log in again whenever you're ready to place an order. Have a great day!"
+            "Thank you for using our service! You are welcome to log in again whenever you're ready to place an order. Have a great day!",
+        cartIsEmpty: 'Cart is empty'
     },
     '/': {
         welcomeMessage: 'Welcome to',
