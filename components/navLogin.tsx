@@ -52,10 +52,11 @@ const NavLogin = () => {
                                     leftIcon: <Icon boxSize={6} as={FaUserCircle} />
                                 }}
                                 aria-label="user account"
-                                onClick={(event) => {
-                                    event.preventDefault();
-                                    // Do not follow link if javascript is enabled, since a popover is opened instead
-                                }}>
+                                // onClick={(event) => {
+                                //     event.preventDefault();
+                                //     // Do not follow link if javascript is enabled, since a popover is opened instead
+                                // }}
+                            >
                                 {f('menuEntryUser')}
                             </Link>
                         </Box>
