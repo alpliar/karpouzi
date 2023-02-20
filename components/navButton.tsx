@@ -24,11 +24,15 @@ const NavButton: React.FC<IProps> = ({
 }) => {
     const variant = isPrimary ? 'outline' : 'ghost';
 
+    const RenderedIcon = () => {
+        return <Icon as={icon} boxSize={5} />;
+    };
+
     if (compact === true) {
         return (
             <IconButton
                 aria-label={label}
-                icon={<Icon as={icon} />}
+                icon={<RenderedIcon />}
                 onClick={handleClick}
                 variant={variant}
                 data-e2e={e2e}

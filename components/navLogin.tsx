@@ -1,6 +1,6 @@
-import { Avatar, Button, Icon } from '@chakra-ui/react';
+import { Box, Icon } from '@chakra-ui/react';
 import { signIn, useSession } from 'next-auth/react';
-import { useRouter } from 'next/router';
+import { FaUserCircle } from 'react-icons/fa';
 import { IoLogIn } from 'react-icons/io5';
 import { useIntl } from 'react-intl';
 import Link from './link';
@@ -8,7 +8,6 @@ import NavLoginAuthenticated from './NavLoginAuthenticated';
 import Popover from './Popover';
 
 const NavLogin = () => {
-    const router = useRouter();
     const { data: session } = useSession();
     const { formatMessage } = useIntl();
     const f = (id: string, values: any = null) => formatMessage({ id }, values);
@@ -33,15 +32,33 @@ const NavLogin = () => {
 
                 <Popover
                     trigger={
-                        <Button
-                            variant="ghost"
-                            aria-label="user account"
-                            onClick={() => router.push('/user/account')}
-                            leftIcon={
-                                <Avatar size="xs" name={f('menuEntryUser')} src={undefined} />
-                            }>
-                            {f('menuEntryUser')}
-                        </Button>
+                        <Box>
+                            <Link
+                                href="/user/account"
+                                asButton
+                                buttonProps={{
+                                    variant: 'ghost',
+                                    color: 'currentcolor',
+                                    // leftIcon: (
+                                    //     <Avatar
+                                    //         size="xs"
+                                    //         name={f('menuEntryUser')}
+                                    //         src={undefined}
+                                    //         _hover={{
+                                    //             textDecoration: 'none !important'
+                                    //         }}
+                                    //     />
+                                    // )
+                                    leftIcon: <Icon boxSize={6} as={FaUserCircle} />
+                                }}
+                                aria-label="user account"
+                                onClick={(event) => {
+                                    event.preventDefault();
+                                    // Do not follow link if javascript is enabled, since a popover is opened instead
+                                }}>
+                                {f('menuEntryUser')}
+                            </Link>
+                        </Box>
                     }>
                     <Link
                         href="/user/login"

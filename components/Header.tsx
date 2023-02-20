@@ -95,6 +95,7 @@ const Header = ({}) => {
                                 overflow="hidden">
                                 {headerLinks.map((link, index) => (
                                     <Link
+                                        fontSize="md"
                                         key={index}
                                         asButton
                                         buttonProps={headerButtonStyle}
