@@ -16,13 +16,7 @@ const NavCart: React.FC<IProps> = ({ cartCount }) => {
     return (
         <Popover
             trigger={
-                <Box position="relative">
-                    {/* <NavButton
-                        e2e="cartCTA"
-                        label="Go to cart"
-                        icon={FaShoppingCart}
-                        handleClick={handleClick}
-                    /> */}
+                <Box>
                     <Link
                         href="/shop/cart"
                         color="currentColor"
@@ -30,25 +24,30 @@ const NavCart: React.FC<IProps> = ({ cartCount }) => {
                         asButton
                         buttonProps={{
                             variant: 'ghost',
-                            leftIcon: <Icon boxSize={5} as={FaShoppingCart} />
+                            leftIcon: (
+                                <Box position="relative">
+                                    <Icon boxSize={5} as={FaShoppingCart} />
+                                    {cartCount > 0 && (
+                                        <Center
+                                            as={Badge}
+                                            height={3.5}
+                                            width={3.5}
+                                            position="absolute"
+                                            top="-1"
+                                            right="-1"
+                                            bgColor="red.400"
+                                            borderRadius="full"
+                                            boxShadow="md"
+                                            fontSize={{ base: '0.75rem' }}
+                                            variant="solid">
+                                            {cartCount}
+                                        </Center>
+                                    )}
+                                </Box>
+                            )
                         }}>
-                        Cart
+                        {f('cart')}
                     </Link>
-                    {cartCount > 0 && (
-                        <Center
-                            as={Badge}
-                            height={{ base: '4' }}
-                            width={{ base: '4' }}
-                            position="absolute"
-                            top="0"
-                            right="0"
-                            bgColor="red"
-                            borderRadius="full"
-                            fontSize={{ base: '0.7rem' }}
-                            variant="solid">
-                            {cartCount}
-                        </Center>
-                    )}
                 </Box>
             }>
             {cartCount > 0 ? <Text>{f('accessCart')}</Text> : <Text>{f('cartIsEmpty')}</Text>}
