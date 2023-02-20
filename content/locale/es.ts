@@ -57,7 +57,8 @@ export const es = {
             '¡Gracias por utilizar nuestro servicio! Si desea realizar un pedido, puede iniciar sesión en cualquier momento. ¡Que tengas un buen día!',
         cartIsEmpty: 'Carrito vacío',
         cart: 'Carrito',
-        accessCart: 'Acceso al carrito'
+        accessCart: 'Acceso al carrito',
+        signIn: 'Registrarse'
     },
     '/': {
         welcomeMessage: 'Bienvenido a',
@@ -118,7 +119,6 @@ export const es = {
     '/user/login': {
         title: 'Acceso',
         signInLong: 'Iniciar sesión en su cuenta',
-        signIn: 'Registrarse',
         or: 'o',
         startFreeTrial: 'comience su prueba gratuita de 14 días'
     },

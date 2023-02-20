@@ -57,7 +57,8 @@ export const en = {
             "Thank you for using our service! You are welcome to log in again whenever you're ready to place an order. Have a great day!",
         cartIsEmpty: 'Cart is empty',
         cart: 'Cart',
-        accessCart: 'Access to cart'
+        accessCart: 'Access to cart',
+        signIn: 'Sign in'
     },
     '/': {
         welcomeMessage: 'Welcome to',
@@ -117,7 +118,6 @@ export const en = {
     '/user/login': {
         title: 'Login',
         signInLong: 'Sign in to your account',
-        signIn: 'Sign in',
         or: 'or',
         startFreeTrial: 'start your 14-day free trial'
     },

@@ -57,7 +57,8 @@ export const fr = {
             "Merci d'être passé·e! N'hésitez pas à vous connecter à nouveau lorsque vous serez prêt·e à passer une commande. Bonne journée !",
         cartIsEmpty: 'Panier vide',
         cart: 'Panier',
-        accessCart: 'Accès au panier'
+        accessCart: 'Accès au panier',
+        signIn: "S'identifier"
     },
     '/': {
         welcomeMessage: 'Bienvenue sur',
@@ -118,7 +119,6 @@ export const fr = {
     '/user/login': {
         title: 'Identification',
         signInLong: 'Connectez-vous à votre compte',
-        signIn: "S'identifier",
         or: 'ou',
         startFreeTrial: 'commencez votre essai gratuit de 14 jours'
     },
