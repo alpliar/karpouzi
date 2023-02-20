@@ -17,10 +17,6 @@ export interface ProductExcerpt {
     name: string;
     slug: string;
     description: string;
-    /**
-     * @deprecated use coverPicture instead
-     */
-    picture: GraphCMSAsset;
     coverPicture: Picture;
     prices: Array<Price>;
     reviews: Array<ReviewExcerpt>;

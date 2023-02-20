@@ -84,12 +84,6 @@ export const GET_SHOP_PRODUCTS = gql`
                     url
                 }
             }
-            picture {
-                id
-                url
-                fileName
-                mimeType
-            }
             prices {
                 amount
                 currency
