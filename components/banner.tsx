@@ -15,7 +15,7 @@ const Banner: React.FC<IBannerProps & BoxProps> = ({
     height = '3xs',
     pattern = 'kiwi',
     bgColor,
-    rounded = 'none',
+    rounded = undefined,
     ...rest
 }) => {
     const patternOpacity = 0.1;
@@ -40,7 +40,7 @@ const Banner: React.FC<IBannerProps & BoxProps> = ({
             fontSize="4xl"
             position="relative"
             rounded={rounded}
-            overflow="hidden">
+            overflow={rounded ? 'hidden' : undefined}>
             {/* <Box zIndex="banner" rounded="xl" bgColor={bgColor}> */}
             <Box zIndex={1} rounded="xl" {...rest}>
                 {children}
