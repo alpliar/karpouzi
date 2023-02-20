@@ -26,7 +26,7 @@ const NavCart: React.FC<IProps> = ({ cartCount }) => {
                     <Link
                         href="/shop/cart"
                         color="currentColor"
-                        onClick={(event) => event.preventDefault()}
+                        // onClick={(event) => event.preventDefault()}
                         asButton
                         buttonProps={{
                             variant: 'ghost',
