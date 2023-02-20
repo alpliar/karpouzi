@@ -55,7 +55,7 @@ const LoginForm: React.FC<Props> = ({}) => {
                             <Input type="email" />
                             <FormHelperText>{f('emailReassurance')}</FormHelperText>
                         </FormControl>
-                        <FormControl id="email">
+                        <FormControl id="password">
                             <SimpleGrid
                                 columns={{ base: 1, sm: 2 }}
                                 alignItems="baseline"
