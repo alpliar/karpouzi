@@ -1,7 +1,7 @@
 import { Breadcrumb as ChakraBreadcrumb, BreadcrumbItem } from '@chakra-ui/breadcrumb';
 import { Button, ButtonProps } from '@chakra-ui/button';
 import { ChevronRightIcon } from '@chakra-ui/icons';
-import { Text } from '@chakra-ui/layout';
+import { Text, Wrap, WrapItem } from '@chakra-ui/layout';
 import Head from 'next/head';
 import { BreadcrumbList, WithContext } from 'schema-dts';
 import Link from './link';
@@ -40,7 +40,8 @@ const Breadcrumb = ({ entries }: IBreadcrumbProps) => {
                     dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
                 />
             </Head>
-            <ChakraBreadcrumb
+            <Wrap
+                as={ChakraBreadcrumb}
                 fontSize="sm"
                 separator={<ChevronRightIcon color="currentColor" />}
                 spacing={0}>
@@ -50,7 +51,15 @@ const Breadcrumb = ({ entries }: IBreadcrumbProps) => {
                         index
                     ) => {
                         return (
-                            <BreadcrumbItem key={`${text}-${index}`} isCurrentPage={isCurrentPage}>
+                            <WrapItem
+                                _first={{
+                                    a: {
+                                        paddingLeft: 0
+                                    }
+                                }}
+                                as={BreadcrumbItem}
+                                key={`${text}-${index}`}
+                                isCurrentPage={isCurrentPage}>
                                 {isCurrentPage ? (
                                     <Button
                                         as={Text}
@@ -69,11 +78,11 @@ const Breadcrumb = ({ entries }: IBreadcrumbProps) => {
                                         {text}
                                     </Link>
                                 )}
-                            </BreadcrumbItem>
+                            </WrapItem>
                         );
                     }
                 )}
-            </ChakraBreadcrumb>
+            </Wrap>
         </>
     );
 };
