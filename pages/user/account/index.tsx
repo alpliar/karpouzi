@@ -9,7 +9,7 @@ import { Button } from '@chakra-ui/react';
 import { Select } from '@chakra-ui/select';
 import { Textarea } from '@chakra-ui/textarea';
 import { GetServerSideProps, NextPage } from 'next';
-import { getServerSession } from 'next-auth';
+import getServerSession from 'next-auth';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import React, { PropsWithChildren } from 'react';
@@ -20,8 +20,8 @@ import PageListingLayout from '../../../components/pageListingLayout';
 import { sendToast } from '../../../utils/uiToast';
 import { authOptions } from '../../api/auth/[...nextauth]';
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
-    const session = await getServerSession(context.req, context.res, authOptions);
+export const getServerSideProps: GetServerSideProps = async (_context) => {
+    const session = await getServerSession(authOptions);
     // if (session) {
     //     console.log('has session');
     // } else {
