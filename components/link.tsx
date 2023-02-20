@@ -1,5 +1,5 @@
 import { Button, ButtonProps, IconButton, IconButtonProps } from '@chakra-ui/button';
-import { Link as UiLink } from '@chakra-ui/layout';
+import { Link as ChakraLink } from '@chakra-ui/layout';
 import { chakra, ChakraProps } from '@chakra-ui/system';
 
 import NextLink from 'next/link';
@@ -30,24 +30,39 @@ const Link: React.FC<PropsWithChildren<ILinkProps & ChakraProps>> = ({
     onClick,
     ...rest
 }) => {
-    return (
+    const ServerSideLink: React.FC<{ children: React.ReactElement }> = ({ children }) => (
         <NextLink legacyBehavior href={href} passHref locale={locale} prefetch={prefetch}>
-            <>
-                {asIconButton && iconButtonProps && (
-                    <IconButton as={UiLink} href={href} {...iconButtonProps} />
-                )}
-                {asButton && (
-                    <Button as={UiLink} {...buttonProps} onClick={onClick} {...rest}>
-                        {children}
-                    </Button>
-                )}
-                {!asIconButton && !asButton && (
-                    <UiLink title={alt} onClick={onClick} {...rest}>
-                        {children}
-                    </UiLink>
-                )}
-            </>
+            {children}
         </NextLink>
+    );
+    if (asIconButton) {
+        return (
+            <ServerSideLink>
+                <IconButton
+                    as={ChakraLink}
+                    href={href}
+                    {...(iconButtonProps ? iconButtonProps : { 'aria-label': '???' })}
+                />
+            </ServerSideLink>
+        );
+    }
+
+    if (asButton) {
+        return (
+            <ServerSideLink>
+                <Button as={ChakraLink} {...buttonProps} onClick={onClick} {...rest}>
+                    {children}
+                </Button>
+            </ServerSideLink>
+        );
+    }
+
+    return (
+        <ServerSideLink>
+            <ChakraLink title={alt} onClick={onClick} {...rest}>
+                {children}
+            </ChakraLink>
+        </ServerSideLink>
     );
 };
 
