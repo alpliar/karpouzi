@@ -68,20 +68,18 @@ const NavLocaleSelector: React.FC<INavLocaleSelectorProps> = ({ compact = false 
                         const localeName = localesInfos[locale as keyof typeof localesInfos];
                         const isCurrentLocale = locale === router.locale;
                         return (
-                            <>
-                                <Link
-                                    asButton
-                                    onClick={() => handleClick(locale)}
-                                    key={locale}
-                                    href={router.asPath}
-                                    locale={locale}
-                                    fontWeight={isCurrentLocale ? 'bold' : 'normal'}>
-                                    <Text fontSize="sm" as="span">
-                                        {getFlagEmoji(countryCode(locale))}
-                                    </Text>
-                                    <Text as="span">&nbsp;{localeName}</Text>
-                                </Link>
-                            </>
+                            <Link
+                                asButton
+                                onClick={() => handleClick(locale)}
+                                key={locale}
+                                href={router.asPath}
+                                locale={locale}
+                                fontWeight={isCurrentLocale ? 'bold' : 'normal'}>
+                                <Text fontSize="sm" as="span">
+                                    {getFlagEmoji(countryCode(locale))}
+                                </Text>
+                                <Text as="span">&nbsp;{localeName}</Text>
+                            </Link>
                         );
                     })}
                 </Stack>
