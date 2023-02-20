@@ -25,7 +25,7 @@ const errorHandler = (anyError: unknown): Error => {
         return new Error('Apollo Error');
     }
     if (anyError instanceof Error) return anyError;
-    return Error('Unkown error has occured');
+    return Error('Unknown error has occured');
 };
 
 export default errorHandler;
