@@ -55,7 +55,8 @@ export const en = {
         somethingWentWrong: 'Something went wrong',
         logoutFeatures:
             "Thank you for using our service! You are welcome to log in again whenever you're ready to place an order. Have a great day!",
-        cartIsEmpty: 'Cart is empty'
+        cartIsEmpty: 'Cart is empty',
+        cart: 'Cart'
     },
     '/': {
         welcomeMessage: 'Welcome to',

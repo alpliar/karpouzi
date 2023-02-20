@@ -55,7 +55,8 @@ export const es = {
         somethingWentWrong: 'Algo salió mal',
         logoutFeatures:
             '¡Gracias por utilizar nuestro servicio! Si desea realizar un pedido, puede iniciar sesión en cualquier momento. ¡Que tengas un buen día!',
-        cartIsEmpty: 'Carrito vacío'
+        cartIsEmpty: 'Carrito vacío',
+        cart: 'Carrito'
     },
     '/': {
         welcomeMessage: 'Bienvenido a',
