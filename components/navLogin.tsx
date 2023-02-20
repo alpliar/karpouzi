@@ -1,9 +1,10 @@
-import { Box, Icon } from '@chakra-ui/react';
+import { Box, Icon, useBreakpointValue } from '@chakra-ui/react';
 import { signIn, useSession } from 'next-auth/react';
 import { FaUserCircle } from 'react-icons/fa';
 import { IoLogIn } from 'react-icons/io5';
 import { useIntl } from 'react-intl';
 import Link from './link';
+import NavButton from './navButton';
 import NavLoginAuthenticated from './NavLoginAuthenticated';
 import Popover from './Popover';
 
@@ -18,47 +19,26 @@ const NavLogin = () => {
         signIn();
     };
 
+    const compact = useBreakpointValue({ base: true, md: false });
+
     return (
         <>
             {isAuthenticated ? (
                 <NavLoginAuthenticated />
             ) : (
-                // <NavButton
-                //     e2e="loginCTA"
-                //     icon={FaUserCircle}
-                //     label="Login or register"
-                //     handleClick={handleClick}
-                // />
-
                 <Popover
                     trigger={
                         <Box>
-                            <Link
+                            <NavButton
                                 href="/user/account"
-                                asButton
-                                buttonProps={{
-                                    variant: 'ghost',
-                                    color: 'currentcolor',
-                                    // leftIcon: (
-                                    //     <Avatar
-                                    //         size="xs"
-                                    //         name={f('menuEntryUser')}
-                                    //         src={undefined}
-                                    //         _hover={{
-                                    //             textDecoration: 'none !important'
-                                    //         }}
-                                    //     />
-                                    // )
-                                    leftIcon: <Icon boxSize={6} as={FaUserCircle} />
+                                e2e="loginCTA"
+                                icon={FaUserCircle}
+                                label={f('menuEntryUser')}
+                                compact={compact}
+                                handleClick={() => {
+                                    // test
                                 }}
-                                aria-label="user account"
-                                // onClick={(event) => {
-                                //     event.preventDefault();
-                                //     // Do not follow link if javascript is enabled, since a popover is opened instead
-                                // }}
-                            >
-                                {f('menuEntryUser')}
-                            </Link>
+                            />
                         </Box>
                     }>
                     <Link

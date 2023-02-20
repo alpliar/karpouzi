@@ -1,4 +1,4 @@
-import { Button, ButtonProps } from '@chakra-ui/button';
+import { Button, ButtonProps, IconButton, IconButtonProps } from '@chakra-ui/button';
 import { Link as UiLink } from '@chakra-ui/layout';
 import { chakra, ChakraProps } from '@chakra-ui/system';
 
@@ -11,7 +11,9 @@ interface ILinkProps {
     locale?: string | false;
     prefetch?: boolean;
     asButton?: boolean;
+    asIconButton?: boolean;
     buttonProps?: ButtonProps;
+    iconButtonProps?: IconButtonProps;
     onClick?: React.MouseEventHandler<HTMLAnchorElement | HTMLButtonElement>;
 }
 
@@ -22,26 +24,29 @@ const Link: React.FC<PropsWithChildren<ILinkProps & ChakraProps>> = ({
     locale,
     prefetch = true,
     asButton = false,
+    asIconButton = false,
     buttonProps,
+    iconButtonProps,
     onClick,
     ...rest
 }) => {
     return (
         <NextLink legacyBehavior href={href} passHref locale={locale} prefetch={prefetch}>
-            {asButton ? (
-                <Button
-                    as={UiLink}
-                    colorScheme="green"
-                    {...buttonProps}
-                    onClick={onClick}
-                    {...rest}>
-                    {children}
-                </Button>
-            ) : (
-                <UiLink title={alt} onClick={onClick} {...rest}>
-                    {children}
-                </UiLink>
-            )}
+            <>
+                {asIconButton && iconButtonProps && (
+                    <IconButton as={UiLink} href={href} {...iconButtonProps} />
+                )}
+                {asButton && (
+                    <Button as={UiLink} {...buttonProps} onClick={onClick} {...rest}>
+                        {children}
+                    </Button>
+                )}
+                {!asIconButton && !asButton && (
+                    <UiLink title={alt} onClick={onClick} {...rest}>
+                        {children}
+                    </UiLink>
+                )}
+            </>
         </NextLink>
     );
 };

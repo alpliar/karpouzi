@@ -1,7 +1,7 @@
 import { ButtonProps } from '@chakra-ui/button';
 import { ColorMode, useColorMode } from '@chakra-ui/color-mode';
 import { useDisclosure } from '@chakra-ui/hooks';
-import { Box, Flex, HStack, Stack, Text, Wrap } from '@chakra-ui/layout';
+import { Box, Flex, Stack, Text, Wrap } from '@chakra-ui/layout';
 import { EffectProps } from '@chakra-ui/system';
 import PropTypes from 'prop-types';
 import { PropsWithChildren } from 'react';
@@ -105,12 +105,12 @@ const Header = ({}) => {
                                 ))}
                             </Stack>
                         </Flex>
-                        <HStack spacing={1}>
+                        <Flex gap="1" wrap="wrap">
                             <Box display={{ base: 'none', sm: 'block' }}>
-                                <HStack spacing="1">
+                                <Flex gap="1" wrap="wrap" display={{ base: 'none', sm: 'flex' }}>
                                     <NavThemeToggle />
                                     <NavLocaleSelector compact />
-                                </HStack>
+                                </Flex>
                             </Box>
                             <NavLogin />
                             <NavCart />
@@ -121,13 +121,13 @@ const Header = ({}) => {
                                     onClose={onClose}
                                     body={<NavDrawerBody />}
                                     footer={
-                                        <HStack spacing="1">
+                                        <Flex wrap="wrap" gap="1">
                                             <NavThemeToggle compact={false} />
                                             <NavLocaleSelector compact={false} />
-                                        </HStack>
+                                        </Flex>
                                     }></NavDrawer>
                             </Box>
-                        </HStack>
+                        </Flex>
                     </Wrap>
                 </Flex>
             </Stack>
