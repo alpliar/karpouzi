@@ -52,11 +52,6 @@ const Breadcrumb = ({ entries }: IBreadcrumbProps) => {
                     ) => {
                         return (
                             <WrapItem
-                                _first={{
-                                    a: {
-                                        paddingLeft: 0
-                                    }
-                                }}
                                 as={BreadcrumbItem}
                                 key={`${text}-${index}`}
                                 isCurrentPage={isCurrentPage}>

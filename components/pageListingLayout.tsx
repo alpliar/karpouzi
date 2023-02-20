@@ -41,7 +41,7 @@ const PageListingLayout: React.FC<PropsWithChildren<IPageLayoutProps>> = ({
     return (
         <PageLayout>
             <Head>
-                <title>{`${title} - ${siteTitle}`}</title>
+                <title>{`${title} | ${siteTitle}`}</title>
             </Head>
 
             {/* LISTING'S HEADER */}
@@ -53,7 +53,7 @@ const PageListingLayout: React.FC<PropsWithChildren<IPageLayoutProps>> = ({
                     <Stack spacing={2}>
                         <Breadcrumb entries={breadcrumbs} />
                         <Wrap spacing={1} justify="space-between">
-                            <Heading as="h1" maxW="lg">
+                            <Heading as="h1" maxW="lg" paddingLeft={2}>
                                 {title}
                             </Heading>
 
