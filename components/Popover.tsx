@@ -24,7 +24,7 @@ const Popover: React.FC<Props> = ({ children, trigger, footer, header }) => {
             <PopoverContent w="auto" minW={40}>
                 <PopoverArrow />
                 {header && (
-                    <PopoverHeader>
+                    <PopoverHeader display="flex" alignItems="center" justifyContent="center">
                         {header}
                         {/* <HStack>
                         <PopoverCloseButton position="initial" />

@@ -55,13 +55,12 @@ const NavLocaleSelector: React.FC<INavLocaleSelectorProps> = ({ compact = false 
                     </Box>
                 }
                 header={
-                    <Heading as="p" fontSize="lg" textAlign="center">
-                        <Text as="span" display="flex" alignItems="center">
+                    <>
+                        <Heading as="p" fontSize="lg">
                             {`${f('language')} / `}
-                            <Icon as={IoLanguage} boxSize={7} ml={1} />
-                        </Text>
-                        {/* <Icon as={FaLanguage} boxSize={8} ml={2} /> */}
-                    </Heading>
+                        </Heading>
+                        <Icon as={IoLanguage} boxSize={7} ml={1} />
+                    </>
                 }>
                 <Stack spacing={2}>
                     {router.locales?.map((locale: string) => {
