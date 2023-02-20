@@ -1,4 +1,4 @@
-import { Avatar, Button, Icon, Text } from '@chakra-ui/react';
+import { Avatar, Box, Icon, Text, useBreakpointValue } from '@chakra-ui/react';
 import { signOut, useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import React from 'react';
@@ -6,6 +6,7 @@ import { IoHome, IoLogOut } from 'react-icons/io5';
 import { useIntl } from 'react-intl';
 import { sendToast } from '../utils/uiToast';
 import Link from './link';
+import NavButton from './navButton';
 import Popover from './Popover';
 
 const NavLoginAuthenticated: React.FC = () => {
@@ -37,16 +38,23 @@ const NavLoginAuthenticated: React.FC = () => {
 
     const userName = session?.user?.name as string;
     const userAvatar = session?.user?.image as string;
+
+    const compact = useBreakpointValue({ base: true, md: false });
     return (
         <Popover
             trigger={
-                <Button
-                    variant="ghost"
-                    aria-label="user account"
-                    // onClick={() => router.push('/user/account')}
-                    leftIcon={<Avatar size="xs" name={userName} src={userAvatar} />}>
-                    {userName}
-                </Button>
+                <Box>
+                    <NavButton
+                        href="/user/account"
+                        e2e="loggedInCTA"
+                        customIconElement={<Avatar size="xs" name={userName} src={userAvatar} />}
+                        label={userName}
+                        compact={compact}
+                        handleClick={() => {
+                            // test
+                        }}
+                    />
+                </Box>
             }
             footer={
                 <Link

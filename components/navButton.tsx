@@ -2,12 +2,13 @@ import { Icon, IconProps } from '@chakra-ui/icon';
 import { Button, IconButton } from '@chakra-ui/button';
 import { ComponentWithAs } from '@chakra-ui/system';
 
-import { MouseEventHandler } from 'react';
+import React, { MouseEventHandler } from 'react';
 import { IconType } from 'react-icons';
 import Link from './link';
 
 interface IProps {
-    icon: IconType | ComponentWithAs<'svg', IconProps>;
+    icon?: IconType | ComponentWithAs<'svg', IconProps>;
+    customIconElement?: React.ReactElement;
     label: string;
     handleClick: MouseEventHandler<HTMLButtonElement>;
     isPrimary?: boolean;
@@ -23,11 +24,13 @@ const NavButton: React.FC<IProps> = ({
     isPrimary = false,
     compact = true,
     e2e = undefined,
-    href = undefined
+    href = undefined,
+    customIconElement = undefined
 }) => {
     const variant = isPrimary ? 'outline' : 'ghost';
 
     const RenderedIcon = () => {
+        if (customIconElement) return customIconElement;
         return <Icon as={icon} boxSize={5} />;
     };
 
