@@ -1,10 +1,9 @@
-import NextAuth from 'next-auth';
-import type { AuthOptions } from 'next-auth';
+import NextAuth, { NextAuthOptions } from 'next-auth';
 import DiscordProvider from 'next-auth/providers/discord';
 import GoogleProvider from 'next-auth/providers/google';
 // import EmailProvider from 'next-auth/providers/email';
 
-export const authOptions: AuthOptions = {
+export const authOptions: NextAuthOptions = {
     // Configure one or more authentication providers
     secret: process.env.NEXT_AUTH_SECRET,
     providers: [
