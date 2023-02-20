@@ -29,7 +29,7 @@ export const fr = {
         addedToCart: 'Article ajouté au panier',
         noAlreadyInCart: 'Déjà {count} au panier',
         language: 'Langue',
-        thème: 'Thème',
+        theme: 'Thème',
         lightTheme: 'clair',
         darkTheme: 'sombre',
         switchToThemeName: 'Passer au thème {name}',
