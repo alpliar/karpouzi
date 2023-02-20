@@ -56,7 +56,8 @@ export const en = {
         logoutFeatures:
             "Thank you for using our service! You are welcome to log in again whenever you're ready to place an order. Have a great day!",
         cartIsEmpty: 'Cart is empty',
-        cart: 'Cart'
+        cart: 'Cart',
+        accessCart: 'Access to cart'
     },
     '/': {
         welcomeMessage: 'Welcome to',

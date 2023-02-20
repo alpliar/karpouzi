@@ -56,7 +56,8 @@ export const fr = {
         logoutFeatures:
             "Merci d'être passé·e! N'hésitez pas à vous connecter à nouveau lorsque vous serez prêt·e à passer une commande. Bonne journée !",
         cartIsEmpty: 'Panier vide',
-        cart: 'Panier'
+        cart: 'Panier',
+        accessCart: 'Accès au panier'
     },
     '/': {
         welcomeMessage: 'Bienvenue sur',

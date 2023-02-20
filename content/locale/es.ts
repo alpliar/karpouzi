@@ -56,7 +56,8 @@ export const es = {
         logoutFeatures:
             '¡Gracias por utilizar nuestro servicio! Si desea realizar un pedido, puede iniciar sesión en cualquier momento. ¡Que tengas un buen día!',
         cartIsEmpty: 'Carrito vacío',
-        cart: 'Carrito'
+        cart: 'Carrito',
+        accessCart: 'Acceso al carrito'
     },
     '/': {
         welcomeMessage: 'Bienvenido a',
