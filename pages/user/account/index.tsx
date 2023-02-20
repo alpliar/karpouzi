@@ -9,8 +9,8 @@ import { Button } from '@chakra-ui/react';
 import { Select } from '@chakra-ui/select';
 import { Textarea } from '@chakra-ui/textarea';
 import { GetServerSideProps, NextPage } from 'next';
-import getServerSession from 'next-auth';
-import { useSession } from 'next-auth/react';
+import { Session } from 'next-auth';
+import { getSession, useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import React, { PropsWithChildren } from 'react';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
@@ -18,29 +18,17 @@ import { useIntl } from 'react-intl';
 import AuthGard from '../../../components/AuthGard';
 import PageListingLayout from '../../../components/pageListingLayout';
 import { sendToast } from '../../../utils/uiToast';
-import { authOptions } from '../../api/auth/[...nextauth]';
 
-export const getServerSideProps: GetServerSideProps = async (_context) => {
-    const session = await getServerSession(authOptions);
-    // if (session) {
-    //     console.log('has session');
-    // } else {
-    //     console.error('no session');
-    // }
+interface UserAccountPageProps {
+    session: Session | null;
+}
 
-    // if (!session) {
-    //     return {
-    //         redirect: {
-    //             destination: '/user/login',
-    //             statusCode: 301
-    //         },
-    //         props: { session: null }
-    //     };
-    // }
+export const getServerSideProps: GetServerSideProps<UserAccountPageProps> = async (context) => {
+    const session: Session | null = await getSession(context);
 
     return {
         props: {
-            session //: await getServerSession(context.req, context.res, authOptions)
+            session
         }
     };
 };
@@ -70,29 +58,13 @@ const HelperText: React.FC<PropsWithChildren<unknown>> = ({ children }) => {
     );
 };
 
-const UserAccountPage: NextPage = () => {
+const UserAccountPage: NextPage<UserAccountPageProps> = () => {
     const { formatMessage } = useIntl();
     const f = (id: string, values?: any) => formatMessage({ id }, values);
     const router = useRouter();
+
     const { data: session } = useSession();
-    // const { status } = useSession({
-    //     required: true,
-    //     onUnauthenticated() {
-    //         // The user is not authenticated, handle it here.
-    //         // alert('please login');
-    //         sendToast(f('accessDenied'), f('pageRequiresAuthentication'), 'error');
-    //     }
-    // });
-
-    // if (!session) return <AuthGard />;
-
     const { name, image, email } = session?.user || {};
-
-    // if (status === 'loading') {
-    // return "Loading or not authenticated..."
-    // }
-
-    //   return "User is logged in"
 
     const changeLocale = (newLocale: string) => {
         if (newLocale !== router.locale) {
@@ -139,12 +111,12 @@ const UserAccountPage: NextPage = () => {
                         <UserAccountSection title={f('personalInformations')}>
                             <FormControl id="name">
                                 <FormLabel>{f('name')}</FormLabel>
-                                <Input type="text" value={name || ''} />
+                                <Input type="text" defaultValue={name || ''} />
                                 {/* <FormHelperText>We'll never share your email.</FormHelperText> */}
                             </FormControl>
                             <FormControl id="email">
                                 <FormLabel>{f('email')}</FormLabel>
-                                <Input type="email" value={email || ''} />
+                                <Input type="email" defaultValue={email || ''} />
                                 <FormHelperText>{f('emailHelperText')}</FormHelperText>
                             </FormControl>
                             <FormControl id="bio">
