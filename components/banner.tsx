@@ -8,7 +8,7 @@ interface IBannerProps {
     height?: LayoutProps['height'];
     bgColor?: BoxProps['bgColor'];
     pattern?: Pattern;
-    rounded: BoxProps['rounded'];
+    rounded?: BoxProps['rounded'];
 }
 const Banner: React.FC<IBannerProps & BoxProps> = ({
     children,
