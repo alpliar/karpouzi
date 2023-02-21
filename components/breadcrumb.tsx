@@ -40,8 +40,8 @@ const Breadcrumb = ({ entries }: IBreadcrumbProps) => {
                     dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
                 />
             </Head>
-            <Wrap
-                as={ChakraBreadcrumb}
+            <ChakraBreadcrumb
+                as={Wrap}
                 fontSize="sm"
                 separator={<ChevronRightIcon color="currentColor" />}
                 spacing={0}>
@@ -51,8 +51,8 @@ const Breadcrumb = ({ entries }: IBreadcrumbProps) => {
                         index
                     ) => {
                         return (
-                            <WrapItem
-                                as={BreadcrumbItem}
+                            <BreadcrumbItem
+                                as={WrapItem}
                                 key={`${text}-${index}`}
                                 isCurrentPage={isCurrentPage}>
                                 {isCurrentPage ? (
@@ -73,11 +73,11 @@ const Breadcrumb = ({ entries }: IBreadcrumbProps) => {
                                         {text}
                                     </Link>
                                 )}
-                            </WrapItem>
+                            </BreadcrumbItem>
                         );
                     }
                 )}
-            </Wrap>
+            </ChakraBreadcrumb>
         </>
     );
 };
