@@ -58,7 +58,9 @@ export const fr = {
         cartIsEmpty: 'Panier vide',
         cart: 'Panier',
         accessCart: 'Accès au panier',
-        signIn: "S'identifier"
+        signIn: "S'identifier",
+        fullySupportedLocales: 'Support complet',
+        partiallySupportedLocales: 'Support partiel'
     },
     '/': {
         welcomeMessage: 'Bienvenue sur',

@@ -7,6 +7,7 @@ const withPWA = require('next-pwa')({
     runtimeCaching,
     publicExcludes: ['!robots.txt']
 });
+const i18nConfig = require('./constants/i18n.config.json');
 
 /**
  * @type {import('next').NextConfig}
@@ -16,8 +17,8 @@ const nextConfig = withPWA({
         domains: ['media.graphassets.com']
     },
     i18n: {
-        locales: ['en', 'fr', 'es', 'el'],
-        defaultLocale: 'en'
+        locales: i18nConfig.supportedLocales,
+        defaultLocale: i18nConfig.defaultLocale
     },
     compiler: {
         removeConsole: {

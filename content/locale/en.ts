@@ -58,7 +58,9 @@ export const en = {
         cartIsEmpty: 'Cart is empty',
         cart: 'Cart',
         accessCart: 'Access to cart',
-        signIn: 'Sign in'
+        signIn: 'Sign in',
+        fullySupportedLocales: 'Full support',
+        partiallySupportedLocales: 'Partial support'
     },
     '/': {
         welcomeMessage: 'Welcome to',

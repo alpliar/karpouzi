@@ -58,7 +58,9 @@ export const es = {
         cartIsEmpty: 'Carrito vacío',
         cart: 'Carrito',
         accessCart: 'Acceso al carrito',
-        signIn: 'Registrarse'
+        signIn: 'Registrarse',
+        fullySupportedLocales: 'Soporte total',
+        partiallySupportedLocales: 'Suporte parcial'
     },
     '/': {
         welcomeMessage: 'Bienvenido a',

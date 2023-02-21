@@ -71,7 +71,12 @@ const NavLoginAuthenticated: React.FC = () => {
                     <Text as="span">{f('logout')}</Text>
                 </Link>
             }>
-            <Link href="/user/account" asButton>
+            <Link
+                href="/user/account"
+                asButton
+                buttonProps={{
+                    colorScheme: 'yellow'
+                }}>
                 <Icon as={IoHome} boxSize=".8em" mr={1} />
                 {f('menuEntryUser')}
             </Link>

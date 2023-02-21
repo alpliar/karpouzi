@@ -1,30 +1,70 @@
-import { Box, Heading, Icon, Stack, Text } from '@chakra-ui/react';
+import { Box, Divider, Heading, Icon, Stack, Text } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
-import { FaGlobeAmericas as LocaleIcon } from 'react-icons/fa';
+import { FaAsterisk, FaGlobeAmericas as LocaleIcon } from 'react-icons/fa';
 import { IoLanguage } from 'react-icons/io5';
 import { useIntl } from 'react-intl';
+import i18nConfig from '../constants/i18n.config.json';
 import getFlagEmoji from '../utils/flags';
 import { sendToast } from '../utils/uiToast';
 import Link from './link';
 import NavButton from './navButton';
 import Popover from './Popover';
 
+const PartiallySupportedLocaleIcon = () => <Icon boxSize={2} as={FaAsterisk} />;
+
 export interface INavLocaleSelectorProps {
     compact?: boolean;
 }
 
-const NavLocaleSelector: React.FC<INavLocaleSelectorProps> = ({ compact = false }) => {
+interface LocaleGroupProps {
+    locales: string[];
+    // label: string;
+    isFullySupported?: boolean;
+}
+
+const LocaleGroup: React.FC<LocaleGroupProps> = ({ locales, isFullySupported = false }) => {
+    return (
+        <Stack>
+            {/* <Heading fontSize="sm" noOfLines={1} as="span">
+                {label}
+            </Heading> */}
+            {locales.map((locale) => (
+                <NavLocaleSelectorItem
+                    key={locale}
+                    locale={locale}
+                    isFullySupported={isFullySupported}
+                />
+            ))}
+        </Stack>
+    );
+};
+interface NavLocaleSelectorItemProps {
+    locale: string;
+    isFullySupported: boolean;
+}
+const NavLocaleSelectorItem: React.FC<NavLocaleSelectorItemProps> = ({
+    locale,
+    isFullySupported
+}) => {
+    const router = useRouter();
     const { formatMessage } = useIntl();
+
+    const { asPath: currentPath } = router;
+    const isCurrentLocale = router.locale === locale;
     const f = (id: string, values: any = null) => formatMessage({ id }, values);
 
-    const router = useRouter();
+    const handleClick = () => {
+        if (locale !== router.locale)
+            sendToast(f('updatingLocale'), f('newLocaleDetail', { name: locale }), 'info');
+    };
 
-    const localesInfos = {
+    const localesNames = {
         en: 'English',
         fr: 'Français',
         es: 'Español',
         el: 'Ελληνικά'
     };
+    const localeName = localesNames[locale as keyof typeof localesNames];
 
     const countryCode = (localeCode: string) => {
         if (localeCode === 'en') return 'gb';
@@ -32,10 +72,37 @@ const NavLocaleSelector: React.FC<INavLocaleSelectorProps> = ({ compact = false 
         return localeCode || 'en';
     };
 
-    const handleClick = (locale: string) => {
-        if (locale !== router.locale)
-            sendToast(f('updatingLocale'), f('newLocaleDetail', { name: locale }), 'info');
-    };
+    return (
+        <Link
+            asButton
+            buttonProps={{
+                rightIcon: !isFullySupported ? <Icon boxSize={2} as={FaAsterisk} /> : undefined,
+                colorScheme: isCurrentLocale ? 'yellow' : undefined,
+                // TODO: Flag should not be underlined on button hover
+                leftIcon: (
+                    <Text fontSize="sm" as="span" className="localeIcon">
+                        {getFlagEmoji(countryCode(locale))}
+                    </Text>
+                )
+            }}
+            onClick={handleClick}
+            key={locale}
+            href={currentPath}
+            locale={locale}
+            fontWeight={isCurrentLocale ? 'bold' : 'normal'}>
+            <Text as="span">{localeName}</Text>
+        </Link>
+    );
+};
+
+const NavLocaleSelector: React.FC<INavLocaleSelectorProps> = ({ compact = false }) => {
+    const { formatMessage } = useIntl();
+    const f = (id: string, values: any = null) => formatMessage({ id }, values);
+
+    const { supportedLocales, fullySupportedLocales } = i18nConfig;
+    const partiallySupportedLocales = supportedLocales.filter(
+        (locale) => !fullySupportedLocales.includes(locale)
+    );
 
     return (
         <Box>
@@ -47,7 +114,6 @@ const NavLocaleSelector: React.FC<INavLocaleSelectorProps> = ({ compact = false 
                             label={f('language')}
                             compact={compact}
                             icon={LocaleIcon}
-                            // icon={IoLanguage}
                             handleClick={() => {
                                 //TODO: do nothing, really ?
                             }}
@@ -61,26 +127,26 @@ const NavLocaleSelector: React.FC<INavLocaleSelectorProps> = ({ compact = false 
                         </Heading>
                         <Icon as={IoLanguage} boxSize={7} ml={1} />
                     </>
+                }
+                footer={
+                    <Text>
+                        <PartiallySupportedLocaleIcon />
+                        <Text fontSize="sm" ml={1} as="span" fontStyle="italic">
+                            {f('partiallySupportedLocales')}
+                        </Text>
+                    </Text>
                 }>
                 <Stack spacing={2}>
-                    {router.locales?.map((locale: string) => {
-                        const localeName = localesInfos[locale as keyof typeof localesInfos];
-                        const isCurrentLocale = locale === router.locale;
-                        return (
-                            <Link
-                                asButton
-                                onClick={() => handleClick(locale)}
-                                key={locale}
-                                href={router.asPath}
-                                locale={locale}
-                                fontWeight={isCurrentLocale ? 'bold' : 'normal'}>
-                                <Text fontSize="sm" as="span">
-                                    {getFlagEmoji(countryCode(locale))}
-                                </Text>
-                                <Text as="span">&nbsp;{localeName}</Text>
-                            </Link>
-                        );
-                    })}
+                    <LocaleGroup
+                        // label={f('fullySupportedLocales')}
+                        locales={fullySupportedLocales}
+                        isFullySupported
+                    />
+                    <Divider />
+                    <LocaleGroup
+                        // label={f('partiallySupportedLocales')}
+                        locales={partiallySupportedLocales}
+                    />
                 </Stack>
             </Popover>
         </Box>

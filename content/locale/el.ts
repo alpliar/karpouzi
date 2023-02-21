@@ -58,7 +58,9 @@ export const el = {
         cartIsEmpty: 'Καλάθι άδειο',
         cart: 'Καλάθι',
         accessCart: 'Πρόσβαση στο καλάθι',
-        signIn: 'Συνδεθείτε'
+        signIn: 'Συνδεθείτε',
+        fullySupportedLocales: 'Πλήρης υποστήριξη',
+        partiallySupportedLocales: 'Μερική υποστήριξη'
     },
     '/': {
         welcomeMessage: 'καλώς ήλθατε στο',
