@@ -76,6 +76,7 @@ const NavLocaleSelectorItem: React.FC<NavLocaleSelectorItemProps> = ({
         <Link
             asButton
             buttonProps={{
+                size: 'sm',
                 rightIcon: !isFullySupported ? <Icon boxSize={2} as={FaAsterisk} /> : undefined,
                 colorScheme: isCurrentLocale ? 'yellow' : undefined,
                 // TODO: Flag should not be underlined on button hover
