@@ -8,14 +8,14 @@ const NavDrawerBody = () => {
 
     const entries = [
         {
-            href: '/blog',
-            alt: f('goToPageName', { name: f('menuEntryBlog') }),
-            text: f('menuEntryBlog')
-        },
-        {
             href: '/shop',
             alt: f('goToPageName', { name: f('menuEntryShop') }),
             text: f('menuEntryShop')
+        },
+        {
+            href: '/blog',
+            alt: f('goToPageName', { name: f('menuEntryBlog') }),
+            text: f('menuEntryBlog')
         }
     ];
 
