@@ -1,7 +1,7 @@
 import { Breadcrumb as ChakraBreadcrumb, BreadcrumbItem } from '@chakra-ui/breadcrumb';
 import { Button, ButtonProps } from '@chakra-ui/button';
 import { ChevronRightIcon } from '@chakra-ui/icons';
-import { Text, Wrap, WrapItem } from '@chakra-ui/layout';
+import { Text } from '@chakra-ui/layout';
 import Head from 'next/head';
 import { BreadcrumbList, WithContext } from 'schema-dts';
 import Link from './link';
@@ -41,7 +41,8 @@ const Breadcrumb = ({ entries }: IBreadcrumbProps) => {
                 />
             </Head>
             <ChakraBreadcrumb
-                as={Wrap}
+                display="flex"
+                flexWrap="wrap"
                 fontSize="sm"
                 separator={<ChevronRightIcon color="currentColor" />}
                 spacing={0}>
@@ -51,10 +52,7 @@ const Breadcrumb = ({ entries }: IBreadcrumbProps) => {
                         index
                     ) => {
                         return (
-                            <BreadcrumbItem
-                                as={WrapItem}
-                                key={`${text}-${index}`}
-                                isCurrentPage={isCurrentPage}>
+                            <BreadcrumbItem key={`${text}-${index}`} isCurrentPage={isCurrentPage}>
                                 {isCurrentPage ? (
                                     <Button
                                         as={Text}
