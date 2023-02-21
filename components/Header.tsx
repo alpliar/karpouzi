@@ -60,77 +60,76 @@ const Header = ({}) => {
     ];
     return (
         <>
-            <Stack /*position="sticky" zIndex="sticky" top="0px" */ spacing={0}>
-                <Flex
-                    boxShadow={boxShadow}
-                    as="nav"
-                    data-e2e="mainNavigation"
-                    bgColor={headerBgColor(colorMode)}>
-                    <Wrap
-                        align={{ base: 'auto', md: 'center' }}
-                        justify="flex-end"
-                        maxW={APP_MAX_WIDTH}
-                        margin="auto"
-                        w="100%"
-                        p={2}>
-                        <Flex align="center" mr={{ base: 2, sm: 4 }}>
-                            <NavLogo />
-                        </Flex>
-                        <Flex
-                            textAlign={{ base: 'center', md: 'left' }}
-                            alignItems="center"
-                            justifyContent="center"
+            <Flex
+                boxShadow={boxShadow}
+                as="nav"
+                data-e2e="mainNavigation"
+                bgColor={headerBgColor(colorMode)}>
+                <Wrap
+                    align={{ base: 'auto', md: 'center' }}
+                    justify="flex-end"
+                    maxW={APP_MAX_WIDTH}
+                    margin="auto"
+                    w="100%"
+                    p={{ base: 1, sm: 2 }}
+                    spacing={{ base: 0, sm: 2 }}>
+                    <Flex align="center" mr={{ base: 2, sm: 4 }}>
+                        <NavLogo />
+                    </Flex>
+                    <Flex
+                        textAlign={{ base: 'center', md: 'left' }}
+                        alignItems="center"
+                        justifyContent="center"
+                        flexGrow={1}
+                        transition={BASE_TRANSITION}>
+                        <Stack
+                            direction="row"
+                            spacing={{ base: 0, sm: 2 }}
+                            display={{ base: 'none', md: 'block' }}
+                            minW="auto"
+                            alignItems="left"
+                            justifyContent="flex-start"
+                            flexWrap="wrap"
                             flexGrow={1}
-                            transition={BASE_TRANSITION}>
-                            <Stack
-                                direction="row"
-                                spacing={2}
-                                display={{ base: 'none', md: 'block' }}
-                                minW="auto"
-                                alignItems="left"
-                                justifyContent="flex-start"
-                                flexWrap="wrap"
-                                flexGrow={1}
-                                paddingX={2}
-                                overflow="hidden">
-                                {headerLinks.map((link, index) => (
-                                    <Link
-                                        fontSize="md"
-                                        key={index}
-                                        asButton
-                                        buttonProps={headerButtonStyle}
-                                        href={link.href}>
-                                        {link.label}
-                                    </Link>
-                                ))}
-                            </Stack>
-                        </Flex>
-                        <Flex gap="1" wrap="wrap">
-                            <Box display={{ base: 'none', sm: 'block' }}>
-                                <Flex gap="1" wrap="wrap" display={{ base: 'none', sm: 'flex' }}>
-                                    <NavThemeToggle />
-                                    <NavLocaleSelector compact />
-                                </Flex>
-                            </Box>
-                            <NavLogin />
-                            <NavCart />
-                            <Box display={{ base: 'block', md: 'none' }}>
-                                <NavBurgerMenu handleClick={onToggle} />
-                                <NavDrawer
-                                    isOpen={isOpen}
-                                    onClose={onClose}
-                                    body={<NavDrawerBody />}
-                                    footer={
-                                        <Flex wrap="wrap" gap="1">
-                                            <NavThemeToggle compact={false} />
-                                            <NavLocaleSelector compact={false} />
-                                        </Flex>
-                                    }></NavDrawer>
-                            </Box>
-                        </Flex>
-                    </Wrap>
-                </Flex>
-            </Stack>
+                            paddingX={2}
+                            overflow="hidden">
+                            {headerLinks.map((link, index) => (
+                                <Link
+                                    fontSize="md"
+                                    key={index}
+                                    asButton
+                                    buttonProps={headerButtonStyle}
+                                    href={link.href}>
+                                    {link.label}
+                                </Link>
+                            ))}
+                        </Stack>
+                    </Flex>
+                    <Flex gap={{ base: 0, sm: 1 }} wrap="wrap">
+                        <Box display={{ base: 'none', sm: 'block' }}>
+                            <Flex gap="1" wrap="wrap" display={{ base: 'none', sm: 'flex' }}>
+                                <NavThemeToggle />
+                                <NavLocaleSelector compact />
+                            </Flex>
+                        </Box>
+                        <NavLogin />
+                        <NavCart />
+                        <Box display={{ base: 'block', md: 'none' }}>
+                            <NavBurgerMenu handleClick={onToggle} />
+                            <NavDrawer
+                                isOpen={isOpen}
+                                onClose={onClose}
+                                body={<NavDrawerBody />}
+                                footer={
+                                    <Flex wrap="wrap" gap="1">
+                                        <NavThemeToggle compact={false} />
+                                        <NavLocaleSelector compact={false} />
+                                    </Flex>
+                                }></NavDrawer>
+                        </Box>
+                    </Flex>
+                </Wrap>
+            </Flex>
         </>
     );
 };
