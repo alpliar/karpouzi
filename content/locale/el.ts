@@ -60,7 +60,11 @@ export const el = {
         accessCart: 'Πρόσβαση στο καλάθι',
         signIn: 'Συνδεθείτε',
         fullySupportedLocales: 'Πλήρης υποστήριξη',
-        partiallySupportedLocales: 'Μερική υποστήριξη'
+        partiallySupportedLocales: 'Μερική υποστήριξη',
+        PER_UNIT: 'το κομμάτι',
+        PER_METER: 'το μέτρο',
+        PER_KILOGRAM: 'το κιλό',
+        PER_LITER: 'το λίτρο'
     },
     '/': {
         welcomeMessage: 'καλώς ήλθατε στο',

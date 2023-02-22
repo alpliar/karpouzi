@@ -60,7 +60,11 @@ export const en = {
         accessCart: 'Access to cart',
         signIn: 'Sign in',
         fullySupportedLocales: 'Full support',
-        partiallySupportedLocales: 'Partial support'
+        partiallySupportedLocales: 'Partial support',
+        PER_UNIT: 'per unit',
+        PER_METER: 'per meter',
+        PER_KILOGRAM: 'per kilo',
+        PER_LITER: 'per liter'
     },
     '/': {
         welcomeMessage: 'Welcome to',

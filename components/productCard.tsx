@@ -33,7 +33,8 @@ const ProductCard: React.FC<IProps> = ({
     priceSlot = undefined
 }) => {
     const router = useRouter();
-    const { formatNumber } = useIntl();
+    const { formatNumber, formatMessage } = useIntl();
+    const f = (id: string, values?: any) => formatMessage({ id }, values);
     const imageHeight = useBreakpointValue({ base: 64 /*, sm: 48, md: 48, lg: 64  */ });
     const pictureSizes = useBreakpointValue({ base: '320px', md: '640px' });
 
@@ -145,7 +146,7 @@ const ProductCard: React.FC<IProps> = ({
                             </Text>
                             {` `}
                             <Text as="span" fontSize="2xs">
-                                {measurementUnit}
+                                {f(measurementUnit as string)}
                             </Text>
                             {priceSlot && <Box>{priceSlot}</Box>}
                         </Box>
