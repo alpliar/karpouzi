@@ -30,7 +30,7 @@ const SectionSideBySide: React.FC<Props> = ({ sections }) => {
 
     return (
         <Flex w="full" justifyContent="center" alignItems="center">
-            <Box px={8} py={8} mx="auto">
+            <Box p={{ sm: 4, md: 8 }} mx="auto">
                 {sections.map((section, index) => {
                     const isEven: boolean = index % 2 === 0;
                     return (
