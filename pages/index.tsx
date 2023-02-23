@@ -40,8 +40,16 @@ export default function Home() {
                 <CallToActionWithAnnotation
                     title={
                         <>
-                            <Flex direction="column" as="span" align="start" justify="start">
-                                <Text fontSize="0.75em" style={{ fontVariantCaps: 'small-caps' }}>
+                            <Flex
+                                direction="column"
+                                as="span"
+                                align="start"
+                                justify="start"
+                                w="full">
+                                <Text
+                                    fontSize="0.75em"
+                                    style={{ fontVariantCaps: 'small-caps' }}
+                                    overflowWrap="anywhere">
                                     {`${session?.user?.name ? session?.user?.name + ', ' : ''}
                                     ${f('welcomeMessage')}`}
                                 </Text>
@@ -50,7 +58,9 @@ export default function Home() {
                                     alignSelf="end"
                                     lineHeight="1em"
                                     as={'span'}
-                                    color="currentColor">
+                                    color="currentColor"
+                                    overflowWrap="anywhere"
+                                    whiteSpace="pre-wrap">
                                     {f('commonSiteName')}
                                 </Text>
                             </Flex>
