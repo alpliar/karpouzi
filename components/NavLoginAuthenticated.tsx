@@ -58,6 +58,7 @@ const NavLoginAuthenticated: React.FC = () => {
             }
             footer={
                 <Link
+                    fontSize="sm"
                     fontWeight="bold"
                     onClick={(event) => {
                         event.preventDefault();
@@ -75,7 +76,7 @@ const NavLoginAuthenticated: React.FC = () => {
                 href="/user/account"
                 asButton
                 buttonProps={{
-                    colorScheme: 'yellow'
+                    colorScheme: 'green'
                 }}>
                 <Icon as={IoHome} boxSize=".8em" mr={1} />
                 {f('menuEntryUser')}
