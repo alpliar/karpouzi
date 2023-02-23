@@ -5,7 +5,8 @@ import { useIntl } from 'react-intl';
 import Banner from '../components/banner';
 import CallToActionNewsletter from '../components/callToActionNewsletter';
 import CallToActionWithAnnotation from '../components/callToActionWithAnnotation';
-import SectionSideBySide, { Section } from '../components/layout/sectionSideBySide';
+import { SectionProps } from '../components/layout/Section';
+import SectionSideBySide from '../components/layout/sectionSideBySide';
 import PageLayout, { siteTitle } from '../components/pageLayout';
 
 export default function Home() {
@@ -13,7 +14,7 @@ export default function Home() {
     const f = (id: string) => formatMessage({ id });
     const { data: session } = useSession();
 
-    const sections: Section[] = [
+    const sections: SectionProps[] = [
         {
             title: f('welcomeDiscoverProducts'),
             description: f('welcomeDiscoverProductsDescription'),

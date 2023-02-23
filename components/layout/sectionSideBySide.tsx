@@ -1,35 +1,16 @@
-import { Box, Center, Flex, Grid, GridItem, Heading, Text } from '@chakra-ui/layout';
-import { useBreakpointValue } from '@chakra-ui/media-query';
+import { Box, Flex } from '@chakra-ui/layout';
 import { ThemingProps, useColorMode } from '@chakra-ui/system';
 
 import React from 'react';
-import { APP_MAX_WIDTH } from '../../constants/ui/main.layout';
-import { Pattern } from '../../utils/patterns';
-import Banner from '../banner';
-import { Image } from '../image';
-import Link from '../link';
+import Section, { SectionProps } from './Section';
 
 // eslint-disable-next-line @typescript-eslint/ban-types
 type Props = {
-    sections: Section[];
+    sections: SectionProps[];
 };
-
-export interface Section {
-    title: string;
-    description: string;
-    url?: string;
-    image: string;
-    buttonLabel: string;
-    colorScheme?: ThemingProps['colorScheme'];
-    pattern?: Pattern;
-    component?: React.ReactElement;
-}
 
 const SectionSideBySide: React.FC<Props> = ({ sections }) => {
     const { colorMode } = useColorMode();
-    const gridRowMarginBottom = useBreakpointValue({ base: 10, md: 16, lg: 24 });
-
-    const imageSize = useBreakpointValue({ base: '32', md: '2xs', xl: 'xs' });
 
     return (
         <Flex w="full" justifyContent="center" alignItems="center">
@@ -42,112 +23,14 @@ const SectionSideBySide: React.FC<Props> = ({ sections }) => {
                         colorMode === 'light' ? `${colorScheme}.200` : `${colorScheme}.800`;
                     const pattern = section.pattern || 'linesInMotion';
                     return (
-                        <Box
-                            bgColor={`${colorScheme}.${colorMode === 'light' ? 100 : 900}`}
+                        <Section
                             key={index}
-                            paddingTop={{ base: 4, sm: 8, md: 16, xl: 24 }}
-                            paddingBottom={{ base: 4 }}>
-                            <Grid
-                                w="full"
-                                px={{ base: 4, sm: 8, xl: 16 }}
-                                mx="auto"
-                                maxW={APP_MAX_WIDTH}
-                                alignItems="center"
-                                templateColumns={{
-                                    base: 'repeat(1,1fr)',
-                                    sm: 'repeat(3,1fr)',
-                                    xl: 'repeat(5,1fr)'
-                                }}
-                                gap={{ base: 4, sm: 12, md: 24, xl: 32 }}
-                                mb={gridRowMarginBottom}>
-                                <GridItem
-                                    colSpan={{ sm: 2, xl: 3 }}
-                                    order={{
-                                        base: 'initial',
-                                        md: isEven ? 'initial' : 2
-                                    }}>
-                                    <Heading
-                                        as="h2"
-                                        mb={4}
-                                        fontSize={{
-                                            base: '2xl',
-                                            md: '4xl'
-                                        }}
-                                        letterSpacing="tight"
-                                        color="gray.800"
-                                        _dark={{
-                                            color: 'gray.200'
-                                        }}
-                                        lineHeight={{
-                                            md: 'shorter'
-                                        }}>
-                                        {section.title}
-                                    </Heading>
-                                    <Text
-                                        mb={5}
-                                        color="gray.800"
-                                        _dark={{
-                                            color: 'gray.200'
-                                        }}
-                                        fontSize={{
-                                            md: 'lg'
-                                        }}>
-                                        {section.description}
-                                    </Text>
-
-                                    {section.component && <>{section.component}</>}
-                                    {section.url && (
-                                        <Link
-                                            fontFamily="heading"
-                                            w={{
-                                                base: 'full',
-                                                sm: 'auto'
-                                            }}
-                                            // size="lg"
-                                            href={section.url}
-                                            asButton
-                                            buttonProps={{
-                                                colorScheme
-                                            }}>
-                                            {section.buttonLabel}
-                                        </Link>
-                                    )}
-                                </GridItem>
-
-                                <GridItem colSpan={{ sm: 1, xl: 2 }}>
-                                    <Banner
-                                        rounded="xl"
-                                        pattern={pattern}
-                                        bgColor={bgColor}
-                                        height="10px"
-                                        patternOpacity={0.3}>
-                                        <Center
-                                            transform={{
-                                                md: `
-                                        translateY(${isEven ? 10 : -10}%) 
-                                        translateX(${isEven ? -25 : 25}%)`
-                                            }}>
-                                            <Box
-                                                w={imageSize}
-                                                h={imageSize}
-                                                rounded="xl"
-                                                overflow="hidden"
-                                                boxShadow="md">
-                                                <Image
-                                                    sizes={imageSize}
-                                                    quality={75}
-                                                    priority
-                                                    src={section.image}
-                                                    alt={section.title}
-                                                    w={imageSize}
-                                                    h={imageSize}
-                                                />
-                                            </Box>
-                                        </Center>
-                                    </Banner>
-                                </GridItem>
-                            </Grid>
-                        </Box>
+                            pattern={pattern}
+                            bgColor={bgColor}
+                            section={section}
+                            colorScheme={colorScheme}
+                            isEven={isEven}
+                        />
                     );
                 })}
             </Box>
