@@ -1,11 +1,4 @@
-import {
-    Button,
-    Icon,
-    Tooltip,
-    useColorModeValue,
-    useDisclosure,
-    useMediaQuery
-} from '@chakra-ui/react';
+import { Button, Icon, Tooltip, useDisclosure, useMediaQuery } from '@chakra-ui/react';
 import { FaShoppingCart } from 'react-icons/fa';
 import { useIntl } from 'react-intl';
 import { ICartItem } from '../redux/container/addToCart';
