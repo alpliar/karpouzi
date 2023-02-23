@@ -62,7 +62,10 @@ const Breadcrumb = ({ entries }: IBreadcrumbProps) => {
                                 key={`${text}-${index}`}
                                 isCurrentPage={isCurrentPage}
                                 textOverflow="ellipsis"
-                                justifyItems="flex-start">
+                                justifyItems="flex-start"
+                                _first={{
+                                    a: { paddingLeft: 0 }
+                                }}>
                                 {isCurrentPage ? (
                                     <Button
                                         as={Text}

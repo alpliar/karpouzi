@@ -47,8 +47,9 @@ const Section: React.FC<Props> = ({
     return (
         <Box
             bgColor={`${colorScheme}.${colorMode === 'light' ? 100 : 900}`}
-            paddingTop={{ base: 4, sm: 8, md: 16, xl: 24 }}
-            paddingBottom={{ base: 4 }}>
+            paddingY={{ base: 4, sm: 8, md: 16, xl: 24 }}
+            // paddingBottom={{ base: 4 }}
+        >
             <Grid
                 w="full"
                 px={{ base: 4, sm: 8, xl: 16 }}

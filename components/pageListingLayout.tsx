@@ -37,6 +37,7 @@ const PageListingLayout: React.FC<PropsWithChildren<IPageLayoutProps>> = ({
 
     const bgPatternFillColor = useColorModeValue('white', 'gray.800');
     const bgPattern = `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h20v20H0V0zm10 17a7 7 0 1 0 0-14 7 7 0 0 0 0 14zm20 0a7 7 0 1 0 0-14 7 7 0 0 0 0 14zM10 37a7 7 0 1 0 0-14 7 7 0 0 0 0 14zm10-17h20v20H20V20zm10 17a7 7 0 1 0 0-14 7 7 0 0 0 0 14z' fill='${bgPatternFillColor}' fill-opacity='0.4' fill-rule='evenodd'/%3E%3C/svg%3E")`;
+    const containerPadding = { base: 2, sm: 4 };
 
     return (
         <PageLayout>
@@ -46,19 +47,16 @@ const PageListingLayout: React.FC<PropsWithChildren<IPageLayoutProps>> = ({
 
             {/* LISTING'S HEADER */}
             <Box position="relative" bgGradient={headerBgGradient(colorMode)}>
-                <Container p={{ base: 2, sm: 4 }} maxW={APP_MAX_WIDTH}>
+                <Container paddingX={{ base: 2, sm: 4 }} paddingY={3} maxW={APP_MAX_WIDTH}>
                     <Stack spacing={2}>
-                        <Breadcrumb entries={breadcrumbs} />
-                        <Wrap spacing={1} justify="space-between">
-                            <Heading as="h1" maxW="lg" paddingLeft={2}>
-                                {title}
-                            </Heading>
-
-                            {titleSlot && titleSlot}
-                        </Wrap>
-                        <Flex pt={6} justifyContent={{ base: 'center', md: 'flex-end' }} zIndex="1">
-                            {introSlot && introSlot}
-                        </Flex>
+                        {introSlot && (
+                            <Flex
+                                // pt={6}
+                                justifyContent={{ base: 'center', md: 'flex-end' }}
+                                zIndex="1">
+                                {introSlot}
+                            </Flex>
+                        )}
                     </Stack>
                 </Container>
 
@@ -94,8 +92,16 @@ const PageListingLayout: React.FC<PropsWithChildren<IPageLayoutProps>> = ({
                 </Box>
                 <Box>{bannerSlot && bannerSlot}</Box>
                 <Container
-                    p={fullWidth ? 0 : { base: 2, sm: 4 }}
+                    p={fullWidth ? 0 : containerPadding}
                     maxW={fullWidth ? 'full' : APP_MAX_WIDTH}>
+                    <Breadcrumb entries={breadcrumbs} />
+                    <Wrap spacing={1} justify="space-between" mb={{ base: 4, sm: 8 }}>
+                        <Heading as="h1" fontSize="5xl" maxW="lg" paddingLeft={0}>
+                            {title}
+                        </Heading>
+
+                        {titleSlot && titleSlot}
+                    </Wrap>
                     {children}
                 </Container>
             </Box>

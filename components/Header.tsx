@@ -34,7 +34,7 @@ export const headerBgGradient = (colorMode: ColorMode) => {
 };
 
 export const headerBgColor = (colorMode: ColorMode) => {
-    return colorMode === 'light' ? 'green.400' : 'green.800';
+    return colorMode === 'light' ? 'green.400' : 'green.700';
 };
 
 const Header = ({}) => {
