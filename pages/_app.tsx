@@ -27,7 +27,10 @@ const App = ({
 
     return (
         <SessionProvider session={session}>
-            <IntlProvider locale={locale || 'en'} defaultLocale={defaultLocale} messages={messages}>
+            <IntlProvider
+                locale={locale || 'en'}
+                defaultLocale={defaultLocale}
+                messages={messagesvalues}>
                 <ChakraProvider theme={theme} resetCSS>
                     <Component {...pageProps} />
                 </ChakraProvider>
