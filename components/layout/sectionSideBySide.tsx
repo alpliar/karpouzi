@@ -26,7 +26,7 @@ const SectionSideBySide: React.FC<Props> = ({ sections }) => {
     const gridRowMarginBottom = useBreakpointValue({ base: 10, md: 16, lg: 24 });
 
     const imageSize = useBreakpointValue({ base: '250px', xl: '400px' });
-    const bgColor = useColorModeValue('green.200', 'green.800');
+    const bgColor = useColorModeValue('blue.200', 'green.800');
 
     return (
         <Flex w="full" justifyContent="center" alignItems="center">
@@ -92,8 +92,13 @@ const SectionSideBySide: React.FC<Props> = ({ sections }) => {
                                 </Link>
                             </Box>
 
-                            <Banner pattern="linesInMotion" height="75%" bgColor={bgColor}>
-                                <Center>
+                            <Banner pattern="linesInMotion" bgColor={bgColor} h={40}>
+                                <Center
+                                    transform={{
+                                        md: `
+                                        translateY(${isEven ? 10 : -10}%) 
+                                        translateX(${isEven ? -25 : 25}%)`
+                                    }}>
                                     <Box w={imageSize} h={imageSize} rounded="xl" overflow="hidden">
                                         <Image
                                             sizes={imageSize}
