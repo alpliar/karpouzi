@@ -42,7 +42,7 @@ const Banner: React.FC<IBannerProps & BoxProps> = ({
             rounded={rounded}
             overflow={rounded ? 'hidden' : undefined}>
             {/* <Box zIndex="banner" rounded="xl" bgColor={bgColor}> */}
-            <Box zIndex={1} rounded="xl" {...rest}>
+            <Box zIndex={1} rounded="xl" {...rest} maxW="full">
                 {children}
             </Box>
             <Box
