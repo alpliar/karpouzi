@@ -50,7 +50,14 @@ const Link: React.FC<PropsWithChildren<ILinkProps & ChakraProps>> = ({
     if (asButton) {
         return (
             <ServerSideLink>
-                <Button as={ChakraLink} {...buttonProps} onClick={onClick} {...rest}>
+                <Button
+                    as={ChakraLink}
+                    {...buttonProps}
+                    onClick={onClick}
+                    padding={3}
+                    whiteSpace="pre-wrap"
+                    height="100%"
+                    {...rest}>
                     {children}
                 </Button>
             </ServerSideLink>

@@ -40,8 +40,7 @@ const NoContentBanner: React.FC<Props> = ({ text, helperText, links, children })
                                         buttonProps={{
                                             variant: 'solid',
                                             colorScheme: 'orange',
-                                            size: 'sm',
-                                            whiteSpace: 'pre-wrap'
+                                            size: 'sm'
                                         }}>
                                         {text}
                                     </Link>

@@ -52,9 +52,8 @@ const AddToCart: React.FC<IAddToCartProps> = ({
                 onMouseEnter={onToggle}
                 onMouseOut={onToggle}
                 whiteSpace="normal"
-                // height="auto"
-                // blockSize="auto"
-            >
+                height="full"
+                padding={3}>
                 {f('addToCart')}
             </Button>
         </Tooltip>
