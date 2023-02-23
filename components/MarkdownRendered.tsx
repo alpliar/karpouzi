@@ -90,7 +90,7 @@ const GetComponent = (node?: NodeType) => {
 
         case 'list':
             const list: React.FC<PropsWithChildren> = ({ children }) => (
-                <UnorderedList paddingLeft="12" spacing={8}>
+                <UnorderedList paddingLeft="12" spacing={2}>
                     {children}
                 </UnorderedList>
             );
