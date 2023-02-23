@@ -50,7 +50,11 @@ const AddToCart: React.FC<IAddToCartProps> = ({
                 onClick={handleClick}
                 colorScheme={useColorModeValue('green', 'yellow')}
                 onMouseEnter={onToggle}
-                onMouseOut={onToggle}>
+                onMouseOut={onToggle}
+                whiteSpace="normal"
+                // height="auto"
+                // blockSize="auto"
+            >
                 {f('addToCart')}
             </Button>
         </Tooltip>
