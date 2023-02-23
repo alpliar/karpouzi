@@ -44,7 +44,9 @@ const Breadcrumb = ({ entries }: IBreadcrumbProps) => {
                 sx={{
                     ol: {
                         display: 'flex',
-                        flexWrap: 'wrap'
+                        flexWrap: 'wrap',
+                        maxWidth: 'full',
+                        overflow: 'hidden'
                     }
                 }}
                 fontSize="sm"
@@ -56,13 +58,19 @@ const Breadcrumb = ({ entries }: IBreadcrumbProps) => {
                         index
                     ) => {
                         return (
-                            <BreadcrumbItem key={`${text}-${index}`} isCurrentPage={isCurrentPage}>
+                            <BreadcrumbItem
+                                key={`${text}-${index}`}
+                                isCurrentPage={isCurrentPage}
+                                textOverflow="ellipsis"
+                                justifyItems="flex-start">
                                 {isCurrentPage ? (
                                     <Button
                                         as={Text}
                                         {...breadcrumbItemStyle}
                                         fontFamily="heading"
-                                        variant="text">
+                                        variant="text"
+                                        maxW="full"
+                                        textOverflow="ellipsis">
                                         {text}
                                     </Button>
                                 ) : (
