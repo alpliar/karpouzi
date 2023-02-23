@@ -45,11 +45,8 @@ const PageListingLayout: React.FC<PropsWithChildren<IPageLayoutProps>> = ({
             </Head>
 
             {/* LISTING'S HEADER */}
-            <Box
-                position="relative"
-                // bgColor={headerBgColor(colorMode)}
-                bgGradient={headerBgGradient(colorMode)}>
-                <Container p={4} maxW={APP_MAX_WIDTH}>
+            <Box position="relative" bgGradient={headerBgGradient(colorMode)}>
+                <Container p={{ base: 2, sm: 4 }} maxW={APP_MAX_WIDTH}>
                     <Stack spacing={2}>
                         <Breadcrumb entries={breadcrumbs} />
                         <Wrap spacing={1} justify="space-between">
@@ -58,13 +55,11 @@ const PageListingLayout: React.FC<PropsWithChildren<IPageLayoutProps>> = ({
                             </Heading>
 
                             {titleSlot && titleSlot}
-                            {/* <ShopStat label="Products" number={5} /> */}
                         </Wrap>
                         <Flex pt={6} justifyContent={{ base: 'center', md: 'flex-end' }} zIndex="1">
                             {introSlot && introSlot}
                         </Flex>
                     </Stack>
-                    {/* <Text>{categories?.length ?? 0} categories</Text> */}
                 </Container>
 
                 <Box
@@ -97,13 +92,10 @@ const PageListingLayout: React.FC<PropsWithChildren<IPageLayoutProps>> = ({
                     height={1}>
                     <ScrollProgressBar />
                 </Box>
-                {bannerSlot && bannerSlot}
+                <Box>{bannerSlot && bannerSlot}</Box>
                 <Container
                     p={fullWidth ? 0 : { base: 2, sm: 4 }}
-                    maxW={
-                        fullWidth ? 'full' : APP_MAX_WIDTH
-                    } /*paddingInline={{ base: 0, sm: '1rem' }}*/
-                >
+                    maxW={fullWidth ? 'full' : APP_MAX_WIDTH}>
                     {children}
                 </Container>
             </Box>

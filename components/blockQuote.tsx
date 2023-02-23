@@ -1,7 +1,7 @@
 import { Avatar } from '@chakra-ui/avatar';
 import { useColorMode, useColorModeValue } from '@chakra-ui/color-mode';
 import { useBoolean } from '@chakra-ui/hooks';
-import { Heading, HStack, Stack, Text, Wrap } from '@chakra-ui/layout';
+import { Flex, Heading, Stack, Text } from '@chakra-ui/layout';
 import { ChakraProps } from '@chakra-ui/system';
 import { PropsWithChildren } from 'react';
 
@@ -22,8 +22,7 @@ const BlockQuote: React.FC<PropsWithChildren<IBlockQuoteProps>> = ({
         setIsOpen.toggle();
     };
     return (
-        <Stack as="figure" spacing={1}>
-            {/* <Date dateString={postData.date} />· 6min read */}
+        <Stack as="figure" spacing={1} w="full">
             <Text
                 as="blockquote"
                 p={2}
@@ -45,20 +44,20 @@ const BlockQuote: React.FC<PropsWithChildren<IBlockQuoteProps>> = ({
                 </Text>
             </Text>
             {author && (
-                <Wrap alignSelf="flex-end" align="center" as="figcaption">
+                <Flex wrap="wrap" gap={1} alignSelf="flex-end" align="center" as="figcaption">
                     <Text>— </Text>
-                    <HStack spacing={1}>
+                    <Flex wrap="wrap" gap={1}>
                         <Avatar
                             src={'/icon-48x48.png'}
                             name="Karpouzi avatar"
                             bg="green.500"
                             size="2xs"
                         />
-                        <Heading size="xs">{author}</Heading>
-                    </HStack>
-                    {/* <Text>,</Text> */}
-                    {/* <cite>Karpouzi</cite> */}
-                </Wrap>
+                        <Heading overflowWrap="anywhere" size="xs">
+                            {author}
+                        </Heading>
+                    </Flex>
+                </Flex>
             )}
         </Stack>
     );
