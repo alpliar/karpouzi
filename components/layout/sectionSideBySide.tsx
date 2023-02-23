@@ -50,7 +50,7 @@ const SectionSideBySide: React.FC<Props> = ({ sections }) => {
                             paddingTop={{ base: 4, sm: 8, md: 16, xl: 24 }}
                             paddingBottom={{ base: 4 }}>
                             <SimpleGrid
-                                px={{ base: 2, sm: 4, md: 8, xl: 16 }}
+                                px={{ base: 4, sm: 8, xl: 16 }}
                                 mx="auto"
                                 maxW={APP_MAX_WIDTH}
                                 alignItems="center"
@@ -58,7 +58,7 @@ const SectionSideBySide: React.FC<Props> = ({ sections }) => {
                                     base: 1,
                                     md: 2
                                 }}
-                                columnGap={{ md: 24, xl: 48 }}
+                                columnGap={{ md: 24, xl: 32 }}
                                 // flexDirection={'column-reverse'}
                                 mb={gridRowMarginBottom}
                                 spacingY={gridSpacingX}
