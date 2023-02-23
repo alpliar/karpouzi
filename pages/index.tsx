@@ -1,4 +1,4 @@
-import { Container, Divider, Flex, Text } from '@chakra-ui/layout';
+import { Container, Divider, Flex, Stack, Text } from '@chakra-ui/layout';
 import { useSession } from 'next-auth/react';
 import Head from 'next/head';
 import { useIntl } from 'react-intl';
@@ -19,14 +19,14 @@ export default function Home() {
             title: f('welcomeDiscoverProducts'),
             description: f('welcomeDiscoverProductsDescription'),
             url: '/shop',
-            image: '/images/category/fruits.webp',
+            image: '/images/shop.webp',
             buttonLabel: f('welcomeShopCTA')
         },
         {
             title: f('welcomeDiscoverKarpouzi'),
             description: f('welcomeDiscoverKarpouziDescription'),
             url: '/blog',
-            image: '/images/karpouzi.webp',
+            image: '/images/karpouzi_hero.webp',
             buttonLabel: f('welcomeBlogCTA')
         }
     ];
@@ -64,12 +64,12 @@ export default function Home() {
                     primaryActionAnnotation={f('welcomeDeals')}
                 />
             </Banner>
-            <Container p={4} maxW={APP_MAX_WIDTH}>
+            <Stack as={Container} p={4} maxW={APP_MAX_WIDTH} gap={8}>
                 <Divider />
                 <SectionSideBySide sections={sections} />
                 <Divider />
                 <CallToActionNewsletter />
-            </Container>
+            </Stack>
         </PageLayout>
     );
 }
