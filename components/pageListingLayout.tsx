@@ -89,15 +89,17 @@ const PageListingLayout: React.FC<PropsWithChildren<IPageLayoutProps>> = ({
             <Box>
                 <Box
                     className="progress-bar-container"
-                    position="sticky"
-                    top="0px"
+                    position="fixed"
+                    left="0"
+                    right="0"
+                    bottom="0px"
                     zIndex={2}
                     height={1}>
                     <ScrollProgressBar />
                 </Box>
                 {bannerSlot && bannerSlot}
                 <Container
-                    p={fullWidth ? 0 : { base: 4 }}
+                    p={fullWidth ? 0 : { base: 2, sm: 4 }}
                     maxW={
                         fullWidth ? 'full' : APP_MAX_WIDTH
                     } /*paddingInline={{ base: 0, sm: '1rem' }}*/
