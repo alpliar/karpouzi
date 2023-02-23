@@ -16,11 +16,12 @@ type Props = {
 export interface Section {
     title: string;
     description: string;
-    url: string;
+    url?: string;
     image: string;
     buttonLabel: string;
     colorScheme?: ThemingProps['colorScheme'];
     pattern?: Pattern;
+    component?: React.ReactElement;
 }
 
 const SectionSideBySide: React.FC<Props> = ({ sections }) => {
@@ -87,20 +88,23 @@ const SectionSideBySide: React.FC<Props> = ({ sections }) => {
                                     {section.description}
                                 </Text>
 
-                                <Link
-                                    fontFamily="heading"
-                                    w={{
-                                        base: 'full',
-                                        sm: 'auto'
-                                    }}
-                                    // size="lg"
-                                    href={section.url}
-                                    asButton
-                                    buttonProps={{
-                                        colorScheme
-                                    }}>
-                                    {section.buttonLabel}
-                                </Link>
+                                {section.component && <>{section.component}</>}
+                                {section.url && (
+                                    <Link
+                                        fontFamily="heading"
+                                        w={{
+                                            base: 'full',
+                                            sm: 'auto'
+                                        }}
+                                        // size="lg"
+                                        href={section.url}
+                                        asButton
+                                        buttonProps={{
+                                            colorScheme
+                                        }}>
+                                        {section.buttonLabel}
+                                    </Link>
+                                )}
                             </Box>
 
                             <Banner

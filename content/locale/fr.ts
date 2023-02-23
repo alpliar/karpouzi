@@ -14,6 +14,8 @@ export const fr = {
         submit: 'Valider',
         newsletterSubscribing: 'Inscription...',
         newsletterSubscribe: 'Inscription à notre liste de diffusion',
+        newsletterSubscribeHelper:
+            "Voudriez-vous rester informé·e des dernières nouvelles et des offres exclusives ? Pensez à vous inscrire à notre newsletter, c'est gratuit et vous ne manquerez jamais les mises à jour importantes.",
         newsletterYourEmail: 'Votre email',
         newsletterSubscribed: 'Merci ! Vous ne recevrez aucun spam ! ✌️',
         newsletterError: 'Oh non, une erreur a eu lieu ! 😢 Veuillez réessayer plus tard.',

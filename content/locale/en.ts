@@ -14,6 +14,8 @@ export const en = {
         submit: 'Submit',
         newsletterSubscribing: 'Subscribing...',
         newsletterSubscribe: 'Subscribe to our Newsletter',
+        newsletterSubscribeHelper:
+            "Would you like to stay updated on the latest news and exclusive offers? Consider registering for our newsletter, it's free and you'll never miss out on important updates.",
         newsletterYourEmail: 'Your Email',
         newsletterSubscribed: "Thanks ! You won't receive any spam! ✌️",
         newsletterError: 'Oh no an error occured! 😢 Please try again later.',

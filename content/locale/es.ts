@@ -14,6 +14,8 @@ export const es = {
         submit: 'Enviar',
         newsletterSubscribing: 'Suscribiendo...',
         newsletterSubscribe: 'Suscríbete a nuestro boletín',
+        newsletterSubscribeHelper:
+            '¿Te gustaría mantenerte actualizado(a) con las últimas noticias y ofertas exclusivas? Considera registrarte en nuestro boletín, es gratis y nunca te perderás de importantes actualizaciones.',
         newsletterYourEmail: 'Tu correo electrónico',
         newsletterSubscribed: '¡Gracias! ¡No recibirás spam! ✌️',
         newsletterError: '¡Oh no! ¡Ha ocurrido un error! 😢 Por favor, intenta de nuevo más tarde.',

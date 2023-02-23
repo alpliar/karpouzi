@@ -1,4 +1,4 @@
-import { Container, Divider, Flex, Stack, Text } from '@chakra-ui/layout';
+import { Container, Flex, Stack, Text } from '@chakra-ui/layout';
 import { useSession } from 'next-auth/react';
 import Head from 'next/head';
 import { useIntl } from 'react-intl';
@@ -19,7 +19,7 @@ export default function Home() {
             title: f('welcomeDiscoverProducts'),
             description: f('welcomeDiscoverProductsDescription'),
             url: '/shop',
-            image: '/images/shop.webp',
+            image: '/images/shop2.webp',
             buttonLabel: f('welcomeShopCTA'),
             colorScheme: 'teal',
             pattern: 'formalInvitation'
@@ -28,10 +28,19 @@ export default function Home() {
             title: f('welcomeDiscoverKarpouzi'),
             description: f('welcomeDiscoverKarpouziDescription'),
             url: '/blog',
-            image: '/images/karpouzi_hero.webp',
+            image: '/images/knowmore.webp',
             buttonLabel: f('welcomeBlogCTA'),
             colorScheme: 'orange',
             pattern: 'houndstooth'
+        },
+        {
+            title: f('newsletterSubscribe'),
+            description: f('newsletterSubscribeHelper'),
+            image: '/images/newsletter2.webp',
+            buttonLabel: 'label',
+            colorScheme: 'green',
+            pattern: 'polkaDots',
+            component: <CallToActionNewsletter colorScheme="green" />
         }
     ];
 
@@ -79,10 +88,7 @@ export default function Home() {
                 />
             </Banner>
             <Stack as={Container} p={4} maxW={APP_MAX_WIDTH} gap={8}>
-                <Divider />
                 <SectionSideBySide sections={sections} />
-                <Divider />
-                <CallToActionNewsletter />
             </Stack>
         </PageLayout>
     );
