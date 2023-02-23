@@ -39,7 +39,14 @@ const Popover: React.FC<Props> = ({ children, trigger, footer, header }) => {
                         </Stack>
                     </PopoverBody>
                     {footer && (
-                        <Flex as={PopoverFooter} justify="flex-end">
+                        <Flex
+                            as={PopoverFooter}
+                            justify="flex-end"
+                            sx={{
+                                '*': {
+                                    fontSize: 'sm'
+                                }
+                            }}>
                             {footer}
                         </Flex>
                     )}

@@ -58,7 +58,6 @@ const NavLoginAuthenticated: React.FC = () => {
             }
             footer={
                 <Link
-                    fontSize="sm"
                     fontWeight="bold"
                     onClick={(event) => {
                         event.preventDefault();
