@@ -19,12 +19,12 @@ const NoContentBanner: React.FC<Props> = ({ text, helperText, links, children })
             rounded="md"
             pattern="wiggle"
             bgColor={noProductBackground}
-            height="inherit"
+            // height="inherit"
             paddingY={{ base: 8, lg: 16 }}
             paddingX={{ base: 4 }}
             transition={SLOW_TRANSITION}>
-            <Center fontFamily="heading" fontSize={{ base: '2xl', lg: '4xl' }}>
-                <Stack spacing={8}>
+            <Center fontFamily="heading" fontSize={{ base: '2xl', lg: '4xl' }} w="full">
+                <Stack spacing={8} w="full">
                     <Text maxW="20ch">{text}</Text>
                     {children && <Flex justify="center">{children}</Flex>}
                     <Stack spacing={4} maxW="20ch">
@@ -40,7 +40,8 @@ const NoContentBanner: React.FC<Props> = ({ text, helperText, links, children })
                                         buttonProps={{
                                             variant: 'solid',
                                             colorScheme: 'orange',
-                                            size: 'sm'
+                                            size: 'sm',
+                                            whiteSpace: 'pre-wrap'
                                         }}>
                                         {text}
                                     </Link>
