@@ -4,7 +4,7 @@ import { useColorModeValue } from '@chakra-ui/color-mode';
 import { FormControl, FormHelperText, FormLabel } from '@chakra-ui/form-control';
 import Icon from '@chakra-ui/icon';
 import { Input } from '@chakra-ui/input';
-import { Box, Divider, Heading, Stack, Text, Wrap } from '@chakra-ui/layout';
+import { Box, Stack, Text, Wrap } from '@chakra-ui/layout';
 import { Button } from '@chakra-ui/react';
 import { Select } from '@chakra-ui/select';
 import { Textarea } from '@chakra-ui/textarea';
@@ -16,6 +16,7 @@ import React, { PropsWithChildren } from 'react';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
 import { useIntl } from 'react-intl';
 import AuthGard from '../../../components/AuthGard';
+import Section from '../../../components/layout/Section';
 import PageListingLayout from '../../../components/pageListingLayout';
 import { sendToast } from '../../../utils/uiToast';
 
@@ -41,12 +42,21 @@ const UserAccountSection: React.FC<PropsWithChildren<IUserAccountSectionProps>> 
     children
 }) => {
     return (
-        <Stack spacing={4} direction={{ base: 'column', md: 'row' }}>
+        <>
+            <Section
+                colorScheme={'white'}
+                section={{
+                    title,
+                    component: <Box maxW="lg">{children}</Box>
+                }}
+            />
+            {/* <Stack spacing={4} direction={{ base: 'column', md: 'row' }}>
             <Heading as="h2" fontSize="lg" minWidth={{ md: '3xs' }}>
                 {title}
             </Heading>
             <Stack spacing={4}>{children}</Stack>
-        </Stack>
+        </Stack> */}
+        </>
     );
 };
 
@@ -104,29 +114,28 @@ const UserAccountPage: NextPage<UserAccountPageProps> = () => {
                     alt: f('goToPageName', { name: f('menuEntryUser') }),
                     isCurrentPage: true
                 }
-            ]}>
+            ]}
+            fullWidth>
             <AuthGard>
                 <>
-                    <Stack spacing={4}>
+                    <Stack spacing={0} p={0}>
                         <UserAccountSection title={f('personalInformations')}>
                             <FormControl id="name">
                                 <FormLabel>{f('name')}</FormLabel>
-                                <Input type="text" defaultValue={name || ''} />
+                                <Input variant="filled" type="text" defaultValue={name || ''} />
                                 {/* <FormHelperText>We'll never share your email.</FormHelperText> */}
                             </FormControl>
                             <FormControl id="email">
                                 <FormLabel>{f('email')}</FormLabel>
-                                <Input type="email" defaultValue={email || ''} />
+                                <Input variant="filled" type="email" defaultValue={email || ''} />
                                 <FormHelperText>{f('emailHelperText')}</FormHelperText>
                             </FormControl>
                             <FormControl id="bio">
                                 <FormLabel>{f('bio')}</FormLabel>
-                                <Textarea />
+                                <Textarea variant="filled" colorScheme="green" />
                                 <FormHelperText>{f('bioHelperText')}.</FormHelperText>
                             </FormControl>
                         </UserAccountSection>
-
-                        <Divider />
 
                         <UserAccountSection title={f('profilePhoto')}>
                             <Stack
@@ -136,7 +145,7 @@ const UserAccountPage: NextPage<UserAccountPageProps> = () => {
                                 <Avatar src={image || ''} size="xl" name="toto" />
                                 <Stack direction="column">
                                     <Wrap>
-                                        <Button>{f('changePhoto')}</Button>
+                                        <Button colorScheme="green">{f('changePhoto')}</Button>
                                         <Button variant="ghost" colorScheme="red">
                                             {f('deletePhoto')}
                                         </Button>
@@ -145,8 +154,6 @@ const UserAccountPage: NextPage<UserAccountPageProps> = () => {
                                 </Stack>
                             </Stack>
                         </UserAccountSection>
-
-                        <Divider />
 
                         <UserAccountSection title={f('language')}>
                             <Stack spacing={4}>
@@ -180,8 +187,6 @@ const UserAccountPage: NextPage<UserAccountPageProps> = () => {
                             </Stack>
                         </UserAccountSection>
 
-                        <Divider />
-
                         <UserAccountSection title={f('notifications')}>
                             <FormControl id="country">
                                 <Stack spacing={4}>
@@ -192,8 +197,6 @@ const UserAccountPage: NextPage<UserAccountPageProps> = () => {
                                 </Stack>
                             </FormControl>
                         </UserAccountSection>
-
-                        <Divider />
 
                         <UserAccountSection title={f('connectAccounts')}>
                             <Wrap>
