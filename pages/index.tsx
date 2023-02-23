@@ -20,14 +20,18 @@ export default function Home() {
             description: f('welcomeDiscoverProductsDescription'),
             url: '/shop',
             image: '/images/shop.webp',
-            buttonLabel: f('welcomeShopCTA')
+            buttonLabel: f('welcomeShopCTA'),
+            colorScheme: 'teal',
+            pattern: 'formalInvitation'
         },
         {
             title: f('welcomeDiscoverKarpouzi'),
             description: f('welcomeDiscoverKarpouziDescription'),
             url: '/blog',
             image: '/images/karpouzi_hero.webp',
-            buttonLabel: f('welcomeBlogCTA')
+            buttonLabel: f('welcomeBlogCTA'),
+            colorScheme: 'orange',
+            pattern: 'houndstooth'
         }
     ];
 

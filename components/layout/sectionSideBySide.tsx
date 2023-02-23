@@ -1,8 +1,9 @@
 import { Box, Center, Flex, Heading, SimpleGrid, Text } from '@chakra-ui/layout';
 import { useBreakpointValue } from '@chakra-ui/media-query';
-import { useColorModeValue } from '@chakra-ui/system';
+import { ThemingProps, useColorMode } from '@chakra-ui/system';
 
 import React from 'react';
+import { Pattern } from '../../utils/patterns';
 import Banner from '../banner';
 import { Image } from '../image';
 import Link from '../link';
@@ -18,21 +19,28 @@ export interface Section {
     url: string;
     image: string;
     buttonLabel: string;
+    colorScheme?: ThemingProps['colorScheme'];
+    pattern?: Pattern;
 }
 
 const SectionSideBySide: React.FC<Props> = ({ sections }) => {
+    const { colorMode } = useColorMode();
     const gridSpacingX = useBreakpointValue({ base: 10, md: 16, lg: 24 });
     const gridSpacingY = useBreakpointValue({ base: 10, md: 16, lg: 32 });
     const gridRowMarginBottom = useBreakpointValue({ base: 10, md: 16, lg: 24 });
 
     const imageSize = useBreakpointValue({ base: '250px', xl: '400px' });
-    const bgColor = useColorModeValue('blue.200', 'green.800');
 
     return (
         <Flex w="full" justifyContent="center" alignItems="center">
             <Box p={{ sm: 4, md: 8 }} mx="auto">
                 {sections.map((section, index) => {
                     const isEven: boolean = index % 2 === 0;
+                    const colorScheme: ThemingProps['colorScheme'] =
+                        section.colorScheme || (isEven ? 'teal' : 'orange');
+                    const bgColor =
+                        colorMode === 'light' ? `${colorScheme}.200` : `${colorScheme}.800`;
+                    const pattern = section.pattern || 'linesInMotion';
                     return (
                         <SimpleGrid
                             key={index}
@@ -87,19 +95,32 @@ const SectionSideBySide: React.FC<Props> = ({ sections }) => {
                                     }}
                                     // size="lg"
                                     href={section.url}
-                                    asButton>
+                                    asButton
+                                    buttonProps={{
+                                        colorScheme
+                                    }}>
                                     {section.buttonLabel}
                                 </Link>
                             </Box>
 
-                            <Banner pattern="linesInMotion" bgColor={bgColor} h={40}>
+                            <Banner
+                                rounded="xl"
+                                pattern={pattern}
+                                bgColor={bgColor}
+                                height="10px"
+                                patternOpacity={0.3}>
                                 <Center
                                     transform={{
                                         md: `
                                         translateY(${isEven ? 10 : -10}%) 
                                         translateX(${isEven ? -25 : 25}%)`
                                     }}>
-                                    <Box w={imageSize} h={imageSize} rounded="xl" overflow="hidden">
+                                    <Box
+                                        w={imageSize}
+                                        h={imageSize}
+                                        rounded="xl"
+                                        overflow="hidden"
+                                        boxShadow="md">
                                         <Image
                                             sizes={imageSize}
                                             quality={75}

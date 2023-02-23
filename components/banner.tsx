@@ -8,17 +8,18 @@ interface IBannerProps {
     height?: LayoutProps['height'];
     bgColor?: BoxProps['bgColor'];
     pattern?: Pattern;
+    patternOpacity?: number;
     rounded?: BoxProps['rounded'];
 }
 const Banner: React.FC<IBannerProps & BoxProps> = ({
     children,
     height = '3xs',
     pattern = 'kiwi',
+    patternOpacity = 0.1,
     bgColor,
     rounded = undefined,
     ...rest
 }) => {
-    const patternOpacity = 0.1;
     const bgOpacity = 1;
     const bgFilter: FilterProps['filter'] = undefined;
     const patternColor: string = useColorModeValue('white', 'black');
@@ -38,9 +39,7 @@ const Banner: React.FC<IBannerProps & BoxProps> = ({
             alignItems="center"
             justifyContent="center"
             fontSize="4xl"
-            position="relative"
-            rounded={rounded}
-            overflow={rounded ? 'hidden' : undefined}>
+            position="relative">
             {/* <Box zIndex="banner" rounded="xl" bgColor={bgColor}> */}
             <Box zIndex={1} rounded="xl" {...rest} maxW="full">
                 {children}
@@ -55,6 +54,8 @@ const Banner: React.FC<IBannerProps & BoxProps> = ({
                 width="100%"
                 opacity={bgOpacity}
                 bgColor={bgColor || defaultBgColor}
+                rounded={rounded}
+                overflow={rounded ? 'hidden' : undefined}
                 backgroundImage={`url("${bgImage}")`}
             />
         </Flex>
