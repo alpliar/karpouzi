@@ -1,11 +1,12 @@
 import {
     Box,
     Center,
-    Grid,
-    GridItem,
+    Flex,
     Heading,
+    ImageProps,
     Text,
     ThemingProps,
+    TransformProps,
     useBreakpointValue,
     useColorMode
 } from '@chakra-ui/react';
@@ -22,6 +23,8 @@ type Props = {
     bgColor?: string;
     colorScheme?: ThemingProps['colorScheme'];
     isEven?: boolean;
+    imageTransform?: TransformProps['transform'];
+    customImageSize?: ImageProps['sizes'];
 };
 
 export interface SectionProps {
@@ -39,32 +42,30 @@ const Section: React.FC<Props> = ({
     bgColor = 'green',
     colorScheme = 'green',
     section,
-    isEven = false
+    isEven = false,
+    imageTransform = undefined,
+    customImageSize = undefined
 }) => {
     const { colorMode } = useColorMode();
-    const gridRowMarginBottom = useBreakpointValue({ base: 10, md: 16, lg: 24 });
-    const imageSize = useBreakpointValue({ base: '32', md: '2xs', xl: 'xs' });
+    const defaultImageSize = useBreakpointValue({ base: '32', md: '2xs', xl: 'xs' });
+    const imageSize = customImageSize || defaultImageSize;
+
     return (
         <Box
             bgColor={`${colorScheme}.${colorMode === 'light' ? 100 : 900}`}
             paddingY={{ base: 4, sm: 8, md: 16, xl: 24 }}
             // paddingBottom={{ base: 4 }}
         >
-            <Grid
+            <Flex
+                direction={{ base: 'column', sm: 'row' }}
                 w="full"
-                px={{ base: 4, sm: 8, xl: 16 }}
+                paddingX={{ base: 2, sm: 4 }}
                 mx="auto"
                 maxW={APP_MAX_WIDTH}
                 alignItems="center"
-                templateColumns={{
-                    base: 'repeat(1,1fr)',
-                    sm: 'repeat(3,1fr)',
-                    xl: 'repeat(5,1fr)'
-                }}
-                gap={{ base: 4, sm: 12, md: 24, xl: 32 }}
-                mb={section.image ? gridRowMarginBottom : 0}>
-                <GridItem
-                    colSpan={section.image ? { sm: 2, xl: 3 } : { sm: 3, xl: 5 }}
+                gap={{ base: 4, sm: 12, md: 12, xl: 24 }}>
+                <Box
+                    flexGrow={1}
                     order={{
                         base: 'initial',
                         md: isEven ? 'initial' : 2
@@ -87,6 +88,7 @@ const Section: React.FC<Props> = ({
                         {section.title}
                     </Heading>
                     <Text
+                        paddingLeft={{ xl: 5 }}
                         mb={5}
                         color="gray.800"
                         _dark={{
@@ -98,7 +100,7 @@ const Section: React.FC<Props> = ({
                         {section.description}
                     </Text>
 
-                    {section.component && <>{section.component}</>}
+                    {section.component && <Box paddingLeft={{ xl: 5 }}>{section.component}</Box>}
                     {section.url && (
                         <Link
                             fontFamily="heading"
@@ -115,43 +117,36 @@ const Section: React.FC<Props> = ({
                             {section.buttonLabel}
                         </Link>
                     )}
-                </GridItem>
+                </Box>
 
                 {section.image && (
-                    <GridItem colSpan={{ sm: 1, xl: 2 }}>
-                        <Banner
-                            rounded="xl"
-                            pattern={pattern}
-                            bgColor={bgColor}
-                            height="10px"
-                            patternOpacity={0.3}>
-                            <Center
-                                transform={{
-                                    md: `
-                                        translateY(${isEven ? 10 : -10}%) 
-                                        translateX(${isEven ? -25 : 25}%)`
-                                }}>
-                                <Box
+                    <Banner
+                        rounded="xl"
+                        pattern={pattern}
+                        bgColor={bgColor}
+                        height="10px"
+                        patternOpacity={0.3}>
+                        <Center transform={imageTransform}>
+                            <Box
+                                w={imageSize}
+                                h={imageSize}
+                                rounded="xl"
+                                overflow="hidden"
+                                boxShadow="md">
+                                <Image
+                                    sizes={imageSize}
+                                    quality={75}
+                                    priority
+                                    src={section.image}
+                                    alt={section.title}
                                     w={imageSize}
                                     h={imageSize}
-                                    rounded="xl"
-                                    overflow="hidden"
-                                    boxShadow="md">
-                                    <Image
-                                        sizes={imageSize}
-                                        quality={75}
-                                        priority
-                                        src={section.image}
-                                        alt={section.title}
-                                        w={imageSize}
-                                        h={imageSize}
-                                    />
-                                </Box>
-                            </Center>
-                        </Banner>
-                    </GridItem>
+                                />
+                            </Box>
+                        </Center>
+                    </Banner>
                 )}
-            </Grid>
+            </Flex>
         </Box>
     );
 };

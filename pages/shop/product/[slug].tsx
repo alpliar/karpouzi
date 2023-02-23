@@ -1,17 +1,5 @@
 import { BellIcon } from '@chakra-ui/icons';
-import {
-    AspectRatio,
-    Badge,
-    Box,
-    Container,
-    Divider,
-    Heading,
-    SimpleGrid,
-    Stack,
-    Text,
-    useBreakpointValue,
-    useColorModeValue
-} from '@chakra-ui/react';
+import { Badge, Box, Container, Heading, Stack, Text, useBreakpointValue } from '@chakra-ui/react';
 import axios from 'axios';
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import Head from 'next/head';
@@ -19,7 +7,7 @@ import { useRouter } from 'next/router';
 import { useIntl } from 'react-intl';
 import { Root } from 'remark-html';
 import Banner from '../../../components/banner';
-import { Image } from '../../../components/image';
+import Section from '../../../components/layout/Section';
 import MarkdownRendered from '../../../components/MarkdownRendered';
 import PageListingLayout from '../../../components/pageListingLayout';
 import Rating from '../../../components/rating';
@@ -111,8 +99,8 @@ const ProductPage: NextPage<ProductPageProps> = ({ product, description, localiz
     const { formatMessage, formatNumber } = useIntl();
     const f = (id: string, values: any = null) => formatMessage({ id }, values);
 
-    const pictureSizes = useBreakpointValue({ base: '320px', md: '640px' });
-    const bgColor = useColorModeValue('yellow.300', 'green.700');
+    const imageSize = useBreakpointValue({ base: '32', md: '2xs', xl: 'sm' });
+    const bigImageSize = useBreakpointValue({ base: '32', sm: '44', md: 'sm', xl: 'lg' });
 
     if (!product) return null;
 
@@ -134,6 +122,7 @@ const ProductPage: NextPage<ProductPageProps> = ({ product, description, localiz
 
     return (
         <PageListingLayout
+            fullWidth
             title={productName}
             breadcrumbs={[
                 {
@@ -187,89 +176,64 @@ const ProductPage: NextPage<ProductPageProps> = ({ product, description, localiz
             </Head>
 
             <Container p={{ base: 0 }} maxW="full">
-                <Stack spacing={16}>
-                    <SimpleGrid columns={{ base: 1, md: 2 }} spacing={{ md: '1em' }}>
-                        <Box position="relative">
-                            <AspectRatio
-                                ratio={{ base: 4 / 3, md: 1 }}
-                                maxH={{ sm: 'sm', md: 'sm', lg: 'inherit' }}>
-                                <Image
-                                    src={product.coverPicture.asset.url}
-                                    alt={product.coverPicture.alternativeText}
-                                    sizes={pictureSizes}
-                                    width={pictureSizes}
-                                    priority
-                                    quality={90}
-                                    blurDataURL={product.coverPicture.asset.thumbnail}
-                                />
-                            </AspectRatio>
+                <Section
+                    customImageSize={imageSize}
+                    isEven={true}
+                    colorScheme={'white'}
+                    section={{
+                        title: f('description'),
+                        image: product.coverPicture.asset.url,
 
-                            <Box position={{ xl: 'absolute' }} top={0} right={0}>
-                                <Banner
-                                    height="inherit"
-                                    fontSize="initial"
-                                    paddingX={{ base: 2, lg: 4 }}
-                                    paddingY={{ base: 8, sm: 4 }}
-                                    pattern="linesInMotion"
-                                    bgColor={bgColor}>
-                                    <Stack maxW="2xs" spacing={2}>
-                                        <Heading
-                                            as="p"
-                                            fontSize={{ base: 'xl', sm: 'md' }}
-                                            noOfLines={{ sm: 1 }}>
-                                            {productName}
-                                        </Heading>
+                        component: (
+                            <Stack
+                                spacing={5}
+                                textAlign="left"
+                                fontSize={{ base: 'xl', xl: '2xl' }}>
+                                {/* <Text as="p">{productDescription}</Text> */}
+                                <MarkdownRendered ast={productDescription} />
+                            </Stack>
+                        )
+                    }}
+                />
+                <Section
+                    isEven={false}
+                    customImageSize={bigImageSize}
+                    colorScheme="gray"
+                    section={{
+                        title: productName,
+                        image: product.coverPicture.asset.url,
+                        component: (
+                            <Stack spacing={4} maxW="sm">
+                                <Rating rate={rate} count={reviewCount} />
 
-                                        <Rating rate={rate} count={reviewCount} justify="center" />
+                                <Text fontSize="4xl" lineHeight="1em" fontWeight="bold">
+                                    {formatNumber(firstPrice.amount, {
+                                        style: 'currency',
+                                        currency: firstPrice.currency
+                                    })}
+                                </Text>
 
-                                        <Divider my={2} w="100%" />
+                                <AddToCart slug={product.slug} name={productName} quantity={1} />
+                            </Stack>
+                        )
+                    }}></Section>
 
-                                        <Text fontSize="3xl" lineHeight="1em" fontWeight="bold">
-                                            {formatNumber(firstPrice.amount, {
-                                                style: 'currency',
-                                                currency: firstPrice.currency
-                                            })}
-                                        </Text>
+                <Banner pattern="iLikeFood" height="md">
+                    <Stack maxW="lg" fontSize="sm" fontWeight="bold" p={3} spacing={4}>
+                        <Heading>{f('fondOfName', { name: category.name })}</Heading>
+                        <Text>
+                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Earum minima
+                            quaerat fugit ullam illo ipsa perspiciatis sit voluptatem!
+                        </Text>
+                    </Stack>
+                </Banner>
 
-                                        <AddToCart
-                                            slug={product.slug}
-                                            name={productName}
-                                            quantity={1}
-                                        />
-                                    </Stack>
-                                </Banner>
-                            </Box>
-                        </Box>
-
-                        <Stack bg="" p={4} spacing={4}>
-                            <Heading as="h2">{f('description')}</Heading>
-                            <Box
-                                // padding={{ base: '1rem', xl: '1.5rem' }}
-                                maxH={{ base: undefined, md: 'md' }}
-                                overflow="auto">
-                                <Stack
-                                    spacing={5}
-                                    textAlign="left"
-                                    fontSize={{ base: 'xl', xl: '2xl' }}>
-                                    {/* <Text as="p">{productDescription}</Text> */}
-                                    <MarkdownRendered ast={productDescription} />
-                                </Stack>
-                            </Box>
-                        </Stack>
-                    </SimpleGrid>
-                    <Banner pattern="iLikeFood">
-                        <Stack maxW="lg" fontSize="sm" fontWeight="bold" p={3} spacing={4}>
-                            <Heading>{f('fondOfName', { name: category.name })}</Heading>
-                            <Text>
-                                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Earum
-                                minima quaerat fugit ullam illo ipsa perspiciatis sit voluptatem!
-                            </Text>
-                        </Stack>
-                    </Banner>
-                    <Box>
-                        <Reviews reviews={product.reviews} />
-                    </Box>
-                </Stack>
+                <Section
+                    colorScheme="white"
+                    section={{
+                        title: f('reviews'),
+                        component: <Reviews reviews={product.reviews} />
+                    }}></Section>
             </Container>
         </PageListingLayout>
     );

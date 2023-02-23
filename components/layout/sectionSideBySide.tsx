@@ -30,6 +30,11 @@ const SectionSideBySide: React.FC<Props> = ({ sections }) => {
                             section={section}
                             colorScheme={colorScheme}
                             isEven={isEven}
+                            imageTransform={{
+                                md: `
+                                    translateY(${isEven ? 10 : -10}%) 
+                                    translateX(${isEven ? -25 : 25}%)`
+                            }}
                         />
                     );
                 })}
