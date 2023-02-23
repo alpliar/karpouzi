@@ -54,7 +54,7 @@ const Link: React.FC<PropsWithChildren<ILinkProps & ChakraProps>> = ({
                     as={ChakraLink}
                     {...buttonProps}
                     onClick={onClick}
-                    padding={3}
+                    padding={2}
                     whiteSpace="pre-wrap"
                     height="100%"
                     {...rest}>
