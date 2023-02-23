@@ -1,4 +1,4 @@
-import { Container, Flex, Stack, Text } from '@chakra-ui/layout';
+import { Flex, Text } from '@chakra-ui/layout';
 import { useSession } from 'next-auth/react';
 import Head from 'next/head';
 import { useIntl } from 'react-intl';
@@ -7,7 +7,6 @@ import CallToActionNewsletter from '../components/callToActionNewsletter';
 import CallToActionWithAnnotation from '../components/callToActionWithAnnotation';
 import SectionSideBySide, { Section } from '../components/layout/sectionSideBySide';
 import PageLayout, { siteTitle } from '../components/pageLayout';
-import { APP_MAX_WIDTH } from '../constants/ui/main.layout';
 
 export default function Home() {
     const { formatMessage } = useIntl();
@@ -87,9 +86,7 @@ export default function Home() {
                     primaryActionAnnotation={f('welcomeDeals')}
                 />
             </Banner>
-            <Stack as={Container} p={4} maxW={APP_MAX_WIDTH} gap={8}>
-                <SectionSideBySide sections={sections} />
-            </Stack>
+            <SectionSideBySide sections={sections} />
         </PageLayout>
     );
 }

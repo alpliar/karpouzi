@@ -25,6 +25,7 @@ const CallToActionNewsletter: React.FC<Props> = ({ colorScheme = 'green' }) => {
     return (
         <Box>
             <Stack
+                maxW={{ sm: 'sm' }}
                 direction={{ base: 'column', md: 'row' }}
                 as="form"
                 spacing="12px"
@@ -46,13 +47,14 @@ const CallToActionNewsletter: React.FC<Props> = ({ colorScheme = 'green' }) => {
                 }}>
                 <FormControl>
                     <Input
-                        variant="solid"
-                        borderWidth={1}
-                        color="currentColor"
+                        variant="outline"
                         _placeholder={{
                             color: 'currentColor'
                         }}
-                        borderColor={useColorModeValue('gray.300', 'gray.700')}
+                        borderColor="currentcolor"
+                        _hover={{
+                            borderColor: `${colorScheme}.500`
+                        }}
                         id="email"
                         type="email"
                         required
