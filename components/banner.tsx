@@ -33,7 +33,7 @@ const Banner: React.FC<IBannerProps & BoxProps> = ({
 
     return (
         <Flex
-            height={height}
+            minHeight={height}
             textAlign="center"
             alignItems="center"
             justifyContent="center"
