@@ -1,6 +1,6 @@
-import { Box, Container, Stack, StackItem } from '@chakra-ui/layout';
 import { useRouter } from 'next/router';
 import BackToHome from './backToHome';
+import Section from './layout/Section';
 
 const Footer = () => {
     const router = useRouter();
@@ -8,15 +8,16 @@ const Footer = () => {
     const copyrightMention = `© Karpouzi ${new Date().getFullYear()}`;
 
     return (
-        <Box bgColor="blackAlpha.100" mt={8}>
-            <hr />
-            <Container as="footer" p={4} textAlign="center">
-                <Stack>
-                    <StackItem>{!isHome && <BackToHome />}</StackItem>
-                    <StackItem>{copyrightMention}</StackItem>
-                </Stack>
-            </Container>
-        </Box>
+        <>
+            <Section
+                colorScheme="gray"
+                section={{
+                    title: 'bottomOfPage',
+                    description: copyrightMention,
+                    component: !isHome && <BackToHome />
+                }}
+            />
+        </>
     );
 };
 
