@@ -1,4 +1,4 @@
-import { Box, Center, Flex, Heading, SimpleGrid, Text } from '@chakra-ui/layout';
+import { Box, Center, Flex, Grid, GridItem, Heading, Text } from '@chakra-ui/layout';
 import { useBreakpointValue } from '@chakra-ui/media-query';
 import { ThemingProps, useColorMode } from '@chakra-ui/system';
 
@@ -27,11 +27,9 @@ export interface Section {
 
 const SectionSideBySide: React.FC<Props> = ({ sections }) => {
     const { colorMode } = useColorMode();
-    const gridSpacingX = useBreakpointValue({ base: 10, md: 16, lg: 24 });
-    const gridSpacingY = useBreakpointValue({ base: 10, md: 16, lg: 32 });
     const gridRowMarginBottom = useBreakpointValue({ base: 10, md: 16, lg: 24 });
 
-    const imageSize = useBreakpointValue({ base: '3xs', sm: '2xs', xl: 'xs' });
+    const imageSize = useBreakpointValue({ base: '32', md: '2xs', xl: 'xs' });
 
     return (
         <Flex w="full" justifyContent="center" alignItems="center">
@@ -49,21 +47,21 @@ const SectionSideBySide: React.FC<Props> = ({ sections }) => {
                             key={index}
                             paddingTop={{ base: 4, sm: 8, md: 16, xl: 24 }}
                             paddingBottom={{ base: 4 }}>
-                            <SimpleGrid
+                            <Grid
+                                w="full"
                                 px={{ base: 4, sm: 8, xl: 16 }}
                                 mx="auto"
                                 maxW={APP_MAX_WIDTH}
                                 alignItems="center"
-                                columns={{
-                                    base: 1,
-                                    md: 2
+                                templateColumns={{
+                                    base: 'repeat(1,1fr)',
+                                    sm: 'repeat(3,1fr)',
+                                    xl: 'repeat(5,1fr)'
                                 }}
-                                columnGap={{ md: 24, xl: 32 }}
-                                // flexDirection={'column-reverse'}
-                                mb={gridRowMarginBottom}
-                                spacingY={gridSpacingX}
-                                spacingX={gridSpacingY}>
-                                <Box
+                                gap={{ base: 4, sm: 12, md: 24, xl: 32 }}
+                                mb={gridRowMarginBottom}>
+                                <GridItem
+                                    colSpan={{ sm: 2, xl: 3 }}
                                     order={{
                                         base: 'initial',
                                         md: isEven ? 'initial' : 2
@@ -114,39 +112,41 @@ const SectionSideBySide: React.FC<Props> = ({ sections }) => {
                                             {section.buttonLabel}
                                         </Link>
                                     )}
-                                </Box>
+                                </GridItem>
 
-                                <Banner
-                                    rounded="xl"
-                                    pattern={pattern}
-                                    bgColor={bgColor}
-                                    height="10px"
-                                    patternOpacity={0.3}>
-                                    <Center
-                                        transform={{
-                                            md: `
+                                <GridItem colSpan={{ sm: 1, xl: 2 }}>
+                                    <Banner
+                                        rounded="xl"
+                                        pattern={pattern}
+                                        bgColor={bgColor}
+                                        height="10px"
+                                        patternOpacity={0.3}>
+                                        <Center
+                                            transform={{
+                                                md: `
                                         translateY(${isEven ? 10 : -10}%) 
                                         translateX(${isEven ? -25 : 25}%)`
-                                        }}>
-                                        <Box
-                                            w={imageSize}
-                                            h={imageSize}
-                                            rounded="xl"
-                                            overflow="hidden"
-                                            boxShadow="md">
-                                            <Image
-                                                sizes={imageSize}
-                                                quality={75}
-                                                priority
-                                                src={section.image}
-                                                alt={section.title}
+                                            }}>
+                                            <Box
                                                 w={imageSize}
                                                 h={imageSize}
-                                            />
-                                        </Box>
-                                    </Center>
-                                </Banner>
-                            </SimpleGrid>
+                                                rounded="xl"
+                                                overflow="hidden"
+                                                boxShadow="md">
+                                                <Image
+                                                    sizes={imageSize}
+                                                    quality={75}
+                                                    priority
+                                                    src={section.image}
+                                                    alt={section.title}
+                                                    w={imageSize}
+                                                    h={imageSize}
+                                                />
+                                            </Box>
+                                        </Center>
+                                    </Banner>
+                                </GridItem>
+                            </Grid>
                         </Box>
                     );
                 })}
