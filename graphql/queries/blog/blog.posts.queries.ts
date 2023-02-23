@@ -8,6 +8,11 @@ export const GET_BLOG_POST = gql`
             title
             subtitle
             content
+            localizations {
+                locale
+                title
+                content
+            }
             coverPicture {
                 alternativeText
                 asset {
@@ -62,6 +67,11 @@ export const GET_BLOG_POSTS = gql`
             title
             subtitle
             content
+            localizations {
+                locale
+                title
+                content
+            }
             coverPicture {
                 alternativeText
                 asset {

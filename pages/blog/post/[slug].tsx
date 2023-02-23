@@ -15,7 +15,11 @@ import MarkdownRendered from '../../../components/MarkdownRendered';
 import PageListingLayout from '../../../components/pageListingLayout';
 import { API_BASE_URL } from '../../../constants/api';
 import { ONE_DAY } from '../../../constants/time.constants';
-import BlogPost, { BlogPostsData } from '../../../graphql/models/blog/post.model';
+import BlogPost, {
+    BlogPostsData,
+    ParsedBlogPostLocalization,
+    ParsedBlogPostLocalizations
+} from '../../../graphql/models/blog/post.model';
 import MarkdownHelper from '../../../helpers/markdown.helper';
 import errorHandler from '../../../utils/errorsHandler';
 import { BlogPostResponse } from '../../api/blog/post/[slug]';
@@ -29,13 +33,19 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         } = await axios.get<BlogPostResponse>(API_BASE_URL + '/blog/post/' + slug);
 
         if (!post) throw new Error('Could not fetch post');
-
+        console.error('post.loc', post.localizations);
+        const localizations: ParsedBlogPostLocalizations =
+            post.localizations?.map((locale) => ({
+                ...locale,
+                content: MarkdownHelper.parseMarkdown(locale.content)
+            })) || [];
         const postContent = MarkdownHelper.parseMarkdown(post.content);
 
         return {
             props: {
                 post,
-                postContent
+                postContent,
+                localizations
             },
             revalidate: ONE_DAY
         };
@@ -77,8 +87,17 @@ export const getStaticPaths: GetStaticPaths = async ({ locales }) => {
     }
 };
 
-const BlogPostPage = ({ post, postContent }: { post: BlogPost; postContent: Root }) => {
+const BlogPostPage = ({
+    post,
+    postContent,
+    localizations
+}: {
+    post: BlogPost;
+    postContent: Root;
+    localizations: ParsedBlogPostLocalizations;
+}) => {
     const { asPath } = useRouter();
+    const router = useRouter();
     const pictureSizes = useBreakpointValue({ base: '100vw', md: '50vw' });
 
     const intl = useIntl();
@@ -93,12 +112,23 @@ const BlogPostPage = ({ post, postContent }: { post: BlogPost; postContent: Root
     //     }
     // });
 
+    const localized: ParsedBlogPostLocalization | undefined = localizations.find(
+        (i18n) => i18n.locale === router.locale
+    );
+
+    console.error('localizations', localizations);
+
+    const title = localized?.title || post.title;
+    const content = localized?.content || postContent;
+
     return (
         <>
             {post.meta && (
                 <Head>
                     <title>{post.meta.title ? post.meta.title : post.title}</title>
-                    {post.meta.title && <meta property="og:title" content={post.meta.title} />}
+                    {post.meta.title && (
+                        <meta property="og:title" content={post.meta.title || title} />
+                    )}
                     {post.meta.description && (
                         <>
                             <meta name="description" content={post.meta.description} />
@@ -117,7 +147,7 @@ const BlogPostPage = ({ post, postContent }: { post: BlogPost; postContent: Root
                 </Head>
             )}
             <PageListingLayout
-                title={post.title}
+                title={title}
                 breadcrumbs={[
                     {
                         text: f('menuEntryBlog'),
@@ -166,8 +196,8 @@ const BlogPostPage = ({ post, postContent }: { post: BlogPost; postContent: Root
                             />
                         </Box>
                         <Stack spacing={4}>
-                            <Heading as="span">{post.title}</Heading>
-                            <MarkdownRendered ast={postContent} />
+                            <Heading as="span">{title}</Heading>
+                            <MarkdownRendered ast={content} />
                         </Stack>
                     </Box>
                 </Stack>
