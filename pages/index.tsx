@@ -20,7 +20,7 @@ export default function Home() {
             url: '/shop',
             image: '/images/shop2.webp',
             buttonLabel: f('welcomeShopCTA'),
-            colorScheme: 'teal',
+            colorScheme: 'orange',
             pattern: 'formalInvitation'
         },
         {
@@ -29,7 +29,7 @@ export default function Home() {
             url: '/blog',
             image: '/images/knowmore.webp',
             buttonLabel: f('welcomeBlogCTA'),
-            colorScheme: 'orange',
+            colorScheme: 'pink',
             pattern: 'houndstooth'
         },
         {
