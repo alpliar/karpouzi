@@ -2,7 +2,6 @@ import { Avatar } from '@chakra-ui/avatar';
 import { Checkbox } from '@chakra-ui/checkbox';
 import { useColorModeValue } from '@chakra-ui/color-mode';
 import { FormControl, FormHelperText, FormLabel } from '@chakra-ui/form-control';
-import Icon from '@chakra-ui/icon';
 import { Input } from '@chakra-ui/input';
 import { Box, Stack, Text, Wrap } from '@chakra-ui/layout';
 import { Button } from '@chakra-ui/react';
@@ -13,7 +12,6 @@ import { Session } from 'next-auth';
 import { getSession, useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import React, { PropsWithChildren } from 'react';
-import { FaGithub, FaGoogle } from 'react-icons/fa';
 import { useIntl } from 'react-intl';
 import AuthGard from '../../../components/AuthGard';
 import Section from '../../../components/layout/Section';
@@ -80,7 +78,7 @@ const UserAccountPage: NextPage<UserAccountPageProps> = () => {
         if (newLocale !== router.locale) {
             sendToast(f('updatingLocale'), f('newLocaleDetail', { name: newLocale }), 'info');
         }
-        router.push(router.pathname, router.asPath, { locale: newLocale });
+        router.push(router.pathname, router.asPath, { locale: newLocale, scroll: false });
     };
 
     const localesInfos = {
@@ -197,7 +195,7 @@ const UserAccountPage: NextPage<UserAccountPageProps> = () => {
                                 </Stack>
                             </FormControl>
                         </UserAccountSection>
-
+                        {/* 
                         <UserAccountSection title={f('connectAccounts')}>
                             <Wrap>
                                 <Button leftIcon={<Icon as={FaGithub} />}>
@@ -207,7 +205,7 @@ const UserAccountPage: NextPage<UserAccountPageProps> = () => {
                                     {f('connectGoogle')}
                                 </Button>
                             </Wrap>
-                        </UserAccountSection>
+                        </UserAccountSection> */}
 
                         <Box>
                             <Stack
