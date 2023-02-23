@@ -241,7 +241,7 @@ const ProductPage: NextPage<ProductPageProps> = ({ product, description, localiz
                             </Box>
                         </Box>
 
-                        <Stack bg="" p={4} textAlign={{ base: 'center', md: 'left' }} spacing={4}>
+                        <Stack bg="" p={4} spacing={4}>
                             <Heading as="h2">{f('description')}</Heading>
                             <Box
                                 // padding={{ base: '1rem', xl: '1.5rem' }}
