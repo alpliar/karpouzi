@@ -65,6 +65,10 @@ const Breadcrumb = ({ entries }: IBreadcrumbProps) => {
                                 justifyItems="flex-start"
                                 _first={{
                                     a: { paddingLeft: 0 }
+                                }}
+                                //TODO: find another way to remove last item
+                                _last={{
+                                    display: 'none'
                                 }}>
                                 {isCurrentPage ? (
                                     <Button
