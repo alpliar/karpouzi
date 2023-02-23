@@ -94,14 +94,22 @@ const PageListingLayout: React.FC<PropsWithChildren<IPageLayoutProps>> = ({
                 <Container
                     p={fullWidth ? 0 : containerPadding}
                     maxW={fullWidth ? 'full' : APP_MAX_WIDTH}>
-                    <Breadcrumb entries={breadcrumbs} />
-                    <Wrap spacing={1} justify="space-between" mb={{ base: 4, sm: 8 }}>
-                        <Heading as="h1" fontSize="5xl" maxW="lg" paddingLeft={0}>
-                            {title}
-                        </Heading>
+                    <Box maxW={APP_MAX_WIDTH} margin="auto">
+                        <Box padding={containerPadding} paddingBottom="inherit !important">
+                            <Breadcrumb entries={breadcrumbs} />
+                        </Box>
+                        <Wrap
+                            p={{ base: 2, sm: 4 }}
+                            spacing={1}
+                            justify="space-between"
+                            mb={{ base: 4, sm: 8 }}>
+                            <Heading as="h1" fontSize="5xl" maxW="lg" paddingLeft={0}>
+                                {title}
+                            </Heading>
 
-                        {titleSlot && titleSlot}
-                    </Wrap>
+                            {titleSlot && titleSlot}
+                        </Wrap>
+                    </Box>
                     {children}
                 </Container>
             </Box>
