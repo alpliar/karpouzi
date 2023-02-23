@@ -23,7 +23,7 @@ const Popover: React.FC<Props> = ({ children, trigger, footer, header }) => {
         <Box>
             <ChakraPopover trigger="hover">
                 <PopoverTrigger>{trigger}</PopoverTrigger>
-                <PopoverContent w="auto" minW={40}>
+                <PopoverContent w={{ base: 'full', lg: 'max-content' }}>
                     <PopoverArrow />
                     {header && (
                         <PopoverHeader display="flex" alignItems="center" justifyContent="center">
