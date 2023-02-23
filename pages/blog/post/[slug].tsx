@@ -33,7 +33,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         } = await axios.get<BlogPostResponse>(API_BASE_URL + '/blog/post/' + slug);
 
         if (!post) throw new Error('Could not fetch post');
-        console.error('post.loc', post.localizations);
+
         const localizations: ParsedBlogPostLocalizations =
             post.localizations?.map((locale) => ({
                 ...locale,
@@ -115,8 +115,6 @@ const BlogPostPage = ({
     const localized: ParsedBlogPostLocalization | undefined = localizations.find(
         (i18n) => i18n.locale === router.locale
     );
-
-    console.error('localizations', localizations);
 
     const title = localized?.title || post.title;
     const content = localized?.content || postContent;
