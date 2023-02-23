@@ -41,8 +41,12 @@ const Breadcrumb = ({ entries }: IBreadcrumbProps) => {
                 />
             </Head>
             <ChakraBreadcrumb
-                display="flex"
-                flexWrap="wrap"
+                sx={{
+                    ol: {
+                        display: 'flex',
+                        flexWrap: 'wrap'
+                    }
+                }}
                 fontSize="sm"
                 separator={<ChevronRightIcon color="currentColor" />}
                 spacing={0}>
