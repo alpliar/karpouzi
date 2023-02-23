@@ -48,7 +48,7 @@ const AddToCart: React.FC<IAddToCartProps> = ({
                 fontFamily="heading"
                 leftIcon={<Icon as={FaShoppingCart} />}
                 onClick={handleClick}
-                colorScheme={useColorModeValue('green', 'yellow')}
+                colorScheme="yellow"
                 onMouseEnter={onToggle}
                 onMouseOut={onToggle}
                 whiteSpace="normal"
