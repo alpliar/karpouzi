@@ -119,9 +119,9 @@ const ProductPage: NextPage<ProductPageProps> = ({ product, description, localiz
 
     const productName = localized?.name || product.name;
     const productDescription = localized?.description || description;
-    const categoryName = category.localizations.find(
-        (localization) => localization.locale === router.locale
-    )?.name as string;
+    const categoryName =
+        category.localizations.find((localization) => localization.locale === router.locale)
+            ?.name || category.name;
 
     return (
         <PageListingLayout
