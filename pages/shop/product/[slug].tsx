@@ -119,6 +119,9 @@ const ProductPage: NextPage<ProductPageProps> = ({ product, description, localiz
 
     const productName = localized?.name || product.name;
     const productDescription = localized?.description || description;
+    const categoryName = category.localizations.find(
+        (localization) => localization.locale === router.locale
+    )?.name as string;
 
     return (
         <PageListingLayout
@@ -138,9 +141,9 @@ const ProductPage: NextPage<ProductPageProps> = ({ product, description, localiz
                     isCurrentPage: false
                 },
                 {
-                    text: category.name,
+                    text: categoryName,
                     link: `/shop/category/${category.slug}`,
-                    alt: f('goToPageName', { name: category.name }),
+                    alt: f('goToPageName', { name: categoryName }),
                     isCurrentPage: false
                 },
                 {
