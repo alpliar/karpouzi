@@ -5,6 +5,7 @@ import {
     HeadingProps,
     ListItem,
     Stack,
+    StackProps,
     Text,
     UnorderedList
 } from '@chakra-ui/react';
@@ -128,8 +129,14 @@ const Node = (node: any) => {
     );
 };
 
-const MarkdownRenderer = ({ ast }: { ast: Root }) => (
-    <Stack spacing={6}>
+const MarkdownRenderer = ({
+    ast,
+    noOfLines
+}: {
+    ast: Root;
+    noOfLines?: StackProps['noOfLines'];
+}) => (
+    <Stack spacing={6} noOfLines={noOfLines}>
         <Node {...ast} />
     </Stack>
 );

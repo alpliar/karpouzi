@@ -1,5 +1,14 @@
 import { BellIcon } from '@chakra-ui/icons';
-import { Badge, Box, Container, Stack, Text, useBreakpointValue } from '@chakra-ui/react';
+import {
+    Badge,
+    Box,
+    Button,
+    Container,
+    Stack,
+    Text,
+    useBreakpointValue,
+    useDisclosure
+} from '@chakra-ui/react';
 import axios from 'axios';
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import Head from 'next/head';
@@ -95,6 +104,7 @@ interface ProductPageProps {
 
 const ProductPage: NextPage<ProductPageProps> = ({ product, description, localizations }) => {
     const router = useRouter();
+    const { isOpen, onToggle } = useDisclosure();
     const { formatMessage, formatNumber } = useIntl();
     const f = (id: string, values: any = null) => formatMessage({ id }, values);
 
@@ -192,7 +202,15 @@ const ProductPage: NextPage<ProductPageProps> = ({ product, description, localiz
                                 textAlign="left"
                                 fontSize={{ base: 'xl', xl: '2xl' }}>
                                 {/* <Text as="p">{productDescription}</Text> */}
-                                <MarkdownRendered ast={productDescription} />
+                                <MarkdownRendered
+                                    ast={productDescription}
+                                    noOfLines={!isOpen ? 8 : undefined}
+                                />
+                                <Box>
+                                    <Button onClick={onToggle}>
+                                        {isOpen ? f('hideDescription') : f('readMore')}
+                                    </Button>
+                                </Box>
                             </Stack>
                         )
                     }}
