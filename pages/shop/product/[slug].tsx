@@ -99,7 +99,7 @@ const ProductPage: NextPage<ProductPageProps> = ({ product, description, localiz
     const { formatMessage, formatNumber } = useIntl();
     const f = (id: string, values: any = null) => formatMessage({ id }, values);
 
-    const imageSize = useBreakpointValue({ base: '32', md: '2xs', xl: 'sm' });
+    const imageSize = useBreakpointValue({ base: '32', md: 'xs', xl: 'sm' });
     const bigImageSize = useBreakpointValue({ base: '32', sm: '44', md: 'sm', xl: 'lg' });
 
     if (!product) return null;
