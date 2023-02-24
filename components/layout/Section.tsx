@@ -109,20 +109,22 @@ const Section: React.FC<Props> = ({
 
                     {section.component && <Box paddingLeft={{ xl: 5 }}>{section.component}</Box>}
                     {section.url && (
-                        <Link
-                            fontFamily="heading"
-                            w={{
-                                base: 'full',
-                                sm: 'auto'
-                            }}
-                            // size="lg"
-                            href={section.url}
-                            asButton
-                            buttonProps={{
-                                colorScheme
-                            }}>
-                            {section.buttonLabel}
-                        </Link>
+                        <Box paddingLeft={{ xl: 5 }}>
+                            <Link
+                                fontFamily="heading"
+                                w={{
+                                    base: 'full',
+                                    sm: 'auto'
+                                }}
+                                // size="lg"
+                                href={section.url}
+                                asButton
+                                buttonProps={{
+                                    colorScheme
+                                }}>
+                                {section.buttonLabel}
+                            </Link>
+                        </Box>
                     )}
                 </Box>
 
