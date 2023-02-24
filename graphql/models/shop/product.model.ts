@@ -4,6 +4,7 @@ import { Id } from '../common/types.model';
 import ShopCategory from './category.model';
 import Review, { ReviewExcerpt } from '../common/review.model';
 import { Root } from 'remark-html';
+import { ThemingProps } from '@chakra-ui/system';
 
 enum MeasurementUnits {
     PER_UNIT = 'PER_UNIT',
@@ -57,6 +58,7 @@ export default interface Product {
     reviews: Array<Review>;
     productCategories: Array<ShopCategory>;
     inspiringPicture?: Picture;
+    colorScheme?: ThemingProps['colorScheme'];
 }
 
 export interface ProductData {
