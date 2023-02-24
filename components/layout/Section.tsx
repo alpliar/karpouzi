@@ -28,6 +28,7 @@ type Props = {
     customImageSize?: ImageProps['sizes'];
     customGap?: FlexProps['gap'];
     id?: string;
+    useSecondaryColor?: boolean;
 };
 
 export interface SectionProps {
@@ -49,10 +50,19 @@ const Section: React.FC<Props> = ({
     isEven = false,
     imageTransform = undefined,
     customImageSize = undefined,
-    customGap = undefined
+    customGap = undefined,
+    useSecondaryColor = false
 }) => {
     const { colorMode } = useColorMode();
     const defaultImageSize = useBreakpointValue({ base: '32', md: '2xs', xl: 'xs' });
+    const sectionShade =
+        colorMode === 'light' ? (useSecondaryColor ? 50 : 100) : useSecondaryColor ? 800 : 900;
+    const sectionBgColor = `${colorScheme}.${sectionShade}`;
+    const bannerShade = colorMode === 'light' ? 400 : 600;
+    const bannerBgColor = `${colorScheme}.${bannerShade}` || bgColor;
+    const buttonColorScheme = ['white', 'whiteAlpha', 'blackAlpha'].includes(colorScheme)
+        ? 'gray'
+        : colorScheme;
     const imageSize = customImageSize || defaultImageSize;
     const gap = customGap || { base: 4, sm: 12, md: 12, xl: 24 };
     const specialColorSchemes = ['whiteAlpha'];
@@ -69,7 +79,7 @@ const Section: React.FC<Props> = ({
     return (
         <Box
             id={id}
-            bgColor={`${colorScheme}.${colorMode === 'light' ? 100 : 900}`}
+            bgColor={sectionBgColor}
             paddingY={{ base: 4, sm: 8, md: 16, xl: 24 }}
             // paddingBottom={{ base: 4 }}
         >
@@ -128,11 +138,7 @@ const Section: React.FC<Props> = ({
                                 href={section.url}
                                 asButton
                                 buttonProps={{
-                                    colorScheme: ['white', 'whiteAlpha', 'blackAlpha'].includes(
-                                        colorScheme
-                                    )
-                                        ? 'gray'
-                                        : colorScheme
+                                    colorScheme: buttonColorScheme
                                 }}>
                                 {section.buttonLabel}
                             </Link>
@@ -144,7 +150,7 @@ const Section: React.FC<Props> = ({
                     <Banner
                         rounded="xl"
                         pattern={pattern}
-                        bgColor={`${colorScheme}.${colorMode === 'light' ? 400 : 600}` || bgColor}
+                        bgColor={bannerBgColor}
                         height="10px"
                         patternOpacity={0.3}>
                         <Center transform={imageTransform}>

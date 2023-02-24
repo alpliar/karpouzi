@@ -132,6 +132,8 @@ const ProductPage: NextPage<ProductPageProps> = ({ product, description, localiz
         category.localizations.find((localization) => localization.locale === router.locale)
             ?.name || category.name;
 
+    const colorScheme = product.colorScheme || 'green';
+
     return (
         <PageListingLayout
             fullWidth
@@ -189,9 +191,10 @@ const ProductPage: NextPage<ProductPageProps> = ({ product, description, localiz
 
             <Container p={{ base: 0 }} maxW="full">
                 <Section
+                    colorScheme={colorScheme}
+                    useSecondaryColor
                     customImageSize={imageSize}
                     isEven={true}
-                    colorScheme={'white'}
                     section={{
                         title: f('description'),
                         image: product.inspiringPicture?.asset.url,
@@ -207,8 +210,8 @@ const ProductPage: NextPage<ProductPageProps> = ({ product, description, localiz
                                     noOfLines={!isOpen ? 8 : undefined}
                                 />
                                 <Box>
-                                    <Button onClick={onToggle}>
-                                        {isOpen ? f('hideDescription') : f('readMore')}
+                                    <Button onClick={onToggle} colorScheme={colorScheme}>
+                                        {isOpen ? f('readLess') : f('readMore')}
                                     </Button>
                                 </Box>
                             </Stack>
@@ -218,7 +221,7 @@ const ProductPage: NextPage<ProductPageProps> = ({ product, description, localiz
                 <Section
                     isEven={false}
                     customImageSize={bigImageSize}
-                    colorScheme={product.colorScheme || 'green'}
+                    colorScheme={colorScheme}
                     section={{
                         title: productName,
                         image: product.coverPicture.asset.url,
@@ -252,7 +255,8 @@ const ProductPage: NextPage<ProductPageProps> = ({ product, description, localiz
 
                 <Section
                     id="reviews"
-                    colorScheme="whiteAlpha"
+                    colorScheme={colorScheme}
+                    useSecondaryColor
                     section={{
                         title: f('reviews'),
                         component: <Reviews reviews={product.reviews} />
