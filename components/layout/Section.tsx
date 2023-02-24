@@ -25,6 +25,7 @@ type Props = {
     isEven?: boolean;
     imageTransform?: TransformProps['transform'];
     customImageSize?: ImageProps['sizes'];
+    id?: string;
 };
 
 export interface SectionProps {
@@ -38,6 +39,7 @@ export interface SectionProps {
     component?: React.ReactNode;
 }
 const Section: React.FC<Props> = ({
+    id = undefined,
     pattern = undefined,
     bgColor = 'green',
     colorScheme = 'green',
@@ -52,6 +54,7 @@ const Section: React.FC<Props> = ({
 
     return (
         <Box
+            id={id}
             bgColor={`${colorScheme}.${colorMode === 'light' ? 100 : 900}`}
             paddingY={{ base: 4, sm: 8, md: 16, xl: 24 }}
             // paddingBottom={{ base: 4 }}

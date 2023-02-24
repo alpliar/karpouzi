@@ -204,7 +204,7 @@ const ProductPage: NextPage<ProductPageProps> = ({ product, description, localiz
                         image: product.coverPicture.asset.url,
                         component: (
                             <Stack spacing={4} maxW="sm">
-                                <Rating rate={rate} count={reviewCount} />
+                                <Rating rate={rate} count={reviewCount} target="#reviews" />
 
                                 <Text fontSize="4xl" lineHeight="1em" fontWeight="bold">
                                     {formatNumber(firstPrice.amount, {
@@ -229,6 +229,7 @@ const ProductPage: NextPage<ProductPageProps> = ({ product, description, localiz
                 </Banner>
 
                 <Section
+                    id="reviews"
                     colorScheme="white"
                     section={{
                         title: f('reviews'),

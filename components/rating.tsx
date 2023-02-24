@@ -1,5 +1,5 @@
 import Icon from '@chakra-ui/icon';
-import { Flex, FlexProps, HStack, IconProps, Text } from '@chakra-ui/react';
+import { Flex, FlexProps, HStack, IconProps, Link as ChakraLink, Text } from '@chakra-ui/react';
 import { ComponentWithAs } from '@chakra-ui/system';
 import { IconType } from 'react-icons';
 import { GiWatermelon } from 'react-icons/gi';
@@ -9,12 +9,14 @@ interface RatingProps {
     rate: number;
     count?: number;
     icon?: ComponentWithAs<'svg', IconProps> | IconType | undefined;
+    target?: string;
 }
 
 const Rating: React.FC<RatingProps & FlexProps> = ({
     rate,
     count,
     icon = GiWatermelon,
+    target = undefined,
     ...rest
 }) => {
     const { formatMessage } = useIntl();
@@ -26,7 +28,7 @@ const Rating: React.FC<RatingProps & FlexProps> = ({
     return (
         <Flex {...rest}>
             {isRated && (
-                <HStack alignItems="center">
+                <HStack as={target ? ChakraLink : undefined} href={target} alignItems="center">
                     <Flex as="span" align="center">
                         {Array(5)
                             .fill('')
