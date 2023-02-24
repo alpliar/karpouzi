@@ -210,7 +210,10 @@ const ProductPage: NextPage<ProductPageProps> = ({ product, description, localiz
                                     {formatNumber(firstPrice.amount, {
                                         style: 'currency',
                                         currency: firstPrice.currency
-                                    })}
+                                    })}{' '}
+                                    <Text as="span" fontSize="md">
+                                        {f(firstPrice.measurementUnit)}
+                                    </Text>
                                 </Text>
 
                                 <AddToCart slug={product.slug} name={productName} quantity={1} />
