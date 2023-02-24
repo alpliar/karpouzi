@@ -56,6 +56,7 @@ export default interface Product {
     prices: Array<Price>;
     reviews: Array<Review>;
     productCategories: Array<ShopCategory>;
+    inspiringPicture?: Picture;
 }
 
 export interface ProductData {

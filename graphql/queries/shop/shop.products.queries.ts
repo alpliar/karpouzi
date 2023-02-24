@@ -22,6 +22,16 @@ export const GET_SHOP_PRODUCT = gql`
                     url
                 }
             }
+            inspiringPicture {
+                alternativeText
+                asset {
+                    id
+                    fileName
+                    mimeType
+                    createdAt
+                    url
+                }
+            }
             picture {
                 id
                 url
@@ -75,6 +85,16 @@ export const GET_SHOP_PRODUCTS = gql`
                 description
             }
             coverPicture {
+                alternativeText
+                asset {
+                    id
+                    fileName
+                    mimeType
+                    createdAt
+                    url
+                }
+            }
+            inspiringPicture {
                 alternativeText
                 asset {
                     id
