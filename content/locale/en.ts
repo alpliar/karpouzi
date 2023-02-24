@@ -66,7 +66,8 @@ export const en = {
         PER_UNIT: 'per unit',
         PER_METER: 'per meter',
         PER_KILOGRAM: 'per kilo',
-        PER_LITER: 'per liter'
+        PER_LITER: 'per liter',
+        bottomOfPage: "Well, it looks like we've reached the end of the page!"
     },
     '/': {
         welcomeMessage: 'Welcome to',

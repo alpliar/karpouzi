@@ -66,7 +66,8 @@ export const el = {
         PER_UNIT: 'το κομμάτι',
         PER_METER: 'το μέτρο',
         PER_KILOGRAM: 'το κιλό',
-        PER_LITER: 'το λίτρο'
+        PER_LITER: 'το λίτρο',
+        bottomOfPage: 'Λοιπόν, φαίνεται ότι έχουμε φτάσει στο τέλος της σελίδας!'
     },
     '/': {
         welcomeMessage: 'καλώς ήλθατε στο',
