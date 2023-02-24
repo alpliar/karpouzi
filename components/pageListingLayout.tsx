@@ -102,7 +102,8 @@ const PageListingLayout: React.FC<PropsWithChildren<IPageLayoutProps>> = ({
                             p={{ base: 2, sm: 4 }}
                             spacing={1}
                             justify="space-between"
-                            mb={{ base: 4, sm: 8 }}>
+                            // mb={{ base: 4, sm: 8 }}
+                        >
                             <Heading as="h1" fontSize="5xl" maxW="lg" paddingLeft={0}>
                                 {title}
                             </Heading>
