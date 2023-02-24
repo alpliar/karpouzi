@@ -67,6 +67,11 @@ export const GET_SHOP_PRODUCT = gql`
                     mimeType
                 }
                 description
+                localizations {
+                    locale
+                    name
+                    description
+                }
             }
         }
     }
@@ -132,6 +137,11 @@ export const GET_SHOP_PRODUCTS = gql`
                     mimeType
                 }
                 description
+                localizations {
+                    locale
+                    name
+                    description
+                }
             }
         }
     }
