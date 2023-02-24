@@ -1,5 +1,5 @@
 import Icon from '@chakra-ui/icon';
-import { Flex, FlexProps, HStack, IconProps, Link as ChakraLink, Text } from '@chakra-ui/react';
+import { Flex, FlexProps, IconProps, Link as ChakraLink, Text } from '@chakra-ui/react';
 import { ComponentWithAs } from '@chakra-ui/system';
 import { IconType } from 'react-icons';
 import { GiWatermelon } from 'react-icons/gi';
