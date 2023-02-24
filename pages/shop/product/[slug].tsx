@@ -182,7 +182,7 @@ const ProductPage: NextPage<ProductPageProps> = ({ product, description, localiz
                     colorScheme={'white'}
                     section={{
                         title: f('description'),
-                        image: product.coverPicture.asset.url,
+                        image: product.inspiringPicture?.asset.url,
 
                         component: (
                             <Stack
@@ -218,7 +218,7 @@ const ProductPage: NextPage<ProductPageProps> = ({ product, description, localiz
                         )
                     }}></Section>
 
-                <Banner pattern="iLikeFood" height="md">
+                <Banner pattern="iLikeFood" height="md" bgColor="pink.300">
                     <Stack maxW="lg" fontSize="sm" fontWeight="bold" p={3} spacing={4}>
                         <Heading>{f('fondOfName', { name: category.name })}</Heading>
                         <Text>
