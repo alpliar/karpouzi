@@ -73,6 +73,7 @@ export const GET_SHOP_PRODUCT = gql`
                     description
                 }
             }
+            colorScheme
         }
     }
 `;
@@ -143,6 +144,7 @@ export const GET_SHOP_PRODUCTS = gql`
                     description
                 }
             }
+            colorScheme
         }
     }
 `;
