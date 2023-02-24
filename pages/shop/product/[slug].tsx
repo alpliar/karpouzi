@@ -210,7 +210,11 @@ const ProductPage: NextPage<ProductPageProps> = ({ product, description, localiz
                                     noOfLines={!isOpen ? 8 : undefined}
                                 />
                                 <Box>
-                                    <Button onClick={onToggle} colorScheme={colorScheme}>
+                                    <Button
+                                        onClick={onToggle}
+                                        colorScheme={
+                                            colorScheme === 'blackAlpha' ? 'gray' : colorScheme
+                                        }>
                                         {isOpen ? f('readLess') : f('readMore')}
                                     </Button>
                                 </Box>
