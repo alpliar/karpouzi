@@ -2,6 +2,7 @@ import {
     Box,
     Center,
     Flex,
+    FlexProps,
     Heading,
     ImageProps,
     Text,
@@ -25,6 +26,7 @@ type Props = {
     isEven?: boolean;
     imageTransform?: TransformProps['transform'];
     customImageSize?: ImageProps['sizes'];
+    customGap?: FlexProps['gap'];
     id?: string;
 };
 
@@ -46,11 +48,13 @@ const Section: React.FC<Props> = ({
     section,
     isEven = false,
     imageTransform = undefined,
-    customImageSize = undefined
+    customImageSize = undefined,
+    customGap = undefined
 }) => {
     const { colorMode } = useColorMode();
     const defaultImageSize = useBreakpointValue({ base: '32', md: '2xs', xl: 'xs' });
     const imageSize = customImageSize || defaultImageSize;
+    const gap = customGap || { base: 4, sm: 12, md: 12, xl: 24 };
 
     return (
         <Box
@@ -66,12 +70,12 @@ const Section: React.FC<Props> = ({
                 mx="auto"
                 maxW={APP_MAX_WIDTH}
                 alignItems="center"
-                gap={{ base: 4, sm: 12, md: 12, xl: 24 }}>
+                gap={gap}>
                 <Box
                     flexGrow={1}
                     order={{
                         base: 'initial',
-                        md: isEven ? 'initial' : 2
+                        sm: isEven ? 'initial' : 2
                     }}>
                     <Heading
                         as="h2"
