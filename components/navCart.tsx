@@ -27,7 +27,7 @@ const NavCart: React.FC<IProps> = ({ cartCount }) => {
                             position="absolute"
                             top={1}
                             right={compact ? 1 : undefined}
-                            left={!compact ? 7 : undefined}
+                            left={!compact ? 5 : undefined}
                             bgColor="red.400"
                             borderRadius="full"
                             boxShadow="md"
