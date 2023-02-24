@@ -132,7 +132,7 @@ const Section: React.FC<Props> = ({
                     <Banner
                         rounded="xl"
                         pattern={pattern}
-                        bgColor={bgColor}
+                        bgColor={`${colorScheme}.${colorMode === 'light' ? 400 : 600}` || bgColor}
                         height="10px"
                         patternOpacity={0.3}>
                         <Center transform={imageTransform}>

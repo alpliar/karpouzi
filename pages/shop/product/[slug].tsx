@@ -1,12 +1,11 @@
 import { BellIcon } from '@chakra-ui/icons';
-import { Badge, Box, Container, Heading, Stack, Text, useBreakpointValue } from '@chakra-ui/react';
+import { Badge, Box, Container, Stack, Text, useBreakpointValue } from '@chakra-ui/react';
 import axios from 'axios';
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useIntl } from 'react-intl';
 import { Root } from 'remark-html';
-import Banner from '../../../components/banner';
 import Section from '../../../components/layout/Section';
 import MarkdownRendered from '../../../components/MarkdownRendered';
 import PageListingLayout from '../../../components/pageListingLayout';
@@ -223,8 +222,20 @@ const ProductPage: NextPage<ProductPageProps> = ({ product, description, localiz
                             </Stack>
                         )
                     }}></Section>
-
-                <Banner pattern="iLikeFood" height="md" bgColor="pink.300">
+                <Section
+                    isEven={true}
+                    colorScheme={product.colorScheme || 'green'}
+                    section={{
+                        title: f('fondOfName', { name: category.name }),
+                        description:
+                            'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Earum minimaquaerat fugit ullam illo ipsa perspiciatis sit voluptatem!',
+                        image: category.picture.url,
+                        colorScheme: product.colorScheme
+                    }}
+                    imageTransform="translate(-25px, -25px) "
+                    pattern="iLikeFood"
+                />
+                {/* <Banner pattern="iLikeFood" height="md" bgColor="pink.300">
                     <Stack maxW="lg" fontSize="sm" fontWeight="bold" p={3} spacing={4}>
                         <Heading>{f('fondOfName', { name: category.name })}</Heading>
                         <Text>
@@ -232,7 +243,7 @@ const ProductPage: NextPage<ProductPageProps> = ({ product, description, localiz
                             quaerat fugit ullam illo ipsa perspiciatis sit voluptatem!
                         </Text>
                     </Stack>
-                </Banner>
+                </Banner> */}
 
                 <Section
                     id="reviews"
