@@ -55,6 +55,16 @@ const Section: React.FC<Props> = ({
     const defaultImageSize = useBreakpointValue({ base: '32', md: '2xs', xl: 'xs' });
     const imageSize = customImageSize || defaultImageSize;
     const gap = customGap || { base: 4, sm: 12, md: 12, xl: 24 };
+    const specialColorSchemes = ['whiteAlpha'];
+    const isSpecialColorScheme = specialColorSchemes.includes(colorScheme);
+    const textColor = isSpecialColorScheme
+        ? {
+              color: 'black',
+              _dark: {
+                  color: 'black'
+              }
+          }
+        : {};
 
     return (
         <Box
@@ -85,10 +95,7 @@ const Section: React.FC<Props> = ({
                             md: '4xl'
                         }}
                         letterSpacing="tight"
-                        color="gray.800"
-                        _dark={{
-                            color: 'gray.200'
-                        }}
+                        {...textColor}
                         lineHeight={{
                             md: 'shorter'
                         }}>
@@ -97,17 +104,18 @@ const Section: React.FC<Props> = ({
                     <Text
                         paddingLeft={{ xl: 5 }}
                         mb={5}
-                        color="gray.800"
-                        _dark={{
-                            color: 'gray.200'
-                        }}
+                        {...textColor}
                         fontSize={{
                             md: 'lg'
                         }}>
                         {section.description}
                     </Text>
 
-                    {section.component && <Box paddingLeft={{ xl: 5 }}>{section.component}</Box>}
+                    {section.component && (
+                        <Box paddingLeft={{ xl: 5 }} {...textColor}>
+                            {section.component}
+                        </Box>
+                    )}
                     {section.url && (
                         <Box paddingLeft={{ xl: 5 }}>
                             <Link
@@ -120,7 +128,11 @@ const Section: React.FC<Props> = ({
                                 href={section.url}
                                 asButton
                                 buttonProps={{
-                                    colorScheme
+                                    colorScheme: ['white', 'whiteAlpha', 'blackAlpha'].includes(
+                                        colorScheme
+                                    )
+                                        ? 'gray'
+                                        : colorScheme
                                 }}>
                                 {section.buttonLabel}
                             </Link>

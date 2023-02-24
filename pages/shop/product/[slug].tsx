@@ -200,7 +200,7 @@ const ProductPage: NextPage<ProductPageProps> = ({ product, description, localiz
                 <Section
                     isEven={false}
                     customImageSize={bigImageSize}
-                    colorScheme="gray"
+                    colorScheme={product.colorScheme || 'green'}
                     section={{
                         title: productName,
                         image: product.coverPicture.asset.url,
@@ -222,21 +222,6 @@ const ProductPage: NextPage<ProductPageProps> = ({ product, description, localiz
                             </Stack>
                         )
                     }}></Section>
-                <Section
-                    isEven={true}
-                    colorScheme={product.colorScheme || 'green'}
-                    section={{
-                        title: f('fondOfName', { name: categoryName }),
-                        url: `/shop/category/${category.slug}`,
-                        buttonLabel: f('goToPageName', { name: categoryName }),
-                        description:
-                            'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Earum minimaquaerat fugit ullam illo ipsa perspiciatis sit voluptatem!',
-                        image: category.picture.url,
-                        colorScheme: product.colorScheme
-                    }}
-                    imageTransform={{ sm: 'translate(-25px, -25px) ' }}
-                    pattern="iLikeFood"
-                />
                 {/* <Banner pattern="iLikeFood" height="md" bgColor="pink.300">
                     <Stack maxW="lg" fontSize="sm" fontWeight="bold" p={3} spacing={4}>
                         <Heading>{f('fondOfName', { name: category.name })}</Heading>
@@ -249,11 +234,27 @@ const ProductPage: NextPage<ProductPageProps> = ({ product, description, localiz
 
                 <Section
                     id="reviews"
-                    colorScheme="white"
+                    colorScheme="whiteAlpha"
                     section={{
                         title: f('reviews'),
                         component: <Reviews reviews={product.reviews} />
-                    }}></Section>
+                    }}
+                />
+
+                <Section
+                    colorScheme="white"
+                    isEven={true}
+                    section={{
+                        title: f('fondOfName', { name: categoryName }),
+                        url: `/shop/category/${category.slug}`,
+                        buttonLabel: f('goToPageName', { name: categoryName }),
+                        description:
+                            'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Earum minimaquaerat fugit ullam illo ipsa perspiciatis sit voluptatem!',
+                        image: category.picture.url
+                    }}
+                    imageTransform={{ sm: 'translate(-25px, -25px) ' }}
+                    pattern="iLikeFood"
+                />
             </Container>
         </PageListingLayout>
     );
