@@ -6,6 +6,7 @@ export const fr = {
         menuEntryShop: 'Boutique',
         menuEntryLogin: 'Identification',
         goToPageName: 'Aller à la page {name}',
+        seeMoreName: 'Voir plus de {name}',
         redirectingYouToPageName: 'Redirection vers la page {name}',
         openMenu: 'Ouvrir le menu',
         feelingLost: 'Perdu·e ?',

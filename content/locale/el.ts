@@ -6,6 +6,7 @@ export const el = {
         menuEntryShop: 'Κατάστημα',
         menuEntryLogin: 'Σύνδεση',
         goToPageName: 'μεταβείτε στη σελίδ {name}',
+        seeMoreName: 'Δείτε περισσότερα {name}',
         redirectingYouToPageName: 'Ανακατεύθυνσή σας στη σελίδα {name}',
         openMenu: 'ανοίξτε το μενού',
         feelingLost: 'Νιώθεις χαμένος;',

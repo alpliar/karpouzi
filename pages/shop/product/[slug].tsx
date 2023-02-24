@@ -226,13 +226,15 @@ const ProductPage: NextPage<ProductPageProps> = ({ product, description, localiz
                     isEven={true}
                     colorScheme={product.colorScheme || 'green'}
                     section={{
-                        title: f('fondOfName', { name: category.name }),
+                        title: f('fondOfName', { name: categoryName }),
+                        url: `/shop/category/${category.slug}`,
+                        buttonLabel: f('goToPageName', { name: categoryName }),
                         description:
                             'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Earum minimaquaerat fugit ullam illo ipsa perspiciatis sit voluptatem!',
                         image: category.picture.url,
                         colorScheme: product.colorScheme
                     }}
-                    imageTransform="translate(-25px, -25px) "
+                    imageTransform={{ sm: 'translate(-25px, -25px) ' }}
                     pattern="iLikeFood"
                 />
                 {/* <Banner pattern="iLikeFood" height="md" bgColor="pink.300">

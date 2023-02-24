@@ -6,6 +6,7 @@ export const es = {
         menuEntryShop: 'Tienda',
         menuEntryLogin: 'Acceso',
         goToPageName: 'Ir a la página de {name}',
+        seeMoreName: 'Ver mas {name}',
         redirectingYouToPageName: 'Redirigiéndolo a la página {name}',
         openMenu: 'Abrir el menú',
         feelingLost: '¿Te sientes perdida·o?',
