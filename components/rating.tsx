@@ -28,7 +28,12 @@ const Rating: React.FC<RatingProps & FlexProps> = ({
     return (
         <Flex {...rest}>
             {isRated && (
-                <HStack as={target ? ChakraLink : undefined} href={target} alignItems="center">
+                <Flex
+                    gap={1}
+                    wrap="wrap"
+                    as={target ? ChakraLink : undefined}
+                    href={target}
+                    alignItems="center">
                     <Flex as="span" align="center">
                         {Array(5)
                             .fill('')
@@ -43,11 +48,11 @@ const Rating: React.FC<RatingProps & FlexProps> = ({
                     </Flex>
                     {isIndividualRating && <Text as="strong">{rate / 20} / 5</Text>}
                     {hasMultipleReviews && (
-                        <Text fontWeight="bold" as="span" marginLeft={!!count ? 2 : 0}>
+                        <Text fontWeight="bold" as="span">
                             {f('noOfReviews', { count })}
                         </Text>
                     )}
-                </HStack>
+                </Flex>
             )}
 
             {!isRated && <Text as="span">{f('noReviewsYet')}</Text>}
