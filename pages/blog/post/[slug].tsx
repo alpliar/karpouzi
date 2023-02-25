@@ -15,6 +15,7 @@ import MarkdownRendered from '../../../components/MarkdownRendered';
 import PageListingLayout from '../../../components/pageListingLayout';
 import { API_BASE_URL } from '../../../constants/api';
 import { ONE_DAY } from '../../../constants/time.constants';
+import { APP_MAX_WIDTH } from '../../../constants/ui/main.layout';
 import BlogPost, {
     BlogPostsData,
     ParsedBlogPostLocalization,
@@ -145,6 +146,7 @@ const BlogPostPage = ({
                 </Head>
             )}
             <PageListingLayout
+                fullWidth
                 title={title}
                 breadcrumbs={[
                     {
@@ -176,7 +178,7 @@ const BlogPostPage = ({
                     </BlockQuote>
                 }
                 bannerSlot={<></>}>
-                <Stack>
+                <Stack py={2} mx="auto" maxWidth={APP_MAX_WIDTH}>
                     <Box maxW="70ch" fontSize={{ md: 'xl' }} margin="auto">
                         <Box>
                             <Image

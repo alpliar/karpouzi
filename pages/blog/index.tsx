@@ -1,3 +1,4 @@
+import { Box } from '@chakra-ui/react';
 import axios from 'axios';
 import { GetStaticProps } from 'next';
 import { useIntl } from 'react-intl';
@@ -7,6 +8,7 @@ import PageListingLayout from '../../components/pageListingLayout';
 import ShopStat from '../../components/shopStat';
 import { API_BASE_URL } from '../../constants/api';
 import { ONE_HOUR } from '../../constants/time.constants';
+import { APP_MAX_WIDTH } from '../../constants/ui/main.layout';
 import BlogPost from '../../graphql/models/blog/post.model';
 import { BlogPostsResponse } from '../api/blog/posts';
 
@@ -37,6 +39,7 @@ const BlogHome = ({ posts }: { posts: Array<BlogPost> }) => {
 
     return (
         <PageListingLayout
+            fullWidth
             title={f('title')}
             breadcrumbs={[
                 {
@@ -64,7 +67,11 @@ const BlogHome = ({ posts }: { posts: Array<BlogPost> }) => {
                     wall dulling the roar of the room where Case waited.
                 </BlockQuote>
             }>
-            {posts && <LatestsPosts posts={posts} />}
+            {posts && (
+                <Box mx="auto" maxWidth={APP_MAX_WIDTH} py={2}>
+                    <LatestsPosts posts={posts} />
+                </Box>
+            )}
         </PageListingLayout>
     );
 };
