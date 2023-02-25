@@ -22,7 +22,8 @@ export default function Home() {
             image: '/images/shop2.webp',
             buttonLabel: f('welcomeShopCTA'),
             colorScheme: 'orange',
-            pattern: 'formalInvitation'
+            pattern: 'formalInvitation',
+            useSecondaryColor: true
         },
         {
             title: f('welcomeDiscoverKarpouzi'),
@@ -30,8 +31,9 @@ export default function Home() {
             url: '/blog',
             image: '/images/knowmore.webp',
             buttonLabel: f('welcomeBlogCTA'),
-            colorScheme: 'pink',
-            pattern: 'houndstooth'
+            colorScheme: 'yellow',
+            pattern: 'houndstooth',
+            useSecondaryColor: true
         },
         {
             title: f('newsletterSubscribe'),
@@ -39,7 +41,7 @@ export default function Home() {
             image: '/images/newsletter2.webp',
             buttonLabel: 'label',
             colorScheme: 'green',
-            pattern: 'polkaDots',
+            pattern: 'pixelDots',
             component: <CallToActionNewsletter colorScheme="green" />
         }
     ];

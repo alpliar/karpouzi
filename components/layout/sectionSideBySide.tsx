@@ -27,7 +27,7 @@ const SectionSideBySide: React.FC<Props> = ({ sections }) => {
                             key={index}
                             pattern={pattern}
                             bgColor={bgColor}
-                            section={section}
+                            {...section}
                             colorScheme={colorScheme}
                             isEven={isEven}
                             imageTransform={{

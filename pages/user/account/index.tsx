@@ -43,10 +43,8 @@ const UserAccountSection: React.FC<PropsWithChildren<IUserAccountSectionProps>> 
         <>
             <Section
                 colorScheme={'white'}
-                section={{
-                    title,
-                    component: <Box maxW="lg">{children}</Box>
-                }}
+                title={title}
+                component={<Box maxW="lg">{children}</Box>}
             />
             {/* <Stack spacing={4} direction={{ base: 'column', md: 'row' }}>
             <Heading as="h2" fontSize="lg" minWidth={{ md: '3xs' }}>

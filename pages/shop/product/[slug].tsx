@@ -195,58 +195,50 @@ const ProductPage: NextPage<ProductPageProps> = ({ product, description, localiz
                     useSecondaryColor
                     customImageSize={imageSize}
                     isEven={true}
-                    section={{
-                        title: f('description'),
-                        image: product.inspiringPicture?.asset.url,
-
-                        component: (
-                            <Stack
-                                spacing={5}
-                                textAlign="left"
-                                fontSize={{ base: 'xl', xl: '2xl' }}>
-                                {/* <Text as="p">{productDescription}</Text> */}
-                                <MarkdownRendered
-                                    ast={productDescription}
-                                    noOfLines={!isOpen ? 8 : undefined}
-                                />
-                                <Box>
-                                    <Button
-                                        onClick={onToggle}
-                                        colorScheme={
-                                            colorScheme === 'blackAlpha' ? 'gray' : colorScheme
-                                        }>
-                                        {isOpen ? f('readLess') : f('readMore')}
-                                    </Button>
-                                </Box>
-                            </Stack>
-                        )
-                    }}
+                    title={f('description')}
+                    image={product.inspiringPicture?.asset.url}
+                    component={
+                        <Stack spacing={5} textAlign="left" fontSize={{ base: 'xl', xl: '2xl' }}>
+                            {/* <Text as="p">{productDescription}</Text> */}
+                            <MarkdownRendered
+                                ast={productDescription}
+                                noOfLines={!isOpen ? 8 : undefined}
+                            />
+                            <Box>
+                                <Button
+                                    onClick={onToggle}
+                                    colorScheme={
+                                        colorScheme === 'blackAlpha' ? 'gray' : colorScheme
+                                    }>
+                                    {isOpen ? f('readLess') : f('readMore')}
+                                </Button>
+                            </Box>
+                        </Stack>
+                    }
                 />
                 <Section
                     isEven={false}
                     customImageSize={bigImageSize}
                     colorScheme={colorScheme}
-                    section={{
-                        title: productName,
-                        image: product.coverPicture.asset.url,
-                        component: (
-                            <Stack spacing={4} maxW="sm">
-                                <Rating rate={rate} count={reviewCount} target="#reviews" />
+                    title={productName}
+                    image={product.coverPicture.asset.url}
+                    component={
+                        <Stack spacing={4} maxW="sm">
+                            <Rating rate={rate} count={reviewCount} target="#reviews" />
 
-                                <Text fontSize="4xl" lineHeight="1em" fontWeight="bold">
-                                    {formatNumber(firstPrice.amount, {
-                                        style: 'currency',
-                                        currency: firstPrice.currency
-                                    })}{' '}
-                                    <Text as="span" fontSize="md">
-                                        {f(firstPrice.measurementUnit)}
-                                    </Text>
+                            <Text fontSize="4xl" lineHeight="1em" fontWeight="bold">
+                                {formatNumber(firstPrice.amount, {
+                                    style: 'currency',
+                                    currency: firstPrice.currency
+                                })}{' '}
+                                <Text as="span" fontSize="md">
+                                    {f(firstPrice.measurementUnit)}
                                 </Text>
+                            </Text>
 
-                                <AddToCart slug={product.slug} name={productName} quantity={1} />
-                            </Stack>
-                        )
-                    }}></Section>
+                            <AddToCart slug={product.slug} name={productName} quantity={1} />
+                        </Stack>
+                    }></Section>
                 {/* <Banner pattern="iLikeFood" height="md" bgColor="pink.300">
                     <Stack maxW="lg" fontSize="sm" fontWeight="bold" p={3} spacing={4}>
                         <Heading>{f('fondOfName', { name: category.name })}</Heading>
@@ -261,23 +253,18 @@ const ProductPage: NextPage<ProductPageProps> = ({ product, description, localiz
                     id="reviews"
                     colorScheme={colorScheme}
                     useSecondaryColor
-                    section={{
-                        title: f('reviews'),
-                        component: <Reviews reviews={product.reviews} />
-                    }}
+                    title={f('reviews')}
+                    component={<Reviews reviews={product.reviews} />}
                 />
 
                 <Section
                     colorScheme="white"
                     isEven={true}
-                    section={{
-                        title: f('fondOfName', { name: categoryName }),
-                        url: `/shop/category/${category.slug}`,
-                        buttonLabel: f('goToPageName', { name: categoryName }),
-                        description:
-                            'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Earum minimaquaerat fugit ullam illo ipsa perspiciatis sit voluptatem!',
-                        image: category.picture.url
-                    }}
+                    title={f('fondOfName', { name: categoryName })}
+                    url={`/shop/category/${category.slug}`}
+                    buttonLabel={f('goToPageName', { name: categoryName })}
+                    description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Earum minimaquaerat fugit ullam illo ipsa perspiciatis sit voluptatem!"
+                    image={category.picture.url}
                     imageTransform={{ sm: 'translate(-25px, -25px) ' }}
                     pattern="iLikeFood"
                 />

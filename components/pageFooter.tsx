@@ -15,16 +15,14 @@ const Footer = () => {
         <>
             <Section
                 colorScheme="gray"
-                section={{
-                    title: f('bottomOfPage'),
-                    // description: copyrightMention,
-                    component: (
-                        <Stack>
-                            {!isHome && <BackToHome />}
-                            <Text>{copyrightMention}</Text>
-                        </Stack>
-                    )
-                }}
+                title={f('bottomOfPage')}
+                // description: copyrightMention,
+                component={
+                    <Stack>
+                        {!isHome && <BackToHome />}
+                        <Text>{copyrightMention}</Text>
+                    </Stack>
+                }
             />
         </>
     );

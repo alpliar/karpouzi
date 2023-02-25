@@ -18,20 +18,14 @@ import Banner from '../banner';
 import { Image } from '../image';
 import Link from '../link';
 
-type Props = {
-    section: SectionProps;
-    pattern?: Pattern;
+export interface SectionProps {
     bgColor?: string;
-    colorScheme?: ThemingProps['colorScheme'];
     isEven?: boolean;
     imageTransform?: TransformProps['transform'];
     customImageSize?: ImageProps['sizes'];
     customGap?: FlexProps['gap'];
     id?: string;
     useSecondaryColor?: boolean;
-};
-
-export interface SectionProps {
     title: string;
     description?: string;
     url?: string;
@@ -41,17 +35,23 @@ export interface SectionProps {
     pattern?: Pattern;
     component?: React.ReactNode;
 }
-const Section: React.FC<Props> = ({
+
+const Section: React.FC<SectionProps> = ({
     id = undefined,
     pattern = undefined,
     bgColor = 'green',
     colorScheme = 'green',
-    section,
     isEven = false,
     imageTransform = undefined,
     customImageSize = undefined,
     customGap = undefined,
-    useSecondaryColor = false
+    useSecondaryColor = false,
+    title,
+    description = undefined,
+    url = undefined,
+    image = undefined,
+    buttonLabel = 'undefined',
+    component = undefined
 }) => {
     const { colorMode } = useColorMode();
     const defaultImageSize = useBreakpointValue({ base: '32', md: '2xs', xl: 'xs' });
@@ -109,7 +109,7 @@ const Section: React.FC<Props> = ({
                         lineHeight={{
                             md: 'shorter'
                         }}>
-                        {section.title}
+                        {title}
                     </Heading>
                     <Text
                         paddingLeft={{ xl: 5 }}
@@ -118,15 +118,15 @@ const Section: React.FC<Props> = ({
                         fontSize={{
                             md: 'lg'
                         }}>
-                        {section.description}
+                        {description}
                     </Text>
 
-                    {section.component && (
+                    {component && (
                         <Box paddingLeft={{ xl: 5 }} {...textColor}>
-                            {section.component}
+                            {component}
                         </Box>
                     )}
-                    {section.url && (
+                    {url && (
                         <Box paddingLeft={{ xl: 5 }}>
                             <Link
                                 fontFamily="heading"
@@ -135,18 +135,18 @@ const Section: React.FC<Props> = ({
                                     sm: 'auto'
                                 }}
                                 // size="lg"
-                                href={section.url}
+                                href={url}
                                 asButton
                                 buttonProps={{
                                     colorScheme: buttonColorScheme
                                 }}>
-                                {section.buttonLabel}
+                                {buttonLabel}
                             </Link>
                         </Box>
                     )}
                 </Box>
 
-                {section.image && (
+                {image && (
                     <Banner
                         rounded="xl"
                         pattern={pattern}
@@ -164,8 +164,8 @@ const Section: React.FC<Props> = ({
                                     sizes={imageSize}
                                     quality={75}
                                     priority
-                                    src={section.image}
-                                    alt={section.title}
+                                    src={image}
+                                    alt={title}
                                     w={imageSize}
                                     h={imageSize}
                                 />
