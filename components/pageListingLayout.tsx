@@ -105,22 +105,22 @@ const PageListingLayout: React.FC<PropsWithChildren<IPageLayoutProps>> = ({
                     bgColor={`${colorScheme}.50`}
                     p={fullWidth ? 0 : containerPadding}
                     maxW={fullWidth ? 'full' : APP_MAX_WIDTH}>
-                    <Box maxW={APP_MAX_WIDTH} margin="auto">
-                        <Section
-                            title={title}
-                            colorScheme={colorScheme}
-                            useSecondaryColor
-                            headingTag="h1"
-                            headingFontSize={{ base: '3xl', sm: '5xl' }}
-                            aboveTitleSlot={
-                                // <Box padding={containerPadding} paddingBottom="inherit !important">
-                                <Breadcrumb entries={breadcrumbs} />
-                                // </Box>
-                            }
-                            component={titleSlot}
-                            paddingY={{ base: 2, sm: 4 }}
-                        />
-                        {/* <Box padding={containerPadding} paddingBottom="inherit !important">
+                    {/* <Box maxW={APP_MAX_WIDTH} margin="auto"> */}
+                    <Section
+                        title={title}
+                        colorScheme={colorScheme}
+                        useSecondaryColor
+                        headingTag="h1"
+                        headingFontSize={{ base: '3xl', sm: '5xl' }}
+                        aboveTitleSlot={
+                            // <Box padding={containerPadding} paddingBottom="inherit !important">
+                            <Breadcrumb entries={breadcrumbs} />
+                            // </Box>
+                        }
+                        component={titleSlot}
+                        paddingY={{ base: 2, sm: 4 }}
+                    />
+                    {/* <Box padding={containerPadding} paddingBottom="inherit !important">
                             <Breadcrumb entries={breadcrumbs} />
                         </Box>
                         <Wrap
@@ -135,7 +135,7 @@ const PageListingLayout: React.FC<PropsWithChildren<IPageLayoutProps>> = ({
 
                             {titleSlot && titleSlot}
                         </Wrap> */}
-                    </Box>
+                    {/* </Box> */}
                     {children}
                 </Container>
             </Box>
