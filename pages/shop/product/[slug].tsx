@@ -136,6 +136,7 @@ const ProductPage: NextPage<ProductPageProps> = ({ product, description, localiz
 
     return (
         <PageListingLayout
+            colorScheme={colorScheme}
             fullWidth
             title={productName}
             breadcrumbs={[

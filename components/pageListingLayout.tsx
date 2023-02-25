@@ -1,10 +1,17 @@
-import { Box, Container, Flex, Heading, Stack, Wrap } from '@chakra-ui/react';
-import { chakra, ColorMode, useColorMode, useColorModeValue } from '@chakra-ui/system';
+import { Box, Container, Flex, Stack } from '@chakra-ui/react';
+import {
+    chakra,
+    ColorMode,
+    ThemingProps,
+    useColorMode,
+    useColorModeValue
+} from '@chakra-ui/system';
 import Head from 'next/head';
 import { PropsWithChildren } from 'react';
 import { APP_MAX_WIDTH } from '../constants/ui/main.layout';
 import Breadcrumb, { IBreadcrumbItemProps } from './breadcrumb';
 import { headerBgColor } from './Header';
+import Section from './layout/Section';
 import PageLayout, { siteTitle } from './pageLayout';
 import ScrollProgressBar from './ScrollProgressBar';
 
@@ -15,6 +22,7 @@ interface IPageLayoutProps {
     titleSlot?: React.ReactNode;
     introSlot?: React.ReactNode;
     bannerSlot?: React.ReactNode;
+    colorScheme?: ThemingProps['colorScheme'];
 }
 
 const PageListingLayout: React.FC<PropsWithChildren<IPageLayoutProps>> = ({
@@ -24,7 +32,8 @@ const PageListingLayout: React.FC<PropsWithChildren<IPageLayoutProps>> = ({
     fullWidth,
     titleSlot = null,
     introSlot = null,
-    bannerSlot = null
+    bannerSlot = null,
+    colorScheme = 'white'
 }) => {
     const { colorMode } = useColorMode();
 
@@ -91,11 +100,27 @@ const PageListingLayout: React.FC<PropsWithChildren<IPageLayoutProps>> = ({
                     <ScrollProgressBar />
                 </Box>
                 <Box>{bannerSlot && bannerSlot}</Box>
+
                 <Container
+                    bgColor={`${colorScheme}.50`}
                     p={fullWidth ? 0 : containerPadding}
                     maxW={fullWidth ? 'full' : APP_MAX_WIDTH}>
                     <Box maxW={APP_MAX_WIDTH} margin="auto">
-                        <Box padding={containerPadding} paddingBottom="inherit !important">
+                        <Section
+                            title={title}
+                            colorScheme={colorScheme}
+                            useSecondaryColor
+                            headingTag="h1"
+                            headingFontSize={{ base: '3xl', sm: '5xl' }}
+                            aboveTitleSlot={
+                                // <Box padding={containerPadding} paddingBottom="inherit !important">
+                                <Breadcrumb entries={breadcrumbs} />
+                                // </Box>
+                            }
+                            component={titleSlot}
+                            paddingY={{ base: 2, sm: 4 }}
+                        />
+                        {/* <Box padding={containerPadding} paddingBottom="inherit !important">
                             <Breadcrumb entries={breadcrumbs} />
                         </Box>
                         <Wrap
@@ -109,7 +134,7 @@ const PageListingLayout: React.FC<PropsWithChildren<IPageLayoutProps>> = ({
                             </Heading>
 
                             {titleSlot && titleSlot}
-                        </Wrap>
+                        </Wrap> */}
                     </Box>
                     {children}
                 </Container>

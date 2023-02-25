@@ -1,9 +1,11 @@
 import {
     Box,
+    BoxProps,
     Center,
     Flex,
     FlexProps,
     Heading,
+    HeadingProps,
     ImageProps,
     Text,
     ThemingProps,
@@ -34,6 +36,10 @@ export interface SectionProps {
     colorScheme?: ThemingProps['colorScheme'];
     pattern?: Pattern;
     component?: React.ReactNode;
+    headingTag?: HeadingProps['as'];
+    headingFontSize?: HeadingProps['fontSize'];
+    aboveTitleSlot?: React.ReactNode;
+    paddingY?: BoxProps['padding'];
 }
 
 const Section: React.FC<SectionProps> = ({
@@ -51,7 +57,14 @@ const Section: React.FC<SectionProps> = ({
     url = undefined,
     image = undefined,
     buttonLabel = 'undefined',
-    component = undefined
+    component = undefined,
+    headingTag = 'h2',
+    headingFontSize = {
+        base: '2xl',
+        md: '4xl'
+    },
+    aboveTitleSlot = undefined,
+    paddingY = { base: 4, sm: 8, md: 16, xl: 24 }
 }) => {
     const { colorMode } = useColorMode();
     const defaultImageSize = useBreakpointValue({ base: '32', md: '2xs', xl: 'xs' });
@@ -80,7 +93,7 @@ const Section: React.FC<SectionProps> = ({
         <Box
             id={id}
             bgColor={sectionBgColor}
-            paddingY={{ base: 4, sm: 8, md: 16, xl: 24 }}
+            paddingY={paddingY}
             // paddingBottom={{ base: 4 }}
         >
             <Flex
@@ -92,18 +105,18 @@ const Section: React.FC<SectionProps> = ({
                 alignItems="center"
                 gap={gap}>
                 <Box
+                    w="full"
                     flexGrow={1}
                     order={{
                         base: 'initial',
                         sm: isEven ? 'initial' : 2
                     }}>
+                    {aboveTitleSlot && aboveTitleSlot}
+
                     <Heading
-                        as="h2"
-                        mb={4}
-                        fontSize={{
-                            base: '2xl',
-                            md: '4xl'
-                        }}
+                        as={headingTag}
+                        mb={description || component || url ? 4 : 0}
+                        fontSize={headingFontSize}
                         letterSpacing="tight"
                         {...textColor}
                         lineHeight={{
@@ -111,15 +124,18 @@ const Section: React.FC<SectionProps> = ({
                         }}>
                         {title}
                     </Heading>
-                    <Text
-                        paddingLeft={{ xl: 5 }}
-                        mb={5}
-                        {...textColor}
-                        fontSize={{
-                            md: 'lg'
-                        }}>
-                        {description}
-                    </Text>
+
+                    {description && (
+                        <Text
+                            paddingLeft={{ xl: 5 }}
+                            mb={5}
+                            {...textColor}
+                            fontSize={{
+                                md: 'lg'
+                            }}>
+                            {description}
+                        </Text>
+                    )}
 
                     {component && (
                         <Box paddingLeft={{ xl: 5 }} {...textColor}>
