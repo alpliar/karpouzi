@@ -76,7 +76,8 @@ export default function ShopPage({ categories }: ShopPageProps) {
                 columns={{ base: 1, sm: 2, md: 3, xl: 4 }}
                 spacing={4}
                 mx="auto"
-                maxWidth={APP_MAX_WIDTH}>
+                maxWidth={APP_MAX_WIDTH}
+                paddingY={{ base: 2, sm: 4 }}>
                 {categories &&
                     categories.map((category) => {
                         return <CategoryCard key={category.id} category={category} />;
