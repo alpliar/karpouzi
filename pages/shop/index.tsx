@@ -8,6 +8,7 @@ import PageListingLayout from '../../components/pageListingLayout';
 import ShopStat from '../../components/shopStat';
 import { API_BASE_URL } from '../../constants/api';
 import { ONE_HOUR } from '../../constants/time.constants';
+import { APP_MAX_WIDTH } from '../../constants/ui/main.layout';
 import { ShopCategoryWithProductsAndAsset } from '../../graphql/models/shop/category.model';
 import errorHandler from '../../utils/errorsHandler';
 import { CategoriesResponse } from '../api/shop/categories';
@@ -43,6 +44,7 @@ export default function ShopPage({ categories }: ShopPageProps) {
 
     return (
         <PageListingLayout
+            fullWidth
             title={f('title')}
             breadcrumbs={[
                 {
@@ -70,7 +72,11 @@ export default function ShopPage({ categories }: ShopPageProps) {
                     {intl.formatMessage({ id: 'shopDescription' })}
                 </BlockQuote>
             }>
-            <SimpleGrid columns={{ base: 1, sm: 2, md: 3, xl: 4 }} spacing={4}>
+            <SimpleGrid
+                columns={{ base: 1, sm: 2, md: 3, xl: 4 }}
+                spacing={4}
+                mx="auto"
+                maxWidth={APP_MAX_WIDTH}>
                 {categories &&
                     categories.map((category) => {
                         return <CategoryCard key={category.id} category={category} />;

@@ -1,10 +1,8 @@
 import { ButtonProps } from '@chakra-ui/button';
 import { ColorMode, useColorMode } from '@chakra-ui/color-mode';
 import { useDisclosure } from '@chakra-ui/hooks';
-import { Box, Flex, Stack, Text, Wrap } from '@chakra-ui/layout';
-import { EffectProps } from '@chakra-ui/system';
-import PropTypes from 'prop-types';
-import { PropsWithChildren } from 'react';
+import { Box, Flex, Stack, Wrap } from '@chakra-ui/layout';
+import { EffectProps, ThemingProps } from '@chakra-ui/system';
 import { useIntl } from 'react-intl';
 import NavDrawer from '../components/navDrawer';
 import NavThemeToggle from '../components/navThemeToggle';
@@ -19,25 +17,35 @@ import NavBurgerMenu from './navBurgerMenu';
 import NavDrawerBody from './navDrawerBody';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-interface IProps {}
+// interface MenuItemsProps {
+//     children: React.ReactNode
+// }
 
-const MenuItems: React.FC<PropsWithChildren<IProps>> = ({ children }) => (
-    <Text mt={{ base: 0, md: 0 }} mr={6} display={{ base: 'inline', sm: 'inline' }}>
-        {children}
-    </Text>
-);
+// const MenuItems: React.FC<MenuItemsProps> = ({ children }) => (
+//     <Text mt={{ base: 0, md: 0 }} mr={6} display={{ base: 'inline', sm: 'inline' }}>
+//         {children}
+//     </Text>
+// );
 
-export const headerBgGradient = (colorMode: ColorMode) => {
+export const headerBgGradient = (
+    colorMode: ColorMode,
+    colorScheme: ThemingProps['colorScheme'] = 'green'
+) => {
     return colorMode === 'light'
-        ? 'linear(to-b, green.300, green.400)'
-        : 'linear(to-b, green.700, green.800)';
+        ? `linear(to-t, ${colorScheme}.300, ${colorScheme}.400)`
+        : `linear(to-b, ${colorScheme}.700, ${colorScheme}.800)`;
 };
 
-export const headerBgColor = (colorMode: ColorMode) => {
-    return colorMode === 'light' ? 'green.400' : 'green.700';
+export const headerBgColor = (
+    colorMode: ColorMode,
+    colorScheme: ThemingProps['colorScheme'] = 'green'
+) => {
+    return colorMode === 'light' ? `${colorScheme}.400` : `${colorScheme}.700`;
 };
-
-const Header = ({}) => {
+interface HeaderProps {
+    colorScheme: ThemingProps['colorScheme'];
+}
+const Header: React.FC<HeaderProps> = ({ colorScheme = 'green' }) => {
     const { colorMode } = useColorMode();
     const { isOpen, onClose, onToggle } = useDisclosure();
     const { formatMessage } = useIntl();
@@ -64,7 +72,7 @@ const Header = ({}) => {
                 boxShadow={boxShadow}
                 as="nav"
                 data-e2e="mainNavigation"
-                bgColor={headerBgColor(colorMode)}>
+                bgColor={headerBgColor(colorMode, colorScheme)}>
                 <Wrap
                     align={{ base: 'auto', md: 'center' }}
                     justify="flex-end"
@@ -135,11 +143,3 @@ const Header = ({}) => {
 };
 
 export default Header;
-
-MenuItems.propTypes = {
-    children: PropTypes.node
-};
-
-Header.propTypes = {
-    siteTitle: PropTypes.string
-};

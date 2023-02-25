@@ -11,6 +11,7 @@ import ProductCard from '../../../components/productCard';
 import ShopStat from '../../../components/shopStat';
 import { API_BASE_URL } from '../../../constants/api';
 import { ONE_HOUR } from '../../../constants/time.constants';
+import { APP_MAX_WIDTH } from '../../../constants/ui/main.layout';
 import {
     ParsedCategoryLocalizations,
     ShopCategoryWithProductsAndAsset
@@ -104,6 +105,7 @@ const CategoryPage: NextPage<CategoryPageProps> = ({ category, localizations, _d
 
     return (
         <PageListingLayout
+            fullWidth
             title={categoryName}
             breadcrumbs={[
                 {
@@ -126,7 +128,11 @@ const CategoryPage: NextPage<CategoryPageProps> = ({ category, localizations, _d
             introSlot={<BlockQuote noOfLines={3}>{categoryDescription.toString()}</BlockQuote>}
             titleSlot={<ShopStat label={f('products')} number={category.products.length ?? 0} />}>
             {!!category.products.length ? (
-                <SimpleGrid columns={{ base: 1, sm: 2, md: 3, xl: 4 }} spacing={4}>
+                <SimpleGrid
+                    columns={{ base: 1, sm: 2, md: 3, xl: 4 }}
+                    spacing={4}
+                    mx="auto"
+                    maxWidth={APP_MAX_WIDTH}>
                     {category.products.map((product) => {
                         return <ProductCard key={product.id} product={product} />;
                     })}

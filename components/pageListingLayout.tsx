@@ -1,16 +1,10 @@
 import { Box, Container, Flex, Stack } from '@chakra-ui/react';
-import {
-    chakra,
-    ColorMode,
-    ThemingProps,
-    useColorMode,
-    useColorModeValue
-} from '@chakra-ui/system';
+import { chakra, ThemingProps, useColorMode, useColorModeValue } from '@chakra-ui/system';
 import Head from 'next/head';
 import { PropsWithChildren } from 'react';
 import { APP_MAX_WIDTH } from '../constants/ui/main.layout';
 import Breadcrumb, { IBreadcrumbItemProps } from './breadcrumb';
-import { headerBgColor } from './Header';
+import { headerBgGradient } from './Header';
 import Section from './layout/Section';
 import PageLayout, { siteTitle } from './pageLayout';
 import ScrollProgressBar from './ScrollProgressBar';
@@ -33,41 +27,36 @@ const PageListingLayout: React.FC<PropsWithChildren<IPageLayoutProps>> = ({
     titleSlot = null,
     introSlot = null,
     bannerSlot = null,
-    colorScheme = 'white'
+    colorScheme = undefined
 }) => {
     const { colorMode } = useColorMode();
-
-    const headerBgGradient = (colorMode: ColorMode) => {
-        const gradientStart = headerBgColor(colorMode);
-        return colorMode === 'light'
-            ? `linear(to-b, ${gradientStart}, green.400)`
-            : `linear(to-b, ${gradientStart}, green.900)`;
-    };
 
     const bgPatternFillColor = useColorModeValue('white', 'gray.800');
     const bgPattern = `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h20v20H0V0zm10 17a7 7 0 1 0 0-14 7 7 0 0 0 0 14zm20 0a7 7 0 1 0 0-14 7 7 0 0 0 0 14zM10 37a7 7 0 1 0 0-14 7 7 0 0 0 0 14zm10-17h20v20H20V20zm10 17a7 7 0 1 0 0-14 7 7 0 0 0 0 14z' fill='${bgPatternFillColor}' fill-opacity='0.4' fill-rule='evenodd'/%3E%3C/svg%3E")`;
     const containerPadding = { base: 2, sm: 4 };
 
     return (
-        <PageLayout>
+        <PageLayout colorScheme={colorScheme}>
             <Head>
                 <title>{`${title} | ${siteTitle}`}</title>
             </Head>
 
             {/* LISTING'S HEADER */}
-            <Box position="relative" bgGradient={headerBgGradient(colorMode)}>
-                <Container paddingX={{ base: 2, sm: 4 }} paddingY={3} maxW={APP_MAX_WIDTH}>
-                    <Stack spacing={2}>
-                        {introSlot && (
-                            <Flex
-                                // pt={6}
-                                justifyContent={{ base: 'center', md: 'flex-end' }}
-                                zIndex="1">
-                                {introSlot}
-                            </Flex>
-                        )}
-                    </Stack>
-                </Container>
+            <Box position="relative" bgGradient={headerBgGradient(colorMode, colorScheme)}>
+                {introSlot && (
+                    <Container paddingX={{ base: 2, sm: 4 }} paddingY={3} maxW={APP_MAX_WIDTH}>
+                        <Stack spacing={2}>
+                            {introSlot && (
+                                <Flex
+                                    // pt={6}
+                                    justifyContent={{ base: 'center', md: 'flex-end' }}
+                                    zIndex="1">
+                                    {introSlot}
+                                </Flex>
+                            )}
+                        </Stack>
+                    </Container>
+                )}
 
                 <Box
                     _before={{

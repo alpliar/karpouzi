@@ -1,17 +1,19 @@
-import { Container } from '@chakra-ui/layout';
 import { useColorModeValue } from '@chakra-ui/color-mode';
+import { Container } from '@chakra-ui/layout';
+import { ThemingProps } from '@chakra-ui/system';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import { PropsWithChildren } from 'react';
 import Header from './Header';
 import Footer from './pageFooter';
 
 export const siteTitle = `Karpouzi`;
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-interface IPageLayoutProps {}
+interface PageLayoutProps {
+    children: React.ReactNode;
+    colorScheme?: ThemingProps['colorScheme'];
+}
 
-const PageLayout: React.FC<PropsWithChildren<IPageLayoutProps>> = ({ children }) => {
+const PageLayout: React.FC<PageLayoutProps> = ({ children, colorScheme }) => {
     const themeColor: string = useColorModeValue('#48BB78', '#2A4F3A');
     const router = useRouter();
     const canonicalUrl = router.asPath;
@@ -46,7 +48,7 @@ const PageLayout: React.FC<PropsWithChildren<IPageLayoutProps>> = ({ children })
                 <meta name="theme-color" content={themeColor} />
             </Head>
 
-            <Header siteTitle={siteTitle} />
+            <Header colorScheme={colorScheme} />
 
             <Container p={0} as="main" maxW="100%">
                 {children}
