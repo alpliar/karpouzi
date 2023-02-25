@@ -127,7 +127,6 @@ const Section: React.FC<SectionProps> = ({
 
                     {description && (
                         <Text
-                            paddingLeft={{ xl: 5 }}
                             mb={5}
                             {...textColor}
                             fontSize={{
