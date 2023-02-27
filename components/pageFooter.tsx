@@ -14,6 +14,7 @@ const Footer = () => {
     return (
         <>
             <Section
+                sectionPattern="rain"
                 colorScheme="gray"
                 title={f('bottomOfPage')}
                 // description: copyrightMention,
