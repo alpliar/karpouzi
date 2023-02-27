@@ -49,6 +49,7 @@ export interface SectionProps {
     isFirst?: boolean;
     customDirection?: FlexProps['direction'];
     customImageRatio?: AspectRatioProps['ratio'];
+    priorityImage?: boolean;
 }
 
 const Section: React.FC<SectionProps> = ({
@@ -81,7 +82,8 @@ const Section: React.FC<SectionProps> = ({
     centerItems = true,
     isFirst = false,
     customDirection,
-    customImageRatio
+    customImageRatio,
+    priorityImage
 }) => {
     const { colorMode } = useColorMode();
     // const defaultImageSize = useBreakpointValue({ base: '32', md: '2xs', xl: 'xs' });
@@ -219,6 +221,7 @@ const Section: React.FC<SectionProps> = ({
                                     src={image}
                                     alt={title}
                                     quality={75}
+                                    priority={priorityImage}
                                     blurDataURL={imageThumbnail}
                                 />
                             </AspectRatio>

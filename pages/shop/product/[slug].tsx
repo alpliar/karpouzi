@@ -196,6 +196,7 @@ const ProductPage: NextPage<ProductPageProps> = ({ product, description, localiz
                 <Section
                     id="description"
                     isFirst
+                    priorityImage
                     centerItems={false}
                     colorScheme={colorScheme}
                     useSecondaryColor
