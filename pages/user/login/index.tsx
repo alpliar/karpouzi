@@ -10,6 +10,7 @@ const LoginPage: NextPage = () => {
 
     return (
         <PageListingLayout
+            fullWidth
             title={f('signInLong')}
             breadcrumbs={[]}
             // introSlot={

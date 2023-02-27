@@ -4,11 +4,9 @@ import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import { useRouter } from 'next/router';
 import { useIntl } from 'react-intl';
 import { Root } from 'remark-html';
-import BlockQuote from '../../../components/blockQuote';
 import NoContentBanner from '../../../components/NoContentBanner';
 import PageListingLayout from '../../../components/pageListingLayout';
 import ProductCard from '../../../components/productCard';
-import ShopStat from '../../../components/shopStat';
 import { API_BASE_URL } from '../../../constants/api';
 import { ONE_HOUR } from '../../../constants/time.constants';
 import { APP_MAX_WIDTH } from '../../../constants/ui/main.layout';
@@ -107,6 +105,8 @@ const CategoryPage: NextPage<CategoryPageProps> = ({ category, localizations, _d
         <PageListingLayout
             fullWidth
             title={categoryName}
+            titleComplement={`(${category.products.length})`}
+            introSlot={categoryDescription.toString()}
             breadcrumbs={[
                 {
                     text: f('home'),
@@ -125,14 +125,15 @@ const CategoryPage: NextPage<CategoryPageProps> = ({ category, localizations, _d
                     isCurrentPage: true
                 }
             ]}
-            introSlot={<BlockQuote noOfLines={3}>{categoryDescription.toString()}</BlockQuote>}
-            titleSlot={<ShopStat label={f('products')} number={category.products.length ?? 0} />}>
+            // titleSlot={<ShopStat label={f('products')} number={category.products.length ?? 0} />}
+        >
             {!!category.products.length ? (
                 <SimpleGrid
                     columns={{ base: 1, sm: 2, md: 3, xl: 4 }}
                     spacing={4}
                     mx="auto"
-                    maxWidth={APP_MAX_WIDTH}>
+                    maxWidth={APP_MAX_WIDTH}
+                    py={{ base: 2, sm: 4 }}>
                     {category.products.map((product) => {
                         return <ProductCard key={product.id} product={product} />;
                     })}

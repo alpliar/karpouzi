@@ -29,6 +29,8 @@ export interface SectionProps {
     id?: string;
     useSecondaryColor?: boolean;
     title: string;
+    titleComplement?: string;
+    subtitle?: string | React.ReactNode;
     description?: string;
     url?: string;
     image?: string;
@@ -53,6 +55,8 @@ const Section: React.FC<SectionProps> = ({
     customGap = undefined,
     useSecondaryColor = false,
     title,
+    titleComplement,
+    subtitle,
     description = undefined,
     url = undefined,
     image = undefined,
@@ -114,6 +118,9 @@ const Section: React.FC<SectionProps> = ({
                     {aboveTitleSlot && aboveTitleSlot}
 
                     <Heading
+                        display="flex"
+                        alignItems="center"
+                        gap={2}
                         as={headingTag}
                         mb={description || component || url ? 4 : 0}
                         fontSize={headingFontSize}
@@ -123,7 +130,18 @@ const Section: React.FC<SectionProps> = ({
                             md: 'shorter'
                         }}>
                         {title}
+                        {titleComplement && (
+                            <Text as="span" fontWeight="light" fontSize=".6em">
+                                {titleComplement}
+                            </Text>
+                        )}
                     </Heading>
+
+                    {subtitle && (
+                        <Heading as="p" fontSize="md" fontWeight="normal" maxW="80ch">
+                            {subtitle}
+                        </Heading>
+                    )}
 
                     {description && (
                         <Text
@@ -136,13 +154,9 @@ const Section: React.FC<SectionProps> = ({
                         </Text>
                     )}
 
-                    {component && (
-                        <Box paddingLeft={{ xl: 5 }} {...textColor}>
-                            {component}
-                        </Box>
-                    )}
+                    {component && <Box {...textColor}>{component}</Box>}
                     {url && (
-                        <Box paddingLeft={{ xl: 5 }}>
+                        <Box>
                             <Link
                                 fontFamily="heading"
                                 w={{

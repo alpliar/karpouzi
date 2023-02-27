@@ -2,10 +2,8 @@ import { SimpleGrid } from '@chakra-ui/layout';
 import axios from 'axios';
 import { GetStaticProps } from 'next';
 import { useIntl } from 'react-intl';
-import BlockQuote from '../../components/blockQuote';
 import CategoryCard from '../../components/categoryCard';
 import PageListingLayout from '../../components/pageListingLayout';
-import ShopStat from '../../components/shopStat';
 import { API_BASE_URL } from '../../constants/api';
 import { ONE_HOUR } from '../../constants/time.constants';
 import { APP_MAX_WIDTH } from '../../constants/ui/main.layout';
@@ -60,18 +58,8 @@ export default function ShopPage({ categories }: ShopPageProps) {
                     isCurrentPage: true
                 }
             ]}
-            titleSlot={
-                <ShopStat
-                    label={intl.formatMessage({ id: 'categories' })}
-                    number={categories?.length ?? 0}
-                    textAlign="right"
-                />
-            }
-            introSlot={
-                <BlockQuote noOfLines={3}>
-                    {intl.formatMessage({ id: 'shopDescription' })}
-                </BlockQuote>
-            }>
+            titleComplement={` (${categories?.length || 0} ${f('categories').toLocaleLowerCase()})`}
+            introSlot={intl.formatMessage({ id: 'shopDescription' })}>
             <SimpleGrid
                 columns={{ base: 1, sm: 2, md: 3, xl: 4 }}
                 spacing={4}
