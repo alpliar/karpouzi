@@ -1,4 +1,4 @@
-import { chakra } from '@chakra-ui/react';
+import { chakra, ThemingProps } from '@chakra-ui/react';
 import { isValidMotionProp, motion, useScroll, useSpring } from 'framer-motion';
 import React from 'react';
 
@@ -6,7 +6,11 @@ const ChakraBox = chakra(motion.div, {
     shouldForwardProp: isValidMotionProp
 });
 
-const ScrollProgressBar: React.FC = ({}) => {
+interface ScrollProgressBarProps {
+    colorScheme?: ThemingProps['colorScheme'];
+}
+
+const ScrollProgressBar: React.FC<ScrollProgressBarProps> = ({ colorScheme }) => {
     const { scrollYProgress } = useScroll();
     const scaleX = useSpring(scrollYProgress, {
         stiffness: 100,
@@ -14,10 +18,17 @@ const ScrollProgressBar: React.FC = ({}) => {
         restDelta: 0.001
     });
 
+    const defaultColor = 'gold';
+    const lightModeColor = colorScheme && `${colorScheme}.400`;
+    const darkModeColor = `${colorScheme}.600`;
+
     return (
         <ChakraBox
             className="progress-bar"
-            bgColor="gold"
+            bgColor={lightModeColor || defaultColor}
+            _dark={{
+                bgColor: darkModeColor || defaultColor
+            }}
             height="full"
             width="full"
             style={{

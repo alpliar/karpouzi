@@ -46,8 +46,8 @@ const PageListingLayout: React.FC<PropsWithChildren<IPageLayoutProps>> = ({
                     right="0"
                     bottom="0px"
                     zIndex={2}
-                    height={1}>
-                    <ScrollProgressBar />
+                    height={2}>
+                    <ScrollProgressBar colorScheme={colorScheme} />
                 </Box>
                 {/* <Box>{bannerSlot && bannerSlot}</Box> */}
 
