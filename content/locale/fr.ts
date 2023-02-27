@@ -134,7 +134,9 @@ export const fr = {
     },
     '/shop/product/[slug]': {
         fondOfName: 'Amateur·ice de {name} ?',
-        description: 'Description'
+        description: 'Description',
+        readMore: 'Lire le reste',
+        readLess: 'Fini de lire ?'
     },
     '/shop/category/[slug]': {},
     '/blog/post/[slug]': {

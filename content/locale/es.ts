@@ -134,7 +134,9 @@ export const es = {
     },
     '/shop/product/[slug]': {
         fondOfName: 'Aficionado de {name} ?',
-        description: 'Descripción'
+        description: 'Descripción',
+        readMore: 'Leer más',
+        readLess: '¿Lectura terminada?'
     },
     '/shop/category/[slug]': {},
     '/blog/post/[slug]': {

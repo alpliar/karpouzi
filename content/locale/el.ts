@@ -135,7 +135,9 @@ export const el = {
     },
     '/shop/product/[slug]': {
         fondOfName: 'Ερασιτέχνης του {name};',
-        description: 'Περιγραφή'
+        description: 'Περιγραφή',
+        readMore: 'Διαβάστε τα υπόλοιπα',
+        readLess: 'Τελειώσατε το διάβασμα;'
     },
     '/shop/category/[slug]': {},
     '/blog/post/[slug]': {

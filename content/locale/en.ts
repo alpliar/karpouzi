@@ -133,7 +133,9 @@ export const en = {
     },
     '/shop/product/[slug]': {
         fondOfName: 'Fond of {name} ?',
-        description: 'Description'
+        description: 'Description',
+        readMore: 'Read more',
+        readLess: 'Done reading ?'
     },
     '/shop/category/[slug]': {},
     '/blog/post/[slug]': {
