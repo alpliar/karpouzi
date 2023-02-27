@@ -5,6 +5,7 @@ import { ComponentWithAs } from '@chakra-ui/system';
 import React, { MouseEventHandler } from 'react';
 import { IconType } from 'react-icons';
 import Link from './link';
+import { VisuallyHidden } from '@chakra-ui/react';
 
 interface IProps {
     icon?: IconType | ComponentWithAs<'svg', IconProps>;
@@ -44,7 +45,9 @@ const NavButton: React.FC<IProps> = ({
                         icon: <RenderedIcon />,
                         'aria-label': label,
                         variant
-                    }}></Link>
+                    }}>
+                    <VisuallyHidden>{label}</VisuallyHidden>
+                </Link>
             );
         }
         return (
@@ -72,6 +75,7 @@ const NavButton: React.FC<IProps> = ({
         }
         return (
             <Button
+                py={3}
                 aria-label={label}
                 leftIcon={<Icon boxSize={5} as={icon} />}
                 onClick={handleClick}
