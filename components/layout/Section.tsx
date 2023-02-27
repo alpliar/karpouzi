@@ -17,6 +17,7 @@ import {
 } from '@chakra-ui/react';
 import React from 'react';
 import { APP_MAX_WIDTH } from '../../constants/ui/main.layout';
+import { BASE_TRANSITION } from '../../constants/ui/transitions';
 import { getPattern, Pattern } from '../../utils/patterns';
 import { Image } from '../image';
 import Link from '../link';
@@ -50,11 +51,13 @@ export interface SectionProps {
     customDirection?: FlexProps['direction'];
     customImageRatio?: AspectRatioProps['ratio'];
     priorityImage?: boolean;
+    sectionPattern?: Pattern;
 }
 
 const Section: React.FC<SectionProps> = ({
     id = undefined,
     pattern = 'kiwi',
+    sectionPattern,
     bgColor = 'green',
     colorScheme = 'green',
     isEven = false,
@@ -100,21 +103,25 @@ const Section: React.FC<SectionProps> = ({
     // const specialColorSchemes = ['white', 'whiteAlpha'];
     // const isSpecialColorScheme = specialColorSchemes.includes(colorScheme);
 
-    const bgImage: BackgroundProps['backgroundImage'] = getPattern(
-        pattern,
-        useColorModeValue('white', 'black'),
-        0.3
-    );
+    const patternColor = useColorModeValue('white', 'black');
+    const sectionPatternColor = useColorModeValue('black', 'white');
+
+    const bgImage: BackgroundProps['backgroundImage'] = getPattern(pattern, patternColor, 0.3);
+
+    const bgSection: BackgroundProps['backgroundImage'] = sectionPattern
+        ? getPattern(sectionPattern, sectionPatternColor, 0.04)
+        : undefined;
     return (
         <Box
             id={id}
             bgColor={sectionBgColor}
+            bgImage={`url("${bgSection}")`}
             paddingBottom={paddingY}
             paddingTop={isFirst ? 0 : paddingY}
             // paddingBottom={{ base: 4 }}
         >
             <Flex
-                transition="all 1s"
+                transition={BASE_TRANSITION}
                 direction={customDirection || { base: 'column', sm: 'row' }}
                 w="full"
                 paddingX={{ base: 2, sm: 4 }}
@@ -198,7 +205,7 @@ const Section: React.FC<SectionProps> = ({
 
                 {image && (
                     <Flex
-                        transition="all 1s"
+                        transition={BASE_TRANSITION}
                         w={customImageSize || 'full'}
                         // alignSelf="stretch"
                         alignSelf={fillImage ? 'stretch' : 'start'}

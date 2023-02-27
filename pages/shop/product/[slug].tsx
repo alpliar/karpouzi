@@ -205,6 +205,7 @@ const ProductPage: NextPage<ProductPageProps> = ({ product, description, localiz
                     // customDirection={isOpen ? 'column' : undefined}
                     fillImage={fillInspiringPicture}
                     title={f('description')}
+                    sectionPattern="rain"
                     // image={isOpen ? undefined : product.inspiringPicture?.asset.url}
                     image={product.inspiringPicture?.asset.url}
                     customImageSize={isOpen ? { base: 'full', md: '3xs', xl: 'xl' } : undefined}
@@ -257,6 +258,7 @@ const ProductPage: NextPage<ProductPageProps> = ({ product, description, localiz
                     imageThumbnail={product.coverPicture.asset.thumbnail}
                     // imageTransform={{ sm: 'translate(5px, -5px)' }}
                     // imageTransform={{ sm: 'scale(96%) ' }}
+
                     component={
                         <Stack spacing={4} maxW="sm">
                             <Rating rate={rate} count={reviewCount} target="#reviews" />
