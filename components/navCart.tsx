@@ -31,7 +31,7 @@ const NavCart: React.FC<IProps> = ({ cartCount }) => {
                             bgColor="red.400"
                             borderRadius="full"
                             boxShadow="md"
-                            fontSize={{ base: '0.75rem' }}
+                            // fontSize={{ base: '0.75rem' }}
                             variant="solid"
                             zIndex={1}>
                             {cartCount}

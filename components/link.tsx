@@ -52,11 +52,11 @@ const Link: React.FC<PropsWithChildren<ILinkProps & ChakraProps>> = ({
             <ServerSideLink>
                 <Button
                     as={ChakraLink}
-                    {...buttonProps}
                     onClick={onClick}
-                    // padding={3}
+                    padding={3}
                     whiteSpace="pre-wrap"
                     height="100%"
+                    {...buttonProps}
                     {...rest}>
                     {children}
                 </Button>

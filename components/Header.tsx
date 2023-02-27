@@ -52,7 +52,12 @@ const Header: React.FC<HeaderProps> = ({ colorScheme = 'green' }) => {
     const f = (id: string, values: any = null) => formatMessage({ id }, values);
 
     const boxShadow: EffectProps['boxShadow'] = undefined;
-    const headerButtonStyle: ButtonProps = { size: 'xs', variant: 'ghost', color: 'currentColor' };
+    const headerButtonStyle: ButtonProps = {
+        size: 'xs',
+        variant: 'ghost',
+        color: 'currentColor',
+        padding: 2
+    };
 
     const headerLinks = [
         {

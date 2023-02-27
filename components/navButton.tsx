@@ -67,7 +67,8 @@ const NavButton: React.FC<IProps> = ({
                     asButton
                     buttonProps={{
                         leftIcon: <RenderedIcon />,
-                        variant
+                        variant,
+                        padding: 2.5
                     }}>
                     {label}
                 </Link>
@@ -75,9 +76,8 @@ const NavButton: React.FC<IProps> = ({
         }
         return (
             <Button
-                py={3}
                 aria-label={label}
-                leftIcon={<Icon boxSize={5} as={icon} />}
+                leftIcon={<RenderedIcon />}
                 onClick={handleClick}
                 variant={variant}
                 data-e2e={e2e}>

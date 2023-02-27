@@ -47,7 +47,7 @@ const NavLoginAuthenticated: React.FC = () => {
                     <NavButton
                         href="/user/account"
                         e2e="loggedInCTA"
-                        customIconElement={<Avatar size="xs" name={userName} src={userAvatar} />}
+                        customIconElement={<Avatar boxSize={5} name={userName} src={userAvatar} />}
                         label={userName}
                         compact={compact}
                         handleClick={() => {
