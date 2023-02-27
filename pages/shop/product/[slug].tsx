@@ -176,9 +176,7 @@ const ProductPage: NextPage<ProductPageProps> = ({ product, description, localiz
                         </Badge>
                     </Box>
                 )
-            }
-            // introSlot={<BlockQuote noOfLines={3}>Blah blah</BlockQuote>}
-        >
+            }>
             <Head>
                 <title>{`${productName} | ${f('menuEntryShop')} | ${f('commonSiteName')}`}</title>
                 <meta property="og:type" content="og:product" />

@@ -54,7 +54,7 @@ const BlogHome = ({ posts }: { posts: Array<BlogPost> }) => {
                     isCurrentPage: true
                 }
             ]}
-            introSlot={`She put his pistol down, picked up her fletcher, dialed the barrel over to
+            subtitle={`She put his pistol down, picked up her fletcher, dialed the barrel over to
                     single shot, and very carefully put a toxin dart through the center of a broken
                     mirror bent and elongated as they fell. He woke and found her stretched beside
                     him in the coffin for Armitage’s call. Light from a service hatch at the rear

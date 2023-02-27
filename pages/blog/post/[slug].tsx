@@ -171,7 +171,7 @@ const BlogPostPage = ({
                         </HStack>
                     </Stack>
                 }
-                introSlot={post.subtitle}
+                subtitle={post.subtitle}
                 bannerSlot={<></>}>
                 <Stack py={2} mx="auto" maxWidth={APP_MAX_WIDTH}>
                     <Box fontSize={{ md: 'xl' }}>

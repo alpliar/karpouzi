@@ -9,27 +9,11 @@ const LoginPage: NextPage = () => {
     const f = (id: string) => formatMessage({ id });
 
     return (
-        <PageListingLayout
-            fullWidth
-            title={f('signInLong')}
-            breadcrumbs={[]}
-            // introSlot={
-            //     <Alert status="info">
-            //         <AlertIcon />
-            //         <Text>
-            //             {f('or')}
-            //             {` `}
-            //             {f('startFreeTrial')}
-            //         </Text>
-            //     </Alert>
-            // }
-        >
+        <PageListingLayout fullWidth title={f('signInLong')} breadcrumbs={[]}>
             <Container maxW={{ base: 'sm', md: 'md', lg: 'lg' }}>
-                {/* <Card> */}
                 <SimpleGrid columns={{ base: 1 }} spacing={{ base: 4, lg: 8 }}>
                     <LoginForm />
                 </SimpleGrid>
-                {/* </Card> */}
             </Container>
         </PageListingLayout>
     );

@@ -59,7 +59,7 @@ export default function ShopPage({ categories }: ShopPageProps) {
                 }
             ]}
             titleComplement={` (${categories?.length || 0} ${f('categories').toLocaleLowerCase()})`}
-            introSlot={intl.formatMessage({ id: 'shopDescription' })}>
+            subtitle={intl.formatMessage({ id: 'shopDescription' })}>
             <SimpleGrid
                 columns={{ base: 1, sm: 2, md: 3, xl: 4 }}
                 spacing={4}

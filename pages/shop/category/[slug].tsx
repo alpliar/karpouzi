@@ -106,7 +106,7 @@ const CategoryPage: NextPage<CategoryPageProps> = ({ category, localizations, _d
             fullWidth
             title={categoryName}
             titleComplement={`(${category.products.length} ${f('products')})`.toLocaleLowerCase()}
-            introSlot={categoryDescription.toString()}
+            subtitle={categoryDescription.toString()}
             breadcrumbs={[
                 {
                     text: f('home'),

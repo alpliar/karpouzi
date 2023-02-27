@@ -1,4 +1,4 @@
-import { Box, Container } from '@chakra-ui/react';
+import { Box, Container, Stack } from '@chakra-ui/react';
 import { chakra, ThemingProps } from '@chakra-ui/system';
 import Head from 'next/head';
 import { PropsWithChildren } from 'react';
@@ -14,7 +14,7 @@ interface IPageLayoutProps {
     fullWidth?: boolean;
     titleSlot?: React.ReactNode;
     titleComplement?: string;
-    introSlot?: React.ReactNode;
+    subtitle?: React.ReactNode;
     bannerSlot?: React.ReactNode;
     colorScheme?: ThemingProps['colorScheme'];
 }
@@ -26,7 +26,7 @@ const PageListingLayout: React.FC<PropsWithChildren<IPageLayoutProps>> = ({
     fullWidth,
     titleSlot,
     titleComplement,
-    introSlot,
+    subtitle,
     bannerSlot,
     colorScheme
 }) => {
@@ -49,31 +49,24 @@ const PageListingLayout: React.FC<PropsWithChildren<IPageLayoutProps>> = ({
                     height={2}>
                     <ScrollProgressBar colorScheme={colorScheme} />
                 </Box>
-                {/* <Box>{bannerSlot && bannerSlot}</Box> */}
 
                 <Container
-                    // bgColor={`${colorScheme}.50`}
-                    // _dark={{
-                    //     bgColor: `${colorScheme}.800`
-                    // }}
                     p={fullWidth ? 0 : containerPadding}
                     maxW={fullWidth ? 'full' : APP_MAX_WIDTH}>
-                    {/* <Box maxW={APP_MAX_WIDTH} margin="auto"> */}
                     <Section
                         title={title}
                         titleComplement={titleComplement}
-                        subtitle={introSlot}
+                        subtitle={subtitle}
                         colorScheme={colorScheme}
                         headingFontSize={{ base: '3xl', xl: '4xl' }}
                         useSecondaryColor
                         headingTag="h1"
-                        // headingFontSize={{ base: '2xl', sm: '3xl' }}
                         aboveTitleSlot={<Breadcrumb entries={breadcrumbs} />}
                         component={
-                            <>
-                                {titleSlot}
-                                {bannerSlot}
-                            </>
+                            <Stack spacing={2}>
+                                <Box>{titleSlot}</Box>
+                                <Box>{bannerSlot}</Box>
+                            </Stack>
                         }
                         paddingY={{ base: 2, sm: 4 }}
                     />
