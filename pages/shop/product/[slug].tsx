@@ -195,9 +195,10 @@ const ProductPage: NextPage<ProductPageProps> = ({ product, description, localiz
                     colorScheme={colorScheme}
                     useSecondaryColor
                     customImageSize={imageSize}
-                    isEven={true}
+                    isEven
                     title={f('description')}
                     image={product.inspiringPicture?.asset.url}
+                    imageThumbnail={product.inspiringPicture?.asset.thumbnail}
                     component={
                         <Stack spacing={5} textAlign="left" fontSize={{ base: 'xl', xl: '2xl' }}>
                             {/* <Text as="p">{productDescription}</Text> */}
@@ -223,6 +224,7 @@ const ProductPage: NextPage<ProductPageProps> = ({ product, description, localiz
                     colorScheme={colorScheme}
                     title={productName}
                     image={product.coverPicture.asset.url}
+                    imageThumbnail={product.coverPicture.asset.thumbnail}
                     component={
                         <Stack spacing={4} maxW="sm">
                             <Rating rate={rate} count={reviewCount} target="#reviews" />

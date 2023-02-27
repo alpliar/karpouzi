@@ -34,6 +34,7 @@ export interface SectionProps {
     description?: string;
     url?: string;
     image?: string;
+    imageThumbnail?: string;
     buttonLabel?: string;
     colorScheme?: ThemingProps['colorScheme'];
     pattern?: Pattern;
@@ -60,6 +61,7 @@ const Section: React.FC<SectionProps> = ({
     description = undefined,
     url = undefined,
     image = undefined,
+    imageThumbnail,
     buttonLabel = 'undefined',
     component = undefined,
     headingTag = 'h2',
@@ -195,6 +197,7 @@ const Section: React.FC<SectionProps> = ({
                                     alt={title}
                                     w={imageSize}
                                     h={imageSize}
+                                    blurDataURL={imageThumbnail}
                                 />
                             </Box>
                         </Center>
