@@ -8,7 +8,6 @@ import { useRouter } from 'next/router';
 import { GiFountainPen, GiOpenBook } from 'react-icons/gi';
 import { useIntl } from 'react-intl';
 import { Root } from 'remark-html';
-import BlockQuote from '../../../components/blockQuote';
 import Date from '../../../components/Date';
 import { Image } from '../../../components/image';
 import MarkdownRendered from '../../../components/MarkdownRendered';
@@ -172,11 +171,7 @@ const BlogPostPage = ({
                         </HStack>
                     </Stack>
                 }
-                introSlot={
-                    <BlockQuote noOfLines={3} author="Author">
-                        {post.subtitle}
-                    </BlockQuote>
-                }
+                introSlot={post.subtitle}
                 bannerSlot={<></>}>
                 <Stack py={2} mx="auto" maxWidth={APP_MAX_WIDTH}>
                     <Box fontSize={{ md: 'xl' }}>
