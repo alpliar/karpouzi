@@ -54,7 +54,7 @@ const Link: React.FC<PropsWithChildren<ILinkProps & ChakraProps>> = ({
                     as={ChakraLink}
                     {...buttonProps}
                     onClick={onClick}
-                    padding={3}
+                    // padding={3}
                     whiteSpace="pre-wrap"
                     height="100%"
                     {...rest}>
@@ -65,11 +65,9 @@ const Link: React.FC<PropsWithChildren<ILinkProps & ChakraProps>> = ({
     }
 
     return (
-        <ServerSideLink>
-            <ChakraLink title={alt} onClick={onClick} {...rest}>
-                {children}
-            </ChakraLink>
-        </ServerSideLink>
+        <ChakraLink as={NextLink} href={href} title={alt} onClick={onClick} {...rest}>
+            {children}
+        </ChakraLink>
     );
 };
 
