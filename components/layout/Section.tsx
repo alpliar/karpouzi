@@ -45,6 +45,7 @@ export interface SectionProps {
     aboveTitleSlot?: React.ReactNode;
     paddingY?: BoxProps['padding'];
     centerItems?: boolean;
+    isFirst?: boolean;
 }
 
 const Section: React.FC<SectionProps> = ({
@@ -70,11 +71,12 @@ const Section: React.FC<SectionProps> = ({
     headingTag = 'h2',
     headingFontSize = {
         base: '2xl',
-        md: '4xl'
+        xl: '3xl'
     },
     aboveTitleSlot = undefined,
     paddingY = { base: 4, sm: 8, md: 16, xl: 24 },
-    centerItems = true
+    centerItems = true,
+    isFirst = false
 }) => {
     const { colorMode } = useColorMode();
     // const defaultImageSize = useBreakpointValue({ base: '32', md: '2xs', xl: 'xs' });
@@ -100,7 +102,8 @@ const Section: React.FC<SectionProps> = ({
         <Box
             id={id}
             bgColor={sectionBgColor}
-            paddingY={paddingY}
+            paddingBottom={paddingY}
+            paddingTop={isFirst ? 0 : paddingY}
             // paddingBottom={{ base: 4 }}
         >
             <Flex
@@ -186,7 +189,6 @@ const Section: React.FC<SectionProps> = ({
 
                 {image && (
                     <Flex
-                        float="left"
                         w={customImageSize || 'full'}
                         // alignSelf="stretch"
                         alignSelf={fillImage ? 'stretch' : 'start'}

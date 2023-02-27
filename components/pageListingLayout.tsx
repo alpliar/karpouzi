@@ -64,6 +64,7 @@ const PageListingLayout: React.FC<PropsWithChildren<IPageLayoutProps>> = ({
                         titleComplement={titleComplement}
                         subtitle={introSlot}
                         colorScheme={colorScheme}
+                        headingFontSize={{ base: '3xl', xl: '4xl' }}
                         useSecondaryColor
                         headingTag="h1"
                         // headingFontSize={{ base: '2xl', sm: '3xl' }}

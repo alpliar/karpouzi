@@ -193,6 +193,7 @@ const ProductPage: NextPage<ProductPageProps> = ({ product, description, localiz
 
             <Container p={{ base: 0 }} maxW="full">
                 <Section
+                    isFirst
                     centerItems={false}
                     colorScheme={colorScheme}
                     useSecondaryColor
@@ -200,7 +201,7 @@ const ProductPage: NextPage<ProductPageProps> = ({ product, description, localiz
                     isEven
                     fillImage={fillInspiringPicture}
                     title={f('description')}
-                    image={product.inspiringPicture?.asset.url}
+                    image={isOpen ? undefined : product.inspiringPicture?.asset.url}
                     imageThumbnail={product.inspiringPicture?.asset.thumbnail}
                     component={
                         <Stack spacing={5} textAlign="left" fontSize={{ base: 'xl', xl: '2xl' }}>
@@ -226,6 +227,7 @@ const ProductPage: NextPage<ProductPageProps> = ({ product, description, localiz
                     // customImageSize={bigImageSize}
                     colorScheme={colorScheme}
                     title={productName}
+                    headingFontSize={{ base: '2xl', xl: '4xl' }}
                     image={product.coverPicture.asset.url}
                     imageThumbnail={product.coverPicture.asset.thumbnail}
                     // imageTransform={{ sm: 'translate(5px, -5px)' }}
