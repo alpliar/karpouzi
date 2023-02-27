@@ -113,13 +113,13 @@ const Header: React.FC<HeaderProps> = ({ colorScheme = 'green' }) => {
                             ))}
                         </Stack>
                     </Flex>
-                    <Flex gap={{ base: 0, sm: 1 }} wrap="wrap">
-                        <Box display={{ base: 'none', sm: 'block' }}>
+                    <Flex gap={{ base: 0, sm: 1 }} wrap="wrap" alignItems="center">
+                        <Flex display={{ base: 'none', sm: 'inherit' }} alignItems="center">
                             <Flex gap="1" wrap="wrap" display={{ base: 'none', sm: 'flex' }}>
                                 <NavThemeToggle />
                                 <NavLocaleSelector compact />
                             </Flex>
-                        </Box>
+                        </Flex>
                         <NavLogin />
                         <NavCart />
                         <Box display={{ base: 'block', md: 'none' }}>
