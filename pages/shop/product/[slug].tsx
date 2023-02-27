@@ -16,6 +16,7 @@ import { useRouter } from 'next/router';
 import { useIntl } from 'react-intl';
 import { Root } from 'remark-html';
 import Section from '../../../components/layout/Section';
+import Link from '../../../components/link';
 import MarkdownRendered from '../../../components/MarkdownRendered';
 import PageListingLayout from '../../../components/pageListingLayout';
 import Rating from '../../../components/rating';
@@ -193,6 +194,7 @@ const ProductPage: NextPage<ProductPageProps> = ({ product, description, localiz
 
             <Container p={{ base: 0 }} maxW="full">
                 <Section
+                    id="description"
                     isFirst
                     centerItems={false}
                     colorScheme={colorScheme}
@@ -217,13 +219,26 @@ const ProductPage: NextPage<ProductPageProps> = ({ product, description, localiz
                                 />
                             </Box>
                             <Box>
-                                <Button
-                                    onClick={onToggle}
-                                    colorScheme={
-                                        colorScheme === 'blackAlpha' ? 'gray' : colorScheme
-                                    }>
-                                    {isOpen ? f('readLess') : f('readMore')}
-                                </Button>
+                                {isOpen ? (
+                                    <Link
+                                        asButton
+                                        href="#description"
+                                        onClick={onToggle}
+                                        buttonProps={{
+                                            colorScheme:
+                                                colorScheme === 'blackAlpha' ? 'gray' : colorScheme
+                                        }}>
+                                        {f('readLess')}
+                                    </Link>
+                                ) : (
+                                    <Button
+                                        onClick={onToggle}
+                                        colorScheme={
+                                            colorScheme === 'blackAlpha' ? 'gray' : colorScheme
+                                        }>
+                                        {f('readMore')}
+                                    </Button>
+                                )}
                             </Box>
                         </Stack>
                     }
