@@ -185,7 +185,8 @@ const Section: React.FC<SectionProps> = ({
                                 href={url}
                                 asButton
                                 buttonProps={{
-                                    colorScheme: buttonColorScheme
+                                    colorScheme: buttonColorScheme,
+                                    shadow: 'md'
                                 }}>
                                 {buttonLabel}
                             </Link>

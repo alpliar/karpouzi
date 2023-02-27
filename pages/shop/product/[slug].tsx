@@ -226,12 +226,14 @@ const ProductPage: NextPage<ProductPageProps> = ({ product, description, localiz
                                         onClick={onToggle}
                                         buttonProps={{
                                             colorScheme:
-                                                colorScheme === 'blackAlpha' ? 'gray' : colorScheme
+                                                colorScheme === 'blackAlpha' ? 'gray' : colorScheme,
+                                            shadow: 'md'
                                         }}>
                                         {f('readLess')}
                                     </Link>
                                 ) : (
                                     <Button
+                                        shadow="md"
                                         onClick={onToggle}
                                         colorScheme={
                                             colorScheme === 'blackAlpha' ? 'gray' : colorScheme
