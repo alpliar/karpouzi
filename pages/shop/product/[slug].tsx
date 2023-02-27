@@ -199,17 +199,23 @@ const ProductPage: NextPage<ProductPageProps> = ({ product, description, localiz
                     useSecondaryColor
                     // customImageSize={imageSize}
                     isEven
+                    // customDirection={isOpen ? 'column' : undefined}
                     fillImage={fillInspiringPicture}
                     title={f('description')}
-                    image={isOpen ? undefined : product.inspiringPicture?.asset.url}
+                    // image={isOpen ? undefined : product.inspiringPicture?.asset.url}
+                    image={product.inspiringPicture?.asset.url}
+                    customImageSize={isOpen ? { base: 'full', sm: '3xs', xl: 'xl' } : undefined}
+                    // customImageRatio={isOpen ? 3 / 1 : 1}
                     imageThumbnail={product.inspiringPicture?.asset.thumbnail}
                     component={
                         <Stack spacing={5} textAlign="left" fontSize={{ base: 'xl', xl: '2xl' }}>
                             {/* <Text as="p">{productDescription}</Text> */}
-                            <MarkdownRendered
-                                ast={productDescription}
-                                noOfLines={!isOpen ? 8 : undefined}
-                            />
+                            <Box maxHeight={isOpen ? 'inherit' : 'xs'} overflow="hidden">
+                                <MarkdownRendered
+                                    ast={productDescription}
+                                    // noOfLines={!isOpen ? 8 : undefined}
+                                />
+                            </Box>
                             <Box>
                                 <Button
                                     onClick={onToggle}

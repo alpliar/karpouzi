@@ -1,5 +1,6 @@
 import {
     AspectRatio,
+    AspectRatioProps,
     BackgroundProps,
     Box,
     BoxProps,
@@ -46,6 +47,8 @@ export interface SectionProps {
     paddingY?: BoxProps['padding'];
     centerItems?: boolean;
     isFirst?: boolean;
+    customDirection?: FlexProps['direction'];
+    customImageRatio?: AspectRatioProps['ratio'];
 }
 
 const Section: React.FC<SectionProps> = ({
@@ -76,7 +79,9 @@ const Section: React.FC<SectionProps> = ({
     aboveTitleSlot = undefined,
     paddingY = { base: 4, sm: 8, md: 16, xl: 24 },
     centerItems = true,
-    isFirst = false
+    isFirst = false,
+    customDirection,
+    customImageRatio
 }) => {
     const { colorMode } = useColorMode();
     // const defaultImageSize = useBreakpointValue({ base: '32', md: '2xs', xl: 'xs' });
@@ -107,7 +112,8 @@ const Section: React.FC<SectionProps> = ({
             // paddingBottom={{ base: 4 }}
         >
             <Flex
-                direction={{ base: 'column', sm: 'row' }}
+                transition="all 1s"
+                direction={customDirection || { base: 'column', sm: 'row' }}
                 w="full"
                 paddingX={{ base: 2, sm: 4 }}
                 mx="auto"
@@ -189,6 +195,7 @@ const Section: React.FC<SectionProps> = ({
 
                 {image && (
                     <Flex
+                        transition="all 1s"
                         w={customImageSize || 'full'}
                         // alignSelf="stretch"
                         alignSelf={fillImage ? 'stretch' : 'start'}
@@ -203,7 +210,7 @@ const Section: React.FC<SectionProps> = ({
                             overflow="hidden"
                             transform={imageTransform}
                             alignSelf={fillImage ? 'stretch' : undefined}>
-                            <AspectRatio ratio={1} w="full">
+                            <AspectRatio ratio={customImageRatio || 1} w="full">
                                 <Image
                                     alignSelf="stretch"
                                     w={{ base: 'full', sm: '50vw' }}
