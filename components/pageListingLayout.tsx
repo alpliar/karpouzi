@@ -52,7 +52,10 @@ const PageListingLayout: React.FC<PropsWithChildren<IPageLayoutProps>> = ({
                 {/* <Box>{bannerSlot && bannerSlot}</Box> */}
 
                 <Container
-                    bgColor={`${colorScheme}.50`}
+                    // bgColor={`${colorScheme}.50`}
+                    // _dark={{
+                    //     bgColor: `${colorScheme}.800`
+                    // }}
                     p={fullWidth ? 0 : containerPadding}
                     maxW={fullWidth ? 'full' : APP_MAX_WIDTH}>
                     {/* <Box maxW={APP_MAX_WIDTH} margin="auto"> */}

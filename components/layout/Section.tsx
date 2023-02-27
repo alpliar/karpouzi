@@ -82,16 +82,8 @@ const Section: React.FC<SectionProps> = ({
         : colorScheme;
     const imageSize = customImageSize || defaultImageSize;
     const gap = customGap || { base: 4, sm: 12, md: 12, xl: 24 };
-    const specialColorSchemes = ['whiteAlpha'];
-    const isSpecialColorScheme = specialColorSchemes.includes(colorScheme);
-    const textColor = isSpecialColorScheme
-        ? {
-              color: 'black',
-              _dark: {
-                  color: 'black'
-              }
-          }
-        : {};
+    // const specialColorSchemes = ['white', 'whiteAlpha'];
+    // const isSpecialColorScheme = specialColorSchemes.includes(colorScheme);
 
     return (
         <Box
@@ -125,7 +117,7 @@ const Section: React.FC<SectionProps> = ({
                         mb={description || component || url ? 4 : 0}
                         fontSize={headingFontSize}
                         letterSpacing="tight"
-                        {...textColor}
+                        // {...textColor}
                         lineHeight={{
                             md: 'shorter'
                         }}>
@@ -146,7 +138,7 @@ const Section: React.FC<SectionProps> = ({
                     {description && (
                         <Text
                             mb={5}
-                            {...textColor}
+                            // {...textColor}
                             fontSize={{
                                 md: 'lg'
                             }}>
@@ -154,7 +146,13 @@ const Section: React.FC<SectionProps> = ({
                         </Text>
                     )}
 
-                    {component && <Box {...textColor}>{component}</Box>}
+                    {component && (
+                        <Box
+                        // {...textColor}
+                        >
+                            {component}
+                        </Box>
+                    )}
                     {url && (
                         <Box>
                             <Link
