@@ -112,6 +112,7 @@ const ProductPage: NextPage<ProductPageProps> = ({ product, description, localiz
     // const imageSize = useBreakpointValue({ base: '100', md: 'xs', xl: 'sm' });
     // const bigImageSize = useBreakpointValue({ base: '32', sm: '44', md: 'sm', xl: 'lg' });
     const fillInspiringPicture = useBreakpointValue({ base: false, sm: !isOpen });
+    const fillPrincipalImage = useBreakpointValue({ sm: true, md: false });
 
     if (!product) return null;
 
@@ -205,7 +206,6 @@ const ProductPage: NextPage<ProductPageProps> = ({ product, description, localiz
                     // customDirection={isOpen ? 'column' : undefined}
                     fillImage={fillInspiringPicture}
                     title={f('description')}
-                    sectionPattern="rain"
                     // image={isOpen ? undefined : product.inspiringPicture?.asset.url}
                     image={product.inspiringPicture?.asset.url}
                     customImageSize={isOpen ? { base: 'full', md: '3xs', xl: 'xl' } : undefined}
@@ -256,6 +256,8 @@ const ProductPage: NextPage<ProductPageProps> = ({ product, description, localiz
                     headingFontSize={{ base: '2xl', xl: '4xl' }}
                     image={product.coverPicture.asset.url}
                     imageThumbnail={product.coverPicture.asset.thumbnail}
+                    sectionPattern="lisbon"
+                    fillImage={fillPrincipalImage}
                     // imageTransform={{ sm: 'translate(5px, -5px)' }}
                     // imageTransform={{ sm: 'scale(96%) ' }}
 
@@ -295,6 +297,7 @@ const ProductPage: NextPage<ProductPageProps> = ({ product, description, localiz
                 />
 
                 <Section
+                    sectionPattern="plus"
                     colorScheme={colorScheme}
                     useSecondaryColor
                     isEven={true}
