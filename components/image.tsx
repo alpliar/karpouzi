@@ -4,7 +4,7 @@ import { LayoutProps } from '@chakra-ui/styled-system';
 import NextImage, { ImageProps as NextImageProps } from 'next/image';
 import * as React from 'react';
 
-interface ImageProps {
+export interface ImageProps {
     src: NextImageProps['src'];
     alt: NextImageProps['alt'];
     width?: LayoutProps['width'];
