@@ -179,7 +179,7 @@ const BlogPostPage = ({
                 }
                 bannerSlot={<></>}>
                 <Stack py={2} mx="auto" maxWidth={APP_MAX_WIDTH}>
-                    <Box maxW="70ch" fontSize={{ md: 'xl' }} margin="auto">
+                    <Box fontSize={{ md: 'xl' }}>
                         <Box>
                             <Image
                                 src={post.coverPicture.asset.url}
@@ -195,7 +195,7 @@ const BlogPostPage = ({
                                 objectFit="contain"
                             />
                         </Box>
-                        <Stack spacing={4}>
+                        <Stack spacing={4} /* maxW="70ch" */>
                             <Heading as="span">{title}</Heading>
                             <MarkdownRendered ast={content} />
                         </Stack>
