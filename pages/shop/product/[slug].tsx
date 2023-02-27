@@ -206,11 +206,12 @@ const ProductPage: NextPage<ProductPageProps> = ({ product, description, localiz
                     title={f('description')}
                     // image={isOpen ? undefined : product.inspiringPicture?.asset.url}
                     image={product.inspiringPicture?.asset.url}
-                    customImageSize={isOpen ? { base: 'full', sm: '3xs', xl: 'xl' } : undefined}
-                    // customImageRatio={isOpen ? 3 / 1 : 1}
+                    customImageSize={isOpen ? { base: 'full', md: '3xs', xl: 'xl' } : undefined}
                     imageThumbnail={product.inspiringPicture?.asset.thumbnail}
+                    customDirection={isOpen ? { base: 'column', md: 'row' } : undefined}
+                    customImageRatio={isOpen ? { base: 2 / 1, md: 1 / 2 } : undefined}
                     component={
-                        <Stack spacing={5} textAlign="left" fontSize={{ base: 'xl', xl: '2xl' }}>
+                        <Stack spacing={5} textAlign="left" fontSize={{ xl: 'xl' }}>
                             {/* <Text as="p">{productDescription}</Text> */}
                             <Box maxHeight={isOpen ? 'inherit' : 'xs'} overflow="hidden">
                                 <MarkdownRendered
