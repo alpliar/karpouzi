@@ -108,8 +108,9 @@ const ProductPage: NextPage<ProductPageProps> = ({ product, description, localiz
     const { formatMessage, formatNumber } = useIntl();
     const f = (id: string, values: any = null) => formatMessage({ id }, values);
 
-    const imageSize = useBreakpointValue({ base: '32', md: 'xs', xl: 'sm' });
-    const bigImageSize = useBreakpointValue({ base: '32', sm: '44', md: 'sm', xl: 'lg' });
+    // const imageSize = useBreakpointValue({ base: '100', md: 'xs', xl: 'sm' });
+    // const bigImageSize = useBreakpointValue({ base: '32', sm: '44', md: 'sm', xl: 'lg' });
+    const fillInspiringPicture = useBreakpointValue({ base: false, sm: !isOpen });
 
     if (!product) return null;
 
@@ -192,10 +193,12 @@ const ProductPage: NextPage<ProductPageProps> = ({ product, description, localiz
 
             <Container p={{ base: 0 }} maxW="full">
                 <Section
+                    centerItems={false}
                     colorScheme={colorScheme}
                     useSecondaryColor
-                    customImageSize={imageSize}
+                    // customImageSize={imageSize}
                     isEven
+                    fillImage={fillInspiringPicture}
                     title={f('description')}
                     image={product.inspiringPicture?.asset.url}
                     imageThumbnail={product.inspiringPicture?.asset.thumbnail}
@@ -220,11 +223,13 @@ const ProductPage: NextPage<ProductPageProps> = ({ product, description, localiz
                 />
                 <Section
                     isEven={false}
-                    customImageSize={bigImageSize}
+                    // customImageSize={bigImageSize}
                     colorScheme={colorScheme}
                     title={productName}
                     image={product.coverPicture.asset.url}
                     imageThumbnail={product.coverPicture.asset.thumbnail}
+                    // imageTransform={{ sm: 'translate(5px, -5px)' }}
+                    // imageTransform={{ sm: 'scale(96%) ' }}
                     component={
                         <Stack spacing={4} maxW="sm">
                             <Rating rate={rate} count={reviewCount} target="#reviews" />
@@ -261,14 +266,17 @@ const ProductPage: NextPage<ProductPageProps> = ({ product, description, localiz
                 />
 
                 <Section
-                    colorScheme="white"
+                    colorScheme={colorScheme}
+                    useSecondaryColor
                     isEven={true}
                     title={f('fondOfName', { name: categoryName })}
                     url={`/shop/category/${category.slug}`}
                     buttonLabel={f('goToPageName', { name: categoryName })}
                     description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Earum minimaquaerat fugit ullam illo ipsa perspiciatis sit voluptatem!"
                     image={category.picture.url}
-                    imageTransform={{ sm: 'translate(-25px, -25px) ' }}
+                    fillImage
+                    imageTransform={{ md: 'translate(-20px, -20px) ' }}
+                    customImageSize={{ base: 'full', md: 'md' }}
                     pattern="iLikeFood"
                 />
             </Container>

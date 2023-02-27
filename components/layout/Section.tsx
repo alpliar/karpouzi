@@ -1,22 +1,22 @@
 import {
+    AspectRatio,
+    BackgroundProps,
     Box,
     BoxProps,
-    Center,
     Flex,
     FlexProps,
     Heading,
     HeadingProps,
-    ImageProps,
+    LayoutProps,
     Text,
     ThemingProps,
     TransformProps,
-    useBreakpointValue,
-    useColorMode
+    useColorMode,
+    useColorModeValue
 } from '@chakra-ui/react';
 import React from 'react';
 import { APP_MAX_WIDTH } from '../../constants/ui/main.layout';
-import { Pattern } from '../../utils/patterns';
-import Banner from '../banner';
+import { getPattern, Pattern } from '../../utils/patterns';
 import { Image } from '../image';
 import Link from '../link';
 
@@ -24,7 +24,7 @@ export interface SectionProps {
     bgColor?: string;
     isEven?: boolean;
     imageTransform?: TransformProps['transform'];
-    customImageSize?: ImageProps['sizes'];
+    customImageSize?: LayoutProps['width'];
     customGap?: FlexProps['gap'];
     id?: string;
     useSecondaryColor?: boolean;
@@ -34,6 +34,7 @@ export interface SectionProps {
     description?: string;
     url?: string;
     image?: string;
+    fillImage?: boolean;
     imageThumbnail?: string;
     buttonLabel?: string;
     colorScheme?: ThemingProps['colorScheme'];
@@ -43,16 +44,17 @@ export interface SectionProps {
     headingFontSize?: HeadingProps['fontSize'];
     aboveTitleSlot?: React.ReactNode;
     paddingY?: BoxProps['padding'];
+    centerItems?: boolean;
 }
 
 const Section: React.FC<SectionProps> = ({
     id = undefined,
-    pattern = undefined,
+    pattern = 'kiwi',
     bgColor = 'green',
     colorScheme = 'green',
     isEven = false,
     imageTransform = undefined,
-    customImageSize = undefined,
+    customImageSize,
     customGap = undefined,
     useSecondaryColor = false,
     title,
@@ -62,6 +64,7 @@ const Section: React.FC<SectionProps> = ({
     url = undefined,
     image = undefined,
     imageThumbnail,
+    fillImage = false,
     buttonLabel = 'undefined',
     component = undefined,
     headingTag = 'h2',
@@ -70,10 +73,11 @@ const Section: React.FC<SectionProps> = ({
         md: '4xl'
     },
     aboveTitleSlot = undefined,
-    paddingY = { base: 4, sm: 8, md: 16, xl: 24 }
+    paddingY = { base: 4, sm: 8, md: 16, xl: 24 },
+    centerItems = true
 }) => {
     const { colorMode } = useColorMode();
-    const defaultImageSize = useBreakpointValue({ base: '32', md: '2xs', xl: 'xs' });
+    // const defaultImageSize = useBreakpointValue({ base: '32', md: '2xs', xl: 'xs' });
     const sectionShade =
         colorMode === 'light' ? (useSecondaryColor ? 50 : 100) : useSecondaryColor ? 900 : 800;
     const sectionBgColor = `${colorScheme}.${sectionShade}`;
@@ -82,11 +86,16 @@ const Section: React.FC<SectionProps> = ({
     const buttonColorScheme = ['white', 'whiteAlpha', 'blackAlpha'].includes(colorScheme)
         ? 'gray'
         : colorScheme;
-    const imageSize = customImageSize || defaultImageSize;
-    const gap = customGap || { base: 4, sm: 12, md: 12, xl: 24 };
+    // const imageSize = customImageSize || defaultImageSize;
+    const gap = customGap || { base: 4, sm: 6, md: 12, xl: 24 };
     // const specialColorSchemes = ['white', 'whiteAlpha'];
     // const isSpecialColorScheme = specialColorSchemes.includes(colorScheme);
 
+    const bgImage: BackgroundProps['backgroundImage'] = getPattern(
+        pattern,
+        useColorModeValue('white', 'black'),
+        0.3
+    );
     return (
         <Box
             id={id}
@@ -100,7 +109,7 @@ const Section: React.FC<SectionProps> = ({
                 paddingX={{ base: 2, sm: 4 }}
                 mx="auto"
                 maxW={APP_MAX_WIDTH}
-                alignItems="center"
+                alignItems={centerItems ? 'center' : 'start'}
                 gap={gap}>
                 <Box
                     w="full"
@@ -176,27 +185,35 @@ const Section: React.FC<SectionProps> = ({
                 </Box>
 
                 {image && (
-                    <Banner
-                        rounded="xl"
-                        pattern={pattern}
-                        bgColor={bannerBgColor}
-                        height="10px"
-                        patternOpacity={0.3}>
-                        <Center transform={imageTransform}>
-                            <Box rounded="xl" overflow="hidden" boxShadow="md">
+                    <Flex
+                        float="left"
+                        w={customImageSize || 'full'}
+                        // alignSelf="stretch"
+                        alignSelf={fillImage ? 'stretch' : 'start'}
+                        alignItems="start"
+                        backgroundColor={bannerBgColor}
+                        rounded="md"
+                        bgImage={`url("${bgImage}")`}>
+                        <Flex
+                            rounded="md"
+                            w="full"
+                            boxShadow="md"
+                            overflow="hidden"
+                            transform={imageTransform}
+                            alignSelf={fillImage ? 'stretch' : undefined}>
+                            <AspectRatio ratio={1} w="full">
                                 <Image
-                                    sizes={imageSize}
-                                    quality={75}
-                                    priority
+                                    alignSelf="stretch"
+                                    w={{ base: 'full', sm: '50vw' }}
+                                    h={{ base: '100vw', sm: '50vw' }}
                                     src={image}
                                     alt={title}
-                                    w={imageSize}
-                                    h={imageSize}
+                                    quality={75}
                                     blurDataURL={imageThumbnail}
                                 />
-                            </Box>
-                        </Center>
-                    </Banner>
+                            </AspectRatio>
+                        </Flex>
+                    </Flex>
                 )}
             </Flex>
         </Box>
