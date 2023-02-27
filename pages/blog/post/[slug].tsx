@@ -1,6 +1,5 @@
 import Icon from '@chakra-ui/icon';
-import { Box, Heading, HStack, Stack, Text } from '@chakra-ui/layout';
-import { useBreakpointValue } from '@chakra-ui/react';
+import { Box, HStack, Stack, Text } from '@chakra-ui/layout';
 import axios from 'axios';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
@@ -9,12 +8,11 @@ import { GiFountainPen, GiOpenBook } from 'react-icons/gi';
 import { useIntl } from 'react-intl';
 import { Root } from 'remark-html';
 import Date from '../../../components/Date';
-import { Image } from '../../../components/image';
+import Section from '../../../components/layout/Section';
 import MarkdownRendered from '../../../components/MarkdownRendered';
 import PageListingLayout from '../../../components/pageListingLayout';
 import { API_BASE_URL } from '../../../constants/api';
 import { ONE_DAY } from '../../../constants/time.constants';
-import { APP_MAX_WIDTH } from '../../../constants/ui/main.layout';
 import BlogPost, {
     BlogPostsData,
     ParsedBlogPostLocalization,
@@ -98,7 +96,6 @@ const BlogPostPage = ({
 }) => {
     const { asPath } = useRouter();
     const router = useRouter();
-    const pictureSizes = useBreakpointValue({ base: '100vw', md: '50vw' });
 
     const intl = useIntl();
     const f = (id: string, values?: any) => intl.formatMessage({ id }, values);
@@ -159,42 +156,39 @@ const BlogPostPage = ({
                     },
                     { text: post.slug, link: '', alt: '', isCurrentPage: true }
                 ]}
-                titleSlot={
-                    <Stack spacing={0}>
-                        <HStack>
-                            <Icon as={GiOpenBook} />
-                            <Text>{f('noMinutesToRead', { minutes: post.timeToRead })}</Text>
-                        </HStack>
-                        <HStack>
-                            <Icon as={GiFountainPen} />
-                            <Date dateString={post.createdAt} />
-                        </HStack>
-                    </Stack>
-                }
                 subtitle={post.subtitle}
                 bannerSlot={<></>}>
-                <Stack py={2} mx="auto" maxWidth={APP_MAX_WIDTH}>
-                    <Box fontSize={{ md: 'xl' }}>
-                        <Box>
-                            <Image
-                                src={post.coverPicture.asset.url}
-                                alt={post.coverPicture.alternativeText}
-                                sizes={pictureSizes}
-                                priority
-                                width={{ base: 'full', lg: 'full' }}
-                                height={{ base: 240, lg: 480 }}
-                                mr={8}
-                                mb={8}
-                                quality={75}
-                                blurDataURL={post.coverPicture.asset.thumbnail}
-                                objectFit="contain"
-                            />
-                        </Box>
-                        <Stack spacing={4} /* maxW="70ch" */>
-                            <Heading as="span">{title}</Heading>
-                            <MarkdownRendered ast={content} />
-                        </Stack>
-                    </Box>
+                <Stack spacing={0}>
+                    <Section
+                        title={''}
+                        image={post.coverPicture.asset.url}
+                        imageThumbnail={post.coverPicture.asset.thumbnail}
+                        useSecondaryColor
+                        component={
+                            <Stack>
+                                <HStack>
+                                    <Icon as={GiOpenBook} />
+                                    <Text>
+                                        {f('noMinutesToRead', { minutes: post.timeToRead })}
+                                    </Text>
+                                </HStack>
+                                <HStack>
+                                    <Icon as={GiFountainPen} />
+                                    <Date dateString={post.createdAt} />
+                                </HStack>
+                            </Stack>
+                        }
+                    />
+                    <Section
+                        title=""
+                        component={
+                            <Box fontSize={{ md: 'xl' }}>
+                                <Stack spacing={4} /* maxW="70ch" */>
+                                    <MarkdownRendered ast={content} />
+                                </Stack>
+                            </Box>
+                        }
+                    />
                 </Stack>
             </PageListingLayout>
         </>
