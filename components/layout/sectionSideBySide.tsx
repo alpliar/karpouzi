@@ -35,7 +35,7 @@ const SectionSideBySide: React.FC<Props> = ({ sections }) => {
                                     translateY(${isEven ? 5 : 5}%) 
                                     translateX(${isEven ? -5 : 5}%)`
                             }}
-                            customImageSize={{ base: 'full', sm: 'md', md: 96 }}
+                            customImageSize={{ base: 'full', sm: 'md', md: 'lg' }}
                             customGap={{ base: 4, sm: 12, md: 24, xl: 32 }}
                         />
                     );
