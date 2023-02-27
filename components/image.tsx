@@ -1,7 +1,7 @@
 import { Box, BoxProps } from '@chakra-ui/layout';
 import { LayoutProps } from '@chakra-ui/styled-system';
 
-import NextImage, { ImageProps as NextImageProps } from 'next/legacy/image';
+import NextImage, { ImageProps as NextImageProps } from 'next/image';
 import * as React from 'react';
 
 interface ImageProps {
@@ -27,11 +27,12 @@ export const Image: React.FC<ImageProps & Omit<BoxProps, 'as'>> = ({
     ...rest
 }) => {
     return (
-        <Box position="relative" width={width} height={height} {...rest}>
+        <Box position="relative" width={width} height={height} overflow="hidden" {...rest}>
             <NextImage
-                objectFit="cover"
-                objectPosition="center"
-                layout="fill"
+                fill
+                style={{
+                    objectFit: 'cover'
+                }}
                 src={src}
                 alt={alt}
                 sizes={sizes}
