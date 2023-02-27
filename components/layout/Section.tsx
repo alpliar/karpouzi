@@ -183,12 +183,7 @@ const Section: React.FC<SectionProps> = ({
                         height="10px"
                         patternOpacity={0.3}>
                         <Center transform={imageTransform}>
-                            <Box
-                                w={imageSize}
-                                h={imageSize}
-                                rounded="xl"
-                                overflow="hidden"
-                                boxShadow="md">
+                            <Box rounded="xl" overflow="hidden" boxShadow="md">
                                 <Image
                                     sizes={imageSize}
                                     quality={75}
