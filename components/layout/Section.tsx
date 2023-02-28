@@ -91,7 +91,7 @@ const Section: React.FC<SectionProps> = ({
     const { colorMode } = useColorMode();
     // const defaultImageSize = useBreakpointValue({ base: '32', md: '2xs', xl: 'xs' });
     const sectionShade =
-        colorMode === 'light' ? (useSecondaryColor ? 50 : 100) : useSecondaryColor ? 900 : 800;
+        colorMode === 'light' ? (useSecondaryColor ? 50 : 100) : useSecondaryColor ? -1 : 800; // -1 to prevent colored background on dark mode
     const sectionBgColor = `${colorScheme}.${sectionShade}`;
     const bannerShade = colorMode === 'light' ? 400 : 600;
     const bannerBgColor = `${colorScheme}.${bannerShade}` || bgColor;
