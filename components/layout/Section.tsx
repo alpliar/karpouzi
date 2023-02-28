@@ -232,7 +232,7 @@ const Section: React.FC<SectionProps> = ({
                                     h={{ base: '100vw', sm: '50vw' }}
                                     src={image}
                                     alt={title}
-                                    quality={75}
+                                    quality={60}
                                     priority={priorityImage}
                                     blurDataURL={imageThumbnail}
                                 />
