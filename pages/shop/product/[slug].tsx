@@ -294,8 +294,9 @@ const ProductPage: NextPage<ProductPageProps> = ({ product, description, localiz
                     description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Earum minimaquaerat fugit ullam illo ipsa perspiciatis sit voluptatem!"
                     image={category.picture.url}
                     fillImage
-                    imageTransform={{ md: 'translate(-20px, -20px) ' }}
-                    customImageSize={{ base: 'full', md: 'md' }}
+                    imageTransform={{ md: 'scale(80%)' }}
+                    customImageSize={{ base: 'full', sm: 'xs' }}
+                    customImageRatio={{ base: 2 / 1, sm: undefined, md: 1 }}
                     pattern="iLikeFood"
                 />
             </Container>
