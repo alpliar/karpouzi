@@ -56,7 +56,7 @@ const ProductCard: React.FC<IProps> = ({
 
     return (
         <LinkBox>
-            <Card fullHeight>
+            <Card fullHeight hoverBg={`${product.colorScheme}.50`}>
                 <Flex direction="column" height="100%">
                     <Box
                         position="relative"

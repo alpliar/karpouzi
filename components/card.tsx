@@ -5,12 +5,14 @@ import { BASE_TRANSITION } from '../constants/ui/transitions';
 interface ICardProps {
     padding?: SpacerProps['p'];
     fullHeight?: boolean;
+    hoverBg?: string;
 }
 
 const Card: React.FC<PropsWithChildren<ICardProps>> = ({
     children,
     padding = 6,
-    fullHeight = false
+    fullHeight = false,
+    hoverBg
 }) => {
     return (
         <Box
@@ -22,7 +24,8 @@ const Card: React.FC<PropsWithChildren<ICardProps>> = ({
             h={fullHeight ? '100%' : undefined}
             overflow={'hidden'}
             _hover={{
-                boxShadow: 'xl'
+                boxShadow: 'xl',
+                bg: hoverBg
                 // transform: 'skewY(-0.1deg)'
             }}
             transition={BASE_TRANSITION}>
