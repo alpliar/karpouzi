@@ -139,6 +139,6 @@ export const en = {
     },
     '/shop/category/[slug]': {},
     '/blog/post/[slug]': {
-        noMinutesToRead: '{minutes} minutes de lecture'
+        noMinutesToRead: '{minutes} minutes to read'
     }
 };
