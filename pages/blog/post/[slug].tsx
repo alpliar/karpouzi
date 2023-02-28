@@ -156,10 +156,10 @@ const BlogPostPage = ({
                     },
                     { text: post.slug, link: '', alt: '', isCurrentPage: true }
                 ]}
-                subtitle={post.subtitle}
-                bannerSlot={<></>}>
+                subtitle={post.subtitle}>
                 <Stack spacing={0}>
                     <Section
+                        isFirst
                         title={''}
                         image={post.coverPicture.asset.url}
                         imageThumbnail={post.coverPicture.asset.thumbnail}
