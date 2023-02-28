@@ -248,17 +248,15 @@ const ProductPage: NextPage<ProductPageProps> = ({ product, description, localiz
                 />
                 <Section
                     isEven={false}
-                    // customImageSize={bigImageSize}
                     colorScheme={colorScheme}
                     title={productName}
                     headingFontSize={{ base: '2xl', xl: '4xl' }}
                     image={product.coverPicture.asset.url}
                     imageThumbnail={product.coverPicture.asset.thumbnail}
                     sectionPattern="lisbon"
+                    pattern="bamboo"
                     fillImage={fillPrincipalImage}
-                    // imageTransform={{ sm: 'translate(5px, -5px)' }}
-                    // imageTransform={{ sm: 'scale(96%) ' }}
-
+                    imageTransform={{ sm: 'scale(98%) rotate(-.5deg)' }}
                     component={
                         <Stack spacing={4} maxW="sm">
                             <Rating rate={rate} count={reviewCount} target="#reviews" />
@@ -276,15 +274,6 @@ const ProductPage: NextPage<ProductPageProps> = ({ product, description, localiz
                             <AddToCart slug={product.slug} name={productName} quantity={1} />
                         </Stack>
                     }></Section>
-                {/* <Banner pattern="iLikeFood" height="md" bgColor="pink.300">
-                    <Stack maxW="lg" fontSize="sm" fontWeight="bold" p={3} spacing={4}>
-                        <Heading>{f('fondOfName', { name: category.name })}</Heading>
-                        <Text>
-                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Earum minima
-                            quaerat fugit ullam illo ipsa perspiciatis sit voluptatem!
-                        </Text>
-                    </Stack>
-                </Banner> */}
 
                 <Section
                     id="reviews"
