@@ -15,7 +15,7 @@ import { ComponentWithAs } from '@chakra-ui/system';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { IconType } from 'react-icons';
-import { MdStarRate } from 'react-icons/md';
+import { FaUsers } from 'react-icons/fa';
 import { useIntl } from 'react-intl';
 import Product from '../graphql/models/shop/product.model';
 import Card, { cardPadding } from './card';
@@ -98,8 +98,8 @@ const ProductCard: React.FC<IProps> = ({
 
                         {product.reviews.length > 0 && (
                             <ProductCardBadge
-                                icon={ratingIcon || MdStarRate}
-                                text={`${rating / 20}`}
+                                icon={ratingIcon || FaUsers}
+                                text={`${rating / 20}/5`}
                                 positionX="right"
                                 positionY="top"
                                 colorScheme={product.colorScheme || 'gray'}
