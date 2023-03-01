@@ -5,6 +5,7 @@ import ShopCategory from './category.model';
 import Review, { ReviewExcerpt } from '../common/review.model';
 import { Root } from 'remark-html';
 import { ThemingProps } from '@chakra-ui/system';
+import GraphCMSSystemFields from '../common/systemFields.model';
 
 enum MeasurementUnits {
     PER_UNIT = 'PER_UNIT',
@@ -43,7 +44,7 @@ export interface ParsedProductLocalization {
 export type ProductLocalizations = ProductLocalization[];
 export type ParsedProductLocalizations = ParsedProductLocalization[];
 
-export default interface Product {
+export default interface Product extends GraphCMSSystemFields {
     id: Id;
     name: string;
     slug: string;
