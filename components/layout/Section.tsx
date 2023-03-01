@@ -140,6 +140,7 @@ const Section: React.FC<SectionProps> = ({
 
                     <Heading
                         display="flex"
+                        flexWrap="wrap"
                         alignItems="center"
                         gap={2}
                         as={headingTag}
