@@ -28,7 +28,6 @@ import Product, {
     ParsedProductLocalization,
     ParsedProductLocalizations
 } from '../../../graphql/models/shop/product.model';
-import DateHelper from '../../../helpers/date.helper';
 import MarkdownHelper from '../../../helpers/markdown.helper';
 import AddToCart from '../../../redux/container/addToCart';
 import { ProductResponse } from '../../api/shop/product/[slug]';
