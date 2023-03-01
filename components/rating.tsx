@@ -24,6 +24,7 @@ const Rating: React.FC<RatingProps & FlexProps> = ({
     const isRated = (rate as number) > 0;
     const hasMultipleReviews = count; //&& count > 1;
     const isIndividualRating = !count;
+    const fontSize = { base: 'xs', sm: 'sm' };
 
     return (
         <Flex {...rest}>
@@ -48,14 +49,18 @@ const Rating: React.FC<RatingProps & FlexProps> = ({
                     </Flex>
                     {isIndividualRating && <Text as="strong">{rate / 20} / 5</Text>}
                     {hasMultipleReviews && (
-                        <Text fontWeight="bold" as="span">
+                        <Text fontWeight="bold" as="span" fontSize={fontSize}>
                             {f('noOfReviews', { count })}
                         </Text>
                     )}
                 </Flex>
             )}
 
-            {!isRated && <Text as="span">{f('noReviewsYet')}</Text>}
+            {!isRated && (
+                <Text as="span" noOfLines={1} fontSize={fontSize}>
+                    {f('noReviewsYet')}
+                </Text>
+            )}
         </Flex>
     );
 };
