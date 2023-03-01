@@ -117,7 +117,7 @@ const ProductPage: NextPage<ProductPageProps> = ({ product, description, localiz
 
     if (!product) return null;
 
-    const isNew = DateHelper.isNew(product.createdAt);
+    const isNew = false; //DateHelper.isNew(product.createdAt);
     const reviewCount = product.reviews.length;
     const rate =
         reviewCount > 0
