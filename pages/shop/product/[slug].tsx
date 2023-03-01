@@ -28,6 +28,7 @@ import Product, {
     ParsedProductLocalization,
     ParsedProductLocalizations
 } from '../../../graphql/models/shop/product.model';
+import DateHelper from '../../../helpers/date.helper';
 import MarkdownHelper from '../../../helpers/markdown.helper';
 import AddToCart from '../../../redux/container/addToCart';
 import { ProductResponse } from '../../api/shop/product/[slug]';
@@ -116,7 +117,7 @@ const ProductPage: NextPage<ProductPageProps> = ({ product, description, localiz
 
     if (!product) return null;
 
-    const isNew = false; //DateHelper.isNew(product.createdAt);
+    const isNew = DateHelper.isNew(product.createdAt);
     const reviewCount = product.reviews.length;
     const rate =
         reviewCount > 0
