@@ -45,6 +45,8 @@ const ProductCardBadge: React.FC<IProps> = ({ positionX, positionY, icon, text, 
     const bgColor = colorScheme ? `${colorScheme}.600` : 'green.600';
     return (
         <Badge
+            display="flex"
+            alignItems="center"
             fontSize={{ base: '2xs', sm: '2xs', xl: 'xs' }}
             px={{ base: 1, sm: 2 }}
             py={{ sm: 0.5 }}
@@ -53,7 +55,7 @@ const ProductCardBadge: React.FC<IProps> = ({ positionX, positionY, icon, text, 
             {...position}
             bgColor={bgColor}
             color="white">
-            <Icon as={icon} />
+            <Icon as={icon} mr={1} />
             {text}
         </Badge>
     );
