@@ -91,8 +91,8 @@ const ProductCard: React.FC<IProps> = ({
 
                         {isNew && (
                             <ProductCardBadge
-                                icon={isNew ? BellIcon : TriangleDownIcon}
-                                text={isNew ? 'NEW' : '-20%'}
+                                icon={BellIcon}
+                                text={f('new')}
                                 positionX="right"
                                 positionY="bottom"
                             />
