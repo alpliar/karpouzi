@@ -10,6 +10,7 @@ import ProductCard from '../../../components/productCard';
 import { API_BASE_URL } from '../../../constants/api';
 import { ONE_HOUR } from '../../../constants/time.constants';
 import { APP_MAX_WIDTH } from '../../../constants/ui/main.layout';
+import { BASE_TRANSITION } from '../../../constants/ui/transitions';
 import {
     ParsedCategoryLocalizations,
     ShopCategoryWithProductsAndAsset
@@ -129,8 +130,10 @@ const CategoryPage: NextPage<CategoryPageProps> = ({ category, localizations, _d
         >
             {!!category.products.length ? (
                 <SimpleGrid
-                    columns={{ base: 1, sm: 2, md: 3, xl: 4 }}
-                    spacing={4}
+                    transition={BASE_TRANSITION}
+                    columns={{ base: 2, sm: 3, md: 4, '2xl': 5 }}
+                    spacingX={{ base: 1, sm: 2, '2xl': 4 }}
+                    spacingY={{ base: 4, sm: 4, '2xl': 8 }}
                     mx="auto"
                     maxWidth={APP_MAX_WIDTH}
                     py={{ base: 2, sm: 4 }}>
