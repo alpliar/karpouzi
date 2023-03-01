@@ -1,4 +1,4 @@
-import { BellIcon, TriangleDownIcon } from '@chakra-ui/icons';
+import { BellIcon } from '@chakra-ui/icons';
 import {
     AspectRatio,
     Box,
@@ -101,7 +101,7 @@ const ProductCard: React.FC<IProps> = ({
                         {product.reviews.length > 0 && (
                             <ProductCardBadge
                                 icon={ratingIcon || FaUsers}
-                                text={`${rating / 20}/5`}
+                                text={`${Math.round(rating / 20)}/5`}
                                 positionX="right"
                                 positionY="top"
                                 colorScheme={product.colorScheme || 'gray'}
