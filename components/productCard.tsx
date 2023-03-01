@@ -19,7 +19,7 @@ import { FaUsers } from 'react-icons/fa';
 import { useIntl } from 'react-intl';
 import Product from '../graphql/models/shop/product.model';
 import DateHelper from '../helpers/date.helper';
-import Card, { cardPadding } from './card';
+import Card from './card';
 import { Image } from './image';
 import ProductCardBadge from './productCardBadge';
 
@@ -63,11 +63,17 @@ const ProductCard: React.FC<IProps> = ({
     const rating =
         product.reviews.map((rev) => rev.rating).reduce((a, b) => a + b, 0) / reviewCount;
     const measurementUnit = price?.measurementUnit;
-    const negativeCardPadding = { base: -2, sm: -4, md: -6 };
+
+    const cardPadding = { base: 2, sm: 4, md: 6 };
+    const negativeCardPadding = {
+        base: -cardPadding.base,
+        sm: -cardPadding.sm,
+        md: -cardPadding.md
+    };
 
     return (
         <LinkBox>
-            <Card fullHeight hoverBg={`${product.colorScheme}.50`}>
+            <Card fullHeight hoverBg={`${product.colorScheme}.50`} padding={cardPadding}>
                 <Flex direction="column" height="100%">
                     <Box
                         position="relative"
