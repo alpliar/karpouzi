@@ -8,9 +8,11 @@ interface ICardProps {
     hoverBg?: string;
 }
 
+export const cardPadding = { base: 2, sm: 4, md: 6 };
+
 const Card: React.FC<PropsWithChildren<ICardProps>> = ({
     children,
-    padding = 6,
+    padding = cardPadding,
     fullHeight = false,
     hoverBg
 }) => {
