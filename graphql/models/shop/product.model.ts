@@ -44,7 +44,7 @@ export interface ParsedProductLocalization {
 export type ProductLocalizations = ProductLocalization[];
 export type ParsedProductLocalizations = ParsedProductLocalization[];
 
-export default interface Product extends GraphCMSSystemFields {
+export default interface Product {
     id: Id;
     name: string;
     slug: string;
@@ -60,6 +60,7 @@ export default interface Product extends GraphCMSSystemFields {
     productCategories: Array<ShopCategory>;
     inspiringPicture?: Picture;
     colorScheme?: ThemingProps['colorScheme'];
+    createdAt: GraphCMSSystemFields['createdAt'];
 }
 
 export interface ProductData {

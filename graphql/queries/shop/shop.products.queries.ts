@@ -74,13 +74,7 @@ export const GET_SHOP_PRODUCT = gql`
                 }
             }
             colorScheme
-            colorScheme
-            publishedAt
-            publishedBy
-            updatedAt
-            updatedBy
             createdAt
-            createdBy
         }
     }
 `;
@@ -152,12 +146,7 @@ export const GET_SHOP_PRODUCTS = gql`
                 }
             }
             colorScheme
-            publishedAt
-            publishedBy
-            updatedAt
-            updatedBy
             createdAt
-            createdBy
         }
     }
 `;

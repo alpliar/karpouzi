@@ -13,7 +13,7 @@ interface IPageLayoutProps {
     breadcrumbs: IBreadcrumbItemProps[];
     fullWidth?: boolean;
     titleSlot?: React.ReactNode;
-    titleComplement?: string;
+    titleComplement?: React.ReactNode;
     subtitle?: React.ReactNode;
     bannerSlot?: React.ReactNode;
     colorScheme?: ThemingProps['colorScheme'];

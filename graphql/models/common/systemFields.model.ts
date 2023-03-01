@@ -8,7 +8,7 @@ export interface GraphCMSUser {
 export default interface GraphCMSSystemFields {
     id: Id;
     // scheduledIn: Array<unknown>;
-    publishedBy?: string;
+    publishedBy?: GraphCMSUser;
     publishedAt?: string;
     updatedBy: GraphCMSUser;
     updatedAt: string;

@@ -18,6 +18,7 @@ import { IconType } from 'react-icons';
 import { FaUsers } from 'react-icons/fa';
 import { useIntl } from 'react-intl';
 import Product from '../graphql/models/shop/product.model';
+import DateHelper from '../helpers/date.helper';
 import Card, { cardPadding } from './card';
 import { Image } from './image';
 import ProductCardBadge from './productCardBadge';
@@ -50,8 +51,8 @@ const ProductCard: React.FC<IProps> = ({
     const localization = product.localizations?.find((i18n) => i18n.locale === router.locale);
     const productName = localization?.name || product.name;
 
-    // const fallbackPicture = '';
-    const isNew = true;
+    const isNew = DateHelper.isNew(product.createdAt);
+
     const price = product.prices.find(({ currency }) => currency === 'EUR');
     const formattedPrice =
         formatNumber(Number(price?.amount), {
@@ -87,6 +88,7 @@ const ProductCard: React.FC<IProps> = ({
                                 blurDataURL={product.coverPicture.asset.thumbnail}
                             />
                         </AspectRatio>
+
                         {isNew && (
                             <ProductCardBadge
                                 icon={isNew ? BellIcon : TriangleDownIcon}

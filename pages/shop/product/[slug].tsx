@@ -28,6 +28,7 @@ import Product, {
     ParsedProductLocalization,
     ParsedProductLocalizations
 } from '../../../graphql/models/shop/product.model';
+import DateHelper from '../../../helpers/date.helper';
 import MarkdownHelper from '../../../helpers/markdown.helper';
 import AddToCart from '../../../redux/container/addToCart';
 import { ProductResponse } from '../../api/shop/product/[slug]';
@@ -116,7 +117,7 @@ const ProductPage: NextPage<ProductPageProps> = ({ product, description, localiz
 
     if (!product) return null;
 
-    const isNew = false;
+    const isNew = DateHelper.isNew(product.createdAt);
     const reviewCount = product.reviews.length;
     const rate =
         reviewCount > 0
@@ -142,6 +143,19 @@ const ProductPage: NextPage<ProductPageProps> = ({ product, description, localiz
             colorScheme={colorScheme}
             fullWidth
             title={productName}
+            titleComplement={
+                isNew && (
+                    <Badge
+                        display="flex"
+                        alignItems="center"
+                        colorScheme={product.colorScheme}
+                        fontSize="md"
+                        textTransform="lowercase">
+                        <BellIcon mr={1} />
+                        {f('new')}
+                    </Badge>
+                )
+            }
             breadcrumbs={[
                 {
                     link: '/home',
@@ -167,16 +181,7 @@ const ProductPage: NextPage<ProductPageProps> = ({ product, description, localiz
                     alt: productName,
                     isCurrentPage: true
                 }
-            ]}
-            titleSlot={
-                isNew && (
-                    <Box>
-                        <Badge>
-                            <BellIcon /> NEW!
-                        </Badge>
-                    </Box>
-                )
-            }>
+            ]}>
             <Head>
                 <title>{`${productName} | ${f('menuEntryShop')} | ${f('commonSiteName')}`}</title>
                 <meta property="og:type" content="og:product" />

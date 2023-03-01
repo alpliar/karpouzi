@@ -31,7 +31,7 @@ export interface SectionProps {
     id?: string;
     useSecondaryColor?: boolean;
     title: string;
-    titleComplement?: string;
+    titleComplement?: React.ReactNode;
     subtitle?: string | React.ReactNode;
     description?: string;
     url?: string;
