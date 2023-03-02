@@ -3,6 +3,7 @@ import ShopCategory, {
     ShopCategoriesData,
     ShopCategoriesSlugs,
     ShopCategoryData,
+    ShopCategoryWithAssetAndPartialProducts,
     ShopCategoryWithProducts,
     ShopCategoryWithProductsAndAsset
 } from '../graphql/models/shop/category.model';
@@ -43,7 +44,7 @@ export default class CategoryHelper {
         });
     };
 
-    static getCategories = async (): Promise<Array<ShopCategoryWithProductsAndAsset>> => {
+    static getCategories = async (): Promise<Array<ShopCategoryWithAssetAndPartialProducts>> => {
         return new Promise(async (resolve, reject) => {
             try {
                 const {
@@ -52,19 +53,19 @@ export default class CategoryHelper {
                     query: GET_SHOP_CATEGORIES
                 });
 
-                const newCategories: Array<ShopCategoryWithProductsAndAsset> = await Promise.all(
-                    categories.map(async (category) => {
-                        // const productSlugs = category.products.map(({ slug }) => slug);
-                        // const products = await ProductHelper.getProducts(productSlugs);
+                const newCategories: Array<ShopCategoryWithAssetAndPartialProducts> =
+                    await Promise.all(
+                        categories.map(async (category) => {
+                            // const productSlugs = category.products.map(({ slug }) => slug);
+                            // const products = await ProductHelper.getProducts(productSlugs);
 
-                        return {
-                            ...category,
-                            picture: await AssetHelper.getAsset(category.picture.id),
-                            products: []
-                            // products
-                        };
-                    })
-                );
+                            return {
+                                ...category,
+                                picture: await AssetHelper.getAsset(category.picture.id)
+                                // products: []
+                            };
+                        })
+                    );
 
                 resolve(newCategories);
             } catch {

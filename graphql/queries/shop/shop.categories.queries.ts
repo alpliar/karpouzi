@@ -47,6 +47,9 @@ export const GET_SHOP_CATEGORY = gql`
             description
             picture {
                 id
+                url
+                fileName
+                mimeType
             }
             products {
                 id

@@ -31,15 +31,22 @@ export interface ShopCategoryWithProducts extends ShopCategory {
     products: Array<Product>;
 }
 
+export interface ShopCategoryWithAsset extends ShopCategory {
+    picture: Asset;
+}
+
+export interface ShopCategoryWithPartialProducts extends ShopCategory {
+    products: Array<{ id: string; slug: string }>;
+}
+
+export type ShopCategoryWithAssetAndPartialProducts = ShopCategory &
+    ShopCategoryWithAsset &
+    ShopCategoryWithPartialProducts;
+
 export interface ShopCategoryWithProductsAndAsset extends ShopCategoryWithProducts {
     picture: Asset;
 }
-export interface ShopCategoryWithProductsExcerpts extends ShopCategory {
-    id: Id;
-    slug: string;
-    name: string;
-    picture: GraphCMSAsset;
-    description: string;
+export interface ShopCategoryWithProductsExcerpts extends ShopCategory, ShopCategory {
     products: Array<ProductExcerpt>;
 }
 
