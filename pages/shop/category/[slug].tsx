@@ -125,9 +125,7 @@ const CategoryPage: NextPage<CategoryPageProps> = ({ category, localizations, _d
                     alt: f('goToPageName', { name: categoryName }),
                     isCurrentPage: true
                 }
-            ]}
-            // titleSlot={<ShopStat label={f('products')} number={category.products.length ?? 0} />}
-        >
+            ]}>
             {!!category.products.length ? (
                 <SimpleGrid
                     transition={BASE_TRANSITION}

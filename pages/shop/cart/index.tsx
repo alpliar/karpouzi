@@ -4,7 +4,6 @@ import { useSelector } from 'react-redux';
 import CartItem from '../../../components/cartItem';
 import NoContentBanner from '../../../components/NoContentBanner';
 import PageListingLayout from '../../../components/pageListingLayout';
-import ShopStat from '../../../components/shopStat';
 import { APP_MAX_WIDTH } from '../../../constants/ui/main.layout';
 import { RootState } from '../../../redux/reducer';
 
@@ -36,9 +35,9 @@ export default function CartPage() {
                     isCurrentPage: true
                 }
             ]}
-            titleSlot={
-                <ShopStat label={intl.formatMessage({ id: 'products' })} number={cart.length} />
-            }>
+            titleComplement={` (${cart.length} ${intl
+                .formatMessage({ id: 'products' })
+                .toLocaleLowerCase()})`}>
             <Box maxWidth={APP_MAX_WIDTH} mx="auto" py={2}>
                 {!isCartEmpty && (
                     <SimpleGrid columns={{ base: 1, sm: 2, lg: 3 }} spacingX="0.5em" spacingY="1em">
