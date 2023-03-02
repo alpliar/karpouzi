@@ -1,4 +1,4 @@
-import { Center, Flex, Stack, Text, useColorModeValue, Wrap, WrapItem } from '@chakra-ui/react';
+import { Center, Flex, Stack, Text, Wrap, WrapItem } from '@chakra-ui/react';
 import React from 'react';
 import { SLOW_TRANSITION } from '../constants/ui/transitions';
 import { Link as ILink } from '../models/link.model';
@@ -13,12 +13,11 @@ type Props = {
 };
 
 const NoContentBanner: React.FC<Props> = ({ text, helperText, links, children }) => {
-    const noProductBackground = useColorModeValue('orange.300', 'orange.800');
     return (
         <Banner
             rounded="md"
             pattern="wiggle"
-            bgColor={noProductBackground}
+            bgColor="warning"
             // height="inherit"
             paddingY={{ base: 8, lg: 16 }}
             paddingX={{ base: 4 }}

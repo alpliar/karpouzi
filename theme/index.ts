@@ -28,6 +28,10 @@ const theme = extendTheme({
     semanticTokens: {
         colors: {
             error: 'red.500',
+            warning: {
+                default: 'orange.300',
+                _dark: 'orange.800'
+            },
             bodyBg: {
                 default: 'white',
                 _dark: 'gray.800'
