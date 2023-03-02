@@ -157,7 +157,7 @@ const Section: React.FC<SectionProps> = ({
                         <Heading
                             as="p"
                             fontSize="md"
-                            fontWeight="normal"
+                            fontWeight="400"
                             maxW="80ch"
                             mb={description || component || url ? 4 : 0}>
                             {subtitle}

@@ -1,7 +1,7 @@
 import { Handlee, Montserrat, PT_Sans_Caption } from '@next/font/google';
 
 const headingFont = Montserrat({
-    weight: ['300', '700'],
+    weight: ['300', '400', '700'],
     subsets: ['latin-ext'],
     display: 'swap',
     fallback: ['sans-serif']
