@@ -12,8 +12,7 @@ import {
     Text,
     ThemingProps,
     TransformProps,
-    useColorMode,
-    useColorModeValue
+    useColorMode
 } from '@chakra-ui/react';
 import React from 'react';
 import { APP_MAX_WIDTH } from '../../constants/ui/main.layout';
@@ -55,32 +54,32 @@ export interface SectionProps {
 }
 
 const Section: React.FC<SectionProps> = ({
-    id = undefined,
+    id,
     pattern = 'kiwi',
     sectionPattern,
     bgColor = 'green',
     colorScheme = 'green',
     isEven = false,
-    imageTransform = undefined,
+    imageTransform,
     customImageSize,
-    customGap = undefined,
+    customGap,
     useSecondaryColor = false,
     title,
     titleComplement,
     subtitle,
-    description = undefined,
-    url = undefined,
-    image = undefined,
+    description,
+    url,
+    image,
     imageThumbnail,
     fillImage = false,
     buttonLabel = 'undefined',
-    component = undefined,
+    component,
     headingTag = 'h2',
     headingFontSize = {
         base: '2xl',
         xl: '3xl'
     },
-    aboveTitleSlot = undefined,
+    aboveTitleSlot,
     paddingY = { base: 4, sm: 8, md: 16, xl: 24 },
     centerItems = true,
     isFirst = false,
@@ -89,7 +88,6 @@ const Section: React.FC<SectionProps> = ({
     priorityImage
 }) => {
     const { colorMode } = useColorMode();
-    // const defaultImageSize = useBreakpointValue({ base: '32', md: '2xs', xl: 'xs' });
     const sectionShade =
         colorMode === 'light' ? (useSecondaryColor ? 50 : 100) : useSecondaryColor ? -1 : 800; // -1 to prevent colored background on dark mode
     const sectionBgColor = `${colorScheme}.${sectionShade}`;
@@ -98,18 +96,12 @@ const Section: React.FC<SectionProps> = ({
     const buttonColorScheme = ['white', 'whiteAlpha', 'blackAlpha'].includes(colorScheme)
         ? 'gray'
         : colorScheme;
-    // const imageSize = customImageSize || defaultImageSize;
     const gap = customGap || { base: 4, sm: 6, md: 12, xl: 24 };
-    // const specialColorSchemes = ['white', 'whiteAlpha'];
-    // const isSpecialColorScheme = specialColorSchemes.includes(colorScheme);
 
-    const patternColor = useColorModeValue('white', 'black');
-    const sectionPatternColor = useColorModeValue('black', 'white');
-
-    const bgImage: BackgroundProps['backgroundImage'] = getPattern(pattern, patternColor, 0.3);
+    const bgImage: BackgroundProps['backgroundImage'] = getPattern(pattern, 'paper', 0.3);
 
     const bgSection: BackgroundProps['backgroundImage'] = sectionPattern
-        ? getPattern(sectionPattern, sectionPatternColor, 0.04)
+        ? getPattern(sectionPattern, 'textOnSurface', 0.04)
         : undefined;
     return (
         <Box

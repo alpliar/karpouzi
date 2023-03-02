@@ -39,6 +39,10 @@ const theme = extendTheme({
             textOnSurface: {
                 default: 'black',
                 _dark: 'white'
+            },
+            paper: {
+                default: 'white',
+                _dark: 'black'
             }
         }
     }
