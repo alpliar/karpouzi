@@ -88,7 +88,9 @@ export const es = {
     },
     '/blog': {
         title: 'Blog',
-        posts: 'Entradas'
+        posts: 'Entradas',
+        blogSubtitle:
+            'Bienvenido a nuestra tienda de comestibles en línea que ofrece frutas y verduras frescas y saludables obtenidas directamente de agricultores locales, con una amplia selección de productos de temporada y exóticos importados para satisfacer todos los gustos, todo entregado rápidamente a su puerta para que pueda disfrutar de la frescura de la granja sin salir de casa.'
     },
     '/shop': {
         title: 'Tienda',

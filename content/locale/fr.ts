@@ -88,7 +88,9 @@ export const fr = {
     },
     '/blog': {
         title: 'Blog',
-        posts: 'Articles'
+        posts: 'Articles',
+        blogSubtitle:
+            "Bienvenue sur notre épicerie en ligne offrant des fruits et légumes frais et sains provenant directement des agriculteurs locaux, avec une large sélection de produits saisonniers et d'importations exotiques pour satisfaire tous les goûts, le tout livré rapidement à votre porte pour vous permettre de profiter de la fraîcheur de la ferme sans quitter votre domicile."
     },
     '/shop': {
         title: 'Boutique',

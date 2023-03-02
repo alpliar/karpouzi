@@ -88,13 +88,15 @@ export const en = {
     },
     '/blog': {
         title: 'Blog',
-        posts: 'Posts'
+        posts: 'Posts',
+        blogSubtitle:
+            "Welcome to our ecommerce blog! Stay in the loop on the latest online shopping trends, product reviews, and industry updates. Whether you're a pro or new to the game, we've got something for you. Happy shopping!"
     },
     '/shop': {
         title: 'Shop',
         categories: 'Categories',
         shopDescription:
-            "Welcome to our online grocery store! We are delighted to offer you a wide selection of quality products to meet all your culinary needs. Whether you're looking for fresh ingredients to prepare a healthy meal, tasty snacks to munch on throughout the day, or essential grocery products to stock your pantry, you'll find all that and more on our website. We take pride in working closely with local producers and trusted suppliers to ensure the freshness and quality of all our products."
+            'Welcome to our online grocery store offering fresh and healthy fruits and vegetables sourced directly from local farmers, with a wide selection of seasonal and exotic imported products to satisfy all tastes, all delivered quickly to your door so you can enjoy the freshness of the farm without leaving your home.'
     },
     '/shop/cart': {
         title: 'Cart',

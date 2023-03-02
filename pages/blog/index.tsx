@@ -1,4 +1,3 @@
-import { Box } from '@chakra-ui/react';
 import axios from 'axios';
 import { GetStaticProps } from 'next';
 import { useIntl } from 'react-intl';
@@ -7,7 +6,6 @@ import Section from '../../components/layout/Section';
 import PageListingLayout from '../../components/pageListingLayout';
 import { API_BASE_URL } from '../../constants/api';
 import { ONE_HOUR } from '../../constants/time.constants';
-import { APP_MAX_WIDTH } from '../../constants/ui/main.layout';
 import BlogPost from '../../graphql/models/blog/post.model';
 import { BlogPostsResponse } from '../api/blog/posts';
 
