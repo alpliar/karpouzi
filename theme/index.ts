@@ -43,6 +43,10 @@ const theme = extendTheme({
             paper: {
                 default: 'white',
                 _dark: 'black'
+            },
+            helperText: {
+                default: 'blackAlpha.600',
+                _dark: 'whiteAlpha.600'
             }
         }
     }

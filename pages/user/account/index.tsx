@@ -1,6 +1,5 @@
 import { Avatar } from '@chakra-ui/avatar';
 import { Checkbox } from '@chakra-ui/checkbox';
-import { useColorModeValue } from '@chakra-ui/color-mode';
 import { FormControl, FormHelperText, FormLabel } from '@chakra-ui/form-control';
 import { Input } from '@chakra-ui/input';
 import { Box, Stack, Text, Wrap } from '@chakra-ui/layout';
@@ -46,19 +45,13 @@ const UserAccountSection: React.FC<PropsWithChildren<IUserAccountSectionProps>> 
                 title={title}
                 component={<Box maxW="lg">{children}</Box>}
             />
-            {/* <Stack spacing={4} direction={{ base: 'column', md: 'row' }}>
-            <Heading as="h2" fontSize="lg" minWidth={{ md: '3xs' }}>
-                {title}
-            </Heading>
-            <Stack spacing={4}>{children}</Stack>
-        </Stack> */}
         </>
     );
 };
 
 const HelperText: React.FC<PropsWithChildren<unknown>> = ({ children }) => {
     return (
-        <Text fontSize="sm" color={useColorModeValue('gray.500', 'whiteAlpha.600')}>
+        <Text fontSize="sm" color="helperText">
             {children}
         </Text>
     );
@@ -85,14 +78,6 @@ const UserAccountPage: NextPage<UserAccountPageProps> = () => {
         es: 'Español',
         el: 'Ελληνικά'
     };
-
-    // if (status !== 'authenticated') {
-    //     return (
-    //         <AuthGard>
-    //             <>tralala</>
-    //         </AuthGard>
-    //     );
-    // }
 
     return (
         <PageListingLayout
@@ -193,17 +178,6 @@ const UserAccountPage: NextPage<UserAccountPageProps> = () => {
                                 </Stack>
                             </FormControl>
                         </UserAccountSection>
-                        {/* 
-                        <UserAccountSection title={f('connectAccounts')}>
-                            <Wrap>
-                                <Button leftIcon={<Icon as={FaGithub} />}>
-                                    {f('connectGithub')}
-                                </Button>
-                                <Button leftIcon={<Icon as={FaGoogle} />}>
-                                    {f('connectGoogle')}
-                                </Button>
-                            </Wrap>
-                        </UserAccountSection> */}
 
                         <Box>
                             <Stack
