@@ -1,5 +1,4 @@
 import { Button } from '@chakra-ui/button';
-import { useColorModeValue } from '@chakra-ui/color-mode';
 import { FormControl } from '@chakra-ui/form-control';
 import { CheckIcon } from '@chakra-ui/icons';
 import { Input } from '@chakra-ui/input';
@@ -20,8 +19,6 @@ const CallToActionNewsletter: React.FC<Props> = ({ colorScheme = 'green' }) => {
     const [state, setState] = useState('initial');
     const [error, setError] = useState(false);
 
-    const feedbackTextColor = useColorModeValue('gray.800', 'gray.300');
-
     return (
         <Box>
             <Stack
@@ -36,7 +33,7 @@ const CallToActionNewsletter: React.FC<Props> = ({ colorScheme = 'green' }) => {
 
                     // remove this code and implement your submit logic right here
                     setTimeout(() => {
-                        if (email === 'fail@example.com') {
+                        if (email.includes('fail')) {
                             setError(true);
                             setState('initial');
                             return;
@@ -76,14 +73,18 @@ const CallToActionNewsletter: React.FC<Props> = ({ colorScheme = 'green' }) => {
                     </Button>
                 </FormControl>
             </Stack>
-            {error ||
-                (state !== 'initial' && (
-                    <Text mt={2} color={error ? 'red.500' : feedbackTextColor}>
-                        {error && <>{f('newsletterError')}</>}
-                        {state === 'submitting' && <>{f('newsletterSubscribing')}</>}
-                        {state === 'success' && <>{f('newsletterSubscribed')}</>}
-                    </Text>
-                ))}
+            {error && (
+                <Text mt={2} color="error">
+                    {f('newsletterError')}
+                </Text>
+            )}
+            {state !== 'initial' && (
+                <Text mt={2}>
+                    {error && <>{f('newsletterError')}</>}
+                    {state === 'submitting' && <>{f('newsletterSubscribing')}</>}
+                    {state === 'success' && <>{f('newsletterSubscribed')}</>}
+                </Text>
+            )}
         </Box>
     );
 };
