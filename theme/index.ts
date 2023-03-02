@@ -24,6 +24,22 @@ const theme = extendTheme({
     },
     components: {
         // LinkOverlay
+    },
+    semanticTokens: {
+        colors: {
+            bodyBg: {
+                default: 'white',
+                _dark: 'gray.800'
+            },
+            surface: {
+                default: 'white',
+                _dark: 'gray.900'
+            },
+            textOnSurface: {
+                default: 'black',
+                _dark: 'white'
+            }
+        }
     }
 });
 

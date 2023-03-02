@@ -1,4 +1,4 @@
-import { Box, SpacerProps, useColorModeValue } from '@chakra-ui/react';
+import { Box, SpacerProps } from '@chakra-ui/react';
 import { PropsWithChildren } from 'react';
 import { BASE_TRANSITION } from '../constants/ui/transitions';
 
@@ -19,7 +19,7 @@ const Card: React.FC<PropsWithChildren<ICardProps>> = ({
     return (
         <Box
             w={'full'}
-            bg={useColorModeValue('white', 'gray.900')}
+            backgroundColor="surface"
             boxShadow={'lg'}
             rounded={{ base: 'md' }}
             p={padding}
