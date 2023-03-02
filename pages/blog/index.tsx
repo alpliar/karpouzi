@@ -2,7 +2,8 @@ import { Box } from '@chakra-ui/react';
 import axios from 'axios';
 import { GetStaticProps } from 'next';
 import { useIntl } from 'react-intl';
-import LatestsPosts from '../../components/LatestsPosts';
+import GridBlogPosts from '../../components/BlogPostsGrid';
+import Section from '../../components/layout/Section';
 import PageListingLayout from '../../components/pageListingLayout';
 import { API_BASE_URL } from '../../constants/api';
 import { ONE_HOUR } from '../../constants/time.constants';
@@ -54,15 +55,9 @@ const BlogHome = ({ posts }: { posts: Array<BlogPost> }) => {
                     isCurrentPage: true
                 }
             ]}
-            subtitle={`She put his pistol down, picked up her fletcher, dialed the barrel over to
-                    single shot, and very carefully put a toxin dart through the center of a broken
-                    mirror bent and elongated as they fell. He woke and found her stretched beside
-                    him in the coffin for Armitage’s call. Light from a service hatch at the rear
-                    wall dulling the roar of the room where Case waited.`}>
+            subtitle={f('blogSubtitle')}>
             {posts && (
-                <Box mx="auto" maxWidth={APP_MAX_WIDTH} py={2}>
-                    <LatestsPosts posts={posts} />
-                </Box>
+                <Section title={f('latestPosts')} component={<GridBlogPosts posts={posts} />} />
             )}
         </PageListingLayout>
     );

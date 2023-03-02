@@ -6,7 +6,7 @@ interface ILatestsPostsProps {
     posts: Array<BlogPost>;
 }
 
-const LatestsPosts: React.FC<ILatestsPostsProps> = ({ posts }) => {
+const GridBlogPosts: React.FC<ILatestsPostsProps> = ({ posts }) => {
     return (
         <SimpleGrid columns={{ base: 1, sm: 2, xl: 3, '3xl': 4 }} spacing={4}>
             {posts.map((post) => (
@@ -18,4 +18,4 @@ const LatestsPosts: React.FC<ILatestsPostsProps> = ({ posts }) => {
     );
 };
 
-export default LatestsPosts;
+export default GridBlogPosts;
