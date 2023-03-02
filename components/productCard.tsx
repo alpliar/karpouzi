@@ -124,7 +124,10 @@ const ProductCard: React.FC<IProps> = ({
                                     pathname: '/shop/product/[slug]',
                                     query: { slug: product.slug }
                                 }}>
-                                <LinkOverlay>
+                                <LinkOverlay
+                                    _hover={{
+                                        textDecoration: 'underline'
+                                    }}>
                                     <Heading
                                         size={{ base: 'xs', md: 'sm' }}
                                         // textShadow="sm"
