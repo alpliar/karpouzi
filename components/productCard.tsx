@@ -81,7 +81,6 @@ const ProductCard: React.FC<IProps> = ({
                         mt={negativeCardPadding}
                         mx={negativeCardPadding}
                         mb={cardPadding}
-                        pos={'relative'}
                         overflow="hidden">
                         <AspectRatio ratio={1}>
                             <Image

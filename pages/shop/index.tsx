@@ -7,7 +7,7 @@ import PageListingLayout from '../../components/pageListingLayout';
 import { API_BASE_URL } from '../../constants/api';
 import { ONE_HOUR } from '../../constants/time.constants';
 import { APP_MAX_WIDTH } from '../../constants/ui/main.layout';
-import { ShopCategoryWithProductsAndAsset } from '../../graphql/models/shop/category.model';
+import { ShopCategoryWithAssetAndPartialProducts } from '../../graphql/models/shop/category.model';
 import errorHandler from '../../utils/errorsHandler';
 import { CategoriesResponse } from '../api/shop/categories';
 
@@ -32,7 +32,7 @@ export const getStaticProps: GetStaticProps = async () => {
 };
 
 type ShopPageProps = {
-    categories: ShopCategoryWithProductsAndAsset[];
+    categories: ShopCategoryWithAssetAndPartialProducts[];
 };
 
 export default function ShopPage({ categories }: ShopPageProps) {
@@ -61,8 +61,9 @@ export default function ShopPage({ categories }: ShopPageProps) {
             titleComplement={` (${categories?.length || 0} ${f('categories').toLocaleLowerCase()})`}
             subtitle={intl.formatMessage({ id: 'shopDescription' })}>
             <SimpleGrid
-                columns={{ base: 1, sm: 2, md: 3, xl: 4 }}
-                spacing={4}
+                columns={{ base: 2, sm: 3, md: 4, '2xl': 5 }}
+                spacingX={{ base: 1, sm: 2, '2xl': 4 }}
+                spacingY={{ base: 4, sm: 4, '2xl': 8 }}
                 mx="auto"
                 maxWidth={APP_MAX_WIDTH}
                 paddingY={{ base: 2, sm: 4 }}>
