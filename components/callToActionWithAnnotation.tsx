@@ -1,7 +1,6 @@
 /* eslint-disable @next/next/no-page-custom-font */
 import { Box, Container, Heading, Stack, Text } from '@chakra-ui/layout';
 
-import { useColorModeValue } from '@chakra-ui/color-mode';
 import { createIcon, Icon } from '@chakra-ui/icon';
 
 import { BASE_TRANSITION } from '../constants/ui/transitions';
@@ -26,7 +25,6 @@ const CallToActionWithAnnotation: React.FC<IProps> = ({
     secondaryUrl,
     primaryActionAnnotation
 }) => {
-    const colorScheme = useColorModeValue('yellow', 'orange');
     return (
         <>
             <Container maxW="3xl" paddingY={16}>
@@ -52,7 +50,10 @@ const CallToActionWithAnnotation: React.FC<IProps> = ({
                                 fontFamily="heading"
                                 buttonProps={{
                                     size: 'lg',
-                                    colorScheme: colorScheme
+                                    colorScheme: 'yellow',
+                                    _dark: {
+                                        colorScheme: 'orange'
+                                    }
                                 }}
                                 rounded="lg"
                                 px={6}
