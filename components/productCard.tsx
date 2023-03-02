@@ -11,7 +11,7 @@ import {
 } from '@chakra-ui/layout';
 import { useBreakpointValue } from '@chakra-ui/media-query';
 import { IconProps } from '@chakra-ui/react';
-import { ComponentWithAs } from '@chakra-ui/system';
+import { ComponentWithAs, useColorModeValue } from '@chakra-ui/system';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { IconType } from 'react-icons';
@@ -73,7 +73,10 @@ const ProductCard: React.FC<IProps> = ({
 
     return (
         <LinkBox>
-            <Card fullHeight hoverBg={`${product.colorScheme}.50`} padding={cardPadding}>
+            <Card
+                fullHeight
+                hoverBg={useColorModeValue(`${product.colorScheme}.50`, 'undefined')}
+                padding={cardPadding}>
                 <Flex direction="column" height="100%">
                     <Box
                         position="relative"
