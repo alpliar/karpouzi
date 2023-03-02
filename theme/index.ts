@@ -1,15 +1,11 @@
 import { extendTheme } from '@chakra-ui/theme-utils';
-// import LinkOverlay from './components/linkOverlay';
+import fonts from './fonts';
 
 // Global style overrides
 import styles from './styles';
 
 const theme = extendTheme({
-    fonts: {
-        body: "'PT Sans Caption', sans-serif",
-        heading: "'Montserrat', sans-serif"
-        // mono: "",
-    },
+    fonts,
     config: {
         initialColorMode: 'system'
     },

@@ -98,7 +98,9 @@ const Section: React.FC<SectionProps> = ({
         : colorScheme;
     const gap = customGap || { base: 4, sm: 6, md: 12, xl: 24 };
 
-    const bgImage: BackgroundProps['backgroundImage'] = getPattern(pattern, 'paper', 0.3);
+    const bgImage: BackgroundProps['backgroundImage'] = pattern
+        ? getPattern(pattern, 'paper', 0.3)
+        : undefined;
 
     const bgSection: BackgroundProps['backgroundImage'] = sectionPattern
         ? getPattern(sectionPattern, 'textOnSurface', 0.04)
@@ -210,7 +212,7 @@ const Section: React.FC<SectionProps> = ({
                         alignItems="start"
                         backgroundColor={bannerBgColor}
                         rounded="md"
-                        bgImage={`url("${bgImage}")`}>
+                        bgImage={bgImage}>
                         <Flex
                             rounded="md"
                             w="full"

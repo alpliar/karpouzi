@@ -88,7 +88,7 @@ const CallToActionWithAnnotation: React.FC<IProps> = ({
                             />
                             <Text
                                 fontSize={{ base: 'xl', md: '2xl' }}
-                                fontFamily="Caveat"
+                                fontFamily="cursive"
                                 position="absolute"
                                 right={{ base: '-35px', md: '-100px', lg: '-115px' }}
                                 top={{ base: '-45px', md: '-25px' }}
