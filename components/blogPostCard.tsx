@@ -6,8 +6,7 @@ import {
     LinkOverlay,
     Stack,
     Text,
-    useBreakpointValue,
-    useColorModeValue
+    useBreakpointValue
 } from '@chakra-ui/react';
 import Link from 'next/link';
 import BlogPost from '../graphql/models/blog/post.model';
@@ -69,11 +68,7 @@ const BlogPostCard: React.FC<IBlogPostCardProps> = ({ post }) => {
                                     textDecoration: 'underline'
                                 }}
                                 transition="all 1s">
-                                <Heading
-                                    color={useColorModeValue('gray.700', 'white')}
-                                    fontSize="xl"
-                                    fontFamily="body"
-                                    noOfLines={3}>
+                                <Heading fontSize="xl" fontFamily="body" noOfLines={3}>
                                     {post.title}
                                 </Heading>
                             </LinkOverlay>
