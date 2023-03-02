@@ -75,11 +75,6 @@ const CallToActionWithAnnotation: React.FC<IProps> = ({
                         <Box>
                             <Icon
                                 as={Arrow}
-                                color={useColorModeValue('gray.800', 'gray.300')}
-                                stroke={{
-                                    base: useColorModeValue('gray.800', 'gray.300'),
-                                    sm: 'inherit'
-                                }}
                                 w={{ base: 50, md: 71 }}
                                 position="absolute"
                                 transition={BASE_TRANSITION}
@@ -87,8 +82,6 @@ const CallToActionWithAnnotation: React.FC<IProps> = ({
                                 top="10px"
                                 transform={{
                                     base: 'scale(.8) rotate(-90deg) translateY(-45px) translateX(30px)',
-                                    // sm: 'rotate(-90deg) translateY(-35px) translateX(30px) scale(1)'
-                                    // base: 'scale(.5) rotate(-38deg) translate(-20px, -14px)',
                                     md: 'scale(1)'
                                 }}
                             />
