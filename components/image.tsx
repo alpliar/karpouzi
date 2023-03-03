@@ -11,7 +11,7 @@ export interface ImageProps {
     height?: LayoutProps['height'];
     sizes?: NextImageProps['sizes'];
     priority?: NextImageProps['priority'];
-    quality: NextImageProps['quality'];
+    quality?: NextImageProps['quality'];
     blurDataURL?: NextImageProps['blurDataURL'];
     cover?: boolean;
     objectFit?: 'cover' | 'contain' | 'fill';

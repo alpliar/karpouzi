@@ -56,7 +56,6 @@ const CategoryCard: React.FC<IProps> = ({ category }) => {
                                 sizes={pictureSizes}
                                 priority
                                 height={imageHeight}
-                                quality={90}
                                 blurDataURL={category.picture.thumbnail}
                             />
                         </AspectRatio>
