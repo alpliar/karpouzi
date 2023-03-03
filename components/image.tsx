@@ -13,6 +13,8 @@ export interface ImageProps {
     priority?: NextImageProps['priority'];
     quality: NextImageProps['quality'];
     blurDataURL?: NextImageProps['blurDataURL'];
+    cover?: boolean;
+    objectFit?: 'cover' | 'contain' | 'fill';
 }
 
 export const Image: React.FC<ImageProps & Omit<BoxProps, 'as'>> = ({
@@ -24,6 +26,7 @@ export const Image: React.FC<ImageProps & Omit<BoxProps, 'as'>> = ({
     priority = undefined,
     quality = 75,
     blurDataURL = undefined,
+    objectFit = 'cover',
     ...rest
 }) => {
     return (
@@ -31,7 +34,7 @@ export const Image: React.FC<ImageProps & Omit<BoxProps, 'as'>> = ({
             <NextImage
                 fill
                 style={{
-                    objectFit: 'cover'
+                    objectFit
                 }}
                 src={src}
                 alt={alt}
