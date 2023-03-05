@@ -14,7 +14,8 @@ const i18nConfig = require('./constants/i18n.config.json');
  */
 const nextConfig = withPWA({
     images: {
-        domains: ['media.graphassets.com']
+        domains: ['media.graphassets.com'],
+        deviceSizes: [320, 480, 640, 750, 828, 1080, 1200, 1920, 2048, 3840]
     },
     i18n: {
         locales: i18nConfig.supportedLocales,
