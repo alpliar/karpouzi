@@ -31,11 +31,13 @@ const SectionSideBySide: React.FC<Props> = ({ sections }) => {
                             colorScheme={colorScheme}
                             isEven={isEven}
                             imageTransform={{
-                                md: `
-                                    translateY(${isEven ? 5 : 5}%) 
-                                    translateX(${isEven ? -5 : 5}%)`
+                                sm: `
+                                    translateY(${isEven ? 2 : 2}%) 
+                                    translateX(${isEven ? -2 : 2}%)
+                                    rotate(${isEven ? '-.5deg' : '.5deg'})
+                                    `
                             }}
-                            customImageSize={{ base: 'full', sm: 'md', md: 'lg' }}
+                            customImageSize={{ base: 'full', sm: undefined }}
                             customGap={{ base: 4, sm: 12, md: 24, xl: 32 }}
                         />
                     );
