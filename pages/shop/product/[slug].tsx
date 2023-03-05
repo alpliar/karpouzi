@@ -158,7 +158,7 @@ const ProductPage: NextPage<ProductPageProps> = ({ product, description, localiz
             }
             breadcrumbs={[
                 {
-                    link: '/home',
+                    link: '/',
                     alt: f('goToPageName', { name: f('home') }),
                     text: f('home'),
                     isCurrentPage: false
@@ -278,7 +278,8 @@ const ProductPage: NextPage<ProductPageProps> = ({ product, description, localiz
 
                             <AddToCart slug={product.slug} name={productName} quantity={1} />
                         </Stack>
-                    }></Section>
+                    }
+                />
 
                 <Section
                     id="reviews"
