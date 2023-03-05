@@ -28,7 +28,7 @@ const ImageV2: React.FC<ImageV2Props & AspectRatioProps> = ({
                     fill
                     priority={priority}
                     quality={30}
-                    // placeholder="blur"
+                    // placeholder="blur" //TODO: check why this rule breaks things
                     src={src}
                     sizes={`
                         (max-width: 30em) 100vw, 

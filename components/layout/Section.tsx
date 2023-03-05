@@ -1,5 +1,4 @@
 import {
-    AspectRatio,
     AspectRatioProps,
     BackgroundProps,
     Box,
@@ -18,7 +17,7 @@ import React from 'react';
 import { APP_MAX_WIDTH } from '../../constants/ui/main.layout';
 import { BASE_TRANSITION } from '../../constants/ui/transitions';
 import { getPattern, Pattern } from '../../utils/patterns';
-import { Image } from '../image';
+import ImageV2 from '../ImageV2';
 import Link from '../link';
 
 export interface SectionProps {
@@ -99,12 +98,13 @@ const Section: React.FC<SectionProps> = ({
     const gap = customGap || { base: 4, sm: 6, md: 12, xl: 24 };
 
     const bgImage: BackgroundProps['backgroundImage'] = pattern
-        ? getPattern(pattern, 'paper', 0.3)
+        ? getPattern(pattern, 'paper', 0.2)
         : undefined;
 
     const bgSection: BackgroundProps['backgroundImage'] = sectionPattern
         ? getPattern(sectionPattern, 'textOnSurface', 0.04)
         : undefined;
+
     return (
         <Box
             id={id}
@@ -112,6 +112,7 @@ const Section: React.FC<SectionProps> = ({
             bgImage={`url("${bgSection}")`}
             paddingBottom={paddingY}
             paddingTop={isFirst ? 0 : paddingY}
+            transition={BASE_TRANSITION}
             // paddingBottom={{ base: 4 }}
         >
             <Flex
@@ -144,7 +145,8 @@ const Section: React.FC<SectionProps> = ({
                         // {...textColor}
                         lineHeight={{
                             md: 'shorter'
-                        }}>
+                        }}
+                        maxWidth={{ sm: '90%' }}>
                         {title}
                         {titleComplement && (
                             <Text as="span" fontWeight="light" fontSize=".6em">
@@ -206,32 +208,32 @@ const Section: React.FC<SectionProps> = ({
                 {image && (
                     <Flex
                         transition={BASE_TRANSITION}
-                        w={customImageSize || 'full'}
+                        width={customImageSize || 'full'}
                         // alignSelf="stretch"
                         alignSelf={fillImage ? 'stretch' : 'start'}
                         alignItems="start"
                         backgroundColor={bannerBgColor}
                         rounded="md"
-                        bgImage={bgImage}>
+                        bgImage={`url("${bgImage}")`}
+                        maxWidth={{ sm: 'xs' }}>
                         <Flex
                             rounded="md"
-                            w="full"
+                            width="full"
                             boxShadow="md"
                             overflow="hidden"
                             transform={imageTransform}
-                            alignSelf={fillImage ? 'stretch' : undefined}>
-                            <AspectRatio ratio={customImageRatio || 1} w="full">
-                                <Image
-                                    alignSelf="stretch"
-                                    w={{ base: 'full', sm: '50vw' }}
-                                    h={{ base: '100vw', sm: '50vw' }}
-                                    src={image}
-                                    alt={title}
-                                    quality={60}
-                                    priority={priorityImage}
-                                    blurDataURL={imageThumbnail}
-                                />
-                            </AspectRatio>
+                            transition={BASE_TRANSITION}
+                            alignSelf={fillImage ? 'stretch' : undefined}
+                            // maxWidth={{ sm: 'sm' }}
+                        >
+                            <ImageV2
+                                src={image}
+                                alt={title}
+                                blurDataURL={imageThumbnail}
+                                priority={priorityImage}
+                                ratio={customImageRatio || 1}
+                                width={{ base: 'full', md: 'sm' }}
+                            />
                         </Flex>
                     </Flex>
                 )}
