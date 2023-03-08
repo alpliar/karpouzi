@@ -1,14 +1,5 @@
 import { BellIcon } from '@chakra-ui/icons';
-import {
-    Badge,
-    Box,
-    Button,
-    Container,
-    Stack,
-    Text,
-    useBreakpointValue,
-    useDisclosure
-} from '@chakra-ui/react';
+import { Badge, Container, Stack, Text } from '@chakra-ui/react';
 import axios from 'axios';
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import Head from 'next/head';
@@ -16,13 +7,13 @@ import { useRouter } from 'next/router';
 import { useIntl } from 'react-intl';
 import { Root } from 'remark-html';
 import Section from '../../../components/layout/Section';
-import Link from '../../../components/link';
 import MarkdownRendered from '../../../components/MarkdownRendered';
 import PageListingLayout from '../../../components/pageListingLayout';
 import Rating from '../../../components/rating';
 import Reviews from '../../../components/Reviews';
 import { API_BASE_URL } from '../../../constants/api';
 import { ONE_DAY } from '../../../constants/time.constants';
+import { SLOW_TRANSITION } from '../../../constants/ui/transitions';
 import ShopCategory from '../../../graphql/models/shop/category.model';
 import Product, {
     ParsedProductLocalization,
@@ -106,14 +97,8 @@ interface ProductPageProps {
 
 const ProductPage: NextPage<ProductPageProps> = ({ product, description, localizations }) => {
     const router = useRouter();
-    const { isOpen, onToggle } = useDisclosure();
     const { formatMessage, formatNumber } = useIntl();
     const f = (id: string, values: any = null) => formatMessage({ id }, values);
-
-    // const imageSize = useBreakpointValue({ base: '100', md: 'xs', xl: 'sm' });
-    // const bigImageSize = useBreakpointValue({ base: '32', sm: '44', md: 'sm', xl: 'lg' });
-    const fillInspiringPicture = useBreakpointValue({ base: false, sm: !isOpen });
-    const fillPrincipalImage = useBreakpointValue({ sm: true, md: false });
 
     if (!product) return null;
 
@@ -199,55 +184,22 @@ const ProductPage: NextPage<ProductPageProps> = ({ product, description, localiz
             <Container p={{ base: 0 }} maxW="full">
                 <Section
                     id="description"
-                    isFirst
                     priorityImage
                     centerItems={false}
                     colorScheme={colorScheme}
                     useSecondaryColor
-                    // customImageSize={imageSize}
                     isEven
-                    // customDirection={isOpen ? 'column' : undefined}
-                    fillImage={fillInspiringPicture}
                     title={f('description')}
-                    // image={isOpen ? undefined : product.inspiringPicture?.asset.url}
+                    pattern="curtain"
                     image={product.inspiringPicture?.asset.url}
-                    customImageSize={isOpen ? { base: 'full', md: '3xs', xl: 'xl' } : undefined}
                     imageThumbnail={product.inspiringPicture?.asset.thumbnail}
-                    customDirection={isOpen ? { base: 'column', md: 'row' } : undefined}
-                    customImageRatio={isOpen ? { base: 2 / 1, md: 1 / 2 } : undefined}
+                    imageContainerProps={{
+                        maxWidth: { sm: 'sm' },
+                        transform: 'rotate(-.5deg) scale(90%)'
+                    }}
                     component={
-                        <Stack spacing={5} textAlign="left" fontSize={{ xl: 'xl' }}>
-                            {/* <Text as="p">{productDescription}</Text> */}
-                            <Box maxHeight={isOpen ? 'inherit' : 'xs'} overflow="hidden">
-                                <MarkdownRendered
-                                    ast={productDescription}
-                                    // noOfLines={!isOpen ? 8 : undefined}
-                                />
-                            </Box>
-                            <Box>
-                                {isOpen ? (
-                                    <Link
-                                        asButton
-                                        href="#description"
-                                        onClick={onToggle}
-                                        buttonProps={{
-                                            colorScheme:
-                                                colorScheme === 'blackAlpha' ? 'gray' : colorScheme,
-                                            shadow: 'md'
-                                        }}>
-                                        {f('readLess')}
-                                    </Link>
-                                ) : (
-                                    <Button
-                                        shadow="md"
-                                        onClick={onToggle}
-                                        colorScheme={
-                                            colorScheme === 'blackAlpha' ? 'gray' : colorScheme
-                                        }>
-                                        {f('readMore')}
-                                    </Button>
-                                )}
-                            </Box>
+                        <Stack spacing={5} textAlign="left">
+                            <MarkdownRendered ast={productDescription} />
                         </Stack>
                     }
                 />
@@ -260,10 +212,12 @@ const ProductPage: NextPage<ProductPageProps> = ({ product, description, localiz
                     imageThumbnail={product.coverPicture.asset.thumbnail}
                     sectionPattern="lisbon"
                     pattern="bamboo"
-                    fillImage={fillPrincipalImage}
-                    imageTransform={{ sm: 'scale(98%) rotate(-.5deg)' }}
+                    imageContainerProps={{
+                        transform: { sm: 'scale(98%) rotate(.5deg)' }
+                    }}
+                    textAlign={{ base: 'center', sm: 'start' }}
                     component={
-                        <Stack spacing={4} maxW="sm">
+                        <Stack spacing={4} maxW={{ sm: 'sm' }}>
                             <Rating rate={rate} count={reviewCount} target="#reviews" />
 
                             <Text fontSize="4xl" lineHeight="1em" fontWeight="bold">
@@ -283,6 +237,7 @@ const ProductPage: NextPage<ProductPageProps> = ({ product, description, localiz
 
                 <Section
                     id="reviews"
+                    sectionPattern="architect"
                     colorScheme={colorScheme}
                     useSecondaryColor
                     title={f('reviews')}
@@ -300,10 +255,18 @@ const ProductPage: NextPage<ProductPageProps> = ({ product, description, localiz
                     description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Earum minimaquaerat fugit ullam illo ipsa perspiciatis sit voluptatem!"
                     image={category.picture.url}
                     fillImage
-                    imageTransform={{ md: 'scale(80%)' }}
-                    customImageSize={{ base: 'full', sm: 'xs' }}
-                    customImageRatio={{ base: 2 / 1, sm: undefined, md: 1 }}
-                    pattern="iLikeFood"
+                    imageContainerProps={{
+                        filter: 'saturate(80%)',
+                        transform: 'scale(90%) rotate(0deg) translate(0%, 0%)',
+                        transition: SLOW_TRANSITION,
+                        _hover: {
+                            transform: 'scale(100%) rotate(-2.5deg) translate(-12%, 4%)',
+                            filter: 'saturate(100%)'
+                        },
+                        maxWidth: { sm: '2xs' }
+                    }}
+                    // pattern="bankNote"
+                    pattern="churchOnSunday"
                 />
             </Container>
         </PageListingLayout>
