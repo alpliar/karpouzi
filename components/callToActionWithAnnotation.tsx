@@ -27,7 +27,7 @@ const CallToActionWithAnnotation: React.FC<IProps> = ({
 }) => {
     return (
         <>
-            <Container maxW="3xl">
+            <Container maxW="xl">
                 <Stack as={Box} spacing={{ base: 8, md: 7 }} py={{ base: 4, md: 15 }}>
                     <Heading fontSize={{ base: '4xl', sm: '6xl', md: '6xl' }}>{title}</Heading>
                     <Text
