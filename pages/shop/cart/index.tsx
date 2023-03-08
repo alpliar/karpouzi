@@ -1,10 +1,10 @@
-import { Box, SimpleGrid } from '@chakra-ui/react';
+import { SimpleGrid } from '@chakra-ui/react';
 import { useIntl } from 'react-intl';
 import { useSelector } from 'react-redux';
 import CartItem from '../../../components/cartItem';
+import Section from '../../../components/layout/Section';
 import NoContentBanner from '../../../components/NoContentBanner';
 import PageListingLayout from '../../../components/pageListingLayout';
-import { APP_MAX_WIDTH } from '../../../constants/ui/main.layout';
 import { RootState } from '../../../redux/reducer';
 
 export default function CartPage() {
@@ -38,35 +38,43 @@ export default function CartPage() {
             titleComplement={` (${cart.length} ${intl
                 .formatMessage({ id: 'products' })
                 .toLocaleLowerCase()})`}>
-            <Box maxWidth={APP_MAX_WIDTH} mx="auto" py={2}>
-                {!isCartEmpty && (
-                    <SimpleGrid columns={{ base: 1, sm: 2, lg: 3 }} spacingX="0.5em" spacingY="1em">
-                        {cart.map((item, index) => (
-                            <CartItem
-                                key={`${item.slug}-${index}`}
-                                slug={item.slug}
-                                quantity={item.quantity}
-                            />
-                        ))}
-                    </SimpleGrid>
-                )}
+            <Section
+                colorScheme="white"
+                title={intl.formatMessage({ id: 'products' })}
+                component={
+                    <>
+                        {!isCartEmpty && (
+                            <SimpleGrid
+                                columns={{ base: 1, sm: 2, lg: 3 }}
+                                spacingX="0.5em"
+                                spacingY="1em">
+                                {cart.map((item, index) => (
+                                    <CartItem
+                                        key={`${item.slug}-${index}`}
+                                        slug={item.slug}
+                                        quantity={item.quantity}
+                                    />
+                                ))}
+                            </SimpleGrid>
+                        )}
 
-                {isCartEmpty && (
-                    <NoContentBanner
-                        text={intl.formatMessage({ id: 'cartEmpty' })}
-                        helperText={intl.formatMessage({ id: 'sinceYoureHere' })}
-                        links={[
-                            {
-                                href: '/shop',
-                                text: intl.formatMessage(
-                                    { id: 'goToPageName' },
-                                    { name: intl.formatMessage({ id: 'menuEntryShop' }) }
-                                )
-                            }
-                        ]}
-                    />
-                )}
-            </Box>
+                        {isCartEmpty && (
+                            <NoContentBanner
+                                text={intl.formatMessage({ id: 'cartEmpty' })}
+                                helperText={intl.formatMessage({ id: 'sinceYoureHere' })}
+                                links={[
+                                    {
+                                        href: '/shop',
+                                        text: intl.formatMessage(
+                                            { id: 'goToPageName' },
+                                            { name: intl.formatMessage({ id: 'menuEntryShop' }) }
+                                        )
+                                    }
+                                ]}
+                            />
+                        )}
+                    </>
+                }></Section>
         </PageListingLayout>
     );
 }
