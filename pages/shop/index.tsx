@@ -3,6 +3,7 @@ import axios from 'axios';
 import { GetStaticProps } from 'next';
 import { useIntl } from 'react-intl';
 import CategoryCard from '../../components/categoryCard';
+import Section from '../../components/layout/Section';
 import PageListingLayout from '../../components/pageListingLayout';
 import { API_BASE_URL } from '../../constants/api';
 import { ONE_HOUR } from '../../constants/time.constants';
@@ -60,18 +61,23 @@ export default function ShopPage({ categories }: ShopPageProps) {
             ]}
             titleComplement={` (${categories?.length || 0} ${f('categories').toLocaleLowerCase()})`}
             subtitle={intl.formatMessage({ id: 'shopDescription' })}>
-            <SimpleGrid
-                columns={{ base: 2, sm: 3, md: 4, '2xl': 5 }}
-                spacingX={{ base: 1, sm: 2, '2xl': 4 }}
-                spacingY={{ base: 4, sm: 4, '2xl': 8 }}
-                mx="auto"
-                maxWidth={APP_MAX_WIDTH}
-                paddingY={{ base: 2, sm: 4 }}>
-                {categories &&
-                    categories.map((category) => {
-                        return <CategoryCard key={category.id} category={category} />;
-                    })}
-            </SimpleGrid>
+            <Section
+                title={f('categories')}
+                colorScheme="white"
+                component={
+                    <SimpleGrid
+                        columns={{ base: 2, sm: 3, md: 4, '2xl': 5 }}
+                        spacingX={{ base: 1, sm: 2, '2xl': 4 }}
+                        spacingY={{ base: 4, sm: 4, '2xl': 8 }}
+                        mx="auto"
+                        maxWidth={APP_MAX_WIDTH}
+                        paddingY={{ base: 2, sm: 4 }}>
+                        {categories &&
+                            categories.map((category) => {
+                                return <CategoryCard key={category.id} category={category} />;
+                            })}
+                    </SimpleGrid>
+                }></Section>
         </PageListingLayout>
     );
 }
