@@ -25,20 +25,22 @@ const SectionSideBySide: React.FC<Props> = ({ sections }) => {
                     return (
                         <Section
                             key={index}
+                            // isFirst={!index}
                             pattern={pattern}
                             bgColor={bgColor}
                             {...section}
                             colorScheme={colorScheme}
                             isEven={isEven}
-                            imageTransform={{
-                                sm: `
-                                    translateY(${isEven ? 2 : 2}%) 
-                                    translateX(${isEven ? -2 : 2}%)
-                                    rotate(${isEven ? '-.5deg' : '.5deg'})
-                                    `
+                            imageContainerProps={{
+                                transform: {
+                                    sm: `
+                                        translateY(${isEven ? 2 : 2}%) 
+                                        translateX(${isEven ? -2 : 2}%)
+                                        rotate(${isEven ? '-.5deg' : '.5deg'})
+                                        `
+                                },
+                                maxWidth: { sm: '3xs' }
                             }}
-                            customImageSize={{ base: 'full', sm: undefined }}
-                            customGap={{ base: 4, sm: 12, md: 24, xl: 32 }}
                         />
                     );
                 })}
