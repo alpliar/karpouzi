@@ -17,7 +17,8 @@ class MyDocument extends Document {
                 </Head>
                 <body
                     style={{
-                        overflowY: 'scroll'
+                        overflowY: 'scroll',
+                        overflowX: 'hidden'
                     }}>
                     <Main />
                     <NextScript />
