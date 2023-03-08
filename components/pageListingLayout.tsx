@@ -1,4 +1,4 @@
-import { Box, Container, Stack } from '@chakra-ui/react';
+import { Box, Container } from '@chakra-ui/react';
 import { chakra, ThemingProps } from '@chakra-ui/system';
 import Head from 'next/head';
 import { PropsWithChildren } from 'react';
@@ -12,10 +12,10 @@ interface IPageLayoutProps {
     title: string;
     breadcrumbs: IBreadcrumbItemProps[];
     fullWidth?: boolean;
-    titleSlot?: React.ReactNode;
+    // titleSlot?: React.ReactNode;
     titleComplement?: React.ReactNode;
     subtitle?: React.ReactNode;
-    bannerSlot?: React.ReactNode;
+    // bannerSlot?: React.ReactNode;
     colorScheme?: ThemingProps['colorScheme'];
 }
 
@@ -24,10 +24,10 @@ const PageListingLayout: React.FC<PropsWithChildren<IPageLayoutProps>> = ({
     breadcrumbs,
     title,
     fullWidth,
-    titleSlot,
+    // titleSlot,
     titleComplement,
     subtitle,
-    bannerSlot,
+    // bannerSlot,
     colorScheme
 }) => {
     const containerPadding = { base: 2, sm: 4 };
@@ -54,20 +54,22 @@ const PageListingLayout: React.FC<PropsWithChildren<IPageLayoutProps>> = ({
                     p={fullWidth ? 0 : containerPadding}
                     maxW={fullWidth ? 'full' : APP_MAX_WIDTH}>
                     <Section
+                        isFirst
                         title={title}
                         titleComplement={titleComplement}
                         subtitle={subtitle}
                         colorScheme={colorScheme}
-                        useSecondaryColor
+                        usePlainColor
                         headingTag="h1"
                         aboveTitleSlot={<Breadcrumb entries={breadcrumbs} />}
-                        component={
-                            <Stack spacing={2}>
-                                <Box>{titleSlot}</Box>
-                                <Box>{bannerSlot}</Box>
-                            </Stack>
-                        }
-                        paddingY={{ base: 2, sm: 4 }}
+                        // component={
+                        //     <Stack spacing={2}>
+                        //         <Box>{titleSlot}</Box>
+                        //         <Box>{bannerSlot}</Box>
+                        //     </Stack>
+                        // }
+                        paddingY={{ base: 8, md: 8, xl: 8 }}
+                        paddingTop={{ base: 2 }}
                     />
                     {children}
                 </Container>
