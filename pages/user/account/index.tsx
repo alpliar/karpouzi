@@ -3,7 +3,7 @@ import { Checkbox } from '@chakra-ui/checkbox';
 import { FormControl, FormHelperText, FormLabel } from '@chakra-ui/form-control';
 import { Input } from '@chakra-ui/input';
 import { Box, Stack, Text, Wrap } from '@chakra-ui/layout';
-import { Button } from '@chakra-ui/react';
+import { Button, ThemingProps } from '@chakra-ui/react';
 import { Select } from '@chakra-ui/select';
 import { Textarea } from '@chakra-ui/textarea';
 import { GetServerSideProps, NextPage } from 'next';
@@ -13,7 +13,7 @@ import { useRouter } from 'next/router';
 import React, { PropsWithChildren } from 'react';
 import { useIntl } from 'react-intl';
 import AuthGard from '../../../components/AuthGard';
-import Section from '../../../components/layout/Section';
+import Section, { SectionProps } from '../../../components/layout/Section';
 import PageListingLayout from '../../../components/pageListingLayout';
 import { sendToast } from '../../../utils/uiToast';
 
@@ -33,16 +33,23 @@ export const getServerSideProps: GetServerSideProps<UserAccountPageProps> = asyn
 
 interface IUserAccountSectionProps {
     title: string;
+    colorScheme?: ThemingProps['colorScheme'];
+    pattern?: SectionProps['pattern'];
 }
 const UserAccountSection: React.FC<PropsWithChildren<IUserAccountSectionProps>> = ({
     title,
-    children
+    children,
+    colorScheme = 'white',
+    pattern
 }) => {
     return (
         <>
             <Section
-                colorScheme={'white'}
+                centerItems
+                sectionPattern={pattern}
+                colorScheme={colorScheme}
                 title={title}
+                paddingY={{ base: 8, md: 16, xl: 20 }}
                 component={<Box maxW="lg">{children}</Box>}
             />
         </>
@@ -81,6 +88,7 @@ const UserAccountPage: NextPage<UserAccountPageProps> = () => {
 
     return (
         <PageListingLayout
+            // colorScheme={'gray'}
             title={f('title')}
             breadcrumbs={[
                 {
@@ -100,7 +108,7 @@ const UserAccountPage: NextPage<UserAccountPageProps> = () => {
             <AuthGard>
                 <>
                     <Stack spacing={0} p={0}>
-                        <UserAccountSection title={f('personalInformations')}>
+                        <UserAccountSection title={f('personalInformations')} pattern="architect">
                             <FormControl id="name">
                                 <FormLabel>{f('name')}</FormLabel>
                                 <Input variant="filled" type="text" defaultValue={name || ''} />
@@ -118,12 +126,15 @@ const UserAccountPage: NextPage<UserAccountPageProps> = () => {
                             </FormControl>
                         </UserAccountSection>
 
-                        <UserAccountSection title={f('profilePhoto')}>
+                        <UserAccountSection
+                            title={f('profilePhoto')}
+                            colorScheme="gray"
+                            pattern="bankNote">
                             <Stack
                                 direction={{ base: 'column', sm: 'row' }}
                                 align="center"
                                 spacing={4}>
-                                <Avatar src={image || ''} size="xl" name="toto" />
+                                <Avatar src={image || ''} size="xl" name={name || 'unkown'} />
                                 <Stack direction="column">
                                     <Wrap>
                                         <Button colorScheme="green">{f('changePhoto')}</Button>
@@ -136,7 +147,7 @@ const UserAccountPage: NextPage<UserAccountPageProps> = () => {
                             </Stack>
                         </UserAccountSection>
 
-                        <UserAccountSection title={f('language')}>
+                        <UserAccountSection title={f('language')} pattern="architect">
                             <Stack spacing={4}>
                                 <FormControl id="country">
                                     <FormLabel>{f('displayLanguage')}</FormLabel>
@@ -179,16 +190,19 @@ const UserAccountPage: NextPage<UserAccountPageProps> = () => {
                             </FormControl>
                         </UserAccountSection>
 
-                        <Box>
-                            <Stack
-                                direction={{ base: 'column', sm: 'row' }}
-                                marginTop={16}
-                                spacing={2}
-                                justify="center">
-                                <Button colorScheme="green">{f('saveChanges')}</Button>
-                                <Button>{f('cancel')}</Button>
-                            </Stack>
-                        </Box>
+                        <Section
+                            title=""
+                            colorScheme="white"
+                            paddingY={{ base: 8, sm: 16, md: 20 }}
+                            component={
+                                <Stack
+                                    direction={{ base: 'column', sm: 'row' }}
+                                    spacing={2}
+                                    justify={{ base: 'center', sm: 'start' }}>
+                                    <Button colorScheme="green">{f('saveChanges')}</Button>
+                                    <Button>{f('cancel')}</Button>
+                                </Stack>
+                            }></Section>
                     </Stack>
                 </>
             </AuthGard>
