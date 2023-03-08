@@ -3,13 +3,13 @@ import NextImage, { ImageProps } from 'next/image';
 import React from 'react';
 import { BASE_TRANSITION } from '../constants/ui/transitions';
 
-type ImageV2Props = {
+export interface ImageV2Props {
     src: string;
     alt: string;
     blurDataURL?: string;
     priority?: boolean;
     imageProps?: Partial<ImageProps>;
-};
+}
 
 const ImageV2: React.FC<ImageV2Props & AspectRatioProps> = ({
     src,
