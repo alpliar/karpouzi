@@ -74,10 +74,12 @@ const Header: React.FC<HeaderProps> = ({ colorScheme = 'green' }) => {
     return (
         <>
             <Flex
+                zIndex={5}
                 boxShadow={boxShadow}
                 as="nav"
                 data-e2e="mainNavigation"
-                bgColor={headerBgColor(colorMode, colorScheme)}>
+                bgColor={headerBgColor(colorMode, colorScheme)}
+                position="relative">
                 <Wrap
                     align={{ base: 'auto', md: 'center' }}
                     justify="flex-end"
