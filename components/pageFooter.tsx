@@ -1,10 +1,14 @@
-import { Stack, Text } from '@chakra-ui/react';
+import { Stack, Text, ThemingProps } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import { useIntl } from 'react-intl';
 import BackToHome from './backToHome';
 import Section from './layout/Section';
 
-const Footer = () => {
+interface FooterProps {
+    colorScheme?: ThemingProps['colorScheme'];
+}
+
+const Footer: React.FC<FooterProps> = ({ colorScheme }) => {
     const { formatMessage } = useIntl();
     const f = (id: string, values?: any) => formatMessage({ id }, values);
     const router = useRouter();
@@ -15,7 +19,9 @@ const Footer = () => {
         <>
             <Section
                 sectionPattern="rain"
-                colorScheme="gray"
+                isLast
+                colorScheme={colorScheme}
+                usePlainColor
                 title={f('bottomOfPage')}
                 // description: copyrightMention,
                 component={
