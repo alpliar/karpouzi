@@ -160,7 +160,6 @@ const BlogPostPage = ({
                 subtitle={post.subtitle}>
                 <Stack spacing={0}>
                     <Section
-                        isFirst
                         title={''}
                         image={post.coverPicture.asset.url}
                         imageThumbnail={post.coverPicture.asset.thumbnail}
