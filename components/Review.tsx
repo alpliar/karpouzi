@@ -38,8 +38,9 @@ const Review: React.FC<Props> = ({ review }) => {
                     flexGrow={1}
                     as="cite"
                     fontFamily="cursive"
-                    fontWeight="400"
-                    fontSize="xl"
+                    fontWeight="bold"
+                    fontSize="sm"
+                    letterSpacing="0.12em"
                     fontStyle="normal"
                     position="relative"
                     display="block">
