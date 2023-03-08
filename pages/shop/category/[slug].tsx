@@ -4,6 +4,7 @@ import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import { useRouter } from 'next/router';
 import { useIntl } from 'react-intl';
 import { Root } from 'remark-html';
+import Section from '../../../components/layout/Section';
 import NoContentBanner from '../../../components/NoContentBanner';
 import PageListingLayout from '../../../components/pageListingLayout';
 import ProductCard from '../../../components/productCard';
@@ -126,35 +127,43 @@ const CategoryPage: NextPage<CategoryPageProps> = ({ category, localizations, _d
                     isCurrentPage: true
                 }
             ]}>
-            {!!category.products.length ? (
-                <SimpleGrid
-                    transition={BASE_TRANSITION}
-                    columns={{ base: 2, sm: 3, md: 4, '2xl': 5 }}
-                    spacingX={{ base: 1, sm: 2, '2xl': 4 }}
-                    spacingY={{ base: 4, sm: 4, '2xl': 8 }}
-                    mx="auto"
-                    maxWidth={APP_MAX_WIDTH}
-                    py={{ base: 2, sm: 4 }}>
-                    {category.products.map((product) => {
-                        return <ProductCard key={product.id} product={product} />;
-                    })}
-                </SimpleGrid>
-            ) : (
-                <NoContentBanner
-                    text={f('nothingToDisplay')}
-                    helperText={f('sinceYoureHere')}
-                    links={[
-                        {
-                            href: '/shop',
-                            text: f('goToPageName', { name: f('menuEntryShop') })
-                        },
-                        {
-                            href: '/blog',
-                            text: f('goToPageName', { name: f('menuEntryBlog') })
-                        }
-                    ]}
-                />
-            )}
+            <Section
+                title={f('products')}
+                colorScheme="white"
+                component={
+                    <>
+                        {!!category.products.length ? (
+                            <SimpleGrid
+                                transition={BASE_TRANSITION}
+                                columns={{ base: 2, sm: 3, md: 4, '2xl': 5 }}
+                                spacingX={{ base: 1, sm: 2, '2xl': 4 }}
+                                spacingY={{ base: 4, sm: 4, '2xl': 8 }}
+                                mx="auto"
+                                maxWidth={APP_MAX_WIDTH}
+                                py={{ base: 2, sm: 4 }}>
+                                {category.products.map((product) => {
+                                    return <ProductCard key={product.id} product={product} />;
+                                })}
+                            </SimpleGrid>
+                        ) : (
+                            <NoContentBanner
+                                text={f('nothingToDisplay')}
+                                helperText={f('sinceYoureHere')}
+                                links={[
+                                    {
+                                        href: '/shop',
+                                        text: f('goToPageName', { name: f('menuEntryShop') })
+                                    },
+                                    {
+                                        href: '/blog',
+                                        text: f('goToPageName', { name: f('menuEntryBlog') })
+                                    }
+                                ]}
+                            />
+                        )}
+                    </>
+                }
+            />
         </PageListingLayout>
     );
 };
