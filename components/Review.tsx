@@ -37,10 +37,7 @@ const Review: React.FC<Props> = ({ review }) => {
                     cursor={show ? undefined : 'pointer'}
                     flexGrow={1}
                     as="cite"
-                    fontFamily="cursive"
-                    fontWeight="bold"
-                    fontSize="sm"
-                    letterSpacing="0.12em"
+                    fontFamily="body"
                     fontStyle="normal"
                     position="relative"
                     display="block">
