@@ -27,7 +27,7 @@ const CallToActionWithAnnotation: React.FC<IProps> = ({
 }) => {
     return (
         <>
-            <Container maxW="3xl" paddingY={16}>
+            <Container maxW="3xl">
                 <Stack as={Box} spacing={{ base: 8, md: 7 }} py={{ base: 4, md: 15 }}>
                     <Heading fontSize={{ base: '4xl', sm: '6xl', md: '6xl' }}>{title}</Heading>
                     <Text
@@ -49,6 +49,7 @@ const CallToActionWithAnnotation: React.FC<IProps> = ({
                                 asButton
                                 fontFamily="heading"
                                 buttonProps={{
+                                    // variant: 'important',
                                     size: 'lg',
                                     colorScheme: 'yellow',
                                     _dark: {
