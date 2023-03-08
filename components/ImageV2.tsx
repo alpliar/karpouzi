@@ -40,7 +40,6 @@ const ImageV2: React.FC<ImageV2Props & AspectRatioProps> = ({
                     }}
                     {...imageProps}
                 />
-                {blurDataURL}
             </>
         </AspectRatio>
     );
