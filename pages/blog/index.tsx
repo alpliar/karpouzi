@@ -55,7 +55,11 @@ const BlogHome = ({ posts }: { posts: Array<BlogPost> }) => {
             ]}
             subtitle={f('blogSubtitle')}>
             {posts && (
-                <Section title={f('latestPosts')} component={<GridBlogPosts posts={posts} />} />
+                <Section
+                    colorScheme="white"
+                    title={f('posts')}
+                    component={<GridBlogPosts posts={posts} />}
+                />
             )}
         </PageListingLayout>
     );
