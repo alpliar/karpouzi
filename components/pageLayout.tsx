@@ -54,7 +54,7 @@ const PageLayout: React.FC<PageLayoutProps> = ({ children, colorScheme }) => {
                 {children}
             </Container>
 
-            <Footer />
+            <Footer colorScheme={colorScheme} />
         </>
     );
 };
