@@ -3,6 +3,7 @@ import { Box } from '@chakra-ui/react';
 import { useSession } from 'next-auth/react';
 import React from 'react';
 import { useIntl } from 'react-intl';
+import Section from './layout/Section';
 import LoginForm from './LoginForm';
 import NoContentBanner from './NoContentBanner';
 // import { sendToast } from '../utils/uiToast';
@@ -25,26 +26,26 @@ const AuthGard: React.FC<Props> = ({ children }) => {
 
     return (
         <>
-            <NoContentBanner
-                text={f('authenticationRequired')}
-                helperText={f('onceLoggedInFeatures')}
-                // links={[
-                //     {
-                //         href: '/help',
-                //         text: f('goToPageName', { name: f('menuEntryHelp') })
-                //     }
-                // ]}
-            >
-                {/* <HStack>
-                    <CircularProgress as="span" size="1em" isIndeterminate color="orange.500" />
-                    <Text as="span" fontSize="sm">
-                        {f('redirectingYouToPageName', { name: f('menuEntryLogin') })}
-                    </Text>
-                </HStack> */}
-                <Box fontFamily="body" fontSize="md">
-                    <LoginForm />
-                </Box>
-            </NoContentBanner>
+            <Section
+                colorScheme="orange"
+                sectionPattern="wiggle"
+                title=""
+                component={
+                    <NoContentBanner
+                        text={f('authenticationRequired')}
+                        helperText={f('onceLoggedInFeatures')}
+                        // links={[
+                        //     {
+                        //         href: '/help',
+                        //         text: f('goToPageName', { name: f('menuEntryHelp') })
+                        //     }
+                        // ]}
+                    >
+                        <Box fontFamily="body" fontSize="md">
+                            <LoginForm />
+                        </Box>
+                    </NoContentBanner>
+                }></Section>
         </>
     );
 };
