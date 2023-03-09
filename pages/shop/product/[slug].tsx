@@ -1,11 +1,12 @@
 import { BellIcon } from '@chakra-ui/icons';
-import { Badge, Container, Stack, Text } from '@chakra-ui/react';
+import { Badge, Box, Container, Flex, Heading, Stack, Text, ThemingProps } from '@chakra-ui/react';
 import axios from 'axios';
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useIntl } from 'react-intl';
 import { Root } from 'remark-html';
+import ImageV2 from '../../../components/ImageV2';
 import Section from '../../../components/layout/Section';
 import MarkdownRendered from '../../../components/MarkdownRendered';
 import PageListingLayout from '../../../components/pageListingLayout';
@@ -13,6 +14,7 @@ import Rating from '../../../components/rating';
 import Reviews from '../../../components/Reviews';
 import { API_BASE_URL } from '../../../constants/api';
 import { ONE_DAY } from '../../../constants/time.constants';
+import { APP_MAX_WIDTH } from '../../../constants/ui/main.layout';
 import { SLOW_TRANSITION } from '../../../constants/ui/transitions';
 import ShopCategory from '../../../graphql/models/shop/category.model';
 import Product, {
@@ -22,6 +24,7 @@ import Product, {
 import DateHelper from '../../../helpers/date.helper';
 import MarkdownHelper from '../../../helpers/markdown.helper';
 import AddToCart from '../../../redux/container/addToCart';
+import { getPattern } from '../../../utils/patterns';
 import { ProductResponse } from '../../api/shop/product/[slug]';
 import { ProductsResponse } from '../../api/shop/products/slugs';
 
@@ -87,6 +90,89 @@ export const getStaticPaths: GetStaticPaths = async ({ locales }) => {
             fallback: true
         };
     }
+};
+
+interface ProductPageDescriptionProps {
+    colorScheme: ThemingProps['colorScheme'];
+    productDescription: Root;
+    picture: Product['inspiringPicture'];
+}
+
+const ProductPageDescription: React.FC<ProductPageDescriptionProps> = ({
+    colorScheme,
+    picture,
+    productDescription
+}) => {
+    const { formatMessage } = useIntl();
+    const f = (id: string, values: any = null) => formatMessage({ id }, values);
+
+    const descriptionWidth = '60%';
+    const pictureWidth = `calc(100% - ${descriptionWidth})`;
+
+    return (
+        <Section
+            id="description"
+            colorScheme={colorScheme}
+            useSecondaryColor
+            fullWidth
+            paddingY={0}
+            minHeight={{ sm: '3xl' }}
+            component={
+                <Flex
+                    direction={{ base: 'column', sm: 'row' }}
+                    gap={4}
+                    position="relative"
+                    // height="full"
+                    minH={{ sm: '3xl' }}>
+                    <Box
+                        width="full"
+                        paddingX={{ base: 2, sm: 4 }}
+                        paddingY={{ base: 8, md: 16, xl: 24 }}
+                        maxWidth={APP_MAX_WIDTH}
+                        margin="auto">
+                        <Stack
+                            maxHeight={{ sm: '2xl' }}
+                            overflow="auto"
+                            spacing={4}
+                            width={{ base: 'full', sm: descriptionWidth }}
+                            paddingRight={{ sm: 8, md: undefined }}>
+                            <Heading fontSize="2xl">{f('description')}</Heading>
+                            <Stack spacing={5} textAlign="left">
+                                <MarkdownRendered ast={productDescription} />
+                            </Stack>
+                        </Stack>
+                    </Box>
+                    {picture && (
+                        <Box
+                            marginTop={{ sm: '-.8em', md: undefined }} // fills blank space above section
+                            width={{ base: 'full', sm: pictureWidth }}
+                            // height={{ sm: '3xl' }}
+                            marginStart={{ sm: descriptionWidth }}
+                            backgroundColor={`${colorScheme}.400`}
+                            _dark={{
+                                backgroundColor: `${colorScheme}.700`
+                            }}
+                            bgImage={getPattern('curtain', 'white', 0.5)}
+                            position={{ sm: 'absolute' }}
+                            inset={{ sm: 0 }}
+                            transform={{ sm: 'skewY(-1deg)' }}>
+                            <ImageV2
+                                src={picture.asset.url}
+                                alt={picture.alternativeText}
+                                blurDataURL={picture.asset.thumbnail}
+                                priority
+                                height={{ sm: 'full' }}
+                                // height={{ sm: 'calc(var(--chakra-sizes-3xl) + .8em)' }}
+                                imageProps={{
+                                    quality: 90
+                                }}
+                            />
+                        </Box>
+                    )}
+                </Flex>
+            }
+        />
+    );
 };
 
 interface ProductPageProps {
@@ -182,27 +268,12 @@ const ProductPage: NextPage<ProductPageProps> = ({ product, description, localiz
             </Head>
 
             <Container p={{ base: 0 }} maxW="full">
-                <Section
-                    id="description"
-                    priorityImage
-                    centerItems={false}
+                <ProductPageDescription
                     colorScheme={colorScheme}
-                    useSecondaryColor
-                    isEven
-                    title={f('description')}
-                    pattern="curtain"
-                    image={product.inspiringPicture?.asset.url}
-                    imageThumbnail={product.inspiringPicture?.asset.thumbnail}
-                    imageContainerProps={{
-                        maxWidth: { sm: 'sm' },
-                        transform: 'rotate(-.5deg) scale(90%)'
-                    }}
-                    component={
-                        <Stack spacing={5} textAlign="left">
-                            <MarkdownRendered ast={productDescription} />
-                        </Stack>
-                    }
+                    productDescription={productDescription}
+                    picture={product.inspiringPicture}
                 />
+
                 <Section
                     isEven={false}
                     colorScheme={colorScheme}
@@ -237,6 +308,7 @@ const ProductPage: NextPage<ProductPageProps> = ({ product, description, localiz
 
                 <Section
                     id="reviews"
+                    isEven={true}
                     sectionPattern="architect"
                     colorScheme={colorScheme}
                     useSecondaryColor
@@ -248,7 +320,7 @@ const ProductPage: NextPage<ProductPageProps> = ({ product, description, localiz
                     sectionPattern="plus"
                     colorScheme={colorScheme}
                     useSecondaryColor
-                    isEven={true}
+                    isEven={false}
                     title={f('fondOfName', { name: categoryName })}
                     url={`/shop/category/${category.slug}`}
                     buttonLabel={f('goToPageName', { name: categoryName })}
@@ -256,16 +328,16 @@ const ProductPage: NextPage<ProductPageProps> = ({ product, description, localiz
                     image={category.picture.url}
                     fillImage
                     imageContainerProps={{
-                        filter: 'saturate(80%)',
+                        // filter: 'saturate(80%)',
                         transform: 'scale(90%) rotate(0deg) translate(0%, 0%)',
                         transition: SLOW_TRANSITION,
-                        _hover: {
-                            transform: 'scale(100%) rotate(-2.5deg) translate(-12%, 4%)',
-                            filter: 'saturate(100%)'
-                        },
-                        maxWidth: { sm: '2xs' }
+                        // _hover: {
+                        //     transform: `scale(100%) rotate(1deg) translate(4%, 4%)`,
+                        //     filter: 'saturate(100%)'
+                        // },
+                        maxWidth: { sm: 'md' },
+                        ratio: 2 / 1
                     }}
-                    // pattern="bankNote"
                     pattern="churchOnSunday"
                 />
             </Container>
