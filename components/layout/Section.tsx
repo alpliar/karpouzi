@@ -28,7 +28,7 @@ export interface SectionProps {
     id?: string;
     useSecondaryColor?: boolean;
     usePlainColor?: boolean;
-    title: string;
+    title?: string;
     titleComplement?: React.ReactNode;
     subtitle?: string | React.ReactNode;
     description?: string;
@@ -127,6 +127,7 @@ const Section: React.FC<SectionProps & BoxProps> = ({
 
     return (
         <Box
+            zIndex={isFirst ? 1 : undefined}
             position="relative"
             isolation="isolate"
             _before={{
@@ -161,7 +162,7 @@ const Section: React.FC<SectionProps & BoxProps> = ({
                 transition={BASE_TRANSITION}
                 direction={customDirection || { base: 'column', sm: 'row' }}
                 width="full"
-                paddingX={{ base: 2, sm: 4 }}
+                paddingX={fullWidth ? undefined : { base: 2, sm: 4 }}
                 mx="auto"
                 maxWidth={fullWidth ? undefined : APP_MAX_WIDTH}
                 alignItems={centerItems ? 'center' : 'start'}
@@ -179,26 +180,28 @@ const Section: React.FC<SectionProps & BoxProps> = ({
                     }}>
                     {aboveTitleSlot && aboveTitleSlot}
 
-                    <Heading
-                        display="flex"
-                        flexWrap="wrap"
-                        alignItems="center"
-                        gap={2}
-                        as={headingTag}
-                        mb={subtitle || description || component || url ? 4 : 0}
-                        fontSize={headingFontSize}
-                        letterSpacing="tight"
-                        lineHeight={{
-                            md: 'shorter'
-                        }}
-                        maxWidth={{ sm: '90%' }}>
-                        {title}
-                        {titleComplement && (
-                            <Text as="span" fontWeight="light" fontSize=".6em">
-                                {titleComplement}
-                            </Text>
-                        )}
-                    </Heading>
+                    {title && (
+                        <Heading
+                            display="flex"
+                            flexWrap="wrap"
+                            alignItems="center"
+                            gap={2}
+                            as={headingTag}
+                            mb={subtitle || description || component || url ? 4 : 0}
+                            fontSize={headingFontSize}
+                            letterSpacing="tight"
+                            lineHeight={{
+                                md: 'shorter'
+                            }}
+                            maxWidth={{ sm: '90%' }}>
+                            {title}
+                            {titleComplement && (
+                                <Text as="span" fontWeight="light" fontSize=".6em">
+                                    {titleComplement}
+                                </Text>
+                            )}
+                        </Heading>
+                    )}
 
                     {subtitle && (
                         <Heading
@@ -257,7 +260,7 @@ const Section: React.FC<SectionProps & BoxProps> = ({
                         maxWidth={imageContainerProps?.maxWidth || imageContainerProps?.maxW}>
                         <ImageV2
                             src={image}
-                            alt={title}
+                            alt={title || 'illustration'}
                             blurDataURL={imageThumbnail}
                             priority={priorityImage}
                             ratio={customImageRatio || 1}
