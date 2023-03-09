@@ -164,7 +164,7 @@ const ProductPageDescription: React.FC<ProductPageDescriptionProps> = ({
                                 height={{ sm: 'full' }}
                                 // height={{ sm: 'calc(var(--chakra-sizes-3xl) + .8em)' }}
                                 imageProps={{
-                                    quality: 90
+                                    quality: 75
                                 }}
                             />
                         </Box>
