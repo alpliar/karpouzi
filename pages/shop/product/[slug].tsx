@@ -115,7 +115,7 @@ const ProductPageDescription: React.FC<ProductPageDescriptionProps> = ({
             colorScheme={colorScheme}
             useSecondaryColor
             fullWidth
-            paddingY={0}
+            paddingY={{ base: 8, sm: 0 }}
             minHeight={{ sm: '3xl' }}
             component={
                 <Flex
