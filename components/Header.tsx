@@ -127,8 +127,8 @@ const Header: React.FC<HeaderProps> = ({ colorScheme = 'green' }) => {
                                 <NavLocaleSelector compact />
                             </Flex>
                         </Flex>
-                        <NavLogin />
                         <NavCart />
+                        <NavLogin />
                         <Box display={{ base: 'block', md: 'none' }}>
                             <NavBurgerMenu handleClick={onToggle} />
                             <NavDrawer
