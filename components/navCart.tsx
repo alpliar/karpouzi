@@ -1,5 +1,4 @@
 import { Badge, Box, Center, Text } from '@chakra-ui/layout';
-import { useBreakpointValue } from '@chakra-ui/react';
 import { FaShoppingCart } from 'react-icons/fa';
 import { useIntl } from 'react-intl';
 import NavButton from './navButton';
@@ -13,7 +12,10 @@ const NavCart: React.FC<IProps> = ({ cartCount }) => {
     const { formatMessage } = useIntl();
     const f = (id: string, values?: any) => formatMessage({ id }, values);
 
-    const compact = useBreakpointValue({ base: true, md: false });
+    const compact = true; //useBreakpointValue({ base: true, md: false });
+
+    // Hide button if cart is empty
+    if (cartCount === 0) return null;
 
     return (
         <Popover
