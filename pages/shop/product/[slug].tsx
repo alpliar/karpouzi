@@ -273,6 +273,7 @@ const ProductPage: NextPage<ProductPageProps> = ({ product, description, localiz
                     useSecondaryColor
                     title={f('reviews')}
                     component={<Reviews reviews={product.reviews} />}
+                    minHeight="sm"
                 />
 
                 <Section
@@ -298,6 +299,7 @@ const ProductPage: NextPage<ProductPageProps> = ({ product, description, localiz
                         ratio: 2 / 1
                     }}
                     pattern="churchOnSunday"
+                    minHeight="sm"
                 />
             </Container>
         </PageListingLayout>
