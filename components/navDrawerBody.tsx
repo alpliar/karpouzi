@@ -2,20 +2,25 @@ import { LinkBox, LinkOverlay, Wrap, WrapItem } from '@chakra-ui/layout';
 import Link from 'next/link';
 import { useIntl } from 'react-intl';
 
-const NavDrawerBody = () => {
+const NavDrawerBody: React.FC = () => {
     const { formatMessage } = useIntl();
-    const f = (id: string, values: any = null) => formatMessage({ id }, values);
 
     const entries = [
         {
             href: '/shop',
-            alt: f('goToPageName', { name: f('menuEntryShop') }),
-            text: f('menuEntryShop')
+            alt: formatMessage(
+                { id: 'goToPageName' },
+                { name: formatMessage({ id: 'menuEntryShop' }) }
+            ),
+            text: formatMessage({ id: 'menuEntryShop' })
         },
         {
             href: '/blog',
-            alt: f('goToPageName', { name: f('menuEntryBlog') }),
-            text: f('menuEntryBlog')
+            alt: formatMessage(
+                { id: 'goToPageName' },
+                { name: formatMessage({ id: 'menuEntryBlog' }) }
+            ),
+            text: formatMessage({ id: 'menuEntryBlog' })
         }
     ];
 
@@ -46,5 +51,3 @@ const NavDrawerBody = () => {
 };
 
 export default NavDrawerBody;
-
-NavDrawerBody.propTypes = {};

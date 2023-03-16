@@ -13,7 +13,6 @@ const NavLoginAuthenticated: React.FC = () => {
     const { data: session } = useSession();
     const router = useRouter();
     const { formatMessage } = useIntl();
-    const f = (id: string, values: any = null) => formatMessage({ id }, values);
 
     const handleSignout = () => {
         signOut({
@@ -23,8 +22,8 @@ const NavLoginAuthenticated: React.FC = () => {
         })
             .catch((error) => {
                 sendToast(
-                    f('somethingWentWrong'),
-                    `${f('newsletterError')} ${error.toString()})`,
+                    formatMessage({ id: 'somethingWentWrong' }),
+                    `${formatMessage({ id: 'newsletterError' })} ${error.toString()})`,
                     'error',
                     3000,
                     'top'
@@ -32,7 +31,13 @@ const NavLoginAuthenticated: React.FC = () => {
                 return;
             })
             .finally(() => {
-                sendToast(f('loggedOutSuccessfully'), f('logoutFeatures'), 'success', 5000, 'top');
+                sendToast(
+                    formatMessage({ id: 'loggedOutSuccessfully' }),
+                    formatMessage({ id: 'logoutFeatures' }),
+                    'success',
+                    5000,
+                    'top'
+                );
             });
     };
 
@@ -68,7 +73,7 @@ const NavLoginAuthenticated: React.FC = () => {
                     display="flex"
                     alignItems="center">
                     <Icon as={IoLogOut} mr={1} />
-                    <Text as="span">{f('logout')}</Text>
+                    <Text as="span">{formatMessage({ id: 'logout' })}</Text>
                 </Link>
             }>
             <Link
@@ -78,7 +83,7 @@ const NavLoginAuthenticated: React.FC = () => {
                     colorScheme: 'green'
                 }}>
                 <Icon as={IoHome} boxSize=".8em" mr={1} />
-                {f('menuEntryUser')}
+                {formatMessage({ id: 'menuEntryUser' })}
             </Link>
         </Popover>
     );

@@ -66,7 +66,6 @@ const HelperText: React.FC<PropsWithChildren<unknown>> = ({ children }) => {
 
 const UserAccountPage: NextPage<UserAccountPageProps> = () => {
     const { formatMessage } = useIntl();
-    const f = (id: string, values?: any) => formatMessage({ id }, values);
     const router = useRouter();
 
     const { data: session } = useSession();
@@ -74,7 +73,11 @@ const UserAccountPage: NextPage<UserAccountPageProps> = () => {
 
     const changeLocale = (newLocale: string) => {
         if (newLocale !== router.locale) {
-            sendToast(f('updatingLocale'), f('newLocaleDetail', { name: newLocale }), 'info');
+            sendToast(
+                formatMessage({ id: 'updatingLocale' }),
+                formatMessage({ id: 'newLocaleDetail' }, { name: newLocale }),
+                'info'
+            );
         }
         router.push(router.pathname, router.asPath, { locale: newLocale, scroll: false });
     };
@@ -89,18 +92,24 @@ const UserAccountPage: NextPage<UserAccountPageProps> = () => {
     return (
         <PageListingLayout
             // colorScheme={'gray'}
-            title={f('title')}
+            title={formatMessage({ id: 'title' })}
             breadcrumbs={[
                 {
-                    text: f('home'),
+                    text: formatMessage({ id: 'home' }),
                     link: '/',
-                    alt: f('goToPageName', { name: f('home') }),
+                    alt: formatMessage(
+                        { id: 'goToPageName' },
+                        { name: formatMessage({ id: 'home' }) }
+                    ),
                     isCurrentPage: false
                 },
                 {
-                    text: f('menuEntryUser'),
+                    text: formatMessage({ id: 'menuEntryUser' }),
                     link: '/user/account',
-                    alt: f('goToPageName', { name: f('menuEntryUser') }),
+                    alt: formatMessage(
+                        { id: 'goToPageName' },
+                        { name: formatMessage({ id: 'menuEntryUser' }) }
+                    ),
                     isCurrentPage: true
                 }
             ]}
@@ -108,26 +117,32 @@ const UserAccountPage: NextPage<UserAccountPageProps> = () => {
             <AuthGard>
                 <>
                     <Stack spacing={0} p={0}>
-                        <UserAccountSection title={f('personalInformations')} pattern="architect">
+                        <UserAccountSection
+                            title={formatMessage({ id: 'personalInformations' })}
+                            pattern="architect">
                             <FormControl id="name">
-                                <FormLabel>{f('name')}</FormLabel>
+                                <FormLabel>{formatMessage({ id: 'name' })}</FormLabel>
                                 <Input variant="filled" type="text" defaultValue={name || ''} />
                                 {/* <FormHelperText>We'll never share your email.</FormHelperText> */}
                             </FormControl>
                             <FormControl id="email">
-                                <FormLabel>{f('email')}</FormLabel>
+                                <FormLabel>{formatMessage({ id: 'email' })}</FormLabel>
                                 <Input variant="filled" type="email" defaultValue={email || ''} />
-                                <FormHelperText>{f('emailHelperText')}</FormHelperText>
+                                <FormHelperText>
+                                    {formatMessage({ id: 'emailHelperText' })}
+                                </FormHelperText>
                             </FormControl>
                             <FormControl id="bio">
-                                <FormLabel>{f('bio')}</FormLabel>
+                                <FormLabel>{formatMessage({ id: 'bio' })}</FormLabel>
                                 <Textarea variant="filled" colorScheme="green" />
-                                <FormHelperText>{f('bioHelperText')}.</FormHelperText>
+                                <FormHelperText>
+                                    {formatMessage({ id: 'bioHelperText' })}.
+                                </FormHelperText>
                             </FormControl>
                         </UserAccountSection>
 
                         <UserAccountSection
-                            title={f('profilePhoto')}
+                            title={formatMessage({ id: 'profilePhoto' })}
                             colorScheme="gray"
                             pattern="bankNote">
                             <Stack
@@ -137,22 +152,32 @@ const UserAccountPage: NextPage<UserAccountPageProps> = () => {
                                 <Avatar src={image || ''} size="xl" name={name || 'unkown'} />
                                 <Stack direction="column">
                                     <Wrap>
-                                        <Button colorScheme="green">{f('changePhoto')}</Button>
+                                        <Button colorScheme="green">
+                                            {formatMessage({ id: 'changePhoto' })}
+                                        </Button>
                                         <Button variant="ghost" colorScheme="red">
-                                            {f('deletePhoto')}
+                                            {formatMessage({ id: 'deletePhoto' })}
                                         </Button>
                                     </Wrap>
-                                    <HelperText>{f('photoHelperText')}</HelperText>
+                                    <HelperText>
+                                        {formatMessage({ id: 'photoHelperText' })}
+                                    </HelperText>
                                 </Stack>
                             </Stack>
                         </UserAccountSection>
 
-                        <UserAccountSection title={f('language')} pattern="architect">
+                        <UserAccountSection
+                            title={formatMessage({ id: 'language' })}
+                            pattern="architect">
                             <Stack spacing={4}>
                                 <FormControl id="country">
-                                    <FormLabel>{f('displayLanguage')}</FormLabel>
+                                    <FormLabel>
+                                        {formatMessage({ id: 'displayLanguage' })}
+                                    </FormLabel>
                                     <Select
-                                        placeholder={f('displayLanguagePlaceholder')}
+                                        placeholder={formatMessage({
+                                            id: 'displayLanguagePlaceholder'
+                                        })}
                                         defaultValue={router.locale}
                                         onChange={(event) => changeLocale(event.target.value)}>
                                         {router.locales?.map((locale) => {
@@ -167,24 +192,34 @@ const UserAccountPage: NextPage<UserAccountPageProps> = () => {
                                     </Select>
                                 </FormControl>
                                 <FormControl id="country">
-                                    <FormLabel>{f('displayCurrency')}</FormLabel>
+                                    <FormLabel>
+                                        {formatMessage({ id: 'displayCurrency' })}
+                                    </FormLabel>
                                     <Select
-                                        placeholder={f('displayCurrencyPlaceholder')}
+                                        placeholder={formatMessage({
+                                            id: 'displayCurrencyPlaceholder'
+                                        })}
                                         defaultValue="EUR">
                                         <option value="USD">USD ($)</option>
                                         <option value="EUR">EUR (€)</option>
                                     </Select>
-                                    <HelperText>{f('displayCurrencyHelperText')}</HelperText>
+                                    <HelperText>
+                                        {formatMessage({ id: 'displayCurrencyHelperText' })}
+                                    </HelperText>
                                 </FormControl>
                             </Stack>
                         </UserAccountSection>
 
-                        <UserAccountSection title={f('notifications')}>
+                        <UserAccountSection title={formatMessage({ id: 'notifications' })}>
                             <FormControl id="country">
                                 <Stack spacing={4}>
-                                    <Checkbox>{f('getUpdatesAboutLatestMeetups')}</Checkbox>
+                                    <Checkbox>
+                                        {formatMessage({ id: 'getUpdatesAboutLatestMeetups' })}
+                                    </Checkbox>
                                     <Checkbox defaultChecked>
-                                        {f('getNotificationsAboutAccountActivities')}
+                                        {formatMessage({
+                                            id: 'getNotificationsAboutAccountActivities'
+                                        })}
                                     </Checkbox>
                                 </Stack>
                             </FormControl>
@@ -199,8 +234,10 @@ const UserAccountPage: NextPage<UserAccountPageProps> = () => {
                                     direction={{ base: 'column', sm: 'row' }}
                                     spacing={2}
                                     justify={{ base: 'center', sm: 'start' }}>
-                                    <Button colorScheme="green">{f('saveChanges')}</Button>
-                                    <Button>{f('cancel')}</Button>
+                                    <Button colorScheme="green">
+                                        {formatMessage({ id: 'saveChanges' })}
+                                    </Button>
+                                    <Button>{formatMessage({ id: 'cancel' })}</Button>
                                 </Stack>
                             }></Section>
                     </Stack>

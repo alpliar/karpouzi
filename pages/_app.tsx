@@ -20,7 +20,7 @@ const App = ({
 
     const localeCopy = locales[(locale as keyof typeof locales) || 'en'];
 
-    const messagesvalues: any = {
+    const messagesvalues = {
         ...localeCopy[pathname as keyof typeof localeCopy],
         ...localeCopy['common']
     };

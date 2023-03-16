@@ -10,7 +10,6 @@ interface FooterProps {
 
 const Footer: React.FC<FooterProps> = ({}) => {
     const { formatMessage } = useIntl();
-    const f = (id: string, values?: any) => formatMessage({ id }, values);
     const router = useRouter();
     const isHome = router.pathname === '/';
     const copyrightMention = `© Karpouzi ${new Date().getFullYear()}`;
@@ -19,7 +18,7 @@ const Footer: React.FC<FooterProps> = ({}) => {
         <>
             <Section
                 colorScheme={'white'}
-                title={f('bottomOfPage')}
+                title={formatMessage({ id: 'bottomOfPage' })}
                 // description: copyrightMention,
                 component={
                     <Stack>

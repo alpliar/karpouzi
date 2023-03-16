@@ -103,7 +103,6 @@ const ProductPageDescription: React.FC<ProductPageDescriptionProps> = ({
     productDescription
 }) => {
     const { formatMessage } = useIntl();
-    const f = (id: string, values: any = null) => formatMessage({ id }, values);
 
     return (
         <SectionHighlight
@@ -126,7 +125,7 @@ const ProductPageDescription: React.FC<ProductPageDescriptionProps> = ({
                     )}
                 </>
             }>
-            <Heading fontSize="2xl">{f('description')}</Heading>
+            <Heading fontSize="2xl">{formatMessage({ id: 'description' })}</Heading>
             <Stack spacing={5} textAlign="left">
                 <MarkdownRendered ast={productDescription} />
             </Stack>
@@ -143,7 +142,6 @@ interface ProductPageProps {
 const ProductPage: NextPage<ProductPageProps> = ({ product, description, localizations }) => {
     const router = useRouter();
     const { formatMessage, formatNumber } = useIntl();
-    const f = (id: string, values: any = null) => formatMessage({ id }, values);
 
     if (!product) return null;
 
@@ -182,27 +180,33 @@ const ProductPage: NextPage<ProductPageProps> = ({ product, description, localiz
                         fontSize="md"
                         textTransform="lowercase">
                         <BellIcon mr={1} />
-                        {f('new')}
+                        {formatMessage({ id: 'new' })}
                     </Badge>
                 )
             }
             breadcrumbs={[
                 {
                     link: '/',
-                    alt: f('goToPageName', { name: f('home') }),
-                    text: f('home'),
+                    alt: formatMessage(
+                        { id: 'goToPageName' },
+                        { name: formatMessage({ id: 'home' }) }
+                    ),
+                    text: formatMessage({ id: 'home' }),
                     isCurrentPage: false
                 },
                 {
                     link: '/shop',
-                    alt: f('goToPageName', { name: f('menuEntryShop') }),
-                    text: f('menuEntryShop'),
+                    alt: formatMessage(
+                        { id: 'goToPageName' },
+                        { name: formatMessage({ id: 'menuEntryShop' }) }
+                    ),
+                    text: formatMessage({ id: 'menuEntryShop' }),
                     isCurrentPage: false
                 },
                 {
                     text: categoryName,
                     link: `/shop/category/${category.slug}`,
-                    alt: f('goToPageName', { name: categoryName }),
+                    alt: formatMessage({ id: 'goToPageName' }, { name: categoryName }),
                     isCurrentPage: false
                 },
                 {
@@ -213,7 +217,9 @@ const ProductPage: NextPage<ProductPageProps> = ({ product, description, localiz
                 }
             ]}>
             <Head>
-                <title>{`${productName} | ${f('menuEntryShop')} | ${f('commonSiteName')}`}</title>
+                <title>{`${productName} | ${formatMessage({
+                    id: 'menuEntryShop'
+                })} | ${formatMessage({ id: 'commonSiteName' })}`}</title>
                 <meta property="og:type" content="og:product" />
                 <meta property="og:title" content={productName} />
                 <meta property="og:image" content={product.coverPicture.asset.url} />
@@ -256,7 +262,7 @@ const ProductPage: NextPage<ProductPageProps> = ({ product, description, localiz
                                     currency: firstPrice.currency
                                 })}{' '}
                                 <Text as="span" fontSize="md">
-                                    {f(firstPrice.measurementUnit)}
+                                    {formatMessage({ id: firstPrice.measurementUnit })}
                                 </Text>
                             </Text>
 
@@ -271,7 +277,7 @@ const ProductPage: NextPage<ProductPageProps> = ({ product, description, localiz
                     sectionPattern="architect"
                     colorScheme={colorScheme}
                     useSecondaryColor
-                    title={f('reviews')}
+                    title={formatMessage({ id: 'reviews' })}
                     component={<Reviews reviews={product.reviews} />}
                     minHeight="sm"
                 />
@@ -281,9 +287,9 @@ const ProductPage: NextPage<ProductPageProps> = ({ product, description, localiz
                     colorScheme={colorScheme}
                     useSecondaryColor
                     isEven={false}
-                    title={f('fondOfName', { name: categoryName })}
+                    title={formatMessage({ id: 'fondOfName' }, { name: categoryName })}
                     url={`/shop/category/${category.slug}`}
-                    buttonLabel={f('goToPageName', { name: categoryName })}
+                    buttonLabel={formatMessage({ id: 'goToPageName' }, { name: categoryName })}
                     description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Earum minimaquaerat fugit ullam illo ipsa perspiciatis sit voluptatem!"
                     image={category.picture.url}
                     fillImage

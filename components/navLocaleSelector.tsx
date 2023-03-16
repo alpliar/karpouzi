@@ -51,11 +51,14 @@ const NavLocaleSelectorItem: React.FC<NavLocaleSelectorItemProps> = ({
 
     const { asPath: currentPath } = router;
     const isCurrentLocale = router.locale === locale;
-    const f = (id: string, values: any = null) => formatMessage({ id }, values);
 
     const handleClick = () => {
         if (locale !== router.locale)
-            sendToast(f('updatingLocale'), f('newLocaleDetail', { name: locale }), 'info');
+            sendToast(
+                formatMessage({ id: 'updatingLocale' }),
+                formatMessage({ id: 'newLocaleDetail' }, { name: locale }),
+                'info'
+            );
     };
 
     const localesNames = {
@@ -98,7 +101,6 @@ const NavLocaleSelectorItem: React.FC<NavLocaleSelectorItemProps> = ({
 
 const NavLocaleSelector: React.FC<INavLocaleSelectorProps> = ({ compact = false }) => {
     const { formatMessage } = useIntl();
-    const f = (id: string, values: any = null) => formatMessage({ id }, values);
 
     const { supportedLocales, fullySupportedLocales } = i18nConfig;
     const partiallySupportedLocales = supportedLocales.filter(
@@ -112,7 +114,7 @@ const NavLocaleSelector: React.FC<INavLocaleSelectorProps> = ({ compact = false 
                     <Box>
                         <NavButton
                             e2e="localeCTA"
-                            label={f('language')}
+                            label={formatMessage({ id: 'language' })}
                             compact={compact}
                             icon={LocaleIcon}
                             handleClick={() => {
@@ -124,7 +126,7 @@ const NavLocaleSelector: React.FC<INavLocaleSelectorProps> = ({ compact = false 
                 header={
                     <>
                         <Heading as="p" fontSize="lg">
-                            {`${f('language')} / `}
+                            {`${formatMessage({ id: 'language' })} / `}
                         </Heading>
                         <Icon as={IoLanguage} boxSize={7} ml={1} />
                     </>
@@ -133,7 +135,7 @@ const NavLocaleSelector: React.FC<INavLocaleSelectorProps> = ({ compact = false 
                     <Text>
                         <PartiallySupportedLocaleIcon />
                         <Text fontSize="sm" ml={1} as="span" fontStyle="italic">
-                            {f('partiallySupportedLocales')}
+                            {formatMessage({ id: 'partiallySupportedLocales' })}
                         </Text>
                     </Text>
                 }>

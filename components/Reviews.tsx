@@ -10,13 +10,12 @@ interface ReviewsProps {
 
 const Reviews: React.FC<ReviewsProps> = ({ reviews }) => {
     const { formatMessage } = useIntl();
-    const f = (id: string, values: any = null) => formatMessage({ id }, values);
 
     return (
         <>
             {/* <Stack spacing={8}> */}
-            {/* <Heading>{f('reviews')}</Heading> */}
-            {!reviews.length && <Text>{f('beTheFirstToLeaveReview')}</Text>}
+            {/* <Heading>{formatMessage({id:'reviews'})}</Heading> */}
+            {!reviews.length && <Text>{formatMessage({ id: 'beTheFirstToLeaveReview' })}</Text>}
             {reviews.length > 0 && (
                 <SimpleGrid columns={{ base: 1, md: 2 }} gap={{ base: 4, lg: 8 }}>
                     {reviews.map((review) => {

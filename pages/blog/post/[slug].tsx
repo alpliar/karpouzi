@@ -97,9 +97,7 @@ const BlogPostPage = ({
 }) => {
     const { asPath } = useRouter();
     const router = useRouter();
-
-    const intl = useIntl();
-    const f = (id: string, values?: any) => intl.formatMessage({ id }, values);
+    const { formatMessage } = useIntl();
 
     if (!post) return null;
 
@@ -147,11 +145,11 @@ const BlogPostPage = ({
                 title={title}
                 breadcrumbs={[
                     {
-                        text: f('menuEntryBlog'),
+                        text: formatMessage({ id: 'menuEntryBlog' }),
                         link: '/blog',
-                        alt: intl.formatMessage(
+                        alt: formatMessage(
                             { id: 'goToPageName' },
-                            { name: f('menuEntryBlog') }
+                            { name: formatMessage({ id: 'menuEntryBlog' }) }
                         ),
                         isCurrentPage: false
                     },
@@ -169,7 +167,10 @@ const BlogPostPage = ({
                                 <HStack>
                                     <Icon as={GiOpenBook} />
                                     <Text>
-                                        {f('noMinutesToRead', { minutes: post.timeToRead })}
+                                        {formatMessage(
+                                            { id: 'noMinutesToRead' },
+                                            { minutes: post.timeToRead }
+                                        )}
                                     </Text>
                                 </HStack>
                                 <HStack>

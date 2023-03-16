@@ -92,7 +92,6 @@ interface CategoryPageProps {
 const CategoryPage: NextPage<CategoryPageProps> = ({ category, localizations, _description }) => {
     const router = useRouter();
     const { formatMessage } = useIntl();
-    const f = (id: string, values: any = null) => formatMessage({ id }, values);
 
     if (!category) return null;
 
@@ -107,28 +106,36 @@ const CategoryPage: NextPage<CategoryPageProps> = ({ category, localizations, _d
         <PageListingLayout
             fullWidth
             title={categoryName}
-            titleComplement={`(${category.products.length} ${f('products')})`.toLocaleLowerCase()}
+            titleComplement={`(${category.products.length} ${formatMessage({
+                id: 'products'
+            })})`.toLocaleLowerCase()}
             subtitle={categoryDescription.toString()}
             breadcrumbs={[
                 {
-                    text: f('home'),
+                    text: formatMessage({ id: 'home' }),
                     link: '/',
-                    alt: f('goToPageName', { name: f('home') })
+                    alt: formatMessage(
+                        { id: 'goToPageName' },
+                        { name: formatMessage({ id: 'home' }) }
+                    )
                 },
                 {
-                    text: f('menuEntryShop'),
+                    text: formatMessage({ id: 'menuEntryShop' }),
                     link: '/shop',
-                    alt: f('goToPageName', { name: f('menuEntryShop') })
+                    alt: formatMessage(
+                        { id: 'goToPageName' },
+                        { name: formatMessage({ id: 'menuEntryShop' }) }
+                    )
                 },
                 {
                     text: categoryName,
                     link: `/shop/category/${category.slug}`,
-                    alt: f('goToPageName', { name: categoryName }),
+                    alt: formatMessage({ id: 'goToPageName' }, { name: categoryName }),
                     isCurrentPage: true
                 }
             ]}>
             <Section
-                title={f('products')}
+                title={formatMessage({ id: 'products' })}
                 colorScheme="white"
                 component={
                     <>
@@ -147,16 +154,22 @@ const CategoryPage: NextPage<CategoryPageProps> = ({ category, localizations, _d
                             </SimpleGrid>
                         ) : (
                             <NoContentBanner
-                                text={f('nothingToDisplay')}
-                                helperText={f('sinceYoureHere')}
+                                text={formatMessage({ id: 'nothingToDisplay' })}
+                                helperText={formatMessage({ id: 'sinceYoureHere' })}
                                 links={[
                                     {
                                         href: '/shop',
-                                        text: f('goToPageName', { name: f('menuEntryShop') })
+                                        text: formatMessage(
+                                            { id: 'goToPageName' },
+                                            { name: formatMessage({ id: 'menuEntryShop' }) }
+                                        )
                                     },
                                     {
                                         href: '/blog',
-                                        text: f('goToPageName', { name: f('menuEntryBlog') })
+                                        text: formatMessage(
+                                            { id: 'goToPageName' },
+                                            { name: formatMessage({ id: 'menuEntryBlog' }) }
+                                        )
                                     }
                                 ]}
                             />

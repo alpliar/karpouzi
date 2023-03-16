@@ -49,7 +49,6 @@ const Header: React.FC<HeaderProps> = ({ colorScheme = 'green' }) => {
     const { colorMode } = useColorMode();
     const { isOpen, onClose, onToggle } = useDisclosure();
     const { formatMessage } = useIntl();
-    const f = (id: string, values: any = null) => formatMessage({ id }, values);
 
     const boxShadow: EffectProps['boxShadow'] = undefined;
     const headerButtonStyle: ButtonProps = {
@@ -61,12 +60,12 @@ const Header: React.FC<HeaderProps> = ({ colorScheme = 'green' }) => {
 
     const headerLinks = [
         {
-            label: f('menuEntryShop'),
+            label: formatMessage({ id: 'menuEntryShop' }),
             // helper: f('goToPageName', { name: f('menuEntryShop') }),
             href: '/shop'
         },
         {
-            label: f('menuEntryBlog'),
+            label: formatMessage({ id: 'menuEntryBlog' }),
             // helper: f('goToPageName', { name: f('menuEntryBlog') }),
             href: '/blog'
         }

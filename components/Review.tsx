@@ -24,7 +24,6 @@ type Props = {
 
 const Review: React.FC<Props> = ({ review }) => {
     const { formatMessage } = useIntl();
-    const f = (id: string, values: any = null) => formatMessage({ id }, values);
 
     const [show, setShow] = React.useState(false);
     const handleToggle = () => setShow(!show);
@@ -62,7 +61,7 @@ const Review: React.FC<Props> = ({ review }) => {
                     <Tag variant="subtle" colorScheme="green">
                         <TagLeftIcon boxSize="12px" as={CheckCircleIcon} />
                         <TagLabel fontSize="xs" fontFamily="monospace">
-                            {f('verifiedReview')}
+                            {formatMessage({ id: 'verifiedReview' })}
                         </TagLabel>
                     </Tag>
                 )}

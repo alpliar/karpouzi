@@ -23,7 +23,6 @@ interface IProps {
 const CategoryCard: React.FC<IProps> = ({ category }) => {
     const router = useRouter();
     const { formatMessage } = useIntl();
-    const f = (id: string, values?: any) => formatMessage({ id }, values);
     const imageHeight = useBreakpointValue({ base: 64 });
     const pictureSizes = useBreakpointValue({ base: '320px', md: '640px' });
 
@@ -90,9 +89,9 @@ const CategoryCard: React.FC<IProps> = ({ category }) => {
                                         fontWeight="normal"
                                         display="inline-block"
                                         textDecoration="none">
-                                        {` (${category.products.length} ${f(
-                                            'products'
-                                        ).toLocaleLowerCase()})`}
+                                        {` (${category.products.length} ${formatMessage({
+                                            id: 'products'
+                                        }).toLocaleLowerCase()})`}
                                     </Text>
                                 </Flex>
                             </Link>

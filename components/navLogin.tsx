@@ -11,7 +11,6 @@ import Popover from './Popover';
 const NavLogin = () => {
     const { data: session } = useSession();
     const { formatMessage } = useIntl();
-    const f = (id: string, values: any = null) => formatMessage({ id }, values);
 
     const isAuthenticated = !!session?.user;
 
@@ -33,7 +32,7 @@ const NavLogin = () => {
                                 href="/user/account"
                                 e2e="loginCTA"
                                 icon={FaUserCircle}
-                                label={f('menuEntryUser')}
+                                label={formatMessage({ id: 'menuEntryUser' })}
                                 compact={compact}
                                 handleClick={() => {
                                     // test
@@ -49,7 +48,7 @@ const NavLogin = () => {
                             handleClickLogin();
                         }}>
                         <Icon as={IoLogIn} boxSize=".8em" mr={1} />
-                        {f('menuEntryLogin')}
+                        {formatMessage({ id: 'menuEntryLogin' })}
                     </Link>
                 </Popover>
             )}

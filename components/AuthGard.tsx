@@ -12,8 +12,6 @@ type Props = { children: React.ReactElement };
 
 const AuthGard: React.FC<Props> = ({ children }) => {
     const { formatMessage } = useIntl();
-    const f = (id: string, values?: any) => formatMessage({ id }, values);
-    // const { data: session } = useSession();
     const { status } = useSession({
         required: false
         // onUnauthenticated() {
@@ -32,8 +30,8 @@ const AuthGard: React.FC<Props> = ({ children }) => {
                 title=""
                 component={
                     <NoContentBanner
-                        text={f('authenticationRequired')}
-                        helperText={f('onceLoggedInFeatures')}
+                        text={formatMessage({ id: 'authenticationRequired' })}
+                        helperText={formatMessage({ id: 'onceLoggedInFeatures' })}
                         // links={[
                         //     {
                         //         href: '/help',

@@ -44,7 +44,6 @@ const ProductCard: React.FC<IProps> = ({
 }) => {
     const router = useRouter();
     const { formatNumber, formatMessage } = useIntl();
-    const f = (id: string, values?: any) => formatMessage({ id }, values);
     const imageHeight = useBreakpointValue({ base: 64 /*, sm: 48, md: 48, lg: 64  */ });
     const pictureSizes = useBreakpointValue({ base: '320px', md: '640px' });
 
@@ -100,7 +99,7 @@ const ProductCard: React.FC<IProps> = ({
                         {isNew && (
                             <ProductCardBadge
                                 icon={BellIcon}
-                                text={f('new')}
+                                text={formatMessage({ id: 'new' })}
                                 positionX="right"
                                 positionY="bottom"
                             />
@@ -148,7 +147,7 @@ const ProductCard: React.FC<IProps> = ({
                             </Text>
                             {` `}
                             <Text as="span" fontSize={{ base: '3xs', sm: '2xs' }}>
-                                {f(measurementUnit as string)}
+                                {formatMessage({ id: measurementUnit as string })}
                             </Text>
                             {priceSlot && <Box>{priceSlot}</Box>}
                         </Flex>

@@ -21,12 +21,11 @@ const AddToCart: React.FC<IAddToCartProps> = ({
     name
 }) => {
     const { formatMessage } = useIntl();
-    const f = (id: string, values: any = null) => formatMessage({ id }, values);
     const { isOpen, onToggle } = useDisclosure();
 
     const handleClick = () => {
         addToCart(slug, quantity, cart);
-        sendToast(f('addedToCart'), name, 'success');
+        sendToast(formatMessage({ id: 'addedToCart' }), name, 'success');
     };
 
     const [hasAccuratePointingDevice] = useMediaQuery('(pointer: fine)');
@@ -34,7 +33,7 @@ const AddToCart: React.FC<IAddToCartProps> = ({
     return (
         <Tooltip
             hasArrow
-            label={f('noAlreadyInCart', { count: inCart })}
+            label={formatMessage({ id: 'noAlreadyInCart' }, { count: inCart })}
             isOpen={hasAccuratePointingDevice ? isOpen && inCart > 0 : inCart > 0}>
             <Button
                 shadow="lg"
@@ -48,7 +47,7 @@ const AddToCart: React.FC<IAddToCartProps> = ({
                 whiteSpace="normal"
                 height="full"
                 padding={3}>
-                {f('addToCart')}
+                {formatMessage({ id: 'addToCart' })}
             </Button>
         </Tooltip>
     );

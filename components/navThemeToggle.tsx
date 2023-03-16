@@ -12,7 +12,6 @@ interface IProps {
 const NavThemeToggle: React.FC<IProps> = ({ compact = true }) => {
     const { colorMode } = useColorMode();
     const { formatMessage } = useIntl();
-    const f = (id: string, values: any = null) => formatMessage({ id }, values);
 
     const { toggleColorMode: toggleMode } = useColorMode();
     const ToggleIcon = useColorModeValue(MoonIcon, SunIcon);
@@ -23,7 +22,7 @@ const NavThemeToggle: React.FC<IProps> = ({ compact = true }) => {
                     <NavButton
                         e2e="themeCTA"
                         icon={ToggleIcon}
-                        label={f('theme')}
+                        label={formatMessage({ id: 'theme' })}
                         compact={compact}
                         handleClick={toggleMode}
                     />
@@ -31,9 +30,14 @@ const NavThemeToggle: React.FC<IProps> = ({ compact = true }) => {
             }>
             <>
                 <Text>
-                    {f('switchToThemeName', {
-                        name: f(colorMode === 'light' ? 'darkTheme' : 'lightTheme')
-                    })}
+                    {formatMessage(
+                        { id: 'switchToThemeName' },
+                        {
+                            name: formatMessage({
+                                id: colorMode === 'light' ? 'darkTheme' : 'lightTheme'
+                            })
+                        }
+                    )}
                 </Text>
             </>
         </Popover>

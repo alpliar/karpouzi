@@ -20,7 +20,6 @@ const Rating: React.FC<RatingProps & FlexProps> = ({
     ...rest
 }) => {
     const { formatMessage } = useIntl();
-    const f = (id: string, values: any = null) => formatMessage({ id }, values);
     const isRated = (rate as number) > 0;
     const hasMultipleReviews = count; //&& count > 1;
     const isIndividualRating = !count;
@@ -50,7 +49,7 @@ const Rating: React.FC<RatingProps & FlexProps> = ({
                     {isIndividualRating && <Text as="strong">{rate / 20} / 5</Text>}
                     {hasMultipleReviews && (
                         <Text fontWeight="bold" as="span" fontSize={fontSize}>
-                            {f('noOfReviews', { count })}
+                            {formatMessage({ id: 'noOfReviews' }, { count })}
                         </Text>
                     )}
                 </Flex>
@@ -58,7 +57,7 @@ const Rating: React.FC<RatingProps & FlexProps> = ({
 
             {!isRated && (
                 <Text as="span" noOfLines={1} fontSize={fontSize}>
-                    {f('noReviewsYet')}
+                    {formatMessage({ id: 'noReviewsYet' })}
                 </Text>
             )}
         </Flex>

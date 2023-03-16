@@ -10,7 +10,6 @@ interface IProps {
 
 const NavCart: React.FC<IProps> = ({ cartCount }) => {
     const { formatMessage } = useIntl();
-    const f = (id: string, values?: any) => formatMessage({ id }, values);
 
     const compact = true; //useBreakpointValue({ base: true, md: false });
 
@@ -43,7 +42,7 @@ const NavCart: React.FC<IProps> = ({ cartCount }) => {
                         compact={compact}
                         href="/shop/cart"
                         e2e="cartCTA"
-                        label={f('cart')}
+                        label={formatMessage({ id: 'cart' })}
                         icon={FaShoppingCart}
                         handleClick={() => {
                             // do nothing
@@ -82,7 +81,11 @@ const NavCart: React.FC<IProps> = ({ cartCount }) => {
                     </Link> */}
                 </Box>
             }>
-            {cartCount > 0 ? <Text>{f('accessCart')}</Text> : <Text>{f('cartIsEmpty')}</Text>}
+            {cartCount > 0 ? (
+                <Text>{formatMessage({ id: 'accessCart' })}</Text>
+            ) : (
+                <Text>{formatMessage({ id: 'cartIsEmpty' })}</Text>
+            )}
         </Popover>
     );
 };
