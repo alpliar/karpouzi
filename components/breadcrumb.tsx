@@ -51,7 +51,7 @@ const Breadcrumb = ({ entries }: IBreadcrumbProps) => {
                 }}
                 fontSize="sm"
                 separator={<ChevronRightIcon color="currentColor" />}
-                spacing={0}>
+                spacing={1}>
                 {entries.map(
                     (
                         { text, isCurrentPage = false, link = 'undefined', alt = 'undefined' },
@@ -63,9 +63,9 @@ const Breadcrumb = ({ entries }: IBreadcrumbProps) => {
                                 isCurrentPage={isCurrentPage}
                                 textOverflow="ellipsis"
                                 justifyItems="flex-start"
-                                _first={{
-                                    a: { paddingLeft: 0 }
-                                }}
+                                // _first={{
+                                //     a: { paddingLeft: 0 }
+                                // }}
                                 //TODO: find another way to remove last item
                                 _last={{
                                     display: 'none'
@@ -86,7 +86,8 @@ const Breadcrumb = ({ entries }: IBreadcrumbProps) => {
                                         alt={alt}
                                         prefetch={false}
                                         asButton
-                                        buttonProps={breadcrumbItemStyle}>
+                                        buttonProps={breadcrumbItemStyle}
+                                        padding={0}>
                                         {text}
                                     </Link>
                                 )}
