@@ -8,7 +8,7 @@ interface FooterProps {
     colorScheme?: ThemingProps['colorScheme'];
 }
 
-const Footer: React.FC<FooterProps> = ({ colorScheme }) => {
+const Footer: React.FC<FooterProps> = ({}) => {
     const { formatMessage } = useIntl();
     const f = (id: string, values?: any) => formatMessage({ id }, values);
     const router = useRouter();
@@ -18,10 +18,7 @@ const Footer: React.FC<FooterProps> = ({ colorScheme }) => {
     return (
         <>
             <Section
-                sectionPattern="rain"
-                isLast
-                colorScheme={colorScheme}
-                usePlainColor
+                colorScheme={'white'}
                 title={f('bottomOfPage')}
                 // description: copyrightMention,
                 component={
