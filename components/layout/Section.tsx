@@ -3,6 +3,7 @@ import {
     BackgroundProps,
     Box,
     BoxProps,
+    Center,
     Flex,
     FlexProps,
     Heading,
@@ -46,7 +47,6 @@ export interface SectionProps {
     paddingY?: BoxProps['padding'];
     centerItems?: boolean;
     isFirst?: boolean;
-    isLast?: boolean;
     customDirection?: FlexProps['direction'];
     customImageRatio?: AspectRatioProps['ratio'];
     priorityImage?: boolean;
@@ -89,7 +89,6 @@ const Section: React.FC<SectionProps & BoxProps> = ({
     paddingY = { base: 8, md: 16, xl: 24 },
     centerItems = true,
     isFirst = false,
-    isLast = false,
     customDirection,
     customImageRatio,
     priorityImage,
@@ -126,7 +125,7 @@ const Section: React.FC<SectionProps & BoxProps> = ({
     const transformAngle = '-1deg';
 
     return (
-        <Box
+        <Center
             zIndex={isFirst ? 1 : undefined}
             position="relative"
             isolation="isolate"
@@ -150,8 +149,6 @@ const Section: React.FC<SectionProps & BoxProps> = ({
             bgGradient={
                 isFirst
                     ? `linear(to-tl, transparent, transparent,${sectionBgColor},${sectionBgColor})`
-                    : isLast
-                    ? `linear(to-br, transparent, transparent,${sectionBgColor},${sectionBgColor})`
                     : undefined
             }
             paddingBottom={paddingY}
@@ -274,7 +271,7 @@ const Section: React.FC<SectionProps & BoxProps> = ({
                     </Flex>
                 )}
             </Flex>
-        </Box>
+        </Center>
     );
 };
 
