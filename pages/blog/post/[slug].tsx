@@ -145,6 +145,15 @@ const BlogPostPage = ({
                 title={title}
                 breadcrumbs={[
                     {
+                        text: formatMessage({ id: 'home' }),
+                        link: '/',
+                        alt: formatMessage(
+                            { id: 'goToPageName' },
+                            { name: formatMessage({ id: 'home' }) }
+                        ),
+                        isCurrentPage: false
+                    },
+                    {
                         text: formatMessage({ id: 'menuEntryBlog' }),
                         link: '/blog',
                         alt: formatMessage(
