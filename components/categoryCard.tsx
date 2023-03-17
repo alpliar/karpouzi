@@ -1,20 +1,10 @@
-import {
-    AspectRatio,
-    Box,
-    Flex,
-    Heading,
-    LinkBox,
-    LinkOverlay,
-    Stack,
-    Text
-} from '@chakra-ui/layout';
-import { useBreakpointValue } from '@chakra-ui/media-query';
+import { Box, Flex, Heading, LinkBox, LinkOverlay, Stack, Text } from '@chakra-ui/layout';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useIntl } from 'react-intl';
 import { ShopCategoryWithAssetAndPartialProducts } from '../graphql/models/shop/category.model';
 import Card from './card';
-import { Image } from './image';
+import ImageV2 from './ImageV2';
 
 interface IProps {
     category: ShopCategoryWithAssetAndPartialProducts;
@@ -23,8 +13,6 @@ interface IProps {
 const CategoryCard: React.FC<IProps> = ({ category }) => {
     const router = useRouter();
     const { formatMessage } = useIntl();
-    const imageHeight = useBreakpointValue({ base: 64 });
-    const pictureSizes = useBreakpointValue({ base: '320px', md: '640px' });
 
     const localization = category.localizations.find((i18n) => i18n.locale === router.locale);
     const categoryName = localization?.name || category.name;
@@ -43,30 +31,18 @@ const CategoryCard: React.FC<IProps> = ({ category }) => {
                 <Flex direction="column" height="100%">
                     <Box
                         position="relative"
-                        // h={imageHeight}
                         mt={negativeCardPadding}
                         mx={negativeCardPadding}
-                        // mb={negativeCardPadding}
                         overflow="hidden">
-                        <AspectRatio ratio={1}>
-                            <Image
-                                src={category.picture.url}
-                                alt={categoryName}
-                                sizes={pictureSizes}
-                                priority
-                                height={imageHeight}
-                                blurDataURL={category.picture.thumbnail}
-                            />
-                        </AspectRatio>
-                        {/* <Image
-                        src={category.picture.url}
-                        alt={categoryName}
-                        sizes={pictureSizes}
-                        priority
-                        height={imageHeight}
-                        quality={80}
-                        blurDataURL={category.picture.thumbnail}
-                    /> */}
+                        <ImageV2
+                            alt={categoryName}
+                            blurDataURL={category.picture.thumbnail}
+                            imageProps={{
+                                quality: 1
+                            }}
+                            priority
+                            src={category.picture.url}
+                        />
                     </Box>
                     <Stack spacing={{ base: 1 }} flexGrow={1} pt={cardPadding}>
                         <Box flexGrow={1}>
