@@ -1,8 +1,8 @@
-import { SimpleGrid } from '@chakra-ui/react';
 import { useIntl } from 'react-intl';
 import { useSelector } from 'react-redux';
 import CartItem from '../../../components/CartItem';
 import Section from '../../../components/layout/Section';
+import ShopGrid from '../../../components/layout/ShopGrid';
 import NoContentBanner from '../../../components/NoContentBanner';
 import PageListingLayout from '../../../components/PageListingLayout';
 import { RootState } from '../../../redux/reducer';
@@ -44,10 +44,7 @@ export default function CartPage() {
                 component={
                     <>
                         {!isCartEmpty && (
-                            <SimpleGrid
-                                columns={{ base: 1, sm: 2, lg: 3 }}
-                                spacingX="0.5em"
-                                spacingY="1em">
+                            <ShopGrid>
                                 {cart.map((item, index) => (
                                     <CartItem
                                         key={`${item.slug}-${index}`}
@@ -55,7 +52,7 @@ export default function CartPage() {
                                         quantity={item.quantity}
                                     />
                                 ))}
-                            </SimpleGrid>
+                            </ShopGrid>
                         )}
 
                         {isCartEmpty && (

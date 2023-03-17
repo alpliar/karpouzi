@@ -1,17 +1,15 @@
-import { SimpleGrid } from '@chakra-ui/react';
 import axios from 'axios';
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import { useRouter } from 'next/router';
 import { useIntl } from 'react-intl';
 import { Root } from 'remark-html';
 import Section from '../../../components/layout/Section';
+import ShopGrid from '../../../components/layout/ShopGrid';
 import NoContentBanner from '../../../components/NoContentBanner';
 import PageListingLayout from '../../../components/PageListingLayout';
 import ProductCard from '../../../components/ProductCard';
 import { API_BASE_URL } from '../../../constants/api';
 import { ONE_HOUR } from '../../../constants/time.constants';
-import { APP_MAX_WIDTH } from '../../../constants/ui/main.layout';
-import { BASE_TRANSITION } from '../../../constants/ui/transitions';
 import {
     ParsedCategoryLocalizations,
     ShopCategoryWithProductsAndAsset
@@ -140,18 +138,11 @@ const CategoryPage: NextPage<CategoryPageProps> = ({ category, localizations, _d
                 component={
                     <>
                         {!!category.products.length ? (
-                            <SimpleGrid
-                                transition={BASE_TRANSITION}
-                                columns={{ base: 2, sm: 3, md: 4, '2xl': 5 }}
-                                spacingX={{ base: 1, sm: 2, '2xl': 4 }}
-                                spacingY={{ base: 4, sm: 4, '2xl': 8 }}
-                                mx="auto"
-                                maxWidth={APP_MAX_WIDTH}
-                                py={{ base: 2, sm: 4 }}>
+                            <ShopGrid>
                                 {category.products.map((product) => {
                                     return <ProductCard key={product.id} product={product} />;
                                 })}
-                            </SimpleGrid>
+                            </ShopGrid>
                         ) : (
                             <NoContentBanner
                                 text={formatMessage({ id: 'nothingToDisplay' })}
