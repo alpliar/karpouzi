@@ -1,48 +1,26 @@
-import {
-    Avatar,
-    Box,
-    Heading,
-    LinkBox,
-    LinkOverlay,
-    Stack,
-    Text,
-    useBreakpointValue
-} from '@chakra-ui/react';
+import { Avatar, Box, Heading, LinkBox, LinkOverlay, Stack, Text } from '@chakra-ui/react';
 import Link from 'next/link';
 import BlogPost from '../graphql/models/blog/post.model';
 import Card from './Card';
 import Date from './Date';
-import { Image } from './Image';
+import ImageV2 from './ImageV2';
 
 interface IBlogPostCardProps {
     post: BlogPost;
 }
 
 const BlogPostCard: React.FC<IBlogPostCardProps> = ({ post }) => {
-    const pictureSizes = useBreakpointValue({ base: '100vw', md: '33vw' });
-
     const [author] = post.authors;
 
     return (
         <LinkBox>
             <Card>
-                <Box h={64} mt={-6} mx={-6} mb={6} pos="relative" overflow="hidden">
-                    {/* <Img
-                        alt={post.coverPicture.alternativeText}
-                        src={post.coverPicture.asset.url || fallbackPicture}
-                    /> */}
-                    <Image
+                <Box mt={-6} mx={-6} mb={6} pos="relative" overflow="hidden">
+                    <ImageV2
                         src={post.coverPicture.asset.url}
                         alt={post.coverPicture.alternativeText}
-                        sizes={pictureSizes}
                         priority
-                        height={64}
-                        quality={100}
                         blurDataURL={post.coverPicture.asset.thumbnail}
-                        // bg="#282828"
-                        // width={{ base: 'full', sm: '100%' }}
-                        // h={{ base: '100vw', sm: 'auto' }}
-                        // overflow="hidden"
                     />
                 </Box>
                 <Stack>
