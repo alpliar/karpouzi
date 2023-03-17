@@ -1,12 +1,17 @@
+import { Text } from '@chakra-ui/react';
 import { intlFormat, parseISO } from 'date-fns';
 import { useIntl } from 'react-intl';
 
-export default function Date({ dateString }: { dateString: string }) {
+interface DateProps {
+    dateString: string;
+}
+
+const Date: React.FC<DateProps> = ({ dateString }) => {
     const { locale } = useIntl();
     const date = parseISO(dateString);
 
     return (
-        <time dateTime={dateString}>
+        <Text as="time" dateTime={dateString}>
             {intlFormat(
                 date,
                 {
@@ -17,6 +22,8 @@ export default function Date({ dateString }: { dateString: string }) {
                 },
                 { locale }
             )}
-        </time>
+        </Text>
     );
-}
+};
+
+export default Date;
