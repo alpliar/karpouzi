@@ -2,7 +2,7 @@ import { SimpleGrid } from '@chakra-ui/layout';
 import axios from 'axios';
 import { GetStaticProps } from 'next';
 import { useIntl } from 'react-intl';
-import CategoryCard from '../../components/categoryCard';
+import CategoryCard from '../../components/CategoryCard';
 import Section from '../../components/layout/Section';
 import PageListingLayout from '../../components/pageListingLayout';
 import { API_BASE_URL } from '../../constants/api';
