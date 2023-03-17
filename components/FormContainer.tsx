@@ -8,7 +8,7 @@ type Props = {
 
 const FormContainer: React.FC<Props> = ({ children }) => {
     return (
-        <Container className="toto" padding={0} maxW={{ base: 'sm', md: 'md', lg: 'lg' }}>
+        <Container padding={0} maxW={{ base: 'sm', md: 'md', lg: 'lg' }}>
             <Card>
                 <SimpleGrid columns={{ base: 1 }} spacing={{ base: 4, lg: 8 }}>
                     {children}

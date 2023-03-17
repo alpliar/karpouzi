@@ -47,7 +47,6 @@ const Banner: React.FC<IBannerProps & BoxProps> = ({
             <Box
                 filter={bgFilter}
                 zIndex="base"
-                className="toto"
                 position="absolute"
                 top="0"
                 height="100%"
