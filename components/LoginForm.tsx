@@ -32,10 +32,14 @@ const LoginForm: React.FC = ({}) => {
         sendToast('Account created.', "We've created your account for you.", 'success', 5000);
     };
 
-    const handleClickOnProvider = (provider: 'discord') => {
-        signIn(provider, {
-            callbackUrl: '/user/account'
-        });
+    const handleClickOnProvider = (provider: 'discord' | 'google') => {
+        try {
+            signIn(provider, {
+                callbackUrl: '/user/account'
+            });
+        } catch (e) {
+            console.error(e);
+        }
     };
 
     return (
@@ -102,8 +106,7 @@ const LoginForm: React.FC = ({}) => {
                             Discord
                         </Button>
                         <Button
-                            disabled
-                            // onClick={() => handleClickOnProvider('google')}
+                            onClick={() => handleClickOnProvider('google')}
                             leftIcon={<Icon as={FaGoogle} />}>
                             Google
                         </Button>
