@@ -110,14 +110,6 @@ const CategoryPage: NextPage<CategoryPageProps> = ({ category, localizations, _d
             subtitle={categoryDescription.toString()}
             breadcrumbs={[
                 {
-                    text: formatMessage({ id: 'home' }),
-                    link: '/',
-                    alt: formatMessage(
-                        { id: 'goToPageName' },
-                        { name: formatMessage({ id: 'home' }) }
-                    )
-                },
-                {
                     text: formatMessage({ id: 'menuEntryShop' }),
                     link: '/shop',
                     alt: formatMessage(

@@ -3,6 +3,7 @@ import { Button, ButtonProps } from '@chakra-ui/button';
 import { ChevronRightIcon } from '@chakra-ui/icons';
 import { Text } from '@chakra-ui/layout';
 import Head from 'next/head';
+import { useIntl } from 'react-intl';
 import { BreadcrumbList, WithContext } from 'schema-dts';
 import Link from './Link';
 
@@ -19,7 +20,15 @@ export interface IBreadcrumbProps {
 const breadcrumbItemStyle: ButtonProps = { size: 'xs', variant: 'ghost', color: 'currentColor' };
 
 const Breadcrumb = ({ entries }: IBreadcrumbProps) => {
+    const { formatMessage } = useIntl();
     const baseUrl: string = process.env.NEXT_PUBLIC_URL || '';
+
+    const homeCrumb = {
+        text: formatMessage({ id: 'home' }),
+        link: '/',
+        alt: formatMessage({ id: 'goToPageName' }, { name: formatMessage({ id: 'home' }) }),
+        isCurrentPage: false
+    };
 
     const structuredData: WithContext<BreadcrumbList> = {
         '@context': 'https://schema.org',
@@ -52,7 +61,7 @@ const Breadcrumb = ({ entries }: IBreadcrumbProps) => {
                 fontSize="sm"
                 separator={<ChevronRightIcon color="currentColor" />}
                 spacing={1}>
-                {entries.map(
+                {[homeCrumb, ...entries].map(
                     (
                         { text, isCurrentPage = false, link = 'undefined', alt = 'undefined' },
                         index

@@ -42,15 +42,6 @@ const BlogHome = ({ posts }: { posts: Array<BlogPost> }) => {
             })}`.toLocaleLowerCase()}
             breadcrumbs={[
                 {
-                    text: formatMessage({ id: 'home' }),
-                    link: '/',
-                    alt: formatMessage(
-                        { id: 'goToPageName' },
-                        { name: formatMessage({ id: 'home' }) }
-                    ),
-                    isCurrentPage: false
-                },
-                {
                     text: formatMessage({ id: 'title' }),
                     link: '/blog',
                     alt: formatMessage(

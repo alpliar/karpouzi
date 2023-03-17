@@ -95,15 +95,6 @@ const UserAccountPage: NextPage<UserAccountPageProps> = () => {
             title={formatMessage({ id: 'title' })}
             breadcrumbs={[
                 {
-                    text: formatMessage({ id: 'home' }),
-                    link: '/',
-                    alt: formatMessage(
-                        { id: 'goToPageName' },
-                        { name: formatMessage({ id: 'home' }) }
-                    ),
-                    isCurrentPage: false
-                },
-                {
                     text: formatMessage({ id: 'menuEntryUser' }),
                     link: '/user/account',
                     alt: formatMessage(

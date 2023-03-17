@@ -186,15 +186,6 @@ const ProductPage: NextPage<ProductPageProps> = ({ product, description, localiz
             }
             breadcrumbs={[
                 {
-                    link: '/',
-                    alt: formatMessage(
-                        { id: 'goToPageName' },
-                        { name: formatMessage({ id: 'home' }) }
-                    ),
-                    text: formatMessage({ id: 'home' }),
-                    isCurrentPage: false
-                },
-                {
                     link: '/shop',
                     alt: formatMessage(
                         { id: 'goToPageName' },
