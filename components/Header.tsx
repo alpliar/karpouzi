@@ -16,17 +16,6 @@ import Link from './Link';
 import NavBurgerMenu from './NavBurgerMenu';
 import NavDrawerBody from './NavDrawerBody';
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-// interface MenuItemsProps {
-//     children: React.ReactNode
-// }
-
-// const MenuItems: React.FC<MenuItemsProps> = ({ children }) => (
-//     <Text mt={{ base: 0, md: 0 }} mr={6} display={{ base: 'inline', sm: 'inline' }}>
-//         {children}
-//     </Text>
-// );
-
 export const headerBgGradient = (
     colorMode: ColorMode,
     colorScheme: ThemingProps['colorScheme'] = 'green'
@@ -61,12 +50,10 @@ const Header: React.FC<HeaderProps> = ({ colorScheme = 'green' }) => {
     const headerLinks = [
         {
             label: formatMessage({ id: 'menuEntryShop' }),
-            // helper: f('goToPageName', { name: f('menuEntryShop') }),
             href: '/shop'
         },
         {
             label: formatMessage({ id: 'menuEntryBlog' }),
-            // helper: f('goToPageName', { name: f('menuEntryBlog') }),
             href: '/blog'
         }
     ];

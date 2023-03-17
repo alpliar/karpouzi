@@ -7,7 +7,7 @@ import { IconType } from 'react-icons';
 import Link from './Link';
 import { VisuallyHidden } from '@chakra-ui/react';
 
-interface IProps {
+interface NavButtonProps {
     icon?: IconType | ComponentWithAs<'svg', IconProps>;
     customIconElement?: React.ReactElement;
     label: string;
@@ -18,7 +18,7 @@ interface IProps {
     href?: string;
 }
 
-const NavButton: React.FC<IProps> = ({
+const NavButton: React.FC<NavButtonProps> = ({
     icon,
     label,
     handleClick,

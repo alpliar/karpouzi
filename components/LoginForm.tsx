@@ -23,10 +23,7 @@ import { sendToast } from '../utils/uiToast';
 import FormContainer from './FormContainer';
 import Link from './Link';
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-interface Props {}
-
-const LoginForm: React.FC<Props> = ({}) => {
+const LoginForm: React.FC = ({}) => {
     const { formatMessage } = useIntl();
     const f = (id: string) => formatMessage({ id });
 
@@ -39,9 +36,6 @@ const LoginForm: React.FC<Props> = ({}) => {
         signIn(provider, {
             callbackUrl: '/user/account'
         });
-        // .then(() => {
-        //     sendToast(f('loggedOutSuccessfully'), '', 'info', 5000, 'top-right');
-        // });
     };
 
     return (

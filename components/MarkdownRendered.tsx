@@ -20,10 +20,6 @@ type NodeType = {
     value?: string;
 };
 
-// type keyable = {
-//     key: Key | null | undefined;
-// };
-
 const GetComponent = (node?: NodeType) => {
     if (!node || !node.type) return null;
 

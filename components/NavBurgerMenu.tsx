@@ -2,11 +2,11 @@ import { HamburgerIcon } from '@chakra-ui/icons';
 import { useIntl } from 'react-intl';
 import NavButton from './NavButton';
 
-interface IProps {
+interface NavBurgerMenuProps {
     handleClick: () => void;
 }
 
-const NavBurgerMenu: React.FC<IProps> = ({ handleClick }) => {
+const NavBurgerMenu: React.FC<NavBurgerMenuProps> = ({ handleClick }) => {
     const { formatMessage } = useIntl();
     const f = (id: string) => formatMessage({ id });
 
