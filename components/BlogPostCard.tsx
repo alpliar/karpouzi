@@ -1,5 +1,6 @@
 import { Avatar, Box, Heading, LinkBox, LinkOverlay, Stack, Text } from '@chakra-ui/react';
 import Link from 'next/link';
+import { useIntl } from 'react-intl';
 import BlogPost from '../graphql/models/blog/post.model';
 import Card from './Card';
 import Date from './Date';
@@ -10,6 +11,7 @@ interface IBlogPostCardProps {
 }
 
 const BlogPostCard: React.FC<IBlogPostCardProps> = ({ post }) => {
+    const { formatMessage } = useIntl();
     const [author] = post.authors;
 
     return (
@@ -30,7 +32,7 @@ const BlogPostCard: React.FC<IBlogPostCardProps> = ({ post }) => {
                         fontWeight="bold"
                         fontSize="sm"
                         letterSpacing={1}>
-                        Blog
+                        {formatMessage({ id: 'menuEntryBlog' })}
                     </Text>
                     <Stack h={32}>
                         <Link
@@ -61,7 +63,8 @@ const BlogPostCard: React.FC<IBlogPostCardProps> = ({ post }) => {
                     <Stack direction="column" spacing={0} fontSize="sm">
                         <Text fontWeight="600">{author.firstName}</Text>
                         <Text color="gray.500">
-                            <Date dateString={post.createdAt} /> · {post.timeToRead} min to read
+                            <Date dateString={post.createdAt} /> ·{' '}
+                            {`${post.timeToRead} ${formatMessage({ id: 'minutesToRead' })}`}
                         </Text>
                     </Stack>
                 </Stack>
