@@ -21,7 +21,7 @@ import { FaDiscord, FaFacebook, FaGoogle } from 'react-icons/fa';
 import { useIntl } from 'react-intl';
 import { sendToast } from '../utils/uiToast';
 import FormContainer from './FormContainer';
-import Link from './link';
+import Link from './Link';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface Props {}

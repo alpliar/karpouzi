@@ -4,17 +4,17 @@ import { useDisclosure } from '@chakra-ui/hooks';
 import { Box, Flex, Stack, Wrap } from '@chakra-ui/layout';
 import { EffectProps, ThemingProps } from '@chakra-ui/system';
 import { useIntl } from 'react-intl';
-import NavDrawer from '../components/navDrawer';
-import NavThemeToggle from '../components/navThemeToggle';
+import NavDrawer from './BavDrawer';
+import NavThemeToggle from './NavThemeToggle';
 import { APP_MAX_WIDTH } from '../constants/ui/main.layout';
 import { BASE_TRANSITION } from '../constants/ui/transitions';
 import NavCart from '../redux/container/navCart';
 import NavLocaleSelector from '../redux/container/navLocaleSelector';
 import NavLogin from '../redux/container/navLogin';
 import NavLogo from '../redux/container/navLogo';
-import Link from './link';
-import NavBurgerMenu from './navBurgerMenu';
-import NavDrawerBody from './navDrawerBody';
+import Link from './Link';
+import NavBurgerMenu from './NavBurgerMenu';
+import NavDrawerBody from './NavDrawerBody';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 // interface MenuItemsProps {

@@ -1,7 +1,7 @@
 import { Badge, Box, Center, Text } from '@chakra-ui/layout';
 import { FaShoppingCart } from 'react-icons/fa';
 import { useIntl } from 'react-intl';
-import NavButton from './navButton';
+import NavButton from './NavButton';
 import Popover from './Popover';
 
 interface IProps {

@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useIntl } from 'react-intl';
 import { ShopCategoryWithAssetAndPartialProducts } from '../graphql/models/shop/category.model';
-import Card from './card';
+import Card from './Card';
 import ImageV2 from './ImageV2';
 
 interface IProps {

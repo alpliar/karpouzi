@@ -11,7 +11,7 @@ import {
 } from '@chakra-ui/react';
 import React, { PropsWithChildren } from 'react';
 import { Root } from 'remark-html';
-import Link from './link';
+import Link from './Link';
 
 type NodeType = {
     properties: { [key: string]: string };

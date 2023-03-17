@@ -14,7 +14,7 @@ import React, { PropsWithChildren } from 'react';
 import { useIntl } from 'react-intl';
 import AuthGard from '../../../components/AuthGard';
 import Section, { SectionProps } from '../../../components/layout/Section';
-import PageListingLayout from '../../../components/pageListingLayout';
+import PageListingLayout from '../../../components/PageListingLayout';
 import { sendToast } from '../../../utils/uiToast';
 
 interface UserAccountPageProps {

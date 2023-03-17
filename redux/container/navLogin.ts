@@ -1,7 +1,7 @@
 import { Dispatch } from 'react';
 import { connect } from 'react-redux';
 import { AnyAction } from 'redux';
-import NavLogin from '../../components/navLogin';
+import NavLogin from '../../components/NavLogin';
 import { RootState } from '../reducer';
 
 interface IProps {

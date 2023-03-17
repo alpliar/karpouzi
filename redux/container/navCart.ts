@@ -1,7 +1,7 @@
 import { Dispatch } from 'react';
 import { connect } from 'react-redux';
 import { AnyAction } from 'redux';
-import NavCart from '../../components/navCart';
+import NavCart from '../../components/NavCart';
 import { RootState } from '../reducer';
 
 const mapStateToProps = (state: RootState) => ({

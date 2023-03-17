@@ -1,6 +1,6 @@
 import { Box, SimpleGrid } from '@chakra-ui/react';
 import BlogPost from '../graphql/models/blog/post.model';
-import BlogPostCard from './blogPostCard';
+import BlogPostCard from './BlogPostCard';
 
 interface ILatestsPostsProps {
     posts: Array<BlogPost>;

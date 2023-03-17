@@ -3,8 +3,8 @@ import { HStack, Icon, IconButton } from '@chakra-ui/react';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { REMOVE_FROM_CART, UPDATE_QUANTITY_CART } from '../actions/shop.actions';
-import PopoverConfirm from './popoverConfirm';
-import QuantitySelector from './quantitySelector';
+import PopoverConfirm from './PopoverConfirm';
+import QuantitySelector from './QuantitySelector';
 
 interface IProps {
     slug: string;

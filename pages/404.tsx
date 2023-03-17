@@ -1,6 +1,6 @@
 import { Box, Container, Divider, Heading } from '@chakra-ui/react';
 import Head from 'next/head';
-import Layout, { siteTitle } from '../components/pageLayout';
+import Layout, { siteTitle } from '../components/PageLayout';
 
 export default function Custom404() {
     return (

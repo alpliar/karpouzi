@@ -6,8 +6,8 @@ import { useIntl } from 'react-intl';
 import i18nConfig from '../constants/i18n.config.json';
 import getFlagEmoji from '../utils/flags';
 import { sendToast } from '../utils/uiToast';
-import Link from './link';
-import NavButton from './navButton';
+import Link from './Link';
+import NavButton from './NavButton';
 import Popover from './Popover';
 
 const PartiallySupportedLocaleIcon = () => <Icon boxSize={2} as={FaAsterisk} />;

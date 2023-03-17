@@ -3,8 +3,8 @@ import { signIn, useSession } from 'next-auth/react';
 import { FaUserCircle } from 'react-icons/fa';
 import { IoLogIn } from 'react-icons/io5';
 import { useIntl } from 'react-intl';
-import Link from './link';
-import NavButton from './navButton';
+import Link from './Link';
+import NavButton from './NavButton';
 import NavLoginAuthenticated from './NavLoginAuthenticated';
 import Popover from './Popover';
 

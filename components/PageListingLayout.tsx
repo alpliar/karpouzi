@@ -3,9 +3,9 @@ import { chakra, ThemingProps } from '@chakra-ui/system';
 import Head from 'next/head';
 import { PropsWithChildren } from 'react';
 import { APP_MAX_WIDTH } from '../constants/ui/main.layout';
-import Breadcrumb, { IBreadcrumbItemProps } from './breadcrumb';
+import Breadcrumb, { IBreadcrumbItemProps } from './Breadcrumb';
 import Section from './layout/Section';
-import PageLayout, { siteTitle } from './pageLayout';
+import PageLayout, { siteTitle } from './PageLayout';
 import ScrollProgressBar from './ScrollProgressBar';
 
 interface IPageLayoutProps {

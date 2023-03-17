@@ -16,7 +16,7 @@ import { FaUserCircle } from 'react-icons/fa';
 import { useIntl } from 'react-intl';
 import IReview from '../graphql/models/common/review.model';
 import Date from './Date';
-import Rating from './rating';
+import Rating from './Rating';
 
 type Props = {
     review: IReview;

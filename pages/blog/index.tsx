@@ -3,7 +3,7 @@ import { GetStaticProps } from 'next';
 import { useIntl } from 'react-intl';
 import GridBlogPosts from '../../components/BlogPostsGrid';
 import Section from '../../components/layout/Section';
-import PageListingLayout from '../../components/pageListingLayout';
+import PageListingLayout from '../../components/PageListingLayout';
 import { API_BASE_URL } from '../../constants/api';
 import { ONE_HOUR } from '../../constants/time.constants';
 import BlogPost from '../../graphql/models/blog/post.model';

@@ -1,6 +1,6 @@
 import { HamburgerIcon } from '@chakra-ui/icons';
 import { useIntl } from 'react-intl';
-import NavButton from './navButton';
+import NavButton from './NavButton';
 
 interface IProps {
     handleClick: () => void;

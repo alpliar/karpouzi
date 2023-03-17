@@ -2,8 +2,8 @@ import { Center, Flex, Stack, Text, Wrap, WrapItem } from '@chakra-ui/react';
 import React from 'react';
 import { SLOW_TRANSITION } from '../constants/ui/transitions';
 import { Link as ILink } from '../models/link.model';
-import Banner from './banner';
-import Link from './link';
+import Banner from './Banner';
+import Link from './Link';
 
 type Props = {
     children?: React.ReactElement;

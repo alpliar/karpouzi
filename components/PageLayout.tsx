@@ -4,7 +4,7 @@ import { ThemingProps } from '@chakra-ui/system';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import Header from './Header';
-import Footer from './pageFooter';
+import Footer from './PageFooter';
 
 export const siteTitle = `Karpouzi`;
 

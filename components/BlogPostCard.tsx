@@ -10,9 +10,9 @@ import {
 } from '@chakra-ui/react';
 import Link from 'next/link';
 import BlogPost from '../graphql/models/blog/post.model';
-import Card from './card';
+import Card from './Card';
 import Date from './Date';
-import { Image } from './image';
+import { Image } from './Image';
 
 interface IBlogPostCardProps {
     post: BlogPost;

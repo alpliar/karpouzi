@@ -4,7 +4,7 @@ import { GetStaticProps } from 'next';
 import { useIntl } from 'react-intl';
 import CategoryCard from '../../components/CategoryCard';
 import Section from '../../components/layout/Section';
-import PageListingLayout from '../../components/pageListingLayout';
+import PageListingLayout from '../../components/PageListingLayout';
 import { API_BASE_URL } from '../../constants/api';
 import { ONE_HOUR } from '../../constants/time.constants';
 import { APP_MAX_WIDTH } from '../../constants/ui/main.layout';

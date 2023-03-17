@@ -1,7 +1,7 @@
 import { Dispatch } from 'react';
 import { connect } from 'react-redux';
 import { AnyAction } from 'redux';
-import NavLocaleSelector, { INavLocaleSelectorProps } from '../../components/navLocaleSelector';
+import NavLocaleSelector, { INavLocaleSelectorProps } from '../../components/NavLocaleSelector';
 import { RootState } from '../reducer';
 
 const mapStateToProps = (state: RootState, ownProps: INavLocaleSelectorProps) => {

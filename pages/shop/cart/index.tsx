@@ -1,10 +1,10 @@
 import { SimpleGrid } from '@chakra-ui/react';
 import { useIntl } from 'react-intl';
 import { useSelector } from 'react-redux';
-import CartItem from '../../../components/cartItem';
+import CartItem from '../../../components/CartItem';
 import Section from '../../../components/layout/Section';
 import NoContentBanner from '../../../components/NoContentBanner';
-import PageListingLayout from '../../../components/pageListingLayout';
+import PageListingLayout from '../../../components/PageListingLayout';
 import { RootState } from '../../../redux/reducer';
 
 export default function CartPage() {

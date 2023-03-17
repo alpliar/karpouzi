@@ -2,7 +2,7 @@ import { Container, SimpleGrid } from '@chakra-ui/layout';
 import { NextPage } from 'next';
 import { useIntl } from 'react-intl';
 import LoginForm from '../../../components/LoginForm';
-import PageListingLayout from '../../../components/pageListingLayout';
+import PageListingLayout from '../../../components/PageListingLayout';
 
 const LoginPage: NextPage = () => {
     const { formatMessage } = useIntl();

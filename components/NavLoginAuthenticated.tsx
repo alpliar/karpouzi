@@ -5,8 +5,8 @@ import React from 'react';
 import { IoHome, IoLogOut } from 'react-icons/io5';
 import { useIntl } from 'react-intl';
 import { sendToast } from '../utils/uiToast';
-import Link from './link';
-import NavButton from './navButton';
+import Link from './Link';
+import NavButton from './NavButton';
 import Popover from './Popover';
 
 const NavLoginAuthenticated: React.FC = () => {

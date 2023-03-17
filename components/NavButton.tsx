@@ -4,7 +4,7 @@ import { ComponentWithAs } from '@chakra-ui/system';
 
 import React, { MouseEventHandler } from 'react';
 import { IconType } from 'react-icons';
-import Link from './link';
+import Link from './Link';
 import { VisuallyHidden } from '@chakra-ui/react';
 
 interface IProps {

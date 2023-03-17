@@ -1,7 +1,7 @@
 import { Stack, Text, ThemingProps } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import { useIntl } from 'react-intl';
-import BackToHome from './backToHome';
+import BackToHome from './BackToHome';
 import Section from './layout/Section';
 
 interface FooterProps {

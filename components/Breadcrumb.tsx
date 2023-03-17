@@ -4,7 +4,7 @@ import { ChevronRightIcon } from '@chakra-ui/icons';
 import { Text } from '@chakra-ui/layout';
 import Head from 'next/head';
 import { BreadcrumbList, WithContext } from 'schema-dts';
-import Link from './link';
+import Link from './Link';
 
 export interface IBreadcrumbItemProps {
     text: string;

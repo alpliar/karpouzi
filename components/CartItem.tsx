@@ -3,8 +3,8 @@ import { useEffect, useState } from 'react';
 import { useIntl } from 'react-intl';
 import { API_BASE_URL } from '../constants/api';
 import Product, { Price } from '../graphql/models/shop/product.model';
-import CartItemActions from './cartItemActions';
-import ProductCard from './productCard';
+import CartItemActions from './CartItemActions';
+import ProductCard from './ProductCard';
 
 interface IProps {
     slug: string;

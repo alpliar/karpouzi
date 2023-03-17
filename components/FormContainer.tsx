@@ -1,6 +1,6 @@
 import { Container, SimpleGrid } from '@chakra-ui/react';
 import React from 'react';
-import Card from './card';
+import Card from './Card';
 
 type Props = {
     children: React.ReactElement;

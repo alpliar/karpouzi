@@ -2,11 +2,11 @@ import { Flex, Text } from '@chakra-ui/layout';
 import { useSession } from 'next-auth/react';
 import Head from 'next/head';
 import { useIntl } from 'react-intl';
-import CallToActionNewsletter from '../components/callToActionNewsletter';
-import CallToActionWithAnnotation from '../components/callToActionWithAnnotation';
+import CallToActionNewsletter from '../components/CallToActionNewsletter';
+import CallToActionWithAnnotation from '../components/CallToActionWithAnnotation';
 import Section, { SectionProps } from '../components/layout/Section';
-import SectionSideBySide from '../components/layout/sectionSideBySide';
-import PageLayout, { siteTitle } from '../components/pageLayout';
+import SectionSideBySide from '../components/layout/SectionSideBySide';
+import PageLayout, { siteTitle } from '../components/PageLayout';
 
 export default function Home() {
     const { formatMessage } = useIntl();

@@ -2,7 +2,7 @@ import { useColorMode, useColorModeValue } from '@chakra-ui/color-mode';
 import { MoonIcon, SunIcon } from '@chakra-ui/icons';
 import { Box, Text } from '@chakra-ui/react';
 import { useIntl } from 'react-intl';
-import NavButton from './navButton';
+import NavButton from './NavButton';
 import Popover from './Popover';
 
 interface IProps {

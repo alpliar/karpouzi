@@ -8,10 +8,10 @@ import { GiFountainPen, GiOpenBook } from 'react-icons/gi';
 import { useIntl } from 'react-intl';
 import { Root } from 'remark-html';
 import Date from '../../../components/Date';
-import { Image } from '../../../components/image';
+import { Image } from '../../../components/Image';
 import Section from '../../../components/layout/Section';
 import MarkdownRendered from '../../../components/MarkdownRendered';
-import PageListingLayout from '../../../components/pageListingLayout';
+import PageListingLayout from '../../../components/PageListingLayout';
 import { API_BASE_URL } from '../../../constants/api';
 import { ONE_DAY } from '../../../constants/time.constants';
 import BlogPost, {

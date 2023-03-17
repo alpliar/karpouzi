@@ -19,9 +19,9 @@ import { FaUsers } from 'react-icons/fa';
 import { useIntl } from 'react-intl';
 import Product from '../graphql/models/shop/product.model';
 import DateHelper from '../helpers/date.helper';
-import Card from './card';
-import { Image } from './image';
-import ProductCardBadge from './productCardBadge';
+import Card from './Card';
+import { Image } from './Image';
+import ProductCardBadge from './ProductCardBadge';
 
 interface IProps {
     // slug: string;

@@ -2,7 +2,7 @@ import { Dispatch } from 'react';
 import { connect } from 'react-redux';
 import { AnyAction } from 'redux';
 import { addToCart, updateQuantityCart } from '../../actions/shop.actions';
-import AddToCart from '../../components/addToCart';
+import AddToCart from '../../components/AddToCart';
 import { RootState } from '../reducer';
 import { getQuantityInCartBySlug } from '../../utils/shop';
 

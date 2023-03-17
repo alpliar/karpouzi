@@ -4,7 +4,7 @@ import { Box, Container, Heading, Stack, Text } from '@chakra-ui/layout';
 import { createIcon, Icon } from '@chakra-ui/icon';
 
 import { BASE_TRANSITION } from '../constants/ui/transitions';
-import Link from './link';
+import Link from './Link';
 
 interface IProps {
     title: React.ReactNode;
