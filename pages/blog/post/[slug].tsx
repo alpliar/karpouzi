@@ -8,7 +8,7 @@ import { GiFountainPen, GiOpenBook } from 'react-icons/gi';
 import { useIntl } from 'react-intl';
 import { Root } from 'remark-html';
 import Date from '../../../components/Date';
-import ImageV2 from '../../../components/ImageV2';
+import ImageV2 from '../../../components/Image';
 import Section from '../../../components/layout/Section';
 import MarkdownRendered from '../../../components/MarkdownRendered';
 import PageListingLayout from '../../../components/PageListingLayout';

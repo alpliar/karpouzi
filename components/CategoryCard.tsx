@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import { useIntl } from 'react-intl';
 import { ShopCategoryWithAssetAndPartialProducts } from '../graphql/models/shop/category.model';
 import Card from './Card';
-import ImageV2 from './ImageV2';
+import ImageV2 from './Image';
 
 interface IProps {
     category: ShopCategoryWithAssetAndPartialProducts;

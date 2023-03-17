@@ -10,7 +10,7 @@ import { useIntl } from 'react-intl';
 import Product from '../graphql/models/shop/product.model';
 import DateHelper from '../helpers/date.helper';
 import Card from './Card';
-import ImageV2 from './ImageV2';
+import ImageV2 from './Image';
 import ProductCardBadge from './ProductCardBadge';
 
 interface IProps {

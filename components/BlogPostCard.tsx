@@ -4,7 +4,7 @@ import { useIntl } from 'react-intl';
 import BlogPost from '../graphql/models/blog/post.model';
 import Card from './Card';
 import Date from './Date';
-import ImageV2 from './ImageV2';
+import ImageV2 from './Image';
 
 interface IBlogPostCardProps {
     post: BlogPost;

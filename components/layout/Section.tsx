@@ -17,7 +17,7 @@ import React from 'react';
 import { APP_MAX_WIDTH } from '../../constants/ui/main.layout';
 import { BASE_TRANSITION, VERY_SLOW_TRANSITION } from '../../constants/ui/transitions';
 import { getPattern, Pattern } from '../../utils/patterns';
-import ImageV2, { ImageV2Props } from '../ImageV2';
+import ImageV2, { ImageV2Props } from '../Image';
 import Link from '../Link';
 
 export interface SectionProps {

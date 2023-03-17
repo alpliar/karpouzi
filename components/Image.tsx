@@ -1,49 +1,48 @@
-import { Box, BoxProps } from '@chakra-ui/layout';
-import { LayoutProps } from '@chakra-ui/styled-system';
+import { AspectRatio, AspectRatioProps } from '@chakra-ui/react';
+import NextImage, { ImageProps } from 'next/image';
+import React from 'react';
+import { BASE_TRANSITION } from '../constants/ui/transitions';
 
-import NextImage, { ImageProps as NextImageProps } from 'next/image';
-import * as React from 'react';
-
-export interface ImageProps {
-    src: NextImageProps['src'];
-    alt: NextImageProps['alt'];
-    width?: LayoutProps['width'];
-    height?: LayoutProps['height'];
-    sizes?: NextImageProps['sizes'];
-    priority?: NextImageProps['priority'];
-    quality?: NextImageProps['quality'];
-    blurDataURL?: NextImageProps['blurDataURL'];
-    cover?: boolean;
-    objectFit?: 'cover' | 'contain' | 'fill';
+export interface ImageV2Props {
+    src: string;
+    alt: string;
+    blurDataURL?: string;
+    priority?: boolean;
+    imageProps?: Partial<ImageProps>;
 }
 
-export const Image: React.FC<ImageProps & Omit<BoxProps, 'as'>> = ({
+const ImageV2: React.FC<ImageV2Props & AspectRatioProps> = ({
     src,
     alt,
-    width = undefined,
-    height = undefined,
-    sizes,
-    priority = undefined,
-    quality = 75,
-    blurDataURL = undefined,
-    objectFit = 'cover',
+    blurDataURL,
+    priority,
+    imageProps,
     ...rest
 }) => {
     return (
-        <Box position="relative" width={width} height={height} overflow="hidden" {...rest}>
-            <NextImage
-                fill
-                style={{
-                    objectFit
-                }}
-                src={src}
-                alt={alt}
-                sizes={sizes}
-                blurDataURL={blurDataURL}
-                placeholder={blurDataURL ? 'blur' : undefined}
-                priority={priority}
-                quality={quality}
-            />
-        </Box>
+        <AspectRatio ratio={1} width="full" transition={BASE_TRANSITION} {...rest}>
+            <>
+                <NextImage
+                    alt={alt}
+                    blurDataURL={blurDataURL}
+                    fill
+                    priority={priority}
+                    quality={30}
+                    // placeholder="blur" //TODO: check why this rule breaks things
+                    src={src}
+                    sizes={`
+                        (max-width: 30em) 100vw, 
+                        50vw
+                    `}
+                    style={{
+                        objectFit: 'cover',
+                        alignSelf: 'stretch'
+                    }}
+                    {...imageProps}
+                />
+            </>
+        </AspectRatio>
     );
 };
+
+export default ImageV2;
