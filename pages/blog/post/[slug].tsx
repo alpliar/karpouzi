@@ -8,7 +8,7 @@ import { GiFountainPen, GiOpenBook } from 'react-icons/gi';
 import { useIntl } from 'react-intl';
 import { Root } from 'remark-html';
 import Date from '../../../components/Date';
-import { Image } from '../../../components/Image';
+import ImageV2 from '../../../components/ImageV2';
 import Section from '../../../components/layout/Section';
 import MarkdownRendered from '../../../components/MarkdownRendered';
 import PageListingLayout from '../../../components/PageListingLayout';
@@ -178,13 +178,11 @@ const BlogPostPage = ({
                                     <Date dateString={post.createdAt} />
                                 </HStack>
                                 <HStack>
-                                    <Image
-                                        quality={60}
+                                    <ImageV2
                                         alt="Karpouzi"
-                                        src={'/icon-48x48.png'}
-                                        sizes="48"
-                                        height={5}
-                                        width={5}
+                                        src={'/icon-16x16.png'}
+                                        height={4}
+                                        width={4}
                                     />
                                     <Text>{post.authors[0].firstName}</Text>
                                 </HStack>
