@@ -29,35 +29,42 @@ export const getStaticProps: GetStaticProps = async () => {
 };
 
 const BlogHome = ({ posts }: { posts: Array<BlogPost> }) => {
-    const intl = useIntl();
-    const f = (id: string) => intl.formatMessage({ id });
+    const { formatMessage } = useIntl();
 
     if (!posts) return null;
 
     return (
         <PageListingLayout
             fullWidth
-            title={f('title')}
-            titleComplement={`(${posts.length || 0} ${f('posts')})`.toLocaleLowerCase()}
+            title={formatMessage({ id: 'title' })}
+            titleComplement={`(${posts.length || 0} ${formatMessage({
+                id: 'posts'
+            })}`.toLocaleLowerCase()}
             breadcrumbs={[
                 {
-                    text: f('home'),
+                    text: formatMessage({ id: 'home' }),
                     link: '/',
-                    alt: intl.formatMessage({ id: 'goToPageName' }, { name: f('home') }),
+                    alt: formatMessage(
+                        { id: 'goToPageName' },
+                        { name: formatMessage({ id: 'home' }) }
+                    ),
                     isCurrentPage: false
                 },
                 {
-                    text: f('title'),
+                    text: formatMessage({ id: 'title' }),
                     link: '/blog',
-                    alt: intl.formatMessage({ id: 'goToPageName' }, { name: f('title') }),
+                    alt: formatMessage(
+                        { id: 'goToPageName' },
+                        { name: formatMessage({ id: 'title' }) }
+                    ),
                     isCurrentPage: true
                 }
             ]}
-            subtitle={f('blogSubtitle')}>
+            subtitle={formatMessage({ id: 'blogSubtitle' })}>
             {posts && (
                 <Section
                     colorScheme="white"
-                    title={f('posts')}
+                    title={formatMessage({ id: 'posts' })}
                     component={<GridBlogPosts posts={posts} />}
                 />
             )}
